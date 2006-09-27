@@ -1,0 +1,18 @@
+SUBDIRS = libgnomekbd test capplet po
+
+DISTCLEANFILES = \
+  intltool-extract \
+  intltool-merge \
+  intltool-update
+ 
+EXTRA_DIST = \
+        libgnomekbd.pc.in \
+        libgnomekbdui.pc.in \
+        intltool-extract.in \
+        intltool-merge.in \
+        intltool-update.in \
+        README.cvs \
+        ChangeLog.libkbdraw ChangeLog.libgswitchit
+
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = libgnomekbd.pc libgnomekbdui.pc
