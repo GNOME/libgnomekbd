@@ -1,3 +1,5 @@
-05-06-2006 svu
+05-10-2006 svu
 
 	* libgnomekbd*.pc.in: added required .so dependencies
+	* test/Makefile.am, test/gkbd-config-registry-client.sh: added a tiny
+	script to test the dbus server from the command line

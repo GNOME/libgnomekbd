@@ -43,3 +43,5 @@ gkbd_keyboard_drawing_test_LDFLAGS=				\
 	$(LIBXKLAVIER_LIBS)				\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la
+
+EXTRA_DIST = gkbd-config-registry-client.sh
