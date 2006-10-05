@@ -1,0 +1,3 @@
+05-06-2006 svu
+
+	* libgnomekbd*.pc.in: added required .so dependencies

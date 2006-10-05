@@ -6,5 +6,5 @@ includedir=@includedir@
 Name: libgnomekbd
 Description: GNOME keyboard shared library
 Version: @VERSION@
-Libs: -L${libdir} -lgnomekbd -lgnomekbdui
+Libs: -L${libdir} -lgnomekbd -lgnomekbdui @GDK_LIBS@ @GCONF_LIBS@ @LIBGNOME_LIBS@ @LIBXKLAVIER_LIBS@ @DBUS_LIBS@ @LIBGNOMEUI_LIBS@
 Cflags: -I${includedir}
