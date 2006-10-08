@@ -1,4 +1,9 @@
-05-10-2006 svu
+2006-10-07  svu
+
+	* COPYING.LIB, *.c, *.h: putting proper comments describing the
+	licensing terms (LGPL).
+
+2006-10-05  svu
 
 	* libgnomekbd*.pc.in: added required .so dependencies
 	* test/Makefile.am, test/gkbd-config-registry-client.sh: added a tiny
