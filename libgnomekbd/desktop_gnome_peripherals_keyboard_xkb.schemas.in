@@ -142,8 +142,8 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/gswitchit/preview/x</key>
-      <applyto>/apps/gswitchit/preview/x</applyto>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/preview/x</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/preview/x</applyto>
       <owner>gnome</owner>    
       <type>int</type>
       <default>-1</default>
@@ -154,8 +154,8 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/gswitchit/preview/y</key>
-      <applyto>/apps/gswitchit/preview/y</applyto>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/preview/y</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/preview/y</applyto>
       <owner>gnome</owner>    
       <type>int</type>
       <default>-1</default>
@@ -166,8 +166,8 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/gswitchit/preview/width</key>
-      <applyto>/apps/gswitchit/preview/width</applyto>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/preview/width</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/preview/width</applyto>
       <owner>gnome</owner>    
       <type>int</type>
       <default>-1</default>
@@ -178,8 +178,8 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/gswitchit/preview/height</key>
-      <applyto>/apps/gswitchit/preview/height</applyto>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/preview/height</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/preview/height</applyto>
       <owner>gnome</owner>    
       <type>int</type>
       <default>-1</default>
