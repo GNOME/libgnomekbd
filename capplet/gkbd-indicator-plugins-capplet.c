@@ -343,7 +343,7 @@ main (int argc, char **argv)
 
   gkbd_indicator_plugin_manager_init (&gipc.plugin_manager);
 
-  gkbd_keyboard_config_load_from_x_initial (&initialSysKbdConfig);
+  gkbd_keyboard_config_load_from_x_initial (&initialSysKbdConfig, NULL);
   gkbd_keyboard_config_load_from_gconf (&gipc.kbd_cfg, &initialSysKbdConfig);
 
   gkbd_indicator_config_load_from_gconf (&gipc.applet_cfg);

@@ -3,7 +3,9 @@
 <node name="/org/gnome/GkbdConfigRegistry">
 	<interface name="org.gnome.GkbdConfigRegistry">
 		<annotation name="org.freedesktop.DBus.GLib.CSymbol" value="gkbd_config_registry"/>
-		<method name="GetCurrentDescriptionsAsUtf8">
+		<method name="GetDescriptionsAsUtf8">
+			<arg type="as" name="layoutIds"  direction="in" />
+			<arg type="as" name="variantIds"  direction="in" />
 			<arg type="as" name="shortLayoutDescriptions"  direction="out" />
 			<arg type="as" name="longLayoutDescriptions"   direction="out" />
 			<arg type="as" name="shortVariantDescriptions" direction="out" />

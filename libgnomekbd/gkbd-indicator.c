@@ -245,7 +245,6 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 		char *lbl_title = NULL;
 		int counter = 0;
 		char *layout_name = NULL;
-		XklConfigItem cfg_item;
 		GtkWidget *align, *label;
 		/**
 		 * Map "short desciption" -> 
@@ -263,7 +262,7 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *full_layout_name =
 			    (char *) g_slist_nth_data (globals.kbd_cfg.
-						       layouts,
+						       layouts_variants,
 						       group);
 			char *variant_name;
 			if (!gkbd_keyboard_config_split_items
@@ -271,10 +270,6 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			     &variant_name))
 				/* just in case */
 				layout_name = g_strdup (full_layout_name);
-
-			g_snprintf (cfg_item.name,
-				    sizeof (cfg_item.name), "%s",
-				    layout_name);
 
 			if (globals.short_group_names != NULL) {
 				char *short_group_name =
@@ -415,11 +410,12 @@ gkbd_indicator_ind_cfg_changed (GConfClient * client,
 }
 
 static void
-gkbd_indicator_load_group_names (void)
+gkbd_indicator_load_group_names (const gchar ** layout_ids,
+				 const gchar ** variant_ids)
 {
 	if (!gkbd_desktop_config_load_remote_group_descriptions_utf8
-	    (&globals.cfg, &globals.short_group_names,
-	     &globals.full_group_names)) {
+	    (&globals.cfg, layout_ids, variant_ids,
+	     &globals.short_group_names, &globals.full_group_names)) {
 		gint i, total_groups =
 		    xkl_engine_get_num_groups (globals.engine);
 		globals.full_group_names =
@@ -427,7 +423,7 @@ gkbd_indicator_load_group_names (void)
 
 		if (xkl_engine_get_features (globals.engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
-			GSList *lst = globals.kbd_cfg.layouts;
+			GSList *lst = globals.kbd_cfg.layouts_variants;
 			for (i = 0; lst; lst = lst->next) {
 				globals.full_group_names[i++] =
 				    g_strdup ((char *) lst->data);
@@ -445,20 +441,25 @@ gkbd_indicator_load_group_names (void)
 static void
 gkbd_indicator_kbd_cfg_callback (GkbdIndicator * gki)
 {
+	XklConfigRec *xklrec = xkl_config_rec_new ();
 	xkl_debug (100,
 		   "XKB configuration changed on X Server - reiniting...\n");
 
-	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg);
+	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
+						  xklrec);
 	gkbd_indicator_config_update_images (&globals.ind_cfg,
 					     &globals.kbd_cfg);
 
 	g_strfreev (globals.full_group_names);
 	g_strfreev (globals.short_group_names);
-	gkbd_indicator_load_group_names ();
+	gkbd_indicator_load_group_names ((const gchar **) xklrec->layouts,
+					 (const gchar **) xklrec->
+					 variants);
 
 	ForAllIndicators () {
 		gkbd_indicator_reinit_ui (gki);
 	} NextIndicator ();
+	g_object_unref (G_OBJECT (xklrec));
 }
 
 /* Should be called once for all applets */
@@ -697,6 +698,7 @@ static void
 gkbd_indicator_global_init (void)
 {
 	GConfClient *gconf_client;
+	XklConfigRec *xklrec = xkl_config_rec_new ();
 
 	globals.engine = xkl_engine_get_instance (GDK_DISPLAY ());
 	if (globals.engine == NULL) {
@@ -727,13 +729,17 @@ gkbd_indicator_global_init (void)
 
 	gkbd_desktop_config_load_from_gconf (&globals.cfg);
 	gkbd_desktop_config_activate (&globals.cfg);
-	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg);
+	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
+						  xklrec);
 	gkbd_indicator_config_load_from_gconf (&globals.ind_cfg);
 	gkbd_indicator_config_update_images (&globals.ind_cfg,
 					     &globals.kbd_cfg);
 	gkbd_indicator_config_activate (&globals.ind_cfg);
 
-	gkbd_indicator_load_group_names ();
+	gkbd_indicator_load_group_names ((const gchar **) xklrec->layouts,
+					 (const gchar **) xklrec->
+					 variants);
+	g_object_unref (G_OBJECT (xklrec));
 
 	gkbd_indicator_plugin_manager_init (&globals.plugin_manager);
 	gkbd_indicator_plugin_manager_init_enabled_plugins (&globals.

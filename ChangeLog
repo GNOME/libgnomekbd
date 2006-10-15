@@ -1,5 +1,19 @@
 2006-10-07  svu
 
+	* capplet/gkbd-indicator-plugins-capplet.c,
+	libgnomekbd/gkbd-config-registry.c,
+	libgnomekbd/gkbd-config-registry.h,
+	libgnomekbd/gkbd-config-registry.xml,
+	libgnomekbd/gkbd-desktop-config.c, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-indicator-config.c, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-keyboard-config.h,
+	test/gkbd-config-registry-client.sh: now, dbus function asks
+	explicitly for layouts/variants. This saves some X traffic, makes
+	behavior more consistent.
+
+2006-10-07  svu
+
 	* COPYING.LIB, *.c, *.h: putting proper comments describing the
 	licensing terms (LGPL).
 

@@ -212,8 +212,8 @@ static void
 gkbd_keyboard_config_layouts_add_full (GkbdKeyboardConfig * kbd_config,
 				       const gchar * full_layout_name)
 {
-	kbd_config->layouts =
-	    g_slist_append (kbd_config->layouts,
+	kbd_config->layouts_variants =
+	    g_slist_append (kbd_config->layouts_variants,
 			    g_strdup (full_layout_name));
 }
 
@@ -229,20 +229,13 @@ gkbd_keyboard_config_copy_from_xkl_config (GkbdKeyboardConfig * kbd_config,
 	p = pdata->layouts;
 	p1 = pdata->variants;
 	while (p != NULL && *p != NULL) {
-		if (*p1 == NULL || **p1 == '\0') {
-			xkl_debug (150, "Loaded Kbd layout: [%s]\n", *p);
-			gkbd_keyboard_config_layouts_add_full (kbd_config,
-							       *p);
-		} else {
-			char full_layout[XKL_MAX_CI_NAME_LENGTH * 2];
-			g_snprintf (full_layout, sizeof (full_layout),
-				    "%s\t%s", *p, *p1);
-			xkl_debug (150,
-				   "Loaded Kbd layout with variant: [%s]\n",
-				   full_layout);
-			gkbd_keyboard_config_layouts_add_full (kbd_config,
-							       full_layout);
-		}
+		const gchar *full_layout =
+		    gkbd_keyboard_config_merge_items (*p, *p1);
+		xkl_debug (150,
+			   "Loaded Kbd layout (with variant): [%s]\n",
+			   full_layout);
+		gkbd_keyboard_config_layouts_add_full (kbd_config,
+						       full_layout);
 		p++;
 		p1++;
 	}
@@ -279,15 +272,15 @@ gkbd_keyboard_config_copy_to_xkl_config (GkbdKeyboardConfig * kbd_config,
 	     NULL) ? NULL : g_strdup (kbd_config->model);
 
 	num_layouts =
-	    (kbd_config->layouts ==
-	     NULL) ? 0 : g_slist_length (kbd_config->layouts);
+	    (kbd_config->layouts_variants ==
+	     NULL) ? 0 : g_slist_length (kbd_config->layouts_variants);
 	num_options =
 	    (kbd_config->options ==
 	     NULL) ? 0 : g_slist_length (kbd_config->options);
 
 	xkl_debug (150, "Taking %d layouts\n", num_layouts);
 	if (num_layouts != 0) {
-		GSList *the_layout = kbd_config->layouts;
+		GSList *the_layout_variant = kbd_config->layouts_variants;
 		char **p1 = pdata->layouts =
 		    g_new0 (char *, num_layouts + 1);
 		char **p2 = pdata->variants =
@@ -295,7 +288,7 @@ gkbd_keyboard_config_copy_to_xkl_config (GkbdKeyboardConfig * kbd_config,
 		for (i = num_layouts; --i >= 0;) {
 			char *layout, *variant;
 			if (gkbd_keyboard_config_split_items
-			    (the_layout->data, &layout, &variant)
+			    (the_layout_variant->data, &layout, &variant)
 			    && variant != NULL) {
 				*p1 =
 				    (layout ==
@@ -307,9 +300,9 @@ gkbd_keyboard_config_copy_to_xkl_config (GkbdKeyboardConfig * kbd_config,
 				    g_strdup (variant);
 			} else {
 				*p1 =
-				    (the_layout->data ==
+				    (the_layout_variant->data ==
 				     NULL) ? g_strdup ("") :
-				    g_strdup (the_layout->data);
+				    g_strdup (the_layout_variant->data);
 				*p2 = g_strdup ("");
 			}
 			xkl_debug (150, "Adding [%s]/%p and [%s]/%p\n",
@@ -317,7 +310,7 @@ gkbd_keyboard_config_copy_to_xkl_config (GkbdKeyboardConfig * kbd_config,
 				   *p2 ? *p2 : "(nil)", *p2);
 			p1++;
 			p2++;
-			the_layout = the_layout->next;
+			the_layout_variant = the_layout_variant->next;
 		}
 	}
 
@@ -428,8 +421,8 @@ gkbd_keyboard_config_save_params (GkbdKeyboardConfig * kbd_config,
 	xkl_debug (150, "Saved Kbd model: [%s]\n",
 		   kbd_config->model ? kbd_config->model : "(null)");
 
-	if (kbd_config->layouts) {
-		pl = kbd_config->layouts;
+	if (kbd_config->layouts_variants) {
+		pl = kbd_config->layouts_variants;
 		while (pl != NULL) {
 			xkl_debug (150, "Saved Kbd layout: [%s]\n",
 				   pl->data);
@@ -438,7 +431,7 @@ gkbd_keyboard_config_save_params (GkbdKeyboardConfig * kbd_config,
 		gconf_change_set_set_list (cs,
 					   param_names[1],
 					   GCONF_VALUE_STRING,
-					   kbd_config->layouts);
+					   kbd_config->layouts_variants);
 	} else {
 		xkl_debug (150, "Saved Kbd layouts: []\n");
 		gconf_change_set_unset (cs, param_names[1]);
@@ -511,11 +504,12 @@ gkbd_keyboard_config_load_from_gconf (GkbdKeyboardConfig * kbd_config,
 			kbd_config->model =
 			    g_strdup (kbd_config_default->model);
 
-		if (kbd_config->layouts == NULL) {
-			pl = kbd_config_default->layouts;
+		if (kbd_config->layouts_variants == NULL) {
+			pl = kbd_config_default->layouts_variants;
 			while (pl != NULL) {
-				kbd_config->layouts =
-				    g_slist_append (kbd_config->layouts,
+				kbd_config->layouts_variants =
+				    g_slist_append (kbd_config->
+						    layouts_variants,
 						    g_strdup (pl->data));
 				pl = pl->next;
 			}
@@ -542,9 +536,12 @@ gkbd_keyboard_config_load_from_gconf_backup (GkbdKeyboardConfig *
 }
 
 void
-gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig * kbd_config)
+gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig * kbd_config,
+					  XklConfigRec * data)
 {
-	XklConfigRec *data = xkl_config_rec_new ();
+	gboolean own_data = data == NULL;
+	if (own_data)
+		data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_server (data, kbd_config->engine))
 		gkbd_keyboard_config_copy_from_xkl_config (kbd_config,
 							   data);
@@ -552,13 +549,15 @@ gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig * kbd_config)
 		xkl_debug (150,
 			   "Could not load keyboard config from server: [%s]\n",
 			   xkl_get_last_error ());
-	g_object_unref (G_OBJECT (data));
+	if (own_data)
+		g_object_unref (G_OBJECT (data));
 }
 
 void
-gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config)
+gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config,
+					  XklConfigRec * data)
 {
-	XklConfigRec *data = xkl_config_rec_new ();
+	gboolean own_data = data == NULL;
 	if (xkl_config_rec_get_from_backup (data, kbd_config->engine))
 		gkbd_keyboard_config_copy_from_xkl_config (kbd_config,
 							   data);
@@ -566,7 +565,8 @@ gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config)
 		xkl_debug (150,
 			   "Could not load keyboard config from backup: [%s]\n",
 			   xkl_get_last_error ());
-	g_object_unref (G_OBJECT (data));
+	if (own_data)
+		g_object_unref (G_OBJECT (data));
 }
 
 gboolean
@@ -580,8 +580,8 @@ gkbd_keyboard_config_equals (GkbdKeyboardConfig * kbd_config1,
 	    (kbd_config2->model != NULL) &&
 	    g_ascii_strcasecmp (kbd_config1->model, kbd_config2->model))
 		return False;
-	return gslist_str_equal (kbd_config1->layouts,
-				 kbd_config2->layouts)
+	return gslist_str_equal (kbd_config1->layouts_variants,
+				 kbd_config2->layouts_variants)
 	    && gslist_str_equal (kbd_config1->options,
 				 kbd_config2->options);
 }
@@ -659,7 +659,8 @@ gkbd_keyboard_config_layouts_add (GkbdKeyboardConfig * kbd_config,
 void
 gkbd_keyboard_config_layouts_reset (GkbdKeyboardConfig * kbd_config)
 {
-	gkbd_keyboard_config_string_list_reset (&kbd_config->layouts);
+	gkbd_keyboard_config_string_list_reset (&kbd_config->
+						layouts_variants);
 }
 
 void
@@ -775,9 +776,9 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 	gint count;
 	gchar *result;
 
-	if (config->layouts) {
+	if (config->layouts_variants) {
 		/* g_slist_length is "expensive", so we determinate the length on the fly */
-		for (iter = config->layouts, count = 0; iter;
+		for (iter = config->layouts_variants, count = 0; iter;
 		     iter = iter->next, ++count) {
 			if (buffer->len)
 				g_string_append (buffer, " ");

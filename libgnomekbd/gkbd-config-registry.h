@@ -53,8 +53,10 @@ struct GkbdConfigRegistryClass {
 extern GType gkbd_config_registry_get_type (void);
 
 extern gboolean
-    gkbd_config_registry_get_current_descriptions_as_utf8
+    gkbd_config_registry_get_descriptions_as_utf8
     (GkbdConfigRegistry * registry,
+     gchar ** layout_ids,
+     gchar ** variant_ids,
      gchar *** short_layout_descriptions,
      gchar *** long_layout_descriptions,
      gchar *** short_variant_descriptions,

@@ -52,7 +52,9 @@ const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[]
  */
 
 static gboolean
-gkbd_desktop_config_get_remote_lv_descriptions_utf8 (gchar *** sld,
+gkbd_desktop_config_get_remote_lv_descriptions_utf8 (const gchar ** lids,
+						     const gchar ** vids,
+						     gchar *** sld,
 						     gchar *** lld,
 						     gchar *** svd,
 						     gchar *** lvd)
@@ -77,8 +79,8 @@ gkbd_desktop_config_get_remote_lv_descriptions_utf8 (gchar *** sld,
 					   "org.gnome.GkbdConfigRegistry");
 
 /* The method call will trigger activation, more on that later */
-	if (!org_gnome_GkbdConfigRegistry_get_current_descriptions_as_utf8
-	    (proxy, sld, lld, svd, lvd, &error)) {
+	if (!org_gnome_GkbdConfigRegistry_get_descriptions_as_utf8
+	    (proxy, lids, vids, sld, lld, svd, lvd, &error)) {
 		/* Method failed, the GError is set, let's warn everyone */
 		g_warning ("Woops remote method failed: %s",
 			   error->message);
@@ -300,6 +302,10 @@ gkbd_desktop_config_stop_listen (GkbdDesktopConfig * config)
 gboolean
 gkbd_desktop_config_load_remote_group_descriptions_utf8 (GkbdDesktopConfig
 							 * config,
+							 const gchar **
+							 layout_ids,
+							 const gchar **
+							 variant_ids,
 							 gchar ***
 							 short_group_names,
 							 gchar ***
@@ -311,7 +317,7 @@ gkbd_desktop_config_load_remote_group_descriptions_utf8 (GkbdDesktopConfig
 	gint total_descriptions;
 
 	if (!gkbd_desktop_config_get_remote_lv_descriptions_utf8
-	    (&sld, &lld, &svd, &lvd)) {
+	    (layout_ids, variant_ids, &sld, &lld, &svd, &lvd)) {
 		return False;
 	}
 

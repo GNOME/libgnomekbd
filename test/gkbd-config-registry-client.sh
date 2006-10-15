@@ -23,15 +23,17 @@
 # getting descriptions out of it
 #
 
-on=GkbdConfigRegistry
+objname=GkbdConfigRegistry
 
 # Old:
-#on=KeyboardConfigRegistry
+#objname=KeyboardConfigRegistry
 
 dbus-send --session \
-          --dest=org.gnome.$on \
+          --dest=org.gnome.$objname \
           --type=method_call \
           --print-reply \
           --reply-timeout=20000 \
-          /org/gnome/$on \
-          org.gnome.$on.GetCurrentDescriptionsAsUtf8
+          /org/gnome/$objname \
+          org.gnome.$objname.GetDescriptionsAsUtf8 \
+	  array:string:"us","ru","fr","de","il" \
+          array:string:"basic","winkeys","","deadkeys","dummy"

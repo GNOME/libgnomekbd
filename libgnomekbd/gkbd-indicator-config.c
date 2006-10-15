@@ -101,10 +101,11 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 	if (!ind_config->show_flags)
 		return NULL;
 
-	if ((kbd_config->layouts != NULL) &&
-	    (g_slist_length (kbd_config->layouts) > group)) {
+	if ((kbd_config->layouts_variants != NULL) &&
+	    (g_slist_length (kbd_config->layouts_variants) > group)) {
 		char *full_layout_name =
-		    (char *) g_slist_nth_data (kbd_config->layouts, group);
+		    (char *) g_slist_nth_data (kbd_config->
+					       layouts_variants, group);
 
 		if (full_layout_name != NULL) {
 			char *l, *v;

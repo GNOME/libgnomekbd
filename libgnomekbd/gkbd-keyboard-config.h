@@ -39,7 +39,7 @@ extern const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[];
  */
 typedef struct _GkbdKeyboardConfig {
 	gchar *model;
-	GSList *layouts;
+	GSList *layouts_variants;
 	GSList *options;
 
 	/* private, transient */
@@ -71,10 +71,12 @@ extern void gkbd_keyboard_config_save_to_gconf_backup (GkbdKeyboardConfig *
 						       kbd_config);
 
 extern void gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig *
-						      kbd_config);
+						      kbd_config,
+						      XklConfigRec * buf);
 
 extern void gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig *
-						      kbd_config);
+						      kbd_config,
+						      XklConfigRec * buf);
 
 extern void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
 					       kbd_config,

@@ -28,13 +28,14 @@
 static GObjectClass *parent_class = NULL;
 
 gboolean
-    gkbd_config_registry_get_current_descriptions_as_utf8
+    gkbd_config_registry_get_descriptions_as_utf8
     (GkbdConfigRegistry * registry,
+     gchar ** layout_ids,
+     gchar ** variant_ids,
      gchar *** short_layout_descriptions,
      gchar *** long_layout_descriptions,
      gchar *** short_variant_descriptions,
      gchar *** long_variant_descriptions, GError ** error) {
-	XklConfigRec *xkl_config;
 	char **pl, **pv;
 	guint total_layouts;
 	gchar **sld, **lld, **svd, **lvd;
@@ -51,14 +52,9 @@ gboolean
 	     XKLF_MULTIPLE_LAYOUTS_SUPPORTED))
 		return FALSE;
 
-	xkl_config = xkl_config_rec_new ();
-
-	if (!xkl_config_rec_get_from_server (xkl_config, registry->engine))
-		return FALSE;
-
-	pl = xkl_config->layouts;
-	pv = xkl_config->variants;
-	total_layouts = g_strv_length (xkl_config->layouts);
+	pl = layout_ids;
+	pv = variant_ids;
+	total_layouts = g_strv_length (layout_ids);
 	sld = *short_layout_descriptions =
 	    g_new0 (char *, total_layouts + 1);
 	lld = *long_layout_descriptions =
@@ -71,14 +67,16 @@ gboolean
 	while (pl != NULL && *pl != NULL) {
 		XklConfigItem item;
 
+		xkl_debug (100, "ids: [%s][%s]\n", *pl, pv == NULL ? NULL : *pv);
+
 		g_snprintf (item.name, sizeof item.name, "%s", *pl);
 		if (xkl_config_registry_find_layout
 		    (registry->registry, &item)) {
-			*sld++ = g_strdup (item.short_description);
-			*lld++ = g_strdup (item.description);
+			*sld = g_strdup (item.short_description);
+			*lld = g_strdup (item.description);
 		} else {
-			*sld++ = g_strdup ("");
-			*lld++ = g_strdup ("");
+			*sld = g_strdup ("");
+			*lld = g_strdup ("");
 		}
 
 		if (*pv != NULL) {
@@ -89,18 +87,26 @@ gboolean
 				*svd = g_strdup (item.short_description);
 				*lvd = g_strdup (item.description);
 			} else {
-				*svd++ = g_strdup ("");
-				*lvd++ = g_strdup ("");
+				*svd = g_strdup ("");
+				*lvd = g_strdup ("");
 			}
 		} else {
-			*svd++ = g_strdup ("");
-			*lvd++ = g_strdup ("");
+			*svd = g_strdup ("");
+			*lvd = g_strdup ("");
 		}
 
+		xkl_debug (100, "description: [%s][%s][%s][%s]\n",
+			   *sld, *lld, *svd, *lvd);
+		sld++;
+		lld++;
+		svd++;
+		lvd++;
+
 		pl++;
-		pv++;
+
+		if (*pv !=  NULL)
+			pv++;
 	}
-	g_object_unref (G_OBJECT (xkl_config));
 
 	return TRUE;
 }
@@ -169,14 +175,17 @@ gkbd_config_registry_init (GkbdConfigRegistry * registry)
 						  DBUS_PATH_DBUS,
 						  DBUS_INTERFACE_DBUS);
 
-	if (!org_freedesktop_DBus_request_name
-	    (driver_proxy, "org.gnome.GkbdConfigRegistry", 0,
-	     &request_ret, &error)) {
-		g_warning ("Unable to register service: %s",
-			   error->message);
-		g_error_free (error);
-	}
-	g_object_unref (driver_proxy);
+	if (driver_proxy != NULL) {
+		if (!org_freedesktop_DBus_request_name
+		    (driver_proxy, "org.gnome.GkbdConfigRegistry", 0,
+		     &request_ret, &error)) {
+			g_warning ("Unable to register service: %s",
+				   error->message);
+			g_error_free (error);
+		}
+		g_object_unref (driver_proxy);
+	} else
+		g_critical ("Could not create DBUS proxy");
 
 	/* Init libxklavier stuff */
 	registry->engine = xkl_engine_get_instance (XOpenDisplay (NULL));

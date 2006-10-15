@@ -78,6 +78,10 @@ gkbd_desktop_config_load_group_descriptions_utf8 (GkbdDesktopConfig *
 extern gboolean
 gkbd_desktop_config_load_remote_group_descriptions_utf8 (GkbdDesktopConfig
 							 * config,
+							 const gchar **
+							 layout_ids,
+							 const gchar **
+							 variant_ids,
 							 gchar ***
 							 short_group_names,
 							 gchar ***
