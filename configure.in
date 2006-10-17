@@ -4,6 +4,9 @@ dnl ***************************************************************************
 AC_INIT(libgnomekbd, 0.1)
 AC_PREREQ(2.59)
 
+VERSION_INFO=1:0:0
+AC_SUBST(VERSION_INFO)
+
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(1.8)
 AC_CONFIG_MACRO_DIR(m4)

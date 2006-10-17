@@ -20,7 +20,7 @@ libgnomekbd_la_CFLAGS = $(common_CFLAGS)
 libgnomekbdui_la_CFLAGS = $(common_CFLAGS)		\
 	$(GTK_CFLAGS)
 
-common_LDFLAGS = \
+common_LDFLAGS = -version-info @VERSION_INFO@ \
 		$(DBUS_LIBS) \
 		$(GDK_LIBS) \
 		$(GCONF_LIBS) \
