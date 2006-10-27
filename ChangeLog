@@ -1,3 +1,8 @@
+2006-10-27  svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: closing the critical memory
+	allocation bug: http://bugzilla.gnome.org/show_bug.cgi?id=365590
+
 2006-10-17  svu
 
 	* configure.in, libgnomekbd/Makefile.am: adding VERSION_INFO

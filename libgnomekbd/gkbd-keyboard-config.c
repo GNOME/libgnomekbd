@@ -25,7 +25,6 @@
 #include <X11/keysym.h>
 
 #include <glib/gi18n.h>
-//#include <gdk/gdkx.h>
 #include <libgnome/gnome-program.h>
 
 #include <gkbd-keyboard-config.h>
@@ -558,6 +557,8 @@ gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config,
 					  XklConfigRec * data)
 {
 	gboolean own_data = data == NULL;
+	if (own_data)
+		data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_backup (data, kbd_config->engine))
 		gkbd_keyboard_config_copy_from_xkl_config (kbd_config,
 							   data);
