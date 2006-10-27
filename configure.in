@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for GNOME-APPLETS                                      ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 0.1)
+AC_INIT(libgnomekbd, 2.17.2)
 AC_PREREQ(2.59)
 
 VERSION_INFO=1:0:0
