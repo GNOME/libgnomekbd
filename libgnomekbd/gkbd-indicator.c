@@ -420,18 +420,24 @@ gkbd_indicator_load_group_names (const gchar ** layout_ids,
 		    xkl_engine_get_num_groups (globals.engine);
 		globals.full_group_names =
 		    g_new0 (char *, total_groups + 1);
+		globals.short_group_names =
+		    g_new0 (char *, total_groups + 1);
 
 		if (xkl_engine_get_features (globals.engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			GSList *lst = globals.kbd_cfg.layouts_variants;
-			for (i = 0; lst; lst = lst->next) {
-				globals.full_group_names[i++] =
+			for (i = 0; lst; lst = lst->next,i++) {
+				globals.full_group_names[i] =
+				    g_strdup ((char *) lst->data);
+				globals.short_group_names[i] =
 				    g_strdup ((char *) lst->data);
 			}
 		} else {
 			for (i = total_groups; --i >= 0;) {
 				globals.full_group_names[i] =
 				    g_strdup_printf ("Group %d", i);
+				globals.short_group_names[i] =
+				    g_strdup (globals.full_group_names[i]);
 			}
 		}
 	}
