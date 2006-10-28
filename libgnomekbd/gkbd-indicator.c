@@ -416,11 +416,11 @@ gkbd_indicator_load_group_names (const gchar ** layout_ids,
 	if (!gkbd_desktop_config_load_remote_group_descriptions_utf8
 	    (&globals.cfg, layout_ids, variant_ids,
 	     &globals.short_group_names, &globals.full_group_names)) {
+		/* We just populate no short names (remain NULL) - 
+		 * full names are going to be used anyway */
 		gint i, total_groups =
 		    xkl_engine_get_num_groups (globals.engine);
 		globals.full_group_names =
-		    g_new0 (char *, total_groups + 1);
-		globals.short_group_names =
 		    g_new0 (char *, total_groups + 1);
 
 		if (xkl_engine_get_features (globals.engine) &
@@ -429,15 +429,11 @@ gkbd_indicator_load_group_names (const gchar ** layout_ids,
 			for (i = 0; lst; lst = lst->next,i++) {
 				globals.full_group_names[i] =
 				    g_strdup ((char *) lst->data);
-				globals.short_group_names[i] =
-				    g_strdup ((char *) lst->data);
 			}
 		} else {
 			for (i = total_groups; --i >= 0;) {
 				globals.full_group_names[i] =
 				    g_strdup_printf ("Group %d", i);
-				globals.short_group_names[i] =
-				    g_strdup (globals.full_group_names[i]);
 			}
 		}
 	}
@@ -457,7 +453,13 @@ gkbd_indicator_kbd_cfg_callback (GkbdIndicator * gki)
 					     &globals.kbd_cfg);
 
 	g_strfreev (globals.full_group_names);
-	g_strfreev (globals.short_group_names);
+	globals.full_group_names = NULL;
+
+	if (globals.short_group_names != NULL) {
+		g_strfreev (globals.short_group_names);
+		globals.short_group_names = NULL;
+	}
+
 	gkbd_indicator_load_group_names ((const gchar **) xklrec->layouts,
 					 (const gchar **) xklrec->
 					 variants);
