@@ -1,3 +1,9 @@
+2006-10-31  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* configure.in: Add nb to ALL_LINGUAS
+	* po/POTFILES.in: Add missing file.
+	* po/nb.po: Add this.
+
 2006-10-28  svu
 
 	* libgnomekbd/gkbd-indicator.c: fixing the potential crash
