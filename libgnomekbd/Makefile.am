@@ -28,7 +28,10 @@ common_LDFLAGS = -version-info @VERSION_INFO@ \
 
 libgnomekbd_la_LDFLAGS = $(common_LDFLAGS)
 
-libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS) $(GTK_LIBS)
+libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS) \
+                           $(GTK_LIBS) \
+                           $(LIBGNOME_LIBS) \
+                           -lgnomekbd
 
 libgnomekbd_la_SOURCES = \
                          gkbd-config-registry.c \
