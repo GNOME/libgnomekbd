@@ -1,3 +1,7 @@
+2006-11-07  svu
+
+	* CVS: tagging 2.17.2
+
 2006-11-05  svu
 
 	* libgnomekbd/Makefile.am: missing libs added, closing
