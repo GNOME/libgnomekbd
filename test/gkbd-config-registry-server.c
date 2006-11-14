@@ -35,6 +35,8 @@ static GMainLoop *loop;
 int
 main ()
 {
+	GkbdConfigRegistry *reg;
+
 	g_type_init_with_debug_flags (G_TYPE_DEBUG_OBJECTS |
 				      G_TYPE_DEBUG_SIGNALS);
 
@@ -42,10 +44,9 @@ main ()
 	setlocale(LC_ALL, "");
 #endif
 
-	GkbdConfigRegistry *reg =
-	    GKBD_CONFIG_REGISTRY (g_object_new
-				  (gkbd_config_registry_get_type
-				   (), NULL));
+	reg = GKBD_CONFIG_REGISTRY (g_object_new
+				    (gkbd_config_registry_get_type
+				     (), NULL));
 
 	loop = g_main_loop_new (NULL, FALSE);
 
