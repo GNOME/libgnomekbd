@@ -24,9 +24,11 @@
 #
 
 objname=GkbdConfigRegistry
+method=GetDescriptionsAsUtf8
 
 # Old:
 #objname=KeyboardConfigRegistry
+#method=GetCurrentDescriptionsAsUtf8
 
 dbus-send --session \
           --dest=org.gnome.$objname \
@@ -34,6 +36,6 @@ dbus-send --session \
           --print-reply \
           --reply-timeout=20000 \
           /org/gnome/$objname \
-          org.gnome.$objname.GetDescriptionsAsUtf8 \
+          org.gnome.$objname.$method \
 	  array:string:"us","ru","fr","de","il" \
-          array:string:"basic","winkeys","","deadkeys","dummy"
+	  array:string:"basic","winkeys","","deadkeys","dummy"
