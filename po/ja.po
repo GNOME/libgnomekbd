@@ -1,0 +1,215 @@
+# libgnomekbd ja.po.
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the 'libgnomekbd' package.
+# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd trunk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-01-13 15:55+0900\n"
+"PO-Revision-Date: 2007-01-13 15:55+0900\n"
+"Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:613
+msgid "XKB initialization error"
+msgstr "XKB の初期化エラー"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:164
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "イメージを読み込む際にエラーが発生しました: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "レイアウト \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "オプション \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "型式 \"%s\"、%s と %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no layout"
+msgstr "レイアウトなし"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
+msgid "no options"
+msgstr "オプションなし"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"キーボードの状態が変更された時に実行するスクリプト集です。これらのスクリプト"
+"は xmodmap による調整結果をもう一度適用する際に便利です。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "$HOME フォルダで利用可能な modmap ファイルの並びです。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "(ウィンドウの生成時に割り当てられる) デフォルトのグループ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "ウィンドウ毎に別々のグループで管理する"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "キーボードの更新ハンドラ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "キーボードのレイアウト"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "キーボードの型式"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "キーボードのオプション"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr ""
+"可能であれば、GConf に保存されたキーボードの設定値でシステム規模の設定を上書"
+"きする (廃棄)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "保存/復帰の表示器をレイアウトのグループにまとめる"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Show layout names instead of group names"
+msgstr "グループ名ではなくレイアウト名を表示する"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"グループ名ではなくレイアウト名を表示します (複数のレイアウトを同時にサポート"
+"できる XFree のバージョンのみ利用できます)。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr "\"Ｘのシステム規模の設定変更\" に対する警告メッセージを表示しない"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "The Keyboard Preview, X offset"
+msgstr "キーボード・プレビューを表示する位置 (Ｘ座標)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid "The Keyboard Preview, Y offset"
+msgstr "キーボード・プレビューを表示する位置 (Ｙ座標)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "The Keyboard Preview, height"
+msgstr "キーボード・プレビューの高さ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, width"
+msgstr "キーボード・プレビューの幅"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"可能な限り早めに、GConf に保存したキーボード設定でシステム規模の設定を上書き"
+"します。このキーは GNOME バージョン 2.12 で破棄されました。システム規模の型式"
+"やレイアウト、オプションを取得する場合は FALSE にして下さい。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "keyboard layout"
+msgstr "現在利用しているキーボードのレイアウトです。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "keyboard model"
+msgstr "現在利用しているキーボードの型式です。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "modmap file list"
+msgstr "modmap ファイルの並び"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "プラグインを追加します"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "有効なプラグイン(_P):"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "プラグインの追加"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "このダイアログを閉じます"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "選択したプラグインを設定します"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "選択したプラグインを削除して無効にします"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "プラグインの優先度を下げます"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "プラグインの優先度を上げます"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "キーボード表示器のプラグイン"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "有効になっているプラグインの一覧です"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "利用可能なプラグイン(_A):"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "説明なし"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "GConf の初期化に失敗しました: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "インストール済みのプラグインを設定します"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "キーボード表示器のプラグイン"
