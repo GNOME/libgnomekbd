@@ -1,3 +1,8 @@
+2007-01-13  Takeshi AIHANA <takeshi.aihana@gmail.com>
+
+	* configure.in:
+	  Added 'ja' (Japanese) to ALL_LINGUAS.
+
 2006-11-13  svu
 
 	* test/gkbd-config-registry-server.c: small C89 bug, thanks to Jens
