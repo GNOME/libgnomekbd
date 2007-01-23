@@ -41,7 +41,10 @@ gkbd_indicator_plugins_capplet_LDADD = \
 		$(top_builddir)/libgnomekbd/libgnomekbdui.la
 
 EXTRA_DIST = gkbd-indicator-plugins-capplet.desktop.in.in \
-             $(glade_DATA)
+             $(glade_DATA) \
+             $(pixmap_DATA)
 
 DISTCLEANFILES = $(desktop_DATA)
 
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
+pixmap_DATA = gkbd-indicator-plugins-capplet.png

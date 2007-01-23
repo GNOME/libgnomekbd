@@ -1,3 +1,8 @@
+2007-01-23  svu
+
+	* gkbd-indicator-plugins-capplet.c, Makefile.am,
+	gkbd-indicator-plugins-capplet.png: fixing the capplet icon
+
 2007-01-13  Takeshi AIHANA <takeshi.aihana@gmail.com>
 
 	* configure.in:
