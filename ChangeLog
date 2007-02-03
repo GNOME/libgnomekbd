@@ -1,3 +1,10 @@
+2007-02-03  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: performance and layout fixes,
+	closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=357872
+
 2007-01-23  svu
 
 	* gkbd-indicator-plugins-capplet.c, Makefile.am,

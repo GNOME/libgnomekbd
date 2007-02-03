@@ -109,6 +109,7 @@ struct _GkbdKeyboardDrawing {
 	GdkPixmap *pixmap;
 	XkbDescRec *xkb;
 	gboolean xkbOnDisplay;
+	guint l3mod;
 
 	gint angle;		/* current angle pango is set to draw at, in tenths of a degree */
 	PangoLayout *layout;
@@ -125,6 +126,7 @@ struct _GkbdKeyboardDrawing {
 	GdkColor *colors;
 
 	guint timeout;
+	guint idle_redraw;
 
 	GkbdKeyboardDrawingGroupLevel **groupLevels;
 

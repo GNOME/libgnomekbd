@@ -298,25 +298,6 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 
 
 static void
-fit_width (GkbdKeyboardDrawing * drawing, gint width)
-{
-	PangoRectangle logical_rect;
-	gint old_size;
-
-	pango_layout_get_extents (drawing->layout, NULL, &logical_rect);
-
-	if (logical_rect.width > 0 && logical_rect.width > width) {
-		old_size =
-		    pango_font_description_get_size (drawing->font_desc);
-		pango_font_description_set_size (drawing->font_desc,
-						 old_size * width /
-						 logical_rect.width);
-		pango_layout_set_font_description (drawing->layout,
-						   drawing->font_desc);
-	}
-}
-
-static void
 set_key_label_in_layout (GkbdKeyboardDrawing * drawing,
 			 PangoLayout * layout, guint keyval)
 {
@@ -554,7 +535,6 @@ draw_key_label_helper (GkbdKeyboardDrawing * drawing,
 		       gint x,
 		       gint y, gint width, gint height, gint padding)
 {
-	gint old_size;
 	gint label_x, label_y, label_max_width, ycell;
 
 	if (keysym == 0)
@@ -603,19 +583,10 @@ draw_key_label_helper (GkbdKeyboardDrawing * drawing,
 		return;
 	}
 	set_key_label_in_layout (drawing, drawing->layout, keysym);
-
-	old_size = pango_font_description_get_size (drawing->font_desc);
-	fit_width (drawing, label_max_width);
-
+	pango_layout_set_width (drawing->layout, label_max_width);
+	label_y -= (pango_layout_get_line_count (drawing->layout) - 1) *
+		(pango_font_description_get_size (drawing->font_desc) / PANGO_SCALE);
 	draw_layout (drawing, angle, label_x, label_y, drawing->layout);
-
-	if (pango_font_description_get_size (drawing->font_desc) !=
-	    old_size) {
-		pango_font_description_set_size (drawing->font_desc,
-						 old_size);
-		pango_layout_set_font_description (drawing->layout,
-						   drawing->font_desc);
-	}
 }
 
 static void
@@ -653,6 +624,13 @@ draw_key_label (GkbdKeyboardDrawing * drawing,
 		if (l < 0
 		    || l >= XkbKeyGroupWidth (drawing->xkb, keycode, g))
 			continue;
+
+		/* Skip "exotic" levels like the "Ctrl" level in PC_SYSREQ */
+		if (l > 0) {
+			guint mods = XkbKeyKeyType (drawing->xkb, keycode, g)->mods.mask;
+			if ((mods & (ShiftMask | drawing->l3mod)) == 0)
+				continue;
+		}
 
 		if (drawing->track_modifiers) {
 			uint mods_rtrn;
@@ -949,6 +927,7 @@ alloc_pango_layout (GkbdKeyboardDrawing * drawing)
 	PangoContext *context =
 	    gtk_widget_get_pango_context (GTK_WIDGET (drawing));
 	drawing->layout = pango_layout_new (context);
+	pango_layout_set_ellipsize (drawing->layout, PANGO_ELLIPSIZE_END);
 }
 
 static void
@@ -968,7 +947,7 @@ expose_event (GtkWidget * widget,
 		return FALSE;
 
 	if (drawing->pixmap == NULL)
-		draw_keyboard (drawing);
+		return FALSE;
 
 	gdk_draw_drawable (widget->window,
 			   widget->style->fg_gc[state],
@@ -985,6 +964,17 @@ expose_event (GtkWidget * widget,
 				 widget->allocation.width,
 				 widget->allocation.height);
 
+	return FALSE;
+}
+
+static gboolean
+idle_redraw (gpointer user_data)
+{
+	GkbdKeyboardDrawing *drawing = user_data;
+
+	drawing->idle_redraw = 0;
+	draw_keyboard (drawing);
+	gtk_widget_queue_draw (GTK_WIDGET (drawing));
 	return FALSE;
 }
 
@@ -1024,6 +1014,9 @@ size_allocate (GtkWidget * widget,
 				  drawing->scale_denominator);
 	pango_layout_set_font_description (drawing->layout,
 					   drawing->font_desc);
+
+	if (!drawing->idle_redraw)
+		drawing->idle_redraw = g_idle_add (idle_redraw, drawing);
 }
 
 static gint
@@ -1488,6 +1481,10 @@ destroy (GkbdKeyboardDrawing * drawing)
 		g_source_remove (drawing->timeout);
 		drawing->timeout = 0;
 	}
+	if (drawing->idle_redraw > 0) {
+		g_source_remove (drawing->idle_redraw);
+		drawing->idle_redraw = 0;
+	}
 
 	g_object_unref (drawing->pixmap);
 }
@@ -1558,6 +1555,8 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 	}
 
 	XkbGetNames (drawing->display, XkbAllNamesMask, drawing->xkb);
+	drawing->l3mod = XkbKeysymToModifiers (drawing->display,
+					       GDK_ISO_Level3_Shift);
 
 	drawing->xkbOnDisplay = TRUE;
 
