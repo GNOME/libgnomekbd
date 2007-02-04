@@ -466,7 +466,7 @@ set_key_label_in_layout (GkbdKeyboardDrawing * drawing,
 
 
 static void
-draw_layout (GkbdKeyboardDrawing * drawing,
+draw_pango_layout (GkbdKeyboardDrawing * drawing,
 	     gint angle, gint x, gint y, PangoLayout * layout)
 {
 	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
@@ -502,15 +502,9 @@ draw_layout (GkbdKeyboardDrawing * drawing,
 
 			for (j = 0; j < run->glyphs->num_glyphs; j++) {
 				PangoGlyphGeometry *geometry;
-				gint xx, yy;
 
 				geometry =
 				    &run->glyphs->glyphs[j].geometry;
-
-				rotate_coordinate (0, 0, x_off, y_off,
-						   angle, &xx, &yy);
-				geometry->x_offset -= x_off - xx;
-				geometry->y_offset -= y_off - yy;
 
 				x_off += geometry->width;
 			}
@@ -586,7 +580,7 @@ draw_key_label_helper (GkbdKeyboardDrawing * drawing,
 	pango_layout_set_width (drawing->layout, label_max_width);
 	label_y -= (pango_layout_get_line_count (drawing->layout) - 1) *
 		(pango_font_description_get_size (drawing->font_desc) / PANGO_SCALE);
-	draw_layout (drawing, angle, label_x, label_y, drawing->layout);
+	draw_pango_layout (drawing, angle, label_x, label_y, drawing->layout);
 }
 
 static void
@@ -806,7 +800,7 @@ draw_text_doodad (GkbdKeyboardDrawing * drawing,
 				 doodad->origin_y + text_doodad->top);
 
 	pango_layout_set_text (drawing->layout, text_doodad->text, -1);
-	draw_layout (drawing, doodad->angle, x, y, drawing->layout);
+	draw_pango_layout (drawing, doodad->angle, x, y, drawing->layout);
 }
 
 static void
