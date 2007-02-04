@@ -666,7 +666,7 @@ draw_key (GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 {
 	XkbShapeRec *shape;
 	GdkColor *color;
-	gint i;
+	/* gint i; */
 
 	if (!drawing->xkb)
 		return;
@@ -691,9 +691,22 @@ draw_key (GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 		shape->num_outlines);
 #endif
 
-	for (i = 0; i < 1 /* shape->num_outlines */ ; i++)
-		draw_outline (drawing, shape->outlines + i, color,
-			      key->angle, key->origin_x, key->origin_y);
+        /* draw the primary outline */
+        draw_outline (drawing, shape->primary ? shape->primary : shape->outlines, 
+		      color, key->angle, key->origin_x, key->origin_y);
+#if 0
+        /* don't draw other outlines for now, since
+         * the text placement does not take them into account 
+         */
+        for (i = 0; i < shape->num_outlines; i++)
+          {
+            if (shape->outlines + i == shape->approx ||
+	        shape->outlines + i == shape->primary)
+	      continue;
+            draw_outline (drawing, shape->outlines + i, NULL, 
+		          key->angle, key->origin_x, key->origin_y);
+	  }
+#endif
 
 	draw_key_label (drawing, key->keycode, key->angle, key->origin_x,
 			key->origin_y, shape->bounds.x2, shape->bounds.y2);
@@ -836,11 +849,21 @@ draw_shape_doodad (GkbdKeyboardDrawing * drawing,
 	shape = drawing->xkb->geom->shapes + shape_doodad->shape_ndx;
 	color = drawing->colors + shape_doodad->color_ndx;
 
-	for (i = 0; i < shape->num_outlines; i++)
-		draw_outline (drawing, shape->outlines + i, color,
-			      doodad->angle,
-			      doodad->origin_x + shape_doodad->left,
-			      doodad->origin_y + shape_doodad->top);
+        /* draw the primary outline filled */
+        draw_outline (drawing, shape->primary ? shape->primary : shape->outlines, 
+ 		      color, doodad->angle,
+                      doodad->origin_x + shape_doodad->left,
+		      doodad->origin_y + shape_doodad->top);
+
+        /* stroke the other outlines */
+	for (i = 0; i < shape->num_outlines; i++) {
+                if (shape->outlines + i == shape->approx ||
+	            shape->outlines + i == shape->primary) 
+	              continue;
+                draw_outline (drawing, shape->outlines + i, NULL, doodad->angle,
+		              doodad->origin_x + shape_doodad->left,
+		              doodad->origin_y + shape_doodad->top);
+        }
 }
 
 static void
