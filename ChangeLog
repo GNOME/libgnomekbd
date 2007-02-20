@@ -1,5 +1,10 @@
 2006-02-20  Alexander Shopov  <ash@contact.bg>
 
+	* Makefile.in.in: Reverting to revision 2.  I am apologize
+	for committing the file in the previous commit.
+
+2006-02-20  Alexander Shopov  <ash@contact.bg>
+
 	* configure.in: Added "bg" (Bulgarian) to ALL_LINGUAS
 
 2007-02-04  svu
