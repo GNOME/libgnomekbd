@@ -1,7 +1,7 @@
 dnl ***************************************************************************
-dnl *** configure.in for GNOME-APPLETS                                      ***
+dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 2.17.2)
+AC_INIT(libgnomekbd, 2.17.92)
 AC_PREREQ(2.59)
 
 VERSION_INFO=1:0:0
@@ -12,7 +12,7 @@ AM_INIT_AUTOMAKE(1.8)
 AC_CONFIG_MACRO_DIR(m4)
 
 dnl ***************************************************************************
-dnl *** Minimum library versions for GNOME-APPLETS                          ***
+dnl *** Minimum library versions for libgnomekbd                            ***
 dnl ***************************************************************************
 DBUS_REQUIRED=0.92
 DBUS_GLIB_REQUIRED=0.34
