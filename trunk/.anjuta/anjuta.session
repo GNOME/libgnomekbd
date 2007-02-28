@@ -1,0 +1,9 @@
+
+[Anjuta]
+Geometry=1120x755+10+25
+
+[File Loader]
+Files=file:///home/svu/CVS/libgnomekbd/capplet/gswitchit-plugins-app.h#30%%%file:///home/svu/CVS/libgnomekbd/capplet/gswitchit-plugins-app.c#394%%%file:///home/svu/CVS/libgnomekbd/capplet/gswitchit-plugins-add.c#173
+
+[Execution]
+Run in terminal=2

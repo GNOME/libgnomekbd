@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libgnomekbd
+Description: GNOME keyboard shared library
+Version: @VERSION@
+Libs: -L${libdir} -lgnomekbd @GDK_LIBS@ @GCONF_LIBS@ @LIBGNOME_LIBS@ @LIBXKLAVIER_LIBS@ @DBUS_LIBS@
+Cflags: -I${includedir}

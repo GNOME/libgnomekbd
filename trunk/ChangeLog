@@ -1,0 +1,95 @@
+2007-02-28  svu
+
+	* configure.in: preparing 2.17.92
+
+2006-02-20  Alexander Shopov  <ash@contact.bg>
+
+	* Makefile.in.in: Reverting to revision 2.  I am apologize
+	for committing the file in the previous commit.
+
+2006-02-20  Alexander Shopov  <ash@contact.bg>
+
+	* configure.in: Added "bg" (Bulgarian) to ALL_LINGUAS
+
+2007-02-04  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: using really primary outline,
+	closing http://bugzilla.gnome.org/show_bug.cgi?id=352779
+	* libgnomekbd/gkbd-keyboard-drawing.c: unneeded text rotation is
+	eliminated
+
+2007-02-03  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: performance and layout fixes,
+	closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=357872
+
+2007-01-23  svu
+
+	* gkbd-indicator-plugins-capplet.c, Makefile.am,
+	gkbd-indicator-plugins-capplet.png: fixing the capplet icon
+
+2007-01-13  Takeshi AIHANA <takeshi.aihana@gmail.com>
+
+	* configure.in:
+	  Added 'ja' (Japanese) to ALL_LINGUAS.
+
+2006-11-13  svu
+
+	* test/gkbd-config-registry-server.c: small C89 bug, thanks to Jens
+	Granseuer
+
+2006-11-07  svu
+
+	* CVS: tagging 2.17.2
+
+2006-11-05  svu
+
+	* libgnomekbd/Makefile.am: missing libs added, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=371119
+
+2006-10-31  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* configure.in: Add nb to ALL_LINGUAS
+	* po/POTFILES.in: Add missing file.
+	* po/nb.po: Add this.
+
+2006-10-28  svu
+
+	* libgnomekbd/gkbd-indicator.c: fixing the potential crash
+
+2006-10-27  svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: closing the critical memory
+	allocation bug: http://bugzilla.gnome.org/show_bug.cgi?id=365590
+
+2006-10-17  svu
+
+	* configure.in, libgnomekbd/Makefile.am: adding VERSION_INFO
+	controlling the .so versioning
+
+2006-10-07  svu
+
+	* capplet/gkbd-indicator-plugins-capplet.c,
+	libgnomekbd/gkbd-config-registry.c,
+	libgnomekbd/gkbd-config-registry.h,
+	libgnomekbd/gkbd-config-registry.xml,
+	libgnomekbd/gkbd-desktop-config.c, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-indicator-config.c, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-keyboard-config.h,
+	test/gkbd-config-registry-client.sh: now, dbus function asks
+	explicitly for layouts/variants. This saves some X traffic, makes
+	behavior more consistent.
+
+2006-10-07  svu
+
+	* COPYING.LIB, *.c, *.h: putting proper comments describing the
+	licensing terms (LGPL).
+
+2006-10-05  svu
+
+	* libgnomekbd*.pc.in: added required .so dependencies
+	* test/Makefile.am, test/gkbd-config-registry-client.sh: added a tiny
+	script to test the dbus server from the command line
