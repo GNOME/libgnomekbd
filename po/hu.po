@@ -1,0 +1,223 @@
+# Hungarian translation of libgnomekbd
+# Copyright (C) 2007 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libgnomekbd package.
+#
+# Gabor Kelemen <kelemeng@gnome.hu>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-03-09 15:10+0100\n"
+"PO-Revision-Date: 2007-03-09 17:30+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
+"Language-Team: Hungarian <gnome@gnome.hu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:613
+msgid "XKB initialization error"
+msgstr "XKB inicializálási hiba"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:164
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "hiba történt egy kép betöltése során: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "\"%s\" kiosztás"
+msgstr[1] "\"%s\" kiosztás"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "\"%s\" beállítás"
+msgstr[1] "\"%s\" beállítás"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "\"%s\" típus, %s és %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no layout"
+msgstr "nincs kiosztás"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
+msgid "no options"
+msgstr "nincsenek beállítások"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"Parancsfájlok gyűjteménye, amelyeket a billentyűzet állapotának minden "
+"újratöltésekor le kell futtatni. Az xmodmap-alapú beállítások "
+"újraalkalmazásakor hasznos."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "A $HOME könyvtárban elérhető modmap fájlok listája."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Az ablak létrehozásához hozzárendelt alapértelmezett csoport"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Külön csoport fenntartása és kezelése minden ablakhoz"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "Billentyűzetfrissítés-kezelők"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "Billentyűzetkiosztás"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "Billentyűzetmodell"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "Billentyűzet beállításai"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr ""
+"A gconf billentyűzetbeállításai amint lehetséges felülíródnak a rendszer "
+"beállításaival (elavult)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "Jelzők mentése/visszaállítása a kiosztáscsoportokkal együtt"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Show layout names instead of group names"
+msgstr "Kiosztásnevek mutatása csoportnevek helyett"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Kiosztásnevek mutatása csoportnevek helyett (csak az XFree több kiosztást "
+"támogató verzióihoz)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr ""
+"A \"Megváltoztak az X rendszerbeállításai\" figyelmeztető üzenet "
+"elhallgattatása"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "The Keyboard Preview, X offset"
+msgstr "A billentyűzet előnézete, X eltolás"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid "The Keyboard Preview, Y offset"
+msgstr "A billentyűzet előnézete, Y eltolás"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "The Keyboard Preview, height"
+msgstr "A billentyűzet előnézete, magasság"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, width"
+msgstr "A billentyűzet előnézete, szélesség"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"A gconf-ban lévő billentyűzetbeállítások felül lesznek írva (a "
+"rendszerbeállításból). Ez a kulcs a GNOME 2.12 óta elavult, kérem állítsa "
+"vissza a modellt, a kiosztásokat és az opcióbillentyűket az alapértelmezett "
+"rendszerbeállítás megkapásához."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "keyboard layout"
+msgstr "billentyűzetkiosztás"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "keyboard model"
+msgstr "billentyűzetmodell"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "modmap file list"
+msgstr "modmap fájlok listája"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "További bővítmények aktiválása"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "A_ktív bővítmények:"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Bővítmény hozzáadása"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "A párbeszédablak bezárása"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "A kijelölt bővítmény beállítása"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "A kijelölt bővítmény letiltása"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "A bővítmény prioritásának csökkentése"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "A bővítmény prioritásának növelése"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Billentyűzetjelző bővítmények"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "Az aktív bővítmények listája"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_Elérhető bővítmények:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "Nincs leírás."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Nem sikerült a GConf inicializálása: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Telepített bővítmények engedélyezése/letiltása"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Billentyűzetjelző bővítmények"
+
