@@ -1,3 +1,8 @@
+2007-03-12  svu
+
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: removing the
+	Application category
+
 2007-03-11  svu
 
 	* configure.in: preparing 2.18.0
