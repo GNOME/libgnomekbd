@@ -2,6 +2,8 @@
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: key labels are always drawn in
 	proper color, closing http://bugzilla.gnome.org/show_bug.cgi?id=352778
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: fixing the
+	component, according the the gnome bugzilla
 
 2007-03-12  svu
 
