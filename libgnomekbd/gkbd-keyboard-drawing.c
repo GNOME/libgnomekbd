@@ -475,7 +475,9 @@ draw_pango_layout (GkbdKeyboardDrawing * drawing,
 	gint x_off, y_off;
 	gint i;
 
-	color = drawing->colors;
+	color =
+	    drawing->colors + (drawing->xkb->geom->label_color -
+			       drawing->xkb->geom->colors);
 
 	if (drawing->pixmap == NULL)
 		return;
@@ -627,9 +629,8 @@ draw_key_label (GkbdKeyboardDrawing * drawing,
 
 		/* Skip "exotic" levels like the "Ctrl" level in PC_SYSREQ */
 		if (l > 0) {
-			guint mods =
-			    XkbKeyKeyType (drawing->xkb, keycode,
-					   g)->mods.mask;
+			guint mods = XkbKeyKeyType (drawing->xkb, keycode,
+						    g)->mods.mask;
 			if ((mods & (ShiftMask | drawing->l3mod)) == 0)
 				continue;
 		}
