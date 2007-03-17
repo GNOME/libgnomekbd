@@ -4,6 +4,8 @@
 	proper color, closing http://bugzilla.gnome.org/show_bug.cgi?id=352778
 	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: fixing the
 	component, according the the gnome bugzilla
+	* libgnomekbd/gkbd-keyboard-config.c: fixing the tooltip, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=377248
 
 2007-03-12  svu
 

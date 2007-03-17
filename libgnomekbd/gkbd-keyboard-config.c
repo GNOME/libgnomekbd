@@ -758,7 +758,7 @@ gkbd_keyboard_config_format_full_layout (const gchar * layout_descr,
 					 const gchar * variant_descr)
 {
 	static gchar full_descr[XKL_MAX_CI_DESC_LENGTH * 2];
-	if (variant_descr == NULL)
+	if (variant_descr == NULL || variant_descr[0] == 0)
 		g_snprintf (full_descr, sizeof (full_descr), "%s",
 			    layout_descr);
 	else
