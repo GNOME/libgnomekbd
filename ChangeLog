@@ -1,3 +1,8 @@
+2007-03-17  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: key labels are always drawn in
+	proper color, closing http://bugzilla.gnome.org/show_bug.cgi?id=352778
+
 2007-03-12  svu
 
 	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: removing the

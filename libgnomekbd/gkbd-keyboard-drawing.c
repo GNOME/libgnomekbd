@@ -467,12 +467,15 @@ set_key_label_in_layout (GkbdKeyboardDrawing * drawing,
 
 static void
 draw_pango_layout (GkbdKeyboardDrawing * drawing,
-	     gint angle, gint x, gint y, PangoLayout * layout)
+		   gint angle, gint x, gint y, PangoLayout * layout)
 {
 	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
+	GdkColor *color;
 	PangoLayoutLine *line;
 	gint x_off, y_off;
 	gint i;
+
+	color = drawing->colors;
 
 	if (drawing->pixmap == NULL)
 		return;
@@ -516,9 +519,10 @@ draw_pango_layout (GkbdKeyboardDrawing * drawing,
 		    pango_layout_get_spacing (drawing->layout);
 	}
 
-	gdk_draw_layout (drawing->pixmap,
-			 GTK_WIDGET (drawing)->style->text_gc[state], x, y,
-			 drawing->layout);
+	gdk_draw_layout_with_colors (drawing->pixmap,
+				     GTK_WIDGET (drawing)->style->
+				     text_gc[state], x, y, drawing->layout,
+				     color, NULL);
 }
 
 static void
@@ -579,8 +583,10 @@ draw_key_label_helper (GkbdKeyboardDrawing * drawing,
 	set_key_label_in_layout (drawing, drawing->layout, keysym);
 	pango_layout_set_width (drawing->layout, label_max_width);
 	label_y -= (pango_layout_get_line_count (drawing->layout) - 1) *
-		(pango_font_description_get_size (drawing->font_desc) / PANGO_SCALE);
-	draw_pango_layout (drawing, angle, label_x, label_y, drawing->layout);
+	    (pango_font_description_get_size (drawing->font_desc) /
+	     PANGO_SCALE);
+	draw_pango_layout (drawing, angle, label_x, label_y,
+			   drawing->layout);
 }
 
 static void
@@ -621,7 +627,9 @@ draw_key_label (GkbdKeyboardDrawing * drawing,
 
 		/* Skip "exotic" levels like the "Ctrl" level in PC_SYSREQ */
 		if (l > 0) {
-			guint mods = XkbKeyKeyType (drawing->xkb, keycode, g)->mods.mask;
+			guint mods =
+			    XkbKeyKeyType (drawing->xkb, keycode,
+					   g)->mods.mask;
 			if ((mods & (ShiftMask | drawing->l3mod)) == 0)
 				continue;
 		}
@@ -685,21 +693,21 @@ draw_key (GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 		shape->num_outlines);
 #endif
 
-        /* draw the primary outline */
-        draw_outline (drawing, shape->primary ? shape->primary : shape->outlines, 
+	/* draw the primary outline */
+	draw_outline (drawing,
+		      shape->primary ? shape->primary : shape->outlines,
 		      color, key->angle, key->origin_x, key->origin_y);
 #if 0
-        /* don't draw other outlines for now, since
-         * the text placement does not take them into account 
-         */
-        for (i = 0; i < shape->num_outlines; i++)
-          {
-            if (shape->outlines + i == shape->approx ||
-	        shape->outlines + i == shape->primary)
-	      continue;
-            draw_outline (drawing, shape->outlines + i, NULL, 
-		          key->angle, key->origin_x, key->origin_y);
-	  }
+	/* don't draw other outlines for now, since
+	 * the text placement does not take them into account 
+	 */
+	for (i = 0; i < shape->num_outlines; i++) {
+		if (shape->outlines + i == shape->approx ||
+		    shape->outlines + i == shape->primary)
+			continue;
+		draw_outline (drawing, shape->outlines + i, NULL,
+			      key->angle, key->origin_x, key->origin_y);
+	}
 #endif
 
 	draw_key_label (drawing, key->keycode, key->angle, key->origin_x,
@@ -843,21 +851,23 @@ draw_shape_doodad (GkbdKeyboardDrawing * drawing,
 	shape = drawing->xkb->geom->shapes + shape_doodad->shape_ndx;
 	color = drawing->colors + shape_doodad->color_ndx;
 
-        /* draw the primary outline filled */
-        draw_outline (drawing, shape->primary ? shape->primary : shape->outlines, 
- 		      color, doodad->angle,
-                      doodad->origin_x + shape_doodad->left,
+	/* draw the primary outline filled */
+	draw_outline (drawing,
+		      shape->primary ? shape->primary : shape->outlines,
+		      color, doodad->angle,
+		      doodad->origin_x + shape_doodad->left,
 		      doodad->origin_y + shape_doodad->top);
 
-        /* stroke the other outlines */
+	/* stroke the other outlines */
 	for (i = 0; i < shape->num_outlines; i++) {
-                if (shape->outlines + i == shape->approx ||
-	            shape->outlines + i == shape->primary) 
-	              continue;
-                draw_outline (drawing, shape->outlines + i, NULL, doodad->angle,
-		              doodad->origin_x + shape_doodad->left,
-		              doodad->origin_y + shape_doodad->top);
-        }
+		if (shape->outlines + i == shape->approx ||
+		    shape->outlines + i == shape->primary)
+			continue;
+		draw_outline (drawing, shape->outlines + i, NULL,
+			      doodad->angle,
+			      doodad->origin_x + shape_doodad->left,
+			      doodad->origin_y + shape_doodad->top);
+	}
 }
 
 static void
