@@ -1,3 +1,7 @@
+2007-03-19  Luca Ferretti  <elle.uca@libero.it>
+
+	* configure.in: Added "it" to ALL_LINGUAS
+
 2007-03-17  svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: key labels are always drawn in
