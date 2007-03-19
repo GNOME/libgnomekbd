@@ -1,3 +1,8 @@
+2007-03-19  svu
+
+	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: added
+	missing gconf schema elements
+
 2007-03-19  Luca Ferretti  <elle.uca@libero.it>
 
 	* configure.in: Added "it" to ALL_LINGUAS
