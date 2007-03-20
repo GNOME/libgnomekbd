@@ -1,3 +1,7 @@
+2007-03-20  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* configure.in: Added 'gl' to ALL_LINGUAS.
+
 2007-03-20  Gabor Kelemen  <kelemeng@gnome.hu>
 
 	* configure.in: Added missing hu and sv to ALL_LINGUAS
