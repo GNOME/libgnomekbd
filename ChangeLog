@@ -1,3 +1,7 @@
+2007-03-20  Gabor Kelemen  <kelemeng@gnome.hu>
+
+	* configure.in: Added missing hu and sv to ALL_LINGUAS
+
 2007-03-19  svu
 
 	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: added
