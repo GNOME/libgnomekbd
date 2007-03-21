@@ -1,0 +1,234 @@
+# libgnomekbd's Portuguese translation.
+# Copyright © 2007 libgnomekbd
+# This file is distributed under the same license as the libgnomekbd package.
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.18\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-03-21 22:32+0000\n"
+"PO-Revision-Date: 2007-03-21 23:10+0000\n"
+"Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
+"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:613
+msgid "XKB initialization error"
+msgstr "Erro de inicialização do XKB"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:164
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Ocorreu um erro ao ler uma imagem: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "disposição \"%s\""
+msgstr[1] "disposições \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opção \"%s\""
+msgstr[1] "opções \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "modelo \"%s\", %s e %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no layout"
+msgstr "nenhuma disposição"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
+msgid "no options"
+msgstr "nenhuma opção"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"Uma colecção de scripts a executar sempre que o estado do teclado é relido. "
+"Útil para reaplicar ajustamentos baseados no xmodmap"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "Uma lista de ficheiros modmap disponíveis no directório $HOME."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Grupo por omissão, atribuido ao criar a janela"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Manter e gerir grupos distintos por janela"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "Manipuladores de Actualização do Teclado"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "Disposição de teclado"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "Modelo do teclado"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "Opções de teclado"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr ""
+"As definições de teclado no gconf serão sobrepostas pelas do sistema "
+"IMEDIATAMENTE (obsoleto)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "Gravar/repor indicadores juntamente com grupos de disposições"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Grupos secundários"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Apresentar as bandeiras na applet"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Apresentar as bandeiras na applet para indicar a disposição actual"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "Apresentar nomes de disposições em vez de nomes de grupos"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Apresentar nomes de disposições em vez de nomes de grupos (apenas para "
+"versões do XFree que suportem múltiplas disposições)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr "Suprimir a mensagem de aviso \"sysconfig do X alterada\""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr "A Antevisão de Teclado, deslocamento X"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "A Antevisão de Teclado, deslocamento Y"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "A Antevisão de Teclado, altura"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "A Antevisão de Teclado, largura"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "A lista de plugins de Indicador de Teclado activos"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"Brevemente, as definições de teclado no gconf serão sobrepostas (pela "
+"configuração de sistema). Esta chave encontra-se obsoleta desde o GNOME "
+"2.12, desfaça o modelo, disposição e opções de teclado para obter a "
+"configuração por omissão do sistema."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "Disposição do teclado"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "Modelo do teclado"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "lista de ficheiros modmap"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Activar mais plugins"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "_Plugins activos:"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Adicionar Plugin"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "Fechar o diálogo"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "Configurar o plugin seleccionado"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "Desactivar o plugin seleccionado"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "Reduzir a prioridade do plugin"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Aumentar a prioridade do plugin"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Plugins de Indicador de Teclado"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "A lista de plugins activos"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "Plugins _disponíveis:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "Sem descrição."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Falha ao inicializar GConf: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Activar/desactivar plugins instalados"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Plugins de Indicador de Teclado"
