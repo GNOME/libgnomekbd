@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-20 08:04+0200\n"
-"PO-Revision-Date: 2007-02-20 08:06+0200\n"
+"POT-Creation-Date: 2007-03-21 06:43+0200\n"
+"PO-Revision-Date: 2007-03-21 06:45+0200\n"
 "Last-Translator: Alexander Shopov <ash@contact.bg>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -56,7 +56,10 @@ msgstr "без опции"
 msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
-msgstr "Набор от скриптове, които да се изпълняват при всяко презареждане на състоянието на клавиатурата. Полезно е за повторното прилагане на допълнителни конфигурации по xmodmap."
+msgstr ""
+"Набор от скриптове, които да се изпълняват при всяко презареждане на "
+"състоянието на клавиатурата. Полезно е за повторното прилагане на "
+"допълнителни конфигурации по xmodmap."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -100,10 +103,22 @@ msgstr ""
 "Запазване/възстановяване на индикаторите заедно с групите по подредбата"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Втори групи"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Показване на знамена в аплета"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Показване на знамена в аплета за показване на текущата подредба"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
 msgstr "Показване на имената на подредбите вместо имената на групите"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -111,27 +126,31 @@ msgstr ""
 "Показване на имената на подредбите вместо имената на групите (само при "
 "версии на XFree, които поддържат множество подредби)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Съобщенията „Промяна на системните настройки на X“ да не се показват"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
 msgstr "Преглед на клавиатурата, отместване по X"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Преглед на клавиатурата, отместване по Y"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, height"
 msgstr "Преглед на клавиатурата, височина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, width"
 msgstr "Преглед на клавиатурата, широчина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Списък със задействаните приставки за обозначаване на клавиатурата"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid ""
 "Very soon, keyboard settings in gconf will be overridden (from the system "
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
@@ -142,15 +161,15 @@ msgstr ""
 "За да се върнете на системните настройки, махнете зададените стойности за "
 "модела, подредбите и допълнителните настройки."
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "подредба на клавиатурата"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "модел на клавиатурата"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "файл със списък на подредбите"
 
