@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-02-18 20:12+0100\n"
-"PO-Revision-Date: 2007-02-18 20:24+0100\n"
+"POT-Creation-Date: 2007-03-20 20:38+0000\n"
+"PO-Revision-Date: 2007-03-21 22:05+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -93,46 +93,62 @@ msgid "Save/restore indicators together with layout groups"
 msgstr "Spara/återställ indikatorer tillsammans med layoutgrupper"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Sekundära grupper"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Visa flaggor i panelprogrammet"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Visa flaggor i panelprogrammet för att indikera aktuell layout"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
 msgstr "Visa layoutnamn istället för gruppnamn"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
 msgstr "Visa layoutnamn istället för gruppnamn (endast för versioner av XFree som har stöd för flera layouter)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Visa inte varningsmeddelandet \"X sysconfig changed\""
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
 msgstr "Tangentbordsförhandsvisning, X-position"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Tangentbordsförhandsvisning, Y-position"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, height"
 msgstr "Tangentbordsförhandsvisning, höjd"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, width"
 msgstr "Tangentbordsförhandsvisning, bredd"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Listan över aktiverade insticksmoduler för tangentbordsindikator"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "Very soon, keyboard settings in gconf will be overridden (from the system configuration) This key has been deprecated since GNOME 2.12, please unset the model, layouts and options keys to get the default system configuration."
 msgstr "Mycket snart kommer tangentbordsinställningar i gconf att åsidosättas (från systemkonfigurationen) Den här nyckeln har varit föråldrad sedan GNOME 2.12, avmarkera nycklarna för modell, layouter och alternativ för att få standardsystemkonfigurationen."
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "tangentbordslayout"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "tangentbordsmodell"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "fillista för modmap"
 
@@ -198,12 +214,8 @@ msgstr "Aktivera/inaktivera installerade insticksmoduler"
 msgid "Keyboard Indicator plugins"
 msgstr "Insticksmoduler för tangentbordsindikator"
 
-#: ../test/gkbd-indicator-test.c:61
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "Tangentbordsindikatortest (%s)"
-
-#: ../test/gkbd-indicator-test.c:70
-msgid "Indicator:"
-msgstr "Indikator:"
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "Tangentbordsindikatortest (%s)"
+#~ msgid "Indicator:"
+#~ msgstr "Indikator:"
 
