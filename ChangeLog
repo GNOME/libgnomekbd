@@ -1,3 +1,8 @@
+2007-03-22  svu
+
+	* libgnomekbd/gkbd-indicator.c: fixed a problem with invalid free()
+	call, closing http://bugzilla.gnome.org/show_bug.cgi?id=421252
+
 2007-03-22  Josep Puigdemont i Casamajó  <josep.puigdemont@gmail.com>
 
 	* configure.in: Added Catalan (ca) to ALL_LINGUAS.
