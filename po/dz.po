@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd.head.dz.po\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-03-21 05:08+0000\n"
+"PO-Revision-Date: 2007-03-21 12:13+0530\n"
+"Last-Translator: sonam pelden <sonaa_peldn@yahoo.com>\n"
+"Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"X-Poedit-Language: Dzongkha\n"
+"X-Poedit-Country: Bhutan\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:613
+msgid "XKB initialization error"
+msgstr "ཨེགསི་ཀེ་བི་ འགོ་འབྱེད་འཛོལ་བ་"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:164
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "གཟུགས་བརྙན་ %sམངོན་གསལ་འབདཝ་ད་འཛོལ་བ་བྱུང་ཡོདཔ:"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "\"%s\"སྒྲིག་བཀོད་"
+msgstr[1] "\"%s\"སྒྲིག་བཀོད་ཚུ་"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "\"%s\"གདམ་ཁ་"
+msgstr[1] "\"%s\"གདམ་ཁ་ཚུ་"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "དཔེ་ \"%s\", %s དང་ %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no layout"
+msgstr "སྒྲིག་བཀོད་མེད་"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
+msgid "no options"
+msgstr "གདམ་ཁ་ཚུ་མེད་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid "A collection of scripts to run whenever the keyboard state is reloaded. Useful for re-applying xmodmap based adjustments"
+msgstr "ལྡེ་སྒྲོམ་གནས་ལུགས་འདི་ནམ་ལོག་མངོན་གསལ་འབདཝ་ཅིག་གཡོག་བཀོལ་ནི་ལུ་  ཡིག་ཚུགས་ཀྱི་བསྡུ་གསོག།  ཨེགསི་མོཌི་མེཔ་གཞི་བཞག་བདེ་སྒྲིག་ཚུ་ ལོག་འཇུག་སྤྱོད་འབད་ནིའི་དོན་ལུ་  ཕན་ཐོག་ཅན་ཡོདཔ་ཨིན།"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "མོཌི་མེཔ་ཡིག་སྣོད་ཚུ་གི་ཐོ་ཡིག་གཅིག་  $HOME སྣོད་ཐོའི་ནང་ཐོབ་ཚུགས།"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "སྒོ་སྒྲིག་གསར་བསྐྲུན་གུ་འགན་སྤྲོད་འབད་ཡོད་པའི་སྔོན་སྒྲིག་སྡེ་ཚན་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "སྒོ་སྒྲིག་རེ་རེ་ལུ་སྡེ་ཚན་སོ་སོ་འདི་བཞག་ནི་དང་རྒྱུན་སྐྱོང་འཐབ་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "ལྡེ་སྒྲོམ་དུས་མཐུན་ལེགས་སྐྱོང་པ་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "ལྡེ་སྒྲོམ་སྒྲིག་བཀོད་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "ལྡེ་སྒྲོམ་དཔེ་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "ལྡེ་སྒྲོམ་གདམ་ཁ་ཚུ་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Keyboard settings in gconf will be overridden from the system ASAP (deprecated)"
+msgstr "ཇི་རིམ་སྒྲིག་ནང་ལྡེ་སྒྲོམ་སྒྲིག་སྟགས་ཚུ་  རིམ་ལུགས་ཨེ་ཨེསི་ཨེ་པི་(ངོས་ལེན་མེད་པ་) ལས་མེདཔ་གཏངམ་ཨིན།"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "སྒྲིག་བཀོད་སྡེ་ཚན་དང་ཅིག་ཁར་  བརྡ་སྟོན་པ་ཚུ་སྲུང་ནི་/སོར་ཆུད་འབད།"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "གལ་གནད་ཆུག་བའི་སྡེ་ཚན་ཚུ་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "ཨེཔ་ལེཊི་ནང་ཟུར་རྟགས་ཚུ་སྟོན་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "ད་ལྟོའི་སྒྲིག་བཀོད་འདི་བརྡ་སྟོན་ནི་ལུ་ ཨེཔ་ལེཊི་ནང་ཟུར་རྟགས་ཚུ་སྟོན་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "སྡེ་ཚན་མིང་གི་ཚབ་ལུ་ སྒྲིག་བཀོད་མིང་ཚུ་སྟོན་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
+msgstr "སྡེ་ཚན་མིང་གི་ཚབ་ལུ་ (ཨེགསི་ཕིརི་རྒྱབ་སྐྱོར་སྣ་མང་སྒྲིག་བཀོད་ཚུ་གི་དོན་རིམ་དོན་ལུ་རྐྱངམ་ཅིག) སྒྲིག་བཀོད་མིང་ཚུ་སྟོན།  "
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr "ཉེན་བརྡའི་འཕྲིན་དོན་\"X sysconfig changed\" འདི་མར་མནོན་འབད།"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr "ལྡེ་སྒྲོམ་སྔོན་ལྟ་  ཨེགསི་པར་ལེན་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "ལྡེ་སྒྲོམ་སྔོན་ལྟ་  ཝའི་པར་ལེན་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "ལྡེ་སྒྲོམ་སྔོན་ལྟ་  མཐོ་ཚད་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "ལྡེ་སྒྲོམ་སྔོན་ལྟ་  རྒྱ་ཚད་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "ལྕོགས་ཅན་བཟོ་ཡོད་པའི་ལྡེ་སྒྲོམ་བརྡ་སྟོན་པའི་པ་ལག་ཨིན་ཚུ་གི་ཐོ་ཡིག་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "Very soon, keyboard settings in gconf will be overridden (from the system configuration) This key has been deprecated since GNOME 2.12, please unset the model, layouts and options keys to get the default system configuration."
+msgstr "མགྱོགས་པ་རང་  ཇི་རིམ་སྒྲིག་ནང་གི་ལྡེ་སྒྲོམ་སྒྲིག་སྟངས་འདི་མེདཔ་གཏང་འོང་(རིམ་ལུགས་རིམ་སྒྲིག་ལས་) ལྡེ་མིག་འདི་GNOME 2.12ལས་ཚུར་ངོས་ལེན་མེདཔ་བཟོ་ཡོདཔ་  དཔེ་འདི་གཞི་སྒྲིག་  སྒྲིག་བཀོད་ཚུ་དང་གདམ་ཁའི་ལྡེ་མིག་ཚུ་  སྔོན་སྒྲིག་རིམ་ལུགས་རིམ་སྒྲིག་ལེན་ནི་ལུ་ གཞི་སྒརིག་མ་འབད་བར་བཞག་གནང་།"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "ལྡེ་སྒྲོམ་སྒྲིག་བཀོད་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "ལྡེ་སྒྲོམ་དཔེ་"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "མོཌི་མེཔ་ཡིག་སྣོད་ཐོ་ཡིག་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "པ་ལག་ཨིན་ལེ་ཤ་ཤུགས་ལྡན་བཟོ་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "ཤུགས་ལྡན་པ་ལག་ཨིན་ཚུ: (_p)"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "པ་ལག་ཨིན་ཁ་སྐོང་འབད་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "ཌའི་ལོག་ཁ་བསྡམ་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "སེལ་འཐུ་འབད་དེ་ཡོད་པའི་པ་ལག་ཨིན་འདི་རིམ་སྒྲིག་འབད་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "སེལ་འཐུ་འབད་དེ་ཡོད་པའི་པ་ལག་ཨིན་འདི་ཤུགས་ལྡན་བཟོ་བཤོལ་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "པ་ལག་ཨིན་གཙོ་རིམ་འདི་མར་ཕབ་འབད་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "པ་ལག་ཨིན་གཙོ་རིམ་འདི་ཡར་འཕར་འབད་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "ལྡེ་སྒྲོམ་བརྡ་སྟོན་པའི་པ་ལག་ཨིནསི་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "ཤུགས་ལྡན་པ་ལག་ཨིནསི་གི་ཐོ་ཡིག་"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "ཐོབ་ཚུགས་པའི་པ་ལག་ཨིན་ཚུ: (_A)"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "འགྲེལ་བཤད་མེད།"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "ཇི་རིམ་སྒྲིག་ཨིན་ཨའིཊི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "གཞི་བཙུགས་འབད་དེ་ཡོད་པའི་པ་ལག་ཨིན་ཚུ་ལྕོགས་ཅན་བཟོ་/ལྕོགས་མེད་བཟོ་"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "ལྡེ་སྒྲོམ་བརྡ་སྟོན་པའི་པ་ལག་ཨིན་ཚུ་"
+
