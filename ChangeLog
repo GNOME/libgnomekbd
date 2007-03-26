@@ -1,3 +1,7 @@
+2007-03-26  Nikos Charonitakis  <nikosx@gmail.com>
+
+	* el.po: Added Greek translation (el) to ALL_LINGUAS.
+
 2007-03-25  Leonardo Ferreira Fontenelle  <leonardof@svn.gnome.org>
 
 	* configure.in: Added Brazilian Portuguese (pt_BR) to ALL_LINGUAS.
