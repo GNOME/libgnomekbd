@@ -48,6 +48,13 @@ xkb_to_pixmap_coord (GkbdKeyboardDrawing * drawing, gint n)
 	return n * drawing->scale_numerator / drawing->scale_denominator;
 }
 
+static gdouble
+xkb_to_pixmap_double (GkbdKeyboardDrawing * drawing, gdouble d)
+{
+	return d * drawing->scale_numerator / drawing->scale_denominator;
+}
+
+
 /* angle is in tenths of a degree; coordinates can be anything as (xkb,
  * pixels, pango) as long as they are all the same */
 static void
@@ -66,14 +73,200 @@ rotate_coordinate (gint origin_x,
 	    * cos (M_PI * angle / 1800.0);
 }
 
+static gdouble
+length (gdouble x, gdouble y)
+{
+	return sqrt (x * x + y * y);
+}
+
+static gdouble
+point_line_distance (gdouble ax, gdouble ay, gdouble nx, gdouble ny)
+{
+	return ax * nx + ay * ny;
+}
+
+static void
+normal_form (gdouble ax, gdouble ay,
+	     gdouble bx, gdouble by,
+	     gdouble * nx, gdouble * ny, gdouble * d)
+{
+	gdouble l;
+
+	*nx = by - ay;
+	*ny = ax - bx;
+
+	l = length (*nx, *ny);
+
+	*nx /= l;
+	*ny /= l;
+
+	*d = point_line_distance (ax, ay, *nx, *ny);
+}
+
+static void
+inverse (gdouble a, gdouble b, gdouble c, gdouble d,
+	 gdouble * e, gdouble * f, gdouble * g, gdouble * h)
+{
+	gdouble det;
+
+	det = a * d - b * c;
+
+	*e = d / det;
+	*f = -b / det;
+	*g = -c / det;
+	*h = a / det;
+}
+
+static void
+multiply (gdouble a, gdouble b, gdouble c, gdouble d,
+	  gdouble e, gdouble f, gdouble * x, gdouble * y)
+{
+	*x = a * e + b * f;
+	*y = c * e + d * f;
+}
+
+static void
+intersect (gdouble n1x, gdouble n1y, gdouble d1,
+	   gdouble n2x, gdouble n2y, gdouble d2, gdouble * x, gdouble * y)
+{
+	gdouble e, f, g, h;
+
+	inverse (n1x, n1y, n2x, n2y, &e, &f, &g, &h);
+	multiply (e, f, g, h, d1, d2, x, y);
+}
+
+
+/* draw an angle from the current point to b and then to c,
+ * with a rounded corner of the given radius.
+ */
+static void
+rounded_corner (cairo_t * cr,
+		gdouble bx, gdouble by,
+		gdouble cx, gdouble cy, gdouble radius)
+{
+	gdouble ax, ay;
+	gdouble n1x, n1y, d1;
+	gdouble n2x, n2y, d2;
+	gdouble pd1, pd2;
+	gdouble ix, iy;
+	gdouble dist1, dist2;
+	gdouble nx, ny, d;
+	gdouble a1x, a1y, c1x, c1y;
+	gdouble phi1, phi2;
+
+	cairo_get_current_point (cr, &ax, &ay);
+
+	/* make sure radius is not too large */
+	dist1 = length (bx - ax, by - ay);
+	dist2 = length (cx - bx, cy - by);
+
+	radius = MIN (radius, MIN (dist1, dist2));
+
+	/* construct normal forms of the lines */
+	normal_form (ax, ay, bx, by, &n1x, &n1y, &d1);
+	normal_form (bx, by, cx, cy, &n2x, &n2y, &d2);
+
+	/* find which side of the line a,b the point c is on */
+	if (point_line_distance (cx, cy, n1x, n1y) < d1)
+		pd1 = d1 - radius;
+	else
+		pd1 = d1 + radius;
+
+	/* find which side of the line b,c the point a is on */
+	if (point_line_distance (ax, ay, n2x, n2y) < d2)
+		pd2 = d2 - radius;
+	else
+		pd2 = d2 + radius;
+
+	/* intersect the parallels to find the center of the arc */
+	intersect (n1x, n1y, pd1, n2x, n2y, pd2, &ix, &iy);
+
+	nx = (bx - ax) / dist1;
+	ny = (by - ay) / dist1;
+	d = point_line_distance (ix, iy, nx, ny);
+
+	/* a1 is the point on the line a-b where the arc starts */
+	intersect (n1x, n1y, d1, nx, ny, d, &a1x, &a1y);
+
+	nx = (cx - bx) / dist2;
+	ny = (cy - by) / dist2;
+	d = point_line_distance (ix, iy, nx, ny);
+
+	/* c1 is the point on the line b-c where the arc ends */
+	intersect (n2x, n2y, d2, nx, ny, d, &c1x, &c1y);
+
+	/* determine the first angle */
+	if (a1x - ix == 0)
+		phi1 = (a1y - iy > 0) ? M_PI_2 : 3 * M_PI_2;
+	else if (a1x - ix > 0)
+		phi1 = atan ((a1y - iy) / (a1x - ix));
+	else
+		phi1 = M_PI + atan ((a1y - iy) / (a1x - ix));
+
+	/* determine the second angle */
+	if (c1x - ix == 0)
+		phi2 = (c1y - iy > 0) ? M_PI_2 : 3 * M_PI_2;
+	else if (c1x - ix > 0)
+		phi2 = atan ((c1y - iy) / (c1x - ix));
+	else
+		phi2 = M_PI + atan ((c1y - iy) / (c1x - ix));
+
+	/* compute the difference between phi2 and phi1 mod 2pi */
+	d = phi2 - phi1;
+	while (d < 0)
+		d += 2 * M_PI;
+	while (d > 2 * M_PI)
+		d -= 2 * M_PI;
+
+	cairo_line_to (cr, a1x, a1y);
+
+	/* pick the short arc from phi1 to phi2 */
+	if (d < M_PI)
+		cairo_arc (cr, ix, iy, radius, phi1, phi2);
+	else
+		cairo_arc_negative (cr, ix, iy, radius, phi1, phi2);
+
+	cairo_line_to (cr, cx, cy);
+}
+
+static void
+rounded_polygon (cairo_t * cr,
+		 gboolean filled,
+		 gdouble radius, GdkPoint * points, gint num_points)
+{
+	gint i, j;
+
+	cairo_move_to (cr,
+		       (gdouble) (points[num_points - 1].x +
+				  points[0].x) / 2,
+		       (gdouble) (points[num_points - 1].y +
+				  points[0].y) / 2);
+
+	for (i = 0; i < num_points; i++) {
+		j = (i + 1) % num_points;
+		rounded_corner (cr, (gdouble) points[i].x,
+				(gdouble) points[i].y,
+				(gdouble) (points[i].x + points[j].x) / 2,
+				(gdouble) (points[i].y + points[j].y) / 2,
+				radius);
+	};
+	cairo_close_path (cr);
+
+	if (filled)
+		cairo_fill (cr);
+	else
+		cairo_stroke (cr);
+}
+
 static void
 draw_polygon (GkbdKeyboardDrawing * drawing,
 	      GdkColor * fill_color,
 	      gint xkb_x,
-	      gint xkb_y, XkbPointRec * xkb_points, guint num_points)
+	      gint xkb_y, XkbPointRec * xkb_points, guint num_points,
+	      gdouble radius)
 {
 	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
-	GdkGC *gc;
+	cairo_t *cr;
 	GdkPoint *points;
 	gboolean filled;
 	gint i;
@@ -82,13 +275,14 @@ draw_polygon (GkbdKeyboardDrawing * drawing,
 		return;
 
 	if (fill_color) {
-		gc = gdk_gc_new (GTK_WIDGET (drawing)->window);
-		gdk_gc_set_rgb_fg_color (gc, fill_color);
 		filled = TRUE;
 	} else {
-		gc = GTK_WIDGET (drawing)->style->dark_gc[state];
+		fill_color = &GTK_WIDGET (drawing)->style->dark[state];
 		filled = FALSE;
 	}
+
+	cr = gdk_cairo_create (GDK_DRAWABLE (drawing->pixmap));
+	gdk_cairo_set_source_color (cr, fill_color);
 
 	points = g_new (GdkPoint, num_points);
 
@@ -99,11 +293,61 @@ draw_polygon (GkbdKeyboardDrawing * drawing,
 		    xkb_to_pixmap_coord (drawing, xkb_y + xkb_points[i].y);
 	}
 
-	gdk_draw_polygon (drawing->pixmap, gc, filled, points, num_points);
+	rounded_polygon (cr, filled,
+			 xkb_to_pixmap_double (drawing, radius),
+			 points, num_points);
 
 	g_free (points);
-	if (fill_color)
-		g_object_unref (gc);
+}
+
+static void
+curve_rectangle (cairo_t * cr,
+		 gdouble x0,
+		 gdouble y0, gdouble width, gdouble height, gdouble radius)
+{
+	gdouble x1, y1;
+
+	if (!width || !height)
+		return;
+
+	x1 = x0 + width;
+	y1 = y0 + height;
+
+	radius = MIN (radius, MIN (width / 2, height / 2));
+
+	cairo_move_to (cr, x0, y0 + radius);
+	cairo_arc (cr, x0 + radius, y0 + radius, radius, M_PI,
+		   3 * M_PI / 2);
+	cairo_line_to (cr, x1 - radius, y0);
+	cairo_arc (cr, x1 - radius, y0 + radius, radius, 3 * M_PI / 2,
+		   2 * M_PI);
+	cairo_line_to (cr, x1, y1 - radius);
+	cairo_arc (cr, x1 - radius, y1 - radius, radius, 0, M_PI / 2);
+	cairo_line_to (cr, x0 + radius, y1);
+	cairo_arc (cr, x0 + radius, y1 - radius, radius, M_PI / 2, M_PI);
+
+	cairo_close_path (cr);
+}
+
+static void
+draw_curve_rectangle (GdkPixmap * pixmap,
+		      gboolean filled,
+		      GdkColor * fill_color,
+		      gint x, gint y, gint width, gint height, gint radius)
+{
+	cairo_t *cr;
+
+	cr = gdk_cairo_create (GDK_DRAWABLE (pixmap));
+	curve_rectangle (cr, x, y, width, height, radius);
+
+	gdk_cairo_set_source_color (cr, fill_color);
+
+	if (filled)
+		cairo_fill (cr);
+	else
+		cairo_stroke (cr);
+
+	cairo_destroy (cr);
 }
 
 /* x, y, width, height are in the xkb coordinate system */
@@ -111,7 +355,8 @@ static void
 draw_rectangle (GkbdKeyboardDrawing * drawing,
 		GdkColor * fill_color,
 		gint angle,
-		gint xkb_x, gint xkb_y, gint xkb_width, gint xkb_height)
+		gint xkb_x, gint xkb_y, gint xkb_width, gint xkb_height,
+		gint radius)
 {
 	if (drawing->pixmap == NULL)
 		return;
@@ -121,14 +366,12 @@ draw_rectangle (GkbdKeyboardDrawing * drawing,
 		    GTK_WIDGET_STATE (GTK_WIDGET (drawing));
 		gint x, y, width, height;
 		gboolean filled;
-		GdkGC *gc;
 
 		if (fill_color) {
-			gc = gdk_gc_new (GTK_WIDGET (drawing)->window);
-			gdk_gc_set_rgb_fg_color (gc, fill_color);
 			filled = TRUE;
 		} else {
-			gc = GTK_WIDGET (drawing)->style->dark_gc[state];
+			fill_color =
+			    &GTK_WIDGET (drawing)->style->dark[state];
 			filled = FALSE;
 		}
 
@@ -139,11 +382,10 @@ draw_rectangle (GkbdKeyboardDrawing * drawing,
 		height =
 		    xkb_to_pixmap_coord (drawing, xkb_y + xkb_height) - y;
 
-		gdk_draw_rectangle (drawing->pixmap, gc, filled, x, y,
-				    width, height);
-
-		if (fill_color)
-			g_object_unref (gc);
+		draw_curve_rectangle (drawing->pixmap, filled, fill_color,
+				      x, y, width, height,
+				      xkb_to_pixmap_double (drawing,
+							    radius));
 	} else {
 		XkbPointRec points[4];
 		gint x, y;
@@ -164,7 +406,8 @@ draw_rectangle (GkbdKeyboardDrawing * drawing,
 		points[3].y = y;
 
 		/* the points we've calculated are relative to 0,0 */
-		draw_polygon (drawing, fill_color, 0, 0, points, 4);
+		draw_polygon (drawing, fill_color, 0, 0, points, 4,
+			      radius);
 	}
 }
 
@@ -181,17 +424,18 @@ draw_outline (GkbdKeyboardDrawing * drawing,
 		if (color)
 			draw_rectangle (drawing, color, angle, origin_x,
 					origin_y, outline->points[0].x,
-					outline->points[0].y);
+					outline->points[0].y,
+					outline->corner_radius);
 
 #ifdef KBDRAW_DEBUG
-		printf ("points:%p\n", outline->points);
-		printf ("pointsxy:%d %d\n", outline->points[0].x,
-			outline->points[0].y);
+		printf ("pointsxy:%d %d %d\n", outline->points[0].x,
+			outline->points[0].y, outline->corner_radius);
 #endif
 
 		draw_rectangle (drawing, NULL, angle, origin_x, origin_y,
 				outline->points[0].x,
-				outline->points[0].y);
+				outline->points[0].y,
+				outline->corner_radius);
 	} else if (outline->num_points == 2) {
 		gint rotated_x0, rotated_y0;
 
@@ -202,19 +446,23 @@ draw_outline (GkbdKeyboardDrawing * drawing,
 		if (color)
 			draw_rectangle (drawing, color, angle, rotated_x0,
 					rotated_y0, outline->points[1].x,
-					outline->points[1].y);
+					outline->points[1].y,
+					outline->corner_radius);
 
 		draw_rectangle (drawing, NULL, angle, rotated_x0,
 				rotated_y0, outline->points[1].x,
-				outline->points[1].y);
+				outline->points[1].y,
+				outline->corner_radius);
 	} else {
 		if (color)
 			draw_polygon (drawing, color, origin_x, origin_y,
 				      outline->points,
-				      outline->num_points);
+				      outline->num_points,
+				      outline->corner_radius);
 
 		draw_polygon (drawing, NULL, origin_x, origin_y,
-			      outline->points, outline->num_points);
+			      outline->points, outline->num_points,
+			      outline->corner_radius);
 	}
 }
 

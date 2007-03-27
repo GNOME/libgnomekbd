@@ -1,3 +1,8 @@
+2007-03-27  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: processing rounded corners
+	correctly, closing http://bugzilla.gnome.org/show_bug.cgi?id=352781
+
 2007-03-27  Claudio Saavedra  <csaavedra@alumnos.utalca.cl>
 
 	* configure.in: Added es to ALL_LINGUAS
