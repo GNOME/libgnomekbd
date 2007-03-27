@@ -1,3 +1,7 @@
+2007-03-27  David Lodge <dave@cirt.net>
+
+	* configure.in: Added en_GB to ALL_LINUAS
+
 2007-03-26  Nikos Charonitakis  <nikosx@gmail.com>
 
 	* el.po: Added Greek translation (el) to ALL_LINGUAS.
