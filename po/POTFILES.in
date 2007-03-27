@@ -11,3 +11,4 @@ capplet/gkbd-indicator-plugins.glade
 capplet/gkbd-indicator-plugins-capplet.c
 capplet/gkbd-indicator-plugins-capplet.desktop.in.in
 capplet/gkbd-indicator-plugins-add.c
+test/gkbd-indicator-test.c
