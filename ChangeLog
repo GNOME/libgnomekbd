@@ -1,3 +1,7 @@
+2007-03-27  Claudio Saavedra  <csaavedra@alumnos.utalca.cl>
+
+	* configure.in: Added es to ALL_LINGUAS
+
 2007-03-27  David Lodge <dave@cirt.net>
 
 	* configure.in: Added en_GB to ALL_LINUAS
