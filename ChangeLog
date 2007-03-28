@@ -1,3 +1,7 @@
+2007-03-28 Maxim Dziumanenko <dziumanenko@gmail.com>
+
+        * configure.in: Added uk to ALL_LINUAS
+
 2007-03-27  svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: processing rounded corners
