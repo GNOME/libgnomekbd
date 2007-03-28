@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-28 15:26+0300\n"
+"POT-Creation-Date: 2007-03-28 15:54+0300\n"
 "PO-Revision-Date: 2007-03-28 15:14+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <dziumanenko@softprom.kiev.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -16,16 +16,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:585
+#: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
 msgstr "Помилка ініціалізації XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:160
+#: ../libgnomekbd/gkbd-indicator-config.c:164
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Помилка завантаження зображення: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:790
+#: ../libgnomekbd/gkbd-keyboard-config.c:795
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -33,7 +33,7 @@ msgstr[0] "розкладка \"%s\""
 msgstr[1] "розкладки \"%s\""
 msgstr[2] "розкладок \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:809
+#: ../libgnomekbd/gkbd-keyboard-config.c:814
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -41,16 +41,16 @@ msgstr[0] "параметр \"%s\""
 msgstr[1] "параметри \"%s\""
 msgstr[2] "параметрів \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:817
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "модель \"%s\", %s та %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:818
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no layout"
 msgstr "немає розкладки"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:819
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
 msgid "no options"
 msgstr "немає параметрів"
 
@@ -94,71 +94,133 @@ msgstr "Додаткові параметри клавіатури"
 msgid ""
 "Keyboard settings in gconf will be overridden from the system ASAP "
 "(deprecated)"
-msgstr "Клавіатурні параметри у gconf будуть негайно замінені системними (застаріло)"
+msgstr ""
+"Клавіатурні параметри у gconf будуть негайно замінені системними (застаріло)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "Зберігати/відновлювати індикатори разом з групами"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Другорядні групи"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Показувати прапори у аплеті"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Показувати прапори у аплеті для індикації поточної розкладки"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
 msgstr "Відображати назви розкладок замість назва груп"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"Відображати назви замість груп назв (лише для версій XFree, які "
-"підтримують декілька розкладок)"
+"Відображати назви замість груп назв (лише для версій XFree, які підтримують "
+"декілька розкладок)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Не виводити повідомлення \"Змінилась конфігурація X\""
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
 msgstr "Попередній перегляд, зсув по X"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Попередній перегляд, зсув по X"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, height"
 msgstr "Попередній перегляд, висота"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, width"
 msgstr "Попередній перегляд, ширина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Список модулів для індикатора клавіатури"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid ""
 "Very soon, keyboard settings in gconf will be overridden (from the system "
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
 msgstr ""
 "Скоро параметри клавіатури у gconf будуть перезаписані (з системної "
-"конфігурації) Цей ключ застарів з версії GNOME 2.12. Щоб отримати типову конфігурацію видаліть значення ключів моделі, розкладки та параметрів."
+"конфігурації) Цей ключ застарів з версії GNOME 2.12. Щоб отримати типову "
+"конфігурацію видаліть значення ключів моделі, розкладки та параметрів."
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "розкладка клавіатури"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "модель клавіатури"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "список файлів modmap"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:114
-#: ../capplet/gkbd-indicator-plugins-add.c:103
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Активувати додаткові модулі"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "Активні _модулі:"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Додати модуль"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "Закрити діалогове вікно"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "Налаштувати вибраний модуль"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "Деактивувати вибраний модуль"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "Зменшити пріоритет модуля"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Збільшити пріоритет модуля"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Модулі індикатора клавіатури"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "Список активних модулів"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_Доступні модулі:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Немає опису."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:323
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Помилка ініціалізації GConf: %s\n"
@@ -171,3 +233,11 @@ msgstr "Увімкнути/вимкнути встановлені модулі"
 msgid "Keyboard Indicator plugins"
 msgstr "Модулі розширення клавіатурного індикатора"
 
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Перевірка індикатора клавіатури (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "Індикатор:"
