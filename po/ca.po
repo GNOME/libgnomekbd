@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-22 09:06+0100\n"
-"PO-Revision-Date: 2007-03-22 09:07+0100\n"
+"POT-Creation-Date: 2007-03-28 08:00+0200\n"
+"PO-Revision-Date: 2007-03-28 08:02+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:613
+#: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
 msgstr "Error d'inicialització del XKB"
 
@@ -198,11 +198,11 @@ msgstr "Desactiveu el connector seleccionat"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr "Decrementeu la prioritat del connector"
+msgstr "Reduïu la prioritat del connector"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr "Incrementeu la prioritat del connector"
+msgstr "Augmenteu la prioritat del connector"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
@@ -233,3 +233,12 @@ msgstr "Habiliteu/inhabiliteu els connectors instal·lats"
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
 msgstr "Connectors de l'indicador de teclat"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Prova de l'indicador del teclat (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "Indicador:"
