@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-27 17:24-0400\n"
-"PO-Revision-Date: 2007-03-27 17:24-0400\n"
+"POT-Creation-Date: 2007-03-29 14:26-0400\n"
+"PO-Revision-Date: 2007-03-28 00:49-0400\n"
 "Last-Translator: Claudio Saavedra <csaavedra@alumnos.utalca.cl>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -147,7 +147,7 @@ msgstr "Vista Previa de Teclado, anchura"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "La lista de complementos Indicadores de Teclado activados"
+msgstr "La lista de complementos del Indicador de Teclado activados"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid ""
@@ -206,7 +206,7 @@ msgstr "Incrementar la prioridad del complemento"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
-msgstr "Complementos de Indicador de Teclado"
+msgstr "Complementos del Indicador de Teclado"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:10
 msgid "The list of active plugins"
@@ -232,12 +232,12 @@ msgstr "Activa/desactiva complementos instalados"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
-msgstr "Complementos de Indicador de Teclado"
+msgstr "Complementos del indicador de teclado"
 
 #: ../test/gkbd-indicator-test.c:61
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
-msgstr "Prueba del Indicador de Teclado (%s)"
+msgstr "Prueba del indicador de teclado (%s)"
 
 #: ../test/gkbd-indicator-test.c:70
 msgid "Indicator:"
