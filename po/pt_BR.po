@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd 2.17.92\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-25 03:17-0300\n"
-"PO-Revision-Date: 2007-03-25 03:17-0300\n"
-"Last-Translator: Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>\n"
+"POT-Creation-Date: 2007-04-01 16:44-0300\n"
+"PO-Revision-Date: 2007-04-01 13:32-0400\n"
+"Last-Translator: Washington Lins <washington-lins@uol.com.br>\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,3 +232,12 @@ msgstr "Ativar/desativar plugins instalados"
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
 msgstr "Plugins Indicadores de Teclado"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Teste de Indicador de Teclado (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "Indicador:"
