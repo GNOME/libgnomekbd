@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.head.dz.po\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-21 05:08+0000\n"
-"PO-Revision-Date: 2007-03-21 12:13+0530\n"
+"POT-Creation-Date: 2007-03-27 22:32+0100\n"
+"PO-Revision-Date: 2007-03-30 11:00+0530\n"
 "Last-Translator: sonam pelden <sonaa_peldn@yahoo.com>\n"
 "Language-Team: Dzongkha <pgeyleg@dit.gov.bt>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Poedit-Country: Bhutan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:613
+#: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
 msgstr "ཨེགསི་ཀེ་བི་ འགོ་འབྱེད་འཛོལ་བ་"
 
@@ -216,4 +216,13 @@ msgstr "གཞི་བཙུགས་འབད་དེ་ཡོད་པའི
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
 msgstr "ལྡེ་སྒྲོམ་བརྡ་སྟོན་པའི་པ་ལག་ཨིན་ཚུ་"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "ལྡེ་སྒྲོམ་བརྡ་སྟོན་པའི་བརྟག་ཞིབ་(%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "བརྡ་སྟོན་པ་:"
 
