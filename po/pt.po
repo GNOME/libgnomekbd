@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.18\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-21 22:32+0000\n"
-"PO-Revision-Date: 2007-03-21 23:10+0000\n"
+"POT-Creation-Date: 2007-04-03 00:06+0100\n"
+"PO-Revision-Date: 2007-04-02 23:10+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:613
+#: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
 msgstr "Erro de inicialização do XKB"
 
@@ -232,3 +232,12 @@ msgstr "Activar/desactivar plugins instalados"
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
 msgstr "Plugins de Indicador de Teclado"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Teste do Indicador de Teclado (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "Indicador:"
