@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-21 10:32+0000\n"
-"PO-Revision-Date: 2007-03-21 11:15+0100\n"
+"POT-Creation-Date: 2007-04-03 05:53+0100\n"
+"PO-Revision-Date: 2007-04-03 05:55+0100\n"
 "Last-Translator: Djihed Afifi <djihed@gmail.com>\n"
 "Language-Team: Arabeyes <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 "X-Poedit-Language: Arabic\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:613
+#: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
 msgstr "خطأ في بدء XKB"
 
@@ -218,4 +218,13 @@ msgstr "فعّل/عطّل الملحقات المثبتة"
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
 msgstr "ملحقات موضّح لوحة المفاتيح"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "ملحقات موضّح لوحة المفاتيح (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "موضّح"
 
