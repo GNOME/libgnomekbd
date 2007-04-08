@@ -1,0 +1,7 @@
+2.18.1:
+	Several keyboard drawing bugs fixed
+	A lot of translations added
+	One memory leak eliminated
+
+2.18.0:
+	First stable release
