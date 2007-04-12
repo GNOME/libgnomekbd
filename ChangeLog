@@ -1,3 +1,7 @@
+2007-04-12  Gintautas Miliauskas  <gintas@akl.lt>
+
+	* configure.in: Added lt to ALL_LINGUAS
+
 2007-04-08  svu
 
 	* NEWS: preparing 2.18.1
