@@ -1,0 +1,247 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-04-12 20:49+0300\n"
+"PO-Revision-Date: 2007-04-12 20:48+0300\n"
+"Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:618
+msgid "XKB initialization error"
+msgstr "Pamyłka inicyjalizacyi XKB"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:164
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Pry adčytańni vyjavy adbyłasia pamyłka: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "raskładka \"%s\""
+msgstr[1] "raskładki \"%s\""
+msgstr[2] "raskładki \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opcyja \"%s\""
+msgstr[1] "opcyi \"%s\""
+msgstr[2] "opcyi \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "madel \"%s\", %s i %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no layout"
+msgstr "niama raskładki"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
+msgid "no options"
+msgstr "niama opcyj"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"Zbor skryptoŭ, kab vykanać pry pieračytańni stanu klavijatury. Karysna, kali "
+"treba aktyvizavać nałady xmodmap"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "Śpis fajłaŭ modmap, dastupnych z katalohu $HOME."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Zmoŭčanaja hrupa, pryznačanaja pry stvareńni vakna"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Zachoŭvaj dla kožnaha vakna asobnuju hrupu"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "Aktualizavańnie klavijatury"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "Raskładka klavijatury"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "Madel klavijatury"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "Opcyi klavijatury"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr ""
+"Nałady klavijatury ŭ gconf ŭ chutkim časie buduć vydalenyja (sastarełyja)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "Zachoŭvaj/adnaŭlaj indikatary razam z hrupami raskładak"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Druhasnyja hrupy"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Pakazvaj ściahi ŭ aplecie"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Pakazvaj ściahi ŭ aplecie, kab identyfikavać dziejnuju raskładku"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "Pakazvaj nazvy raskładak zamiest nazvaŭ hrupaŭ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Pakazvaj nazvy raskładak zamiest nazvaŭ hrupaŭ (tolki dla versij XFree, "
+"jakija ŭmiejuć pracavać ź niekalkimi raskładkami)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr ""
+"Nie pakazvaj papieradžalnyja paviedamleńni, što \"Systemnyja nałady X "
+"źmianilisia\""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr "Pieradahlad klavijatury, vyraŭnańnie X"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "Pieradahlad klavijatury, vyraŭnańnie Y"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "Pieradahlad klavijatury, vyšynia"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "Pieradahlad klavijatury, šyrynia"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Śpis uklučanych pluginaŭ indykacyi raskładak"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"U chutkim časie na nałady klavijatury ŭ gconf nia budzie źviartacca ŭvaha "
+"(zamiest ich - systemnaja kanfihuracyja). Hety kluč sastareŭ z časoŭ GNOME "
+"2.12, kali łaska, vydal akreśleńnie klučoŭ madeli, raskładak i opcyj, kab "
+"atrymać zmoŭčanuju systemnuju kanfihuracyju."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "raskładka klavijatury"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "madel klavijatury"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "śpis fajłaŭ modmap"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Uklučy bolš pluginaŭ"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "Aktyŭnyja _pluginy:"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Dadaj plugin"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "Začyni dyjalohavaje vakno"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "Kanfihuruj abrany plugin"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "Deaktyvizuj abrany plugin"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "Pamienš pryjarytet pluginu"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Pavialič pryjarytet pluginu"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Pluginy indykataraŭ klavijatury"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "Śpis aktyŭnych pluginaŭ"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_Dastupnyja pluginy:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "Niama apisańnia."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Niemahčyma inicyjavać GConf: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Uklučy/adklučy zainstalavanyja pluginy"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Pluginy indykataraŭ klavijatury"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Test indykataraŭ klavijatury (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "Indykatar:"
