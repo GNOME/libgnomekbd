@@ -528,17 +528,31 @@ static guint
 find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 {
 	guint i;
+	XkbKeyNamePtr pkey;
+	XkbKeyAliasPtr palias;
 
 	if (!drawing->xkb)
 		return (gint) (-1);
 
+	pkey = drawing->xkb->names->keys + drawing->xkb->min_key_code;
 	for (i = drawing->xkb->min_key_code;
 	     i <= drawing->xkb->max_key_code; i++) {
-		if (drawing->xkb->names->keys[i].name[0] == key_name[0]
-		    && drawing->xkb->names->keys[i].name[1] == key_name[1]
-		    && drawing->xkb->names->keys[i].name[2] == key_name[2]
-		    && drawing->xkb->names->keys[i].name[3] == key_name[3])
+		if (pkey->name[0] == key_name[0]
+		    && pkey->name[1] == key_name[1]
+		    && pkey->name[2] == key_name[2]
+		    && pkey->name[3] == key_name[3])
 			return i;
+		pkey++;
+	}
+
+	palias = drawing->xkb->names->key_aliases;
+	for (i = drawing->xkb->names->num_key_aliases; --i >= 0;) {
+		if (palias->alias[0] == key_name[0]
+		    && palias->alias[1] == key_name[1]
+		    && palias->alias[2] == key_name[2]
+		    && palias->alias[3] == key_name[3])
+			return find_keycode (drawing, palias->real);
+		palias++;
 	}
 
 	return (guint) (-1);

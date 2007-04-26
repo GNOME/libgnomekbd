@@ -1,3 +1,9 @@
+2007-04-26  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: processing keycode names
+	defined as aliases. Closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=429907
+
 2007-04-15  A S Alam <aalam@users.sf.net>
 
 	* configure.in: Added Punjabi (pa) and Gujarati (gu) to All_LINGUAS
@@ -23,7 +29,7 @@
 
 2007-03-28 Maxim Dziumanenko <dziumanenko@gmail.com>
 
-        * configure.in: Added uk to ALL_LINUAS
+	* configure.in: Added uk to ALL_LINUAS
 
 2007-03-27  svu
 
