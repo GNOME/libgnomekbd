@@ -30,7 +30,7 @@
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
 
-#define noKBDRAW_DEBUG
+#define KBDRAW_DEBUG
 
 enum {
 	BAD_KEYCODE = 0,
@@ -527,31 +527,66 @@ parse_xkb_color_spec (gchar * colorspec, GdkColor * color)
 static guint
 find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 {
-	guint i;
+#define KEYSYM_NAME_MAX_LENGTH 4
+	guint keycode;
+	gint i, j;
 	XkbKeyNamePtr pkey;
 	XkbKeyAliasPtr palias;
+	guint is_name_matched;
+	gchar *src, *dst;
 
 	if (!drawing->xkb)
 		return (gint) (-1);
 
+#ifdef KBDRAW_DEBUG
+	printf ("    looking for keycode for (%c%c%c%c)\n",
+		key_name[0], key_name[1], key_name[2], key_name[3]);
+#endif
+
 	pkey = drawing->xkb->names->keys + drawing->xkb->min_key_code;
-	for (i = drawing->xkb->min_key_code;
-	     i <= drawing->xkb->max_key_code; i++) {
-		if (pkey->name[0] == key_name[0]
-		    && pkey->name[1] == key_name[1]
-		    && pkey->name[2] == key_name[2]
-		    && pkey->name[3] == key_name[3])
-			return i;
+	for (keycode = drawing->xkb->min_key_code;
+	     keycode <= drawing->xkb->max_key_code; keycode++) {
+		is_name_matched = 1;
+		src = key_name;
+		dst = pkey->name;
+		for (i = KEYSYM_NAME_MAX_LENGTH; --i >= 0;) {
+			if ('\0' == *src)
+				break;
+			if (*src++ != *dst++) {
+				is_name_matched = 0;
+				break;
+			}
+		}
+		if (is_name_matched) {
+#ifdef KBDRAW_DEBUG
+			printf ("      found keycode %u\n", keycode);
+#endif
+			return keycode;
+		}
 		pkey++;
 	}
 
 	palias = drawing->xkb->names->key_aliases;
-	for (i = 0; i < drawing->xkb->names->num_key_aliases; i++) {
-		if (palias->alias[0] == key_name[0]
-		    && palias->alias[1] == key_name[1]
-		    && palias->alias[2] == key_name[2]
-		    && palias->alias[3] == key_name[3])
-			return find_keycode (drawing, palias->real);
+	for (j = drawing->xkb->names->num_key_aliases; --j >= 0;) {
+		is_name_matched = 1;
+		src = key_name;
+		dst = palias->alias;
+		for (i = KEYSYM_NAME_MAX_LENGTH; --i >= 0;) {
+			if ('\0' == *src)
+				break;
+			if (*src++ != *dst++) {
+				is_name_matched = 0;
+				break;
+			}
+		}
+
+		if (is_name_matched) {
+			keycode = find_keycode (drawing, palias->real);
+#ifdef KBDRAW_DEBUG
+			printf ("found alias keycode %u\n", keycode);
+#endif
+			return keycode;
+		}
 		palias++;
 	}
 

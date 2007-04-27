@@ -1,3 +1,8 @@
+2007-04-27  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: handling keysym names shorter
+	than 4
+
 2007-04-26  svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: processing keycode names
