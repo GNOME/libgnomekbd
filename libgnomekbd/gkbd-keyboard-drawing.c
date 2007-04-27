@@ -546,7 +546,7 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 	}
 
 	palias = drawing->xkb->names->key_aliases;
-	for (i = drawing->xkb->names->num_key_aliases; --i >= 0;) {
+	for (i = 0; i < drawing->xkb->names->num_key_aliases; i++) {
 		if (palias->alias[0] == key_name[0]
 		    && palias->alias[1] == key_name[1]
 		    && palias->alias[2] == key_name[2]
@@ -1507,7 +1507,7 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 
 #ifdef KBDRAW_DEBUG
 				printf
-				    ("    initing key %d, shape: %p(%p + %d), code: %d\n",
+				    ("    initing key %d, shape: %p(%p + %d), code: %u\n",
 				     k, shape, drawing->xkb->geom->shapes,
 				     xkbkey->shape_ndx, keycode);
 #endif
