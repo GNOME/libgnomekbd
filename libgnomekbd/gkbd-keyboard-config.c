@@ -110,26 +110,32 @@ gkbd_keyboard_config_get_lv_descriptions (XklConfigRegistry *
 					  gchar ** variant_short_descr,
 					  gchar ** variant_descr)
 {
-	static XklConfigItem litem;
-	static XklConfigItem vitem;
+	/* TODO make it not static */
+	static XklConfigItem *litem = NULL;
+	static XklConfigItem *vitem = NULL;
+
+	if (litem == NULL)
+		litem = xkl_config_item_new ();
+	if (vitem == NULL)
+		vitem = xkl_config_item_new ();
 
 	layout_name = g_strdup (layout_name);
 
-	g_snprintf (litem.name, sizeof litem.name, "%s", layout_name);
-	if (xkl_config_registry_find_layout (config_registry, &litem)) {
-		*layout_short_descr = litem.short_description;
-		*layout_descr = litem.description;
+	g_snprintf (litem->name, sizeof litem->name, "%s", layout_name);
+	if (xkl_config_registry_find_layout (config_registry, litem)) {
+		*layout_short_descr = litem->short_description;
+		*layout_descr = litem->description;
 	} else
 		*layout_short_descr = *layout_descr = NULL;
 
 	if (variant_name != NULL) {
 		variant_name = g_strdup (variant_name);
-		g_snprintf (vitem.name, sizeof vitem.name, "%s",
+		g_snprintf (vitem->name, sizeof vitem->name, "%s",
 			    variant_name);
 		if (xkl_config_registry_find_variant
-		    (config_registry, layout_name, &vitem)) {
-			*variant_short_descr = vitem.short_description;
-			*variant_descr = vitem.description;
+		    (config_registry, layout_name, vitem)) {
+			*variant_short_descr = vitem->short_description;
+			*variant_descr = vitem->description;
 		} else
 			*variant_short_descr = *variant_descr = NULL;
 

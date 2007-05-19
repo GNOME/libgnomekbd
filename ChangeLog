@@ -1,3 +1,9 @@
+2007-05-20  svu
+
+	* libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-config-registry.c: using proper object building (on
+	the heap, not on the stack)
+
 2007-04-27  svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: handling keysym names shorter

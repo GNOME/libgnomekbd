@@ -39,6 +39,7 @@ gboolean
 	char **pl, **pv;
 	guint total_layouts;
 	gchar **sld, **lld, **svd, **lvd;
+	XklConfigItem *item = xkl_config_item_new ();
 
 	if (!registry->registry) {
 		registry->registry =
@@ -65,27 +66,27 @@ gboolean
 	    g_new0 (char *, total_layouts + 1);
 
 	while (pl != NULL && *pl != NULL) {
-		XklConfigItem item;
 
-		xkl_debug (100, "ids: [%s][%s]\n", *pl, pv == NULL ? NULL : *pv);
+		xkl_debug (100, "ids: [%s][%s]\n", *pl,
+			   pv == NULL ? NULL : *pv);
 
-		g_snprintf (item.name, sizeof item.name, "%s", *pl);
+		g_snprintf (item->name, sizeof item->name, "%s", *pl);
 		if (xkl_config_registry_find_layout
-		    (registry->registry, &item)) {
-			*sld = g_strdup (item.short_description);
-			*lld = g_strdup (item.description);
+		    (registry->registry, item)) {
+			*sld = g_strdup (item->short_description);
+			*lld = g_strdup (item->description);
 		} else {
 			*sld = g_strdup ("");
 			*lld = g_strdup ("");
 		}
 
 		if (*pv != NULL) {
-			g_snprintf (item.name, sizeof item.name, "%s",
+			g_snprintf (item->name, sizeof item->name, "%s",
 				    *pv);
 			if (xkl_config_registry_find_variant
-			    (registry->registry, *pl, &item)) {
-				*svd = g_strdup (item.short_description);
-				*lvd = g_strdup (item.description);
+			    (registry->registry, *pl, item)) {
+				*svd = g_strdup (item->short_description);
+				*lvd = g_strdup (item->description);
 			} else {
 				*svd = g_strdup ("");
 				*lvd = g_strdup ("");
@@ -104,10 +105,11 @@ gboolean
 
 		pl++;
 
-		if (*pv !=  NULL)
+		if (*pv != NULL)
 			pv++;
 	}
 
+	g_object_unref (item);
 	return TRUE;
 }
 
