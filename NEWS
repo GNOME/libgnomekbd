@@ -1,3 +1,8 @@
+2.18.2:
+	Several keyboard drawing bugs fixed
+	Crash on incorrect GObject usage fixed
+	Added 4 translations
+
 2.18.1:
 	Several keyboard drawing bugs fixed
 	A lot of translations added

@@ -3,6 +3,7 @@
 	* libgnomekbd/gkbd-keyboard-config.c,
 	libgnomekbd/gkbd-config-registry.c: using proper object building (on
 	the heap, not on the stack)
+	* configure.in: preparing 2.18.2
 
 2007-04-27  svu
 
@@ -18,6 +19,7 @@
 2007-04-15  A S Alam <aalam@users.sf.net>
 
 	* configure.in: Added Punjabi (pa) and Gujarati (gu) to All_LINGUAS
+
 2007-04-12  Ihar Hrachyshka <iharh@gnome.org>
 
 	* configure.in: Added be@latin to ALL_LINGUAS
