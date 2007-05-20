@@ -30,7 +30,7 @@
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
 
-#define KBDRAW_DEBUG
+#define noKBDRAW_DEBUG
 
 enum {
 	BAD_KEYCODE = 0,
