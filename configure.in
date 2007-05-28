@@ -39,7 +39,7 @@ GETTEXT_PACKAGE=libgnomekbd
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package])
 
-ALL_LINGUAS="ar be@latin bg ca da dz en_GB el es fr gl gu hu it ja ko lt mk nb pa pt pt_BR sv ru uk"
+ALL_LINGUAS="ar be@latin bg bn_IN ca da dz en_GB el es fr gl gu hu it ja ko lt mk nb pa pt pt_BR sv ru uk"
 
 AM_GLIB_GNU_GETTEXT
 
