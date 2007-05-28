@@ -1,3 +1,7 @@
+2007-05-28  Runa Bhattacharjee <runabh@gmail.com>
+
+	* configure.in: Added Bengali India (bn_IN) to ALL_LINGUAS.
+
 2007-05-20  svu
 
 	* libgnomekbd/gkbd-keyboard-config.c,
