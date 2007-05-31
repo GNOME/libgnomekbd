@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-24 03:38+0100\n"
-"PO-Revision-Date: 2007-05-29 07:53+0300\n"
+"PO-Revision-Date: 2007-05-31 21:48+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -174,19 +174,19 @@ msgstr "Aktiivsed _pluginad:"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:3
 msgid "Add Plugin"
-msgstr ""
+msgstr "Plugina lisamine"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:4
 msgid "Close the dialog"
-msgstr ""
+msgstr "Dialoogi sulgemine"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:5
 msgid "Configure the selected plugin"
-msgstr ""
+msgstr "Valitud plugina seadistamine"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr ""
+msgstr "Valitud plugina deaktiveerimine"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:7
 msgid "Decrease the plugin priority"
@@ -220,7 +220,7 @@ msgstr "Tõrge GConf'i lähtestamisel: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
-msgstr ""
+msgstr "Paigaldatud pluginate lubamine ja keelamine"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
