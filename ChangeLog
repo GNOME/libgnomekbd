@@ -1,3 +1,9 @@
+2007-06-21  svu
+
+	* configure.in, libgnomekbdui.pc.in, libgnomekbd.pc.in: improving
+	pkgconfig handling, thanks to Christian. Closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=449850
+
 2007-05-30  Priit Laes  <plaes@svn.gnome.org>
 
 	* configure.in: Added Estonian (et) to ALL_LINGUAS.

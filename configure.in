@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 2.18.2)
+AC_INIT(libgnomekbd, 2.18.2, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
 AC_PREREQ(2.59)
 
 VERSION_INFO=1:0:0
@@ -23,6 +23,17 @@ LIBGLADE_REQUIRED=2.6.0
 LIBGNOME_REQUIRED=2.16.0
 LIBGNOMEUI_REQUIRED=2.16.0
 LIBXKLAVIER_REQUIRED=2.91
+
+AC_SUBST([DBUS_REQUIRED])
+AC_SUBST([DBUS_GLIB_REQUIRED])
+AC_SUBST([GCONF_REQUIRED])
+AC_SUBST([LIBGLADE_REQUIRED])
+AC_SUBST([GDK_REQUIRED])
+AC_SUBST([GTK_REQUIRED])
+AC_SUBST([LIBGNOME_REQUIRED])
+AC_SUBST([LIBGNOMEUI_REQUIRED])
+AC_SUBST([LIBXKLAVIER_REQUIRED])
+
 dnl ***************************************************************************
 
 AM_MAINTAINER_MODE
