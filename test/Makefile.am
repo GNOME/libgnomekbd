@@ -22,6 +22,7 @@ gkbd_indicator_test_CFLAGS=			\
 	-I$(top_srcdir)/intl				\
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
 	-DG_LOG_DOMAIN=\"GnomeKbdIndicatorTest\"	\
+        -DGNOMELOCALEDIR="\"$(datadir)/locale\""	\
 	-DDATADIR=\"$(datadir)\"
 
 gkbd_indicator_test_LDFLAGS=			\

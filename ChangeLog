@@ -1,3 +1,9 @@
+2007-06-22  svu
+
+	* test/Makefile.am, configure.in, capplet/Makefile.am, po/LINGUAS: use
+	po/LINGUAS, upgrade automake requirement, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=450141
+
 2007-06-21  svu
 
 	* configure.in, libgnomekbdui.pc.in, libgnomekbd.pc.in: improving

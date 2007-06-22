@@ -22,6 +22,7 @@ gkbd_indicator_plugins_capplet_CFLAGS = \
         -DGLADEDIR=\"$(gladedir)\"                      \
         -DDATADIR=\"$(datadir)\"                        \
         -DSYSCONFDIR=\"$(sysconfdir)\"                  \
+        -DGNOMELOCALEDIR="\"$(datadir)/locale\""	\
         -DLIBDIR=\"$(libdir)\"
 
 gkbd_indicator_plugins_capplet_SOURCES = gkbd-indicator-plugins-capplet.c \
