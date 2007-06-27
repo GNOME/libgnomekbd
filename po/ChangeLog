@@ -1,3 +1,8 @@
+2007-06-27  Clytie Siddall <clytie@riverland.net.au>
+
+    * LINGUAS:  Added vi
+	* vi.po: Added Vietnamese translation.
+
 2007-06-22  I. Felix <ifelix@svn.gnome.org>
 
 	* si.po:  Sinhala Translation updated by Danishka Navin
