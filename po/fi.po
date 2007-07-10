@@ -1,0 +1,235 @@
+# libgnomekbd Finnish translation
+# Suomennos: http://gnome.fi/
+#
+# Copyright (C) 2007 Ilkka Tuohela
+# Ilkka Tuohela <hile@iki.fi>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-07-10 21:06+0300\n"
+"PO-Revision-Date: 2007-03-06 20:34+0300\n"
+"Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
+"Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:618
+msgid "XKB initialization error"
+msgstr "XKB-alustusvirhe"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:164
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Virhe ladattaessa kuvaa: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:801
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "asetttelu \"%s\""
+msgstr[1] "asettelut \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:820
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "lisävalinta \"%s\""
+msgstr[1] "lisävalinnat \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:828
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "malli \"%s\", %s ja %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:829
+msgid "no layout"
+msgstr "ei asettelua"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:830
+msgid "no options"
+msgstr "ei lisävalintoja"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "Luettelo $HOME-kansiossa olevista modmap-tiedostoista."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Oletusryhmä, asetettu ikkunaa luotaessa"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "Säilytä ja hallitse erillisiä ryhmiä ikkunoille"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "Näppäimistön päivityksen käsittelijät"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "Näppäimistöasettelu"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "Näppäimistön malli"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "Näppäimistön lisävalinnat"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "Tallenna ja palauta ilmaisimet asettuluryhmien mukana"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Toissijaiset ryhmät"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Näytä liput sovelmassa"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Näytä sovelmassa lippu ilmaisemaan tämänhetkistä asettelua"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "Näytä asettelujen nimet ryhmänimien sijasta"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "Näppäimistön esikatselun korkeus"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "Näppäimistön esikatselun leveys"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Luettelo käytössä olevista näppäimistön huomautusliitännäisistä"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "näppäimistön asettelu"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "näppäimistön malli"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "luettelo modmap-tiedostoista"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr ""
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "Käytössä olevat _liitännäiset:"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Lisää liitännäinen"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "Sulje valintaikkuna"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "Valitun liitännäisen asetukset"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "Poista valittu liitännäinen käytöstä"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr ""
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr ""
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Näppäimistöilmaisimen liitännäiset"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "Aktiiviset liitännäiset"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "S_aatavilla olevat liitännäiset:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "Ei kuvausta."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "GConfia ei voitu alustaa: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Määritä käytössä olevat asennetut liitännäiset"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Näppäimistöilmaisimen liitännäiset"
+
+#: ../test/gkbd-indicator-test.c:61
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Näppäimistöilmaisimen testi (%s)"
+
+#: ../test/gkbd-indicator-test.c:70
+msgid "Indicator:"
+msgstr "Ilmaisin:"
+
