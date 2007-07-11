@@ -1,3 +1,9 @@
+2007-07-11  svu
+
+	* libgnomekbd/gkbd-config-registry.c: not registering the object if
+	there was no connection,
+	http://bugzilla.gnome.org/show_bug.cgi?id=411504
+
 2007-06-22  svu
 
 	* test/Makefile.am, configure.in, capplet/Makefile.am, po/LINGUAS: use

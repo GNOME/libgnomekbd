@@ -166,6 +166,11 @@ gkbd_config_registry_init (GkbdConfigRegistry * registry)
 	    GKBD_CONFIG_REGISTRY_GET_CLASS (registry);
 	unsigned request_ret;
 
+	if (klass->connection == NULL) {
+		g_warning ("Not connected to dbus, will not register the object");
+		return;
+	}
+
 	/* Register DBUS path */
 	dbus_g_connection_register_g_object (klass->connection,
 					     "/org/gnome/GkbdConfigRegistry",
