@@ -1,3 +1,8 @@
+2007-07-26  Subhransu Behera  <arya_subhransu@yahoo.co.in>
+
+	* LINGUAS: Added or (Oriya) to the language list.
+	* or.po: Updated Oriya Translation.
+
 2007-07-13  Theppitak Karoonboonyanan  <thep@linux.thai.net>
 
 	* LINGUAS: Added 'th' (Thai).
