@@ -1,3 +1,8 @@
+2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* nl.po: Dutch translation by Wouter Bolsterlee.
+	* LINGUAS: Added nl
+
 2007-07-26  Subhransu Behera  <arya_subhransu@yahoo.co.in>
 
 	* LINGUAS: Added or (Oriya) to the language list.
@@ -24,7 +29,7 @@
 
 2007-06-27  Clytie Siddall <clytie@riverland.net.au>
 
-    * LINGUAS:  Added vi
+	* LINGUAS:  Added vi
 	* vi.po: Added Vietnamese translation.
 
 2007-06-22  I. Felix <ifelix@svn.gnome.org>
@@ -128,7 +133,7 @@
 
 2007-03-28 Maxim Dziumanenko <dziumanenko@gmail.com>
 
-        * uk.po: Added Ukrainian translation.
+	* uk.po: Added Ukrainian translation.
 
 2007-03-28  Ankit Patel  <ankit644@yahoo.com>
 
