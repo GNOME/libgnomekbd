@@ -1,3 +1,7 @@
+2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* m4/intltool.m4: Better string escaping
+
 2007-07-11  svu
 
 	* libgnomekbd/gkbd-config-registry.c: not registering the object if
