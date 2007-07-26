@@ -1,5 +1,13 @@
 2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
 
+	* libgnomekbd/gkbd-keyboard-config.c:
+	(gkbd_keyboard_config_to_string): Move translator
+	comments so that they actually end up in .po files; they
+	were not visible at all before, because not positioned
+	directly on the line above the gettext calls.
+
+2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
 	* m4/intltool.m4: Better string escaping
 
 2007-07-11  svu
