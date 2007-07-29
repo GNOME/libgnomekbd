@@ -99,11 +99,11 @@ msgstr "Grops segondaris"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet"
-msgstr "Mostrar las bandièras dins l'applet"
+msgstr "Visualizar las bandièras dins l'applet"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Mostrar las bandièras dins l'applet per indicar lo clavièr actiu"
+msgstr "Visualizar las bandièras dins l'applet per indicar lo clavièr actiu"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
