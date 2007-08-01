@@ -7,6 +7,7 @@ common_CFLAGS = \
 	$(GCONF_CFLAGS)					\
 	$(LIBGNOME_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\
+	$(XLIB_CFLAGS)					\
 	-I$(top_srcdir)/intl				\
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
 	-DG_LOG_DOMAIN=\"GnomeKbdIndicator\"		\
@@ -24,7 +25,8 @@ common_LDFLAGS = -version-info @VERSION_INFO@ \
 		$(DBUS_LIBS) \
 		$(GDK_LIBS) \
 		$(GCONF_LIBS) \
-		$(LIBXKLAVIER_LIBS)
+		$(LIBXKLAVIER_LIBS) \
+		$(XLIB_LIBS)
 
 libgnomekbd_la_LDFLAGS = $(common_LDFLAGS)
 

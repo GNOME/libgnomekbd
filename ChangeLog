@@ -1,3 +1,8 @@
+2007-08-01 svu
+
+	* configure.in, libgnomekbd/Makefile.am: processing non-standard X
+	devel locations, http://bugzilla.gnome.org/show_bug.cgi?id=461899
+
 2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
 
 	* Makefile.in.in: Removed, since this is an
