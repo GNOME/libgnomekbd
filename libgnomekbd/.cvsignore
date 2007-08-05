@@ -7,4 +7,6 @@ gkbd-indicator-marshal.c
 gkbd-indicator-marshal.h
 gkbd-keyboard-drawing-marshal.c
 gkbd-keyboard-drawing-marshal.h
+.libs
+.deps
 

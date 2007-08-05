@@ -3,4 +3,6 @@ Makefile.in
 gkbd-config-registry-server
 gkbd-indicator-test
 gkbd-keyboard-drawing-test
+.libs
+.deps
 

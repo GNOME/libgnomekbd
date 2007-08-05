@@ -1,3 +1,10 @@
+2007-08-05 svu
+
+	* test/gkbd-indicator-test.c, test/Makefile.am,
+	libgnomekbd/gkbd-keyboard-config.c, libgnomekbd/gkbd-desktop-config.c,
+	libgnomekbd/gkbd-indicator-config.c: eliminating unneeded libgnomeui,
+	http://bugzilla.gnome.org/show_bug.cgi?id=463255
+
 2007-08-01 svu
 
 	* configure.in, libgnomekbd/Makefile.am: processing non-standard X

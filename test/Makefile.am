@@ -17,7 +17,6 @@ gkbd_indicator_test_CFLAGS=			\
 	$(GTK_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)				\
 	$(LIBGNOME_CFLAGS)				\
-	$(LIBGNOMEUI_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\
 	-I$(top_srcdir)/intl				\
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
@@ -29,7 +28,6 @@ gkbd_indicator_test_LDFLAGS=			\
 	$(GTK_LIBS)					\
 	$(LIBGLADE_LIBS)				\
 	$(LIBGNOME_LIBS)				\
-	$(LIBGNOMEUI_LIBS)				\
 	$(LIBXKLAVIER_LIBS)				\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la

@@ -25,7 +25,6 @@
 #include <X11/keysym.h>
 
 #include <glib/gi18n.h>
-#include <libgnome/gnome-program.h>
 
 #include <gkbd-keyboard-config.h>
 #include <gkbd-config-private.h>

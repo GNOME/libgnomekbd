@@ -26,7 +26,6 @@
 
 #include <glib/gi18n.h>
 #include <gdk/gdkx.h>
-#include <libgnome/gnome-program.h>
 
 #include <gkbd-keyboard-config.h>
 #include <gkbd-indicator-config.h>
@@ -212,9 +211,7 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 
 	ind_config->icon_theme = gtk_icon_theme_get_default ();
 
-	datadir =
-	    gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_APP_DATADIR,
-				       "", FALSE, NULL);
+	datadir = DATADIR;
 	gtk_icon_theme_append_search_path (ind_config->icon_theme, sp =
 					   g_build_filename (g_get_home_dir
 							     (),
