@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-10 21:06+0300\n"
+"POT-Creation-Date: 2007-08-06 16:49+0300\n"
 "PO-Revision-Date: 2007-03-06 20:34+0300\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -21,35 +21,39 @@ msgstr ""
 msgid "XKB initialization error"
 msgstr "XKB-alustusvirhe"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:163
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Virhe ladattaessa kuvaa: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:801
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:798
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "asetttelu \"%s\""
 msgstr[1] "asettelut \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:820
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:815
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "lisävalinta \"%s\""
 msgstr[1] "lisävalinnat \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:828
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "malli \"%s\", %s ja %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:829
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
 msgid "no layout"
 msgstr "ei asettelua"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:830
+#: ../libgnomekbd/gkbd-keyboard-config.c:825
 msgid "no options"
 msgstr "ei lisävalintoja"
 
@@ -58,6 +62,8 @@ msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
 msgstr ""
+"Joukko skriptejä, jotka suoritetaan ladattaessa näppäimistön tila uudestaan. "
+"Hyödyllinen xmodmap-pohjaisten muutosten toteuttamisessa."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -92,6 +98,8 @@ msgid ""
 "Keyboard settings in gconf will be overridden from the system ASAP "
 "(deprecated)"
 msgstr ""
+"Näppäimistön valinnat gconfista ohitetaan järjestelmästä mahdollisimman "
+"nopeasti (vanhentunut)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
@@ -118,18 +126,20 @@ msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
+"Näytä asettelujen nimet ryhmänimien sijasta (vain XFree-versiolla, jotka "
+"tukevat useita asetteluja)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr ""
+msgstr "Älä näytä \"X sysconfig changed\"-varoitusviestiä"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
-msgstr ""
+msgstr "Näppäimistön esikatselu, X-sijainti"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, Y offset"
-msgstr ""
+msgstr "Näppäimistön esikatselu, Y-sijainti"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, height"
@@ -149,6 +159,10 @@ msgid ""
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
 msgstr ""
+"Hyvin pian, gconf-pohjaiset näppäimistöasetukset ohitetaan järjestelmän "
+"määrittelyillä. Tämä valinta ei ole ollut käytössä Gnome 2.12-julkaisun "
+"jälkeen. Poista mallin, asettelujen ja valintojen asetukset, jos haluat "
+"järjestelmän oletusmäärittelyn."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -164,7 +178,7 @@ msgstr "luettelo modmap-tiedostoista"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr ""
+msgstr "Ota lisää liitännäisiä käyttöön"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:2
 msgid "Active _plugins:"
@@ -188,11 +202,11 @@ msgstr "Poista valittu liitännäinen käytöstä"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr ""
+msgstr "Pienennä liitännäisen tärkeyttä"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr ""
+msgstr "Kasvata liitännäisen tärkeyttä"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
@@ -224,12 +238,11 @@ msgstr "Määritä käytössä olevat asennetut liitännäiset"
 msgid "Keyboard Indicator plugins"
 msgstr "Näppäimistöilmaisimen liitännäiset"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Näppäimistöilmaisimen testi (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Ilmaisin:"
-
