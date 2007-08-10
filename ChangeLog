@@ -1,3 +1,8 @@
+2007-08-10 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: make applet
+	entry hidden, reduce clutter in g-c-c
+
 2007-08-05 svu
 
 	* test/gkbd-indicator-test.c, test/Makefile.am,
