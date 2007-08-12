@@ -1,3 +1,6 @@
+2.19.20:
+	Updated translations, minor fixes, first in 2.20 series
+
 2.18.2:
 	Several keyboard drawing bugs fixed
 	Crash on incorrect GObject usage fixed

@@ -1,3 +1,7 @@
+2007-08-12 svu
+
+	* configure.in, NEWS: preparing first beta of 2.20
+
 2007-08-10 svu
 
 	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: make applet
