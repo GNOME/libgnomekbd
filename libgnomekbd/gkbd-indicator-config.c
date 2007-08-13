@@ -193,7 +193,7 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 			    GConfClient * conf_client, XklEngine * engine)
 {
 	GError *gerror = NULL;
-	gchar *sp, *datadir;
+	gchar *sp;
 
 	memset (ind_config, 0, sizeof (*ind_config));
 	ind_config->conf_client = conf_client;
@@ -211,7 +211,6 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 
 	ind_config->icon_theme = gtk_icon_theme_get_default ();
 
-	datadir = DATADIR;
 	gtk_icon_theme_append_search_path (ind_config->icon_theme, sp =
 					   g_build_filename (g_get_home_dir
 							     (),
@@ -221,18 +220,17 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 
 	gtk_icon_theme_append_search_path (ind_config->icon_theme,
 					   sp =
-					   g_build_filename (datadir,
+					   g_build_filename (DATADIR,
 							     "pixmaps/flags",
 							     NULL));
 	g_free (sp);
 
 	gtk_icon_theme_append_search_path (ind_config->icon_theme,
 					   sp =
-					   g_build_filename (datadir,
+					   g_build_filename (DATADIR,
 							     "icons/flags",
 							     NULL));
 	g_free (sp);
-	g_free (datadir);
 }
 
 void

@@ -1,3 +1,8 @@
+2007-08-13 svu
+
+	* libgnomekbd/gkbd-indicator-config.c: unneeded free, fixing crasher
+	http://bugzilla.gnome.org/show_bug.cgi?id=466301
+
 2007-08-12 svu
 
 	* configure.in, NEWS: preparing first beta of 2.20
