@@ -32,6 +32,8 @@
 
 #define noKBDRAW_DEBUG
 
+#define INVALID_KEYCODE ((guint)(-1))
+
 enum {
 	BAD_KEYCODE = 0,
 	NUM_SIGNALS
@@ -536,7 +538,7 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 	gchar *src, *dst;
 
 	if (!drawing->xkb)
-		return (gint) (-1);
+		return INVALID_KEYCODE;
 
 #ifdef KBDRAW_DEBUG
 	printf ("    looking for keycode for (%c%c%c%c)\n",
@@ -590,7 +592,7 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 		palias++;
 	}
 
-	return (guint) (-1);
+	return INVALID_KEYCODE;
 }
 
 
@@ -1540,6 +1542,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 							      xkbkey->name.
 							      name);
 
+				if (keycode == INVALID_KEYCODE)
+					return;
 #ifdef KBDRAW_DEBUG
 				printf
 				    ("    initing key %d, shape: %p(%p + %d), code: %u\n",
