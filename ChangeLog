@@ -1,3 +1,8 @@
+2007-08-19 svu
+
+	* po/POTFILES.skip: adding desktop.in file,
+	http://bugzilla.gnome.org/show_bug.cgi?id=465538
+
 2007-08-15 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: fixing keycode -1 handling,
