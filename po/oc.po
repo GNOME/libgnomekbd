@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd HEAD fr\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-03-30 21:10+0200\n"
-"PO-Revision-Date: 2007-05-16 18:55+0200\n"
+"PO-Revision-Date: 2007-08-20 15:29+0200\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -34,12 +34,12 @@ msgstr ""
 #: ../libgnomekbd/gkbd-keyboard-config.c:814
 #, c-format
 msgid "option \"%s\""
-msgstr ""
+msgstr "opcion \"%s\""
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:822
 #, c-format
 msgid "model \"%s\", %s and %s"
-msgstr ""
+msgstr "modèl \"%s\", %s e %s"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no layout"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:824
 msgid "no options"
-msgstr ""
+msgstr "pas cap d'opcions"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
 msgid ""
@@ -205,7 +205,7 @@ msgstr ""
 #: ../capplet/gkbd-indicator-plugins-capplet.c:117
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
-msgstr ""
+msgstr "Pas cap de descripcion."
 
 #: ../capplet/gkbd-indicator-plugins-capplet.c:326
 #, c-format
