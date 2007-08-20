@@ -16,7 +16,6 @@ gkbd_indicator_test_CFLAGS=			\
 	$(WARN_CFLAGS) -I$(top_srcdir) -Wall -Werror			\
 	$(GTK_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)				\
-	$(LIBGNOME_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\
 	-I$(top_srcdir)/intl				\
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
@@ -27,7 +26,6 @@ gkbd_indicator_test_CFLAGS=			\
 gkbd_indicator_test_LDFLAGS=			\
 	$(GTK_LIBS)					\
 	$(LIBGLADE_LIBS)				\
-	$(LIBGNOME_LIBS)				\
 	$(LIBXKLAVIER_LIBS)				\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la
@@ -38,7 +36,7 @@ gkbd_keyboard_drawing_test_CFLAGS=				\
 
 gkbd_keyboard_drawing_test_LDFLAGS=				\
 	$(GTK_LIBS)					\
-	$(LIBGNOME_LIBS)				\
+	-lpopt						\
 	$(LIBXKLAVIER_LIBS)				\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la

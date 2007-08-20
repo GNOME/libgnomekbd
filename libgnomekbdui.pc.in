@@ -6,6 +6,6 @@ includedir=@includedir@
 Name: libgnomekbd
 Description: GNOME keyboard shared library
 Version: @VERSION@
-Requires: libgnomekbd = @VERSION@ libgnomeui-2.0 >= @LIBGNOMEUI_REQUIRED@
+Requires: libgnomekbd = @VERSION@
 Libs: -L${libdir} -lgnomekbdui
 Cflags: -I${includedir}
