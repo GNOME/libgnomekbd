@@ -1,4 +1,7 @@
-2.19.20:
+2.19.91:
+	Fixed a couple of bugs (one crasher), minor build fixes
+
+2.19.90:
 	Updated translations, minor fixes, first in 2.20 series
 
 2.18.2:
