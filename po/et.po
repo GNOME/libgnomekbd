@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-24 03:38+0100\n"
-"PO-Revision-Date: 2007-08-19 10:45+0300\n"
+"PO-Revision-Date: 2007-08-26 16:18+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
-msgstr ""
+msgstr "Näidikute salvestamine ja taastamine koos paigutuste gruppidega"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Secondary groups"
@@ -109,11 +109,11 @@ msgstr "Teisejärgulised grupid"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet"
-msgstr ""
+msgstr "Rakendis lippude näitamine"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
+msgstr "Rakendis lippude näitamine hetkel aktiivse paigutuse kohta"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
@@ -129,7 +129,7 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr ""
+msgstr "\"X sysconfig changed\" teadete peitmine"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
