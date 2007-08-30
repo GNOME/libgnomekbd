@@ -5,7 +5,6 @@ common_CFLAGS = \
 	$(GDK_CFLAGS)					\
 	$(DBUS_CFLAGS)					\
 	$(GCONF_CFLAGS)					\
-	$(LIBGNOME_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\
 	$(XLIB_CFLAGS)					\
 	-I$(top_srcdir)/intl				\
@@ -32,7 +31,6 @@ libgnomekbd_la_LDFLAGS = $(common_LDFLAGS)
 
 libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS) \
                            $(GTK_LIBS) \
-                           $(LIBGNOME_LIBS) \
                            -lgnomekbd
 
 libgnomekbd_la_SOURCES = \
