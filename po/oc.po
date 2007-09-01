@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd HEAD fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 17:42+0100\n"
+"POT-Creation-Date: 2007-08-21 12:13+0100\n"
 "PO-Revision-Date: 2007-08-21 00:47+0200\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
@@ -31,7 +31,9 @@ msgstr ""
 #: ../libgnomekbd/gkbd-keyboard-config.c:798
 #, c-format
 msgid "layout \"%s\""
-msgstr ""
+msgid_plural "layouts \"%s\""
+msgstr[0] ""
+msgstr[1] ""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
@@ -234,4 +236,3 @@ msgstr ""
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr ""
-
