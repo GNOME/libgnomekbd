@@ -1,52 +1,61 @@
+# Translation of libgnomekbd.HEAD.po to Greek
 # Greek translation of libgnomekbd.
 # Copyright (C) 2007 THE libgnomekbd'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the libgnomekbd package.
-# NikosCharonitakis <nikosx@gmail.com>, 2007.
-# 
-# 
+#
+# Nikos Charonitakis <nikosx@gmail.com>, 2007.
+# Athanasios Lefteris <alefteris@gmail.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd el\n"
+"Project-Id-Version: libgnomekbd 2.19.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-25 07:31+0100\n"
-"PO-Revision-Date: 2007-03-26 03:12+0300\n"
-"Last-Translator: NikosCharonitakis <nikosx@gmail.com>\n"
-"Language-Team: Greek <nls@tux.hellug.gr>\n"
+"POT-Creation-Date: 2007-09-02 20:27+0100\n"
+"PO-Revision-Date: 2007-09-02 17:07+0300\n"
+"Last-Translator: Athanasios Lefteris <alefteris@gmail.com>\n"
+"Language-Team: Greek <team@lists.gnome.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../libgnomekbd/gkbd-indicator.c:618
 msgid "XKB initialization error"
 msgstr "Σφάλμα αρχικοποίησης XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:163
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Υπήρξε σφάλμα κατά την φόρτωση της εικόνας:·%s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:798
 #, c-format
 msgid "layout \"%s\""
-msgstr "διάταξη\"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "διάταξη \"%s\""
+msgstr[1] "διατάξεις \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:815
 #, c-format
 msgid "option \"%s\""
-msgstr "επιλογή \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "επιλογή \"%s\""
+msgstr[1] "επιλογές \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "μοντέλο \"%s\", %s και %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
 msgid "no layout"
 msgstr "χωρίς διάταξη"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:825
 msgid "no options"
 msgstr "χωρίς επιλογές"
 
@@ -55,22 +64,25 @@ msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
 msgstr ""
+"Μια συλλογή από δέσμες ενεργειών όπου εκτελούνται με κάθε επαναφόρτωση της "
+"κατάστασης πληκτρολογίου. Χρήσιμο για την επανεφαρμογή προσαρμογών "
+"βασισμένων στο xmodmap"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr ""
+msgstr "Λίστα αρχείων modmap που βρίσκονται στον κατάλογο $HOME."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
-msgstr ""
+msgstr "Προεπιλεγμένη ομάδα, ορίζετε κατά την δημιουργία του παραθύρου"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
 msgid "Keep and manage separate group per window"
-msgstr ""
+msgstr "Διατήρηση και διαχείριση ξεχωριστών ομάδων για κάθε παράθυρο"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
 msgid "Keyboard Update Handlers"
-msgstr ""
+msgstr "Χειριστές ενημέρωσης πληκτρολογίου"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
 msgid "Keyboard layout"
@@ -89,56 +101,61 @@ msgid ""
 "Keyboard settings in gconf will be overridden from the system ASAP "
 "(deprecated)"
 msgstr ""
+"Οι ρυθμίσεις πληκτρολογίου στο gconf θα αντικατασταθούν από το σύστημα το "
+"συντομότερο δυνατό. (ξεπερασμένο)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
-msgstr ""
+msgstr "Αποθήκευση/επαναφορά των ενδείξεων μαζί με τις ομάδες διατάξεων"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Secondary groups"
-msgstr ""
+msgstr "Δευτερεύουσες ομάδας"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet"
-msgstr ""
+msgstr "Εμφάνιση σημαιών στο εφαρμογίδιο"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
+msgstr "Εμφάνιση σημαιών στο εφαρμογίδιο ως ένδειξη της τρέχουσας διάταξης"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
-msgstr ""
+msgstr "Εμφάνιση ονομάτων διάταξης αντί ονομάτων ομάδας"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
+"Εμφάνιση ονομάτων διάταξης αντί ονομάτων ομάδας (μόνο για εκδόσεις του XFree "
+"με υποστήριξη πολλαπλών διατάξεων)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr ""
+"Καταστολή του μηνύματος προειδοποίησης \"Το X sysconfig τροποποιήθηκε\""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
-msgstr ""
+msgstr "Προεπισκόπηση πληκτρολογίου, μετατόπιση X"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, Y offset"
-msgstr ""
+msgstr "Προεπισκόπηση πληκτρολογίου, μετατόπιση Y"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, height"
-msgstr ""
+msgstr "Προεπισκόπηση πληκτρολογίου, ύψος"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, width"
-msgstr ""
+msgstr "Προεπισκόπηση πληκτρολογίου, πλάτος"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The list of enabled Keyboard Indicator plugins"
-msgstr ""
+msgstr "Λίστα των ενεργών πρόσθετων λειτουργιών ένδειξης πληκτρολογίου"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid ""
@@ -146,6 +163,10 @@ msgid ""
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
 msgstr ""
+"Πολύ σύντομα, οι ρυθμίσεις πληκτρολογίου στο gconf θα αντικατασταθούν (από "
+"τις ρυθμίσεις συστήματος). Αυτό το κλειδί είναι παρωχημένο μετά από το GNOME "
+"2.12, παρακαλούμε απορυθμίστε τα κλειδιά μοντέλου, διάταξης και επιλογών για "
+"να αποκτήσετε την προκαθορισμένη ρύθμιση του συστήματος."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -157,51 +178,51 @@ msgstr "μοντέλο πληκτρολογίου"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
-msgstr ""
+msgstr "λίστα αρχείων modmap"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr ""
+msgstr "Ενεργοποίηση περισσοτέρων πρόσθετων λειτουργιών"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:2
 msgid "Active _plugins:"
-msgstr ""
+msgstr "Ενεργές _πρόσθετες λειτουργίες:"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:3
 msgid "Add Plugin"
-msgstr ""
+msgstr "Προσθήκη πρόσθετης λειτουργίας"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:4
 msgid "Close the dialog"
-msgstr ""
+msgstr "Κλείσιμο διάλογου"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:5
 msgid "Configure the selected plugin"
-msgstr ""
+msgstr "Ρύθμιση επιλεγμένης πρόσθετης λειτουργίας"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr ""
+msgstr "Απενεργοποίηση επιλεγμένης πρόσθετης λειτουργίας"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr ""
+msgstr "Μείωση προτεραιότητας πρόσθετης λειτουργίας"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr ""
+msgstr "Αύξηση προτεραιότητας πρόσθετης λειτουργίας"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
-msgstr ""
+msgstr "Πρόσθετες λειτουργίες ένδειξης πληκτρολογίου"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:10
 msgid "The list of active plugins"
-msgstr ""
+msgstr "Λίστα των ενεργών πρόσθετων λειτουργιών"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:11
 msgid "_Available plugins:"
-msgstr ""
+msgstr "Δι_αθέσιμες πρόσθετες λειτουργίες:"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.c:117
 #: ../capplet/gkbd-indicator-plugins-add.c:106
@@ -211,13 +232,21 @@ msgstr "Χωρίς περιγραφή."
 #: ../capplet/gkbd-indicator-plugins-capplet.c:326
 #, c-format
 msgid "Failed to init GConf: %s\n"
-msgstr ""
+msgstr "Αποτυχία αρχικοποίησης GConf: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
-msgstr ""
+msgstr "Ενεργοποίηση/απενεργοποίηση εγκατεστημένων πρόσθετων λειτουργιών"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
-msgstr ""
+msgstr "Πρόσθετες λειτουργίες ένδειξης πληκτρολογίου"
 
+#: ../test/gkbd-indicator-test.c:59
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Δοκιμή ένδειξης πληκτρολογίου (%s)"
+
+#: ../test/gkbd-indicator-test.c:68
+msgid "Indicator:"
+msgstr "Ένδειξη:"
