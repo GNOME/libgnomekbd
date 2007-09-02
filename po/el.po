@@ -110,7 +110,7 @@ msgstr "Αποθήκευση/επαναφορά των ενδείξεων μαζ
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Secondary groups"
-msgstr "Δευτερεύουσες ομάδας"
+msgstr "Δευτερεύουσες ομάδες"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet"
