@@ -1,3 +1,7 @@
+2007-09-17 svu
+
+	* configure.in, NEWS: release 2.20
+
 2007-08-30 svu
 
 	* libgnomekbd/Makefile.am: unneeded LIBGNOME* stuff,
