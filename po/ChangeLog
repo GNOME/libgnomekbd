@@ -1,3 +1,8 @@
+2007-09-17  Laurent Dhima  <laurenti@alblinux.net>
+
+	* sq.po: Added Albanian translation.
+	* LINGUAS: Added sq.
+
 2007-09-16  Vladimer Sichinava  <vsichi@gnome.org>
 
         * ka.po: Added Georgian translation
