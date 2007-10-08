@@ -29,8 +29,6 @@
 #include <gkbd-keyboard-config.h>
 #include <gkbd-config-private.h>
 
-#include <gkbd-config-registry-client.h>
-
 /**
  * GkbdKeyboardConfig
  */

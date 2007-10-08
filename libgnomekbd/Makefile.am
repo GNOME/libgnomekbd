@@ -34,7 +34,6 @@ libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS) \
                            -lgnomekbd
 
 libgnomekbd_la_SOURCES = \
-                         gkbd-config-registry.c \
                          gkbd-desktop-config.c \
                          gkbd-keyboard-config.c \
                          gkbd-util.c
@@ -49,8 +48,6 @@ libgnomekbdui_la_SOURCES = \
 
 BUILT_SOURCES = gkbd-indicator-marshal.c \
 	gkbd-indicator-marshal.h         \
-        gkbd-config-registry-server.h     \
-        gkbd-config-registry-client.h     \
         gkbd-keyboard-drawing-marshal.c            \
         gkbd-keyboard-drawing-marshal.h
 
@@ -60,8 +57,6 @@ gnomekbdincdir = $(includedir)/libgnomekbd
 gnomekbdinc_HEADERS = \
                       gkbd-desktop-config.h \
                       gkbd-keyboard-config.h \
-                      gkbd-config-registry-client.h \
-                      gkbd-config-registry.h \
                       gkbd-indicator.h \
                       gkbd-indicator-config.h \
                       gkbd-indicator-plugin.h \
@@ -74,12 +69,10 @@ gnomekbdinc_HEADERS = \
 
 noinst_HEADERS = gkbd-indicator-plugin-manager.h \
                  $(extra_nih) \
-                 gkbd-config-private.h \
-                 gkbd-config-registry-server.h
+                 gkbd-config-private.h
 
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
-             gkbd-config-registry.xml \
              $(glade_DATA) \
              $(schema_in_files)
 
@@ -90,12 +83,6 @@ gkbd-indicator-marshal.h: gkbd-indicator-marshal.list
 
 gkbd-indicator-marshal.c: gkbd-indicator-marshal.h
 	$(GLIB_GENMARSHAL) --prefix=gkbd_indicator $(srcdir)/gkbd-indicator-marshal.list --body > $@
-
-gkbd-config-registry-server.h:  gkbd-config-registry.xml
-	dbus-binding-tool --prefix=gkbd_config_registry --mode=glib-server $< > $@
-
-gkbd-config-registry-client.h:  gkbd-config-registry.xml
-	dbus-binding-tool --prefix=gkbd_config_registry --mode=glib-client $< > $@
 
 gkbd-keyboard-drawing-marshal.h: gkbd-keyboard-drawing-marshal.list
 	( $(GLIB_GENMARSHAL) --prefix=gkbd_keyboard_drawing $(srcdir)/gkbd-keyboard-drawing-marshal.list \

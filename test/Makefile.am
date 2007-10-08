@@ -1,16 +1,5 @@
 noinst_PROGRAMS = gkbd-indicator-test \
-                  gkbd-keyboard-drawing-test \
-                  gkbd-config-registry-server
-
-gkbd_config_registry_server_CFLAGS=			\
-	$(WARN_CFLAGS) -I$(top_srcdir) -Wall -Werror			\
-	$(DBUS_CFLAGS)					\
-	$(LIBXKLAVIER_CFLAGS)				
-
-gkbd_config_registry_server_LDFLAGS=			\
-	$(DBUS_LIBS)					\
-	$(LIBXKLAVIER_LIBS)				\
-	$(top_builddir)/libgnomekbd/libgnomekbd.la
+                  gkbd-keyboard-drawing-test
 
 gkbd_indicator_test_CFLAGS=			\
 	$(WARN_CFLAGS) -I$(top_srcdir) -Wall -Werror			\
@@ -40,5 +29,3 @@ gkbd_keyboard_drawing_test_LDFLAGS=				\
 	$(LIBXKLAVIER_LIBS)				\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la
-
-EXTRA_DIST = gkbd-config-registry-client.sh

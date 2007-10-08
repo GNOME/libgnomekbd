@@ -31,10 +31,9 @@
 
 #include <gkbd-indicator-plugin-manager.h>
 
-#include <gkbd-config-registry-client.h>
-
 typedef struct _gki_globals {
 	XklEngine *engine;
+	XklConfigRegistry *registry;
 
 	GkbdDesktopConfig cfg;
 	GkbdIndicatorConfig ind_cfg;
@@ -418,8 +417,8 @@ static void
 gkbd_indicator_load_group_names (const gchar ** layout_ids,
 				 const gchar ** variant_ids)
 {
-	if (!gkbd_desktop_config_load_remote_group_descriptions_utf8
-	    (&globals.cfg, layout_ids, variant_ids,
+	if (!gkbd_desktop_config_load_group_descriptions
+	    (&globals.cfg, globals.registry, layout_ids, variant_ids,
 	     &globals.short_group_names, &globals.full_group_names)) {
 		/* We just populate no short names (remain NULL) - 
 		 * full names are going to be used anyway */
@@ -431,7 +430,7 @@ gkbd_indicator_load_group_names (const gchar ** layout_ids,
 		if (xkl_engine_get_features (globals.engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			GSList *lst = globals.kbd_cfg.layouts_variants;
-			for (i = 0; lst; lst = lst->next,i++) {
+			for (i = 0; lst; lst = lst->next, i++) {
 				globals.full_group_names[i] =
 				    g_strdup ((char *) lst->data);
 			}
@@ -675,6 +674,8 @@ gkbd_indicator_global_term (void)
 
 	gkbd_indicator_plugin_container_term (&globals.plugin_container);
 
+	g_object_unref (G_OBJECT (globals.registry));
+	globals.registry = NULL;
 	g_object_unref (G_OBJECT (globals.engine));
 	globals.engine = NULL;
 	xkl_debug (100, "*** Terminated globals *** \n");
@@ -718,6 +719,11 @@ gkbd_indicator_global_init (void)
 		xkl_debug (0, "Libxklavier initialization error");
 		return;
 	}
+
+	globals.registry =
+	    xkl_config_registry_get_instance (globals.engine);
+
+	xkl_config_registry_load (globals.registry);
 
 	gconf_client = gconf_client_get_default ();
 

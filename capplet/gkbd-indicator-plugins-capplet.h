@@ -31,17 +31,16 @@
 #include "libgnomekbd/gkbd-indicator-plugin-manager.h"
 #include "libgnomekbd/gkbd-util.h"
 
-typedef struct _GkbdIndicatorPluginsCapplet
-{
-  GkbdIndicatorPluginContainer plugin_container;
-  GkbdDesktopConfig cfg;
-  GkbdIndicatorConfig applet_cfg;
-  GkbdKeyboardConfig kbd_cfg;
-  GkbdIndicatorPluginManager plugin_manager;
-  XklEngine *engine;
-  XklConfigRegistry *config_registry;
+typedef struct _GkbdIndicatorPluginsCapplet {
+	GkbdIndicatorPluginContainer plugin_container;
+	GkbdDesktopConfig cfg;
+	GkbdIndicatorConfig applet_cfg;
+	GkbdKeyboardConfig kbd_cfg;
+	GkbdIndicatorPluginManager plugin_manager;
+	XklEngine *engine;
+	XklConfigRegistry *config_registry;
 
-  GtkWidget *capplet;
+	GtkWidget *capplet;
 } GkbdIndicatorPluginsCapplet;
 
 #define NAME_COLUMN 0
@@ -53,7 +52,8 @@ typedef struct _GkbdIndicatorPluginsCapplet
                                   "gladeData" ) ), \
     name )
 
-extern void CappletFillActivePluginList (GkbdIndicatorPluginsCapplet * gipc);
+extern void CappletFillActivePluginList (GkbdIndicatorPluginsCapplet *
+					 gipc);
 
 extern char *CappletGetSelectedPluginPath (GtkTreeView * plugins_list,
 					   GkbdIndicatorPluginsCapplet *

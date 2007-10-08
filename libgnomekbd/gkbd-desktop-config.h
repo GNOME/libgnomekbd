@@ -65,27 +65,18 @@ extern void gkbd_desktop_config_save_to_gconf (GkbdDesktopConfig * config);
 
 extern gboolean gkbd_desktop_config_activate (GkbdDesktopConfig * config);
 
-/* Affected by XKB and XKB/GConf configuration */
-extern gchar
-    **
-gkbd_desktop_config_load_group_descriptions_utf8 (GkbdDesktopConfig *
-						  config,
-						  XklConfigRegistry *
-						  config_registry);
-
-
-/* Using DBUS */
 extern gboolean
-gkbd_desktop_config_load_remote_group_descriptions_utf8 (GkbdDesktopConfig
-							 * config,
-							 const gchar **
-							 layout_ids,
-							 const gchar **
-							 variant_ids,
-							 gchar ***
-							 short_group_names,
-							 gchar ***
-							 full_group_names);
+gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
+					     * config,
+					     XklConfigRegistry *
+					     registry,
+					     const gchar **
+					     layout_ids,
+					     const gchar **
+					     variant_ids,
+					     gchar ***
+					     short_group_names,
+					     gchar *** full_group_names);
 
 extern void gkbd_desktop_config_lock_next_group (GkbdDesktopConfig *
 						 config);

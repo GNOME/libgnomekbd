@@ -29,8 +29,6 @@
 #include <gkbd-desktop-config.h>
 #include <gkbd-config-private.h>
 
-#include <gkbd-config-registry-client.h>
-
 /**
  * GkbdDesktopConfig
  */
@@ -51,42 +49,82 @@ const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[]
  */
 
 static gboolean
-gkbd_desktop_config_get_remote_lv_descriptions_utf8 (const gchar ** lids,
-						     const gchar ** vids,
-						     gchar *** sld,
-						     gchar *** lld,
-						     gchar *** svd,
-						     gchar *** lvd)
-{
-	DBusGProxy *proxy;
-	DBusGConnection *connection;
-	GError *error = NULL;
+    gkbd_desktop_config_get_lv_descriptions
+    (GkbdDesktopConfig * config,
+     XklConfigRegistry * registry,
+     const gchar ** layout_ids,
+     const gchar ** variant_ids,
+     gchar *** short_layout_descriptions,
+     gchar *** long_layout_descriptions,
+     gchar *** short_variant_descriptions,
+     gchar *** long_variant_descriptions) {
+	const gchar **pl, **pv;
+	guint total_layouts;
+	gchar **sld, **lld, **svd, **lvd;
+	XklConfigItem *item = xkl_config_item_new ();
 
-	connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-	if (connection == NULL) {
-		g_warning ("Unable to connect to dbus: %s\n",
-			   error->message);
-		g_error_free (error);
-		/* Basically here, there is a problem, since there is no dbus :) */
-		return False;
+	if (!
+	    (xkl_engine_get_features (config->engine) &
+	     XKLF_MULTIPLE_LAYOUTS_SUPPORTED))
+		return FALSE;
+
+	pl = layout_ids;
+	pv = variant_ids;
+	total_layouts = g_strv_length ((char **) layout_ids);
+	sld = *short_layout_descriptions =
+	    g_new0 (char *, total_layouts + 1);
+	lld = *long_layout_descriptions =
+	    g_new0 (char *, total_layouts + 1);
+	svd = *short_variant_descriptions =
+	    g_new0 (char *, total_layouts + 1);
+	lvd = *long_variant_descriptions =
+	    g_new0 (char *, total_layouts + 1);
+
+	while (pl != NULL && *pl != NULL) {
+
+		xkl_debug (100, "ids: [%s][%s]\n", *pl,
+			   pv == NULL ? NULL : *pv);
+
+		g_snprintf (item->name, sizeof item->name, "%s", *pl);
+		if (xkl_config_registry_find_layout (registry, item)) {
+			*sld = g_strdup (item->short_description);
+			*lld = g_strdup (item->description);
+		} else {
+			*sld = g_strdup ("");
+			*lld = g_strdup ("");
+		}
+
+		if (*pv != NULL) {
+			g_snprintf (item->name, sizeof item->name, "%s",
+				    *pv);
+			if (xkl_config_registry_find_variant
+			    (registry, *pl, item)) {
+				*svd = g_strdup (item->short_description);
+				*lvd = g_strdup (item->description);
+			} else {
+				*svd = g_strdup ("");
+				*lvd = g_strdup ("");
+			}
+		} else {
+			*svd = g_strdup ("");
+			*lvd = g_strdup ("");
+		}
+
+		xkl_debug (100, "description: [%s][%s][%s][%s]\n",
+			   *sld, *lld, *svd, *lvd);
+		sld++;
+		lld++;
+		svd++;
+		lvd++;
+
+		pl++;
+
+		if (*pv != NULL)
+			pv++;
 	}
 
-/* This won't trigger activation! */
-	proxy = dbus_g_proxy_new_for_name (connection,
-					   "org.gnome.GkbdConfigRegistry",
-					   "/org/gnome/GkbdConfigRegistry",
-					   "org.gnome.GkbdConfigRegistry");
-
-/* The method call will trigger activation, more on that later */
-	if (!org_gnome_GkbdConfigRegistry_get_descriptions_as_utf8
-	    (proxy, lids, vids, sld, lld, svd, lvd, &error)) {
-		/* Method failed, the GError is set, let's warn everyone */
-		g_warning ("Woops remote method failed: %s",
-			   error->message);
-		g_error_free (error);
-		return False;
-	}
-	return True;
+	g_object_unref (item);
+	return TRUE;
 }
 
 void
@@ -299,24 +337,26 @@ gkbd_desktop_config_stop_listen (GkbdDesktopConfig * config)
 }
 
 gboolean
-gkbd_desktop_config_load_remote_group_descriptions_utf8 (GkbdDesktopConfig
-							 * config,
-							 const gchar **
-							 layout_ids,
-							 const gchar **
-							 variant_ids,
-							 gchar ***
-							 short_group_names,
-							 gchar ***
-							 full_group_names)
+gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
+					     * config,
+					     XklConfigRegistry *
+					     registry,
+					     const gchar **
+					     layout_ids,
+					     const gchar **
+					     variant_ids,
+					     gchar ***
+					     short_group_names,
+					     gchar *** full_group_names)
 {
 	gchar **sld, **lld, **svd, **lvd;
 	gchar **psld, **plld, **plvd;
 	gchar **psgn, **pfgn;
 	gint total_descriptions;
 
-	if (!gkbd_desktop_config_get_remote_lv_descriptions_utf8
-	    (layout_ids, variant_ids, &sld, &lld, &svd, &lvd)) {
+	if (!gkbd_desktop_config_get_lv_descriptions
+	    (config, registry, layout_ids, variant_ids, &sld, &lld, &svd,
+	     &lvd)) {
 		return False;
 	}
 
@@ -343,66 +383,3 @@ gkbd_desktop_config_load_remote_group_descriptions_utf8 (GkbdDesktopConfig
 	return True;
 }
 
-gchar **
-gkbd_desktop_config_load_group_descriptions_utf8 (GkbdDesktopConfig *
-						  config,
-						  XklConfigRegistry *
-						  config_registry)
-{
-	int i;
-	const gchar **native_names =
-	    xkl_engine_get_groups_names (config->engine);
-	guint total_groups = xkl_engine_get_num_groups (config->engine);
-	guint total_layouts;
-	gchar **rv = g_new0 (char *, total_groups + 1);
-	gchar **current_descr = rv;
-
-	if ((xkl_engine_get_features (config->engine) &
-	     XKLF_MULTIPLE_LAYOUTS_SUPPORTED)
-	    && config->layout_names_as_group_names) {
-		XklConfigRec *xkl_config = xkl_config_rec_new ();
-		if (xkl_config_rec_get_from_server
-		    (xkl_config, config->engine)) {
-			char **pl = xkl_config->layouts;
-			char **pv = xkl_config->variants;
-			i = total_groups;
-			while (pl != NULL && *pl != NULL && i >= 0) {
-				char *ls_descr;
-				char *l_descr;
-				char *vs_descr;
-				char *v_descr;
-				if (gkbd_keyboard_config_get_lv_descriptions (config_registry, *pl++, *pv++, &ls_descr, &l_descr, &vs_descr, &v_descr)) {
-					char *name_utf =
-					    g_locale_to_utf8
-					    (gkbd_keyboard_config_format_full_layout
-					     (l_descr, v_descr), -1, NULL,
-					     NULL, NULL);
-					*current_descr++ = name_utf;
-				} else {
-					*current_descr++ = g_strdup ("");
-				}
-			}
-		}
-		g_object_unref (G_OBJECT (xkl_config));
-		/* Worst case - multiple layous - but SOME of them are multigrouped :(((
-		 *                    We cannot do much - just add empty descriptions.
-		 *                                       The UI is going to be messy.
-		 *                                                          Canadian layouts are famous for this sh.t. */
-		total_layouts = g_strv_length (rv);
-		if (total_layouts != total_groups) {
-			xkl_debug (0,
-				   "The mismatch between "
-				   "the number of groups: %d and number of layouts: %d\n",
-				   total_groups, total_layouts);
-			current_descr = rv + total_layouts;
-			for (i = total_groups - total_layouts; --i >= 0;)
-				*current_descr++ = g_strdup ("");
-		}
-	}
-	total_layouts = g_strv_length (rv);
-	if (!total_layouts)
-		for (i = total_groups; --i >= 0;)
-			*current_descr++ = g_strdup (*native_names++);
-
-	return rv;
-}

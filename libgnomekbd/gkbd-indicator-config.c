@@ -32,8 +32,6 @@
 
 #include <gkbd-config-private.h>
 
-#include <gkbd-config-registry-client.h>
-
 /**
  * GkbdIndicatorConfig
  */

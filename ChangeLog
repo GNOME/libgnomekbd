@@ -1,3 +1,17 @@
+2007-10-08 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.c,
+	capplet/gkbd-indicator-plugins-capplet.h, capplet/.indent.pro,
+	configure.in, libgnomekbd/gkbd-config-registry.xml,
+	libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-config-registry.c, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-desktop-config.c,
+	libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-config-registry.h, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/Makefile.am, test/gkbd-config-registry-client.sh,
+	test/gkbd-config-registry-server.c, test/Makefile.am: getting rid of
+	stupid dbus client-server
+
 2007-09-17 svu
 
 	* configure.in, NEWS: release 2.20
