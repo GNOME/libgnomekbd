@@ -157,6 +157,10 @@ rounded_corner (cairo_t * cr,
 	gdouble phi1, phi2;
 
 	cairo_get_current_point (cr, &ax, &ay);
+#ifdef KBDRAW_DEBUG
+	printf ("        current point: (%f, %f), radius %f:\n", ax, ay,
+		radius);
+#endif
 
 	/* make sure radius is not too large */
 	dist1 = length (bx - ax, by - ay);
@@ -220,7 +224,11 @@ rounded_corner (cairo_t * cr,
 	while (d > 2 * M_PI)
 		d -= 2 * M_PI;
 
-	cairo_line_to (cr, a1x, a1y);
+#ifdef KBDRAW_DEBUG
+	printf ("        line 1 to: (%f, %f):\n", a1x, a1y);
+#endif
+	if (!(isnan (a1x) || isnan (a1y)))
+		cairo_line_to (cr, a1x, a1y);
 
 	/* pick the short arc from phi1 to phi2 */
 	if (d < M_PI)
@@ -228,6 +236,9 @@ rounded_corner (cairo_t * cr,
 	else
 		cairo_arc_negative (cr, ix, iy, radius, phi1, phi2);
 
+#ifdef KBDRAW_DEBUG
+	printf ("        line 2 to: (%f, %f):\n", cx, cy);
+#endif
 	cairo_line_to (cr, cx, cy);
 }
 
@@ -244,6 +255,10 @@ rounded_polygon (cairo_t * cr,
 		       (gdouble) (points[num_points - 1].y +
 				  points[0].y) / 2);
 
+
+#ifdef KBDRAW_DEBUG
+	printf ("    rounded polygon of radius %f:\n", radius);
+#endif
 	for (i = 0; i < num_points; i++) {
 		j = (i + 1) % num_points;
 		rounded_corner (cr, (gdouble) points[i].x,
@@ -251,6 +266,11 @@ rounded_polygon (cairo_t * cr,
 				(gdouble) (points[i].x + points[j].x) / 2,
 				(gdouble) (points[i].y + points[j].y) / 2,
 				radius);
+#ifdef KBDRAW_DEBUG
+		printf ("      corner (%d, %d) -> (%d, %d):\n",
+			points[i].x, points[i].y, points[j].x,
+			points[j].y);
+#endif
 	};
 	cairo_close_path (cr);
 
@@ -288,11 +308,17 @@ draw_polygon (GkbdKeyboardDrawing * drawing,
 
 	points = g_new (GdkPoint, num_points);
 
+#ifdef KBDRAW_DEBUG
+	printf ("    Polygon points:\n");
+#endif
 	for (i = 0; i < num_points; i++) {
 		points[i].x =
 		    xkb_to_pixmap_coord (drawing, xkb_x + xkb_points[i].x);
 		points[i].y =
 		    xkb_to_pixmap_coord (drawing, xkb_y + xkb_points[i].y);
+#ifdef KBDRAW_DEBUG
+		printf ("      %d, %d\n", points[i].x, points[i].y);
+#endif
 	}
 
 	rounded_polygon (cr, filled,
@@ -419,7 +445,7 @@ draw_outline (GkbdKeyboardDrawing * drawing,
 	      GdkColor * color, gint angle, gint origin_x, gint origin_y)
 {
 #ifdef KBDRAW_DEBUG
-	printf ("num_points in %p: %d\n", outline, outline->num_points);
+	printf (" num_points in %p: %d\n", outline, outline->num_points);
 #endif
 
 	if (outline->num_points == 1) {
@@ -974,7 +1000,7 @@ draw_key (GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 		return;
 
 #ifdef KBDRAW_DEBUG
-	printf ("shape: %p (%p + %d)\n",
+	printf ("shape: %p (base %p, index %d)\n",
 		drawing->xkb->geom->shapes + key->xkbkey->shape_ndx,
 		drawing->xkb->geom->shapes, key->xkbkey->shape_ndx);
 #endif
@@ -989,8 +1015,10 @@ draw_key (GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 		color = drawing->colors + key->xkbkey->color_ndx;
 
 #ifdef KBDRAW_DEBUG
-	printf ("outlines: %p(%d)\n", shape->outlines,
-		shape->num_outlines);
+	printf
+	    (" outlines base in the shape: %p (total: %d), origin: (%d, %d), angle %d, colored: %s\n",
+	     shape->outlines, shape->num_outlines, key->origin_x,
+	     key->origin_y, key->angle, color ? "yes" : "no");
 #endif
 
 	/* draw the primary outline */
@@ -1513,12 +1541,13 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 	}
 
 	for (i = 0; i < drawing->xkb->geom->num_sections; i++) {
-#ifdef KBDRAW_DEBUG
-		printf ("initing section %d\n", i);
-#endif
 		XkbSectionRec *section = drawing->xkb->geom->sections + i;
 		guint priority;
 
+#ifdef KBDRAW_DEBUG
+		printf ("initing section %d containing %d rows\n", i,
+			section->num_rows);
+#endif
 		x = section->left;
 		y = section->top;
 		priority = section->priority * 256 * 256;
@@ -1543,7 +1572,7 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 							      name);
 
 				if (keycode == INVALID_KEYCODE)
-					return;
+					continue;
 #ifdef KBDRAW_DEBUG
 				printf
 				    ("    initing key %d, shape: %p(%p + %d), code: %u\n",

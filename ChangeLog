@@ -1,3 +1,8 @@
+2007-10-18 svu
+
+	* libxklavier/gkbd-keyboard-drawing.c: fix rendering of macbookpro, a
+	couple of annoying bugs
+
 2007-10-08 svu
 
 	* capplet/gkbd-indicator-plugins-capplet.c,
