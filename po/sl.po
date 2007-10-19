@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-09 03:46+0100\n"
-"PO-Revision-Date: 2007-10-15 12:55+0100\n"
+"PO-Revision-Date: 2007-10-19 12:08+0100\n"
 "Last-Translator: Matej Urbančič <matej.urban@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -117,7 +117,7 @@ msgstr "V vključku pokaži zastave"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Pokaži zastavice apleta za prikaz trenutnega nabora"
+msgstr "Pokaži zastave apleta za prikaz trenutnega nabora"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
