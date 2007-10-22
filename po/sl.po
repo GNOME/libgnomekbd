@@ -2,9 +2,6 @@
 # Copyright (C) 2005-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the program package.
 #
-# Slovenian maintainer: Matej Urbančič <matej.urban@gmail.com>.
-#
-# Translators:
 # Matej Urbančič <matej.urban@gmail.com>, 2007.
 #
 msgid ""
@@ -12,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-09 03:46+0100\n"
-"PO-Revision-Date: 2007-10-19 12:08+0100\n"
+"PO-Revision-Date: 2007-10-22 16:45+0100\n"
 "Last-Translator: Matej Urbančič <matej.urban@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
