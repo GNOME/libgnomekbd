@@ -1,7 +1,6 @@
 libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-indicator.c
 libgnomekbd/gkbd-util.c
-libgnomekbd/gkbd-config-registry.c
 libgnomekbd/gkbd-indicator-plugin-manager.c
 libgnomekbd/gkbd-indicator-config.c
 libgnomekbd/gkbd-keyboard-config.c
