@@ -1,5 +1,9 @@
 2007-10-18 svu
 
+	* NEWS: release 2.21
+
+2007-10-18 svu
+
 	* libxklavier/gkbd-keyboard-drawing.c: fix rendering of macbookpro, a
 	couple of annoying bugs
 

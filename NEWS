@@ -1,3 +1,11 @@
+2.21.1:
+	Updated scheme translation of base.xml in xkeyboard config causes a 
+	chain of changes upstack. Stupid and overenginered dbus client-server 
+	is gone!
+	There is no API breakage - but libxklavier and xkeyboard-config from 
+	CVS are recommended: otherwise the translation would not work.
+	Some rendering fixes in GkbdKeyboardDrawing widget
+
 2.20.0:
 	6 new translations, minor fix to the build process
 
