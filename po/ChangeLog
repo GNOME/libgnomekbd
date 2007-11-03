@@ -1,6 +1,6 @@
-2007-10-23  Djihed Afifi <djihed@gmail.com> 
+2007-11-03  Claude Paroz  <claude@2xlibre.net> 
 
-	* ar.po: Updated Arabic Translation by Khaled Hosny.
+	* sl.po, en_GB.po: svn:executable property removed.
 
 2007-10-21  Djihed Afifi <djihed@gmail.com> 
 
