@@ -5,14 +5,15 @@
 # This file is distributed under the same license as the libgnomekbd package.
 #
 # Ivar Smolin <okul@linux.ee>, 2007.
+# Priit Laes <amd@store20.com>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-24 03:38+0100\n"
-"PO-Revision-Date: 2007-08-26 16:18+0300\n"
-"Last-Translator: Ivar Smolin <okul@linux.ee>\n"
+"POT-Creation-Date: 2007-08-28 08:02+0100\n"
+"PO-Revision-Date: 2007-11-04 12:50+0300\n"
+"Last-Translator: Priit Laes <amd@store20.com>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,35 +24,39 @@ msgstr ""
 msgid "XKB initialization error"
 msgstr "XKB lähtestamise viga"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:163
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Pildi laadimisel tekkis viga: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:801
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:798
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "paigutus \"%s\""
 msgstr[1] "paigutused \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:820
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:815
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "valik \"%s\""
 msgstr[1] "valikud \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:828
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "mudel \"%s\", %s ja %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:829
+#: ../libgnomekbd/gkbd-keyboard-config.c:824
 msgid "no layout"
 msgstr "paigutus puudub"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:830
+#: ../libgnomekbd/gkbd-keyboard-config.c:825
 msgid "no options"
 msgstr "valikud puuduvad"
 
@@ -156,7 +161,10 @@ msgid ""
 "Very soon, keyboard settings in gconf will be overridden (from the system "
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
-msgstr ""
+msgstr "Hoiatus! Varsti tühistatakse Gconf'is hoitavad klaviatuurisätted "
+"süsteemist võetud sätete poolt. Selle seadistusvõtme kasutamine on alates "
+"GNOME 2.12 ebasoovitatav. Klaviatuurimudel, paigutus ja klahvivalikute sätted"
+"tuleks tühistada ning kasutada vaikimisi süsteemi sätteid."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -232,11 +240,11 @@ msgstr "Paigaldatud pluginate lubamine ja keelamine"
 msgid "Keyboard Indicator plugins"
 msgstr "Klaviatuurinäidiku pluginad"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Klaviatuurinäidiku test (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Näidik:"
