@@ -1,21 +1,23 @@
-# Slovenian translation of libgnomekbd.
 # Copyright (C) 2005-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the program package.
 #
-# Matej Urbančič <matej.urban@gmail.com>, 2007.
+# Slovenian maintainer: Matej Urbančič <mateju@svn.gnome.org>.
+#
+# Translators:
+# Matej Urbančič <mateju@svn.gnome.org>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-05-09 03:46+0100\n"
-"PO-Revision-Date: 2007-10-22 16:45+0100\n"
-"Last-Translator: Matej Urbančič <matej.urban@gmail.com>\n"
+"PO-Revision-Date: 2007-11-14 14:57+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -35,9 +37,9 @@ msgstr "Prišlo je do napake med nalaganjem slike: %s"
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "razpored \"%s\""
-msgstr[1] "razporeda \"%s\""
-msgstr[2] "razporedi \"%s\""
+msgstr[0] "razporedi \"%s\""
+msgstr[1] "razpored \"%s\""
+msgstr[2] "razporeda \"%s\""
 msgstr[3] "razporedi \"%s\""
 
 #. Translators: The count is related to the number of options. The %s
@@ -46,8 +48,8 @@ msgstr[3] "razporedi \"%s\""
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
-msgstr[0] "možnost \"%s\""
-msgstr[1] "možnosti \"%s\""
+msgstr[0] "možnosti \"%s\""
+msgstr[1] "možnost \"%s\""
 msgstr[2] "možnosti \"%s\""
 msgstr[3] "možnosti \"%s\""
 
