@@ -20,7 +20,9 @@ libgnomekbd_la_CFLAGS = $(common_CFLAGS)
 libgnomekbdui_la_CFLAGS = $(common_CFLAGS)		\
 	$(GTK_CFLAGS)
 
-common_LDFLAGS = -version-info @VERSION_INFO@ \
+common_LDFLAGS = -version-info @VERSION_INFO@ -no-undefined
+
+common_LIBADD = \
 		$(DBUS_LIBS) \
 		$(GDK_LIBS) \
 		$(GCONF_LIBS) \
@@ -28,10 +30,12 @@ common_LDFLAGS = -version-info @VERSION_INFO@ \
 		$(XLIB_LIBS)
 
 libgnomekbd_la_LDFLAGS = $(common_LDFLAGS)
+libgnomekbd_la_LIBADD =  $(common_LIBADD)
 
-libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS) \
+libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS)
+libgnomekbdui_la_LIBADD =  $(common_LIBADD) \
                            $(GTK_LIBS) \
-                           -lgnomekbd
+                           libgnomekbd.la
 
 libgnomekbd_la_SOURCES = \
                          gkbd-desktop-config.c \

@@ -1,10 +1,15 @@
+2007-12-05 svu
+
+	* libgnomekbd/Makefile.am: cygwin fixes,
+	http://bugzilla.gnome.org/show_bug.cgi?id=501432
+
 2007-10-18 svu
 
 	* NEWS: release 2.21
 
 2007-10-18 svu
 
-	* libxklavier/gkbd-keyboard-drawing.c: fix rendering of macbookpro, a
+	* libgnomekbd/gkbd-keyboard-drawing.c: fix rendering of macbookpro, a
 	couple of annoying bugs
 
 2007-10-08 svu
