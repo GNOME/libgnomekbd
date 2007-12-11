@@ -1,4 +1,8 @@
-SUBDIRS = libgnomekbd test capplet po
+if BUILD_TESTS
+TEST = test
+endif
+
+SUBDIRS = libgnomekbd $(TEST) capplet po
 
 ACLOCAL_AMFLAGS = -I m4
 
