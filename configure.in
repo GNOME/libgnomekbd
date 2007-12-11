@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 2.21.1, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
+AC_INIT(libgnomekbd, 2.21.4, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
 AC_PREREQ(2.59)
 
 VERSION_INFO=2:0:0
@@ -14,6 +14,7 @@ AC_CONFIG_MACRO_DIR(m4)
 dnl ***************************************************************************
 dnl *** Minimum library versions for libgnomekbd                            ***
 dnl ***************************************************************************
+GLIB_REQUIRED=2.6
 DBUS_REQUIRED=0.92
 DBUS_GLIB_REQUIRED=0.34
 GCONF_REQUIRED=2.14.0
@@ -59,7 +60,12 @@ IT_PROG_INTLTOOL([0.35.0])
 # *****************************************************************************
 
 AC_CHECK_FUNCS(setlocale)
-  
+
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
+
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
+
 PKG_CHECK_MODULES(DBUS, dbus-1 >= $DBUS_REQUIRED dbus-glib-1 >= $DBUS_GLIB_REQUIRED)
 
 AC_SUBST(DBUS_CFLAGS)

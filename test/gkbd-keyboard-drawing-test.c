@@ -22,9 +22,9 @@
 #endif
 
 #include <gtk/gtk.h>
-#include <popt.h>
 #include <stdlib.h>
 #include <string.h>
+#include <glib/goption.h>
 #include "libgnomekbd/gkbd-keyboard-drawing.h"
 
 
@@ -33,31 +33,41 @@ static gchar *levels = NULL;
 static gchar *symbols = NULL;
 static gchar *keycodes = NULL;
 static gchar *geometry = NULL;
-static struct poptOption options[] = {
-	{"groups", '\0', POPT_ARG_STRING, &groups, 0,
-	 "Keyboard groups to display, from 1-4. Up to four groups only may be displayed. Examples: --groups=3 or --groups=1,2,1,2",
-	 "group1[,group2[,group3[,group4]]]"},
-	{"levels", '\0', POPT_ARG_STRING, &levels, 0,
-	 "Keyboard shift levels to display, from 1-64. Up to four shift levels only may be displayed. Examples: --levels=3 or --levels=1,2,1,2",
-	 "level1[,level2[,level3[,level4]]]"},
-	{"symbols", '\0', POPT_ARG_STRING, &symbols, 0,
-	 "Symbols component of the keyboard. If you omit this option, it is obtained from the X server; that is, the keyboard that is currently configured is drawn. Examples: --symbols=us or --symbols=us(pc104)+iso9995-3+group(switch)+ctrl(nocaps)",
-	 NULL},
-	{"keycodes", '\0', POPT_ARG_STRING, &keycodes, 0,
-	 "Keycodes component of the keyboard. If you omit this option, it is obtained from the X server; that is, the keyboard that is currently configured is drawn. Examples: --keycodes=xfree86+aliases(qwerty)",
-	 NULL},
-	{"geometry", '\0', POPT_ARG_STRING, &geometry, 0,
-	 "Geometry xkb component. If you omit this option, it is obtained from the X server; that is, the keyboard that is currently configured is drawn. Example: --geometry=kinesis",
-	 NULL},
-	{"track-modifiers", '\0', POPT_ARG_NONE, NULL, 3,
-	 "Track the current modifiers", NULL},
-	{"track-config", '\0', POPT_ARG_NONE, NULL, 4,
-	 "Track the server XKB configuration", NULL},
-	{"version", 'v', POPT_ARG_NONE, NULL, 1, "Show current version",
-	 NULL},
-	POPT_AUTOHELP {NULL, '\0', 0, NULL, 0}
-};
 
+static gboolean track_config = FALSE;
+static gboolean track_modifiers = FALSE;
+static gboolean program_version = FALSE;
+
+static const GOptionEntry options[] = {
+   { "groups", '\0', 0, G_OPTION_ARG_STRING, &groups,
+      "Keyboard groups to display, from 1-4. Up to four groups only may be "
+      "displayed. Examples: --groups=3 or --groups=1,2,1,2",
+      "group1[,group2[,group3[,group4]]]" },
+   { "levels", '\0', 0, G_OPTION_ARG_STRING, &levels,
+      "Keyboard shift levels to display, from 1-64. Up to four shift levels "
+      "only may be displayed. Examples: --levels=3 or --levels=1,2,1,2",
+      "level1[,level2[,level3[,level4]]]" },
+   { "symbols", '\0', 0, G_OPTION_ARG_STRING, &symbols,
+      "Symbols component of the keyboard. If you omit this option, it is "
+      "obtained from the X server; that is, the keyboard that is currently "
+      "configured is drawn. Examples: --symbols=us or "
+      "--symbols=us(pc104)+iso9995-3+group(switch)+ctrl(nocaps)", NULL },
+   { "keycodes", '\0', 0, G_OPTION_ARG_STRING, &keycodes,
+      "Keycodes component of the keyboard. If you omit this option, it is "
+      "obtained from the X server; that is, the keyboard that is currently"
+      " configured is drawn. Examples: --keycodes=xfree86+aliases(qwerty)", NULL },
+   { "geometry", '\0', 0, G_OPTION_ARG_STRING, &geometry,
+      "Geometry xkb component. If you omit this option, it is obtained from the"
+      " X server; that is, the keyboard that is currently configured is drawn. "
+      "Example: --geometry=kinesis", NULL },
+   { "track-modifiers", '\0', 0, G_OPTION_ARG_NONE, &track_modifiers,
+      "Track the current modifiers", NULL },
+   { "track-config", '\0', 0, G_OPTION_ARG_NONE, &track_config,
+      "Track the server XKB configuration", NULL },
+   { "version", '\0', 0, G_OPTION_ARG_NONE, &program_version,
+     "Show current version", NULL },
+   { NULL },
+};
 
 static gboolean
 set_groups (gchar * groups_option,
@@ -152,7 +162,7 @@ main (gint argc, gchar ** argv)
 	GdkScreen *screen;
 	gint monitor;
 	GdkRectangle rect;
-	poptContext popt_context;
+	GOptionContext *context;
 	gint rc;
 	GkbdKeyboardDrawingGroupLevel groupLevels[4] =
 	    { {0, 0}, {1, 0}, {0, 1}, {1, 1} };
@@ -160,35 +170,18 @@ main (gint argc, gchar ** argv)
 	    { &groupLevels[0], &groupLevels[1], &groupLevels[2],
 		&groupLevels[3]
 	};
-	gboolean track_config = False, track_modifiers = False;
+
+	context = g_option_context_new ("kbdraw");
+	g_option_context_add_main_entries (context, options, NULL);
+	g_option_context_parse (context, &argc, &argv, NULL);
+	g_option_context_free (context);
+
+	if (program_version) {
+		g_print("kbdraw %s\n", VERSION);
+		exit (0);
+	}
 
 	gtk_init (&argc, &argv);
-
-	popt_context =
-	    poptGetContext ("kbdraw", argc, (const gchar **) argv, options,
-			    0);
-
-	for (rc = poptGetNextOpt (popt_context); rc > 0;
-	     rc = poptGetNextOpt (popt_context))
-		switch (rc) {
-		case 1:
-			g_print ("kbdraw %s\n", VERSION);
-			exit (0);
-		case 3:
-			track_modifiers = True;
-			break;
-		case 4:
-			track_config = True;
-			break;
-		}
-
-	if (rc != -1) {
-		g_printerr ("%s: %s\n",
-			    poptBadOption (popt_context,
-					   POPT_BADOPTION_NOALIAS),
-			    poptStrerror (rc));
-		exit (1);
-	}
 
 	if (!set_groups (groups, groupLevels)) {
 		g_printerr ("--groups: invalid argument\n");

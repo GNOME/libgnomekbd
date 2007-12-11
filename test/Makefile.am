@@ -19,13 +19,13 @@ gkbd_indicator_test_LDFLAGS=			\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la
 
-gkbd_keyboard_drawing_test_CFLAGS=				\
+gkbd_keyboard_drawing_test_CFLAGS=			\
 	$(WARN_CFLAGS) -I$(top_srcdir)			\
-	$(GTK_CFLAGS)
+	$(GTK_CFLAGS) $(GLIB_CFLAGS)
 
-gkbd_keyboard_drawing_test_LDFLAGS=				\
+gkbd_keyboard_drawing_test_LDFLAGS=			\
+	$(GLIB_LIBS)					\
 	$(GTK_LIBS)					\
-	-lpopt						\
 	$(LIBXKLAVIER_LIBS)				\
 	$(top_builddir)/libgnomekbd/libgnomekbd.la	\
 	$(top_builddir)/libgnomekbd/libgnomekbdui.la
