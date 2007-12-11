@@ -38,6 +38,8 @@ typedef struct _GkbdKeyboardDrawingKey GkbdKeyboardDrawingKey;
 typedef struct _GkbdKeyboardDrawingDoodad GkbdKeyboardDrawingDoodad;
 typedef struct _GkbdKeyboardDrawingGroupLevel
  GkbdKeyboardDrawingGroupLevel;
+typedef struct _GkbdKeyboardDrawingRenderContext
+ GkbdKeyboardDrawingRenderContext;
 
 typedef enum {
 	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY,
@@ -101,6 +103,19 @@ struct _GkbdKeyboardDrawingGroupLevel {
 	gint level;
 };
 
+struct _GkbdKeyboardDrawingRenderContext {
+	cairo_t * cr;
+
+	gint angle;		/* current angle pango is set to draw at, in tenths of a degree */
+	PangoLayout *layout;
+	PangoFontDescription *font_desc;
+
+	gint scale_numerator;
+	gint scale_denominator;
+
+	GdkColor *dark_color;
+};
+
 struct _GkbdKeyboardDrawing {
 	/*< private > */
 
@@ -111,12 +126,7 @@ struct _GkbdKeyboardDrawing {
 	gboolean xkbOnDisplay;
 	guint l3mod;
 
-	gint angle;		/* current angle pango is set to draw at, in tenths of a degree */
-	PangoLayout *layout;
-	PangoFontDescription *font_desc;
-
-	gint scale_numerator;
-	gint scale_denominator;
+	GkbdKeyboardDrawingRenderContext *renderContext;
 
 	GkbdKeyboardDrawingKey *keys;
 
@@ -158,6 +168,12 @@ GtkWidget *gkbd_keyboard_drawing_new (void);
 
 GdkPixbuf *gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing *
 					     kbdrawing);
+gboolean gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
+				       cairo_t * cr,
+				       PangoLayout * layout,
+				       double x, double y,
+				       double width, double height,
+				       gdouble dpi_x, gdouble dpi_y);
 gboolean gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing *
 					     kbdrawing,
 					     XkbComponentNamesRec * names);

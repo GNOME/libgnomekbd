@@ -1,3 +1,9 @@
+2007-12-11 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: draw to cairo, to make printing
+	possible, http://bugzilla.gnome.org/show_bug.cgi?id=502962
+
 2007-12-05 svu
 
 	* libgnomekbd/Makefile.am: cygwin fixes,
