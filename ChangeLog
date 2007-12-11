@@ -8,6 +8,7 @@
 	http://bugzilla.gnome.org/show_bug.cgi?id=502993
 	* configure.in, Makefile.am: make tests optional,
 	http://bugzilla.gnome.org/show_bug.cgi?id=502998
+	* NEWS: release 2.21.4
 
 2007-12-05 svu
 
@@ -16,7 +17,7 @@
 
 2007-10-18 svu
 
-	* NEWS: release 2.21
+	* NEWS: release 2.21.1
 
 2007-10-18 svu
 

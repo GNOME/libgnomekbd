@@ -1,3 +1,9 @@
+2.21.4:
+	Render keyboard to cairo, making printing possible. 
+	Build tests optionally. 
+	Use GOption instead of popt.
+	Cygwin build fixes
+
 2.21.1:
 	Updated scheme translation of base.xml in xkeyboard config causes a 
 	chain of changes upstack. Stupid and overenginered dbus client-server 
