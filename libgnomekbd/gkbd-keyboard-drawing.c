@@ -1229,6 +1229,26 @@ typedef struct {
 } DrawKeyboardItemData;
 
 static void
+redraw_overlapping_doodads (GkbdKeyboardDrawingRenderContext * context,
+                            GkbdKeyboardDrawing * drawing,
+                            GkbdKeyboardDrawingKey * key)
+{
+  GList *list;
+  gboolean do_draw = FALSE;
+
+  for (list = drawing->keyboard_items; list; list = list->next)
+    {
+      GkbdKeyboardDrawingItem * item = list->data;
+
+      if (do_draw && item->type == GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD)
+       draw_doodad (context, drawing, (GkbdKeyboardDrawingDoodad *) item);
+
+      if (list->data == key)
+       do_draw = TRUE;
+    }
+}
+
+static void
 draw_keyboard_item (GkbdKeyboardDrawingItem * item,
 		    DrawKeyboardItemData *data)
 {
@@ -1463,6 +1483,7 @@ key_event (GtkWidget * widget,
 
 	create_cairo (drawing);
 	draw_key (drawing->renderContext, drawing, key);
+	redraw_overlapping_doodads (drawing->renderContext, drawing, key);
 	destroy_cairo (drawing);
 
 	invalidate_key_region (drawing, key);

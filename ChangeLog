@@ -2,6 +2,8 @@
 
 	* capplet/gkbd-indicator-plugins-add.c: i18n patch, no libbonobo, gi18n
 	instead, http://bugzilla.gnome.org/show_bug.cgi?id=453698
+	* libgnomekbd/gkbd-keyboard-drawing.c: redraw doodads for proper image
+	refresh, http://bugzilla.gnome.org/show_bug.cgi?id=353163
 
 2007-12-11 svu
 
