@@ -26,7 +26,7 @@
 
 #include <gdk/gdkx.h>
 #include <glade/glade.h>
-#include <libbonobo.h>
+#include <glib/gi18n.h>
 
 #include <libxklavier/xklavier.h>
 

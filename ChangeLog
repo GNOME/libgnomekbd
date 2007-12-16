@@ -1,3 +1,8 @@
+2007-12-16 svu
+
+	* capplet/gkbd-indicator-plugins-add.c: i18n patch, no libbonobo, gi18n
+	instead, http://bugzilla.gnome.org/show_bug.cgi?id=453698
+
 2007-12-11 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c,
