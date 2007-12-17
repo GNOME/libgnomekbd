@@ -26,6 +26,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <math.h>
+#include <glib/gi18n.h>
 
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
@@ -51,7 +52,8 @@ xkb_to_pixmap_coord (GkbdKeyboardDrawingRenderContext * context, gint n)
 }
 
 static gdouble
-xkb_to_pixmap_double (GkbdKeyboardDrawingRenderContext * context, gdouble d)
+xkb_to_pixmap_double (GkbdKeyboardDrawingRenderContext * context,
+		      gdouble d)
 {
 	return d * context->scale_numerator / context->scale_denominator;
 }
@@ -352,7 +354,7 @@ curve_rectangle (cairo_t * cr,
 }
 
 static void
-draw_curve_rectangle (cairo_t *cr,
+draw_curve_rectangle (cairo_t * cr,
 		      gboolean filled,
 		      GdkColor * fill_color,
 		      gint x, gint y, gint width, gint height, gint radius)
@@ -374,7 +376,7 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 		gint angle,
 		gint xkb_x, gint xkb_y, gint xkb_width, gint xkb_height,
 		gint radius)
-{ 
+{
 	if (angle == 0) {
 		gint x, y, width, height;
 		gboolean filled;
@@ -779,7 +781,7 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 		   GkbdKeyboardDrawing * drawing,
 		   gint angle, gint x, gint y)
 {
-	PangoLayout * layout = context->layout;
+	PangoLayout *layout = context->layout;
 	GdkColor *color;
 	PangoLayoutLine *line;
 	gint x_off, y_off;
@@ -792,8 +794,8 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 	if (angle != context->angle) {
 		PangoMatrix matrix = PANGO_MATRIX_INIT;
 		pango_matrix_rotate (&matrix, -angle / 10.0);
-		pango_context_set_matrix (pango_layout_get_context (layout),
-					  &matrix);
+		pango_context_set_matrix (pango_layout_get_context
+					  (layout), &matrix);
 		pango_layout_context_changed (layout);
 		context->angle = angle;
 	}
@@ -801,8 +803,7 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 	i = 0;
 	y_off = 0;
 	for (line = pango_layout_get_line (layout, i);
-	     line != NULL;
-	     line = pango_layout_get_line (layout, ++i)) {
+	     line != NULL; line = pango_layout_get_line (layout, ++i)) {
 		GSList *runp;
 		PangoRectangle line_extents;
 
@@ -824,7 +825,8 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 
 		pango_layout_line_get_extents (line, NULL, &line_extents);
 		y_off +=
-		    line_extents.height + pango_layout_get_spacing (layout);
+		    line_extents.height +
+		    pango_layout_get_spacing (layout);
 	}
 
 	cairo_move_to (context->cr, x, y);
@@ -895,7 +897,7 @@ draw_key_label_helper (GkbdKeyboardDrawingRenderContext * context,
 	     PANGO_SCALE);
 	cairo_save (context->cr);
 	cairo_rectangle (context->cr, x + padding / 2, y + padding / 2,
-			width - padding, height - padding);
+			 width - padding, height - padding);
 	cairo_clip (context->cr);
 	draw_pango_layout (context, drawing, angle, label_x, label_y);
 	cairo_restore (context->cr);
@@ -954,9 +956,9 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 						 XkbBuildCoreState
 						 (drawing->mods, g),
 						 &mods_rtrn, &keysym)) {
-				draw_key_label_helper (context, drawing, keysym,
-						       angle, glp, x, y,
-						       width, height,
+				draw_key_label_helper (context, drawing,
+						       keysym, angle, glp,
+						       x, y, width, height,
 						       padding);
 				/* reverse y order */
 			}
@@ -966,9 +968,9 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 			keysym =
 			    XkbKeySymEntry (drawing->xkb, keycode, l, g);
 
-			draw_key_label_helper (context, drawing, keysym, angle,
-					       glp, x, y, width, height,
-					       padding);
+			draw_key_label_helper (context, drawing, keysym,
+					       angle, glp, x, y, width,
+					       height, padding);
 			/* reverse y order */
 		}
 	}
@@ -977,8 +979,7 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 /* groups are from 0-3 */
 static void
 draw_key (GkbdKeyboardDrawingRenderContext * context,
-	  GkbdKeyboardDrawing * drawing,
-	  GkbdKeyboardDrawingKey * key)
+	  GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 {
 	XkbShapeRec *shape;
 	GdkColor *color;
@@ -1068,12 +1069,16 @@ invalidate_region (GkbdKeyboardDrawing * drawing,
 	    MAX (MAX (points[0].y, points[1].y),
 		 MAX (points[2].y, points[3].y));
 
-	x = xkb_to_pixmap_coord (drawing->renderContext, origin_x + x_min) - 6;
-	y = xkb_to_pixmap_coord (drawing->renderContext, origin_y + y_min) - 6;
-	width = xkb_to_pixmap_coord (drawing->renderContext,
-				     x_max - x_min) + 12;
-	height = xkb_to_pixmap_coord (drawing->renderContext,
-				      y_max - y_min) + 12;
+	x = xkb_to_pixmap_coord (drawing->renderContext,
+				 origin_x + x_min) - 6;
+	y = xkb_to_pixmap_coord (drawing->renderContext,
+				 origin_y + y_min) - 6;
+	width =
+	    xkb_to_pixmap_coord (drawing->renderContext,
+				 x_max - x_min) + 12;
+	height =
+	    xkb_to_pixmap_coord (drawing->renderContext,
+				 y_max - y_min) + 12;
 
 	gtk_widget_queue_draw_area (GTK_WIDGET (drawing), x, y, width,
 				    height);
@@ -1224,43 +1229,46 @@ draw_doodad (GkbdKeyboardDrawingRenderContext * context,
 }
 
 typedef struct {
-	GkbdKeyboardDrawing * drawing;
-	GkbdKeyboardDrawingRenderContext * context;
+	GkbdKeyboardDrawing *drawing;
+	GkbdKeyboardDrawingRenderContext *context;
 } DrawKeyboardItemData;
 
 static void
 redraw_overlapping_doodads (GkbdKeyboardDrawingRenderContext * context,
-                            GkbdKeyboardDrawing * drawing,
-                            GkbdKeyboardDrawingKey * key)
+			    GkbdKeyboardDrawing * drawing,
+			    GkbdKeyboardDrawingKey * key)
 {
-  GList *list;
-  gboolean do_draw = FALSE;
+	GList *list;
+	gboolean do_draw = FALSE;
 
-  for (list = drawing->keyboard_items; list; list = list->next)
-    {
-      GkbdKeyboardDrawingItem * item = list->data;
+	for (list = drawing->keyboard_items; list; list = list->next) {
+		GkbdKeyboardDrawingItem *item = list->data;
 
-      if (do_draw && item->type == GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD)
-       draw_doodad (context, drawing, (GkbdKeyboardDrawingDoodad *) item);
+		if (do_draw
+		    && item->type ==
+		    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD)
+			draw_doodad (context, drawing,
+				     (GkbdKeyboardDrawingDoodad *) item);
 
-      if (list->data == key)
-       do_draw = TRUE;
-    }
+		if (list->data == key)
+			do_draw = TRUE;
+	}
 }
 
 static void
 draw_keyboard_item (GkbdKeyboardDrawingItem * item,
-		    DrawKeyboardItemData *data)
+		    DrawKeyboardItemData * data)
 {
-	GkbdKeyboardDrawing * drawing = data->drawing;
-	GkbdKeyboardDrawingRenderContext * context = data->context;
+	GkbdKeyboardDrawing *drawing = data->drawing;
+	GkbdKeyboardDrawingRenderContext *context = data->context;
 
 	if (!drawing->xkb)
 		return;
 
 	switch (item->type) {
 	case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY:
-		draw_key (context, drawing, (GkbdKeyboardDrawingKey *) item);
+		draw_key (context, drawing,
+			  (GkbdKeyboardDrawingKey *) item);
 		break;
 
 	case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD:
@@ -1287,9 +1295,9 @@ create_cairo (GkbdKeyboardDrawing * drawing)
 {
 	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
 	drawing->renderContext->cr =
-		gdk_cairo_create (GDK_DRAWABLE (drawing->pixmap));
+	    gdk_cairo_create (GDK_DRAWABLE (drawing->pixmap));
 	drawing->renderContext->dark_color =
-		&GTK_WIDGET (drawing)->style->dark[state];
+	    &GTK_WIDGET (drawing)->style->dark[state];
 }
 
 static void
@@ -1328,9 +1336,9 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 static void
 alloc_render_context (GkbdKeyboardDrawing * drawing)
 {
-	GkbdKeyboardDrawingRenderContext * context = 
-		drawing->renderContext =
-		g_new0(GkbdKeyboardDrawingRenderContext, 1);
+	GkbdKeyboardDrawingRenderContext *context =
+	    drawing->renderContext =
+	    g_new0 (GkbdKeyboardDrawingRenderContext, 1);
 
 	PangoContext *pangoContext =
 	    gtk_widget_get_pango_context (GTK_WIDGET (drawing));
@@ -1348,7 +1356,7 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 static void
 free_render_context (GkbdKeyboardDrawing * drawing)
 {
-	GkbdKeyboardDrawingRenderContext * context = drawing->renderContext;
+	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 	g_object_unref (G_OBJECT (context->layout));
 	pango_font_description_free (context->font_desc);
 
@@ -1439,7 +1447,7 @@ static void
 size_allocate (GtkWidget * widget,
 	       GtkAllocation * allocation, GkbdKeyboardDrawing * drawing)
 {
-	GkbdKeyboardDrawingRenderContext * context = drawing->renderContext;
+	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 
 	if (drawing->pixmap) {
 		g_object_unref (drawing->pixmap);
@@ -1878,6 +1886,7 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 							    physical_indicators
 							    [i]->on =
 							    state;
+							create_cairo (drawing);
 							draw_doodad
 							    (drawing->
 							     renderContext,
@@ -1885,6 +1894,7 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 							     drawing->
 							     physical_indicators
 							     [i]);
+							destroy_cairo (drawing);
 							invalidate_indicator_doodad_region
 							    (drawing,
 							     drawing->
@@ -2121,7 +2131,7 @@ gkbd_keyboard_drawing_set_mods (GkbdKeyboardDrawing * drawing, guint mods)
 GdkPixbuf *
 gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
 {
-	GkbdKeyboardDrawingRenderContext * context = drawing->renderContext;
+	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 
 	if (drawing->pixmap == NULL)
 		draw_keyboard (drawing);
@@ -2156,12 +2166,13 @@ gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
  *
  * @returns:   %TRUE on success, %FALSE on failure
  */
-gboolean gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
-				       cairo_t * cr,
-				       PangoLayout * layout,
-				       double x, double y,
-				       double width, double height,
-				       double dpi_x, double dpi_y)
+gboolean
+gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
+			      cairo_t * cr,
+			      PangoLayout * layout,
+			      double x, double y,
+			      double width, double height,
+			      double dpi_x, double dpi_y)
 {
 	GkbdKeyboardDrawingRenderContext context = {
 		cr,
@@ -2171,7 +2182,7 @@ gboolean gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
 					     font_desc),
 		1, 1,
 		&GTK_WIDGET (drawing)->style->dark[GTK_WIDGET_STATE
-			(GTK_WIDGET (drawing))]
+						   (GTK_WIDGET (drawing))]
 	};
 
 	if (!context_setup_scaling (&context, drawing, width, height,
@@ -2330,4 +2341,94 @@ gkbd_keyboard_drawing_set_groups_levels (GkbdKeyboardDrawing * drawing,
 	drawing->groupLevels = groupLevels;
 
 	gtk_widget_queue_draw (GTK_WIDGET (drawing));
+}
+
+typedef struct {
+	GkbdKeyboardDrawing *drawing;
+	const gchar *description;
+} XkbLayoutPreviewPrintData;
+
+static void
+gkbd_keyboard_drawing_begin_print (GtkPrintOperation * operation,
+				   GtkPrintContext * context,
+				   XkbLayoutPreviewPrintData * data)
+{
+	/* We always print single-page documents */
+	gtk_print_operation_set_n_pages (operation, 1);
+}
+
+static void
+gkbd_keyboard_drawing_draw_page (GtkPrintOperation * operation,
+				 GtkPrintContext * context,
+				 gint page_nr,
+				 XkbLayoutPreviewPrintData * data)
+{
+	cairo_t *cr = gtk_print_context_get_cairo_context (context);
+	PangoLayout *layout =
+	    gtk_print_context_create_pango_layout (context);
+	PangoFontDescription *desc =
+	    pango_font_description_from_string ("sans 8");
+	gdouble width = gtk_print_context_get_width (context);
+	gdouble height = gtk_print_context_get_height (context);
+	gdouble dpi_x = gtk_print_context_get_dpi_x (context);
+	gdouble dpi_y = gtk_print_context_get_dpi_y (context);
+	gchar *header;
+
+	gtk_print_operation_set_unit (operation, GTK_PIXELS);
+
+	header = g_strdup_printf
+	    (_("%s keyboard drawn by Gnome\n"
+	       "Copyright &#169; X.Org Foundation and "
+	       "XKeyboardConfig contributors\n"
+	       "For licensing see package metadata"), data->description);
+	pango_layout_set_markup (layout, header, -1);
+	pango_layout_set_font_description (layout, desc);
+	pango_font_description_free (desc);
+	pango_layout_set_width (layout, pango_units_from_double (width));
+	pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
+	cairo_set_source_rgb (cr, 0, 0, 0);
+	cairo_move_to (cr, 0, 0);
+	pango_cairo_show_layout (cr, layout);
+
+	gkbd_keyboard_drawing_render (GKBD_KEYBOARD_DRAWING
+				      (data->drawing), cr, layout, 0.0,
+				      0.0, width, height, dpi_x, dpi_y);
+
+	g_object_unref (layout);
+}
+
+void
+gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
+			     GtkWindow * parent_window,
+			     const gchar * description)
+{
+	GtkPrintOperation *print;
+	GtkPrintOperationResult res;
+	static GtkPrintSettings *settings = NULL;
+	XkbLayoutPreviewPrintData data = { drawing, description };
+
+	print = gtk_print_operation_new ();
+
+	if (settings != NULL)
+		gtk_print_operation_set_print_settings (print, settings);
+
+	g_signal_connect (print, "begin_print",
+			  G_CALLBACK (gkbd_keyboard_drawing_begin_print),
+			  &data);
+	g_signal_connect (print, "draw_page",
+			  G_CALLBACK (gkbd_keyboard_drawing_draw_page),
+			  &data);
+
+	res = gtk_print_operation_run (print,
+				       GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+				       parent_window, NULL);
+
+	if (res == GTK_PRINT_OPERATION_RESULT_APPLY) {
+		if (settings != NULL)
+			g_object_unref (settings);
+		settings = gtk_print_operation_get_print_settings (print);
+		g_object_ref (settings);
+	}
+
+	g_object_unref (print);
 }

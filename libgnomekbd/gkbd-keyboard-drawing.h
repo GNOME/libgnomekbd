@@ -104,7 +104,7 @@ struct _GkbdKeyboardDrawingGroupLevel {
 };
 
 struct _GkbdKeyboardDrawingRenderContext {
-	cairo_t * cr;
+	cairo_t *cr;
 
 	gint angle;		/* current angle pango is set to draw at, in tenths of a degree */
 	PangoLayout *layout;
@@ -199,6 +199,11 @@ void gkbd_keyboard_drawing_set_groups_levels (GkbdKeyboardDrawing *
 					      kbdrawing,
 					      GkbdKeyboardDrawingGroupLevel
 					      * groupLevels[]);
+
+
+void gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
+				  GtkWindow * parent_window,
+				  const gchar * description);
 
 G_END_DECLS
 #endif				/* #ifndef GKBD_KEYBOARD_DRAWING_H */

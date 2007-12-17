@@ -1,3 +1,10 @@
+2007-12-17 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: moved printing function from
+	g-c-c
+	* configure.in, NEWS: release 2.21.4.1
+
 2007-12-16 svu
 
 	* capplet/gkbd-indicator-plugins-add.c: i18n patch, no libbonobo, gi18n

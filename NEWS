@@ -1,3 +1,7 @@
+2.21.4.1:
+	Fix for the indicators crash in keyboard drawing,
+	Keyboard drawing printing functions moved to libgnomekbd, from g-c-c
+
 2.21.4:
 	Render keyboard to cairo, making printing possible. 
 	Build tests optionally. 
