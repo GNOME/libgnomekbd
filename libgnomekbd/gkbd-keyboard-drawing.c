@@ -2377,7 +2377,7 @@ gkbd_keyboard_drawing_draw_page (GtkPrintOperation * operation,
 	gtk_print_operation_set_unit (operation, GTK_PIXELS);
 
 	header = g_strdup_printf
-	    (_("%s keyboard drawn by Gnome\n"
+	    (_("Keyboard layout \"%s\"\n"
 	       "Copyright &#169; X.Org Foundation and "
 	       "XKeyboardConfig contributors\n"
 	       "For licensing see package metadata"), data->description);

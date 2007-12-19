@@ -1,3 +1,8 @@
+2007-12-19 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: giving context to the
+	translated string, http://bugzilla.gnome.org/show_bug.cgi?id=504294
+
 2007-12-17 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c,
