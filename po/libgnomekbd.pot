@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-08 10:38+0100\n"
+"POT-Creation-Date: 2007-12-20 08:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
 
 #: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
