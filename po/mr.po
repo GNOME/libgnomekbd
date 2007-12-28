@@ -1,0 +1,253 @@
+# translation of libgnomekbd.HEAD.po to marathi
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# sandeep shedmake <sandeep.shedmake@gmail.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd.HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-12-28 00:32-0200\n"
+"PO-Revision-Date: 2007-12-16 12:29+0530\n"
+"Last-Translator: sandeep shedmake <sandeep.shedmake@gmail.com>\n"
+"Language-Team: marathi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+
+#: ../libgnomekbd/gkbd-indicator.c:617
+msgid "XKB initialization error"
+msgstr "XKB सुरू करतेवेळी त्रुटी"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:161
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "प्रतिमा दाखल करतेवेळी त्रुटी: %s"
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "मांडणी \"%s\""
+msgstr[1] "मांडणी \"%s\""
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "पर्याय \"%s\""
+msgstr[1] "पर्याय \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "प्रारूप \"%s\", %s व %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+msgid "no layout"
+msgstr "मांडणी नाही"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no options"
+msgstr "पर्याय नाही"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"कळफलक स्थिती पुनःदाखल केल्यास चालविण्याजोगी लिपींचा संच. xmodmap आधारीत तडजोड "
+"पुनःवापरणी करीता फायदेशीर ठरते"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "modmap फाइलीची यादी $HOME संचयीकेमध्ये उपलब्ध आहे."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "चौकट निर्माण केल्यावर मुलभूत गटाची, नेमणूक केली जाते"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "प्रत्येक चौकटीकरीता स्वतंत्र गट ठेवा व नियंत्रीत करा"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "कळफलक अद्ययावत हातळणी"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "कळफलक मांडणी"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "कळफलक प्रारूप"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "कळफलक पर्याय"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr "gconf मधील कळफलक रचना प्रणाली ASAP पासून अधिभावी केले जाईल (वापरणीत नाही)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "मांडणी गटासह सूचक संचयन/पुनःसंचयन करा"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "दुय्यम गट"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "ऐपलेट मधील बाबी दर्शवा"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "सद्य मांडणी सूचीत करण्यासाठी ऐपलेटमधील बाबी दर्शवा"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "गटातील नावं ऐवजी मांडणीतील नावं दर्शवा"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"गटातील नावं ऐवजी मांडणीतील नावं दर्शवा (फक्त XFree बहु मांडणी समर्थीत आवृत्तीं करीता)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr "\"X sysconfig बदलले\" सावधानता संदेश दुर्लक्ष करा"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr "कळफलक पूर्वदृश्य, X ऑफसेट"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "कळफलक पूर्वदृश्य, Y ऑफसेट"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "कळफलक पूर्वदृश्य, उंची"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "कळफलक पूर्वदृश्य, रुंदी"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "उपलब्ध कळफलक सूचक प्लगईनची यादी"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"लवकरच, gconf मधील कळफलक रचना अधिभावी केले जाईल (प्रणाली संयोजन पासून) GNOME 2.12 "
+"पासून ही कळ वापरणीत नाही, कृपया मुलभूत प्रणाली संयोजना प्राप्त करण्याकरीता प्रारूप, "
+"मांडणी व पर्यायी कळ अनिश्चित करा."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "कळफलक मांडणी"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "कळफलक प्रारूप"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "modmap फाइल यादी"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "अधिक प्लगईन सक्रीय करा"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "सक्रीय प्लगईन (_p):"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "प्लगईन जोडा"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "संवाद बंद करा"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "निवडलेल्या प्लगईनची संयोजन करा"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "निवडलेले प्लगईन सक्रीय करू नका"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "प्लगईनचे प्राधान्य कमी करा"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "प्लगईनचे प्राधान्य वाढवा"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "कलफलक सूचक प्लगईन"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "सक्रीय प्लगईनची यादी"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "उपलब्ध प्लगईन (_A):"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "वर्णन नाही."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "GConf सुरू करण्यास अपयशी: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "प्रतिष्ठापीत प्लगईन कार्यान्वीत/अकार्यान्वीत करा"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "कळफलक सूचक प्लगईन"
+
+#: ../test/gkbd-indicator-test.c:59
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "कळफलक सूचक चाचणी (%s)"
+
+#: ../test/gkbd-indicator-test.c:68
+msgid "Indicator:"
+msgstr "सूचक:"
