@@ -2,53 +2,69 @@
 # Copyright (C) 2007 Sergey V. Udaltsov <svu@gnome.org>
 # This file is distributed under the same license as the libgnomekbd package.
 # Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>, 2007.
+# Washington Lins <washington-lins@uol.com.br>, 2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd 2.17.92\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-01 16:44-0300\n"
-"PO-Revision-Date: 2007-04-01 13:32-0400\n"
-"Last-Translator: Washington Lins <washington-lins@uol.com.br>\n"
+"POT-Creation-Date: 2007-12-28 00:32-0200\n"
+"PO-Revision-Date: 2007-12-28 00:37-0200\n"
+"Last-Translator: Leonardo Ferreira Fontenelle <leo.fontenelle@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Disposição de teclado \"%s\"\n"
+"Copyright © X.org Foundation e colaboradores do XKeyboardConfig\n"
+"Para a licença, veja os metadados do pacote."
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "Erro de inicialização do XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Ocorreu um erro ao carregar uma imagem: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "disposição \"%s\""
 msgstr[1] "disposições \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "opção \"%s\""
 msgstr[1] "opções \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modelo \"%s\", %s e %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "sem disposição"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "sem opções"
 
@@ -93,8 +109,8 @@ msgid ""
 "Keyboard settings in gconf will be overridden from the system ASAP "
 "(deprecated)"
 msgstr ""
-"Configurações de teclado no gconf serão substituídas pelo sistema assim que "
-"possíve (obsoleto)"
+"Configurações de teclado no gconf serão substituídas pelas do sistema "
+"assim que possível (obsoleto)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
@@ -146,7 +162,7 @@ msgstr "Visualização do teclado, largura"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "A lista de plugins Indicadores de Teclado habilitados"
+msgstr "A lista de plug-ins Indicadores de Teclado habilitados"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid ""
@@ -173,15 +189,15 @@ msgstr "lista de arquivos modmap"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr "Ativar mais plugins"
+msgstr "Ativar mais plug-ins"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:2
 msgid "Active _plugins:"
-msgstr "_Plugins ativos:"
+msgstr "_Plug-ins ativos:"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:3
 msgid "Add Plugin"
-msgstr "Adicionar Plugin"
+msgstr "Adicionar Plug-in"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:4
 msgid "Close the dialog"
@@ -189,55 +205,55 @@ msgstr "Fechar a caixa de diálogo"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:5
 msgid "Configure the selected plugin"
-msgstr "Configurar o plugin selecionado"
+msgstr "Configurar o plug-in selecionado"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr "Desativar o plugin selecionado"
+msgstr "Desativar o plug-in selecionado"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr "Diminuir a prioridade do plugin"
+msgstr "Diminuir a prioridade do plug-in"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr "Aumentar a prioridade do plugin"
+msgstr "Aumentar a prioridade do plug-in"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
-msgstr "Plugins Indicadores de Teclado"
+msgstr "Plug-ins Indicadores de Teclado"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:10
 msgid "The list of active plugins"
-msgstr "A lista de plugins ativos"
+msgstr "A lista de plug-ins ativos"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:11
 msgid "_Available plugins:"
-msgstr "Plugins _disponíveis:"
+msgstr "Plug-ins _disponíveis:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Sem descrição."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Falha ao iniciar GConf: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
-msgstr "Ativar/desativar plugins instalados"
+msgstr "Ativar/desativar plug-ins instalados"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
-msgstr "Plugins Indicadores de Teclado"
+msgstr "Plug-ins Indicadores de Teclado"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Teste de Indicador de Teclado (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Indicador:"
