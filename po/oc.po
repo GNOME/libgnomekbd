@@ -1,16 +1,14 @@
-# translation of oc.po to Occitan
+# Translation of oc.po to Occitan
 # Occitan translation of libgnomekbd.
 # Copyright (C) 2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 #
-# Yannig MARCHEGAY (yannig@marchegay.org) - 2006-2007
-#
-# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2007.
+# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2006-2008
 msgid ""
 msgstr ""
 "Project-Id-Version: oc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-21 12:13+0100\n"
+"POT-Creation-Date: 2007-12-27 13:29+0100\n"
 "PO-Revision-Date: 2007-11-20 14:32+0100\n"
 "Last-Translator: Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan <ubuntu-l10n-oci@lists.ubuntu.com>\n"
@@ -18,20 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr ""
 
-#: ../libgnomekbd/gkbd-indicator-config.c:163
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr ""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:798
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -40,23 +45,23 @@ msgstr[1] ""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:815
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "opcion \"%s\""
-msgstr[1] "opcion \"%s\""
+msgstr[1] "opcions \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modèl \"%s\", %s e %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr ""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:825
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "pas cap d'opcions"
 
@@ -213,12 +218,12 @@ msgstr ""
 msgid "_Available plugins:"
 msgstr ""
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Pas cap de descripcion."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr ""
@@ -239,4 +244,3 @@ msgstr ""
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr ""
-
