@@ -1,64 +1,81 @@
+# translation of libgnomekbd.HEAD.ar.po to Arabic
 # Arabic translations for gnome package.
 # Copyright (C) 2007 THE gnome'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome package.
-# Automatically generated, 2007.
 #
+# Automatically generated, 2007.
+# Khaled Hosny <khaledhosny@eglug.org>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: HEAD\n"
+"Project-Id-Version: libgnomekbd.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-21 20:05+0100\n"
-"PO-Revision-Date: 2007-04-12 21:41+0200\n"
+"POT-Creation-Date: 2007-12-23 12:24+0000\n"
+"PO-Revision-Date: 2008-01-11 21:27+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
-"Language-Team: Arabeyes <doc@arabeyes.org>\n"
+"Language-Team: Arabic <doc@eglug.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : "
-"3\n"
+"Plural-Forms:  nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n>=3 && n<=10 ? 3 : n>=11 && n<=99 ? 4 : 5;\n"
 "X-Poedit-Language: Arabic\n"
+"X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"تصميم لوحة المفاتيح \"%s\"\n"
+"حقوق النشر &#169; للمساهمين في مؤسسة X.Org و XKeyboardConfig\n"
+"لمراجعة الرخصة انظر بيانات الحزمة"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "خطأ في بدء XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:163
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "حدث خطأ عند تحميل صورة: \"%s\"."
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:798
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "المخطط \"%s\""
-msgstr[1] "المخططان  \"%s\""
-msgstr[2] "المخططات \"%s\""
-msgstr[3] "المخططات \"%s\""
+msgstr[0] "مخطط \"%s\""
+msgstr[1] "مخطط \"%s\""
+msgstr[2] "مخططا \"%s\""
+msgstr[3] "مخططات \"%s\""
+msgstr[4] "مخططات \"%s\""
+msgstr[5] "مخططات \"%s\""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:815
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
-msgstr[0] "الخيار \"%s\""
-msgstr[1] "الخياران \"%s\""
-msgstr[2] "الخيارات \"%s\""
-msgstr[3] "الخيارات \"%s\""
+msgstr[0] "خيار \"%s\""
+msgstr[1] "خيار \"%s\""
+msgstr[2] "خياري \"%s\""
+msgstr[3] "خيارات \"%s\""
+msgstr[4] "خيارات \"%s\""
+msgstr[5] "خيارات \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "طراز \"%s\"، %s و %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "لا مخطط"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:825
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "لا خيارات"
 
@@ -76,7 +93,7 @@ msgstr "قائمة ملفات modmap المتوفرة في الدليل المن
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
-msgstr "المجموعة الافتراضية، عند إنشاء نافذة"
+msgstr "المجموعة المبدئية، عند إنشاء نافذة"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
 msgid "Keep and manage separate group per window"
@@ -84,7 +101,7 @@ msgstr "احفظ وأدر مجموعة منفصلة لكل نافذة"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
 msgid "Keyboard Update Handlers"
-msgstr "متناولات تحديث لوحة المفاتيح"
+msgstr "معالجات تحديث لوحة المفاتيح"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
 msgid "Keyboard layout"
@@ -102,8 +119,7 @@ msgstr "خيارات لوحة المفاتيح"
 msgid ""
 "Keyboard settings in gconf will be overridden from the system ASAP "
 "(deprecated)"
-msgstr ""
-"ستُتجاوز اعدادات لوحة المفاتيح في gconf من النظام بمجرد إمكان ذلك (مهجور)"
+msgstr "ستُتجاوز إعدادات لوحة المفاتيح في gconf من النظام بمجرد إمكان ذلك (لاغِ)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
@@ -123,27 +139,27 @@ msgstr "اعرض أعلام في البريمج لتشير للمخطط الحا
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show layout names instead of group names"
-msgstr "اعرض اسماء المخططات بدل اسماء المجموعات"
+msgstr "اعرض أسماء المخططات بدل أسماء المجموعات"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"اعرض اسماء المخططات بدل اسماء المجموعات (فقط لإصدارات XFree الداعمة للمخططات "
+"اعرض أسماء المخططات بدل أسماء المجموعات (فقط لإصدارات XFree الداعمة للمخططات "
 "المتعددة)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "لا تظهر التنبيه \"تغيرت اعدادات X\""
+msgstr "لا تظهر التنبيه \"تغيرت إعدادات س\""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, X offset"
-msgstr "معاينة لوحة المفاتيح، الإنزياح السيني"
+msgstr "معاينة لوحة المفاتيح، الانزياح السيني"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, Y offset"
-msgstr "معاينة لوحة المفاتيح، الإنزياح الصادي"
+msgstr "معاينة لوحة المفاتيح، الانزياح الصادي"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, height"
@@ -163,9 +179,9 @@ msgid ""
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
 msgstr ""
-"قريبا جداً، ستُتجاوز إعدادات لوحة المفاتيح في gconf (من إعدادات النظام). هُجِر "
-"هذا المفتاح منذ جنوم 2.12، من فضلط أعِد ضبط الطراز، المخطط وخيارات المفاتيح "
-"لتحصل على إعدادات النظام الإفتراضيّة."
+"قريبا جداً، ستُتجاوز إعدادات لوحة المفاتيح في gconf (من إعدادات النظام). ألغِي"
+"هذا المفتاح منذ جنوم 2.12، من فضلك أعِد ضبط الطراز، والمخطط وخيارات المفاتيح "
+"لتحصل على إعدادات النظام المبدئيّة."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -177,7 +193,7 @@ msgstr "طراز لوحة المفاتيح"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
-msgstr "قائمة الملفات modmap"
+msgstr "قائمة ملفات modmap"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:1
 msgid "Activate more plugins"
@@ -197,11 +213,11 @@ msgstr "أغلق الحوار"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:5
 msgid "Configure the selected plugin"
-msgstr "اضبط الملحق المنتقى"
+msgstr "اضبط الملحق المختار"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr "ثبِّط الملحق المنتقى"
+msgstr "ثبِّط الملحق المختار"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:7
 msgid "Decrease the plugin priority"
@@ -223,12 +239,12 @@ msgstr "قائمة الملحقات النشطة"
 msgid "_Available plugins:"
 msgstr "الملحقات المت_وفرة:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "لا وصف."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "فشل بدأ GConf: %s\n"
@@ -249,3 +265,4 @@ msgstr "ملحقات موضّح لوحة المفاتيح (%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "موضّح:"
+
