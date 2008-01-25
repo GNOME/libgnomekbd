@@ -1,0 +1,261 @@
+# Czech translation of libgnomekbd.
+# Copyright (C) 2007, 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libgnomekbd package.
+# Petr Kovar <pknbe@volny.cz>, 2007, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-01-25 21:19+0100\n"
+"PO-Revision-Date: 2007-12-21 20:52+0100\n"
+"Last-Translator: Petr Kovar <pknbe@volny.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Rozložení klávesnice \"%s\"\n"
+"Copyright &#169; X.Org Foundation a přispívající k XKeyboardConfig\n"
+"Licencování viz metadata balíčku"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
+msgid "XKB initialization error"
+msgstr "Chyba při spouštění XKB"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:161
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Nastala chyba při načítání obrázku: %s"
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "rozložení \"%s\""
+msgstr[1] "rozložení \"%s\""
+msgstr[2] "rozložení \"%s\""
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "možnost \"%s\""
+msgstr[1] "možnosti \"%s\""
+msgstr[2] "možností \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "model \"%s\", %s a %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+msgid "no layout"
+msgstr "bez rozložení"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no options"
+msgstr "bez možností"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"Skupina skriptů určená ke spouštění v okamžiku, kdy dojde k opětovnému "
+"načtení stavu klávesnice. Užitečné v případě opakovaného použití změn "
+"\"xmodmap\"."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "Seznam souborů \"modmap\" dostupný v adresáři $HOME."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "Výchozí skupina, přiřazená při vytvoření okna"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "U každého okna udržovat a spravovat oddělenou skupinu"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "Obsluha aktualizace klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "Rozložení klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "Model klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "Možnosti klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr ""
+"Nastavení klávesnice v programu \"gconf\" bude nahrazeno systémovým, jakmile "
+"to jen bude možné (zastaralé)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "Ukládat/obnovovat indikátory společně se skupinami rozložení"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "Sekundární skupiny"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "Zobrazovat v appletu vlaječky"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Ukazovat aktuální rozložení zobrazením vlaječek v appletu"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "Zobrazovat názvy rozložení namísto názvu skupin"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Zobrazí názvy rozložení namísto názvů skupin (pouze u verzí XFree "
+"podporujících vícenásobná rozložení)"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr "Nezobrazovat varovnou zprávu o změně systémového nastavení X"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr "Náhled klávesnice, umístění X"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "Náhled klávesnice, umístění Y"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "Náhled klávesnice, výška"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "Náhled klávesnice, šířka"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Seznam zapnutých zásuvných modulů indikátoru klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"Velmi brzy dojde k nahrazení nastavení klávesnice v programu \"gconf"
+"\" (systémovým nastavením). Tento klíč je zastaralý od verze 2.12 prostředí "
+"GNOME. Výchozí systémové nastavení lze získat zrušením výběru modelu, "
+"rozložení a klíčů nastavení."
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "rozložení klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "model klávesnice"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "seznam souboru \"modmap\""
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "Aktivuje více zásuvných modulů"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "Aktivní zásuvné _moduly:"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Přidat zásuvný modul"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "Zavře dialogové okno"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "Nastaví vybraný zásuvný modul"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "Deaktivuje vybraný zásuvný modul"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "Sníží prioritu zásuvného modulu"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "Zvýší prioritu zásuvného modulu"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "Zásuvné moduly indikátoru klávesnice"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "Seznam aktivních zásuvných modulů"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "_Dostupné zásuvné moduly:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "Bez popisu."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "Nezdařilo se spustit GConf: %s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Zapnout/vypnout instalované zásuvné moduly"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Zásuvné moduly indikátoru klávesnice"
+
+#: ../test/gkbd-indicator-test.c:59
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "Test indikátoru klávesnice (%s)"
+
+#: ../test/gkbd-indicator-test.c:68
+msgid "Indicator:"
+msgstr "Indikátor:"
