@@ -1,14 +1,14 @@
 # libgnomekbd ja.po.
-# Copyright (C) 2007 Free Software Foundation, Inc.
+# Copyright (C) 2007,2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the 'libgnomekbd' package.
-# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2007.
+# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2007,2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-09 23:19+0900\n"
-"PO-Revision-Date: 2007-04-09 23:19+0900\n"
+"POT-Creation-Date: 2008-02-03 23:20+0900\n"
+"PO-Revision-Date: 2008-02-03 23:20+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -16,37 +16,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"キーボードのレイアウト \"%s\"\n"
+"Copyright &#169; X.Org Foundation と XKeyboardConfig の貢献者\n"
+"ライセンスに関してはパッケージ内のメタデータを参照のこと"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "XKB の初期化エラー"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "イメージを読み込む際にエラーが発生しました: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "レイアウト \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "オプション \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "型式 \"%s\"、%s と %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "レイアウトなし"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "オプションなし"
 
@@ -214,12 +229,12 @@ msgstr "有効になっているプラグインの一覧です"
 msgid "_Available plugins:"
 msgstr "利用可能なプラグイン(_A):"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "説明なし"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf の初期化に失敗しました: %s\n"
@@ -232,11 +247,11 @@ msgstr "インストール済みのプラグインを設定します"
 msgid "Keyboard Indicator plugins"
 msgstr "キーボード表示器のプラグイン"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "キーボード表示器のテスト (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "表示器:"
