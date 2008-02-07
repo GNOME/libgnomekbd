@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-04 17:14+0200\n"
-"PO-Revision-Date: 2007-07-04 16:26+0200\n"
-"Last-Translator: Andrzej Polatyński <andrzej@datatel.net.pl>\n"
+"POT-Creation-Date: 2008-02-07 23:56+0100\n"
+"PO-Revision-Date: 2008-02-07 23:25+0100\n"
+"Last-Translator: Tomasz Dominikowski <dominikowski@gmail.com>\n"
 "Language-Team: Polish <gnome-l10n@lists.aviary.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,16 +23,29 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Układ klawiatury \"%s\"\n"
+"Copyright &#169; X.Org Foundation oraz współpracownicy XKeyboardConfig\n"
+"Zasady licencji znajdują się w metadanych pakietu"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "Błąd inicjalizacji XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Wystąpił błąd podczas wczytywania obrazu: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:801
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -40,7 +53,9 @@ msgstr[0] "układ \"%s\""
 msgstr[1] "układy \"%s\""
 msgstr[2] "układy \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:820
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -48,16 +63,16 @@ msgstr[0] "opcja \"%s\""
 msgstr[1] "opcje \"%s\""
 msgstr[2] "opcje \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:828
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model \"%s\", %s i %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:829
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "brak układu"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:830
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "brak opcji"
 
@@ -222,12 +237,12 @@ msgstr "Lista aktywnych wtyczek"
 msgid "_Available plugins:"
 msgstr "_Dostępne wtyczki:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Brak opisu."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nie można zainicjalizować GConf: %s\n"
@@ -240,11 +255,11 @@ msgstr "Włącza/wyłącza zainstalowane wtyczki"
 msgid "Keyboard Indicator plugins"
 msgstr "Wtyczki wskaźnika klawiatury"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Test wskaźnika klawiatury (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Wskaźnik:"
