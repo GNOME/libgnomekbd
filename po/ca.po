@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-28 08:00+0200\n"
-"PO-Revision-Date: 2007-03-28 08:02+0200\n"
+"POT-Creation-Date: 2008-02-15 16:23+0100\n"
+"PO-Revision-Date: 2008-02-15 16:26+0100\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,39 +16,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Disposició de teclat «%s»\n"
+"Copyright &#169; la Fundació X.Org i els col·laboradors del XKeyboardConfig\n"
+"Vegeu les metadades del paquet per a la llicència"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "Error d'inicialització del XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "S'ha produït un error en carregar una imatge: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "«%s» disposició"
 msgstr[1] "«%s» disposicions"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "«%s» opció"
 msgstr[1] "«%s» opcions"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model «%s, %s i %s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "no hi ha disposició"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "no hi ha opcions"
 
@@ -216,12 +231,12 @@ msgstr "La llista dels connectors actius"
 msgid "_Available plugins:"
 msgstr "Connectors _disponibles:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Sense descripció."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "No s'ha pogut iniciar el GConf: %s\n"
@@ -234,11 +249,11 @@ msgstr "Habiliteu/inhabiliteu els connectors instal·lats"
 msgid "Keyboard Indicator plugins"
 msgstr "Connectors de l'indicador de teclat"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Prova de l'indicador del teclat (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Indicador:"
