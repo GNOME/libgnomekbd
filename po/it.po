@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-29 11:59+0200\n"
-"PO-Revision-Date: 2007-03-29 12:01+0200\n"
+"POT-Creation-Date: 2008-02-15 21:11+0100\n"
+"PO-Revision-Date: 2008-02-15 21:15+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -18,39 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
-msgid "XKB initialization error"
-msgstr "Errore di inizializzazione XKB"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Disposizione di tastiera «%s»\n"
+"Copyright &#169; X.Org Foundation e collaboratori di XKeyboardConfig\n"
+"Per la licenza consultare i metadati del pacchetto"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator.c:617
+msgid "XKB initialization error"
+msgstr "Errore di inizializzazione di XKB"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Si è verificato un errore nel caricare un'immagine: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "disposizione «%s»"
 msgstr[1] "disposizioni «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "opzione «%s»"
 msgstr[1] "opzioni «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modello «%s», %s e %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "nessuna disposizione"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "nessuna opzione"
 
@@ -221,12 +236,12 @@ msgstr "L'elenco dei plugin attivi"
 msgid "_Available plugins:"
 msgstr "Plugin _disponibili:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Nessuna descrizione."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Inizializzazione di GConf fallita: %s\n"
@@ -239,11 +254,11 @@ msgstr "Abilita/Disabilita i plugin installati"
 msgid "Keyboard Indicator plugins"
 msgstr "Plugin di Indicatore tastiera"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Test indicatore tastiera (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Indicatore:"

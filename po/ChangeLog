@@ -1,3 +1,8 @@
+2008-02-15  Luca Ferretti  <elle.uca@libero.it>
+
+	* it.po: Updated Italian translation.
+	* libgnomekbd.pot: Removed, this file shouldn't be on svn.
+
 2008-02-15  Gil Forcada  <gforcada@gnome.org>
 
 	* ca.po: Updated Catalan translation.
