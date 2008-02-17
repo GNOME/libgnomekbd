@@ -1,0 +1,248 @@
+# Chinese (Taiwan) translation of libgnomekbd
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>, 2008.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd 2.21.14.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-02-14 19:53+0800\n"
+"PO-Revision-Date: 2008-02-16 21:22+0800\n"
+"Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
+"Language-Team: Chinese/Traditional <community@linuxhall.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"鍵盤配置「%s」\n"
+"版權所有 &#169; X.Org 基金會及 XKeyboardConfig 貢獻者\n"
+"要了解授權請查閱套件中繼資料"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
+msgid "XKB initialization error"
+msgstr "XKB 初始化錯誤"
+
+#: ../libgnomekbd/gkbd-indicator-config.c:161
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "讀取圖片時發生錯誤：%s"
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "配置「%s」"
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "選項「%s」"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "型號「%s」，%s 與 %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
+msgid "no layout"
+msgstr "沒有配置"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
+msgid "no options"
+msgstr "沒有選項"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr "鍵盤狀態重新載入時執行的命令稿。對重新套用基於 xmodmap 調整很有幫助"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
+msgid "A list of modmap files available in the $HOME directory."
+msgstr "在 $HOME 目錄中可用的 modmap 檔案清單。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "預設的群組，在視窗建立時分配"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "保持並管理每個視窗中個別的群組"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
+msgid "Keyboard Update Handlers"
+msgstr "鍵盤更新處理程式"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
+msgid "Keyboard layout"
+msgstr "鍵盤配置"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
+msgid "Keyboard model"
+msgstr "鍵盤型號"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
+msgid "Keyboard options"
+msgstr "鍵盤選項"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
+msgstr "在 gconf 中的鍵盤設定值會儘快被系統設定值覆蓋 (不贊成))"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Save/restore indicators together with layout groups"
+msgstr "儲存/還原指示器及配置群俎"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+msgid "Secondary groups"
+msgstr "第二群組"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+msgid "Show flags in the applet"
+msgstr "在面板程式中顯示旗幟"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "在面板程式中顯示旗幟以指出目前的配置"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names"
+msgstr "顯示配置名稱來代替群組名稱"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr "顯示配置名稱來代替群組名稱（只用在支援多重配置的 XFree）"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Suppress the \"X sysconfig changed\" warning message"
+msgstr "封鎖「X sysconfig 改變」警示言訊息"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "The Keyboard Preview, X offset"
+msgstr "鍵盤預覽，X 位移"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "鍵盤預覽，Y 位移"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+msgid "The Keyboard Preview, height"
+msgstr "鍵盤預覽，高度"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+msgid "The Keyboard Preview, width"
+msgstr "鍵盤預覽，寬度"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "啟用的鍵盤指示器外掛程式清單"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"很快的，gconf 中的鍵盤設定值就會被覆蓋 （依據系統設定）這個設定鍵自 GNOME "
+"2.12 後已不建議使用，請取消該型號、配置及選擇鍵的設定以取得預設的系統組態。"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "keyboard layout"
+msgstr "鍵盤配置"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "keyboard model"
+msgstr "鍵盤型號"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "modmap file list"
+msgstr "modmap 檔案清單"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "使用更多外掛程式"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "使用的外掛程式(_P):"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "加入外掛程式"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "關閉這個對話盒"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "設定選定的外掛程式"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "停止使用選定的外掛程式"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "降低外掛程式優先權"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "提高外掛程式優先權"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "鍵盤指示器外掛程式"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "使用中外掛程式清單"
+
+#: ../capplet/gkbd-indicator-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "可用的外掛程式(_A):"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-add.c:106
+msgid "No description."
+msgstr "沒有描述。"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "初始化 GConf 失敗：%s\n"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "啟用/停用已安裝的外掛程式"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "鍵盤指示器外掛程式"
+
+#: ../test/gkbd-indicator-test.c:59
+#, c-format
+msgid "Keyboard Indicator Test (%s)"
+msgstr "鍵盤指示器測試 (%s)"
+
+#: ../test/gkbd-indicator-test.c:68
+msgid "Indicator:"
+msgstr "指示器:"
