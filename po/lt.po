@@ -1,14 +1,14 @@
-# translation of lt.po to Lithuanian
-# Copyright (C) 2007 Free Software Foundation, Inc.
+# translation of libgnomekbd.HEAD.po to Lithuanian
+# Copyright (C) 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 #
-# Gintautas Miliauskas <gintas@akl.lt>, 2007.
+# Gintautas Miliauskas <gintas@akl.lt>, 2007, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd\n"
+"Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-12 10:23+0300\n"
-"PO-Revision-Date: 2007-04-12 10:21+0300\n"
+"POT-Creation-Date: 2008-03-02 02:59+0200\n"
+"PO-Revision-Date: 2008-03-02 02:49+0200\n"
 "Last-Translator: Gintautas Miliauskas <gintas@akl.lt>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -18,16 +18,29 @@ msgstr ""
 "100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Klaviatūros išdėstymas \"%s\"\n"
+"Autorinės teisės &#169; X.Org Foundation ir XKeyboardConfig kontributoriai\n"
+"Licencija paketo metaduomenyse"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "XKB inicializavimo klaida"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Įvyko klaida įkeliant paveikslėlį: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -35,7 +48,9 @@ msgstr[0] "išdėstymas \"%s\""
 msgstr[1] "išdėstymai \"%s\""
 msgstr[2] "išdėstymai \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -43,16 +58,16 @@ msgstr[0] "parinktis \"%s\""
 msgstr[1] "parinktys \"%s\""
 msgstr[2] "parinktys \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modelis \"%s\", %s ir %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "nėra išdėstymo"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "nėra parinkčių"
 
@@ -218,12 +233,12 @@ msgstr "Aktyvių įskiepių sąrašas"
 msgid "_Available plugins:"
 msgstr "Įs_kiepiai:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Aprašymo nėra."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nepavyko paleisti GConf: %s\n"
@@ -236,11 +251,11 @@ msgstr "Įjungti/išjungti įdiegtus įskiepius"
 msgid "Keyboard Indicator plugins"
 msgstr "Klaviatūros indikatoriaus įskiepiai"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Klaviatūros indikatoriaus testas (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Indikatorius:"
