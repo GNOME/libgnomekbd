@@ -1,18 +1,18 @@
 # translation of libgnomekbd.HEAD.po to Español
 # Spanish translation of libgnomekbd.
-# Copyright (C) 2007 Free Software Foundation, Inc.
+# Copyright (C) 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 #
 # Claudio Saavedra <csaavedra@alumnos.utalca.cl>, 2007.
-# Jorge González <jorgegonz@svn.gnome.org>, 2007.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-19 21:21+0000\n"
-"PO-Revision-Date: 2007-12-23 15:21+0100\n"
+"POT-Creation-Date: 2007-12-23 14:39+0000\n"
+"PO-Revision-Date: 2008-03-02 16:34+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
-"Language-Team: Español <<gnome-es-list@gnome.org>\n"
+"Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -80,7 +80,7 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr "Una lista de archivos modmap disponibles en el directorio $HOME"
+msgstr "Una lista de archivos modmap disponibles en el directorio $HOME."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
@@ -174,7 +174,7 @@ msgid ""
 msgstr ""
 "Muy pronto, la configuración de teclado en gconf será anulada (de la "
 "configuración del sistema) Esta clave ha sido desaprobada desde GNOME 2.12, "
-"por favor indefina el modelo, esquemas y opciones de teclas para obtener la "
+"por favor desestablezca el modelo, esquemas y opciones de teclas para obtener la "
 "configuración por defecto del sistema."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
