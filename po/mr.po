@@ -2,20 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# sandeep shedmake <sandeep.shedmake@gmail.com>, 2007.
+# Sandeep Shedmake <sandeep.shedmake@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-28 00:32-0200\n"
-"PO-Revision-Date: 2007-12-16 12:29+0530\n"
-"Last-Translator: sandeep shedmake <sandeep.shedmake@gmail.com>\n"
+"POT-Creation-Date: 2008-02-29 03:55+0000\n"
+"PO-Revision-Date: 2008-02-29 17:30+0530\n"
+"Last-Translator: Sandeep Shedmake <sandeep.shedmake@gmail.com>\n"
 "Language-Team: marathi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
@@ -25,6 +24,9 @@ msgid ""
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
+"कळफलक मांडणी \"%s\"\n"
+"सर्वहक्काधीकर &#169; X.Org Foundation व XKeyboardConfig सहमभागी\n"
+"संकुल मेटामाहिती करीता परवाना पहा"
 
 #: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
@@ -70,9 +72,7 @@ msgstr "पर्याय नाही"
 msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"कळफलक स्थिती पुनःदाखल केल्यास चालविण्याजोगी लिपींचा संच. xmodmap आधारीत तडजोड "
-"पुनःवापरणी करीता फायदेशीर ठरते"
+msgstr "कळफलक स्थिती पुनःदाखल केल्यास चालविण्याजोगी लिपींचा संच. xmodmap आधारीत तडजोड पुनःवापरणी करीता फायदेशीर ठरते"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -132,8 +132,7 @@ msgstr "गटातील नावं ऐवजी मांडणीतील
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr ""
-"गटातील नावं ऐवजी मांडणीतील नावं दर्शवा (फक्त XFree बहु मांडणी समर्थीत आवृत्तीं करीता)"
+msgstr "गटातील नावं ऐवजी मांडणीतील नावं दर्शवा (फक्त XFree बहु मांडणी समर्थीत आवृत्तीं करीता)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
@@ -164,10 +163,7 @@ msgid ""
 "Very soon, keyboard settings in gconf will be overridden (from the system "
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"लवकरच, gconf मधील कळफलक रचना अधिभावी केले जाईल (प्रणाली संयोजन पासून) GNOME 2.12 "
-"पासून ही कळ वापरणीत नाही, कृपया मुलभूत प्रणाली संयोजना प्राप्त करण्याकरीता प्रारूप, "
-"मांडणी व पर्यायी कळ अनिश्चित करा."
+msgstr "लवकरच, gconf मधील कळफलक रचना अधिभावी केले जाईल (प्रणाली संयोजन पासून) GNOME 2.12 पासून ही कळ वापरणीत नाही, कृपया मुलभूत प्रणाली संयोजना प्राप्त करण्याकरीता प्रारूप, मांडणी व पर्यायी कळ अनिश्चित करा."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -251,3 +247,4 @@ msgstr "कळफलक सूचक चाचणी (%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "सूचक:"
+
