@@ -1,13 +1,13 @@
 # Ukrainian translation of libgnomekbd.
 # Copyright (C) 2000 Free Software Foundation, Inc.
-# Maxim Dziumanenko <dziumanenko@gmail.com>, 2007
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2007-2008
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-28 15:54+0300\n"
-"PO-Revision-Date: 2007-03-28 15:14+0300\n"
+"POT-Creation-Date: 2008-03-07 16:04+0200\n"
+"PO-Revision-Date: 2008-03-07 15:14+0300\n"
 "Last-Translator: Maxim V. Dziumanenko <dziumanenko@softprom.kiev.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,16 +16,29 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Розкладка клавіатури \"%s\"\n"
+"Copyright &#169; X.Org Foundation та помічники у написанні XKeyboardConfig\n"
+"Ліцензійні умови викладені у метаданих"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "Помилка ініціалізації XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Помилка завантаження зображення: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -33,7 +46,9 @@ msgstr[0] "розкладка \"%s\""
 msgstr[1] "розкладки \"%s\""
 msgstr[2] "розкладок \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -41,16 +56,16 @@ msgstr[0] "параметр \"%s\""
 msgstr[1] "параметри \"%s\""
 msgstr[2] "параметрів \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "модель \"%s\", %s та %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "немає розкладки"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "немає параметрів"
 
@@ -215,12 +230,12 @@ msgstr "Список активних модулів"
 msgid "_Available plugins:"
 msgstr "_Доступні модулі:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Немає опису."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Помилка ініціалізації GConf: %s\n"
@@ -233,11 +248,11 @@ msgstr "Увімкнути/вимкнути встановлені модулі"
 msgid "Keyboard Indicator plugins"
 msgstr "Модулі розширення клавіатурного індикатора"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Перевірка індикатора клавіатури (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Індикатор:"
