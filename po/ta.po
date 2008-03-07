@@ -1,55 +1,71 @@
-# translation of libgnomekbd.HEAD.po to TAMIL
+# translation of libgnomekbd.HEAD.ta.po to Tamil
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Dr.T.Vasudevan <agnihot3@gmail.com>, 2007.
+# I. Felix <ifelix@redhat.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd.HEAD\n"
+"Project-Id-Version: libgnomekbd.HEAD.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-08 03:54+0100\n"
-"PO-Revision-Date: 2007-07-09 08:40+0530\n"
-"Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
-"Language-Team: TAMIL <ubuntu-l10n-tam@lists.ubuntu.com>\n"
+"POT-Creation-Date: 2008-03-07 03:55+0000\n"
+"PO-Revision-Date: 2008-03-07 17:43+0530\n"
+"Last-Translator: I. Felix <ifelix@redhat.com>\n"
+"Language-Team: Tamil <fedora-trans-ta@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"விசைப்பலகை அமைப்பு \"%s\"\n"
+"பதிப்புரிமை &#169; X.Org Foundation மற்றும் XKeyboardConfig contributors\n"
+"உரிமத்திற்கு தொகுப்பு metadataவை பார்க்கவும்"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "XKB துவக்கப் பிழை"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "ஒரு பிம்பத்தை ஏற்றுவதில் பிழை ஏற்பட்டது: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:801
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "அமைப்பு \"%s\""
 msgstr[1] "அமைப்புகள் \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:820
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "விருப்பம் \"%s\""
 msgstr[1] "விருப்பங்கள் \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:828
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "மாதிரி \"%s\", %s மற்றும் %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:829
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "அமைப்பு இல்லை"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:830
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "விருப்பங்கள் இல்லை"
 
@@ -57,7 +73,9 @@ msgstr "விருப்பங்கள் இல்லை"
 msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
-msgstr "ஒரு தொகுப்பு ஸ்கிரிப்ட்கள், விசைப்பலகை நிலையை மீட்டு ஏற்றும் போதெல்லாம் இயக்க. எக்ஸ்மாட்மாப் அடிப்படையான சரிசெய்தல்களை மீண்டும் பயன்படுத்த உபயோகமாகும்."
+msgstr ""
+"ஒரு தொகுப்பு ஸ்கிரிப்ட்கள், விசைப்பலகை நிலையை மீட்டு ஏற்றும் போதெல்லாம் இயக்க. எக்ஸ்மாட்மாப் "
+"அடிப்படையான சரிசெய்தல்களை மீண்டும் பயன்படுத்த உபயோகமாகும்."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -91,7 +109,9 @@ msgstr "விசைப்பலகை விருப்பங்கள்"
 msgid ""
 "Keyboard settings in gconf will be overridden from the system ASAP "
 "(deprecated)"
-msgstr "விரைவில் ஜொகான்ஃப் இல் விசைப்பலகை அமைப்புகள் (கணினி அமைப்பால்) மேலாதிக்கம் செலுத்தப்பட்டுவிடும். (கைவிடப்பட்டது.)"
+msgstr ""
+"விரைவில் ஜொகான்ஃப் இல் விசைப்பலகை அமைப்புகள் (கணினி அமைப்பால்) மேலாதிக்கம் "
+"செலுத்தப்பட்டுவிடும். (கைவிடப்பட்டது.)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
@@ -117,7 +137,9 @@ msgstr "குழுப்பெயர்களுக்கு பதில் �
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr "குழுப்பெயர்களுக்கு பதில் அமைப்பு பெயர்களைக் காட்டுக. (பல அமைப்புகளை ஆதரிக்கும் எக்ஸ் ஃப்ரீ பதிப்புகளுக்கு மட்டும்)"
+msgstr ""
+"குழுப்பெயர்களுக்கு பதில் அமைப்பு பெயர்களைக் காட்டுக. (பல அமைப்புகளை ஆதரிக்கும் எக்ஸ் ஃப்ரீ "
+"பதிப்புகளுக்கு மட்டும்)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
@@ -148,7 +170,10 @@ msgid ""
 "Very soon, keyboard settings in gconf will be overridden (from the system "
 "configuration) This key has been deprecated since GNOME 2.12, please unset "
 "the model, layouts and options keys to get the default system configuration."
-msgstr "விரைவில் ஜொகான்ஃப் இல் விசைப்பலகை அமைப்புகள் (கணினி அமைப்பால்) மேலாதிக்கம் செலுத்தப்பட்டுவிடும். இந்த விசை க்னோம் 2.12 இலிருந்து கைவிடப்பட்டது. முன்னிருப்பு கணினி வடிவமைப்பை பெற மாதிரி, அமைப்பு, மற்றும் விருப்பங்களை நீக்குக."
+msgstr ""
+"விரைவில் ஜொகான்ஃப் இல் விசைப்பலகை அமைப்புகள் (கணினி அமைப்பால்) மேலாதிக்கம் "
+"செலுத்தப்பட்டுவிடும். இந்த விசை க்னோம் 2.12 இலிருந்து கைவிடப்பட்டது. முன்னிருப்பு கணினி "
+"வடிவமைப்பை பெற மாதிரி, அமைப்பு, மற்றும் விருப்பங்களை நீக்குக."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -206,12 +231,12 @@ msgstr "செயலில் உள்ள சொருகிகளின் ப
 msgid "_Available plugins:"
 msgstr "_கிடைக்கப்படும் சொருகிகள்:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "விளக்கம் இல்லை"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "ஜிகான்ஃப் ஐ துவக்குதல் தோல்வியுற்றது: %s\n"
@@ -224,12 +249,12 @@ msgstr "அமைக்கப்பட்ட சொருகிகளை செ�
 msgid "Keyboard Indicator plugins"
 msgstr "விசைப்பலகையை உணர்த்தும் சொருகி"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "விசைப்பலகை உணர்த்துனர் சோதனை (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "சுட்டி:"
 
