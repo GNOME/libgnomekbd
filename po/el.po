@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd 2.19.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-02 20:27+0100\n"
+"POT-Creation-Date: 2008-03-16 17:05+0000\n"
 "PO-Revision-Date: 2007-09-02 17:07+0300\n"
 "Last-Translator: Athanasios Lefteris <alefteris@gmail.com>\n"
 "Language-Team: Greek <team@lists.gnome.gr>\n"
@@ -19,18 +19,29 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Διάταξη πληκτρολογίου \"%s\"\n"
+"Πνευματικά δικαιώματα &#169; X.Org Foundation και συντελεστές XKeyboardConfig\n"
+"Για πληροφορίες για την άδεια διάθεσης, δείτε τα μεταδεδομένα του πακέτου"
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "Σφάλμα αρχικοποίησης XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:163
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Υπήρξε σφάλμα κατά την φόρτωση της εικόνας:·%s"
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:798
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -39,23 +50,23 @@ msgstr[1] "διατάξεις \"%s\""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:815
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "επιλογή \"%s\""
 msgstr[1] "επιλογές \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "μοντέλο \"%s\", %s και %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "χωρίς διάταξη"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:825
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "χωρίς επιλογές"
 
@@ -224,12 +235,12 @@ msgstr "Λίστα των ενεργών πρόσθετων λειτουργιώ
 msgid "_Available plugins:"
 msgstr "Δι_αθέσιμες πρόσθετες λειτουργίες:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Χωρίς περιγραφή."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:344
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Αποτυχία αρχικοποίησης GConf: %s\n"
