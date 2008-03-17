@@ -269,8 +269,7 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 	GtkTreeSelection *selection;
 	glade_gnome_init ();
 
-	gtk_window_set_default_icon_name
-	    ("gkbd-indicator-plugins-capplet");
+	gtk_window_set_default_icon_name ("input-keyboard");
 
 	/* default domain! */
 	data =

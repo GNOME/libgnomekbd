@@ -1,3 +1,10 @@
+2008-03-17  Jaap Haitsma  <jaap@haitsma.org>
+
+	* capplet/Makefile.am:
+	* capplet/gkbd-indicator-plugins-capplet.c: (CappletSetup):
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in:
+	Don't use deprecated icon but new tango icon. Fixes bug #519764
+
 2007-12-19 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: giving context to the

@@ -47,5 +47,3 @@ EXTRA_DIST = gkbd-indicator-plugins-capplet.desktop.in.in \
 
 DISTCLEANFILES = $(desktop_DATA)
 
-pixmapdir = $(datadir)/icons/hicolor/48x48/apps
-pixmap_DATA = gkbd-indicator-plugins-capplet.png
