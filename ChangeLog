@@ -1,3 +1,7 @@
+2007-12-18 svu
+
+	* configure.in, NEWS: release 2.22.0
+
 2008-03-17  Jaap Haitsma  <jaap@haitsma.org>
 
 	* capplet/Makefile.am:
