@@ -2,60 +2,78 @@
 # Copyright (C) 1999-2005 Free Software Foundation, Inc.
 # Kjartan Maraas <kmaraas@gnome.org>, 1999-2006.
 # Terance Edward Sola <terance@lyse.net>, 2005.
-# Eskild Hustvedt <i18n@zerodogg.org>, 2007
+# Eskild Hustvedt <i18n@zerodogg.org>, 2007, 2008
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd 2.15.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-28 20:29+0100\n"
-"PO-Revision-Date: 2007-12-14 18:48+0100\n"
-"Last-Translator: Eskild Hustvedt <i18n@zerodogg.org>\n"
-"Language-Team: Norwegian nynorsk <i18n-no@lister.ping.uio.no>\n"
+"POT-Creation-Date: 2008-04-04 13:39+0200\n"
+"PO-Revision-Date: 2008-04-04 13:40+0200\n"
+"Last-Translator: Eskild Hustvedt <eskildh@gnome.org>\n"
+"Language-Team: Norwegian Nynorsk <i18n-no@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr "Tastaturutforming «%s»\n"
+"Copyright &#169; X.Org foundation og XKeyboardConfig bidragsytarar\n"
+"For lisensinformasjon sjå metadata om pakka."
+
+#: ../libgnomekbd/gkbd-indicator.c:617
 msgid "XKB initialization error"
 msgstr "Feil ved klargjering av XKB"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:164
+#: ../libgnomekbd/gkbd-indicator-config.c:161
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Det oppsto ein feil under lasting av bilete: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:795
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:796
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "utforming «%s»"
 msgstr[1] "utformingar «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:814
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: ../libgnomekbd/gkbd-keyboard-config.c:813
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "alternativ «%s»"
 msgstr[1] "alternativ «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:821
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modell «%s», %s og %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:822
 msgid "no layout"
 msgstr "inga utforming"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: ../libgnomekbd/gkbd-keyboard-config.c:823
 msgid "no options"
 msgstr "inga alternativ"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid "A collection of scripts to run whenever the keyboard state is reloaded. Useful for re-applying xmodmap based adjustments"
-msgstr "Ein samling skript som køyrast når tastaturtilstanden skal lastas på nytt. Nyttig for å leggja inn xmodmap-baserte justeringar på nytt"
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"Ein samling skript som køyrast når tastaturtilstanden skal lastas på nytt. "
+"Nyttig for å leggja inn xmodmap-baserte justeringar på nytt"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -86,7 +104,9 @@ msgid "Keyboard options"
 msgstr "Alternativ for tastatur"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid "Keyboard settings in gconf will be overridden from the system ASAP (deprecated)"
+msgid ""
+"Keyboard settings in gconf will be overridden from the system ASAP "
+"(deprecated)"
 msgstr "Tastaturinnstillingar i gconf overstyrast frå systemet ASAP. (Utfases)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
@@ -110,8 +130,12 @@ msgid "Show layout names instead of group names"
 msgstr "Vis namn på utforming i staden for gruppenamn"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "Vis namn på utforming i staden for gruppenamn (berre for versjonar av XFree som støttar fleire utformingar)"
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Vis namn på utforming i staden for gruppenamn (berre for versjonar av XFree "
+"som støttar fleire utformingar)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Suppress the \"X sysconfig changed\" warning message"
@@ -138,8 +162,15 @@ msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Liste med tillegg for tastaturindikatoren som er slått på."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid "Very soon, keyboard settings in gconf will be overridden (from the system configuration) This key has been deprecated since GNOME 2.12, please unset the model, layouts and options keys to get the default system configuration."
-msgstr "Tastaturinnstillingar i gconf vil verta overstyrt frå systemoppsettet i nær framtid. Denne nøkkelen er under utfasing frå GNOME 2.12. Vennligst fjern verdiene for modell, utforming og alternative tastar for å ta i bruk forvald systemkonfigurasjon."
+msgid ""
+"Very soon, keyboard settings in gconf will be overridden (from the system "
+"configuration) This key has been deprecated since GNOME 2.12, please unset "
+"the model, layouts and options keys to get the default system configuration."
+msgstr ""
+"Tastaturinnstillingar i gconf vil verta overstyrt frå systemoppsettet i nær "
+"framtid. Denne nøkkelen er under utfasing frå GNOME 2.12. Vennligst fjern "
+"verdiene for modell, utforming og alternative tastar for å ta i bruk forvald "
+"systemkonfigurasjon."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
@@ -197,12 +228,12 @@ msgstr "Liste med aktive tillegg"
 msgid "_Available plugins:"
 msgstr "_Tilgjengelege tillegg:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
+#: ../capplet/gkbd-indicator-plugins-capplet.c:122
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Inga skildring."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
+#: ../capplet/gkbd-indicator-plugins-capplet.c:343
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Klarte ikkje å starta GConf: %s\n"
@@ -215,11 +246,11 @@ msgstr "Slå av/på installerte tillegg"
 msgid "Keyboard Indicator plugins"
 msgstr "Tillegg for tastaturindikator"
 
-#: ../test/gkbd-indicator-test.c:61
+#: ../test/gkbd-indicator-test.c:59
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Test av tastaturindikator (%s)"
 
-#: ../test/gkbd-indicator-test.c:70
+#: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Indikator:"
