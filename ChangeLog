@@ -1,4 +1,9 @@
-2007-12-18 svu
+2008-04-13 svu
+
+	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: fixed
+	typo, http://bugzilla.gnome.org/show_bug.cgi?id=460599
+
+2008-03-18 svu
 
 	* configure.in, NEWS: release 2.22.0
 
