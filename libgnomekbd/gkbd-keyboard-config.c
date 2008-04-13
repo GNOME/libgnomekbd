@@ -48,23 +48,6 @@ const gchar *GKBD_KEYBOARD_CONFIG_ACTIVE[] = {
 	GKBD_KEYBOARD_CONFIG_KEY_OPTIONS
 };
 
-#define GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_PREFIX GKBD_CONFIG_KEY_PREFIX "/kbd.sysbackup"
-
-const gchar GKBD_KEYBOARD_CONFIG_SYSBACKUP_DIR[] =
-    GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_PREFIX;
-const gchar GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_MODEL[] =
-    GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_PREFIX "/model";
-const gchar GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_LAYOUTS[] =
-    GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_PREFIX "/layouts";
-const gchar GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_OPTIONS[] =
-    GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_PREFIX "/options";
-
-const gchar *GKBD_KEYBOARD_CONFIG_SYSBACKUP[] = {
-	GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_MODEL,
-	GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_LAYOUTS,
-	GKBD_KEYBOARD_CONFIG_SYSBACKUP_KEY_OPTIONS
-};
-
 /**
  * static common functions
  */
@@ -530,14 +513,6 @@ gkbd_keyboard_config_load_from_gconf (GkbdKeyboardConfig * kbd_config,
 }
 
 void
-gkbd_keyboard_config_load_from_gconf_backup (GkbdKeyboardConfig *
-					     kbd_config)
-{
-	gkbd_keyboard_config_load_params (kbd_config,
-					  GKBD_KEYBOARD_CONFIG_SYSBACKUP);
-}
-
-void
 gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig * kbd_config,
 					  XklConfigRec * data)
 {
@@ -605,28 +580,6 @@ gkbd_keyboard_config_save_to_gconf (GkbdKeyboardConfig * kbd_config)
 					&gerror);
 	if (gerror != NULL) {
 		g_warning ("Error saving active configuration: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		gerror = NULL;
-	}
-	gconf_change_set_unref (cs);
-}
-
-void
-gkbd_keyboard_config_save_to_gconf_backup (GkbdKeyboardConfig * kbd_config)
-{
-	GConfChangeSet *cs;
-	GError *gerror = NULL;
-
-	cs = gconf_change_set_new ();
-
-	gkbd_keyboard_config_save_params (kbd_config, cs,
-					  GKBD_KEYBOARD_CONFIG_SYSBACKUP);
-
-	gconf_client_commit_change_set (kbd_config->conf_client, cs, TRUE,
-					&gerror);
-	if (gerror != NULL) {
-		g_warning ("Error saving backup configuration: %s\n",
 			   gerror->message);
 		g_error_free (gerror);
 		gerror = NULL;

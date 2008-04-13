@@ -64,12 +64,6 @@ extern void gkbd_keyboard_config_load_from_gconf (GkbdKeyboardConfig *
 extern void gkbd_keyboard_config_save_to_gconf (GkbdKeyboardConfig *
 						kbd_config);
 
-extern void gkbd_keyboard_config_load_from_gconf_backup (GkbdKeyboardConfig
-							 * kbd_config);
-
-extern void gkbd_keyboard_config_save_to_gconf_backup (GkbdKeyboardConfig *
-						       kbd_config);
-
 extern void gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig *
 						      kbd_config,
 						      XklConfigRec * buf);
