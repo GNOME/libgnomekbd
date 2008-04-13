@@ -2,6 +2,7 @@
 
 	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: fixed
 	typo, http://bugzilla.gnome.org/show_bug.cgi?id=460599
+	got rid of overrideSettings GConf key altogether
 
 2008-03-18 svu
 

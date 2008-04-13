@@ -2,20 +2,6 @@
 <gconfschemafile>
   <schemalist>
     <schema>
-      <key>/schemas/desktop/gnome/peripherals/keyboard/kbd/overrideSettings</key>
-      <applyto>/desktop/gnome/peripherals/keyboard/kbd/overrideSettings</applyto>
-      <owner>gnome</owner>    
-      <type>bool</type>
-      <default>true</default>
-      <locale name="C">
-        <short>Keyboard settings in gconf will be overridden from the system ASAP (deprecated)</short>
-        <long>Very soon, keyboard settings in gconf will be overridden (from the system configuration).
-              This key has been deprecated since GNOME 2.12, please unset the model, layouts and
-              options keys to get the default system configuration.</long>
-      </locale>
-    </schema>
-
-    <schema>
       <key>/schemas/desktop/gnome/peripherals/keyboard/kbd/model</key>
       <applyto>/desktop/gnome/peripherals/keyboard/kbd/model</applyto>
       <owner>gnome</owner>    
