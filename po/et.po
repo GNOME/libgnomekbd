@@ -9,9 +9,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd HEAD\n"
+"Project-Id-Version: libgnomekbd 2.22\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-19 21:21+0000\n"
+"POT-Creation-Date: 2008-04-14 04:07+0100\n"
 "PO-Revision-Date: 2007-12-27 13:22+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -239,7 +239,7 @@ msgstr "S_aadaolevad pluginad:"
 msgid "No description."
 msgstr "Kirjeldus puudub."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:343
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Tõrge GConf'i lähtestamisel: %s\n"
