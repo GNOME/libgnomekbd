@@ -3,6 +3,10 @@
 	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: fixed
 	typo, http://bugzilla.gnome.org/show_bug.cgi?id=460599
 	got rid of overrideSettings GConf key altogether
+	* configure.in: opened 2.23 branch
+	* libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-keyboard-config.h: broke api/abi by dropping the
+	"backup" in gconf
 
 2008-03-18 svu
 
