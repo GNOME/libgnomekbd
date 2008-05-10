@@ -112,15 +112,25 @@ gkbd_preview_load_position (void)
 
 	g_object_unref (G_OBJECT (conf_client));
 
-	// default values should be just ignored
-	if (x == -1 || y == -1 || w == -1 || h == -1)
-		return NULL;
-
 	rv = g_new (GdkRectangle, 1);
-	rv->x = x;
-	rv->y = y;
-	rv->width = w;
-	rv->height = h;
+	if (x == -1 || y == -1 || w == -1 || h == -1) {
+		/* default values should be treated as 
+		 * "0.75 of the screen size" */
+		GdkScreen *scr = gdk_screen_get_default ();
+		gint w = gdk_screen_get_width (scr);
+		gint h = gdk_screen_get_height (scr);
+		rv->x = w >> 3;
+		rv->y = h >> 3;
+		rv->width = w - (w >> 2);
+		rv->height = h - (h >> 2);
+	} else {
+		rv->x = x;
+		rv->y = y;
+		rv->width = w;
+		rv->height = h;
+	}
+	printf ("rect: %d, %d (%dx%d)\n", rv->x, rv->y, rv->width,
+		rv->height);
 	return rv;
 }
 

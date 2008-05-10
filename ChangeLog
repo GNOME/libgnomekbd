@@ -1,3 +1,8 @@
+2008-05-10 svu
+
+	* libgnomekbd/gkbd-util.c: make default size dependent on the screen
+	size (75%). Closing http://bugzilla.gnome.org/show_bug.cgi?id=481118
+
 2008-04-13 svu
 
 	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: fixed
