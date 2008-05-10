@@ -109,13 +109,13 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 			gkbd_keyboard_config_split_items (full_layout_name,
 							  &l, &v);
 			if (l != NULL) {
-				// probably there is something in theme?
+				/* probably there is something in theme? */
 				icon_info = gtk_icon_theme_lookup_icon
 				    (ind_config->icon_theme, l, 48, 0);
 			}
 		}
 	}
-	// fallback to the default value
+	/* fallback to the default value */
 	if (icon_info == NULL) {
 		icon_info = gtk_icon_theme_lookup_icon
 		    (ind_config->icon_theme, "stock_dialog-error", 48, 0);

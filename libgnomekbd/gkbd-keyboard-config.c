@@ -746,8 +746,10 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 
 		/* Translators: The count is related to the number of options. The %s
 		 * format specifier should not be modified, left "as is". */
-		layouts = g_strdup_printf (ngettext ("layout \"%s\"", "layouts \"%s\"",
-					count), buffer->str);
+		layouts =
+		    g_strdup_printf (ngettext
+				     ("layout \"%s\"", "layouts \"%s\"",
+				      count), buffer->str);
 		g_string_truncate (buffer, 0);
 	}
 	if (config->options) {
@@ -763,8 +765,10 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 
 		/* Translators: The count is related to the number of options. The %s
 		 * format specifier should not be modified, left "as is". */
-		options = g_strdup_printf (ngettext ("option \"%s\"", "options \"%s\"",
-					count), buffer->str);
+		options =
+		    g_strdup_printf (ngettext
+				     ("option \"%s\"", "options \"%s\"",
+				      count), buffer->str);
 		g_string_truncate (buffer, 0);
 	}
 

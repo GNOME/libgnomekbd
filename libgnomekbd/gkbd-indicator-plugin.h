@@ -73,29 +73,29 @@ typedef struct _GkbdIndicatorPlugin {
 
 	const char *description;
 
-// implemented
+/* implemented */
 	GkbdIndicatorPluginInitFunc init_callback;
 
-// implemented
+/* implemented */
 	GkbdIndicatorPluginTermFunc term_callback;
 
-// implemented
+/* implemented */
 	 GkbdIndicatorPluginConfigureProperties
 	    configure_properties_callback;
 
-// implemented
+/* implemented */
 	GkbdIndicatorPluginGroupChangedFunc group_changed_callback;
 
-// implemented
+/* implemented */
 	GkbdIndicatorPluginWindowCreatedFunc window_created_callback;
 
-// implemented
+/* implemented */
 	GkbdIndicatorPluginDecorateWidget decorate_widget_callback;
 
-// non implemented
+/* not implemented */
 	GkbdIndicatorPluginConfigChangedFunc config_changed_callback;
 
-// non implemented
+/* not implemented */
 	GkbdIndicatorPluginCreateWidget create_widget_callback;
 
 } GkbdIndicatorPlugin;

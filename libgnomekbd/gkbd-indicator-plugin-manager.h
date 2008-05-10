@@ -88,7 +88,7 @@ extern void
 						 const char *full_path,
 						 GtkWindow * parent);
 
-// actual calling plugin notification methods
+/* actual calling plugin notification methods */
 
 extern void
  gkbd_indicator_plugin_manager_group_changed (GkbdIndicatorPluginManager * manager,

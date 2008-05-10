@@ -382,4 +382,3 @@ gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 
 	return True;
 }
-

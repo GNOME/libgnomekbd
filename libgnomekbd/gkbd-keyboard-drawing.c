@@ -949,7 +949,7 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 		}
 
 		if (drawing->track_modifiers) {
-			uint mods_rtrn;
+			guint mods_rtrn;
 			KeySym keysym;
 
 			if (XkbTranslateKeyCode (drawing->xkb, keycode,
@@ -1886,7 +1886,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 							    physical_indicators
 							    [i]->on =
 							    state;
-							create_cairo (drawing);
+							create_cairo
+							    (drawing);
 							draw_doodad
 							    (drawing->
 							     renderContext,
@@ -1894,7 +1895,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 							     drawing->
 							     physical_indicators
 							     [i]);
-							destroy_cairo (drawing);
+							destroy_cairo
+							    (drawing);
 							invalidate_indicator_doodad_region
 							    (drawing,
 							     drawing->

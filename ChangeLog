@@ -2,6 +2,12 @@
 
 	* libgnomekbd/gkbd-util.c: make default size dependent on the screen
 	size (75%). Closing http://bugzilla.gnome.org/show_bug.cgi?id=481118
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-config.c, libgnomekbd/gkbd-desktop-config.c,
+	libgnomekbd/gkbd-indicator-plugin.h,
+	libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-indicator-plugin-manager.h: ansifying, indenting
+
 
 2008-04-13 svu
 
