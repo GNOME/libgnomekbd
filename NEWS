@@ -1,3 +1,7 @@
+2.23.2:
+	Dropping old/unneeded code.
+	Make default size of the preview dependent on the screen size.
+
 2.22.0:
 	Using tango icons. Final release for GNOME 2.22.0
 

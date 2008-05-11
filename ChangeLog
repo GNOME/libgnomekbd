@@ -1,3 +1,7 @@
+2008-05-11 svu
+
+	* configure.in, NEWS: preparing 2.23.2
+
 2008-05-10 svu
 
 	* libgnomekbd/gkbd-util.c: make default size dependent on the screen
