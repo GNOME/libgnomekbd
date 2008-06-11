@@ -1,3 +1,9 @@
+2008-06-11 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: using connect_after for the
+	keyboard events, hopefully fixing
+	http://bugzilla.gnome.org/show_bug.cgi?id=440488
+
 2008-05-11 svu
 
 	* configure.in, NEWS: preparing 2.23.2

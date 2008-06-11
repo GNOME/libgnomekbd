@@ -1496,7 +1496,8 @@ key_event (GtkWidget * widget,
 
 	invalidate_key_region (drawing, key);
 
-	return TRUE;
+	printf("fu\n");
+	return FALSE;
 }
 
 static gint
@@ -2045,9 +2046,9 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 			       | GDK_FOCUS_CHANGE_MASK);
 	g_signal_connect (G_OBJECT (drawing), "expose-event",
 			  G_CALLBACK (expose_event), drawing);
-	g_signal_connect (G_OBJECT (drawing), "key-press-event",
+	g_signal_connect_after (G_OBJECT (drawing), "key-press-event",
 			  G_CALLBACK (key_event), drawing);
-	g_signal_connect (G_OBJECT (drawing), "key-release-event",
+	g_signal_connect_after (G_OBJECT (drawing), "key-release-event",
 			  G_CALLBACK (key_event), drawing);
 	g_signal_connect (G_OBJECT (drawing), "button-press-event",
 			  G_CALLBACK (button_press_event), drawing);
