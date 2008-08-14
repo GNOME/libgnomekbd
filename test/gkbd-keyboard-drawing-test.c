@@ -163,7 +163,7 @@ main (gint argc, gchar ** argv)
 	gint monitor;
 	GdkRectangle rect;
 	GOptionContext *context;
-	gint rc;
+
 	GkbdKeyboardDrawingGroupLevel groupLevels[4] =
 	    { {0, 0}, {1, 0}, {0, 1}, {1, 1} };
 	GkbdKeyboardDrawingGroupLevel *pgroupLevels[4] =

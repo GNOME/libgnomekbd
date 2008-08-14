@@ -27,8 +27,6 @@
 #include <glib/gi18n.h>
 #include <gdk/gdkx.h>
 #include <glade/glade.h>
-#include <libgnomeui/gnome-ui-init.h>
-#include <libgnomeui/gnome-help.h>
 
 static GkbdKeyboardConfig initialSysKbdConfig;
 static GMainLoop *loop;
@@ -242,11 +240,26 @@ CappletResponse (GtkDialog * dialog, gint response)
 {
 	if (response == GTK_RESPONSE_HELP) {
 		GError *error = NULL;
-		gnome_help_display_on_screen ("gkbd",
-					      "gkb-indicator-applet-plugins",
-					      gtk_widget_get_screen
-					      (GTK_WIDGET (dialog)),
-					      &error);
+		GdkAppLaunchContext *ctx = gdk_app_launch_context_new ();
+
+		g_app_info_launch_default_for_uri("ghelp:gkbd?gkb-indicator-applet-plugins",
+						  G_APP_LAUNCH_CONTEXT (ctx), &error);
+
+		if (error) {
+			GtkWidget *d = NULL;
+
+			d = gtk_message_dialog_new (GTK_WINDOW (dialog),
+						    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+						    GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+						    _("Unable to open help file"));
+			gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (d),
+								  "%s", error->message);
+			g_signal_connect (d, "response", G_CALLBACK (gtk_widget_destroy), NULL);
+			gtk_window_present (GTK_WINDOW (d));
+
+			g_error_free (error);
+		}
+
 		return;
 	}
 
@@ -336,9 +349,7 @@ main (int argc, char **argv)
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 	memset (&gipc, 0, sizeof (gipc));
-	gnome_program_init ("gkbd", VERSION,
-			    LIBGNOMEUI_MODULE, argc, argv,
-			    GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
+        gtk_init_with_args (&argc, &argv, "gkbd", NULL, NULL, NULL);
 	if (!gconf_init (argc, argv, &gconf_error)) {
 		g_warning (_("Failed to init GConf: %s\n"),
 			   gconf_error->message);

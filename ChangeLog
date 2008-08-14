@@ -1,3 +1,10 @@
+2008-08-14 svu
+
+	* test/gkbd-keyboard-drawing-test.c, m4/intltool.m4, configure.in,
+	capplet/gkbd-indicator-plugins-capplet.c, capplet/Makefile.am: dropped
+	dependency on libgnomeui,
+	http://bugzilla.gnome.org/show_bug.cgi?id=534140
+
 2008-06-11 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: using connect_after for the

@@ -11,6 +11,7 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 gkbd_indicator_plugins_capplet_CFLAGS = \
 	-I$(top_srcdir)	-Wall -Werror				\
+	$(GCONF_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)				\
 	$(LIBGNOME_CFLAGS)				\
 	$(LIBGNOMEUI_CFLAGS)				\
