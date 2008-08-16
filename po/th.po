@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-09 17:21+0700\n"
-"PO-Revision-Date: 2008-02-09 17:25+0700\n"
+"POT-Creation-Date: 2008-08-16 10:58+0700\n"
+"PO-Revision-Date: 2008-08-16 10:59+0700\n"
 "Last-Translator:  Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -37,32 +37,28 @@ msgstr "เกิดข้อผิดพลาดกับการเริ่
 msgid "There was an error loading an image: %s"
 msgstr "มีข้อผิดพลาดขณะโหลดภาพ: %s"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:751
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ผัง \"%s\""
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:770
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ตัวเลือก \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:778
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "รุ่น \"%s\", %s และ %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 msgid "no layout"
 msgstr "ไม่ระบุผังแป้นพิมพ์"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no options"
 msgstr "ไม่ระบุตัวเลือก"
 
@@ -103,80 +99,64 @@ msgid "Keyboard options"
 msgstr "ตัวเลือกแป้นพิมพ์"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid ""
-"Keyboard settings in gconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr "การตั้งค่าแป้นพิมพ์ใน gconf จะถูกแทนที่ด้วยค่าของระบบทันทีที่เป็นไปได้ (เลิกใช้แล้ว)"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "บันทึก/เรียกคืน ตัวบ่งชี้พร้อมกับภาษาแป้นพิมพ์ด้วย"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
 msgstr "กลุ่มสำรอง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Show flags in the applet"
 msgstr "แสดงสถานะในแอพเพล็ต"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "แสดงสถานะในแอพเพล็ตเพื่อบ่งชึ้ผังปัจจุบัน"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show layout names instead of group names"
 msgstr "แสดงชื่อผังแทนชื่อภาษา"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr "แสดงชื่อผังแทนชื่อภาษา (สำหรับ XFree รุ่นที่รองรับการใช้หลายผังพร้อมกันเท่านั้น)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "งดใช้ข้อความเตือน \"ค่าตั้งระบบ X มีการเปลี่ยนแปลง\""
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ตำแหน่งในแนวนอน"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, Y offset"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ตำแหน่งในแนวตั้ง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, height"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ความสูง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, width"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ความกว้าง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "รายการปลั๊กอินที่ใช้ของแอพเพล็ตแสดงผังแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid ""
-"Very soon, keyboard settings in gconf will be overridden (from the system "
-"configuration) This key has been deprecated since GNOME 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"อีกไม่นาน การตั้งค่าแป้นพิมพ์ใน gconf จะถูกแทนที่ (โดยการกำหนดค่าในระบบ) "
-"ค่าเหล่านี้เลิกใช้แล้วตั้งแต่ GNOME 2.12 โปรดยกเลิกค่าของ รุ่น ผัง และตัวเลือก ของแป้นพิมพ์ "
-"เพื่อใช้ค่าปริยายของระบบ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "keyboard layout"
 msgstr "ผังแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "keyboard model"
 msgstr "รุ่นแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "modmap file list"
 msgstr "รายการแฟ้ม modmap"
 
@@ -224,12 +204,16 @@ msgstr "รายการปลั๊กอินที่ใช้งาน"
 msgid "_Available plugins:"
 msgstr "ปลั๊กอิน_ที่มี:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "ไม่มีคำอธิบาย"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+msgid "Unable to open help file"
+msgstr "ไม่สามารถเปิดแฟ้มวิธีใช้"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:354
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "เริ่ม GConf ไม่สำเร็จ: %s\n"
@@ -250,3 +234,18 @@ msgstr "ทดสอบแอพเพล็ตแสดงภาษาแป้
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "ตัวบ่งชี้:"
+
+#~ msgid ""
+#~ "Keyboard settings in gconf will be overridden from the system ASAP "
+#~ "(deprecated)"
+#~ msgstr "การตั้งค่าแป้นพิมพ์ใน gconf จะถูกแทนที่ด้วยค่าของระบบทันทีที่เป็นไปได้ (เลิกใช้แล้ว)"
+
+#~ msgid ""
+#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
+#~ "configuration."
+#~ msgstr ""
+#~ "อีกไม่นาน การตั้งค่าแป้นพิมพ์ใน gconf จะถูกแทนที่ (โดยการกำหนดค่าในระบบ) "
+#~ "ค่าเหล่านี้เลิกใช้แล้วตั้งแต่ GNOME 2.12 โปรดยกเลิกค่าของ รุ่น ผัง และตัวเลือก ของแป้นพิมพ์ "
+#~ "เพื่อใช้ค่าปริยายของระบบ"
