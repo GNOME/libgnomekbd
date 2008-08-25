@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-19 21:21+0000\n"
+"POT-Creation-Date: 2008-08-14 19:56+0000\n"
 "PO-Revision-Date: 2008-02-23 19:47+0100\n"
 "Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural= n==1 || n%10==1 ? 0 : 1\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -38,9 +38,7 @@ msgstr "Грешка во иницијализацијата на XKB"
 msgid "There was an error loading an image: %s"
 msgstr "Имаше грешка во вчитувањето на слика: %s"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:751
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -48,9 +46,7 @@ msgstr[0] "распореди „%s“"
 msgstr[1] "распореди „%s“"
 msgstr[2] "распореди „%s“"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:770
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -58,16 +54,16 @@ msgstr[0] "опција „%s“"
 msgstr[1] "опции „%s“"
 msgstr[2] "опции „%s“"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:778
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "модел „%s“, %s и %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 msgid "no layout"
 msgstr "нема изглед"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no options"
 msgstr "нема опции"
 
@@ -109,34 +105,26 @@ msgid "Keyboard options"
 msgstr "Опции на тастатура"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid ""
-"Keyboard settings in gconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr ""
-"Поставувањата за тастатурата во gconf ќе бидат надминати од системските, што "
-"е можно поскоро (застарени)"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "Зачувај/врати ги индикаторите заедно со групите за распоред"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
 msgstr "Секундарни групи"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Show flags in the applet"
 msgstr "Покажи знамиња во аплетот"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Покажи знамиња во аплетот за означување ан тековниот распоред"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show layout names instead of group names"
 msgstr "Покажи ги имињата на распоредот наместо имињата на групите"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -144,50 +132,39 @@ msgstr ""
 "Покажи ги имињата на распоредот, наместо имињата на групите (само за верзии "
 "на XFree кои поддржуваат повеќе распореди)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Не ја покажувај пораката за предупредување „X sysconfig changed“"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
 msgstr "Преглед на тастатурата, X оска"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, Y offset"
 msgstr "Преглед на тастатурата, Y оска"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, height"
 msgstr "Преглед на тастатурата, висина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, width"
 msgstr "Преглед на тастатурата, широчина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Листата на овозможени приклучоци за индикатор на тастатура"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid ""
-"Very soon, keyboard settings in gconf will be overridden (from the system "
-"configuration) This key has been deprecated since GNOME 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"Наскоро поставувањата на тастатурата ќе бидат надминати (од системската "
-"конфигурација). Овој клуч беше запоставен дури од GNOME 2.12 и Ве молам, не "
-"ги поставувајте клучевите за моделот, распоредите и опциите за да ја добиете "
-"стандардната системска конфигурација."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "keyboard layout"
 msgstr "распоред на тастатура"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "keyboard model"
 msgstr "модел на тастатура"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "modmap file list"
 msgstr "листа со modmap датотеки"
 
@@ -235,12 +212,16 @@ msgstr "Листата со активни приклучоци"
 msgid "_Available plugins:"
 msgstr "_Достапни приклучоци:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Нема опис."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+msgid "Unable to open help file"
+msgstr "Не можам да ја отворам датотеката со помош"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:354
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Не можам да го иницијализирам GConf: %s\n"
@@ -262,3 +243,20 @@ msgstr "Тест за индикаторот на тастатурата (%s)"
 msgid "Indicator:"
 msgstr "Индикатор:"
 
+#~ msgid ""
+#~ "Keyboard settings in gconf will be overridden from the system ASAP "
+#~ "(deprecated)"
+#~ msgstr ""
+#~ "Поставувањата за тастатурата во gconf ќе бидат надминати од системските, "
+#~ "што е можно поскоро (застарени)"
+
+#~ msgid ""
+#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
+#~ "configuration."
+#~ msgstr ""
+#~ "Наскоро поставувањата на тастатурата ќе бидат надминати (од системската "
+#~ "конфигурација). Овој клуч беше запоставен дури од GNOME 2.12 и Ве молам, "
+#~ "не ги поставувајте клучевите за моделот, распоредите и опциите за да ја "
+#~ "добиете стандардната системска конфигурација."
