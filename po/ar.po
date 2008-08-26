@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-04-13 01:43+0100\n"
+"POT-Creation-Date: 2008-08-18 15:06+0100\n"
 "PO-Revision-Date: 2008-01-11 21:27+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@eglug.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Poedit-Language: Arabic\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -41,9 +41,7 @@ msgstr "خطأ في بدء XKB"
 msgid "There was an error loading an image: %s"
 msgstr "حدث خطأ عند تحميل صورة: \"%s\"."
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:751
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -54,9 +52,7 @@ msgstr[3] "مخططات \"%s\""
 msgstr[4] "مخططات \"%s\""
 msgstr[5] "مخططات \"%s\""
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:770
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -67,16 +63,16 @@ msgstr[3] "خيارات \"%s\""
 msgstr[4] "خيارات \"%s\""
 msgstr[5] "خيارات \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:778
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "طراز \"%s\"، %s و %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 msgid "no layout"
 msgstr "لا مخطط"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no options"
 msgstr "لا خيارات"
 
@@ -224,12 +220,16 @@ msgstr "قائمة الملحقات النشطة"
 msgid "_Available plugins:"
 msgstr "الملحقات المت_وفرة:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "لا وصف."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:343
+#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+msgid "Unable to open help file"
+msgstr ""
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:354
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "فشل بدأ GConf: %s\n"
