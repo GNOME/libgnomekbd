@@ -1,3 +1,7 @@
+2008-09-03 svu
+
+	* configure.in, NEWS: preparing 2.23.91
+
 2008-08-14 svu
 
 	* test/gkbd-keyboard-drawing-test.c, m4/intltool.m4, configure.in,
