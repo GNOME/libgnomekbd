@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-15 16:23+0100\n"
-"PO-Revision-Date: 2008-02-15 16:26+0100\n"
+"POT-Creation-Date: 2008-09-08 09:27+0200\n"
+"PO-Revision-Date: 2008-09-08 09:27+0200\n"
 "Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -36,34 +36,30 @@ msgstr "Error d'inicialització del XKB"
 msgid "There was an error loading an image: %s"
 msgstr "S'ha produït un error en carregar una imatge: %s"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:751
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "«%s» disposició"
 msgstr[1] "«%s» disposicions"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:770
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "«%s» opció"
 msgstr[1] "«%s» opcions"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:778
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model «%s, %s i %s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 msgid "no layout"
 msgstr "no hi ha disposició"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no options"
 msgstr "no hi ha opcions"
 
@@ -104,35 +100,27 @@ msgid "Keyboard options"
 msgstr "Opcions del teclat"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid ""
-"Keyboard settings in gconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr ""
-"Es sobreescriurà la configuració del teclat en el gconf des del sistema de "
-"seguida que es pugui (obsolet)"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "Desa/restaura els indicadors juntament amb els grups de disposició"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
 msgstr "Grups secundaris"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Show flags in the applet"
 msgstr "Mostra els indicadors en la miniaplicació"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet to indicate the current layout"
 msgstr ""
 "Mostra els indicadors en la miniaplicació per indicar la disposició actual"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show layout names instead of group names"
 msgstr "Mostra els noms de les disposicions en comptes dels noms de grup"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -140,50 +128,39 @@ msgstr ""
 "Mostra els noms de les disposicions en comptes dels noms de grup (només per "
 "a les versions del XFree que permeten múltiples disposicions)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Suprimeix el missatge d'avís «ha canviat el X sysconfig»"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
 msgstr "La previsualització del teclat, desplaçament horitzontal"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, Y offset"
 msgstr "La previsualització del teclat, desplaçament vertical"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, height"
 msgstr "La previsualització del teclat, alçada"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, width"
 msgstr "La previsualització del teclat, amplada"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "La llista de connectors d'indicador de teclat habilitats"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid ""
-"Very soon, keyboard settings in gconf will be overridden (from the system "
-"configuration) This key has been deprecated since GNOME 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"Molt aviat, es sobreescriurà la configuració del teclat en el gconf (de la "
-"configuració del sistema). Des del GNOME 2.12 que aquesta clau es considera "
-"obsoleta, desfeu la configuració del model, disposicions i opcions de teclat "
-"per a obtenir la configuració predeterminada del sistema."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "keyboard layout"
 msgstr "Disposició del teclat"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "keyboard model"
 msgstr "Model del teclat"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "modmap file list"
 msgstr "llista de fitxers del modmap"
 
@@ -231,12 +208,16 @@ msgstr "La llista dels connectors actius"
 msgid "_Available plugins:"
 msgstr "Connectors _disponibles:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Sense descripció."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+msgid "Unable to open help file"
+msgstr "No s'ha pogut obrir el fitxer d'ajuda"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:354
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "No s'ha pogut iniciar el GConf: %s\n"
@@ -257,3 +238,22 @@ msgstr "Prova de l'indicador del teclat (%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Indicador:"
+
+#~ msgid ""
+#~ "Keyboard settings in gconf will be overridden from the system ASAP "
+#~ "(deprecated)"
+#~ msgstr ""
+#~ "Es sobreescriurà la configuració del teclat en el gconf des del sistema "
+#~ "de seguida que es pugui (obsolet)"
+
+#~ msgid ""
+#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
+#~ "configuration."
+#~ msgstr ""
+#~ "Molt aviat, es sobreescriurà la configuració del teclat en el gconf (de "
+#~ "la configuració del sistema). Des del GNOME 2.12 que aquesta clau es "
+#~ "considera obsoleta, desfeu la configuració del model, disposicions i "
+#~ "opcions de teclat per a obtenir la configuració predeterminada del "
+#~ "sistema."
