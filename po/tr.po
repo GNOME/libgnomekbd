@@ -1,23 +1,22 @@
-# translation of libgnomekbd.HEAD.po to Turkish
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# translation of libgnomekbd to Turkish
+# Copyright (C) 2008
+# This file is distributed under the same license as the libgnomekbd package.
 #
 # Baris Cicek <baris@teamforce.name.tr>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd.HEAD\n"
+"Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-17 23:32+0200\n"
-"PO-Revision-Date: 2008-02-17 23:31+0200\n"
+"POT-Creation-Date: 2008-09-14 02:28+0300\n"
+"PO-Revision-Date: 2008-09-14 02:28+0300\n"
 "Last-Translator: Baris Cicek <baris@teamforce.name.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=1; plural=0;\n"
-"X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -37,32 +36,28 @@ msgstr "XKB başlatma hatası"
 msgid "There was an error loading an image: %s"
 msgstr "Resim yüklenirken hata oluştu: %s"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:751
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "düzen \"%s\""
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:770
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "seçenek \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:778
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model \"%s\", %s ve %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 msgid "no layout"
 msgstr "düzen yok"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no options"
 msgstr "seçenek yok"
 
@@ -103,34 +98,26 @@ msgid "Keyboard options"
 msgstr "Klavye seçenekleri"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid ""
-"Keyboard settings in gconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr ""
-"Sisteminizdeki klavye seçenekleri gconf'ta bulunanların yerine hemen geçecek "
-"(kullanılmıyor)"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "Düzen grupları ile birlikte belirteçleri de kaydet/yükle"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
 msgstr "İkincil gruplar"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Show flags in the applet"
 msgstr "Uygulamacıkta bayrakları göster"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Mevcut düzeni belirtmek için uygulamacıkta bayrakları göster"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show layout names instead of group names"
 msgstr "Grup isimleri yerine düzen isimlerini göster"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -138,49 +125,39 @@ msgstr ""
 "Grup isimleri yerine düzen isimlerini göster (sadece çoklu düzen destekleyen "
 "XFree sürümleri için)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "\"X sysconfig değişti\" uyarı mesajlarını durdur"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
 msgstr "Klavye Önizlemesi, X ofseti"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, Y offset"
 msgstr "Klavye Önizlemesi, Y ofseti"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, height"
 msgstr "Klavye Önizlemesi, yükseklik"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, width"
 msgstr "Klavye Önizlemesi, genişlik"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Etkin Klavye Belirteç eklentilerinin listesi"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid ""
-"Very soon, keyboard settings in gconf will be overridden (from the system "
-"configuration) This key has been deprecated since GNOME 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"Çok yakında gconf içerisindeki klavye ayarları (sistem yapılandırması ile) "
-"değişecek. Bu anahtar GNOME 2.12'den sonra kullanılmıyor, lütfen öntanımlı "
-"yapılandırmayı almak için model, layout ve options anahtarlarının kaldırın."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "keyboard layout"
 msgstr "klavye düzeni"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "keyboard model"
 msgstr "klavye modeli"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "modmap file list"
 msgstr "modmap dosya listesi"
 
@@ -228,12 +205,16 @@ msgstr "Etkin eklentilerin listesi"
 msgid "_Available plugins:"
 msgstr "_Kullanılabilir eklentiler:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Tanım yok."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+msgid "Unable to open help file"
+msgstr "Yardım dosyası açılamadı"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:360
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf başlatılırken başarısız olundu: %s\n"
@@ -254,3 +235,21 @@ msgstr "Klavye Belirteç Sınaması (%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Belirteç:"
+
+#~ msgid ""
+#~ "Keyboard settings in gconf will be overridden from the system ASAP "
+#~ "(deprecated)"
+#~ msgstr ""
+#~ "Sisteminizdeki klavye seçenekleri gconf'ta bulunanların yerine hemen "
+#~ "geçecek (kullanılmıyor)"
+
+#~ msgid ""
+#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
+#~ "configuration."
+#~ msgstr ""
+#~ "Çok yakında gconf içerisindeki klavye ayarları (sistem yapılandırması "
+#~ "ile) değişecek. Bu anahtar GNOME 2.12'den sonra kullanılmıyor, lütfen "
+#~ "öntanımlı yapılandırmayı almak için model, layout ve options "
+#~ "anahtarlarının kaldırın."
