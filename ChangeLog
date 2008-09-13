@@ -1,3 +1,8 @@
+2008-09-13 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: fixed the
+	categories, http://bugzilla.gnome.org/show_bug.cgi?id=552056
+
 2008-09-03 svu
 
 	* configure.in, NEWS: preparing 2.23.91
