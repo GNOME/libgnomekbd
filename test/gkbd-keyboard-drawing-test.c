@@ -39,34 +39,35 @@ static gboolean track_modifiers = FALSE;
 static gboolean program_version = FALSE;
 
 static const GOptionEntry options[] = {
-   { "groups", '\0', 0, G_OPTION_ARG_STRING, &groups,
-      "Keyboard groups to display, from 1-4. Up to four groups only may be "
-      "displayed. Examples: --groups=3 or --groups=1,2,1,2",
-      "group1[,group2[,group3[,group4]]]" },
-   { "levels", '\0', 0, G_OPTION_ARG_STRING, &levels,
-      "Keyboard shift levels to display, from 1-64. Up to four shift levels "
-      "only may be displayed. Examples: --levels=3 or --levels=1,2,1,2",
-      "level1[,level2[,level3[,level4]]]" },
-   { "symbols", '\0', 0, G_OPTION_ARG_STRING, &symbols,
-      "Symbols component of the keyboard. If you omit this option, it is "
-      "obtained from the X server; that is, the keyboard that is currently "
-      "configured is drawn. Examples: --symbols=us or "
-      "--symbols=us(pc104)+iso9995-3+group(switch)+ctrl(nocaps)", NULL },
-   { "keycodes", '\0', 0, G_OPTION_ARG_STRING, &keycodes,
-      "Keycodes component of the keyboard. If you omit this option, it is "
-      "obtained from the X server; that is, the keyboard that is currently"
-      " configured is drawn. Examples: --keycodes=xfree86+aliases(qwerty)", NULL },
-   { "geometry", '\0', 0, G_OPTION_ARG_STRING, &geometry,
-      "Geometry xkb component. If you omit this option, it is obtained from the"
-      " X server; that is, the keyboard that is currently configured is drawn. "
-      "Example: --geometry=kinesis", NULL },
-   { "track-modifiers", '\0', 0, G_OPTION_ARG_NONE, &track_modifiers,
-      "Track the current modifiers", NULL },
-   { "track-config", '\0', 0, G_OPTION_ARG_NONE, &track_config,
-      "Track the server XKB configuration", NULL },
-   { "version", '\0', 0, G_OPTION_ARG_NONE, &program_version,
-     "Show current version", NULL },
-   { NULL },
+	{"groups", '\0', 0, G_OPTION_ARG_STRING, &groups,
+	 "Keyboard groups to display, from 1-4. Up to four groups only may be "
+	 "displayed. Examples: --groups=3 or --groups=1,2,1,2",
+	 "group1[,group2[,group3[,group4]]]"},
+	{"levels", '\0', 0, G_OPTION_ARG_STRING, &levels,
+	 "Keyboard shift levels to display, from 1-64. Up to four shift levels "
+	 "only may be displayed. Examples: --levels=3 or --levels=1,2,1,2",
+	 "level1[,level2[,level3[,level4]]]"},
+	{"symbols", '\0', 0, G_OPTION_ARG_STRING, &symbols,
+	 "Symbols component of the keyboard. If you omit this option, it is "
+	 "obtained from the X server; that is, the keyboard that is currently "
+	 "configured is drawn. Examples: --symbols=us or "
+	 "--symbols=us(pc104)+iso9995-3+group(switch)+ctrl(nocaps)", NULL},
+	{"keycodes", '\0', 0, G_OPTION_ARG_STRING, &keycodes,
+	 "Keycodes component of the keyboard. If you omit this option, it is "
+	 "obtained from the X server; that is, the keyboard that is currently"
+	 " configured is drawn. Examples: --keycodes=xfree86+aliases(qwerty)",
+	 NULL},
+	{"geometry", '\0', 0, G_OPTION_ARG_STRING, &geometry,
+	 "Geometry xkb component. If you omit this option, it is obtained from the"
+	 " X server; that is, the keyboard that is currently configured is drawn. "
+	 "Example: --geometry=kinesis", NULL},
+	{"track-modifiers", '\0', 0, G_OPTION_ARG_NONE, &track_modifiers,
+	 "Track the current modifiers", NULL},
+	{"track-config", '\0', 0, G_OPTION_ARG_NONE, &track_config,
+	 "Track the server XKB configuration", NULL},
+	{"version", '\0', 0, G_OPTION_ARG_NONE, &program_version,
+	 "Show current version", NULL},
+	{NULL},
 };
 
 static gboolean
@@ -177,7 +178,7 @@ main (gint argc, gchar ** argv)
 	g_option_context_free (context);
 
 	if (program_version) {
-		g_print("kbdraw %s\n", VERSION);
+		g_print ("kbdraw %s\n", VERSION);
 		exit (0);
 	}
 
