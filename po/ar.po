@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-18 15:06+0100\n"
+"POT-Creation-Date: 2008-09-14 11:10+0100\n"
 "PO-Revision-Date: 2008-01-11 21:27+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@eglug.org>\n"
@@ -225,11 +225,11 @@ msgstr "الملحقات المت_وفرة:"
 msgid "No description."
 msgstr "لا وصف."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+#: ../capplet/gkbd-indicator-plugins-capplet.c:258
 msgid "Unable to open help file"
 msgstr ""
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:354
+#: ../capplet/gkbd-indicator-plugins-capplet.c:360
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "فشل بدأ GConf: %s\n"
