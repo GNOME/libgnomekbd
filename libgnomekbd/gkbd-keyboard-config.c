@@ -469,6 +469,7 @@ gkbd_keyboard_config_term (GkbdKeyboardConfig * kbd_config)
 	gkbd_keyboard_config_model_set (kbd_config, NULL);
 
 	gkbd_keyboard_config_layouts_reset (kbd_config);
+	gkbd_keyboard_config_options_reset (kbd_config);
 
 	g_object_unref (kbd_config->conf_client);
 	kbd_config->conf_client = NULL;

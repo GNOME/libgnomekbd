@@ -1,3 +1,8 @@
+2008-09-16 svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: fix memory leak,
+	http://bugzilla.gnome.org/show_bug.cgi?id=552522
+
 2008-09-13 svu
 
 	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: fixed the
