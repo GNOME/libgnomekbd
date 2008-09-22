@@ -1,3 +1,7 @@
+2008-09-22 svu
+
+	* configure.in, NEWS: preparing 2.24.0
+
 2008-09-16 svu
 
 	* libgnomekbd/gkbd-keyboard-config.c: fix memory leak,

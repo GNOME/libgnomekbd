@@ -1,3 +1,7 @@
+2.24.0:
+	Memory leak fixed, desktop file corrected.
+	First stable release for GNOME 2.24.
+
 2.23.91:
 	Dropping libgnomeui dependency, small bugfix
 
