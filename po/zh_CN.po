@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-19 21:21+0000\n"
-"PO-Revision-Date: 2008-02-24 19:35+0800\n"
+"POT-Creation-Date: 2008-08-14 19:56+0000\n"
+"PO-Revision-Date: 2008-09-24 21:02+0800\n"
 "Last-Translator: Yang Zhang <zyangmath@gmail.com>\n"
 "Language-Team: Chinese <translation-team-zh-cn@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -37,32 +37,28 @@ msgstr "XKB 初始化出错"
 msgid "There was an error loading an image: %s"
 msgstr "加载图片出错：%s"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:751
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "布局“%s”"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:770
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "选项“%s”"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:778
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "型号“%s”，%s 和 %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 msgid "no layout"
 msgstr "无布局"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no options"
 msgstr "无选项"
 
@@ -101,79 +97,64 @@ msgid "Keyboard options"
 msgstr "键盘选项"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid ""
-"Keyboard settings in gconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr "gconf 中的键盘设置将会被系统 ASAP 覆盖 (已废弃)"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "与布局分组一起保存/恢复指示器"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
 msgstr "次组"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Show flags in the applet"
 msgstr "在面板小程序中显示标记"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "在面板小程序中显示指示当前布局的标记"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show layout names instead of group names"
 msgstr "显示布局名称而不是组名称"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr "显示布局名称而不是组名称(只针对支持多种布局的 XFree 版本)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "禁止“X sysconfig changed”警告消息"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
 msgstr "键盘预览，X 偏移量"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, Y offset"
 msgstr "键盘预览，Y 偏移量"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, height"
 msgstr "键盘预览，高度"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, width"
 msgstr "键盘预览，宽度"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "已激活的键盘指示器插件的列表"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid ""
-"Very soon, keyboard settings in gconf will be overridden (from the system "
-"configuration) This key has been deprecated since GNOME 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"不久后，gconf 中的键盘设置将会被系统设置所覆盖。此键自 GNOME 2.12 开始就已经"
-"被废弃。请清除型号(model)、布局(layout)和选项(option)键以获得系统默认设置。"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "keyboard layout"
 msgstr "键盘布局"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "keyboard model"
 msgstr "键盘型号"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "modmap file list"
 msgstr "modmap 文件列表"
 
@@ -221,12 +202,16 @@ msgstr "已激活插件列表"
 msgid "_Available plugins:"
 msgstr "可用插件(_A)："
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "无描述。"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+msgid "Unable to open help file"
+msgstr "无法打开帮助文件"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:354
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "初始化 GConf 失败：%s\n"
@@ -247,3 +232,18 @@ msgstr "键盘指示器测试(%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "指示器："
+
+#~ msgid ""
+#~ "Keyboard settings in gconf will be overridden from the system ASAP "
+#~ "(deprecated)"
+#~ msgstr "gconf 中的键盘设置将会被系统 ASAP 覆盖 (已废弃)"
+
+#~ msgid ""
+#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
+#~ "configuration."
+#~ msgstr ""
+#~ "不久后，gconf 中的键盘设置将会被系统设置所覆盖。此键自 GNOME 2.12 开始就已"
+#~ "经被废弃。请清除型号(model)、布局(layout)和选项(option)键以获得系统默认设"
+#~ "置。"
