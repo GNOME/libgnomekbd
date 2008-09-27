@@ -998,8 +998,8 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 
 	if (key->pressed)
 		color =
-		    &(GTK_WIDGET (drawing)->style->
-		      base[GTK_STATE_SELECTED]);
+		    &(GTK_WIDGET (drawing)->
+		      style->base[GTK_STATE_SELECTED]);
 	else
 		color = drawing->colors + key->xkbkey->color_ndx;
 
@@ -1097,9 +1097,8 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->doodad->
-						       indicator.
-						       shape_ndx]);
+			   &drawing->xkb->geom->shapes[doodad->
+						       doodad->indicator.shape_ndx]);
 }
 
 static void
@@ -1113,8 +1112,8 @@ invalidate_key_region (GkbdKeyboardDrawing * drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->xkbkey->
-						       shape_ndx]);
+			   &drawing->xkb->geom->shapes[key->
+						       xkbkey->shape_ndx]);
 }
 
 static void
@@ -1346,8 +1345,8 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 	pango_layout_set_ellipsize (context->layout, PANGO_ELLIPSIZE_END);
 
 	context->font_desc =
-	    pango_font_description_copy (GTK_WIDGET (drawing)->style->
-					 font_desc);
+	    pango_font_description_copy (GTK_WIDGET (drawing)->
+					 style->font_desc);
 	context->angle = 0;
 	context->scale_numerator = 1;
 	context->scale_denominator = 1;
@@ -1495,8 +1494,6 @@ key_event (GtkWidget * widget,
 	destroy_cairo (drawing);
 
 	invalidate_key_region (drawing, key);
-
-	printf("fu\n");
 	return FALSE;
 }
 
@@ -1664,8 +1661,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				    drawing->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
-							      xkbkey->name.
-							      name);
+							      xkbkey->
+							      name.name);
 
 				if (keycode == INVALID_KEYCODE)
 					continue;
@@ -1761,8 +1758,9 @@ init_colors (GkbdKeyboardDrawing * drawing)
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
-					  spec, drawing->colors + i);
+		    parse_xkb_color_spec (drawing->xkb->geom->
+					  colors[i].spec,
+					  drawing->colors + i);
 
 		if (!result)
 			g_warning
@@ -1846,8 +1844,9 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 					    drawing->xkb->max_key_code +
 					    1);
 				size_allocate (GTK_WIDGET (drawing),
-					       &(GTK_WIDGET (drawing)->
-						 allocation), drawing);
+					       &(GTK_WIDGET
+						 (drawing)->allocation),
+					       drawing);
 
 				init_keys_and_doodads (drawing);
 				init_colors (drawing);
@@ -1864,44 +1863,38 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 				for (i = 0;
 				     i <=
-				     drawing->xkb->indicators->
-				     phys_indicators; i++)
-					if (drawing->
-					    physical_indicators[i] != NULL
+				     drawing->xkb->
+				     indicators->phys_indicators; i++)
+					if (drawing->physical_indicators[i]
+					    != NULL
 					    && (iev->changed & 1 << i)) {
 						gint state =
-						    (iev->
-						     state & 1 << i) !=
-						    FALSE;
+						    (iev->state & 1 << i)
+						    != FALSE;
 
 						if ((state
-						     && !drawing->
-						     physical_indicators
+						     &&
+						     !drawing->physical_indicators
 						     [i]->on) || (!state
 								  &&
-								  drawing->
-								  physical_indicators
-								  [i]->
-								  on)) {
-							drawing->
-							    physical_indicators
+								  drawing->physical_indicators
+								  [i]->on))
+						{
+							drawing->physical_indicators
 							    [i]->on =
 							    state;
 							create_cairo
 							    (drawing);
 							draw_doodad
-							    (drawing->
-							     renderContext,
+							    (drawing->renderContext,
 							     drawing,
-							     drawing->
-							     physical_indicators
+							     drawing->physical_indicators
 							     [i]);
 							destroy_cairo
 							    (drawing);
 							invalidate_indicator_doodad_region
 							    (drawing,
-							     drawing->
-							     physical_indicators
+							     drawing->physical_indicators
 							     [i]);
 						}
 					}
@@ -2047,9 +2040,9 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 	g_signal_connect (G_OBJECT (drawing), "expose-event",
 			  G_CALLBACK (expose_event), drawing);
 	g_signal_connect_after (G_OBJECT (drawing), "key-press-event",
-			  G_CALLBACK (key_event), drawing);
+				G_CALLBACK (key_event), drawing);
 	g_signal_connect_after (G_OBJECT (drawing), "key-release-event",
-			  G_CALLBACK (key_event), drawing);
+				G_CALLBACK (key_event), drawing);
 	g_signal_connect (G_OBJECT (drawing), "button-press-event",
 			  G_CALLBACK (button_press_event), drawing);
 	g_signal_connect (G_OBJECT (drawing), "focus-out-event",
@@ -2142,15 +2135,9 @@ gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
 	return gdk_pixbuf_get_from_drawable (NULL, drawing->pixmap, NULL,
 					     0, 0, 0, 0,
 					     xkb_to_pixmap_coord (context,
-								  drawing->
-								  xkb->
-								  geom->
-								  width_mm),
+								  drawing->xkb->geom->width_mm),
 					     xkb_to_pixmap_coord (context,
-								  drawing->
-								  xkb->
-								  geom->
-								  height_mm));
+								  drawing->xkb->geom->height_mm));
 }
 
 /**
@@ -2181,8 +2168,8 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
 		cr,
 		drawing->renderContext->angle,
 		layout,
-		pango_font_description_copy (GTK_WIDGET (drawing)->style->
-					     font_desc),
+		pango_font_description_copy (GTK_WIDGET (drawing)->
+					     style->font_desc),
 		1, 1,
 		&GTK_WIDGET (drawing)->style->dark[GTK_WIDGET_STATE
 						   (GTK_WIDGET (drawing))]
@@ -2357,7 +2344,13 @@ gkbd_keyboard_drawing_begin_print (GtkPrintOperation * operation,
 				   XkbLayoutPreviewPrintData * data)
 {
 	/* We always print single-page documents */
+	GtkPrintSettings *settings =
+	    gtk_print_operation_get_print_settings (operation);
 	gtk_print_operation_set_n_pages (operation, 1);
+	if (!gtk_print_settings_has_key
+	    (settings, GTK_PRINT_SETTINGS_ORIENTATION))
+		gtk_print_settings_set_orientation (settings,
+						    GTK_PAGE_ORIENTATION_LANDSCAPE);
 }
 
 static void
