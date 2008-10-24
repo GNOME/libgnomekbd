@@ -129,8 +129,6 @@ gkbd_preview_load_position (void)
 		rv->width = w;
 		rv->height = h;
 	}
-	printf ("rect: %d, %d (%dx%d)\n", rv->x, rv->y, rv->width,
-		rv->height);
 	return rv;
 }
 
