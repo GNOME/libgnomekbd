@@ -1,3 +1,8 @@
+2008-10-27 svu
+
+	* libgnomekbd/gkbd-indicator.c: fixing crash in broken X
+	configuration, http://bugzilla.gnome.org/show_bug.cgi?id=553915
+
 2008-09-28 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c: make default orientation (for
