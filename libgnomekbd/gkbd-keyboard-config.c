@@ -325,7 +325,7 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 {
 	GError *gerror = NULL;
 	gchar *pc;
-	GSList *pl;
+	GSList *pl, *l;
 
 	pc = gconf_client_get_string (kbd_config->conf_client,
 				      param_names[0], &gerror);
@@ -347,7 +347,7 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 
 	gkbd_keyboard_config_layouts_reset (kbd_config);
 
-	pl = gconf_client_get_list (kbd_config->conf_client,
+	l = pl = gconf_client_get_list (kbd_config->conf_client,
 				    param_names[1],
 				    GCONF_VALUE_STRING, &gerror);
 	if (pl == NULL || gerror != NULL) {
@@ -359,17 +359,17 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 		}
 	}
 
-	while (pl != NULL) {
-		xkl_debug (150, "Loaded Kbd layout: [%s]\n", pl->data);
+	while (l != NULL) {
+		xkl_debug (150, "Loaded Kbd layout: [%s]\n", l->data);
 		gkbd_keyboard_config_layouts_add_full (kbd_config,
-						       pl->data);
-		pl = pl->next;
+						       l->data);
+		l = l->next;
 	}
 	gkbd_keyboard_config_string_list_reset (&pl);
 
 	gkbd_keyboard_config_options_reset (kbd_config);
 
-	pl = gconf_client_get_list (kbd_config->conf_client,
+	l = pl = gconf_client_get_list (kbd_config->conf_client,
 				    param_names[2],
 				    GCONF_VALUE_STRING, &gerror);
 	if (pl == NULL || gerror != NULL) {
@@ -381,12 +381,12 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 		}
 	}
 
-	while (pl != NULL) {
-		xkl_debug (150, "Loaded Kbd option: [%s]\n", pl->data);
+	while (l != NULL) {
+		xkl_debug (150, "Loaded Kbd option: [%s]\n", l->data);
 		gkbd_keyboard_config_options_add_full (kbd_config,
-						       (const gchar *) pl->
+						       (const gchar *) l->
 						       data);
-		pl = pl->next;
+		l = l->next;
 	}
 	gkbd_keyboard_config_string_list_reset (&pl);
 }

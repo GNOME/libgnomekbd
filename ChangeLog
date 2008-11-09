@@ -1,3 +1,8 @@
+2008-11-09 svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: fixed memleak,
+	http://bugzilla.gnome.org/show_bug.cgi?id=549874
+
 2008-10-27 svu
 
 	* libgnomekbd/gkbd-indicator.c: fixing crash in broken X
