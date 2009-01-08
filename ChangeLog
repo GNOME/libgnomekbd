@@ -1,3 +1,10 @@
+2008-12-09  Pedro Fragoso  <ember@ubuntu.com>
+
+	* capplet/gkbd-indicator-plugins-capplet.h:
+	* test/gkbd-indicator-test.c:
+	* test/gkbd-keyboard-drawing-test.c:
+	GNOME Goal: Clean up GLib and GTK+ includes (Closes: #563629)
+
 2008-11-09 svu
 
 	* libgnomekbd/gkbd-keyboard-config.c: fixed memleak,

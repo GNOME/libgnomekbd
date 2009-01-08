@@ -29,7 +29,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include <gdk/gdkscreen.h>
+#include <gdk/gdk.h>
 #include <gdk/gdkx.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>

@@ -24,7 +24,7 @@
 #include <gtk/gtk.h>
 #include <stdlib.h>
 #include <string.h>
-#include <glib/goption.h>
+#include <glib.h>
 #include "libgnomekbd/gkbd-keyboard-drawing.h"
 
 

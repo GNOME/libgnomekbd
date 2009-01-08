@@ -21,7 +21,7 @@
 #define __GKBD_INDICATOR_PLUGINS_CAPPLET_H__
 
 #include <glib-object.h>
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 #include <glade/glade-xml.h>
 
 #include "libgnomekbd/gkbd-desktop-config.h"
