@@ -1,13 +1,13 @@
 # libgnomekbd Korean translation
 # This file is distributed under the same license as libgnomekbd package.
-# Changwoo Ryu <cwryu@debian.org>, 2007, 2008.
+# Changwoo Ryu <cwryu@debian.org>, 2007, 2008, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
 "POT-Creation-Date: 2008-09-16 22:39+0900\n"
-"PO-Revision-Date: 2008-09-16 22:40+0900\n"
+"PO-Revision-Date: 2009-01-29 16:13+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME 디렉토리에 사용할 수 있는 modmap 파일의 목록."
+msgstr "$HOME 디렉터리에 사용할 수 있는 modmap 파일의 목록."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X 시스템 설정 바뀜\" 경고 메세지 표시하지 않기"
+msgstr "\"X 시스템 설정 바뀜\" 경고 메시지 표시하지 않기"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
@@ -170,7 +170,7 @@ msgstr "활성화한 플러그인(_P):"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:3
 msgid "Add Plugin"
-msgstr "플러그인 더하기"
+msgstr "플러그인 추가"
 
 #: ../capplet/gkbd-indicator-plugins.glade.h:4
 msgid "Close the dialog"
@@ -234,19 +234,3 @@ msgstr "키보드 알림 테스트 (%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "알림:"
-
-#~ msgid ""
-#~ "Keyboard settings in gconf will be overridden from the system ASAP "
-#~ "(deprecated)"
-#~ msgstr ""
-#~ "gconf의 키보드 설정을 시스템의 설정으로 곧 바꿉니다 (곧 없어질 기능)"
-
-#~ msgid ""
-#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
-#~ "configuration) This key has been deprecated since GNOME 2.12, please "
-#~ "unset the model, layouts and options keys to get the default system "
-#~ "configuration."
-#~ msgstr ""
-#~ "곧 gconf의 키보드 설정은 없어지고 시스템 설정을 사용하게 됩니다. 이 키는 "
-#~ "그놈 2.12 이후로 계속 \"곧 없어질 기능\"인 상태입니다. 시스템 설정 기본값"
-#~ "을 받으려면 모델, 배치, 옵션 키의 설정을 지우십시오."
