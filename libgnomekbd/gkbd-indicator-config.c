@@ -78,7 +78,7 @@ gkbd_indicator_config_free_images (GkbdIndicatorConfig * ind_config)
 		pi = GDK_PIXBUF (img_node->data);
 		/* It can be NULL - some images may be missing */
 		if (pi != NULL) {
-			gdk_pixbuf_unref (pi);
+			g_object_unref (pi);
 		}
 		ind_config->images =
 		    g_slist_remove_link (ind_config->images, img_node);
