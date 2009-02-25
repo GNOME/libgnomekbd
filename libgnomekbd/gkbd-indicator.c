@@ -87,32 +87,16 @@ gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str);
 void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str)
 {
-	GtkTooltips *tooltips;
+        g_assert (str == NULL || g_utf8_validate (str, -1, NULL));
 
-	if (str == NULL)
-		return;
-	tooltips = gtk_tooltips_new ();
-	g_object_ref (G_OBJECT (tooltips));
-	gtk_object_sink (GTK_OBJECT (tooltips));
-	g_object_set_data_full (G_OBJECT (gki), "tooltips",
-				tooltips, (GDestroyNotify) g_object_unref);
-	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (gki), str, NULL);
+        gtk_widget_set_tooltip_text (GTK_WIDGET (gki), str);
 
 	if (gki->priv->set_parent_tooltips) {
-		GtkWidget *parent =
-		    gtk_widget_get_parent (GTK_WIDGET (gki));
-		if (parent != NULL) {
-			gtk_tooltips_set_tip (tooltips,
-					      GTK_WIDGET (parent), str,
-					      NULL);
-			g_object_ref (G_OBJECT (tooltips));
-			g_object_set_data_full (G_OBJECT (parent),
-						"gnome-kbd-indicator.tooltips",
-						tooltips, (GDestroyNotify)
-						g_object_unref);
-		}
-	}
-	gtk_tooltips_enable (tooltips);
+		GtkWidget *parent = gtk_widget_get_parent (GTK_WIDGET (gki));
+                if (parent) {
+                        gtk_widget_set_tooltip_text (parent, str);
+                }
+        }
 }
 
 void
@@ -628,7 +612,7 @@ gkbd_indicator_init (GkbdIndicator * gki)
 		return;
 	}
 
-	gkbd_indicator_set_tooltips (gki, "");
+	gkbd_indicator_set_tooltips (gki, NULL);
 
 	gkbd_indicator_fill (gki);
 	gkbd_indicator_set_current_page (gki);
