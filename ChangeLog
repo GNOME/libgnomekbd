@@ -2,6 +2,8 @@
 
 	* libgnomekbd/gkbd-indicator.c: use updated tooltips API, closing
 	#550212
+	* capplet/gkbd-indicator-plugins-capplet.c: fixed signal API, closing
+	#572661
 
 2009-02-19 svu
 

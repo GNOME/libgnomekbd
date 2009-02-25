@@ -297,7 +297,7 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 	gipc->capplet = capplet =
 	    glade_xml_get_widget (data, "gkbd_indicator_plugins");
 
-	gtk_object_set_data (GTK_OBJECT (capplet), "gladeData", data);
+	g_object_set_data (G_OBJECT (capplet), "gladeData", data);
 	g_signal_connect_swapped (GTK_OBJECT (capplet),
 				  "destroy", G_CALLBACK (g_object_unref),
 				  data);
@@ -308,20 +308,20 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 			  "response", G_CALLBACK (CappletResponse), NULL);
 
 	glade_xml_signal_connect_data (data, "on_btnUp_clicked",
-				       GTK_SIGNAL_FUNC
+				       G_CALLBACK
 				       (CappletPromotePlugin), gipc);
 	glade_xml_signal_connect_data (data,
 				       "on_btnDown_clicked",
-				       GTK_SIGNAL_FUNC
+				       G_CALLBACK
 				       (CappletDemotePlugin), gipc);
 	glade_xml_signal_connect_data (data, "on_btnAdd_clicked",
-				       GTK_SIGNAL_FUNC
+				       G_CALLBACK
 				       (CappletEnablePlugin), gipc);
 	glade_xml_signal_connect_data (data, "on_btnRemove_clicked",
-				       GTK_SIGNAL_FUNC
+				       G_CALLBACK
 				       (CappletDisablePlugin), gipc);
 	glade_xml_signal_connect_data (data, "on_btnProperties_clicked",
-				       GTK_SIGNAL_FUNC
+				       G_CALLBACK
 				       (CappletConfigurePlugin), gipc);
 
 	activePlugins = CappletGetGladeWidget (gipc, "activePlugins");
