@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-27 11:56+0300\n"
-"PO-Revision-Date: 2007-03-06 20:34+0300\n"
+"PO-Revision-Date: 2009-03-02 20:54+0200\n"
 "Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Virhe ladattaessa kuvaa: %s"
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "asetttelu \"%s\""
+msgstr[0] "asettelu \"%s\""
 msgstr[1] "asettelut \"%s\""
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:770
@@ -101,7 +101,7 @@ msgstr "Näppäimistön lisävalinnat"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
 msgid "Save/restore indicators together with layout groups"
-msgstr "Tallenna ja palauta ilmaisimet asettuluryhmien mukana"
+msgstr "Tallenna ja palauta ilmaisimet asetteluryhmien mukana"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
