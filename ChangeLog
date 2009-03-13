@@ -1,3 +1,7 @@
+2009-03-13 svu
+
+	* configure.in, NEWS: preparing 2.26.0
+
 2009-02-25 svu
 
 	* libgnomekbd/gkbd-indicator.c: use updated tooltips API, closing

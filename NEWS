@@ -1,3 +1,6 @@
+2.26.0:
+	2 bugs related to deprecated APIs fixed.
+
 2.25.91:
 	Several small bugs/build issues ar closed
 	First release for GNOME 2.25/2.26.
