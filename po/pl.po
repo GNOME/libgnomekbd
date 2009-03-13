@@ -5,7 +5,7 @@
 # http://svn.aviary.pl/gnomepl/
 # Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas na adres:
-# gnome-l10n@lists.aviary.pl
+# gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Andrzej Polatyński <andrzej@datatel.net.pl>, 2007.
 #
@@ -13,17 +13,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-07 23:56+0100\n"
-"PO-Revision-Date: 2008-02-07 23:25+0100\n"
-"Last-Translator: Tomasz Dominikowski <dominikowski@gmail.com>\n"
+"POT-Creation-Date: 2009-03-14 00:09+0100\n"
+"PO-Revision-Date: 2009-03-14 00:10+0100\n"
+"Last-Translator: wadim dziedzic <wdziedzic@aviary,pl>\n"
 "Language-Team: Polish <gnome-l10n@lists.aviary.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2380
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -34,7 +33,7 @@ msgstr ""
 "Copyright &#169; X.Org Foundation oraz współpracownicy XKeyboardConfig\n"
 "Zasady licencji znajdują się w metadanych pakietu"
 
-#: ../libgnomekbd/gkbd-indicator.c:617
+#: ../libgnomekbd/gkbd-indicator.c:611
 msgid "XKB initialization error"
 msgstr "Błąd inicjalizacji XKB"
 
@@ -43,9 +42,7 @@ msgstr "Błąd inicjalizacji XKB"
 msgid "There was an error loading an image: %s"
 msgstr "Wystąpił błąd podczas wczytywania obrazu: %s"
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:796
+#: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -53,9 +50,7 @@ msgstr[0] "układ \"%s\""
 msgstr[1] "układy \"%s\""
 msgstr[2] "układy \"%s\""
 
-#. Translators: The count is related to the number of options. The %s
-#. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:813
+#: ../libgnomekbd/gkbd-keyboard-config.c:771
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -63,26 +58,22 @@ msgstr[0] "opcja \"%s\""
 msgstr[1] "opcje \"%s\""
 msgstr[2] "opcje \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:821
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model \"%s\", %s i %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:822
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no layout"
 msgstr "brak układu"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: ../libgnomekbd/gkbd-keyboard-config.c:781
 msgid "no options"
 msgstr "brak opcji"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"Zbiór skryptów uruchamianych przy każdym przeładowaniu stanu klawiatury. "
-"Przydatne do ponownego wprowadzania ustawień xmodmap"
+msgid "A collection of scripts to run whenever the keyboard state is reloaded. Useful for re-applying xmodmap based adjustments"
+msgstr "Zbiór skryptów uruchamianych przy każdym przeładowaniu stanu klawiatury. Przydatne do ponownego wprowadzania ustawień xmodmap"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -113,83 +104,62 @@ msgid "Keyboard options"
 msgstr "Opcje klawiatury"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid ""
-"Keyboard settings in gconf will be overridden from the system ASAP "
-"(deprecated)"
-msgstr "Nadpisywanie ustawień gconf ustawieniami systemowymi (przestarzałe)"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Save/restore indicators together with layout groups"
 msgstr "Zapisywanie/przywracanie wskaźników razem z grupami układów"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Secondary groups"
 msgstr "Grupy drugorzędne"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Show flags in the applet"
 msgstr "Wyświetlanie flag w aplecie"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Wyświetlanie flag w aplecie, w celu wskazania bieżącego układu"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show layout names instead of group names"
 msgstr "Wyświetlanie nazw układów zamiast nazw grup"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-"Wyświetlanie nazw układów zamiast nazw grup (ma zastosowanie tylko do wersji "
-"XFree, które obsługują wiele układów)"
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
+msgstr "Wyświetlanie nazw układów zamiast nazw grup (ma zastosowanie tylko do wersji XFree, które obsługują wiele układów)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Powstrzymywanie komunikatu ostrzegawczego \"X sysconfig changed\""
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "The Keyboard Preview, X offset"
 msgstr "Przesunięcie X podglądu klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "The Keyboard Preview, Y offset"
 msgstr "Przesunięcie Y podglądu klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, height"
 msgstr "Wysokość podglądu klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, width"
 msgstr "Szerokość podglądu klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Lista włączonych wtyczek wskaźnika klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid ""
-"Very soon, keyboard settings in gconf will be overridden (from the system "
-"configuration) This key has been deprecated since GNOME 2.12, please unset "
-"the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"W najbliższym czasie, ustawienia klawiatury w gconf zostaną zastąpione "
-"ustawieniami systemu. Ten klucz jest oznaczony jako przestarzały od czasu "
-"wydania Gnome 2.12. Aby przywrócić domyślne ustawienia systemowe, należy "
-"usunąć ustawienia kluczy dla modelu, układu i opcji klawiatury."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "keyboard layout"
 msgstr "układ klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "keyboard model"
 msgstr "model klawiatury"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "modmap file list"
 msgstr "lista plików modmap"
 
@@ -237,12 +207,16 @@ msgstr "Lista aktywnych wtyczek"
 msgid "_Available plugins:"
 msgstr "_Dostępne wtyczki:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:122
+#: ../capplet/gkbd-indicator-plugins-capplet.c:120
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Brak opisu."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:344
+#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+msgid "Unable to open help file"
+msgstr "Nie można otworzyć pliku pomocy"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:360
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nie można zainicjalizować GConf: %s\n"
@@ -263,3 +237,19 @@ msgstr "Test wskaźnika klawiatury (%s)"
 #: ../test/gkbd-indicator-test.c:68
 msgid "Indicator:"
 msgstr "Wskaźnik:"
+
+#~ msgid ""
+#~ "Keyboard settings in gconf will be overridden from the system ASAP "
+#~ "(deprecated)"
+#~ msgstr "Nadpisywanie ustawień gconf ustawieniami systemowymi (przestarzałe)"
+#~ msgid ""
+#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
+#~ "configuration."
+#~ msgstr ""
+#~ "W najbliższym czasie, ustawienia klawiatury w gconf zostaną zastąpione "
+#~ "ustawieniami systemu. Ten klucz jest oznaczony jako przestarzały od czasu "
+#~ "wydania Gnome 2.12. Aby przywrócić domyślne ustawienia systemowe, należy "
+#~ "usunąć ustawienia kluczy dla modelu, układu i opcji klawiatury."
+
