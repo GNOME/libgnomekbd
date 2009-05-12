@@ -1,7 +1,8 @@
 bin_PROGRAMS = gkbd-indicator-plugins-capplet
 
-gladedir="$(pkgdatadir)/glade"
-glade_DATA = gkbd-indicator-plugins.glade
+uidir="$(pkgdatadir)/ui"
+ui_DATA = gkbd-indicator-plugins.ui \
+	gkbd-indicator-plugins_add.ui
 
 @INTLTOOL_DESKTOP_RULE@
 
@@ -12,15 +13,13 @@ desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 gkbd_indicator_plugins_capplet_CFLAGS = \
 	-I$(top_srcdir)	-Wall -Werror				\
 	$(GCONF_CFLAGS)					\
-	$(LIBGLADE_CFLAGS)				\
-	$(LIBGNOME_CFLAGS)				\
-	$(LIBGNOMEUI_CFLAGS)				\
+	$(GTK_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\
 	-I$(top_srcdir)/intl				\
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
 	-DG_LOG_DOMAIN=\"GnomeKbdIndicatorPluginsCapplet\"	\
         -DPREFIX=\"$(prefix)\"				\
-        -DGLADEDIR=\"$(gladedir)\"                      \
+        -DUIDIR=\"$(uidir)\"                      \
         -DDATADIR=\"$(datadir)\"                        \
         -DSYSCONFDIR=\"$(sysconfdir)\"                  \
         -DGNOMELOCALEDIR="\"$(datadir)/locale\""	\
@@ -35,15 +34,13 @@ gkbd_indicator_plugins_capplet_LDFLAGS = -export-dynamic
 gkbd_indicator_plugins_capplet_LDADD = \
             	$(DBUS_LIBS) 	\
             	$(GCONF_LIBS) 	\
-            	$(LIBGNOME_LIBS) 	\
-            	$(LIBGNOMEUI_LIBS) 	\
-            	$(LIBGLADE_LIBS) 	\
+            	$(GTK_LIBS) 	\
             	$(LIBXKLAVIER_LIBS)	\
 		$(top_builddir)/libgnomekbd/libgnomekbd.la \
 		$(top_builddir)/libgnomekbd/libgnomekbdui.la
 
 EXTRA_DIST = gkbd-indicator-plugins-capplet.desktop.in.in \
-             $(glade_DATA) \
+             $(ui_DATA) \
              $(pixmap_DATA)
 
 DISTCLEANFILES = $(desktop_DATA)

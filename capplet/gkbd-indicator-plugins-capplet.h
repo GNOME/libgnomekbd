@@ -22,7 +22,6 @@
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include <glade/glade-xml.h>
 
 #include "libgnomekbd/gkbd-desktop-config.h"
 #include "libgnomekbd/gkbd-indicator-config.h"
@@ -46,11 +45,10 @@ typedef struct _GkbdIndicatorPluginsCapplet {
 #define NAME_COLUMN 0
 #define FULLPATH_COLUMN 1
 
-#define CappletGetGladeWidget( gipc, name ) \
-  glade_xml_get_widget( \
-    GLADE_XML( g_object_get_data( G_OBJECT( (gipc)->capplet ), \
-                                  "gladeData" ) ), \
-    name )
+#define CappletGetUiWidget( gipc, name ) \
+  GTK_WIDGET ( gtk_builder_get_object ( \
+    GTK_BUILDER( g_object_get_data( G_OBJECT( (gipc)->capplet ), "uiData" ) ), \
+    name ) )
 
 extern void CappletFillActivePluginList (GkbdIndicatorPluginsCapplet *
 					 gipc);

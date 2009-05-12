@@ -24,8 +24,8 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#include <gtk/gtk.h>
 #include <gdk/gdkx.h>
-#include <glade/glade.h>
 #include <glib/gi18n.h>
 
 #include <libxklavier/xklavier.h>
@@ -130,10 +130,9 @@ void
 CappletEnablePlugin (GtkWidget * btnAdd, GkbdIndicatorPluginsCapplet * gipc)
 {
   /* default domain! */
-  GladeXML *data = glade_xml_new (GLADEDIR "/gkbd-indicator-plugins.glade",
-				  "gkbd_indicator_plugins_add", NULL);
-  GtkWidget *popup =
-    glade_xml_get_widget (data, "gkbd_indicator_plugins_add");
+  GtkBuilder *builder;
+  GError *error = NULL;
+  GtkWidget *popup;
   GtkWidget *availablePluginsList;
   GtkTreeModel *availablePluginsModel;
   GtkCellRenderer *renderer =
@@ -145,7 +144,22 @@ CappletEnablePlugin (GtkWidget * btnAdd, GkbdIndicatorPluginsCapplet * gipc)
 									NULL);
   GtkTreeSelection *selection;
   gint response;
-  availablePluginsList = glade_xml_get_widget (data, "allPlugins");
+
+  builder = gtk_builder_new ();
+
+  if (!gtk_builder_add_from_file (builder,
+                                  UIDIR "/gkbd-indicator-plugins_add.ui",
+                                  &error)) {
+    g_warning ("Could not load builder file: %s", error->message);
+    g_error_free(error);
+    return;
+  }
+
+  popup = GTK_WIDGET (gtk_builder_get_object (builder,
+                                              "gkbd_indicator_plugins_add"));
+
+  availablePluginsList = GTK_WIDGET (gtk_builder_get_object (builder,
+                                                             "allPlugins"));
   availablePluginsModel =
     GTK_TREE_MODEL (gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING));
   gtk_tree_view_set_model (GTK_TREE_VIEW (availablePluginsList),
@@ -160,10 +174,10 @@ CappletEnablePlugin (GtkWidget * btnAdd, GkbdIndicatorPluginsCapplet * gipc)
 		    (CappletAvailablePluginsSelectionChanged), gipc);
   g_object_set_data (G_OBJECT (gipc->capplet),
 		     "gkbd_indicator_plugins_add.btnOK",
-		     glade_xml_get_widget (data, "btnOK"));
+		     GTK_WIDGET (gtk_builder_get_object (builder, "btnOK")));
   g_object_set_data (G_OBJECT (gipc->capplet),
 		     "gkbd_indicator_plugins_add.lblDescription",
-		     glade_xml_get_widget (data, "lblDescription"));
+		     GTK_WIDGET (gtk_builder_get_object (builder, "lblDescription")));
   CappletAvailablePluginsSelectionChanged (selection, gipc);
   response = gtk_dialog_run (GTK_DIALOG (popup));
   g_object_set_data (G_OBJECT (gipc->capplet),

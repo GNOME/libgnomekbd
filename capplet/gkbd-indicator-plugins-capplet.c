@@ -24,9 +24,9 @@
 #include <string.h>
 #include <sys/stat.h>
 
+#include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkx.h>
-#include <glade/glade.h>
 
 static GkbdKeyboardConfig initialSysKbdConfig;
 static GMainLoop *loop;
@@ -35,7 +35,7 @@ extern void
 CappletFillActivePluginList (GkbdIndicatorPluginsCapplet * gipc)
 {
 	GtkWidget *activePlugins =
-	    CappletGetGladeWidget (gipc, "activePlugins");
+	    CappletGetUiWidget (gipc, "activePlugins");
 	GtkListStore *activePluginsModel =
 	    GTK_LIST_STORE (gtk_tree_view_get_model
 			    (GTK_TREE_VIEW (activePlugins)));
@@ -68,7 +68,7 @@ static char *
 CappletGetSelectedActivePluginPath (GkbdIndicatorPluginsCapplet * gipc)
 {
 	GtkTreeView *pluginsList =
-	    GTK_TREE_VIEW (CappletGetGladeWidget (gipc, "activePlugins"));
+	    GTK_TREE_VIEW (CappletGetUiWidget (gipc, "activePlugins"));
 	return CappletGetSelectedPluginPath (pluginsList, gipc);
 }
 
@@ -99,7 +99,7 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 				      GkbdIndicatorPluginsCapplet * gipc)
 {
 	GtkWidget *activePlugins =
-	    CappletGetGladeWidget (gipc, "activePlugins");
+	    CappletGetUiWidget (gipc, "activePlugins");
 	GtkTreeModel *model =
 	    gtk_tree_view_get_model (GTK_TREE_VIEW (activePlugins));
 	GtkTreeIter selectedIter;
@@ -107,13 +107,11 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 	gboolean isFirstSelected = FALSE;
 	gboolean isLastSelected = FALSE;
 	gboolean hasConfigurationUi = FALSE;
-	GtkWidget *btnRemove = CappletGetGladeWidget (gipc, "btnRemove");
-	GtkWidget *btnUp = CappletGetGladeWidget (gipc, "btnUp");
-	GtkWidget *btnDown = CappletGetGladeWidget (gipc, "btnDown");
-	GtkWidget *btnProperties =
-	    CappletGetGladeWidget (gipc, "btnProperties");
-	GtkWidget *lblDescription =
-	    CappletGetGladeWidget (gipc, "lblDescription");
+	GtkWidget *btnRemove = CappletGetUiWidget (gipc, "btnRemove");
+	GtkWidget *btnUp = CappletGetUiWidget (gipc, "btnUp");
+	GtkWidget *btnDown = CappletGetUiWidget (gipc, "btnDown");
+	GtkWidget *btnProperties = CappletGetUiWidget (gipc, "btnProperties");
+	GtkWidget *lblDescription = CappletGetUiWidget (gipc, "lblDescription");
 
 	gtk_label_set_text (GTK_LABEL (lblDescription),
 			    g_strconcat ("<small><i>",
@@ -275,7 +273,9 @@ CappletResponse (GtkDialog * dialog, gint response)
 static void
 CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 {
-	GladeXML *data;
+	GtkBuilder *builder;
+	GError *error = NULL;
+	GtkWidget *button;
 	GtkWidget *capplet;
 	GtkWidget *activePlugins;
 	GtkTreeModel *activePluginsModel;
@@ -286,45 +286,57 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 						      "text", 0,
 						      NULL);
 	GtkTreeSelection *selection;
-	glade_gnome_init ();
+	builder = gtk_builder_new ();
 
 	gtk_window_set_default_icon_name ("input-keyboard");
 
 	/* default domain! */
-	data =
-	    glade_xml_new (GLADEDIR "/gkbd-indicator-plugins.glade",
-			   "gkbd_indicator_plugins", NULL);
-	gipc->capplet = capplet =
-	    glade_xml_get_widget (data, "gkbd_indicator_plugins");
+	if (!gtk_builder_add_from_file (builder,
+	                                UIDIR "/gkbd-indicator-plugins.ui",
+	                                &error)) {
+		g_warning ("Could not load builder file: %s", error->message);
+		g_error_free(error);
+		return;
+	}
 
-	g_object_set_data (G_OBJECT (capplet), "gladeData", data);
+	gipc->capplet = capplet =
+	    GTK_WIDGET (gtk_builder_get_object (builder, "gkbd_indicator_plugins"));
+
+	gtk_builder_connect_signals (builder, NULL);
+
+	g_object_set_data (G_OBJECT (capplet), "uiData", builder);
 	g_signal_connect_swapped (GTK_OBJECT (capplet),
 				  "destroy", G_CALLBACK (g_object_unref),
-				  data);
+				  builder);
 	g_signal_connect_swapped (G_OBJECT (capplet), "unrealize",
 				  G_CALLBACK (g_main_loop_quit), loop);
 
 	g_signal_connect (GTK_OBJECT (capplet),
 			  "response", G_CALLBACK (CappletResponse), NULL);
 
-	glade_xml_signal_connect_data (data, "on_btnUp_clicked",
+	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnUp"));
+	g_signal_connect (button,  "clicked",
 				       G_CALLBACK
 				       (CappletPromotePlugin), gipc);
-	glade_xml_signal_connect_data (data,
-				       "on_btnDown_clicked",
+	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnDown"));
+	g_signal_connect (button, 
+				       "clicked",
 				       G_CALLBACK
 				       (CappletDemotePlugin), gipc);
-	glade_xml_signal_connect_data (data, "on_btnAdd_clicked",
+	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnAdd"));
+	g_signal_connect (button,  "clicked",
 				       G_CALLBACK
 				       (CappletEnablePlugin), gipc);
-	glade_xml_signal_connect_data (data, "on_btnRemove_clicked",
+	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnRemove"));
+	g_signal_connect (button,  "clicked",
 				       G_CALLBACK
 				       (CappletDisablePlugin), gipc);
-	glade_xml_signal_connect_data (data, "on_btnProperties_clicked",
+	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnProperties"));
+	g_signal_connect (button,  "clicked",
 				       G_CALLBACK
 				       (CappletConfigurePlugin), gipc);
 
-	activePlugins = CappletGetGladeWidget (gipc, "activePlugins");
+	activePlugins = CappletGetUiWidget (gipc, "activePlugins");
 	activePluginsModel =
 	    GTK_TREE_MODEL (gtk_list_store_new
 			    (2, G_TYPE_STRING, G_TYPE_STRING));
