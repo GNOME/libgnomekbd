@@ -33,7 +33,6 @@
 #include <gdk/gdkx.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <glade/glade.h>
 
 #include "X11/XKBlib.h"
 
@@ -50,7 +49,6 @@ main (int argc, char **argv)
 
 	/* Different data dir defs in g-a and g-c-c */
 	gtk_init (&argc, &argv);
-	glade_gnome_init ();
 
 	mainwin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 

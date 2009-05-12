@@ -10,7 +10,6 @@ common_CFLAGS = \
 	-I$(top_srcdir)/intl				\
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
 	-DG_LOG_DOMAIN=\"GnomeKbdIndicator\"		\
-	-DGLADEDIR=\"$(gladedir)\"			\
 	-DDATADIR=\"$(datadir)\"			\
 	-DSYSCONFDIR=\"$(sysconfdir)\"			\
 	-DLIBDIR=\"$(libdir)\"				
@@ -77,7 +76,6 @@ noinst_HEADERS = gkbd-indicator-plugin-manager.h \
 
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
-             $(glade_DATA) \
              $(schema_in_files)
 
 GLIB_GENMARSHAL = $(shell pkg-config --variable=glib_genmarshal glib-2.0)
