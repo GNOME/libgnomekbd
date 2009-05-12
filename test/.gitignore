@@ -1,0 +1,5 @@
+.deps
+gkbd-indicator-test
+gkbd-keyboard-drawing-test
+.libs
+*.o
