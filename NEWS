@@ -1,3 +1,6 @@
+2.27.2:
+	Replacing libglade with gtkbuilder, updated translations
+
 2.26.0:
 	2 bugs related to deprecated APIs fixed.
 
