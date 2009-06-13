@@ -1,3 +1,9 @@
+2009-06-13 svu
+
+	* libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-keyboard-config.h: use single GTK includes,
+	http://bugzilla.gnome.org/show_bug.cgi?id=563629
+
 2009-05-25 svu
 
 	* configure.in, NEWS: preparing 2.27.2

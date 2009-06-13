@@ -21,12 +21,8 @@
 #define __GKBD_KEYBOARD_CONFIG_H__
 
 #include <X11/Xlib.h>
-
 #include <glib.h>
-#include <glib/gslist.h>
-
 #include <gconf/gconf-client.h>
-
 #include <libxklavier/xklavier.h>
 
 extern const gchar GKBD_KEYBOARD_CONFIG_DIR[];
