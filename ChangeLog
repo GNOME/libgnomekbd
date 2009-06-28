@@ -1,3 +1,11 @@
+2009-06-29 svu
+
+	* configure.in, libgnomekbd.anjuta,
+	libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in,
+	libgnomekbd/gkbd-desktop-config.c, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-indicator.c: implementing (using gconf) optional
+	loading of xkeyboard-config extras, depending on libxklavier 4.0
+
 2009-06-13 svu
 
 	* libgnomekbd/gkbd-desktop-config.h,

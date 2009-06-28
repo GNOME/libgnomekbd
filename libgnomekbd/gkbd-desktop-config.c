@@ -43,6 +43,8 @@ const gchar GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS[] =
     GKBD_DESKTOP_CONFIG_KEY_PREFIX "/handleIndicators";
 const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[]
     = GKBD_DESKTOP_CONFIG_KEY_PREFIX "/layoutNamesAsGroupNames";
+const gchar GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS[]
+    = GKBD_DESKTOP_CONFIG_KEY_PREFIX "/loadExtraItems";
 
 /**
  * static common functions
@@ -231,6 +233,20 @@ gkbd_desktop_config_load_from_gconf (GkbdDesktopConfig * config)
 	xkl_debug (150, "layout_names_as_group_names: %d\n",
 		   config->layout_names_as_group_names);
 
+	config->load_extra_items =
+	    gconf_client_get_bool (config->conf_client,
+				   GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS,
+				   &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		config->load_extra_items = FALSE;
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+	xkl_debug (150, "load_extra_items: %d\n",
+		   config->load_extra_items);
+
 	config->default_group =
 	    gconf_client_get_int (config->conf_client,
 				  GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
@@ -267,6 +283,9 @@ gkbd_desktop_config_save_to_gconf (GkbdDesktopConfig * config)
 	gconf_change_set_set_bool (cs,
 				   GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES,
 				   config->layout_names_as_group_names);
+	gconf_change_set_set_bool (cs,
+				   GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS,
+				   config->load_extra_items);
 	gconf_change_set_set_int (cs,
 				  GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
 				  config->default_group);

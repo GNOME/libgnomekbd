@@ -116,6 +116,18 @@
     </schema>
 
     <schema>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/general/loadExtraItems</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/general/loadExtraItems</applyto>
+      <owner>gnome</owner>    
+      <type>bool</type>
+      <default>false</default>
+      <locale name="C">
+        <short>Load extra configuration items</short>
+	<long>Load exotic, rarely used layouts and options</long>
+      </locale>
+    </schema>
+
+    <schema>
       <key>/schemas/desktop/gnome/peripherals/keyboard/general/disable_sysconfig_changed_warning</key>
       <applyto>/desktop/gnome/peripherals/keyboard/general/disable_sysconfig_changed_warning</applyto>
       <owner>gnome</owner>    

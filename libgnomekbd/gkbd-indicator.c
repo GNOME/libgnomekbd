@@ -714,11 +714,6 @@ gkbd_indicator_global_init (void)
 		return;
 	}
 
-	globals.registry =
-	    xkl_config_registry_get_instance (globals.engine);
-
-	xkl_config_registry_load (globals.registry);
-
 	gconf_client = gconf_client_get_default ();
 
 	g_signal_connect (globals.engine, "X-state-changed",
@@ -742,8 +737,14 @@ gkbd_indicator_global_init (void)
 
 	gkbd_desktop_config_load_from_gconf (&globals.cfg);
 	gkbd_desktop_config_activate (&globals.cfg);
+
+	globals.registry =
+	    xkl_config_registry_get_instance (globals.engine);
+	xkl_config_registry_load (globals.registry, globals.cfg.load_extra_items);
+
 	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
 						  xklrec);
+
 	gkbd_indicator_config_load_from_gconf (&globals.ind_cfg);
 	gkbd_indicator_config_update_images (&globals.ind_cfg,
 					     &globals.kbd_cfg);
