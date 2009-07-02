@@ -10,9 +10,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 19:56+0000\n"
-"PO-Revision-Date: 2009-05-16 10:48+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2009-06-28 23:58+0000\n"
+"PO-Revision-Date: 2009-07-02 14:17+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +87,12 @@ msgstr "Klaviatuuri mudel"
 
 msgid "Keyboard options"
 msgstr "Klaviatuuri valikud"
+
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Eksootiliste, harva kasutatavate paigutuste ja valikute laadimine"
+
+msgid "Load extra configuration items"
+msgstr "Seadistuste lisavalikute laadimine"
 
 msgid "Save/restore indicators together with layout groups"
 msgstr "Näidikute salvestamine ja taastamine koos paigutuste gruppidega"
