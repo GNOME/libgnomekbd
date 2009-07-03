@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-07 14:33+0100\n"
-"PO-Revision-Date: 2009-03-15 08:16+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2009-06-28 23:58+0000\n"
+"PO-Revision-Date: 2009-07-03 08:30+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
-"Language-Team: Punjabi/Panjabi <punjab-l10n@list.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Copyright &#169; X.Org ਫਾਊਂਡੇਸ਼ਨ ਅਤੇ XKeyboardConfig ਯੋਗਦਾਨੀ\n"
 "ਲਾਈਸੈਂਸ ਲਈ ਪੈਕੇਜ ਮੇਟਾਡਾਟਾ ਵੇਖੋ"
 
-#: ../libgnomekbd/gkbd-indicator.c:627
+#: ../libgnomekbd/gkbd-indicator.c:611
 msgid "XKB initialization error"
 msgstr "XKB ਸ਼ੁਰੂਆਤ ਗਲਤੀ"
 
@@ -69,8 +70,7 @@ msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
 msgstr ""
-"ਚਲਾਉਣ ਲਈ ਸਕ੍ਰਿਪਟਾਂ ਦਾ ਭੰਡਾਰ ਹੈ, ਜੋ ਕਿ ਕੀ-ਬੋਰਡ ਹਾਲਤ ਮੁੜ-ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਚੱਲਦੀਆਂ "
-"ਹਨ। "
+"ਚਲਾਉਣ ਲਈ ਸਕ੍ਰਿਪਟਾਂ ਦਾ ਭੰਡਾਰ ਹੈ, ਜੋ ਕਿ ਕੀ-ਬੋਰਡ ਹਾਲਤ ਮੁੜ-ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਚੱਲਦੀਆਂ ਹਨ। "
 "xmodmap ਆਧਾਰ ਬਦਲਾਅ ਮੁੜ-ਲਾਗੂ ਕਰਨ ਦੌਰਾਨ ਲਾਭਦਾਇਕ ਹੈ।"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
@@ -102,122 +102,129 @@ msgid "Keyboard options"
 msgstr "ਕੀ-ਬੋਰਡ ਚੋਣਾਂ"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "ਪੁਰਾਣੇ, ਘੱਟ ਵਰਤੇ ਜਾਂਦੇ ਲੇਆਉਟ ਅਤੇ ਚੋਣਾਂ ਲੋਡ ਕਰੋ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "ਵਾਧੂ ਸੰਰਚਨਾ ਆਈਟਮਾਂ ਲੋਡ ਕਰੋ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "ਲੇਆਉਟ ਗਰੁੱਪਾਂ ਨਾਲ ਇੰਡੀਕੇਟਰ ਸੰਭਾਲੋ/ਰੀ-ਸਟੋਰ ਕਰੋ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "ਸੈਕੰਡਰੀ ਗਰੁੱਪ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet"
 msgstr "ਐਪਲਿਟ ਵਿੱਚ ਝੰਡੇ ਵੇਖੋ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "ਮੌਜੂਦਾ ਲੇਆਉਟ ਨੂੰ ਵੇਖਾਉਦੇ ਝੰਡੇ ਐਪਲਿਟ ਵਿੱਚ ਵੇਖੋ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names"
 msgstr "ਗਰੁੱਪ ਨਾਂ ਦੀ ਬਜਾਏ ਲੇਆਉਟ ਨਾਂ ਵੇਖਾਓ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr ""
-"ਗਰੁੱਪ ਨਾਂ ਦੀ ਬਜਾਏ ਲੇਆਉਟ ਨਾਂ ਵੇਖੋ (XFree ਵਲੋਂ ਸਹਾਇਕ ਬਹੁ ਲੇਆਉਟ ਦੇ ਵਰਜਨ ਲਈ ਹੀ)"
+msgstr "ਗਰੁੱਪ ਨਾਂ ਦੀ ਬਜਾਏ ਲੇਆਉਟ ਨਾਂ ਵੇਖੋ (XFree ਵਲੋਂ ਸਹਾਇਕ ਬਹੁ ਲੇਆਉਟ ਦੇ ਵਰਜਨ ਲਈ ਹੀ)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "\"X sysconfig changed (X sysconfig ਬਦਲੀ)\" ਚੇਤਾਵਨੀ ਸੁਨੇਹਾ ਦਬਾਉ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, X offset"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, X ਆਫਸੈੱਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, Y offset"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, Y ਆਫਸੈਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, height"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, ਉਚਾਈ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, width"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, ਚੌੜਾਈ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "ਚਾਲੂ ਕੀ-ਬੋਰਡ ਇੰਡੀਕੇਟਰ ਪਲੱਗਇਨ ਦੀ ਲਿਸਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "ਕੀ-ਬੋਰਡ ਲੇਆਉਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "ਕੀ-ਬੋਰਡ ਮਾਡਲ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "modmap ਫਾਇਲ ਲਿਸਟ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "ਸਰਗਰਮ ਹੋਰ ਪਲੱਗਇਨਾਂ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "ਸਰਗਰਮ ਪਲੱਗਇਨ(_p):"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "ਪਲੱਗਇਨ ਸ਼ਾਮਲ"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "ਡਾਈਲਾਗ ਬੰਦ ਕਰੋ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "ਚੁਣੀ ਪਲੱਗਇਨ ਦੀ ਸੰਰਚਨਾ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "ਚੁਣੀ ਪਲੱਗਇਨ ਨਾ-ਸਰਗਰਮ ਕਰੋ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "ਪਲੱਗਇਨ ਤਰਜੀਹ ਘਟਾਓ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "ਪਲੱਗਇਨ ਤਰਜੀਹ ਵਧਾਓ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "ਕੀ-ਬੋਰਡ ਇੰਡੀਕੇਟਰ ਪਲੱਗਇਨ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "ਸਰਗਰਮ ਪਲੱਗਇਨਾਂ ਦੀ ਲਿਸਟ"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "ਪਲੱਗਇਨ ਸ਼ਾਮਲ"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "ਉਪਲੱਬਧ ਪਲੱਗਇਨ(_A):"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "ਕੋਈ ਵੇਰਵਾ ਨਹੀਂ ਹੈ।"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
 msgstr "ਮੱਦਦ ਫਾਇਲ ਖੋਲ੍ਹਣ ਲਈ ਅਸਮਰੱਥ"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:360
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "GConf ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਫੇਲ੍ਹ: %s\n"
@@ -230,13 +237,12 @@ msgstr "ਇੰਸਟਾਲ ਕੀਤੀਆਂ ਪਲੱਗਇਨ ਚਾਲੂ/�
 msgid "Keyboard Indicator plugins"
 msgstr "ਕੀ-ਬੋਰਡ ਇੰਡੀਕੇਟਰ ਪਲੱਗਇਨ"
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "ਕੀ-ਬੋਰਡ ਇੰਡੀਕੇਟਰ ਟੈਸਟ (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "ਇੰਡੀਕੇਟਰ:"
-
 
