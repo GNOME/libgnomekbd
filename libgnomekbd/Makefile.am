@@ -1,7 +1,7 @@
 lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 
 common_CFLAGS = \
-	-I$(top_srcdir) -Wall -Werror			\
+	-I$(top_srcdir) -Wall 			\
 	$(GDK_CFLAGS)					\
 	$(DBUS_CFLAGS)					\
 	$(GCONF_CFLAGS)					\

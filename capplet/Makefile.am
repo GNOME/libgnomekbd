@@ -11,7 +11,7 @@ Desktop_in_files = gkbd-indicator-plugins-capplet.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 
 gkbd_indicator_plugins_capplet_CFLAGS = \
-	-I$(top_srcdir)	-Wall -Werror				\
+	-I$(top_srcdir)	-Wall 				\
 	$(GCONF_CFLAGS)					\
 	$(GTK_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\

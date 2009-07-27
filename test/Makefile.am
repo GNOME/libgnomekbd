@@ -2,7 +2,7 @@ noinst_PROGRAMS = gkbd-indicator-test \
                   gkbd-keyboard-drawing-test
 
 gkbd_indicator_test_CFLAGS=			\
-	$(WARN_CFLAGS) -I$(top_srcdir) -Wall -Werror			\
+	$(WARN_CFLAGS) -I$(top_srcdir) -Wall 		\
 	$(GTK_CFLAGS)					\
 	$(LIBGLADE_CFLAGS)				\
 	$(LIBXKLAVIER_CFLAGS)				\

@@ -1,3 +1,11 @@
+2007-11-16  Frederic Crozat  <fcrozat@mandriva.com>
+
+	* capplet/Makefile.am:
+	* libgnomekbd/Makefile.am:
+	* test/Makefile.am:
+	Do not hardcode -Werror in Makefile.am, better to use configure for
+	that. Fix bug #497425.
+
 2009-06-29 svu
 
 	* configure.in, libgnomekbd.anjuta,
