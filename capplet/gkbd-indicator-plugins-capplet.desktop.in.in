@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 _Name=Keyboard Indicator plugins
 _Comment=Enable/disable installed plugins
 Exec=gkbd-indicator-plugins-capplet
