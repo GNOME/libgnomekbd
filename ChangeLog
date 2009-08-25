@@ -1,3 +1,7 @@
+2009-08-25 svu
+
+	* NEWS, configure.in: preparing 2.27.91
+
 2007-11-16  Frederic Crozat  <fcrozat@mandriva.com>
 
 	* capplet/Makefile.am:
