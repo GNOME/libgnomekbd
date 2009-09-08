@@ -8,17 +8,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 04:02+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2009-08-16 20:00+0000\n"
 "PO-Revision-Date: 2008-09-20 04:03+0100\n"
 "Last-Translator: Горан Ракић <grakic@devbase.net>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -29,7 +31,7 @@ msgstr ""
 "Ауторска права &#169; X.Org Foundation и XKeyboardConfig приложници\n"
 "За услове лиценцирања погледајте мета податке пакета"
 
-#: ../libgnomekbd/gkbd-indicator.c:617
+#: ../libgnomekbd/gkbd-indicator.c:611
 msgid "XKB initialization error"
 msgstr "Не могу да покренем XKB"
 
@@ -68,8 +70,12 @@ msgid "no options"
 msgstr "нема опција"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid "A collection of scripts to run whenever the keyboard state is reloaded. Useful for re-applying xmodmap based adjustments"
-msgstr "Скуп скрипти за покретање кад год се измени стање тастатуре. Корисно за поновно укључивање xmodmap измена"
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"Скуп скрипти за покретање кад год се измени стање тастатуре. Корисно за "
+"поновно укључивање xmodmap измена"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -100,119 +106,132 @@ msgid "Keyboard options"
 msgstr "Опције тастатуре"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Учитава чудне, ретко коришћење распореде и опције"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "Учитава додатне ставке за подешавање"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "Сачувај/врати показатеље заједно са групама распореда"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "Секунгарне групе"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet"
 msgstr "Прикажи заставице у програмчету"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Прикажи заставице у програмчету како које ће указивати на тренутни распоред"
+msgstr ""
+"Прикажи заставице у програмчету како које ће указивати на тренутни распоред"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names"
 msgstr "Прикажи називе распореда уместо имена група"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "Прикажи називе распореда уместо имена група (само за XFree издања која подржавају више распореда)"
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Прикажи називе распореда уместо имена група (само за XFree издања која "
+"подржавају више распореда)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Сакриј упозорење „измењена системска подешавања Икса“"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, X offset"
 msgstr "Преглед тастатуре, X померај"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, Y offset"
 msgstr "Преглед тастатуре, Y померај"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, height"
 msgstr "Преглед тастатуре, висина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, width"
 msgstr "Преглед тастатуре, ширина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Листа омогућених додатака показивача тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "распоред тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "модел тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "списак modmap датотека"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Укључи још додатака"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "Укључени додаци:"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Додај додатак"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "Затвори ово прозорче"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "Подеси изабрани додатак"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "Искључи изабрани додатак"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "Смањи приоритет додатка"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "Повећај приоритет додатка"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "Додатак показивача тастатуре"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "Листа доступних додатака"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "Додај додатак"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "_Доступни додаци:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Нема описа"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
 msgstr "Не могу да отворим датотеку помоћи"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:360
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Не могу да покренем GConf: %s\n"
@@ -225,12 +244,12 @@ msgstr "Омогући/онемогући инсталирани додатак"
 msgid "Keyboard Indicator plugins"
 msgstr "Додаци показивача тастатуре"
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Проба показивача тастатуре (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Показивач:"
 
@@ -240,6 +259,7 @@ msgstr "Показивач:"
 #~ msgstr ""
 #~ "Подешавања тастатуре у ГКонфу ће убрзо бити превазиђена од стране система "
 #~ "(застарело)"
+
 #~ msgid ""
 #~ "Very soon, keyboard settings in gconf will be overridden (from the system "
 #~ "configuration) This key has been deprecated since GNOME 2.12, please "
@@ -250,4 +270,3 @@ msgstr "Показивач:"
 #~ "система)  Овај кључ је застарео почевши од Гнома 2.12, избаците поставке "
 #~ "модела, распореда и опција да бисте добили подразумевано подешавање "
 #~ "система."
-
