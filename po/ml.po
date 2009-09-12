@@ -1,22 +1,21 @@
-# translation of libgnomekbd to Malayalam
+# translation of libgnomekbd.master.ml.po to
 # Copyright (C) 2008 THE libgnomekbd'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the libgnomekbd package.
 # Santhosh Thottingal <santhosh.thottingal@gmail.com>, 2008.
 # Hari Vishnu <harivishnu@gmail.com>, 2008
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd ml\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-02-19 23:34+0000\n"
-"PO-Revision-Date: 2008-09-27 03:07+0530\n"
-"Last-Translator: Hari Vishnu <harivishnu@gmail.com>\n"
-"Language-Team: Swathanthra|സ്വതന്ത്ര Malayalam|മലയാളം Computing|കമ്പ്യൂട്ടിങ്ങ് <smc-"
-"discuss@googlegroups.com>\n"
+"Project-Id-Version: libgnomekbd.master.ml\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2009-08-16 20:00+0000\n"
+"PO-Revision-Date: 2009-09-12 20:39+0530\n"
+"Last-Translator: \n"
+"Language-Team:  <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
 #, c-format
@@ -29,7 +28,7 @@ msgstr ""
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 
-#: ../libgnomekbd/gkbd-indicator.c:627
+#: ../libgnomekbd/gkbd-indicator.c:611
 msgid "XKB initialization error"
 msgstr "XKB തുടങ്ങുന്നതില്‍ പിശകു്"
 
@@ -102,26 +101,34 @@ msgid "Keyboard options"
 msgstr "കീബോര്‍ഡ് ഐച്ഛികങ്ങള്‍"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "അപൂര്‍വമായുപയോഗിക്കുന്ന ശൈലികളും ഉപാധികളും ലഭ്യമാക്കുക"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "അധികമായ ക്രമീകരണ വസ്തുക്കള്‍ ലഭ്യമാക്കുക"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "വിന്യാസ കൂട്ടങ്ങള്‍ക്കൊപ്പം സൂചികകള്‍ സൂക്ഷിക്കുക/തിരികെ കൊണ്ടു വരുക"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "ദ്വിതീയ ഗ്രൂപ്പുകള്‍"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet"
 msgstr "ലഘുപ്രയോഗത്തില്‍ പതാകകള്‍ കാണിയ്ക്കുക"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "ഇപ്പോളത്തെ വിന്യാസം കാണീയ്ക്കാന്‍  ലഘുപ്രയോഗത്തില്‍ പതാകകള്‍ കാണിയ്ക്കുക"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names"
 msgstr "ഗ്രൂപ്പ് പേരിനുപകരം വിന്യാസത്തിന്റെ പേരു് കാണിയ്ക്കുക"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -129,96 +136,96 @@ msgstr ""
 "കൂട്ട പേരുകള്‍ക്കു പകരം വിന്യാസം പേരു്‌ ഉപയോഗിക്കുക (ഒന്നിലേറെ വിന്യാസങ്ങള്‍ താങ്ങുന്ന XFree-യുടെ "
 "പതിപ്പുകള്‍ക്കു്‌ മാത്രം)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "\"X sysconfig changed\"  മുന്നറിയിപ്പു സന്ദേശങ്ങള്‍ അടക്കിവെയ്ക്കുക"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, X offset"
 msgstr "കീബോര്‍ഡ് തിരനോട്ടം, X offset"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, Y offset"
 msgstr "കീബോര്‍ഡ് തിരനോട്ടം, Y offset"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, height"
 msgstr "കീബോര്‍ഡ് തിരനോട്ടം, ഉയരം"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, width"
 msgstr "കീബോര്‍ഡ് തിരനോട്ടം, വീതി"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "കീബോര്‍ഡ് സൂചക പ്ലഗ്ഗിനുകളുടെ ലിസ്റ്റ്"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "കീബോര്‍ഡ് വിന്യാസം"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "കീബോര്‍ഡ് മോഡല്‍"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "മോഡ്മാപ്പ് ഫയല്‍ പട്ടിക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "കൂടുതല്‍ പ്ലഗ്ഗിനുകള്‍ സജ്ജമാക്കുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "_പ്ലഗ്ഗിനുകള്‍ സജ്ജമാക്കുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "പ്ലഗ്ഗിന്‍ ചേര്‍ക്കുക"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "ചെറുജാലകം അടയ്ക്കുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "തെരഞ്ഞെടുത്ത പ്ലഗ്ഗിന്‍ സജ്ജീകരിയ്ക്കുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "തെരഞ്ഞെടുത്ത പ്ലഗ്ഗിന്‍ വേണ്ടെന്നുവെയ്ക്കുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "പ്ലഗ്ഗിന്‍ പ്രയോറിറ്റി കുറയ്ക്കുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "പ്ലഗ്ഗിന്‍ പ്രയോറിറ്റി കൂട്ടുക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "കീബോര്‍ഡ് സൂചക പ്ലഗ്ഗിനുകള്‍ "
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "സജ്ജമായ പ്ലഗ്ഗിനുകളുടെ പട്ടിക"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "പ്ലഗ്ഗിന്‍ ചേര്‍ക്കുക"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "ലഭ്യമായ പ്ലഗ്ഗിനുകള്‍"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "വിവരണമില്ല"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
 msgstr "സഹായ ഫയല്‍ തുറക്കാന്‍ കഴിയുന്നില്ല"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:360
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "തുടങ്ങാന്‍ സാധിച്ചില്ല ജി-കോണ്‍ഫ് :  %s\n"
@@ -231,11 +238,12 @@ msgstr "ഇന്‍സ്റ്റാള്‍ ചെയ്ത സംയോജ�
 msgid "Keyboard Indicator plugins"
 msgstr "കീബോര്‍ഡ് സൂചക പ്ലഗ്ഗിനുകള്‍ "
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "കീബോര്‍ഡ് സൂചക പരീക്ഷണം (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "സൂചകം"
+
