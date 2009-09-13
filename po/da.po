@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 23:59+0200\n"
-"PO-Revision-Date: 2008-09-21 23:58+0200\n"
+"POT-Creation-Date: 2009-09-13 03:40+0200\n"
+"PO-Revision-Date: 2009-09-12 17:50+0200\n"
 "Last-Translator: Kenneth Nielsen <k.nielsen81@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Copyright &#169; X.Org Foundation og XKeyboardConfig-bidragydere\n"
 "Licensen findes i pakkens metadata"
 
-#: ../libgnomekbd/gkbd-indicator.c:617
+#: ../libgnomekbd/gkbd-indicator.c:611
 msgid "XKB initialization error"
 msgstr "XKB-klargøringsfejl"
 
@@ -103,26 +103,34 @@ msgid "Keyboard options"
 msgstr "Tastaturindstillinger"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Indlæs eksotiske, sjældent brugte layout og indstillinger"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "Indlæs ekstra konfigurationselementer"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "Gem/hent indikatorer sammen med layoutgrupper"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "Sekundære grupper"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet"
 msgstr "Vis flag i panelprogrammet"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Vis flag i panelprogrammet for at angive det aktuelle layout"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names"
 msgstr "Vis layoutnavne i stedet for gruppenavne"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -131,96 +139,96 @@ msgstr ""
 "understøtter flere layout)"
 
 # Jeg kan umuligt finde den rette danske oversættelse af den advarsel
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Undertryk advarslen \"X sysconfig changed\""
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, X offset"
 msgstr "Tastatur-forhåndsvisningen, X-afsæt"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, Y offset"
 msgstr "Tastatur-forhåndsvisningen, Y-afsæt"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, height"
 msgstr "Tastatur-forhåndsvisningen, højde"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, width"
 msgstr "Tastatur-forhåndsvisningen, bredde"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Listen af aktiverede tastaturindikator-moduler"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "tastaturlayout"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "tastaturmodel"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "modmap-filliste"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Aktivér flere moduler"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "Aktive _moduler:"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Tilføj modul"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "Luk vinduet"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "Konfigurér det valgte modul"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "Deaktivér det valgte modul"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "Reducér modulprioritet"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "Forøg modulprioritet"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "Tastaturindikator-moduler"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "Listen af aktive moduler"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "Tilføj modul"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "_Tilgængelige moduler:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Ingen beskrivelse."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
 msgstr "Kunne ikke åbne hjælpfil"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:360
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Kunne ikke initialisere GConf: %s\n"
@@ -233,12 +241,12 @@ msgstr "Aktivér/deaktivér installerede moduler"
 msgid "Keyboard Indicator plugins"
 msgstr "Tastaturindikator-moduler"
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Tastaturindikatortest (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikator:"
 
