@@ -1,3 +1,8 @@
+2009-09-14 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.c: fixing compiling on macos,
+	https://bugzilla.gnome.org/show_bug.cgi?id=595113
+
 2009-08-25 svu
 
 	* NEWS, configure.in: preparing 2.27.91

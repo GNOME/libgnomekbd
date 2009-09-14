@@ -252,7 +252,7 @@ CappletResponse (GtkDialog * dialog, gint response)
 						    GTK_DIALOG_DESTROY_WITH_PARENT,
 						    GTK_MESSAGE_ERROR,
 						    GTK_BUTTONS_CLOSE,
-						    _
+						    "%s", _
 						    ("Unable to open help file"));
 			gtk_message_dialog_format_secondary_text
 			    (GTK_MESSAGE_DIALOG (d), "%s", error->message);
