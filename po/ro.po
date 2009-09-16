@@ -5,15 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekdb\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-terminal&amp;component=general\n"
-"POT-Creation-Date: 2009-02-09 23:01+0000\n"
-"PO-Revision-Date: 2009-02-19 18:46+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2009-09-08 10:44+0000\n"
+"PO-Revision-Date: 2009-09-16 19:32+0300\n"
 "Last-Translator: Adi Roiban <adi@roiban.ro>\n"
 "Language-Team: Gnome Romanian Team <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3;plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1))\n"
+"Plural-Forms: nplurals=3;plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1))\n"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
 #, c-format
@@ -26,7 +28,7 @@ msgstr ""
 "Drepturi de autor &#169; Fundația X.Org și colaboratorii XKeyboardConfig\n"
 "Pentru licențiere consultați metadatele pachetului"
 
-#: ../libgnomekbd/gkbd-indicator.c:627
+#: ../libgnomekbd/gkbd-indicator.c:611
 msgid "XKB initialization error"
 msgstr "Eroare inițializare XKB"
 
@@ -65,8 +67,12 @@ msgid "no options"
 msgstr "fără opțiuni"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid "A collection of scripts to run whenever the keyboard state is reloaded. Useful for re-applying xmodmap based adjustments"
-msgstr "O colecție de scripturi de rulat ori de câte ori starea tastaturii este reîncărcată. Folositor pentru aplicarea de corecții bazate pe xmodmap"
+msgid ""
+"A collection of scripts to run whenever the keyboard state is reloaded. "
+"Useful for re-applying xmodmap based adjustments"
+msgstr ""
+"O colecție de scripturi de rulat ori de câte ori starea tastaturii este "
+"reîncărcată. Folositor pentru aplicarea de corecții bazate pe xmodmap"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
@@ -97,119 +103,131 @@ msgid "Keyboard options"
 msgstr "Opțiuni tastatură"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Încarcă aranjamentele și opțiunile exotice ori rar folosite"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "Încarcă elemente suplimentare de configurare"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "Salvează/restarurează indicatorii împreună cu grupurile de aranjamente"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "Grupuri secundare"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet"
 msgstr "Afișare steaguri în miniaplicație"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Afișare steaguri în miniaplicație pentru a indica aranjamentul curent"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names"
 msgstr "Afișare nume aranjament în locul numelui grupurilor"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "Afișare nume aranjament în locul numelui grupurilor (doar pentru versiuni de XFree ce suportă aranjamente multiple)"
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Afișare nume aranjament în locul numelui grupurilor (doar pentru versiuni de "
+"XFree ce suportă aranjamente multiple)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Suprimă mesajul de avertizare „Modicare X sysconfig”"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid "The Keyboard Preview, X offset"
 msgstr "Previzualizare tastatură, decalaj X"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "The Keyboard Preview, Y offset"
 msgstr "Previzualizare tastatură, decalaj Y"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, height"
 msgstr "Previzualizare tastatură, înălțime"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, width"
 msgstr "Previzualizare tastatură, lățime"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Lista modulelor Indicator tastatură, activate "
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "keyboard layout"
 msgstr "aranjament tastatură"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "keyboard model"
 msgstr "model tastatură"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "modmap file list"
 msgstr "listă fișier modmap"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Activează mai multe module"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "_Module active:"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Adaugă modul"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "Închide dialogul"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "Configurare modul selectat"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "Dezactivare modul selectat"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "Scade prioritatatea modulului"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "Crește prioritatea modulului"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "Module Indicator tastatură"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "Lista modulelor active"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "Adaugă modul"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "_Module disponibile:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Fără descriere."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
 msgstr "Nu s-a putut deschide fișierul de ajutor"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:360
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nu s-a putut inițializa GCong: %s\n"
@@ -222,12 +240,11 @@ msgstr "Activare/dezactivare module instalate"
 msgid "Keyboard Indicator plugins"
 msgstr "Module Indicator tastatură"
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Test Indicator tastatură (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indicator:"
-
