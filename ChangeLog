@@ -1,3 +1,9 @@
+2009-10-08 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: properly handling keycodes with
+	multiple keys, https://bugzilla.gnome.org/show_bug.cgi?id=590954
+
 2009-09-14 svu
 
 	* capplet/gkbd-indicator-plugins-capplet.c: fixing compiling on macos,

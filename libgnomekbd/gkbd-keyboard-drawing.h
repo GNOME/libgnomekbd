@@ -42,7 +42,9 @@ typedef struct _GkbdKeyboardDrawingRenderContext
  GkbdKeyboardDrawingRenderContext;
 
 typedef enum {
+	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_INVALID = 0,
 	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY,
+	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA,
 	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD
 } GkbdKeyboardDrawingItemType;
 
@@ -128,6 +130,7 @@ struct _GkbdKeyboardDrawing {
 
 	GkbdKeyboardDrawingRenderContext *renderContext;
 
+	/* Indexed by keycode */
 	GkbdKeyboardDrawingKey *keys;
 
 	/* list of stuff to draw in priority order */

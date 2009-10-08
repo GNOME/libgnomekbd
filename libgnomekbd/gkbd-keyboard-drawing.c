@@ -31,7 +31,7 @@
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
 
-#define noKBDRAW_DEBUG
+#define KBDRAW_DEBUG
 
 #define INVALID_KEYCODE ((guint)(-1))
 
@@ -998,8 +998,8 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 
 	if (key->pressed)
 		color =
-		    &(GTK_WIDGET (drawing)->
-		      style->base[GTK_STATE_SELECTED]);
+		    &(GTK_WIDGET (drawing)->style->
+		      base[GTK_STATE_SELECTED]);
 	else
 		color = drawing->colors + key->xkbkey->color_ndx;
 
@@ -1097,8 +1097,9 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->
-						       doodad->indicator.shape_ndx]);
+			   &drawing->xkb->geom->shapes[doodad->doodad->
+						       indicator.
+						       shape_ndx]);
 }
 
 static void
@@ -1112,8 +1113,8 @@ invalidate_key_region (GkbdKeyboardDrawing * drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->
-						       xkbkey->shape_ndx]);
+			   &drawing->xkb->geom->shapes[key->xkbkey->
+						       shape_ndx]);
 }
 
 static void
@@ -1265,7 +1266,11 @@ draw_keyboard_item (GkbdKeyboardDrawingItem * item,
 		return;
 
 	switch (item->type) {
+	case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_INVALID:
+		break;
+
 	case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY:
+	case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA:
 		draw_key (context, drawing,
 			  (GkbdKeyboardDrawingKey *) item);
 		break;
@@ -1345,8 +1350,8 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 	pango_layout_set_ellipsize (context->layout, PANGO_ELLIPSIZE_END);
 
 	context->font_desc =
-	    pango_font_description_copy (GTK_WIDGET (drawing)->
-					 style->font_desc);
+	    pango_font_description_copy (GTK_WIDGET (drawing)->style->
+					 font_desc);
 	context->angle = 0;
 	context->scale_numerator = 1;
 	context->scale_denominator = 1;
@@ -1661,8 +1666,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				    drawing->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
-							      xkbkey->
-							      name.name);
+							      xkbkey->name.
+							      name);
 
 				if (keycode == INVALID_KEYCODE)
 					continue;
@@ -1679,9 +1684,24 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 
 				if (keycode >= drawing->xkb->min_key_code
 				    && keycode <=
-				    drawing->xkb->max_key_code)
+				    drawing->xkb->max_key_code) {
 					key = drawing->keys + keycode;
-				else {
+					if (key->type ==
+					    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_INVALID)
+					{
+						key->type =
+						    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY;
+					} else {
+						/* duplicate key for the same keycode, 
+						   already defined as GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY */
+						key =
+						    g_new0
+						    (GkbdKeyboardDrawingKey,
+						     1);
+						key->type =
+						    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA;
+					}
+				} else {
 					g_warning
 					    ("key %4.4s: keycode = %u; not in range %d..%d\n",
 					     xkbkey->name.name, keycode,
@@ -1691,10 +1711,10 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 					key =
 					    g_new0 (GkbdKeyboardDrawingKey,
 						    1);
+					key->type =
+					    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA;
 				}
 
-				key->type =
-				    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY;
 				key->xkbkey = xkbkey;
 				key->angle = section->angle;
 				rotate_coordinate (section->left,
@@ -1758,9 +1778,8 @@ init_colors (GkbdKeyboardDrawing * drawing)
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->
-					  colors[i].spec,
-					  drawing->colors + i);
+		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
+					  spec, drawing->colors + i);
 
 		if (!result)
 			g_warning
@@ -1780,19 +1799,15 @@ free_cdik (			/*colors doodads indicators keys */
 
 	for (itemp = drawing->keyboard_items; itemp; itemp = itemp->next) {
 		GkbdKeyboardDrawingItem *item = itemp->data;
-		GkbdKeyboardDrawingKey *key;
 
 		switch (item->type) {
-		case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD:
-			g_free (item);
+		case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_INVALID:
+		case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY:
 			break;
 
-		case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY:
-			key = (GkbdKeyboardDrawingKey *) item;
-			if (key->keycode < drawing->xkb->min_key_code ||
-			    key->keycode > drawing->xkb->max_key_code)
-				g_free (key);
-			/* otherwise it's part of the array */
+		case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA:
+		case GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD:
+			g_free (item);
 			break;
 		}
 	}
@@ -1863,8 +1878,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 				for (i = 0;
 				     i <=
-				     drawing->xkb->
-				     indicators->phys_indicators; i++)
+				     drawing->xkb->indicators->
+				     phys_indicators; i++)
 					if (drawing->physical_indicators[i]
 					    != NULL
 					    && (iev->changed & 1 << i)) {
@@ -1874,27 +1889,33 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 						if ((state
 						     &&
-						     !drawing->physical_indicators
+						     !drawing->
+						     physical_indicators
 						     [i]->on) || (!state
 								  &&
-								  drawing->physical_indicators
-								  [i]->on))
-						{
-							drawing->physical_indicators
+								  drawing->
+								  physical_indicators
+								  [i]->
+								  on)) {
+							drawing->
+							    physical_indicators
 							    [i]->on =
 							    state;
 							create_cairo
 							    (drawing);
 							draw_doodad
-							    (drawing->renderContext,
+							    (drawing->
+							     renderContext,
 							     drawing,
-							     drawing->physical_indicators
+							     drawing->
+							     physical_indicators
 							     [i]);
 							destroy_cairo
 							    (drawing);
 							invalidate_indicator_doodad_region
 							    (drawing,
-							     drawing->physical_indicators
+							     drawing->
+							     physical_indicators
 							     [i]);
 						}
 					}
@@ -2135,9 +2156,15 @@ gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
 	return gdk_pixbuf_get_from_drawable (NULL, drawing->pixmap, NULL,
 					     0, 0, 0, 0,
 					     xkb_to_pixmap_coord (context,
-								  drawing->xkb->geom->width_mm),
+								  drawing->
+								  xkb->
+								  geom->
+								  width_mm),
 					     xkb_to_pixmap_coord (context,
-								  drawing->xkb->geom->height_mm));
+								  drawing->
+								  xkb->
+								  geom->
+								  height_mm));
 }
 
 /**
@@ -2168,8 +2195,8 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
 		cr,
 		drawing->renderContext->angle,
 		layout,
-		pango_font_description_copy (GTK_WIDGET (drawing)->
-					     style->font_desc),
+		pango_font_description_copy (GTK_WIDGET (drawing)->style->
+					     font_desc),
 		1, 1,
 		&GTK_WIDGET (drawing)->style->dark[GTK_WIDGET_STATE
 						   (GTK_WIDGET (drawing))]
