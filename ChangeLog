@@ -3,6 +3,9 @@
 	* libgnomekbd/gkbd-keyboard-drawing.c,
 	libgnomekbd/gkbd-keyboard-drawing.h: properly handling keycodes with
 	multiple keys, https://bugzilla.gnome.org/show_bug.cgi?id=590954
+	* libgnomekbd/gkbd-indicator.c: improved background handling by making
+	event box invisible
+	https://bugzilla.gnome.org/show_bug.cgi?id=587510
 
 2009-09-14 svu
 

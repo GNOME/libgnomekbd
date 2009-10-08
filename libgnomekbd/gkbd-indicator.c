@@ -217,6 +217,7 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 
 	pimage = g_slist_nth_data (globals.ind_cfg.images, group);
 	ebox = gtk_event_box_new ();
+	gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
 	if (globals.ind_cfg.show_flags) {
 		GtkWidget *flag;
 		if (pimage == NULL)
