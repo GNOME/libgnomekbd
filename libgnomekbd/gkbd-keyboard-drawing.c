@@ -31,7 +31,7 @@
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
 
-#define KBDRAW_DEBUG
+#define noKBDRAW_DEBUG
 
 #define INVALID_KEYCODE ((guint)(-1))
 
