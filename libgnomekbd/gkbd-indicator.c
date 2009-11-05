@@ -87,16 +87,17 @@ gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str);
 void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str)
 {
-        g_assert (str == NULL || g_utf8_validate (str, -1, NULL));
+	g_assert (str == NULL || g_utf8_validate (str, -1, NULL));
 
-        gtk_widget_set_tooltip_text (GTK_WIDGET (gki), str);
+	gtk_widget_set_tooltip_text (GTK_WIDGET (gki), str);
 
 	if (gki->priv->set_parent_tooltips) {
-		GtkWidget *parent = gtk_widget_get_parent (GTK_WIDGET (gki));
-                if (parent) {
-                        gtk_widget_set_tooltip_text (parent, str);
-                }
-        }
+		GtkWidget *parent =
+		    gtk_widget_get_parent (GTK_WIDGET (gki));
+		if (parent) {
+			gtk_widget_set_tooltip_text (parent, str);
+		}
+	}
 }
 
 void
@@ -122,8 +123,7 @@ gkbd_indicator_fill (GkbdIndicator * gki)
 		GtkWidget *page, *decorated_page = NULL;
 		gchar *full_group_name =
 		    (grp <
-		     g_strv_length (globals.
-				    full_group_names)) ?
+		     g_strv_length (globals.full_group_names)) ?
 		    globals.full_group_names[grp] : "?";
 		page = gkbd_indicator_prepare_drawing (gki, grp);
 
@@ -184,6 +184,12 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	/* Image width and height */
 	int iw = gdk_pixbuf_get_width (image);
 	int ih = gdk_pixbuf_get_height (image);
+	gboolean scaling_needed =
+	    !((flag->allocation.width == iw &&
+	       flag->allocation.height <= ih) ||
+	      (flag->allocation.width >= iw &&
+	       flag->allocation.height == ih));
+
 	/* widget-to-image scales, X and Y */
 	double xwiratio = 1.0 * flag->allocation.width / iw;
 	double ywiratio = 1.0 * flag->allocation.height / ih;
@@ -197,15 +203,20 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	int ox = (flag->allocation.width - sw) >> 1;
 	int oy = (flag->allocation.height - sh) >> 1;
 
-	GdkPixbuf *scaled = gdk_pixbuf_scale_simple (image, sw, sh,
-						     GDK_INTERP_HYPER);
+	GdkPixbuf *scaled =
+	    scaling_needed ? gdk_pixbuf_scale_simple (image, sw, sh,
+						      GDK_INTERP_HYPER) :
+	    image;
 
 	gdk_draw_pixbuf (GDK_DRAWABLE (flag->window),
 			 NULL,
 			 scaled,
 			 0, 0,
-			 ox, oy, sw, sh, GDK_RGB_DITHER_NORMAL, 0, 0);
-	g_object_unref (G_OBJECT (scaled));
+			 ox, oy, sw, sh,
+			 scaling_needed ? GDK_RGB_DITHER_NORMAL :
+			 GDK_RGB_DITHER_NONE, 0, 0);
+	if (scaling_needed)
+		g_object_unref (G_OBJECT (scaled));
 }
 
 static GtkWidget *
@@ -252,8 +263,8 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			if (xkl_engine_get_features (globals.engine) &
 			    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 				char *full_layout_name = (char *)
-				    g_slist_nth_data (globals.kbd_cfg.
-						      layouts_variants,
+				    g_slist_nth_data (globals.
+						      kbd_cfg.layouts_variants,
 						      group);
 				char *variant_name;
 				if (!gkbd_keyboard_config_split_items
@@ -498,8 +509,7 @@ gkbd_indicator_set_current_page (GkbdIndicator * gki)
 	cur_state = xkl_engine_get_current_state (globals.engine);
 	if (cur_state->group >= 0)
 		gkbd_indicator_set_current_page_for_group (gki,
-							   cur_state->
-							   group);
+							   cur_state->group);
 }
 
 void
@@ -741,7 +751,8 @@ gkbd_indicator_global_init (void)
 
 	globals.registry =
 	    xkl_config_registry_get_instance (globals.engine);
-	xkl_config_registry_load (globals.registry, globals.cfg.load_extra_items);
+	xkl_config_registry_load (globals.registry,
+				  globals.cfg.load_extra_items);
 
 	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
 						  xklrec);

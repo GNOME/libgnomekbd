@@ -1,3 +1,7 @@
+2009-11-05 svu
+
+	* libgnomekbd/gkbd-indicator.c: do not scale/dither, if sizes match
+
 2009-10-08 svu
 
 	* libgnomekbd/gkbd-keyboard-drawing.c,
