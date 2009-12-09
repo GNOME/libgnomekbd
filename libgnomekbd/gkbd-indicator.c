@@ -235,8 +235,9 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			return NULL;
 		image = GDK_PIXBUF (pimage);
 		flag = gtk_drawing_area_new ();
-		g_signal_connect (G_OBJECT (flag),
-				  "expose_event",
+		gtk_widget_add_events (GTK_WIDGET (flag),
+				       GDK_BUTTON_PRESS_MASK);
+		g_signal_connect (G_OBJECT (flag), "expose_event",
 				  G_CALLBACK (flag_exposed), image);
 		gtk_container_add (GTK_CONTAINER (ebox), flag);
 	} else {
@@ -263,8 +264,8 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			if (xkl_engine_get_features (globals.engine) &
 			    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 				char *full_layout_name = (char *)
-				    g_slist_nth_data (globals.
-						      kbd_cfg.layouts_variants,
+				    g_slist_nth_data (globals.kbd_cfg.
+						      layouts_variants,
 						      group);
 				char *variant_name;
 				if (!gkbd_keyboard_config_split_items
@@ -337,6 +338,7 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 
 		gtk_container_set_border_width (GTK_CONTAINER (align), 2);
 	}
+
 	g_signal_connect (G_OBJECT (ebox),
 			  "button_press_event",
 			  G_CALLBACK (gkbd_indicator_button_pressed), gki);
@@ -509,7 +511,8 @@ gkbd_indicator_set_current_page (GkbdIndicator * gki)
 	cur_state = xkl_engine_get_current_state (globals.engine);
 	if (cur_state->group >= 0)
 		gkbd_indicator_set_current_page_for_group (gki,
-							   cur_state->group);
+							   cur_state->
+							   group);
 }
 
 void

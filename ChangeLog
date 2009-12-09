@@ -1,3 +1,8 @@
+2009-12-09 svu
+
+	* libgnomekbd/gkbd-indicator.c: Hurray, flags are clickable again,
+	https://bugzilla.gnome.org/show_bug.cgi?id=587510
+
 2009-11-05 svu
 
 	* libgnomekbd/gkbd-indicator.c: do not scale/dither, if sizes match
