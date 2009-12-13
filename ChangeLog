@@ -1,3 +1,7 @@
+2009-12-14 svu
+
+	* configure.in, NEWS: release 2.28.2
+
 2009-12-09 svu
 
 	* libgnomekbd/gkbd-indicator.c: Hurray, flags are clickable again,
