@@ -47,6 +47,8 @@ gkbd_indicator_plugin_manager_add_plugins_dir (GkbdIndicatorPluginManager *
 {
 	GDir *dir = g_dir_open (dirname, 0, NULL);
 	const gchar *filename;
+	const GkbdIndicatorPlugin *plugin;
+
 	if (dir == NULL)
 		return;
 
@@ -63,7 +65,7 @@ gkbd_indicator_plugin_manager_add_plugins_dir (GkbdIndicatorPluginManager *
 				if (g_module_symbol
 				    (module, "GetPlugin",
 				     &get_plugin_func)) {
-					const GkbdIndicatorPlugin *plugin =
+					plugin =
 					    ((GkbdIndicatorPluginGetPluginFunc)
 					     get_plugin_func) ();
 					if (plugin != NULL) {
@@ -76,14 +78,12 @@ gkbd_indicator_plugin_manager_add_plugins_dir (GkbdIndicatorPluginManager *
 							   "Loaded plugin from [%s]: [%s]/[%s]...\n",
 							   full_path,
 							   plugin->name,
-							   plugin->
-							   description);
+							   plugin->description);
 						rec->full_path = full_path;
 						rec->module = module;
 						rec->plugin = plugin;
 						g_hash_table_insert
-						    (manager->
-						     all_plugin_recs,
+						    (manager->all_plugin_recs,
 						     full_path, rec);
 						continue;
 					}
@@ -187,9 +187,8 @@ void
 					initialized = TRUE;
 
 				manager->inited_plugin_recs =
-				    g_slist_append (manager->
-						    inited_plugin_recs,
-						    rec);
+				    g_slist_append
+				    (manager->inited_plugin_recs, rec);
 				xkl_debug (100,
 					   "Plugin [%s] initialized: %d\n",
 					   plugin->name, initialized);

@@ -998,8 +998,8 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 
 	if (key->pressed)
 		color =
-		    &(GTK_WIDGET (drawing)->style->
-		      base[GTK_STATE_SELECTED]);
+		    &(GTK_WIDGET (drawing)->
+		      style->base[GTK_STATE_SELECTED]);
 	else
 		color = drawing->colors + key->xkbkey->color_ndx;
 
@@ -1097,9 +1097,8 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->doodad->
-						       indicator.
-						       shape_ndx]);
+			   &drawing->xkb->geom->shapes[doodad->
+						       doodad->indicator.shape_ndx]);
 }
 
 static void
@@ -1113,8 +1112,8 @@ invalidate_key_region (GkbdKeyboardDrawing * drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->xkbkey->
-						       shape_ndx]);
+			   &drawing->xkb->geom->shapes[key->
+						       xkbkey->shape_ndx]);
 }
 
 static void
@@ -1350,8 +1349,8 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 	pango_layout_set_ellipsize (context->layout, PANGO_ELLIPSIZE_END);
 
 	context->font_desc =
-	    pango_font_description_copy (GTK_WIDGET (drawing)->style->
-					 font_desc);
+	    pango_font_description_copy (GTK_WIDGET (drawing)->
+					 style->font_desc);
 	context->angle = 0;
 	context->scale_numerator = 1;
 	context->scale_denominator = 1;
@@ -1666,8 +1665,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				    drawing->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
-							      xkbkey->name.
-							      name);
+							      xkbkey->
+							      name.name);
 
 				if (keycode == INVALID_KEYCODE)
 					continue;
@@ -1778,8 +1777,9 @@ init_colors (GkbdKeyboardDrawing * drawing)
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
-					  spec, drawing->colors + i);
+		    parse_xkb_color_spec (drawing->xkb->geom->
+					  colors[i].spec,
+					  drawing->colors + i);
 
 		if (!result)
 			g_warning
@@ -1878,8 +1878,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 				for (i = 0;
 				     i <=
-				     drawing->xkb->indicators->
-				     phys_indicators; i++)
+				     drawing->xkb->
+				     indicators->phys_indicators; i++)
 					if (drawing->physical_indicators[i]
 					    != NULL
 					    && (iev->changed & 1 << i)) {
@@ -1889,33 +1889,27 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 						if ((state
 						     &&
-						     !drawing->
-						     physical_indicators
+						     !drawing->physical_indicators
 						     [i]->on) || (!state
 								  &&
-								  drawing->
-								  physical_indicators
-								  [i]->
-								  on)) {
-							drawing->
-							    physical_indicators
+								  drawing->physical_indicators
+								  [i]->on))
+						{
+							drawing->physical_indicators
 							    [i]->on =
 							    state;
 							create_cairo
 							    (drawing);
 							draw_doodad
-							    (drawing->
-							     renderContext,
+							    (drawing->renderContext,
 							     drawing,
-							     drawing->
-							     physical_indicators
+							     drawing->physical_indicators
 							     [i]);
 							destroy_cairo
 							    (drawing);
 							invalidate_indicator_doodad_region
 							    (drawing,
-							     drawing->
-							     physical_indicators
+							     drawing->physical_indicators
 							     [i]);
 						}
 					}
@@ -1977,7 +1971,7 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 
 	drawing->display =
 	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
-	printf ("dpy: %p\n", drawing->display);
+	printf ("dpy: %p\n", (void *) drawing->display);
 
 	if (!XkbQueryExtension
 	    (drawing->display, &opcode, &drawing->xkb_event_type, &error,
@@ -2156,15 +2150,9 @@ gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
 	return gdk_pixbuf_get_from_drawable (NULL, drawing->pixmap, NULL,
 					     0, 0, 0, 0,
 					     xkb_to_pixmap_coord (context,
-								  drawing->
-								  xkb->
-								  geom->
-								  width_mm),
+								  drawing->xkb->geom->width_mm),
 					     xkb_to_pixmap_coord (context,
-								  drawing->
-								  xkb->
-								  geom->
-								  height_mm));
+								  drawing->xkb->geom->height_mm));
 }
 
 /**
@@ -2195,8 +2183,8 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
 		cr,
 		drawing->renderContext->angle,
 		layout,
-		pango_font_description_copy (GTK_WIDGET (drawing)->style->
-					     font_desc),
+		pango_font_description_copy (GTK_WIDGET (drawing)->
+					     style->font_desc),
 		1, 1,
 		&GTK_WIDGET (drawing)->style->dark[GTK_WIDGET_STATE
 						   (GTK_WIDGET (drawing))]
