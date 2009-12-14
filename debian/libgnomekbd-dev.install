@@ -1,0 +1,4 @@
+debian/tmp/usr/include
+debian/tmp/usr/lib/libgnomekbd.a
+debian/tmp/usr/lib/libgnomekbd.so
+debian/tmp/usr/lib/pkgconfig/libgnomekbd.pc

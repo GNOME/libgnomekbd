@@ -1,0 +1,97 @@
+Source: libgnomekbd
+Priority: optional
+Maintainer: Ubuntu Desktop Team <ubuntu-desktop@lists.ubuntu.com>
+XSBC-Original-Maintainer: Loic Minier <lool@dooz.org>
+Uploaders: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Build-Depends: debhelper (>= 5),
+        autotools-dev,
+        cdbs,
+        libdbus-1-dev (>= 0.92),
+        libdbus-glib-1-dev (>= 0.34),
+        libglib2.0-dev (>= 2.16),
+        libgconf2-dev (>= 2.14.0),
+        libgtk2.0-dev (>= 2.13),
+        libxklavier-dev (>= 4.0),
+        libxml-parser-perl,
+        gnome-pkg-tools (>= 0.10),
+        dpkg-dev (>= 1.13.19),
+        intltool (>= 0.35)
+Standards-Version: 3.7.3
+Section: libs
+Vcs-Bzr: https://code.launchpad.net/~ubuntu-desktop/libgnomekbd/ubuntu
+
+Package: libgnomekbd-dev
+Section: libdevel
+Architecture: any
+Depends: libgnomekbd4 (= ${binary:Version}),
+        libglib2.0-dev (>= 2.6),
+        libgconf2-dev,
+        libx11-dev,
+        libgtk2.0-dev,
+        libdbus-1-dev (>= 0.92),
+        libdbus-glib-1-dev (>= 0.34),
+        libxklavier-dev
+Description: GNOME library to manage keyboard configuration - development files
+ libgnomekbd offers an API to manage the keyboard in GNOME applications.
+ .
+ This package contains the development files.
+
+Package: libgnomekbd4
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends},
+        ${misc:Depends},
+        libgnomekbd-common (>= ${source:Version})
+Description: GNOME library to manage keyboard configuration - shared library
+ libgnomekbd offers an API to manage the keyboard in GNOME applications.
+ .
+ This package contains the shared library.
+
+Package: libgnomekbdui-dev
+Section: libdevel
+Architecture: any
+Depends: libgnomekbdui4 (= ${binary:Version}),
+        libgnomekbd-dev,
+        libgnomecanvas2-dev,
+        libgnome-keyring-dev
+Description: User interface library for libgnomekbd - development files
+ libgnomekbd offers an API to manage the keyboard in GNOME applications.
+ .
+ libgnomekbdui offers an API to display a graphical user interface for
+ libgnomekbd operations.
+ .
+ This package contains the development files.
+
+Package: libgnomekbdui4
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends},
+        ${misc:Depends}
+Description: User interface library for libgnomekbd - shared library
+ libgnomekbd offers an API to manage the keyboard in GNOME applications.
+ .
+ libgnomekbdui offers an API to display a graphical user interface for
+ libgnomekbd operations.
+ .
+ This package contains the shared library.
+
+Package: libgnomekbd-common
+Section: libs
+Architecture: all
+Depends: ${shlibs:Depends},
+        ${misc:Depends}
+Replaces: capplets-data (<< 1:2.17.2)
+Description: GNOME library to manage keyboard configuration - common files
+ libgnomekbd offers an API to manage the keyboard in GNOME applications.
+ .
+ This package contains files common to the various libgnomekbd packages.
+
+Package: gkbd-capplet
+Architecture: any
+Depends: ${shlibs:Depends},
+        ${misc:Depends}
+Description: GNOME Panel applet for libgnomekbd
+ libgnomekbd offers an API to manage the keyboard in GNOME applications.
+ .
+ This package contains a configuration applet to select enabled libgnomekbd
+ plugins.
