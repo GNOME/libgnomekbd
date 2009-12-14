@@ -35,7 +35,7 @@ typedef struct _GkbdIndicatorConfig {
 
 	/* private, transient */
 	GConfClient *conf_client;
-	GSList *images;
+	GSList *image_filenames;
 	GtkIconTheme *icon_theme;
 	int config_listener_id;
 	XklEngine *engine;
@@ -64,18 +64,12 @@ extern gchar
 					     GkbdKeyboardConfig *
 					     kbd_config, int group);
 
-extern void gkbd_indicator_config_load_images (GkbdIndicatorConfig *
-					       applet_config,
-					       GkbdKeyboardConfig *
-					       kbd_config);
-extern void gkbd_indicator_config_free_images (GkbdIndicatorConfig *
-					       applet_config);
-
-/* Should be updated on Indicator/GConf and Kbd/GConf configuration change */
-extern void gkbd_indicator_config_update_images (GkbdIndicatorConfig *
-						 applet_config,
-						 GkbdKeyboardConfig *
-						 kbd_config);
+extern void gkbd_indicator_config_load_image_filenames (GkbdIndicatorConfig
+							* applet_config,
+							GkbdKeyboardConfig
+							* kbd_config);
+extern void gkbd_indicator_config_free_image_filenames (GkbdIndicatorConfig
+							* applet_config);
 
 /* Should be updated on Indicator/GConf configuration change */
 extern void gkbd_indicator_config_activate (GkbdIndicatorConfig *

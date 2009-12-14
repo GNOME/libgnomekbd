@@ -44,6 +44,7 @@ libgnomekbd_la_SOURCES = \
 libgnomekbdui_la_SOURCES = \
                          gkbd-indicator-config.c \
                          gkbd-indicator.c \
+                         gkbd-status.c \
                          gkbd-indicator-marshal.c \
                          gkbd-indicator-plugin-manager.c \
                          gkbd-keyboard-drawing-marshal.c \

@@ -1,6 +1,12 @@
 2009-12-14 svu
 
 	* configure.in, NEWS: release 2.28.2
+	* libgnomekbd/Makefile.am, libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-indicator-config.h, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-status.c, libgnomekbd/gkbd-status.h, test/.gitignore,
+	test/Makefile.am, test/gkbd-status-test.c: introduced the status icon
+	widget (functions only with flags so far)
+
 
 2009-12-09 svu
 

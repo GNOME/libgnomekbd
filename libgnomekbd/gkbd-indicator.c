@@ -46,6 +46,7 @@ typedef struct _gki_globals {
 	gchar **full_group_names;
 	gchar **short_group_names;
 	GSList *widget_instances;
+	GSList *images;
 } gki_globals;
 
 struct _GkbdIndicatorPrivate {
@@ -83,6 +84,89 @@ static void
 gkbd_indicator_fill (GkbdIndicator * gki);
 static void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str);
+
+void
+gkbd_indicator_load_images ()
+{
+	int i;
+	GSList *image_filename;
+
+	globals.images = NULL;
+	gkbd_indicator_config_load_image_filenames (&globals.ind_cfg,
+						    &globals.kbd_cfg);
+
+	if (!globals.ind_cfg.show_flags)
+		return;
+
+	image_filename = globals.ind_cfg.image_filenames;
+
+	for (i = xkl_engine_get_max_num_groups (globals.engine);
+	     --i >= 0; image_filename = image_filename->next) {
+		GdkPixbuf *image = NULL;
+		char *image_file = (char *) image_filename->data;
+
+		if (image_file != NULL) {
+			GError *gerror = NULL;
+			image =
+			    gdk_pixbuf_new_from_file (image_file, &gerror);
+			if (image == NULL) {
+				GtkWidget *dialog =
+				    gtk_message_dialog_new (NULL,
+							    GTK_DIALOG_DESTROY_WITH_PARENT,
+							    GTK_MESSAGE_ERROR,
+							    GTK_BUTTONS_OK,
+							    _
+							    ("There was an error loading an image: %s"),
+							    gerror->message);
+				g_signal_connect (G_OBJECT (dialog),
+						  "response",
+						  G_CALLBACK
+						  (gtk_widget_destroy),
+						  NULL);
+
+				gtk_window_set_resizable (GTK_WINDOW
+							  (dialog), FALSE);
+
+				gtk_widget_show (dialog);
+				g_error_free (gerror);
+			}
+			xkl_debug (150,
+				   "Image %d[%s] loaded -> %p[%dx%d]\n",
+				   i, image_file, image,
+				   gdk_pixbuf_get_width (image),
+				   gdk_pixbuf_get_height (image));
+		}
+		/* We append the image anyway - even if it is NULL! */
+		globals.images = g_slist_append (globals.images, image);
+	}
+}
+
+static void
+gkbd_indicator_free_images ()
+{
+	GdkPixbuf *pi;
+	GSList *img_node;
+
+	gkbd_indicator_config_free_image_filenames (&globals.ind_cfg);
+
+	while ((img_node = globals.images) != NULL) {
+		pi = GDK_PIXBUF (img_node->data);
+		/* It can be NULL - some images may be missing */
+		if (pi != NULL) {
+			g_object_unref (pi);
+		}
+		globals.images =
+		    g_slist_remove_link (globals.images, img_node);
+		g_slist_free_1 (img_node);
+	}
+}
+
+static void
+gkbd_indicator_update_images (void)
+{
+	gkbd_indicator_free_images ();
+	gkbd_indicator_load_images ();
+}
 
 void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str)
@@ -226,7 +310,7 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 	GdkPixbuf *image;
 	GtkWidget *ebox;
 
-	pimage = g_slist_nth_data (globals.ind_cfg.images, group);
+	pimage = g_slist_nth_data (globals.images, group);
 	ebox = gtk_event_box_new ();
 	gtk_event_box_set_visible_window (GTK_EVENT_BOX (ebox), FALSE);
 	if (globals.ind_cfg.show_flags) {
@@ -264,8 +348,8 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			if (xkl_engine_get_features (globals.engine) &
 			    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 				char *full_layout_name = (char *)
-				    g_slist_nth_data (globals.kbd_cfg.
-						      layouts_variants,
+				    g_slist_nth_data (globals.
+						      kbd_cfg.layouts_variants,
 						      group);
 				char *variant_name;
 				if (!gkbd_keyboard_config_split_items
@@ -408,8 +492,7 @@ gkbd_indicator_ind_cfg_changed (GConfClient * client,
 	xkl_debug (100,
 		   "Applet configuration changed in GConf - reiniting...\n");
 	gkbd_indicator_config_load_from_gconf (&globals.ind_cfg);
-	gkbd_indicator_config_update_images (&globals.ind_cfg,
-					     &globals.kbd_cfg);
+	gkbd_indicator_update_images ();
 	gkbd_indicator_config_activate (&globals.ind_cfg);
 
 	gkbd_indicator_plugin_manager_toggle_plugins
@@ -461,8 +544,7 @@ gkbd_indicator_kbd_cfg_callback (GkbdIndicator * gki)
 
 	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
 						  xklrec);
-	gkbd_indicator_config_update_images (&globals.ind_cfg,
-					     &globals.kbd_cfg);
+	gkbd_indicator_update_images ();
 
 	g_strfreev (globals.full_group_names);
 	globals.full_group_names = NULL;
@@ -511,8 +593,7 @@ gkbd_indicator_set_current_page (GkbdIndicator * gki)
 	cur_state = xkl_engine_get_current_state (globals.engine);
 	if (cur_state->group >= 0)
 		gkbd_indicator_set_current_page_for_group (gki,
-							   cur_state->
-							   group);
+							   cur_state->group);
 }
 
 void
@@ -761,8 +842,7 @@ gkbd_indicator_global_init (void)
 						  xklrec);
 
 	gkbd_indicator_config_load_from_gconf (&globals.ind_cfg);
-	gkbd_indicator_config_update_images (&globals.ind_cfg,
-					     &globals.kbd_cfg);
+	gkbd_indicator_update_images ();
 	gkbd_indicator_config_activate (&globals.ind_cfg);
 
 	gkbd_indicator_load_group_names ((const gchar **) xklrec->layouts,
@@ -836,7 +916,7 @@ gdouble
 gkbd_indicator_get_max_width_height_ratio (void)
 {
 	gdouble rv = 0.0;
-	GSList *ip = globals.ind_cfg.images;
+	GSList *ip = globals.images;
 	if (!globals.ind_cfg.show_flags)
 		return 0;
 	while (ip != NULL) {

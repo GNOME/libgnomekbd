@@ -66,26 +66,6 @@ gkbd_indicator_config_free_enabled_plugins (GkbdIndicatorConfig *
 	}
 }
 
-/**
- * extern applet kbdConfig functions
- */
-void
-gkbd_indicator_config_free_images (GkbdIndicatorConfig * ind_config)
-{
-	GdkPixbuf *pi;
-	GSList *img_node;
-	while ((img_node = ind_config->images) != NULL) {
-		pi = GDK_PIXBUF (img_node->data);
-		/* It can be NULL - some images may be missing */
-		if (pi != NULL) {
-			g_object_unref (pi);
-		}
-		ind_config->images =
-		    g_slist_remove_link (ind_config->images, img_node);
-		g_slist_free_1 (img_node);
-	}
-}
-
 char *
 gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 				       ind_config,
@@ -100,9 +80,8 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 
 	if ((kbd_config->layouts_variants != NULL) &&
 	    (g_slist_length (kbd_config->layouts_variants) > group)) {
-		char *full_layout_name =
-		    (char *) g_slist_nth_data (kbd_config->
-					       layouts_variants, group);
+		char *full_layout_name = (char *)
+		    g_slist_nth_data (kbd_config->layouts_variants, group);
 
 		if (full_layout_name != NULL) {
 			char *l, *v;
@@ -130,59 +109,39 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 }
 
 void
-gkbd_indicator_config_load_images (GkbdIndicatorConfig * ind_config,
-				   GkbdKeyboardConfig * kbd_config)
+gkbd_indicator_config_load_image_filenames (GkbdIndicatorConfig *
+					    ind_config,
+					    GkbdKeyboardConfig *
+					    kbd_config)
 {
 	int i;
-	ind_config->images = NULL;
+	ind_config->image_filenames = NULL;
 
 	if (!ind_config->show_flags)
 		return;
 
 	for (i = xkl_engine_get_max_num_groups (ind_config->engine);
 	     --i >= 0;) {
-		GdkPixbuf *image = NULL;
 		char *image_file =
 		    gkbd_indicator_config_get_images_file (ind_config,
 							   kbd_config,
 							   i);
+		ind_config->image_filenames =
+		    g_slist_prepend (ind_config->image_filenames,
+				     image_file);
+	}
+}
 
-		if (image_file != NULL) {
-			GError *gerror = NULL;
-			image =
-			    gdk_pixbuf_new_from_file (image_file, &gerror);
-			if (image == NULL) {
-				GtkWidget *dialog =
-				    gtk_message_dialog_new (NULL,
-							    GTK_DIALOG_DESTROY_WITH_PARENT,
-							    GTK_MESSAGE_ERROR,
-							    GTK_BUTTONS_OK,
-							    _
-							    ("There was an error loading an image: %s"),
-							    gerror->
-							    message);
-				g_signal_connect (G_OBJECT (dialog),
-						  "response",
-						  G_CALLBACK
-						  (gtk_widget_destroy),
-						  NULL);
-
-				gtk_window_set_resizable (GTK_WINDOW
-							  (dialog), FALSE);
-
-				gtk_widget_show (dialog);
-				g_error_free (gerror);
-			}
-			xkl_debug (150,
-				   "Image %d[%s] loaded -> %p[%dx%d]\n",
-				   i, image_file, image,
-				   gdk_pixbuf_get_width (image),
-				   gdk_pixbuf_get_height (image));
-			g_free (image_file);
-		}
-		/* We append the image anyway - even if it is NULL! */
-		ind_config->images =
-		    g_slist_prepend (ind_config->images, image);
+void
+gkbd_indicator_config_free_image_filenames (GkbdIndicatorConfig *
+					    ind_config)
+{
+	while (ind_config->image_filenames) {
+		if (ind_config->image_filenames->data)
+			g_free (ind_config->image_filenames->data);
+		ind_config->image_filenames =
+		    g_slist_delete_link (ind_config->image_filenames,
+					 ind_config->image_filenames);
 	}
 }
 
@@ -239,20 +198,11 @@ gkbd_indicator_config_term (GkbdIndicatorConfig * ind_config)
 #endif
 	ind_config->icon_theme = NULL;
 
-	gkbd_indicator_config_free_images (ind_config);
+	gkbd_indicator_config_free_image_filenames (ind_config);
 
 	gkbd_indicator_config_free_enabled_plugins (ind_config);
 	g_object_unref (ind_config->conf_client);
 	ind_config->conf_client = NULL;
-}
-
-void
-gkbd_indicator_config_update_images (GkbdIndicatorConfig *
-				     ind_config,
-				     GkbdKeyboardConfig * kbd_config)
-{
-	gkbd_indicator_config_free_images (ind_config);
-	gkbd_indicator_config_load_images (ind_config, kbd_config);
 }
 
 void
