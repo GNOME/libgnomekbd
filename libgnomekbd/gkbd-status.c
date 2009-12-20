@@ -120,6 +120,67 @@ gkbd_status_activate (GkbdStatus * gki)
 	gkbd_desktop_config_lock_next_group (&globals.cfg);
 }
 
+static void
+gkbd_status_render_cairo (cairo_t * cr, int group)
+{
+	cairo_text_extents_t te;
+	gchar *lbl = globals.short_group_names[group];
+
+	cairo_set_source_rgba (cr, 0, 1 - group, group, 1);
+	cairo_rectangle (cr, globals.current_size >> 2,
+			 globals.current_size >> 2,
+			 globals.current_size >> 1,
+			 globals.current_size >> 1);
+	cairo_fill (cr);
+
+	cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
+/*cairo_select_font_face (cr, "Georgia",
+    CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
+cairo_set_font_size (cr, 10);*/
+	cairo_text_extents (cr, lbl, &te);
+	cairo_move_to (cr,
+		       (globals.current_size >> 1) - te.width / 2 -
+		       te.x_bearing,
+		       (globals.current_size >> 1) - te.height / 2 -
+		       te.y_bearing);
+	cairo_show_text (cr, lbl);
+
+	cairo_destroy (cr);
+}
+
+static inline guint8
+convert_color_channel (guint8 src, guint8 alpha)
+{
+	return alpha ? ((((guint) src) << 8) - src) / alpha : 0;
+}
+
+static void
+convert_bgra_to_rgba (guint8 const *src,
+		      guint8 * dst, int width, int height)
+{
+	guint8 const *src_pixel = src;
+	guint8 *dst_pixel = dst;
+	int x, y;
+
+	for (y = 0; y < height; y++) {
+		for (x = 0; x < width; x++) {
+			dst_pixel[0] = convert_color_channel (src_pixel[2],
+							      src_pixel
+							      [3]);
+			dst_pixel[1] =
+			    convert_color_channel (src_pixel[1],
+						   src_pixel[3]);
+			dst_pixel[2] =
+			    convert_color_channel (src_pixel[0],
+						   src_pixel[3]);
+			dst_pixel[3] = src_pixel[3];
+
+			dst_pixel += 4;
+			src_pixel += 4;
+		}
+	}
+}
+
 static GdkPixbuf *
 gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 {
@@ -130,43 +191,89 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	if (globals.current_size == 0)
 		return NULL;
 
-	image_filename = (char *) g_slist_nth_data (globals.ind_cfg.image_filenames,
-				       group);
+	if (globals.ind_cfg.show_flags) {
 
-	image = gdk_pixbuf_new_from_file_at_size (image_filename,
-					      globals.current_size,
-					      globals.current_size,
-					      &gerror);
+		image_filename =
+		    (char *) g_slist_nth_data (globals.ind_cfg.
+					       image_filenames, group);
 
-	if (image == NULL) {
-		GtkWidget *dialog = gtk_message_dialog_new (NULL,
-							    GTK_DIALOG_DESTROY_WITH_PARENT,
-							    GTK_MESSAGE_ERROR,
-							    GTK_BUTTONS_OK,
-							    _
-							    ("There was an error loading an image: %s"),
-							    gerror ==
-							    NULL ?
-							    "Unknown" :
-							    gerror->
-							    message);
-		g_signal_connect (G_OBJECT (dialog), "response",
-				  G_CALLBACK (gtk_widget_destroy), NULL);
+		image = gdk_pixbuf_new_from_file_at_size (image_filename,
+							  globals.
+							  current_size,
+							  globals.
+							  current_size,
+							  &gerror);
 
-		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+		if (image == NULL) {
+			GtkWidget *dialog = gtk_message_dialog_new (NULL,
+								    GTK_DIALOG_DESTROY_WITH_PARENT,
+								    GTK_MESSAGE_ERROR,
+								    GTK_BUTTONS_OK,
+								    _
+								    ("There was an error loading an image: %s"),
+								    gerror
+								    ==
+								    NULL ?
+								    "Unknown"
+								    :
+								    gerror->message);
+			g_signal_connect (G_OBJECT (dialog), "response",
+					  G_CALLBACK (gtk_widget_destroy),
+					  NULL);
 
-		gtk_widget_show (dialog);
-		g_error_free (gerror);
+			gtk_window_set_resizable (GTK_WINDOW (dialog),
+						  FALSE);
 
-		return NULL;
+			gtk_widget_show (dialog);
+			g_error_free (gerror);
+
+			return NULL;
+		}
+		xkl_debug (150,
+			   "Image %d[%s] loaded -> %p[%dx%d], alpha: %d\n",
+			   group, image_filename, image,
+			   gdk_pixbuf_get_width (image),
+			   gdk_pixbuf_get_height (image),
+			   gdk_pixbuf_get_has_alpha (image));
+
+		return image;
+	} else {
+		cairo_surface_t *cs =
+		    cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
+						globals.current_size,
+						globals.current_size);
+		unsigned char *cairo_data;
+		guchar *pixbuf_data;
+		gkbd_status_render_cairo (cairo_create (cs), group);
+		cairo_data = cairo_image_surface_get_data (cs);
+		pixbuf_data =
+		    g_new0 (guchar,
+			    4 * globals.current_size *
+			    globals.current_size);
+		convert_bgra_to_rgba (cairo_data, pixbuf_data,
+				      globals.current_size,
+				      globals.current_size);
+
+		cairo_surface_destroy (cs);
+
+		image = gdk_pixbuf_new_from_data (pixbuf_data,
+						  GDK_COLORSPACE_RGB,
+						  TRUE,
+						  8,
+						  globals.current_size,
+						  globals.current_size,
+						  globals.current_size * 4,
+						  (GdkPixbufDestroyNotify)
+						  g_free, NULL);
+		xkl_debug (150,
+			   "Image %d created -> %p[%dx%d], alpha: %d\n",
+			   group, image, gdk_pixbuf_get_width (image),
+			   gdk_pixbuf_get_height (image),
+			   gdk_pixbuf_get_has_alpha (image));
+
+		return image;
 	}
-	xkl_debug (150,
-		   "Image %d[%s] loaded -> %p[%dx%d]\n",
-		   group, image_filename, image,
-		   gdk_pixbuf_get_width (image),
-		   gdk_pixbuf_get_height (image));
-
-	return image;
+	return NULL;
 }
 
 static void
