@@ -1,3 +1,10 @@
+2009-12-21 svu
+
+	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in,
+	libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-indicator-config.h, libgnomekbd/gkbd-status.c: making
+	font and color of the status icon configurable in gconf
+
 2009-12-20 svu
 
 	* libgnomekbd/gkbd-status.c: initial implementation of "labels" in

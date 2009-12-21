@@ -125,18 +125,40 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 {
 	cairo_text_extents_t te;
 	gchar *lbl = globals.short_group_names[group];
+	double r, g, b;
 
-	cairo_set_source_rgba (cr, 0, 1 - group, group, 1);
-	cairo_rectangle (cr, globals.current_size >> 2,
-			 globals.current_size >> 2,
-			 globals.current_size >> 1,
-			 globals.current_size >> 1);
-	cairo_fill (cr);
+	if (globals.ind_cfg.background_color != NULL &&
+	    globals.ind_cfg.background_color[0] != 0) {
+		if (sscanf
+		    (globals.ind_cfg.background_color, "%lg %lg %lg", &r,
+		     &g, &b) == 3) {
+			cairo_set_source_rgb (cr, r, g, b);
+			cairo_rectangle (cr, 0, 0, globals.current_size,
+					 globals.current_size);
+			cairo_fill (cr);
+		}
+	}
 
-	cairo_set_source_rgb (cr, 1.0, 1.0, 1.0);
-/*cairo_select_font_face (cr, "Georgia",
-    CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_BOLD);
-cairo_set_font_size (cr, 10);*/
+	if (globals.ind_cfg.foreground_color != NULL &&
+	    globals.ind_cfg.foreground_color[0] != 0) {
+		if (sscanf
+		    (globals.ind_cfg.foreground_color, "%lg %lg %lg", &r,
+		     &g, &b) == 3) {
+			cairo_set_source_rgb (cr, r, g, b);
+		}
+	}
+
+	if (globals.ind_cfg.font_family != NULL &&
+	    globals.ind_cfg.font_family[0] != 0) {
+		cairo_select_font_face (cr, globals.ind_cfg.font_family,
+					CAIRO_FONT_SLANT_NORMAL,
+					CAIRO_FONT_WEIGHT_NORMAL);
+	}
+
+	if (globals.ind_cfg.font_size > 0) {
+		cairo_set_font_size (cr, globals.ind_cfg.font_size);
+	}
+
 	cairo_text_extents (cr, lbl, &te);
 	cairo_move_to (cr,
 		       (globals.current_size >> 1) - te.width / 2 -

@@ -212,6 +212,54 @@
     </schema>
 
     <schema>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/indicator/fontFamily</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/indicator/fontFamily</applyto>
+      <owner>gnome</owner>    
+      <type>string</type>
+      <default>Helvetica</default>
+      <locale name="C">
+        <short>The font family</short>
+        <long>The font family for the layout indicator</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/indicator/fontSize</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/indicator/fontSize</applyto>
+      <owner>gnome</owner>    
+      <type>int</type>
+      <default>10</default>
+      <locale name="C">
+        <short>The font size</short>
+        <long>The font size for the layout indicator</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/indicator/foregroundColor</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/indicator/foregroundColor</applyto>
+      <owner>gnome</owner>    
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>The foreground color</short>
+        <long>The foreground color for the layout indicator</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/desktop/gnome/peripherals/keyboard/indicator/backgroundColor</key>
+      <applyto>/desktop/gnome/peripherals/keyboard/indicator/backgroundColor</applyto>
+      <owner>gnome</owner>    
+      <type>string</type>
+      <default></default>
+      <locale name="C">
+        <short>The background color</short>
+        <long>The background color for the layout indicator</long>
+      </locale>
+    </schema>
+
+    <schema>
       <key>/schemas/desktop/gnome/peripherals/keyboard/indicator/enabledPlugins</key>
       <applyto>/desktop/gnome/peripherals/keyboard/indicator/enabledPlugins</applyto>
       <owner>gnome</owner>    

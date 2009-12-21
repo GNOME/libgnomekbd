@@ -44,6 +44,14 @@ const gchar GKBD_INDICATOR_CONFIG_KEY_ENABLED_PLUGINS[] =
     GKBD_INDICATOR_CONFIG_KEY_PREFIX "/enabledPlugins";
 const gchar GKBD_INDICATOR_CONFIG_KEY_SECONDARIES[] =
     GKBD_INDICATOR_CONFIG_KEY_PREFIX "/secondary";
+const gchar GKBD_INDICATOR_CONFIG_KEY_FONT_FAMILY[] =
+    GKBD_INDICATOR_CONFIG_KEY_PREFIX "/fontFamily";
+const gchar GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE[] =
+    GKBD_INDICATOR_CONFIG_KEY_PREFIX "/fontSize";
+const gchar GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR[] =
+    GKBD_INDICATOR_CONFIG_KEY_PREFIX "/foregroundColor";
+const gchar GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR[] =
+    GKBD_INDICATOR_CONFIG_KEY_PREFIX "/backgroundColor";
 
 /**
  * static applet config functions
@@ -193,9 +201,15 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 void
 gkbd_indicator_config_term (GkbdIndicatorConfig * ind_config)
 {
-#if 0
-	g_object_unref (G_OBJECT (ind_config->icon_theme));
-#endif
+	g_free (ind_config->font_family);
+	ind_config->font_family = NULL;
+
+	g_free (ind_config->foreground_color);
+	ind_config->foreground_color = NULL;
+
+	g_free (ind_config->background_color);
+	ind_config->background_color = NULL;
+
 	ind_config->icon_theme = NULL;
 
 	gkbd_indicator_config_free_image_filenames (ind_config);
@@ -233,6 +247,55 @@ gkbd_indicator_config_load_from_gconf (GkbdIndicatorConfig * ind_config)
 		g_error_free (gerror);
 		gerror = NULL;
 	}
+
+
+	ind_config->font_family =
+	    gconf_client_get_string (ind_config->conf_client,
+				     GKBD_INDICATOR_CONFIG_KEY_FONT_FAMILY,
+				     &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		ind_config->font_family = g_strdup ("Helvetica");
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	ind_config->font_size =
+	    gconf_client_get_int (ind_config->conf_client,
+				  GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE,
+				  &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		ind_config->font_size = 10;
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	ind_config->foreground_color =
+	    gconf_client_get_string (ind_config->conf_client,
+				     GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR,
+				     &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	ind_config->background_color =
+	    gconf_client_get_string (ind_config->conf_client,
+				     GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR,
+				     &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+
 
 	gkbd_indicator_config_free_enabled_plugins (ind_config);
 	ind_config->enabled_plugins =
@@ -283,8 +346,7 @@ void
 gkbd_indicator_config_activate (GkbdIndicatorConfig * ind_config)
 {
 	xkl_engine_set_secondary_groups_mask (ind_config->engine,
-					      ind_config->
-					      secondary_groups_mask);
+					      ind_config->secondary_groups_mask);
 }
 
 void
@@ -303,6 +365,5 @@ void
 gkbd_indicator_config_stop_listen (GkbdIndicatorConfig * ind_config)
 {
 	gkbd_desktop_config_remove_listener (ind_config->conf_client,
-					     &ind_config->
-					     config_listener_id);
+					     &ind_config->config_listener_id);
 }
