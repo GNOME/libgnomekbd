@@ -1,3 +1,7 @@
+2009-12-22 svu
+
+	* configure.in: bump soname
+
 2009-12-21 svu
 
 	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in,
