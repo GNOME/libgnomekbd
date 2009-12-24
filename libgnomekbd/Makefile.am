@@ -62,6 +62,7 @@ gnomekbdinc_HEADERS = \
                       gkbd-desktop-config.h \
                       gkbd-keyboard-config.h \
                       gkbd-indicator.h \
+                      gkbd-status.h \
                       gkbd-indicator-config.h \
                       gkbd-indicator-plugin.h \
                       gkbd-keyboard-drawing.h \
