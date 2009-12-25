@@ -1,3 +1,7 @@
+2009-12-25 svu
+
+	* configure.in: increment the package version
+
 2009-12-22 svu
 
 	* configure.in: bump soname
