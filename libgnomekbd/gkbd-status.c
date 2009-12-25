@@ -45,6 +45,8 @@ typedef struct _gki_globals {
 	gint current_size;
 	GSList *icons;		/* list of GdkPixbuf */
 	GSList *widget_instances;	/* list of GkbdStatus */
+	gulong state_changed_handler;
+	gulong config_changed_handler;
 } gki_globals;
 
 struct _GkbdStatusPrivate {
@@ -64,7 +66,6 @@ static gki_globals globals;
 	}
 
 G_DEFINE_TYPE (GkbdStatus, gkbd_status, GTK_TYPE_STATUS_ICON)
-
 static void
 gkbd_status_global_init (void);
 static void
@@ -177,8 +178,8 @@ convert_color_channel (guint8 src, guint8 alpha)
 }
 
 static void
-convert_bgra_to_rgba (guint8 const *src,
-		      guint8 * dst, int width, int height)
+convert_bgra_to_rgba (guint8 const *src, guint8 * dst, int width,
+		      int height)
 {
 	guint8 const *src_pixel = src;
 	guint8 *dst_pixel = dst;
@@ -186,9 +187,9 @@ convert_bgra_to_rgba (guint8 const *src,
 
 	for (y = 0; y < height; y++) {
 		for (x = 0; x < width; x++) {
-			dst_pixel[0] = convert_color_channel (src_pixel[2],
-							      src_pixel
-							      [3]);
+			dst_pixel[0] =
+			    convert_color_channel (src_pixel[2],
+						   src_pixel[3]);
 			dst_pixel[1] =
 			    convert_color_channel (src_pixel[1],
 						   src_pixel[3]);
@@ -238,7 +239,8 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 								    NULL ?
 								    "Unknown"
 								    :
-								    gerror->message);
+								    gerror->
+								    message);
 			g_signal_connect (G_OBJECT (dialog), "response",
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
@@ -368,6 +370,8 @@ gkbd_status_load_group_names (const gchar ** layout_ids,
 		 * full names are going to be used anyway */
 		gint i, total_groups =
 		    xkl_engine_get_num_groups (globals.engine);
+		xkl_debug (150, "group descriptions loaded: %d!\n",
+			   total_groups);
 		globals.full_group_names =
 		    g_new0 (char *, total_groups + 1);
 
@@ -411,8 +415,7 @@ gkbd_status_kbd_cfg_callback (GkbdStatus * gki)
 	}
 
 	gkbd_status_load_group_names ((const gchar **) xklrec->layouts,
-				      (const gchar **)
-				      xklrec->variants);
+				      (const gchar **) xklrec->variants);
 
 	ForAllIndicators () {
 		gkbd_status_reinit_ui (gki);
@@ -431,8 +434,8 @@ gkbd_status_state_callback (XklEngine * engine,
 	if (changeType == GROUP_CHANGED) {
 		ForAllIndicators () {
 			xkl_debug (200, "do repaint\n");
-			gkbd_status_set_current_page_for_group
-			    (gki, group);
+			gkbd_status_set_current_page_for_group (gki,
+								group);
 		}
 		NextIndicator ();
 	}
@@ -487,8 +490,7 @@ gkbd_status_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 					     TRUE);
 				}
 			}
-			NextIndicator ()
-		}
+		NextIndicator ()}
 		break;
 	}
 	return GDK_FILTER_CONTINUE;
@@ -502,8 +504,8 @@ gkbd_status_start_listen (void)
 	gdk_window_add_filter (NULL, (GdkFilterFunc)
 			       gkbd_status_filter_x_evt, NULL);
 	gdk_window_add_filter (gdk_get_default_root_window (),
-			       (GdkFilterFunc)
-			       gkbd_status_filter_x_evt, NULL);
+			       (GdkFilterFunc) gkbd_status_filter_x_evt,
+			       NULL);
 
 	xkl_engine_start_listen (globals.engine,
 				 XKLL_TRACK_KEYBOARD_STATE);
@@ -568,7 +570,7 @@ gkbd_status_finalize (GObject * obj)
 {
 	GkbdStatus *gki = GKBD_STATUS (obj);
 	xkl_debug (100,
-		   "Starting the gnome-kbd-indicator widget shutdown process for %p\n",
+		   "Starting the gnome-kbd-status widget shutdown process for %p\n",
 		   gki);
 
 	/* remove BEFORE all termination work is finished */
@@ -578,7 +580,7 @@ gkbd_status_finalize (GObject * obj)
 	gkbd_status_cleanup (gki);
 
 	xkl_debug (100,
-		   "The instance of gnome-kbd-indicator successfully finalized\n");
+		   "The instance of gnome-kbd-status successfully finalized\n");
 
 	g_free (gki->priv);
 
@@ -600,6 +602,21 @@ gkbd_status_global_term (void)
 	gkbd_indicator_config_term (&globals.ind_cfg);
 	gkbd_keyboard_config_term (&globals.kbd_cfg);
 	gkbd_desktop_config_term (&globals.cfg);
+
+	if (g_signal_handler_is_connected
+	    (globals.engine, globals.state_changed_handler)) {
+		g_signal_handler_disconnect (globals.engine,
+					     globals.
+					     state_changed_handler);
+		globals.state_changed_handler = 0;
+	}
+	if (g_signal_handler_is_connected
+	    (globals.engine, globals.config_changed_handler)) {
+		g_signal_handler_disconnect (globals.engine,
+					     globals.
+					     config_changed_handler);
+		globals.config_changed_handler = 0;
+	}
 
 	g_object_unref (G_OBJECT (globals.registry));
 	globals.registry = NULL;
@@ -640,10 +657,14 @@ gkbd_status_global_init (void)
 
 	gconf_client = gconf_client_get_default ();
 
-	g_signal_connect (globals.engine, "X-state-changed",
-			  G_CALLBACK (gkbd_status_state_callback), NULL);
-	g_signal_connect (globals.engine, "X-config-changed",
-			  G_CALLBACK (gkbd_status_kbd_cfg_callback), NULL);
+	globals.state_changed_handler =
+	    g_signal_connect (globals.engine, "X-state-changed",
+			      G_CALLBACK (gkbd_status_state_callback),
+			      NULL);
+	globals.config_changed_handler =
+	    g_signal_connect (globals.engine, "X-config-changed",
+			      G_CALLBACK (gkbd_status_kbd_cfg_callback),
+			      NULL);
 
 	gkbd_desktop_config_init (&globals.cfg, gconf_client,
 				  globals.engine);
@@ -673,8 +694,7 @@ gkbd_status_global_init (void)
 	gkbd_indicator_config_activate (&globals.ind_cfg);
 
 	gkbd_status_load_group_names ((const gchar **) xklrec->layouts,
-				      (const gchar **)
-				      xklrec->variants);
+				      (const gchar **) xklrec->variants);
 	g_object_unref (G_OBJECT (xklrec));
 
 	gkbd_desktop_config_start_listen (&globals.cfg,

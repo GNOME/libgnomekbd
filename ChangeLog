@@ -1,6 +1,8 @@
 2009-12-25 svu
 
 	* configure.in: increment the package version
+	* libgnomekbd/gkbd-status.c: unregister signal handlers is no status
+	icon instances exist
 
 2009-12-22 svu
 
