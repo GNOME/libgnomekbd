@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-06-28 23:58+0000\n"
-"PO-Revision-Date: 2009-06-30 20:13+0200\n"
+"POT-Creation-Date: 2009-12-21 21:47+0000\n"
+"PO-Revision-Date: 2009-12-28 20:20+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -31,14 +31,14 @@ msgstr ""
 "Copyright &#169; la Fundación X.Org y los contribuidores de XKeyboardConfig\n"
 "Para la licencia vea los metadatos del paquete"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "Error de inicialización de XKB"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
+#: ../libgnomekbd/gkbd-indicator.c:119
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Hubo un error al cargar una imagen: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:706
+msgid "XKB initialization error"
+msgstr "Error de inicialización de XKB"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -160,18 +160,50 @@ msgid "The Keyboard Preview, width"
 msgstr "Vista Previa de Teclado, anchura"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The background color"
+msgstr "El color de fondo"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The background color for the layout indicator"
+msgstr "El color de fondo para el indicador de distribución"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The font family"
+msgstr "La familia tipográfica"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The font family for the layout indicator"
+msgstr "La familia tipográfica para el indicador de distribución"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font size"
+msgstr "El tamaño de tipografía"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font size for the layout indicator"
+msgstr "El tamaño de tipografía para el indicador de distribución"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The foreground color"
+msgstr "El color de primer plano"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The foreground color for the layout indicator"
+msgstr "El color de primer plano para el indicador de distribución"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "La lista de complementos del Indicador de Teclado activados"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
 msgstr "esquema de teclado"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
 msgstr "modelo de teclado"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "modmap file list"
 msgstr "lista de archivos modmap"
 
