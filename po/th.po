@@ -1,16 +1,16 @@
 # Thai translation of libgnomekbd.
-# Copyright (C) 2007-2008 Free Software Foundation, Inc.
+# Copyright (C) 2007-2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 # aka.ape <aka.ape@gmail.com>, 2007.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2007-2008.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2007-2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-08-16 20:00+0000\n"
-"PO-Revision-Date: 2008-08-23 15:30+0700\n"
+"POT-Creation-Date: 2009-12-21 21:47+0000\n"
+"PO-Revision-Date: 2010-01-02 13:00+0700\n"
 "Last-Translator:  Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -29,14 +29,14 @@ msgstr ""
 "สงวนลิขสิทธิ์ &#169; X.Org Foundation และผู้ร่วมสมทบงานกับ XKeyboardConfig\n"
 "ดูสัญญาอนุญาตได้จากข้อมูลกำกับแพกเกจ"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "เกิดข้อผิดพลาดกับการเริ่มต้น XKB"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
+#: ../libgnomekbd/gkbd-indicator.c:119
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "มีข้อผิดพลาดขณะโหลดภาพ: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:706
+msgid "XKB initialization error"
+msgstr "เกิดข้อผิดพลาดกับการเริ่มต้น XKB"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -154,18 +154,50 @@ msgid "The Keyboard Preview, width"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ความกว้าง"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The background color"
+msgstr "สีพื้นหลัง"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The background color for the layout indicator"
+msgstr "สีพื้นหลังของตัวบอกภาษาแป้นพิมพ์"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The font family"
+msgstr "แบบอักษร"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The font family for the layout indicator"
+msgstr "แบบอักษรสำหรับตัวบอกภาษาแป้นพิมพ์"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font size"
+msgstr "ขนาดตัวอักษร"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font size for the layout indicator"
+msgstr "ขนาดตัวอักษรสำหรับตัวบอกภาษาแป้นพิมพ์"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The foreground color"
+msgstr "สีตัวอักษร"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The foreground color for the layout indicator"
+msgstr "สีตัวอักษรสำหรับตัวบอกภาษาแป้นพิมพ์"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "รายการปลั๊กอินที่ใช้ของแอพเพล็ตแสดงผังแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
 msgstr "ผังแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
 msgstr "รุ่นแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "modmap file list"
 msgstr "รายการแฟ้ม modmap"
 
