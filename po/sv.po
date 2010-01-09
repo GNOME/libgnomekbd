@@ -1,14 +1,14 @@
 # Swedish translation for libgnomekbd.
 # Copyright (C) 2007, 2008, 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
-# Daniel Nylander <po@danielnylander.se>, 2007, 2008, 2009.
+# Daniel Nylander <po@danielnylander.se>, 2007, 2008, 2009, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-07 12:07+0200\n"
-"PO-Revision-Date: 2009-07-07 12:08+0100\n"
+"POT-Creation-Date: 2010-01-09 17:13+0100\n"
+"PO-Revision-Date: 2010-01-09 17:15+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -27,14 +27,14 @@ msgstr ""
 "Copyright &#169; X.Org Foundation och XKeyboardConfig-bidragsgivarna\n"
 "Se paketets metadata för licensiering"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB-initieringsfel"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
+#: ../libgnomekbd/gkbd-indicator.c:119
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Det inträffade ett fel vid inläsning av en bild: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:706
+msgid "XKB initialization error"
+msgstr "XKB-initieringsfel"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -148,18 +148,50 @@ msgid "The Keyboard Preview, width"
 msgstr "Tangentbordsförhandsvisning, bredd"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The background color"
+msgstr "Bakgrundsfärgen"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The background color for the layout indicator"
+msgstr "Bakgrundsfärgen för layoutindikatorn"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The font family"
+msgstr "Typsnittsfamiljen"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The font family for the layout indicator"
+msgstr "Typsnittsfamiljen för layoutindikatorn"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font size"
+msgstr "Typsnittsstorleken"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font size for the layout indicator"
+msgstr "Typsnittsstorleken för layoutindikatorn"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The foreground color"
+msgstr "Förgrundsfärgen"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The foreground color for the layout indicator"
+msgstr "Förgrundsfärgen för layoutindikatorn"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Listan över aktiverade insticksmoduler för tangentbordsindikator"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
 msgstr "tangentbordslayout"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
 msgstr "tangentbordsmodell"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "modmap file list"
 msgstr "fillista för modmap"
 
