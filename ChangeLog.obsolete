@@ -1,7 +1,3 @@
-2010-01-11 svu
-
-	* NO MORE EXPLICIT CHANGELOG. SEE GIT LOGS
-
 2009-12-25 svu
 
 	* configure.in: increment the package version
