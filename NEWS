@@ -1,3 +1,7 @@
+2.28.5:
+	GkbdIndicator rendering fixed.
+	GkbdStatus notification icon added.
+
 2.28.2:
 	Small fixes for the rendering
 
