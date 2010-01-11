@@ -658,7 +658,8 @@ gkbd_indicator_start_listen (void)
 static void
 gkbd_indicator_stop_listen (void)
 {
-	xkl_engine_stop_listen (globals.engine);
+	xkl_engine_stop_listen (globals.engine,
+				XKLL_TRACK_KEYBOARD_STATE);
 
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  gkbd_indicator_filter_x_evt, NULL);
