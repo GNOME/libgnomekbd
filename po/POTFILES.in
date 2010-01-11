@@ -1,10 +1,11 @@
-libgnomekbd/gkbd-keyboard-drawing.c
-libgnomekbd/gkbd-indicator.c
-libgnomekbd/gkbd-util.c
-libgnomekbd/gkbd-indicator-plugin-manager.c
-libgnomekbd/gkbd-indicator-config.c
-libgnomekbd/gkbd-keyboard-config.c
 libgnomekbd/gkbd-desktop-config.c
+libgnomekbd/gkbd-indicator.c
+libgnomekbd/gkbd-indicator-config.c
+libgnomekbd/gkbd-indicator-plugin-manager.c
+libgnomekbd/gkbd-keyboard-drawing.c
+libgnomekbd/gkbd-keyboard-config.c
+libgnomekbd/gkbd-status.c
+libgnomekbd/gkbd-util.c
 libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in
 [type: gettext/glade]capplet/gkbd-indicator-plugins.ui
 [type: gettext/glade]capplet/gkbd-indicator-plugins_add.ui
