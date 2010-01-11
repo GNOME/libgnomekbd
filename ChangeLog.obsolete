@@ -1,0 +1,578 @@
+2010-01-11 svu
+
+	* NO MORE EXPLICIT CHANGELOG. SEE GIT LOGS
+
+2009-12-25 svu
+
+	* configure.in: increment the package version
+	* libgnomekbd/gkbd-status.c: unregister signal handlers is no status
+	icon instances exist
+
+2009-12-22 svu
+
+	* configure.in: bump soname
+
+2009-12-21 svu
+
+	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in,
+	libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-indicator-config.h, libgnomekbd/gkbd-status.c: making
+	font and color of the status icon configurable in gconf
+
+2009-12-20 svu
+
+	* libgnomekbd/gkbd-status.c: initial implementation of "labels" in
+	status icon
+
+2009-12-14 svu
+
+	* configure.in, NEWS: release 2.28.2
+	* libgnomekbd/Makefile.am, libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-indicator-config.h, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-status.c, libgnomekbd/gkbd-status.h, test/.gitignore,
+	test/Makefile.am, test/gkbd-status-test.c: introduced the status icon
+	widget (functions only with flags so far)
+
+
+2009-12-09 svu
+
+	* libgnomekbd/gkbd-indicator.c: Hurray, flags are clickable again,
+	https://bugzilla.gnome.org/show_bug.cgi?id=587510
+
+2009-11-05 svu
+
+	* libgnomekbd/gkbd-indicator.c: do not scale/dither, if sizes match
+
+2009-10-08 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: properly handling keycodes with
+	multiple keys, https://bugzilla.gnome.org/show_bug.cgi?id=590954
+	* libgnomekbd/gkbd-indicator.c: improved background handling by making
+	event box invisible
+	https://bugzilla.gnome.org/show_bug.cgi?id=587510
+
+2009-09-14 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.c: fixing compiling on macos,
+	https://bugzilla.gnome.org/show_bug.cgi?id=595113
+
+2009-08-25 svu
+
+	* NEWS, configure.in: preparing 2.27.91
+
+2007-11-16  Frederic Crozat  <fcrozat@mandriva.com>
+
+	* capplet/Makefile.am:
+	* libgnomekbd/Makefile.am:
+	* test/Makefile.am:
+	Do not hardcode -Werror in Makefile.am, better to use configure for
+	that. Fix bug #497425.
+
+2009-06-29 svu
+
+	* configure.in, libgnomekbd.anjuta,
+	libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in,
+	libgnomekbd/gkbd-desktop-config.c, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-indicator.c: implementing (using gconf) optional
+	loading of xkeyboard-config extras, depending on libxklavier 4.0
+
+2009-06-13 svu
+
+	* libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-keyboard-config.h: use single GTK includes,
+	http://bugzilla.gnome.org/show_bug.cgi?id=563629
+
+2009-05-25 svu
+
+	* configure.in, NEWS: preparing 2.27.2
+
+2009-05-12 svu
+
+	* libgnomekbd/Makefile.am, test/gkbd-indicator-test.c: eliminating
+	last glade bits, http://bugzilla.gnome.org/show_bug.cgi?id=582256
+
+2009-03-13 svu
+
+	* configure.in, NEWS: preparing 2.26.0
+
+2009-02-25 svu
+
+	* libgnomekbd/gkbd-indicator.c: use updated tooltips API, closing
+	#550212
+	* capplet/gkbd-indicator-plugins-capplet.c: fixed signal API, closing
+	#572661
+
+2009-02-19 svu
+
+	* configure.in, NEWS: preparing 2.25.91
+
+2009-02-09 svu
+
+	* libgnomekbd/gkbd-indicator-config.c: deprecate gdk_pixbuf_unref,
+	closing #570951
+
+2008-12-09  Pedro Fragoso  <ember@ubuntu.com>
+
+	* capplet/gkbd-indicator-plugins-capplet.h:
+	* test/gkbd-indicator-test.c:
+	* test/gkbd-keyboard-drawing-test.c:
+	GNOME Goal: Clean up GLib and GTK+ includes (Closes: #563629)
+
+2008-11-09 svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: fixed memleak,
+	http://bugzilla.gnome.org/show_bug.cgi?id=549874
+
+2008-10-27 svu
+
+	* libgnomekbd/gkbd-indicator.c: fixing crash in broken X
+	configuration, http://bugzilla.gnome.org/show_bug.cgi?id=553915
+
+2008-09-28 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: make default orientation (for
+	printing) landscape, http://bugzilla.gnome.org/show_bug.cgi?id=553491
+
+2008-09-22 svu
+
+	* configure.in, NEWS: preparing 2.24.0
+
+2008-09-16 svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: fix memory leak,
+	http://bugzilla.gnome.org/show_bug.cgi?id=552522
+
+2008-09-13 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: fixed the
+	categories, http://bugzilla.gnome.org/show_bug.cgi?id=552056
+
+2008-09-03 svu
+
+	* configure.in, NEWS: preparing 2.23.91
+
+2008-08-14 svu
+
+	* test/gkbd-keyboard-drawing-test.c, m4/intltool.m4, configure.in,
+	capplet/gkbd-indicator-plugins-capplet.c, capplet/Makefile.am: dropped
+	dependency on libgnomeui,
+	http://bugzilla.gnome.org/show_bug.cgi?id=534140
+
+2008-06-11 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: using connect_after for the
+	keyboard events, hopefully fixing
+	http://bugzilla.gnome.org/show_bug.cgi?id=440488
+
+2008-05-11 svu
+
+	* configure.in, NEWS: preparing 2.23.2
+
+2008-05-10 svu
+
+	* libgnomekbd/gkbd-util.c: make default size dependent on the screen
+	size (75%). Closing http://bugzilla.gnome.org/show_bug.cgi?id=481118
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-config.c, libgnomekbd/gkbd-desktop-config.c,
+	libgnomekbd/gkbd-indicator-plugin.h,
+	libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-indicator-plugin-manager.h: ansifying, indenting
+
+
+2008-04-13 svu
+
+	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: fixed
+	typo, http://bugzilla.gnome.org/show_bug.cgi?id=460599
+	got rid of overrideSettings GConf key altogether
+	* configure.in: opened 2.23 branch
+	* libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-keyboard-config.h: broke api/abi by dropping the
+	"backup" in gconf
+
+2008-03-18 svu
+
+	* configure.in, NEWS: release 2.22.0
+
+2008-03-17  Jaap Haitsma  <jaap@haitsma.org>
+
+	* capplet/Makefile.am:
+	* capplet/gkbd-indicator-plugins-capplet.c: (CappletSetup):
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in:
+	Don't use deprecated icon but new tango icon. Fixes bug #519764
+
+2007-12-19 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: giving context to the
+	translated string, http://bugzilla.gnome.org/show_bug.cgi?id=504294
+
+2007-12-17 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: moved printing function from
+	g-c-c
+	* configure.in, NEWS: release 2.21.4.1
+
+2007-12-16 svu
+
+	* capplet/gkbd-indicator-plugins-add.c: i18n patch, no libbonobo, gi18n
+	instead, http://bugzilla.gnome.org/show_bug.cgi?id=453698
+	* libgnomekbd/gkbd-keyboard-drawing.c: redraw doodads for proper image
+	refresh, http://bugzilla.gnome.org/show_bug.cgi?id=353163
+
+2007-12-11 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: draw to cairo, to make printing
+	possible, http://bugzilla.gnome.org/show_bug.cgi?id=502962
+	* test/Makefile.am, test/gkbd-keyboard-drawing-test.c, configure.in:
+	make test apps using GOption,
+	http://bugzilla.gnome.org/show_bug.cgi?id=502993
+	* configure.in, Makefile.am: make tests optional,
+	http://bugzilla.gnome.org/show_bug.cgi?id=502998
+	* NEWS: release 2.21.4
+
+2007-12-05 svu
+
+	* libgnomekbd/Makefile.am: cygwin fixes,
+	http://bugzilla.gnome.org/show_bug.cgi?id=501432
+
+2007-10-18 svu
+
+	* NEWS: release 2.21.1
+
+2007-10-18 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: fix rendering of macbookpro, a
+	couple of annoying bugs
+
+2007-10-08 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.c,
+	capplet/gkbd-indicator-plugins-capplet.h, capplet/.indent.pro,
+	configure.in, libgnomekbd/gkbd-config-registry.xml,
+	libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-config-registry.c, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-desktop-config.c,
+	libgnomekbd/gkbd-indicator-config.c,
+	libgnomekbd/gkbd-config-registry.h, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/Makefile.am, test/gkbd-config-registry-client.sh,
+	test/gkbd-config-registry-server.c, test/Makefile.am: getting rid of
+	stupid dbus client-server
+
+2007-09-17 svu
+
+	* configure.in, NEWS: release 2.20
+
+2007-08-30 svu
+
+	* libgnomekbd/Makefile.am: unneeded LIBGNOME* stuff,
+	http://bugzilla.gnome.org/show_bug.cgi?id=463255
+
+2007-08-26 svu
+
+	* configure.in, NEWS: preparing 2.20 beta 2
+
+2007-08-20 svu
+
+	* test/Makefile.am, libgnomekbdui.pc.in, libgnomekbd.pc.in: unneeded
+	dependency on libgnome, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=463255
+
+2007-08-19 svu
+
+	* po/POTFILES.skip: adding desktop.in file,
+	http://bugzilla.gnome.org/show_bug.cgi?id=465538
+
+2007-08-15 svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: fixing keycode -1 handling,
+	http://bugzilla.gnome.org/show_bug.cgi?id=429907
+
+2007-08-13 svu
+
+	* libgnomekbd/gkbd-indicator-config.c: unneeded free, fixing crasher
+	http://bugzilla.gnome.org/show_bug.cgi?id=466301
+
+2007-08-12 svu
+
+	* configure.in, NEWS: preparing first beta of 2.20
+
+2007-08-10 svu
+
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: make applet
+	entry hidden, reduce clutter in g-c-c
+
+2007-08-05 svu
+
+	* test/gkbd-indicator-test.c, test/Makefile.am,
+	libgnomekbd/gkbd-keyboard-config.c, libgnomekbd/gkbd-desktop-config.c,
+	libgnomekbd/gkbd-indicator-config.c: eliminating unneeded libgnomeui,
+	http://bugzilla.gnome.org/show_bug.cgi?id=463255
+
+2007-08-01 svu
+
+	* configure.in, libgnomekbd/Makefile.am: processing non-standard X
+	devel locations, http://bugzilla.gnome.org/show_bug.cgi?id=461899
+
+2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* Makefile.in.in: Removed, since this is an
+	autogenerated file.
+
+2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* libgnomekbd/gkbd-keyboard-config.c:
+	(gkbd_keyboard_config_to_string): Move translator
+	comments so that they actually end up in .po files; they
+	were not visible at all before, because not positioned
+	directly on the line above the gettext calls.
+
+2007-07-26  Wouter Bolsterlee  <wbolster@svn.gnome.org>
+
+	* m4/intltool.m4: Better string escaping
+
+2007-07-11  svu
+
+	* libgnomekbd/gkbd-config-registry.c: not registering the object if
+	there was no connection,
+	http://bugzilla.gnome.org/show_bug.cgi?id=411504
+
+2007-06-22  svu
+
+	* test/Makefile.am, configure.in, capplet/Makefile.am, po/LINGUAS: use
+	po/LINGUAS, upgrade automake requirement, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=450141
+
+2007-06-21  svu
+
+	* configure.in, libgnomekbdui.pc.in, libgnomekbd.pc.in: improving
+	pkgconfig handling, thanks to Christian. Closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=449850
+
+2007-05-30  Priit Laes  <plaes@svn.gnome.org>
+
+	* configure.in: Added Estonian (et) to ALL_LINGUAS.
+
+2007-05-28  Runa Bhattacharjee <runabh@gmail.com>
+
+	* configure.in: Added Bengali India (bn_IN) to ALL_LINGUAS.
+
+2007-05-20  svu
+
+	* libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-config-registry.c: using proper object building (on
+	the heap, not on the stack)
+	* configure.in: preparing 2.18.2
+
+2007-04-27  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: handling keysym names shorter
+	than 4
+
+2007-04-26  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: processing keycode names
+	defined as aliases. Closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=429907
+
+2007-04-15  A S Alam <aalam@users.sf.net>
+
+	* configure.in: Added Punjabi (pa) and Gujarati (gu) to All_LINGUAS
+
+2007-04-12  Ihar Hrachyshka <iharh@gnome.org>
+
+	* configure.in: Added be@latin to ALL_LINGUAS
+
+2007-04-12  Gintautas Miliauskas  <gintas@akl.lt>
+
+	* configure.in: Added lt to ALL_LINGUAS
+
+2007-04-08  svu
+
+	* NEWS: preparing 2.18.1
+
+2007-03-29  Peter Bach  <bach.peter@gmail.com>
+
+	* configure.in: Added da to ALL_LINGUAS
+
+2007-03-29  Changwoo Ryu  <cwryu@debian.org>
+
+	* configure.in: Added ko to ALL_LINGUAS
+
+2007-03-28 Maxim Dziumanenko <dziumanenko@gmail.com>
+
+	* configure.in: Added uk to ALL_LINUAS
+
+2007-03-27  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: processing rounded corners
+	correctly, closing http://bugzilla.gnome.org/show_bug.cgi?id=352781
+
+2007-03-27  Claudio Saavedra  <csaavedra@alumnos.utalca.cl>
+
+	* configure.in: Added es to ALL_LINGUAS
+
+2007-03-27  David Lodge <dave@cirt.net>
+
+	* configure.in: Added en_GB to ALL_LINUAS
+
+2007-03-26  Nikos Charonitakis  <nikosx@gmail.com>
+
+	* el.po: Added Greek translation (el) to ALL_LINGUAS.
+
+2007-03-25  Leonardo Ferreira Fontenelle  <leonardof@svn.gnome.org>
+
+	* configure.in: Added Brazilian Portuguese (pt_BR) to ALL_LINGUAS.
+
+2007-03-22  svu
+
+	* libgnomekbd/gkbd-indicator.c: fixed a problem with invalid free()
+	call, closing http://bugzilla.gnome.org/show_bug.cgi?id=421252
+
+2007-03-22  Josep Puigdemont i Casamajó  <josep.puigdemont@gmail.com>
+
+	* configure.in: Added Catalan (ca) to ALL_LINGUAS.
+
+2007-03-22  Pema Geyleg  <pema.geyleg@gmail.com>
+
+	* configure.in: Added Dzongkha (dz) to ALL_LINGUAS.
+
+2007-03-21  Duarte Loreto <happyguy_pt@hotmail.com>
+
+	* configure.in: Added Portuguese (pt) to ALL_LINGUAS.
+
+2007-03-21  Stéphane Raimbault  <stephane.raimbault@gmail.com>
+
+	* configure.in: Added 'fr' to ALL_LINGUAS.
+
+2007-03-20  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
+
+	* configure.in: Added 'gl' to ALL_LINGUAS.
+
+2007-03-20  Gabor Kelemen  <kelemeng@gnome.hu>
+
+	* configure.in: Added missing hu and sv to ALL_LINGUAS
+
+2007-03-19  svu
+
+	* libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in: added
+	missing gconf schema elements
+
+2007-03-19  Luca Ferretti  <elle.uca@libero.it>
+
+	* configure.in: Added "it" to ALL_LINGUAS
+
+2007-03-17  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: key labels are always drawn in
+	proper color, closing http://bugzilla.gnome.org/show_bug.cgi?id=352778
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: fixing the
+	component, according the the gnome bugzilla
+	* libgnomekbd/gkbd-keyboard-config.c: fixing the tooltip, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=377248
+
+2007-03-12  svu
+
+	* capplet/gkbd-indicator-plugins-capplet.desktop.in.in: removing the
+	Application category
+
+2007-03-11  svu
+
+	* configure.in: preparing 2.18.0
+
+2007-02-28  svu
+
+	* configure.in: preparing 2.17.92
+
+2006-02-20  Alexander Shopov  <ash@contact.bg>
+
+	* Makefile.in.in: Reverting to revision 2.  I am apologize
+	for committing the file in the previous commit.
+
+2006-02-20  Alexander Shopov  <ash@contact.bg>
+
+	* configure.in: Added "bg" (Bulgarian) to ALL_LINGUAS
+
+2007-02-04  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c: using really primary outline,
+	closing http://bugzilla.gnome.org/show_bug.cgi?id=352779
+	* libgnomekbd/gkbd-keyboard-drawing.c: unneeded text rotation is
+	eliminated
+
+2007-02-03  svu
+
+	* libgnomekbd/gkbd-keyboard-drawing.c,
+	libgnomekbd/gkbd-keyboard-drawing.h: performance and layout fixes,
+	closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=357872
+
+2007-01-23  svu
+
+	* gkbd-indicator-plugins-capplet.c, Makefile.am,
+	gkbd-indicator-plugins-capplet.png: fixing the capplet icon
+
+2007-01-13  Takeshi AIHANA <takeshi.aihana@gmail.com>
+
+	* configure.in:
+	  Added 'ja' (Japanese) to ALL_LINGUAS.
+
+2006-11-13  svu
+
+	* test/gkbd-config-registry-server.c: small C89 bug, thanks to Jens
+	Granseuer
+
+2006-11-07  svu
+
+	* CVS: tagging 2.17.2
+
+2006-11-05  svu
+
+	* libgnomekbd/Makefile.am: missing libs added, closing
+	http://bugzilla.gnome.org/show_bug.cgi?id=371119
+
+2006-10-31  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* configure.in: Add nb to ALL_LINGUAS
+	* po/POTFILES.in: Add missing file.
+	* po/nb.po: Add this.
+
+2006-10-28  svu
+
+	* libgnomekbd/gkbd-indicator.c: fixing the potential crash
+
+2006-10-27  svu
+
+	* libgnomekbd/gkbd-keyboard-config.c: closing the critical memory
+	allocation bug: http://bugzilla.gnome.org/show_bug.cgi?id=365590
+
+2006-10-17  svu
+
+	* configure.in, libgnomekbd/Makefile.am: adding VERSION_INFO
+	controlling the .so versioning
+
+2006-10-07  svu
+
+	* capplet/gkbd-indicator-plugins-capplet.c,
+	libgnomekbd/gkbd-config-registry.c,
+	libgnomekbd/gkbd-config-registry.h,
+	libgnomekbd/gkbd-config-registry.xml,
+	libgnomekbd/gkbd-desktop-config.c, libgnomekbd/gkbd-desktop-config.h,
+	libgnomekbd/gkbd-indicator-config.c, libgnomekbd/gkbd-indicator.c,
+	libgnomekbd/gkbd-keyboard-config.c,
+	libgnomekbd/gkbd-keyboard-config.h,
+	test/gkbd-config-registry-client.sh: now, dbus function asks
+	explicitly for layouts/variants. This saves some X traffic, makes
+	behavior more consistent.
+
+2006-10-07  svu
+
+	* COPYING.LIB, *.c, *.h: putting proper comments describing the
+	licensing terms (LGPL).
+
+2006-10-05  svu
+
+	* libgnomekbd*.pc.in: added required .so dependencies
+	* test/Makefile.am, test/gkbd-config-registry-client.sh: added a tiny
+	script to test the dbus server from the command line
