@@ -83,19 +83,19 @@ EXTRA_DIST = gkbd-indicator-marshal.list \
 GLIB_GENMARSHAL = $(shell pkg-config --variable=glib_genmarshal glib-2.0)
 
 gkbd-indicator-marshal.h: gkbd-indicator-marshal.list
-	$(GLIB_GENMARSHAL) --prefix=gkbd_indicator $(srcdir)/gkbd-indicator-marshal.list --header > $@
+	$(AM_V_GEN)$(GLIB_GENMARSHAL) --prefix=gkbd_indicator $(srcdir)/gkbd-indicator-marshal.list --header > $@
 
 gkbd-indicator-marshal.c: gkbd-indicator-marshal.h
-	$(GLIB_GENMARSHAL) --prefix=gkbd_indicator $(srcdir)/gkbd-indicator-marshal.list --body > $@
+	$(AM_V_GEN)$(GLIB_GENMARSHAL) --prefix=gkbd_indicator $(srcdir)/gkbd-indicator-marshal.list --body > $@
 
 gkbd-keyboard-drawing-marshal.h: gkbd-keyboard-drawing-marshal.list
-	( $(GLIB_GENMARSHAL) --prefix=gkbd_keyboard_drawing $(srcdir)/gkbd-keyboard-drawing-marshal.list \
+	$(AM_V_GEN)( $(GLIB_GENMARSHAL) --prefix=gkbd_keyboard_drawing $(srcdir)/gkbd-keyboard-drawing-marshal.list \
                             --header > gkbd-keyboard-drawing-marshal.tmp \
           && mv gkbd-keyboard-drawing-marshal.tmp gkbd-keyboard-drawing-marshal.h ) \
         || ( rm -f gkbd-keyboard-drawing-marshal.tmp && exit 1 )
  
 gkbd-keyboard-drawing-marshal.c: gkbd-keyboard-drawing-marshal.h
-	( $(GLIB_GENMARSHAL) --prefix=gkbd_keyboard_drawing $(srcdir)/gkbd-keyboard-drawing-marshal.list \
+	$(AM_V_GEN)( $(GLIB_GENMARSHAL) --prefix=gkbd_keyboard_drawing $(srcdir)/gkbd-keyboard-drawing-marshal.list \
                             --body > gkbd-keyboard-drawing-marshal.tmp \
           && mv gkbd-keyboard-drawing-marshal.tmp gkbd-keyboard-drawing-marshal.c ) \
         || ( rm -f gkbd-keyboard-drawing-marshal.tmp && exit 1 )
