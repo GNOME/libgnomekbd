@@ -9,11 +9,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: bn_BD\n"
+"Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-09-02 15:18+0000\n"
-"PO-Revision-Date: 2009-09-03 12:20+0700\n"
+"POT-Creation-Date: 2009-12-21 21:47+0000\n"
+"PO-Revision-Date: 2010-01-25 12:20+0600\n"
 "Last-Translator: Israt Jahan <israt@ankur.org.bd>\n"
 "Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -33,14 +33,14 @@ msgstr ""
 "স্বত্বাধিকার &#169; X.Org ফাউন্ডেশন ও XKeyboardConfig নির্মাতাবৃন্দ\n"
 "লাইসেন্স সংক্রান্ত তথ্য জানার জন্য অনুগ্রহ করে প্যাকেজের মেটাডাটা দেখুন"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB প্রারম্ভ সংক্রান্ত ত্রুটি"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
+#: ../libgnomekbd/gkbd-indicator.c:119
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "ছবি লোড করতে ত্রুটি হয়েছিল: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:706
+msgid "XKB initialization error"
+msgstr "XKB প্রারম্ভ সংক্রান্ত ত্রুটি"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -162,18 +162,50 @@ msgid "The Keyboard Preview, width"
 msgstr "কীবোর্ডের প্রাকদর্শন, প্রস্থ"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The background color"
+msgstr "পটভূমির রঙ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The background color for the layout indicator"
+msgstr "বহির্বিন্যাস সূচকের জন্য পটভূমির রঙ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The font family"
+msgstr "ফন্ট ফ্যামিলি"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The font family for the layout indicator"
+msgstr "বহির্বিন্যাস সূচকের জন্য ফন্ট ফ্যামিলি"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font size"
+msgstr "ফন্টের আকার"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font size for the layout indicator"
+msgstr "বহির্বিন্যাস সূচকের জন্য ফন্টের আকার"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The foreground color"
+msgstr "পুরোভাগের রং"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The foreground color for the layout indicator"
+msgstr "বহির্বিন্যাস সূচকের জন্য পুরোভাগের রং"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "সক্রিয় কীবোর্ড নির্দেশক প্লাগইনের তালিকা"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
 msgstr "কীবোর্ডের বহির্বিন্যাস"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
 msgstr "কীবোর্ডের মডেল"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "modmap file list"
 msgstr "modmap ফাইলের তালিকা"
 
