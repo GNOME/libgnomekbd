@@ -1,10 +1,10 @@
 # GNOME klaviatuuriteegi eesti keele tõlge.
 # Estonian translation of libgnomekbd.
 #
-# Copyright (C) 2007, 2009 The GNOME Project
+# Copyright (C) 2007, 2009, 2010 The GNOME Project
 # This file is distributed under the same license as the libgnomekbd package.
 #
-# Ivar Smolin <okul linux ee>, 2007, 2009.
+# Ivar Smolin <okul linux ee>, 2007, 2009, 2010.
 # Priit Laes <amd store20 com>, 2007.
 #
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
 "POT-Creation-Date: 2009-12-21 21:47+0000\n"
-"PO-Revision-Date: 2009-12-22 15:15+0200\n"
+"PO-Revision-Date: 2010-02-02 14:29+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -138,10 +138,10 @@ msgid "The background color for the layout indicator"
 msgstr "Paigutuse näidiku taustavärvus"
 
 msgid "The font family"
-msgstr ""
+msgstr "Kirjatüübi perekond"
 
 msgid "The font family for the layout indicator"
-msgstr ""
+msgstr "Paigutuse näidiku kirjatüübi perekond"
 
 msgid "The font size"
 msgstr "Kirjatüübi suurus"
@@ -150,10 +150,10 @@ msgid "The font size for the layout indicator"
 msgstr "Paigutuse näidiku kirjatüübi suurus"
 
 msgid "The foreground color"
-msgstr ""
+msgstr "Teksti värvus"
 
 msgid "The foreground color for the layout indicator"
-msgstr ""
+msgstr "Paigutuse näidiku teksti värvus"
 
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Lubatud klaviatuurinäidiku pluginate nimekiri"
