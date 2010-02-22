@@ -32,7 +32,6 @@ gkbd_indicator_plugins_capplet_SOURCES = gkbd-indicator-plugins-capplet.c \
 gkbd_indicator_plugins_capplet_LDFLAGS = -export-dynamic
 
 gkbd_indicator_plugins_capplet_LDADD = \
-            	$(DBUS_LIBS) 	\
             	$(GCONF_LIBS) 	\
             	$(GTK_LIBS) 	\
             	$(LIBXKLAVIER_LIBS)	\

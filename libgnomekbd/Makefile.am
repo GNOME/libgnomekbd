@@ -3,7 +3,6 @@ lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 common_CFLAGS = \
 	-I$(top_srcdir) -Wall 			\
 	$(GDK_CFLAGS)					\
-	$(DBUS_CFLAGS)					\
 	$(GCONF_CFLAGS)					\
 	$(LIBXKLAVIER_CFLAGS)				\
 	$(XLIB_CFLAGS)					\
@@ -22,7 +21,6 @@ libgnomekbdui_la_CFLAGS = $(common_CFLAGS)		\
 common_LDFLAGS = -version-info @VERSION_INFO@ -no-undefined
 
 common_LIBADD = \
-		$(DBUS_LIBS) \
 		$(GDK_LIBS) \
 		$(GCONF_LIBS) \
 		$(LIBXKLAVIER_LIBS) \
