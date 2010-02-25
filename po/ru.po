@@ -6,13 +6,14 @@
 #
 # Sergey Udaltsov <svu@gnome.org>, 2007.
 # Lebedev Roman <roman@lebedev.com>, 2008.
-# Leonid Kanter <leon@asplinux.ru>, 2009.
+# Alexander Saprykin <xelfium@gmail.com>, 2009.
+# Leonid Kanter <leon@asplinux.ru>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-11 16:35+0300\n"
-"PO-Revision-Date: 2009-10-11 17:47+0300\n"
+"POT-Creation-Date: 2010-02-25 13:06+0200\n"
+"PO-Revision-Date: 2010-02-25 13:07+0200\n"
 "Last-Translator: Leonid Kanter <leon@asplinux.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +22,16 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:236
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Произошла ошибка при загрузке изображения: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:707 ../libgnomekbd/gkbd-status.c:550
+msgid "XKB initialization error"
+msgstr "Произошла ошибка при инициализации XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -31,15 +41,6 @@ msgstr ""
 "Клавиатурная раскладка «%s»\n"
 "Авторские права © X.Org Foundation и авторы XKeyboardConfig\n"
 "Сведения о лицензировании находятся в метаданных пакета"
-
-#: ../libgnomekbd/gkbd-indicator.c:612
-msgid "XKB initialization error"
-msgstr "Произошла ошибка при инициализации XKB"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Произошла ошибка при загрузке изображения: %s"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -108,11 +109,11 @@ msgstr "Дополнительные параметры клавиатуры"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
 msgid "Load exotic, rarely used layouts and options"
-msgstr "Загружать экзотические, редко использующиеся раскладки и параметры"
+msgstr "Загружать редко используемые раскладки и параметры"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
 msgid "Load extra configuration items"
-msgstr "Загружать дополнительные элементы конфигурации"
+msgstr "Загружать дополнительные параметры"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
@@ -163,18 +164,50 @@ msgid "The Keyboard Preview, width"
 msgstr "Просмотр клавиатуры, ширина"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The background color"
+msgstr "Цвет фона"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The background color for the layout indicator"
+msgstr "Цвет фона для раскладки клавиатуры"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The font family"
+msgstr "Семейство шрифтов"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The font family for the layout indicator"
+msgstr "Семейство шрифтов для индикатора раскраски"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font size"
+msgstr "Размер шрифта"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font size for the layout indicator"
+msgstr "Размер шрифта для индикатора раскладки"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The foreground color"
+msgstr "Цвет переднего плана"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The foreground color for the layout indicator"
+msgstr "Цвет переднего плана для индикатора расладки"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Список включённых модулей клавиатурного индикатора"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
 msgstr "клавиатурная раскладка"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
 msgstr "клавиатурная модель"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "modmap file list"
 msgstr "список modmap-файлов"
 
