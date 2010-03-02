@@ -216,7 +216,7 @@
       <applyto>/desktop/gnome/peripherals/keyboard/indicator/fontFamily</applyto>
       <owner>gnome</owner>    
       <type>string</type>
-      <default>Helvetica</default>
+      <default>Sans</default>
       <locale name="C">
         <short>The font family</short>
         <long>The font family for the layout indicator</long>
