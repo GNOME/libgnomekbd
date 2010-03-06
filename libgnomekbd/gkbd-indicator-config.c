@@ -128,13 +128,55 @@ gkbd_indicator_config_load_font_from_gconf (GkbdIndicatorConfig *
 			    g_strdup (pango_font_description_get_family
 				      (fd));
 			ind_config->font_size =
-			    pango_font_description_get_size (fd) / PANGO_SCALE;
+			    pango_font_description_get_size (fd) /
+			    PANGO_SCALE;
 			pango_font_description_free (fd);
 		}
 		g_free (sysfontname);
 	}
 	xkl_debug (150, "font: [%s], size %d\n", ind_config->font_family,
 		   ind_config->font_size);
+
+	ind_config->foreground_color =
+	    gconf_client_get_string (ind_config->conf_client,
+				     GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR,
+				     &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	ind_config->background_color =
+	    gconf_client_get_string (ind_config->conf_client,
+				     GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR,
+				     &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	if (ind_config->foreground_color == NULL ||
+	    ind_config->foreground_color[0] == '\0') {
+		GtkSettings *settings = gtk_settings_get_default ();
+		GtkStyle *style = gtk_rc_get_style_by_paths (settings,
+							     "*.GtkLabel",
+							     "*.GtkLabel",
+							     GTK_TYPE_LABEL);
+		ind_config->foreground_color =
+		    g_strdup_printf ("%lg %lg %lg",
+				     ((double) style->fg[GTK_STATE_NORMAL].
+				      red) / 0x10000,
+				     ((double) style->fg[GTK_STATE_NORMAL].
+				      green) / 0x10000,
+				     ((double) style->fg[GTK_STATE_NORMAL].
+				      blue) / 0x10000);
+
+		g_object_unref (style);
+	}
 }
 
 char *
@@ -312,28 +354,6 @@ gkbd_indicator_config_load_from_gconf (GkbdIndicatorConfig * ind_config)
 	}
 
 	gkbd_indicator_config_load_font_from_gconf (ind_config);
-
-	ind_config->foreground_color =
-	    gconf_client_get_string (ind_config->conf_client,
-				     GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR,
-				     &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		gerror = NULL;
-	}
-
-	ind_config->background_color =
-	    gconf_client_get_string (ind_config->conf_client,
-				     GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR,
-				     &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		gerror = NULL;
-	}
 
 	gkbd_indicator_config_free_enabled_plugins (ind_config);
 	ind_config->enabled_plugins =
