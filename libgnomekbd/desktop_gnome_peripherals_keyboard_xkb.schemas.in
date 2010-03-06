@@ -216,7 +216,7 @@
       <applyto>/desktop/gnome/peripherals/keyboard/indicator/fontFamily</applyto>
       <owner>gnome</owner>    
       <type>string</type>
-      <default>Sans</default>
+      <default></default>
       <locale name="C">
         <short>The font family</short>
         <long>The font family for the layout indicator</long>
@@ -228,7 +228,7 @@
       <applyto>/desktop/gnome/peripherals/keyboard/indicator/fontSize</applyto>
       <owner>gnome</owner>    
       <type>int</type>
-      <default>10</default>
+      <default></default>
       <locale name="C">
         <short>The font size</short>
         <long>The font size for the layout indicator</long>

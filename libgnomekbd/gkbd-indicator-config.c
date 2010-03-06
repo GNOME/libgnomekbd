@@ -24,6 +24,8 @@
 #include <stdlib.h>
 #include <X11/keysym.h>
 
+#include <pango/pango.h>
+
 #include <glib/gi18n.h>
 #include <gdk/gdkx.h>
 
@@ -53,6 +55,8 @@ const gchar GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR[] =
 const gchar GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR[] =
     GKBD_INDICATOR_CONFIG_KEY_PREFIX "/backgroundColor";
 
+#define SYSTEM_FONT_GCONF_ENTRY "/desktop/gnome/interface/font_name"
+
 /**
  * static applet config functions
  */
@@ -72,6 +76,65 @@ gkbd_indicator_config_free_enabled_plugins (GkbdIndicatorConfig *
 		g_slist_free (ind_config->enabled_plugins);
 		ind_config->enabled_plugins = NULL;
 	}
+}
+
+static void
+gkbd_indicator_config_load_font_from_gconf (GkbdIndicatorConfig *
+					    ind_config)
+{
+	GError *gerror = NULL;
+
+	ind_config->font_family =
+	    gconf_client_get_string (ind_config->conf_client,
+				     GKBD_INDICATOR_CONFIG_KEY_FONT_FAMILY,
+				     &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		ind_config->font_family = g_strdup ("Helvetica");
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	ind_config->font_size =
+	    gconf_client_get_int (ind_config->conf_client,
+				  GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE,
+				  &gerror);
+	if (gerror != NULL) {
+		g_warning ("Error reading configuration:%s\n",
+			   gerror->message);
+		ind_config->font_size = 10;
+		g_error_free (gerror);
+		gerror = NULL;
+	}
+
+	if (ind_config->font_family == NULL ||
+	    ind_config->font_family[0] == '\0') {
+		PangoFontDescription *fd;
+		gchar *sysfontname =
+		    gconf_client_get_string (ind_config->conf_client,
+					     SYSTEM_FONT_GCONF_ENTRY,
+					     &gerror);
+		if (gerror != NULL) {
+			g_warning ("Error reading configuration:%s\n",
+				   gerror->message);
+			sysfontname = g_strdup ("Sans 10");
+			g_error_free (gerror);
+			gerror = NULL;
+		}
+		fd = pango_font_description_from_string (sysfontname);
+		if (fd != NULL) {
+			ind_config->font_family =
+			    g_strdup (pango_font_description_get_family
+				      (fd));
+			ind_config->font_size =
+			    pango_font_description_get_size (fd) / PANGO_SCALE;
+			pango_font_description_free (fd);
+		}
+		g_free (sysfontname);
+	}
+	xkl_debug (150, "font: [%s], size %d\n", ind_config->font_family,
+		   ind_config->font_size);
 }
 
 char *
@@ -248,30 +311,7 @@ gkbd_indicator_config_load_from_gconf (GkbdIndicatorConfig * ind_config)
 		gerror = NULL;
 	}
 
-
-	ind_config->font_family =
-	    gconf_client_get_string (ind_config->conf_client,
-				     GKBD_INDICATOR_CONFIG_KEY_FONT_FAMILY,
-				     &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		ind_config->font_family = g_strdup ("Helvetica");
-		g_error_free (gerror);
-		gerror = NULL;
-	}
-
-	ind_config->font_size =
-	    gconf_client_get_int (ind_config->conf_client,
-				  GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE,
-				  &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		ind_config->font_size = 10;
-		g_error_free (gerror);
-		gerror = NULL;
-	}
+	gkbd_indicator_config_load_font_from_gconf (ind_config);
 
 	ind_config->foreground_color =
 	    gconf_client_get_string (ind_config->conf_client,
@@ -294,8 +334,6 @@ gkbd_indicator_config_load_from_gconf (GkbdIndicatorConfig * ind_config)
 		g_error_free (gerror);
 		gerror = NULL;
 	}
-
-
 
 	gkbd_indicator_config_free_enabled_plugins (ind_config);
 	ind_config->enabled_plugins =
@@ -346,7 +384,8 @@ void
 gkbd_indicator_config_activate (GkbdIndicatorConfig * ind_config)
 {
 	xkl_engine_set_secondary_groups_mask (ind_config->engine,
-					      ind_config->secondary_groups_mask);
+					      ind_config->
+					      secondary_groups_mask);
 }
 
 void
@@ -365,5 +404,6 @@ void
 gkbd_indicator_config_stop_listen (GkbdIndicatorConfig * ind_config)
 {
 	gkbd_desktop_config_remove_listener (ind_config->conf_client,
-					     &ind_config->config_listener_id);
+					     &ind_config->
+					     config_listener_id);
 }
