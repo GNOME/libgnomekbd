@@ -24,6 +24,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
 #include <glib/gi18n.h>
+#include <glib/gprintf.h>
 
 #include <gkbd-status.h>
 
@@ -277,6 +278,12 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 		convert_bgra_to_rgba (cairo_data, pixbuf_data,
 				      globals.current_size,
 				      globals.current_size);
+
+#if 0
+		char pngfilename[20];
+		g_sprintf(pngfilename, "label%d.png", group);
+		cairo_surface_write_to_png (cs, pngfilename);
+#endif
 
 		cairo_surface_destroy (cs);
 
