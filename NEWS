@@ -1,3 +1,8 @@
+2.29.92:
+	GkbdStatus is using gtk/gnome font settings
+	A lot of translations fixed
+	Explicit dbus dependency dropped
+
 2.29.5:
 	GkbdIndicator rendering fixed.
 	GkbdStatus notification icon added.
