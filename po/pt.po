@@ -1,14 +1,14 @@
 # libgnomekbd's Portuguese translation.
-# Copyright © 2007, 2008, 2009 libgnomekbd
+# Copyright © 2007, 2008, 2009, 2010 libgnomekbd
 # This file is distributed under the same license as the libgnomekbd package.
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2007, 2008, 2009.
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2007, 2008, 2009, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.28\n"
+"Project-Id-Version: 2.30\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-25 08:34+0100\n"
-"PO-Revision-Date: 2009-08-25 08:35+0000\n"
+"POT-Creation-Date: 2010-03-09 00:45+0000\n"
+"PO-Revision-Date: 2010-03-09 00:50+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:237
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Ocorreu um erro ao ler uma imagem: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:707 ../libgnomekbd/gkbd-status.c:557
+msgid "XKB initialization error"
+msgstr "Erro de inicialização do XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -26,15 +35,6 @@ msgstr ""
 "Disposição de teclado \"%s\"\n"
 "Copyright &#169; X.Org Foundation e contribuidores do XKeyboardConfig\n"
 "Sobre a licença consulte os metadados do pacote"
-
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "Erro de inicialização do XKB"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Ocorreu um erro ao ler uma imagem: %s"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -156,18 +156,50 @@ msgid "The Keyboard Preview, width"
 msgstr "A Antevisão de Teclado, largura"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The background color"
+msgstr "A cor de fundo"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The background color for the layout indicator"
+msgstr "A cor de fundo do indicador de disposição"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The font family"
+msgstr "A família de fonte"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The font family for the layout indicator"
+msgstr "A família de fonta para o indicador de disposição"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font size"
+msgstr "O tamanho da fonte"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font size for the layout indicator"
+msgstr "O tamanho da fonte para o indicador de disposição"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The foreground color"
+msgstr "A cor de primeiro plano"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The foreground color for the layout indicator"
+msgstr "A cor de primeiro plano para o indicador de disposição"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "A lista de plugins de Indicador de Teclado activos"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
 msgstr "Disposição do teclado"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
 msgstr "Modelo do teclado"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "modmap file list"
 msgstr "lista de ficheiros modmap"
 
