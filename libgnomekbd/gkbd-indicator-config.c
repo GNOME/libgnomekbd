@@ -175,7 +175,6 @@ gkbd_indicator_config_load_font_from_gconf (GkbdIndicatorConfig *
 				     ((double) style->fg[GTK_STATE_NORMAL].
 				      blue) / 0x10000);
 
-		g_object_unref (style);
 	}
 }
 
