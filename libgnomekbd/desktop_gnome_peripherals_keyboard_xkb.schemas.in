@@ -206,8 +206,10 @@
       <type>bool</type>
       <default>false</default>
       <locale name="C">
-        <short>Show flags in the applet</short>
-        <long>Show flags in the applet to indicate the current layout</long>
+        <short><!-- TRANSLATORS: real national flags -->
+		      Show flags in the applet</short>
+        <long><!-- TRANSLATORS: real national flags -->
+		      Show flags in the applet to indicate the current layout</long>
       </locale>
     </schema>
 
