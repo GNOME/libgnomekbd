@@ -31,10 +31,10 @@ typedef struct _GkbdIndicatorConfig {
 	int secondary_groups_mask;
 	gboolean show_flags;
 
-	gchar * font_family;
+	gchar *font_family;
 	int font_size;
-	gchar * foreground_color;
-	gchar * background_color;
+	gchar *foreground_color;
+	gchar *background_color;
 
 	GSList *enabled_plugins;
 
@@ -61,6 +61,9 @@ extern void gkbd_indicator_config_term (GkbdIndicatorConfig *
 extern void gkbd_indicator_config_load_from_gconf (GkbdIndicatorConfig
 						   * applet_config);
 extern void gkbd_indicator_config_save_to_gconf (GkbdIndicatorConfig *
+						 applet_config);
+
+extern void gkbd_indicator_config_refresh_style (GkbdIndicatorConfig *
 						 applet_config);
 
 extern gchar

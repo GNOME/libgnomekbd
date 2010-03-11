@@ -218,14 +218,13 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	if (globals.ind_cfg.show_flags) {
 
 		image_filename =
-		    (char *) g_slist_nth_data (globals.ind_cfg.
-					       image_filenames, group);
+		    (char *) g_slist_nth_data (globals.
+					       ind_cfg.image_filenames,
+					       group);
 
 		image = gdk_pixbuf_new_from_file_at_size (image_filename,
-							  globals.
-							  current_size,
-							  globals.
-							  current_size,
+							  globals.current_size,
+							  globals.current_size,
 							  &gerror);
 
 		if (image == NULL) {
@@ -240,8 +239,7 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 								    NULL ?
 								    "Unknown"
 								    :
-								    gerror->
-								    message);
+								    gerror->message);
 			g_signal_connect (G_OBJECT (dialog), "response",
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
@@ -281,7 +279,7 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 
 #if 0
 		char pngfilename[20];
-		g_sprintf(pngfilename, "label%d.png", group);
+		g_sprintf (pngfilename, "label%d.png", group);
 		cairo_surface_write_to_png (cs, pngfilename);
 #endif
 
@@ -522,8 +520,7 @@ gkbd_status_start_listen (void)
 static void
 gkbd_status_stop_listen (void)
 {
-	xkl_engine_stop_listen (globals.engine,
-				XKLL_TRACK_KEYBOARD_STATE);
+	xkl_engine_stop_listen (globals.engine, XKLL_TRACK_KEYBOARD_STATE);
 
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  gkbd_status_filter_x_evt, NULL);
@@ -539,6 +536,14 @@ gkbd_status_size_changed (GkbdStatus * gki, gint size)
 		globals.current_size = size;
 		gkbd_status_reinit_ui (gki);
 	}
+}
+
+static void
+gkbd_status_theme_changed (GtkSettings * settings, GParamSpec * pspec,
+			   GkbdStatus * gki)
+{
+	gkbd_indicator_config_refresh_style (&globals.ind_cfg);
+	gkbd_status_reinit_ui (gki);
 }
 
 static void
@@ -571,6 +576,19 @@ gkbd_status_init (GkbdStatus * gki)
 			  G_CALLBACK (gkbd_status_size_changed), NULL);
 	g_signal_connect (gki, "activate",
 			  G_CALLBACK (gkbd_status_activate), NULL);
+
+	g_signal_connect_after (gtk_settings_get_default (),
+				"notify::gtk-theme-name",
+				G_CALLBACK (gkbd_status_theme_changed),
+				gki);
+	g_signal_connect_after (gtk_settings_get_default (),
+				"notify::gtk-key-theme-name",
+				G_CALLBACK (gkbd_status_theme_changed),
+				gki);
+	g_signal_connect_after (gtk_settings_get_default (),
+				"notify::gtk-font-name",
+				G_CALLBACK (gkbd_status_theme_changed),
+				gki);
 }
 
 static void
@@ -614,15 +632,13 @@ gkbd_status_global_term (void)
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.state_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.
-					     state_changed_handler);
+					     globals.state_changed_handler);
 		globals.state_changed_handler = 0;
 	}
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.config_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.
-					     config_changed_handler);
+					     globals.config_changed_handler);
 		globals.config_changed_handler = 0;
 	}
 
