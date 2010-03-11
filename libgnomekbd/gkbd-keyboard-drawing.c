@@ -998,8 +998,8 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 
 	if (key->pressed)
 		color =
-		    &(GTK_WIDGET (drawing)->
-		      style->base[GTK_STATE_SELECTED]);
+		    &gtk_widget_get_style (GTK_WIDGET (drawing))->base
+		    [GTK_STATE_SELECTED];
 	else
 		color = drawing->colors + key->xkbkey->color_ndx;
 
@@ -1296,11 +1296,11 @@ draw_keyboard_to_context (GkbdKeyboardDrawingRenderContext * context,
 static void
 create_cairo (GkbdKeyboardDrawing * drawing)
 {
-	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
+	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	drawing->renderContext->cr =
 	    gdk_cairo_create (GDK_DRAWABLE (drawing->pixmap));
 	drawing->renderContext->dark_color =
-	    &GTK_WIDGET (drawing)->style->dark[state];
+	    &gtk_widget_get_style (GTK_WIDGET (drawing))->dark[state];
 }
 
 static void
@@ -1314,22 +1314,24 @@ destroy_cairo (GkbdKeyboardDrawing * drawing)
 static void
 draw_keyboard (GkbdKeyboardDrawing * drawing)
 {
-	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
-	gint pixw, pixh;
+	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
+	GtkAllocation allocation;
 
 	if (!drawing->xkb)
 		return;
 
-	pixw = GTK_WIDGET (drawing)->allocation.width;
-	pixh = GTK_WIDGET (drawing)->allocation.height;
+	gtk_widget_get_allocation (GTK_WIDGET (drawing), &allocation);
 
 	drawing->pixmap =
-	    gdk_pixmap_new (GTK_WIDGET (drawing)->window, pixw, pixh, -1);
+	    gdk_pixmap_new (gtk_widget_get_window (GTK_WIDGET (drawing)),
+			    allocation.width, allocation.height, -1);
 
 	/* blank background */
 	gdk_draw_rectangle (drawing->pixmap,
-			    GTK_WIDGET (drawing)->style->base_gc[state],
-			    TRUE, 0, 0, pixw, pixh);
+			    gtk_widget_get_style (GTK_WIDGET
+						  (drawing))->base_gc
+			    [state], TRUE, 0, 0, allocation.width,
+			    allocation.height);
 
 	create_cairo (drawing);
 	draw_keyboard_to_context (drawing->renderContext, drawing);
@@ -1349,8 +1351,9 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 	pango_layout_set_ellipsize (context->layout, PANGO_ELLIPSIZE_END);
 
 	context->font_desc =
-	    pango_font_description_copy (GTK_WIDGET (drawing)->
-					 style->font_desc);
+	    pango_font_description_copy (gtk_widget_get_style
+					 (GTK_WIDGET
+					  (drawing))->font_desc);
 	context->angle = 0;
 	context->scale_numerator = 1;
 	context->scale_denominator = 1;
@@ -1371,7 +1374,8 @@ static gboolean
 expose_event (GtkWidget * widget,
 	      GdkEventExpose * event, GkbdKeyboardDrawing * drawing)
 {
-	GtkStateType state = GTK_WIDGET_STATE (GTK_WIDGET (drawing));
+	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
+	GtkAllocation allocation;
 
 	if (!drawing->xkb)
 		return FALSE;
@@ -1379,20 +1383,22 @@ expose_event (GtkWidget * widget,
 	if (drawing->pixmap == NULL)
 		return FALSE;
 
-	gdk_draw_drawable (widget->window,
-			   widget->style->fg_gc[state],
+	gdk_draw_drawable (gtk_widget_get_window (widget),
+			   gtk_widget_get_style (widget)->fg_gc[state],
 			   drawing->pixmap,
 			   event->area.x, event->area.y,
 			   event->area.x, event->area.y,
 			   event->area.width, event->area.height);
 
-	if (GTK_WIDGET_HAS_FOCUS (widget))
-		gtk_paint_focus (widget->style, widget->window,
-				 GTK_WIDGET_STATE (widget), &event->area,
-				 widget, "keyboard-drawing",
-				 0, 0,
-				 widget->allocation.width,
-				 widget->allocation.height);
+	if (gtk_widget_has_focus (widget)) {
+		gtk_widget_get_allocation (widget, &allocation);
+		gtk_paint_focus (gtk_widget_get_style (widget),
+				 gtk_widget_get_window (widget),
+				 gtk_widget_get_state (widget),
+				 &event->area, widget, "keyboard-drawing",
+				 0, 0, allocation.width,
+				 allocation.height);
+	}
 
 	return FALSE;
 }
@@ -1845,6 +1851,7 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 	if (((XEvent *) gdkxev)->type == drawing->xkb_event_type) {
 		XkbEvent *kev = (XkbEvent *) gdkxev;
+		GtkAllocation allocation;
 		switch (kev->any.xkb_type) {
 		case XkbStateNotify:
 			if (((kev->state.changed & modifier_change_mask) &&
@@ -1858,10 +1865,12 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 				    g_new0 (GkbdKeyboardDrawingKey,
 					    drawing->xkb->max_key_code +
 					    1);
+
+				gtk_widget_get_allocation (GTK_WIDGET
+							   (drawing),
+							   &allocation);
 				size_allocate (GTK_WIDGET (drawing),
-					       &(GTK_WIDGET
-						 (drawing)->allocation),
-					       drawing);
+					       &allocation, drawing);
 
 				init_keys_and_doodads (drawing);
 				init_colors (drawing);
@@ -2046,7 +2055,7 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 	init_colors (drawing);
 
 	/* required to get key events */
-	GTK_WIDGET_SET_FLAGS (GTK_WIDGET (drawing), GTK_CAN_FOCUS);
+	gtk_widget_set_can_focus (GTK_WIDGET (drawing), TRUE);
 
 	gtk_widget_set_events (GTK_WIDGET (drawing),
 			       GDK_EXPOSURE_MASK | GDK_KEY_PRESS_MASK |
@@ -2183,11 +2192,12 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * drawing,
 		cr,
 		drawing->renderContext->angle,
 		layout,
-		pango_font_description_copy (GTK_WIDGET (drawing)->
-					     style->font_desc),
+		pango_font_description_copy (gtk_widget_get_style
+					     (GTK_WIDGET
+					      (drawing))->font_desc),
 		1, 1,
-		&GTK_WIDGET (drawing)->style->dark[GTK_WIDGET_STATE
-						   (GTK_WIDGET (drawing))]
+		&gtk_widget_get_style (GTK_WIDGET (drawing))->dark
+		    [gtk_widget_get_state (GTK_WIDGET (drawing))]
 	};
 
 	if (!context_setup_scaling (&context, drawing, width, height,
@@ -2206,6 +2216,8 @@ gboolean
 gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing * drawing,
 				    XkbComponentNamesRec * names)
 {
+	GtkAllocation allocation;
+
 	free_cdik (drawing);
 	if (drawing->xkb)
 		XkbFreeKeyboard (drawing->xkb, 0, TRUE);	/* free_all = TRUE */
@@ -2242,8 +2254,8 @@ gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing * drawing,
 	init_keys_and_doodads (drawing);
 	init_colors (drawing);
 
-	size_allocate (GTK_WIDGET (drawing),
-		       &(GTK_WIDGET (drawing)->allocation), drawing);
+	gtk_widget_get_allocation (GTK_WIDGET (drawing), &allocation);
+	size_allocate (GTK_WIDGET (drawing), &allocation, drawing);
 	gtk_widget_queue_draw (GTK_WIDGET (drawing));
 
 	return TRUE;

@@ -117,7 +117,8 @@ gkbd_indicator_load_images ()
 							    GTK_BUTTONS_OK,
 							    _
 							    ("There was an error loading an image: %s"),
-							    gerror->message);
+							    gerror->
+							    message);
 				g_signal_connect (G_OBJECT (dialog),
 						  "response",
 						  G_CALLBACK
@@ -252,8 +253,10 @@ gkbd_indicator_button_pressed (GtkWidget *
 			       GdkEventButton * event, GkbdIndicator * gki)
 {
 	GtkWidget *img = gtk_bin_get_child (GTK_BIN (widget));
+	GtkAllocation allocation;
+	gtk_widget_get_allocation (img, &allocation);
 	xkl_debug (150, "Flag img size %d x %d\n",
-		   img->allocation.width, img->allocation.height);
+		   allocation.width, allocation.height);
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
 		xkl_debug (150, "Mouse button pressed on applet\n");
 		gkbd_desktop_config_lock_next_group (&globals.cfg);
@@ -268,15 +271,18 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	/* Image width and height */
 	int iw = gdk_pixbuf_get_width (image);
 	int ih = gdk_pixbuf_get_height (image);
-	gboolean scaling_needed =
-	    !((flag->allocation.width == iw &&
-	       flag->allocation.height <= ih) ||
-	      (flag->allocation.width >= iw &&
-	       flag->allocation.height == ih));
+	GtkAllocation allocation;
+	gboolean scaling_needed;
+
+	gtk_widget_get_allocation (flag, &allocation);
+	scaling_needed =
+	    !((allocation.width == iw &&
+	       allocation.height <= ih) ||
+	      (allocation.width >= iw && allocation.height == ih));
 
 	/* widget-to-image scales, X and Y */
-	double xwiratio = 1.0 * flag->allocation.width / iw;
-	double ywiratio = 1.0 * flag->allocation.height / ih;
+	double xwiratio = 1.0 * allocation.width / iw;
+	double ywiratio = 1.0 * allocation.height / ih;
 	double wiratio = xwiratio < ywiratio ? xwiratio : ywiratio;
 
 	/* scaled width and height */
@@ -284,15 +290,15 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	int sh = ih * wiratio;
 
 	/* offsets */
-	int ox = (flag->allocation.width - sw) >> 1;
-	int oy = (flag->allocation.height - sh) >> 1;
+	int ox = (allocation.width - sw) >> 1;
+	int oy = (allocation.height - sh) >> 1;
 
 	GdkPixbuf *scaled =
 	    scaling_needed ? gdk_pixbuf_scale_simple (image, sw, sh,
 						      GDK_INTERP_HYPER) :
 	    image;
 
-	gdk_draw_pixbuf (GDK_DRAWABLE (flag->window),
+	gdk_draw_pixbuf (GDK_DRAWABLE (gtk_widget_get_window (flag)),
 			 NULL,
 			 scaled,
 			 0, 0,
@@ -348,8 +354,8 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			if (xkl_engine_get_features (globals.engine) &
 			    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 				char *full_layout_name = (char *)
-				    g_slist_nth_data (globals.
-						      kbd_cfg.layouts_variants,
+				    g_slist_nth_data (globals.kbd_cfg.
+						      layouts_variants,
 						      group);
 				char *variant_name;
 				if (!gkbd_keyboard_config_split_items
@@ -593,7 +599,8 @@ gkbd_indicator_set_current_page (GkbdIndicator * gki)
 	cur_state = xkl_engine_get_current_state (globals.engine);
 	if (cur_state->group >= 0)
 		gkbd_indicator_set_current_page_for_group (gki,
-							   cur_state->group);
+							   cur_state->
+							   group);
 }
 
 void
@@ -658,8 +665,7 @@ gkbd_indicator_start_listen (void)
 static void
 gkbd_indicator_stop_listen (void)
 {
-	xkl_engine_stop_listen (globals.engine,
-				XKLL_TRACK_KEYBOARD_STATE);
+	xkl_engine_stop_listen (globals.engine, XKLL_TRACK_KEYBOARD_STATE);
 
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  gkbd_indicator_filter_x_evt, NULL);
