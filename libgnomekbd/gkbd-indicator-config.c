@@ -38,7 +38,7 @@
  * GkbdIndicatorConfig
  */
 #define GKBD_INDICATOR_CONFIG_KEY_PREFIX  GKBD_CONFIG_KEY_PREFIX "/indicator"
-#define GTK_STYLE_PATH "*.GtkLabel"
+#define GTK_STYLE_PATH "*PanelWidget*"
 
 const gchar GKBD_INDICATOR_CONFIG_DIR[] = GKBD_INDICATOR_CONFIG_KEY_PREFIX;
 const gchar GKBD_INDICATOR_CONFIG_KEY_SHOW_FLAGS[] =
