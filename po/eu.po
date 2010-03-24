@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-13 19:19+0100\n"
-"PO-Revision-Date: 2010-01-13 19:21+0100\n"
+"PO-Revision-Date: 2010-03-24 10:23+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -118,11 +118,11 @@ msgstr "Bigarren mailako taldeak"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
 msgid "Show flags in the applet"
-msgstr "Erakutsi banderak applet-ean"
+msgstr "Erakutsi banderak miniaplikazioan"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Erakutsi banderak applet-ean uneko diseinua adierazteko"
+msgstr "Erakutsi banderak miniaplikazioan uneko diseinua adierazteko"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
 msgid "Show layout names instead of group names"
@@ -218,23 +218,23 @@ msgstr "Itxi elkarrizketa-koadroa"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
-msgstr "Konfiguratu hautatutako plugin-a"
+msgstr "Konfiguratu hautatutako plugina"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
-msgstr "Desaktibatu hautatutako plugin-a"
+msgstr "Desaktibatu hautatutako plugina"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
-msgstr "Gutxiagotu plugin-aren lehentasuna"
+msgstr "Gutxiagotu pluginaren lehentasuna"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
-msgstr "Handiagotu plugin-aren lehentasuna"
+msgstr "Handiagotu pluginaren lehentasuna"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
-msgstr "Teklatu-adierazlearen plugin-ak"
+msgstr "Teklatu-adierazlearen pluginak"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
@@ -264,11 +264,11 @@ msgstr "Huts egin du GConf hasieratzean: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
-msgstr "Gaitu/desgaitu instalatutako plugin-ak"
+msgstr "Gaitu/desgaitu instalatutako pluginak"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
-msgstr "Teklatu-adierazlearen plugin-ak"
+msgstr "Teklatu-adierazlearen pluginak"
 
 #: ../test/gkbd-indicator-test.c:57
 #, c-format
