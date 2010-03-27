@@ -6,14 +6,15 @@
 # Runa Bhattacharjee <runab@fedoraproject.org>, 2008.
 # Runa Bhattacharjee <runab@redhat.com>, 2008, 2009.
 # Israt Jahan <israt@ankur.org.bd>, 2009.
+# Israt Jahan <israt@ankur.org.bd>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-12-21 21:47+0000\n"
-"PO-Revision-Date: 2010-01-25 12:20+0600\n"
+"POT-Creation-Date: 2010-01-25 20:57+0000\n"
+"PO-Revision-Date: 2010-03-09 12:20+0600\n"
 "Last-Translator: Israt Jahan <israt@ankur.org.bd>\n"
 "Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +23,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:236
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "ছবি লোডে ত্রুটি হয়েছিল: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:707 ../libgnomekbd/gkbd-status.c:550
+msgid "XKB initialization error"
+msgstr "XKB প্রারম্ভ সংক্রান্ত ত্রুটি"
+
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
 #, c-format
 msgid ""
@@ -29,18 +39,9 @@ msgid ""
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
-"কীবোর্ডের বহির্বিন্যাস \"%s\"\n"
-"স্বত্বাধিকার &#169; X.Org ফাউন্ডেশন ও XKeyboardConfig নির্মাতাবৃন্দ\n"
-"লাইসেন্স সংক্রান্ত তথ্য জানার জন্য অনুগ্রহ করে প্যাকেজের মেটাডাটা দেখুন"
-
-#: ../libgnomekbd/gkbd-indicator.c:119
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "ছবি লোড করতে ত্রুটি হয়েছিল: %s"
-
-#: ../libgnomekbd/gkbd-indicator.c:706
-msgid "XKB initialization error"
-msgstr "XKB প্রারম্ভ সংক্রান্ত ত্রুটি"
+"কীবোর্ডের লেআউট \"%s\"\nস্বত্বাধিকার &#169; X.Org ফাউন্ডেশন ও XKeyboardConfig "
+"নির্মাতাবৃন্দ\nলাইসেন্স সংক্রান্ত তথ্য জানার জন্য অনুগ্রহ করে প্যাকেজের "
+"মেটাডাটা দেখুন"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
@@ -79,7 +80,7 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME ডিরেক্টির মধ্যে বিদ্যমান modmap ফাইলের তালিকা।"
+msgstr "$HOME ডিরেক্টরির মধ্যে বিদ্যমান modmap ফাইলের তালিকা।"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
@@ -87,7 +88,7 @@ msgstr "ডিফল্ট গ্রুপ, উইন্ডো নির্ম�
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
 msgid "Keep and manage separate group per window"
-msgstr "প্রতিটি উইন্ডোর জন্য পৃথক সংকলন নির্ধারণ ও পরিচালনা করুন"
+msgstr "প্রতিটি উইন্ডোর জন্য পৃথক গ্রুপ নির্ধারণ ও পরিচালনা করুন"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
 msgid "Keyboard Update Handlers"
@@ -163,7 +164,7 @@ msgstr "কীবোর্ডের প্রাকদর্শন, প্রস
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The background color"
-msgstr "পটভূমির রঙ"
+msgstr "পটভূমির রং"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The background color for the layout indicator"
@@ -199,7 +200,7 @@ msgstr "সক্রিয় কীবোর্ড নির্দেশক প্
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "keyboard layout"
-msgstr "কীবোর্ডের বহির্বিন্যাস"
+msgstr "কীবোর্ডের লেআউট"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "keyboard model"
@@ -215,7 +216,7 @@ msgstr "অতিরিক্ত প্লাগইন সক্রিয় কর
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
-msgstr "প্লাগইন সক্রিয় করুন (_p):"
+msgstr "প্লাগইন সক্রিয় করুন: (_p)"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
@@ -251,7 +252,7 @@ msgstr "প্লাগইন যোগ করুন"
 
 #: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
-msgstr "বিদ্যমান প্লাগইন (_A):"
+msgstr "বিদ্যমান প্লাগইন: (_A)"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
