@@ -155,7 +155,7 @@ gkbd_indicator_config_load_colors (GkbdIndicatorConfig * ind_config)
 					       GTK_STYLE_PATH,
 					       GTK_TYPE_LABEL);
 		ind_config->foreground_color =
-		    g_strdup_printf ("%lg %lg %lg",
+		    g_strdup_printf ("%g %g %g",
 				     ((double) style->
 				      fg[GTK_STATE_NORMAL].red) / 0x10000,
 				     ((double) style->
