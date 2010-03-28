@@ -273,6 +273,9 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	int ih = gdk_pixbuf_get_height (image);
 	GtkAllocation allocation;
 	gboolean scaling_needed;
+	double xwiratio, ywiratio, wiratio;
+	int sw, sh, ox, oy;
+	GdkPixbuf *scaled;
 
 	gtk_widget_get_allocation (flag, &allocation);
 	scaling_needed =
@@ -281,19 +284,19 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	      (allocation.width >= iw && allocation.height == ih));
 
 	/* widget-to-image scales, X and Y */
-	double xwiratio = 1.0 * allocation.width / iw;
-	double ywiratio = 1.0 * allocation.height / ih;
-	double wiratio = xwiratio < ywiratio ? xwiratio : ywiratio;
+	xwiratio = 1.0 * allocation.width / iw;
+	ywiratio = 1.0 * allocation.height / ih;
+	wiratio = xwiratio < ywiratio ? xwiratio : ywiratio;
 
 	/* scaled width and height */
-	int sw = iw * wiratio;
-	int sh = ih * wiratio;
+	sw = iw * wiratio;
+	sh = ih * wiratio;
 
 	/* offsets */
-	int ox = (allocation.width - sw) >> 1;
-	int oy = (allocation.height - sh) >> 1;
+	ox = (allocation.width - sw) >> 1;
+	oy = (allocation.height - sh) >> 1;
 
-	GdkPixbuf *scaled =
+	scaled =
 	    scaling_needed ? gdk_pixbuf_scale_simple (image, sw, sh,
 						      GDK_INTERP_HYPER) :
 	    image;
@@ -307,6 +310,89 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 			 GDK_RGB_DITHER_NONE, 0, 0);
 	if (scaling_needed)
 		g_object_unref (G_OBJECT (scaled));
+}
+
+gchar *
+gkbd_indicator_extract_layout_name (int group, XklEngine * engine,
+				    GkbdKeyboardConfig * kbd_cfg,
+				    gchar ** short_group_names,
+				    gchar ** full_group_names)
+{
+	char *layout_name;
+	if (group < g_strv_length (short_group_names)) {
+		if (xkl_engine_get_features (engine) &
+		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
+			char *full_layout_name = (char *)
+			    g_slist_nth_data (kbd_cfg->layouts_variants,
+					      group);
+			char *variant_name;
+			if (!gkbd_keyboard_config_split_items
+			    (full_layout_name, &layout_name,
+			     &variant_name))
+				/* just in case */
+				layout_name = full_layout_name;
+
+			/* make it freeable */
+			layout_name = g_strdup (layout_name);
+
+			if (short_group_names != NULL) {
+				char *short_group_name =
+				    short_group_names[group];
+				if (short_group_name != NULL
+				    && *short_group_name != '\0') {
+					/* drop the long name */
+					g_free (layout_name);
+					layout_name =
+					    g_strdup (short_group_name);
+				}
+			}
+		} else {
+			layout_name = g_strdup (full_group_names[group]);
+		}
+	}
+
+	if (layout_name == NULL)
+		layout_name = g_strdup ("??");
+
+	return layout_name;
+}
+
+gchar *
+gkbd_indicator_create_label_title (int group, GHashTable ** ln2cnt_map,
+				   gchar * layout_name)
+{
+	gpointer pcounter = NULL;
+	char *prev_layout_name = NULL;
+	char *lbl_title = NULL;
+	int counter = 0;
+
+	if (group == 0) {
+		*ln2cnt_map =
+		    g_hash_table_new_full (g_str_hash, g_str_equal,
+					   g_free, NULL);
+	}
+
+	/* Process layouts with repeating description */
+	if (g_hash_table_lookup_extended
+	    (*ln2cnt_map, layout_name, (gpointer *) & prev_layout_name,
+	     &pcounter)) {
+		/* "next" same description */
+		gchar appendix[10] = "";
+		gint utf8length;
+		gunichar cidx;
+		counter = GPOINTER_TO_INT (pcounter);
+		/* Unicode subscript 2, 3, 4 */
+		cidx = 0x2081 + counter;
+		utf8length = g_unichar_to_utf8 (cidx, appendix);
+		appendix[utf8length] = '\0';
+		lbl_title = g_strconcat (layout_name, appendix, NULL);
+	} else {
+		/* "first" time this description */
+		lbl_title = g_strdup (layout_name);
+	}
+	g_hash_table_insert (*ln2cnt_map, layout_name,
+			     GINT_TO_POINTER (counter + 1));
+	return lbl_title;
 }
 
 static GtkWidget *
@@ -331,96 +417,32 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 				  G_CALLBACK (flag_exposed), image);
 		gtk_container_add (GTK_CONTAINER (ebox), flag);
 	} else {
-		gpointer pcounter = NULL;
-		char *prev_layout_name = NULL, **ppln;
 		char *lbl_title = NULL;
-		int counter = 0;
 		char *layout_name = NULL;
 		GtkWidget *align, *label;
-		/**
-		 * Map "short desciption" -> 
-		 * number of layouts in the configuration 
-		 * having this short description
-		 */
-		static GHashTable *short_descrs = NULL;
+		static GHashTable *ln2cnt_map = NULL;
 
-		if (group == 0)
-			short_descrs =
-			    g_hash_table_new_full (g_str_hash, g_str_equal,
-						   g_free, NULL);
+		layout_name =
+		    gkbd_indicator_extract_layout_name (group,
+							globals.engine,
+							&globals.kbd_cfg,
+							globals.short_group_names,
+							globals.full_group_names);
 
-
-		if (group < g_strv_length (globals.short_group_names)) {
-			if (xkl_engine_get_features (globals.engine) &
-			    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
-				char *full_layout_name = (char *)
-				    g_slist_nth_data (globals.kbd_cfg.
-						      layouts_variants,
-						      group);
-				char *variant_name;
-				if (!gkbd_keyboard_config_split_items
-				    (full_layout_name, &layout_name,
-				     &variant_name))
-					/* just in case */
-					layout_name = full_layout_name;
-
-				/* make it freeable */
-				layout_name = g_strdup (layout_name);
-
-				if (globals.short_group_names != NULL) {
-					char *short_group_name =
-					    globals.short_group_names
-					    [group];
-					if (short_group_name != NULL
-					    && *short_group_name != '\0') {
-						/* drop the long name */
-						g_free (layout_name);
-						layout_name =
-						    g_strdup
-						    (short_group_name);
-					}
-				}
-			} else {
-				layout_name =
-				    g_strdup (globals.full_group_names
-					      [group]);
-			}
-		}
-
-		if (layout_name == NULL)
-			layout_name = g_strdup ("??");
-
-		/* Process layouts with repeating description */
-		ppln = &prev_layout_name;
-		if (g_hash_table_lookup_extended
-		    (short_descrs, layout_name,
-		     (gpointer *) ppln, &pcounter)) {
-			/* "next" same description */
-			gchar appendix[10] = "";
-			gint utf8length;
-			gunichar cidx;
-			counter = GPOINTER_TO_INT (pcounter);
-			/* Unicode subscript 2, 3, 4 */
-			cidx = 0x2081 + counter;
-			utf8length = g_unichar_to_utf8 (cidx, appendix);
-			appendix[utf8length] = '\0';
-			lbl_title =
-			    g_strconcat (layout_name, appendix, NULL);
-		} else {
-			/* "first" time this description */
-			lbl_title = g_strdup (layout_name);
-		}
-		g_hash_table_insert (short_descrs, layout_name,
-				     GINT_TO_POINTER (counter + 1));
+		lbl_title =
+		    gkbd_indicator_create_label_title (group,
+						       &ln2cnt_map,
+						       layout_name);
 
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
 		label = gtk_label_new (lbl_title);
 		g_free (lbl_title);
 		gtk_label_set_angle (GTK_LABEL (label), gki->priv->angle);
 
-		if (group == xkl_engine_get_num_groups (globals.engine)) {
-			g_hash_table_destroy (short_descrs);
-			short_descrs = NULL;
+		if (group + 1 ==
+		    xkl_engine_get_num_groups (globals.engine)) {
+			g_hash_table_destroy (ln2cnt_map);
+			ln2cnt_map = NULL;
 		}
 
 		gtk_container_add (GTK_CONTAINER (align), label);

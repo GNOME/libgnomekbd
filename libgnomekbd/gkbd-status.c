@@ -43,7 +43,10 @@ typedef struct _gki_globals {
 	gchar **full_group_names;
 	gchar **short_group_names;
 
-	gint current_size;
+	gint current_width;
+	gint current_height;
+	int real_width;
+
 	GSList *icons;		/* list of GdkPixbuf */
 	GSList *widget_instances;	/* list of GkbdStatus */
 	gulong state_changed_handler;
@@ -122,12 +125,31 @@ gkbd_status_activate (GkbdStatus * gki)
 	gkbd_desktop_config_lock_next_group (&globals.cfg);
 }
 
+/* hackish xref */
+extern gchar *gkbd_indicator_extract_layout_name (int group,
+						  XklEngine * engine,
+						  GkbdKeyboardConfig *
+						  kbd_cfg,
+						  gchar **
+						  short_group_names,
+						  gchar **
+						  full_group_names);
+
+extern gchar *gkbd_indicator_create_label_title (int group,
+						 GHashTable **
+						 ln2cnt_map,
+						 gchar * layout_name);
+
 static void
 gkbd_status_render_cairo (cairo_t * cr, int group)
 {
-	cairo_text_extents_t te;
-	gchar *lbl = globals.short_group_names[group];
 	double r, g, b;
+	PangoFontDescription *pfd;
+	PangoContext *pcc;
+	PangoLayout *pl;
+	int lwidth, lheight;
+	gchar *layout_name, *lbl_title;
+	static GHashTable *ln2cnt_map = NULL;
 
 	if (globals.ind_cfg.background_color != NULL &&
 	    globals.ind_cfg.background_color[0] != 0) {
@@ -135,8 +157,8 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 		    (globals.ind_cfg.background_color, "%lg %lg %lg", &r,
 		     &g, &b) == 3) {
 			cairo_set_source_rgb (cr, r, g, b);
-			cairo_rectangle (cr, 0, 0, globals.current_size,
-					 globals.current_size);
+			cairo_rectangle (cr, 0, 0, globals.current_width,
+					 globals.current_height);
 			cairo_fill (cr);
 		}
 	}
@@ -157,19 +179,60 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 					CAIRO_FONT_WEIGHT_NORMAL);
 	}
 
-	if (globals.ind_cfg.font_size > 0) {
-		cairo_set_font_size (cr, globals.ind_cfg.font_size);
+	pfd = pango_font_description_new ();
+	pango_font_description_set_family (pfd,
+					   globals.ind_cfg.font_family);
+	pango_font_description_set_style (pfd, PANGO_STYLE_NORMAL);
+	pango_font_description_set_weight (pfd, PANGO_WEIGHT_NORMAL);
+	pango_font_description_set_size (pfd,
+					 globals.ind_cfg.font_size *
+					 PANGO_SCALE);
+
+	pcc = pango_cairo_create_context (cr);
+	pango_cairo_context_set_font_options (pcc,
+					      gdk_screen_get_font_options
+					      (gdk_screen_get_default ()));
+
+	pl = pango_layout_new (pcc);
+
+	layout_name = gkbd_indicator_extract_layout_name (group,
+							  globals.engine,
+							  &globals.kbd_cfg,
+							  globals.
+							  short_group_names,
+							  globals.
+							  full_group_names);
+	lbl_title =
+	    gkbd_indicator_create_label_title (group, &ln2cnt_map,
+					       layout_name);
+
+	if (group + 1 == xkl_engine_get_num_groups (globals.engine)) {
+		g_hash_table_destroy (ln2cnt_map);
+		ln2cnt_map = NULL;
 	}
 
-	cairo_text_extents (cr, lbl, &te);
-	cairo_move_to (cr,
-		       (globals.current_size >> 1) - te.width / 2 -
-		       te.x_bearing,
-		       (globals.current_size >> 1) - te.height / 2 -
-		       te.y_bearing);
-	cairo_show_text (cr, lbl);
+	pango_layout_set_text (pl, lbl_title, -1);
 
+	g_free(lbl_title);
+
+	pango_layout_set_font_description (pl, pfd);
+	pango_layout_get_size (pl, &lwidth, &lheight);
+
+	cairo_move_to (cr,
+		       (globals.current_width - lwidth / PANGO_SCALE) / 2,
+		       (globals.current_height -
+			lheight / PANGO_SCALE) / 2);
+
+	pango_cairo_show_layout (cr, pl);
+
+	pango_font_description_free (pfd);
+	g_object_unref (pl);
+	g_object_unref (pcc);
 	cairo_destroy (cr);
+
+	globals.real_width = (lwidth / PANGO_SCALE) + 4;
+	if (globals.real_width > globals.current_width)
+		globals.real_width = globals.current_width;
 }
 
 static inline guint8
@@ -180,24 +243,34 @@ convert_color_channel (guint8 src, guint8 alpha)
 
 static void
 convert_bgra_to_rgba (guint8 const *src, guint8 * dst, int width,
-		      int height)
+		      int height, int new_width)
 {
-	guint8 const *src_pixel = src;
+	int xoffset = width - new_width;
+
+	/* *4 */
+	int ptr_step = xoffset << 2;
+
+	/* / 2 * 4 */
+	guint8 const *src_pixel = src + ((xoffset >> 1) << 2);
+
 	guint8 *dst_pixel = dst;
 	int x, y;
 
-	for (y = 0; y < height; y++) {
-		for (x = 0; x < width; x++) {
+	for (y = height; --y >= 0; src_pixel += ptr_step) {
+		for (x = new_width; --x >= 0;) {
+			/* src is native-endian! */
+			gint isrc = *(gint *) src_pixel;
+			gint8 alpha = isrc >> 24;
+
 			dst_pixel[0] =
-			    convert_color_channel (src_pixel[2],
-						   src_pixel[3]);
+			    convert_color_channel (isrc & 0xFF, alpha);
 			dst_pixel[1] =
-			    convert_color_channel (src_pixel[1],
-						   src_pixel[3]);
+			    convert_color_channel ((isrc >> 8) & 0xFF,
+						   alpha);
 			dst_pixel[2] =
-			    convert_color_channel (src_pixel[0],
-						   src_pixel[3]);
-			dst_pixel[3] = src_pixel[3];
+			    convert_color_channel ((isrc >> 16) & 0xFF,
+						   alpha);
+			dst_pixel[3] = alpha;
 
 			dst_pixel += 4;
 			src_pixel += 4;
@@ -212,19 +285,20 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	char *image_filename;
 	GdkPixbuf *image;
 
-	if (globals.current_size == 0)
+	if (globals.current_width == 0)
 		return NULL;
 
 	if (globals.ind_cfg.show_flags) {
 
 		image_filename =
-		    (char *) g_slist_nth_data (globals.
-					       ind_cfg.image_filenames,
-					       group);
+		    (char *) g_slist_nth_data (globals.ind_cfg.
+					       image_filenames, group);
 
 		image = gdk_pixbuf_new_from_file_at_size (image_filename,
-							  globals.current_size,
-							  globals.current_size,
+							  globals.
+							  current_width,
+							  globals.
+							  current_height,
 							  &gerror);
 
 		if (image == NULL) {
@@ -239,7 +313,8 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 								    NULL ?
 								    "Unknown"
 								    :
-								    gerror->message);
+								    gerror->
+								    message);
 			g_signal_connect (G_OBJECT (dialog), "response",
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
@@ -263,19 +338,20 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	} else {
 		cairo_surface_t *cs =
 		    cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
-						globals.current_size,
-						globals.current_size);
+						globals.current_width,
+						globals.current_height);
 		unsigned char *cairo_data;
 		guchar *pixbuf_data;
 		gkbd_status_render_cairo (cairo_create (cs), group);
 		cairo_data = cairo_image_surface_get_data (cs);
 		pixbuf_data =
 		    g_new0 (guchar,
-			    4 * globals.current_size *
-			    globals.current_size);
+			    4 * globals.real_width *
+			    globals.current_height);
 		convert_bgra_to_rgba (cairo_data, pixbuf_data,
-				      globals.current_size,
-				      globals.current_size);
+				      globals.current_width,
+				      globals.current_height,
+				      globals.real_width);
 
 #if 0
 		char pngfilename[20];
@@ -289,9 +365,10 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 						  GDK_COLORSPACE_RGB,
 						  TRUE,
 						  8,
-						  globals.current_size,
-						  globals.current_size,
-						  globals.current_size * 4,
+						  globals.real_width,
+						  globals.current_height,
+						  globals.real_width *
+						  4,
 						  (GdkPixbufDestroyNotify)
 						  g_free, NULL);
 		xkl_debug (150,
@@ -532,8 +609,9 @@ gkbd_status_stop_listen (void)
 static void
 gkbd_status_size_changed (GkbdStatus * gki, gint size)
 {
-	if (globals.current_size != size) {
-		globals.current_size = size;
+	if (globals.current_height != size) {
+		globals.current_height = size;
+		globals.current_width = size * 3 / 2;
 		gkbd_status_reinit_ui (gki);
 	}
 }
@@ -632,13 +710,15 @@ gkbd_status_global_term (void)
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.state_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.state_changed_handler);
+					     globals.
+					     state_changed_handler);
 		globals.state_changed_handler = 0;
 	}
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.config_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.config_changed_handler);
+					     globals.
+					     config_changed_handler);
 		globals.config_changed_handler = 0;
 	}
 
