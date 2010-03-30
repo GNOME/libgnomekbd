@@ -2,14 +2,14 @@
 #
 # This file is distributed under the same license as the libgnomekbd package.
 #
-# Wouter Bolsterlee <wbolster@gnome.org>, 2007, 2008
+# Wouter Bolsterlee <wbolster@gnome.org>, 2007–2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-07 18:53+0200\n"
-"PO-Revision-Date: 2008-09-07 18:53+0200\n"
+"POT-Creation-Date: 2010-03-30 18:17+0200\n"
+"PO-Revision-Date: 2010-03-30 18:17+0200\n"
 "Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2383
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:310
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Probleem bij laden van afbeelding: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:640
+msgid "XKB initialization error"
+msgstr "XKB-initalisatiefout"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -28,39 +37,30 @@ msgstr ""
 "Copyright © X.org Foundation en XKeyboardConfig-medewerkers\n"
 "Zie de metadata van het pakket voor licensievoorwaarden."
 
-#: ../libgnomekbd/gkbd-indicator.c:617
-msgid "XKB initialization error"
-msgstr "XKB-initalisatiefout"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Probleem bij laden van afbeelding: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:751
+#: ../libgnomekbd/gkbd-keyboard-config.c:752
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "indeling ‘%s’"
 msgstr[1] "indelingen ‘%s’"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:770
+#: ../libgnomekbd/gkbd-keyboard-config.c:771
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "optie ‘%s’"
 msgstr[1] "opties ‘%s’"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:778
+#: ../libgnomekbd/gkbd-keyboard-config.c:779
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model ‘%s’, ‘%s’ en ‘%s’"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:780
 msgid "no layout"
 msgstr "geen indeling"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:781
 msgid "no options"
 msgstr "geen opties"
 
@@ -102,26 +102,36 @@ msgid "Keyboard options"
 msgstr "Toetsenbordopties"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Exotische, zelden gebruikte layouts en opties laden"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "Extea configuratie-items laden"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "Onthouden/laden van indicatoren tegelijk met indelingsgroepen"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "Secundaire groepen"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "Vlaggen tonen in het applet"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Vlaggen in het applet tonen om de huidige indeling aan te geven"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "Indelingsnaam tonen in plaats van groepnaam"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -129,96 +139,128 @@ msgstr ""
 "Indelingsnaam tonen in plaats van groepnaam (alleen voor versies van XFree "
 "die meerdere indelingen ondersteuenen)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Het bericht ‘X sysconfig gewijzigd’ onderdrukken"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "Toetsenbordvoorbeeld, X-afstand"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "Toetsenbordvoorbeeld, Y-afstand"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
 msgstr "Toetsenbordvoorbeeld, hoogte"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
 msgstr "Toetsenbordvoorbeeld, breedte"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The background color"
+msgstr "De achtergrondkleur"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The background color for the layout indicator"
+msgstr "De achtergrondkleur van de indelingsindicator"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font family"
+msgstr "De letterfamilie"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font family for the layout indicator"
+msgstr "De letterfamilie van de indelingsindicator"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The font size"
+msgstr "De lettergrootte"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The font size for the layout indicator"
+msgstr "De lettergrootte van de indelingsindicator"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+msgid "The foreground color"
+msgstr "De voorgrondkleur"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+msgid "The foreground color for the layout indicator"
+msgstr "The foreground color for the layout indicator"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Lijst van ingeschakelde plug-ins voor toetsenbordindicatie"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "toetsenbordindeling"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "toetsenbordmodel"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "Lijst van modmap-bestanden"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Meer plug-ins inschakelen"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "Ingeschakelde _plug-ins:"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Plug-in toevogen"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "Venster sluiten"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "Geselecteerde plug-in instellen"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "Geselecteerde plugin uitschakelen"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "Prioriteit van plug-in verlagen"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "Prioriteit van plug-in verhogen"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "Plug-ins voor toetsenbordindicatie"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "Lijst van ingeschakelde plug-ins"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "Plug-in toevogen"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "_Beschikbare plug-ins:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Geen beschrijving."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:254
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
 msgstr "Kon hulpbestand niet openen"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:354
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Kon Gconf niet initaliseren: %s\n"
@@ -231,12 +273,12 @@ msgstr "Geïnstalleerde plug-ins in- of uitschakelen"
 msgid "Keyboard Indicator plugins"
 msgstr "Plug-ins voor toetsenbordindicatie"
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Toetsenbordindicatietest (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indicator:"
 
