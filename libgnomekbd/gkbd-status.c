@@ -666,6 +666,10 @@ gkbd_status_init (GkbdStatus * gki)
 				"notify::gtk-font-name",
 				G_CALLBACK (gkbd_status_theme_changed),
 				gki);
+	g_signal_connect_after (gdk_screen_get_default (),
+				"notify::font-options",
+				G_CALLBACK (gkbd_status_theme_changed),
+				gki);
 }
 
 static void
