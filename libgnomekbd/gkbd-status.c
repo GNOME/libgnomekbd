@@ -149,6 +149,7 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	PangoLayout *pl;
 	int lwidth, lheight;
 	gchar *layout_name, *lbl_title;
+	cairo_font_options_t *fo;
 	static GHashTable *ln2cnt_map = NULL;
 
 	if (globals.ind_cfg.background_color != NULL &&
@@ -189,19 +190,23 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 					 PANGO_SCALE);
 
 	pcc = pango_cairo_create_context (cr);
-	pango_cairo_context_set_font_options (pcc,
-					      gdk_screen_get_font_options
-					      (gdk_screen_get_default ()));
+
+	fo = cairo_font_options_copy (gdk_screen_get_font_options
+				      (gdk_screen_get_default ()));
+	/* SUBPIXEL antialiasing gives bad results on in-memory images */
+	if (cairo_font_options_get_antialias (fo) ==
+	    CAIRO_ANTIALIAS_SUBPIXEL)
+		cairo_font_options_set_antialias (fo,
+						  CAIRO_ANTIALIAS_GRAY);
+	pango_cairo_context_set_font_options (pcc, fo);
 
 	pl = pango_layout_new (pcc);
 
 	layout_name = gkbd_indicator_extract_layout_name (group,
 							  globals.engine,
 							  &globals.kbd_cfg,
-							  globals.
-							  short_group_names,
-							  globals.
-							  full_group_names);
+							  globals.short_group_names,
+							  globals.full_group_names);
 	lbl_title =
 	    gkbd_indicator_create_label_title (group, &ln2cnt_map,
 					       layout_name);
@@ -213,7 +218,7 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 
 	pango_layout_set_text (pl, lbl_title, -1);
 
-	g_free(lbl_title);
+	g_free (lbl_title);
 
 	pango_layout_set_font_description (pl, pfd);
 	pango_layout_get_size (pl, &lwidth, &lheight);
@@ -228,6 +233,7 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	pango_font_description_free (pfd);
 	g_object_unref (pl);
 	g_object_unref (pcc);
+	cairo_font_options_destroy (fo);
 	cairo_destroy (cr);
 
 	globals.real_width = (lwidth / PANGO_SCALE) + 4;
@@ -250,30 +256,26 @@ convert_bgra_to_rgba (guint8 const *src, guint8 * dst, int width,
 	/* *4 */
 	int ptr_step = xoffset << 2;
 
-	/* / 2 * 4 */
-	guint8 const *src_pixel = src + ((xoffset >> 1) << 2);
-
-	guint8 *dst_pixel = dst;
 	int x, y;
 
-	for (y = height; --y >= 0; src_pixel += ptr_step) {
+	/* / 2 * 4 */
+	src = src + ((xoffset >> 1) << 2);
+
+	for (y = height; --y >= 0; src += ptr_step) {
 		for (x = new_width; --x >= 0;) {
-			/* src is native-endian! */
-			gint isrc = *(gint *) src_pixel;
-			gint8 alpha = isrc >> 24;
-
-			dst_pixel[0] =
-			    convert_color_channel (isrc & 0xFF, alpha);
-			dst_pixel[1] =
-			    convert_color_channel ((isrc >> 8) & 0xFF,
-						   alpha);
-			dst_pixel[2] =
-			    convert_color_channel ((isrc >> 16) & 0xFF,
-						   alpha);
-			dst_pixel[3] = alpha;
-
-			dst_pixel += 4;
-			src_pixel += 4;
+#if G_BYTE_ORDER == G_LITTLE_ENDIAN
+			dst[0] = convert_color_channel (src[2], src[3]);
+			dst[1] = convert_color_channel (src[1], src[3]);
+			dst[2] = convert_color_channel (src[0], src[3]);
+			dst[3] = src[3];
+#else
+			dst[0] = convert_color_channel (src[1], src[0]);
+			dst[1] = convert_color_channel (src[2], src[0]);
+			dst[2] = convert_color_channel (src[3], src[0]);
+			dst[3] = src[0];
+#endif
+			dst += 4;
+			src += 4;
 		}
 	}
 }
@@ -291,14 +293,13 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	if (globals.ind_cfg.show_flags) {
 
 		image_filename =
-		    (char *) g_slist_nth_data (globals.ind_cfg.
-					       image_filenames, group);
+		    (char *) g_slist_nth_data (globals.
+					       ind_cfg.image_filenames,
+					       group);
 
 		image = gdk_pixbuf_new_from_file_at_size (image_filename,
-							  globals.
-							  current_width,
-							  globals.
-							  current_height,
+							  globals.current_width,
+							  globals.current_height,
 							  &gerror);
 
 		if (image == NULL) {
@@ -313,8 +314,7 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 								    NULL ?
 								    "Unknown"
 								    :
-								    gerror->
-								    message);
+								    gerror->message);
 			g_signal_connect (G_OBJECT (dialog), "response",
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
@@ -344,6 +344,11 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 		guchar *pixbuf_data;
 		gkbd_status_render_cairo (cairo_create (cs), group);
 		cairo_data = cairo_image_surface_get_data (cs);
+#if 0
+		char pngfilename[20];
+		g_sprintf (pngfilename, "label%d.png", group);
+		cairo_surface_write_to_png (cs, pngfilename);
+#endif
 		pixbuf_data =
 		    g_new0 (guchar,
 			    4 * globals.real_width *
@@ -352,12 +357,6 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 				      globals.current_width,
 				      globals.current_height,
 				      globals.real_width);
-
-#if 0
-		char pngfilename[20];
-		g_sprintf (pngfilename, "label%d.png", group);
-		cairo_surface_write_to_png (cs, pngfilename);
-#endif
 
 		cairo_surface_destroy (cs);
 
@@ -710,15 +709,13 @@ gkbd_status_global_term (void)
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.state_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.
-					     state_changed_handler);
+					     globals.state_changed_handler);
 		globals.state_changed_handler = 0;
 	}
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.config_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.
-					     config_changed_handler);
+					     globals.config_changed_handler);
 		globals.config_changed_handler = 0;
 	}
 
