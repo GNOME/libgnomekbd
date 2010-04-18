@@ -134,7 +134,6 @@ const gchar *
 gkbd_keyboard_config_merge_items (const gchar * parent,
 				  const gchar * child)
 {
-	printf("p:[%s](%p), c:[%s](%p)\n", parent, parent, child, child);
 	static gchar buffer[XKL_MAX_CI_NAME_LENGTH * 2 - 1];
 	*buffer = '\0';
 	if (parent != NULL) {
