@@ -134,6 +134,7 @@ const gchar *
 gkbd_keyboard_config_merge_items (const gchar * parent,
 				  const gchar * child)
 {
+	printf("p:[%s](%p), c:[%s](%p)\n", parent, parent, child, child);
 	static gchar buffer[XKL_MAX_CI_NAME_LENGTH * 2 - 1];
 	*buffer = '\0';
 	if (parent != NULL) {
@@ -141,7 +142,7 @@ gkbd_keyboard_config_merge_items (const gchar * parent,
 			return NULL;
 		strcat (buffer, parent);
 	}
-	if (child != NULL) {
+	if (child != NULL && *child != 0) {
 		if (strlen (child) >= XKL_MAX_CI_NAME_LENGTH)
 			return NULL;
 		strcat (buffer, "\t");
@@ -518,6 +519,7 @@ gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig * kbd_config,
 					  XklConfigRec * data)
 {
 	gboolean own_data = data == NULL;
+	xkl_debug(150, "Copying config from X(current)\n");
 	if (own_data)
 		data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_server (data, kbd_config->engine))
@@ -536,6 +538,7 @@ gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config,
 					  XklConfigRec * data)
 {
 	gboolean own_data = data == NULL;
+	xkl_debug(150, "Copying config from X(initial)\n");
 	if (own_data)
 		data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_backup (data, kbd_config->engine))
