@@ -112,4 +112,13 @@ extern const gchar *gkbd_keyboard_config_format_full_layout (const gchar
 extern gchar *gkbd_keyboard_config_to_string (const GkbdKeyboardConfig *
 					      config);
 
+extern GSList
+    *gkbd_keyboard_config_add_default_switch_option_if_necessary (GSList *
+								  layouts_list,
+								  GSList *
+								  options_list,
+								  gboolean
+								  *
+								  was_appended);
+
 #endif

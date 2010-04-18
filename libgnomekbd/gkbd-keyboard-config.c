@@ -34,6 +34,9 @@
  */
 #define GKBD_KEYBOARD_CONFIG_KEY_PREFIX GKBD_CONFIG_KEY_PREFIX "/kbd"
 
+#define GROUP_SWITCHERS_GROUP "grp"
+#define DEFAULT_GROUP_SWITCH "grp:shift_caps_toggle"
+
 const gchar GKBD_KEYBOARD_CONFIG_DIR[] = GKBD_KEYBOARD_CONFIG_KEY_PREFIX;
 const gchar GKBD_KEYBOARD_CONFIG_KEY_MODEL[] =
     GKBD_KEYBOARD_CONFIG_KEY_PREFIX "/model";
@@ -348,8 +351,8 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 	gkbd_keyboard_config_layouts_reset (kbd_config);
 
 	l = pl = gconf_client_get_list (kbd_config->conf_client,
-				    param_names[1],
-				    GCONF_VALUE_STRING, &gerror);
+					param_names[1],
+					GCONF_VALUE_STRING, &gerror);
 	if (pl == NULL || gerror != NULL) {
 		if (gerror != NULL) {
 			g_warning ("Error reading configuration:%s\n",
@@ -370,8 +373,8 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 	gkbd_keyboard_config_options_reset (kbd_config);
 
 	l = pl = gconf_client_get_list (kbd_config->conf_client,
-				    param_names[2],
-				    GCONF_VALUE_STRING, &gerror);
+					param_names[2],
+					GCONF_VALUE_STRING, &gerror);
 	if (pl == NULL || gerror != NULL) {
 		if (gerror != NULL) {
 			g_warning ("Error reading configuration:%s\n",
@@ -384,8 +387,8 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 	while (l != NULL) {
 		xkl_debug (150, "Loaded Kbd option: [%s]\n", l->data);
 		gkbd_keyboard_config_options_add_full (kbd_config,
-						       (const gchar *) l->
-						       data);
+						       (const gchar *)
+						       l->data);
 		l = l->next;
 	}
 	gkbd_keyboard_config_string_list_reset (&pl);
@@ -494,9 +497,9 @@ gkbd_keyboard_config_load_from_gconf (GkbdKeyboardConfig * kbd_config,
 			pl = kbd_config_default->layouts_variants;
 			while (pl != NULL) {
 				kbd_config->layouts_variants =
-				    g_slist_append (kbd_config->
-						    layouts_variants,
-						    g_strdup (pl->data));
+				    g_slist_append
+				    (kbd_config->layouts_variants,
+				     g_strdup (pl->data));
 				pl = pl->next;
 			}
 		}
@@ -518,7 +521,7 @@ gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig * kbd_config,
 					  XklConfigRec * data)
 {
 	gboolean own_data = data == NULL;
-	xkl_debug(150, "Copying config from X(current)\n");
+	xkl_debug (150, "Copying config from X(current)\n");
 	if (own_data)
 		data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_server (data, kbd_config->engine))
@@ -537,7 +540,7 @@ gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config,
 					  XklConfigRec * data)
 {
 	gboolean own_data = data == NULL;
-	xkl_debug(150, "Copying config from X(initial)\n");
+	xkl_debug (150, "Copying config from X(initial)\n");
 	if (own_data)
 		data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_backup (data, kbd_config->engine))
@@ -619,8 +622,8 @@ gkbd_keyboard_config_layouts_add (GkbdKeyboardConfig * kbd_config,
 void
 gkbd_keyboard_config_layouts_reset (GkbdKeyboardConfig * kbd_config)
 {
-	gkbd_keyboard_config_string_list_reset (&kbd_config->
-						layouts_variants);
+	gkbd_keyboard_config_string_list_reset
+	    (&kbd_config->layouts_variants);
 }
 
 void
@@ -786,4 +789,39 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 	g_free (layouts);
 
 	return result;
+}
+
+GSList *
+gkbd_keyboard_config_add_default_switch_option_if_necessary (GSList *
+							     layouts_list,
+							     GSList *
+							     options_list, gboolean *was_appended)
+{
+	*was_appended = FALSE;
+	if (g_slist_length (layouts_list) >= 2) {
+		gboolean any_switcher = False;
+		GSList *option = options_list;
+		while (option != NULL) {
+			char *g, *o;
+			if (gkbd_keyboard_config_split_items
+			    (option->data, &g, &o)) {
+				if (!g_ascii_strcasecmp
+				    (g, GROUP_SWITCHERS_GROUP)) {
+					any_switcher = True;
+					break;
+				}
+			}
+			option = option->next;
+		}
+		if (!any_switcher) {
+			const gchar *id =
+			    gkbd_keyboard_config_merge_items
+			    (GROUP_SWITCHERS_GROUP,
+			     DEFAULT_GROUP_SWITCH);
+			options_list =
+			    g_slist_append (options_list, g_strdup (id));
+			*was_appended = TRUE;
+		}
+	}
+	return options_list;
 }
