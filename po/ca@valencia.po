@@ -1,21 +1,29 @@
 # Catalan translation of libgnomekbd.
 # Copyright © 2005, 2006 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
-# Gil Forcada <gilforcada@guifi.net>, 2007.
+# Gil Forcada <gilforcada@guifi.net>, 2007, 2008, 2009, 2010.
 #
-# Carles Ferrando Garcia <carles.ferrando@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-02 17:04+0100\n"
-"PO-Revision-Date: 2009-10-26 16:12+0100\n"
-"Last-Translator: Carles Ferrando Garcia <carles.ferrando@gmail.com>\n"
-"Language-Team: Catalan (Valencià) <tradgnome@softcatala.org>\n"
+"POT-Creation-Date: 2010-04-21 23:03+0200\n"
+"PO-Revision-Date: 2010-04-02 18:35+0200\n"
+"Last-Translator: Gil Forcada <gilforcada@guifi.net>\n"
+"Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:311
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "S'ha produït un error en carregar una imatge: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:639
+msgid "XKB initialization error"
+msgstr "Error d'inicialització de l'XKB"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
 #, c-format
@@ -28,39 +36,30 @@ msgstr ""
 "Copyright &#169; la Fundació X.Org i els col·laboradors del XKeyboardConfig\n"
 "Vegeu les metadades del paquet per a la llicència"
 
-#: ../libgnomekbd/gkbd-indicator.c:612
-msgid "XKB initialization error"
-msgstr "Error d'inicialització del XKB"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "S'ha produït un error en carregar una imatge: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:754
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "«%s» disposició"
 msgstr[1] "«%s» disposicions"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:773
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "«%s» opció"
 msgstr[1] "«%s» opcions"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:781
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "model «%s, %s i %s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:782
 msgid "no layout"
 msgstr "no hi ha disposició"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:783
 msgid "no options"
 msgstr "no hi ha opcions"
 
@@ -69,12 +68,12 @@ msgid ""
 "A collection of scripts to run whenever the keyboard state is reloaded. "
 "Useful for re-applying xmodmap based adjustments"
 msgstr ""
-"Una col·lecció d'scripts per executar en qualsevol moment que es recarregue "
+"Una col·lecció d'scripts per executar en qualsevol moment que es recarregui "
 "l'estat del teclat. Útil per tornar a aplicar ajustaments basats en xmodmap"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr "Una llista de fitxers del modmap disponibles en el directori d'inici"
+msgstr "Una llista de fitxers del modmap disponibles en el directori d'inici."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
@@ -82,7 +81,7 @@ msgstr "Grup predeterminat, s'assigna en la creació d'una finestra"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
 msgid "Keep and manage separate group per window"
-msgstr "Manté i gestiona un grup separat per finestra"
+msgstr "Mantén i gestiona un grup separat per finestra"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
 msgid "Keyboard Update Handlers"
@@ -116,20 +115,22 @@ msgstr "Alça/restaura els indicadors juntament amb els grups de disposició"
 msgid "Secondary groups"
 msgstr "Grups secundaris"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "Mostra els indicadors en la miniaplicació"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
 msgstr ""
 "Mostra els indicadors en la miniaplicació per indicar la disposició actual"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "Mostra els noms de les disposicions en comptes dels noms de grup"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -137,39 +138,71 @@ msgstr ""
 "Mostra els noms de les disposicions en comptes dels noms de grup (només per "
 "a les versions del XFree que permeten múltiples disposicions)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Suprimeix el missatge d'avís «ha canviat el X sysconfig»"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "La previsualització del teclat, desplaçament horitzontal"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "La previsualització del teclat, desplaçament vertical"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
 msgstr "La previsualització del teclat, alçada"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
 msgstr "La previsualització del teclat, amplada"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The background color"
+msgstr "El color de fons"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The background color for the layout indicator"
+msgstr "El color de fons per a l'indicador de disposició"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font family"
+msgstr "La família del tipus de lletra"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font family for the layout indicator"
+msgstr "La família del tipus de lletra per a l'indicador de disposició"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The font size"
+msgstr "La mida del tipus de lletra"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The font size for the layout indicator"
+msgstr "La mida del tipus de lletra per a l'indicador de disposició"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+msgid "The foreground color"
+msgstr "El color de primer pla"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+msgid "The foreground color for the layout indicator"
+msgstr "El color de primer pla per a l'indicador de disposició"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "La llista de connectors d'indicador de teclat habilitats"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "Disposició del teclat"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "Model del teclat"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "llista de fitxers del modmap"
 
@@ -191,15 +224,15 @@ msgstr "Configureu el connector seleccionat"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
-msgstr "Desactiveu el connector seleccionat"
+msgstr "Desactiva el connector seleccionat"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
-msgstr "Reduïu la prioritat del connector"
+msgstr "Redueix la prioritat del connector"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
-msgstr "Augmenteu la prioritat del connector"
+msgstr "Augmenta la prioritat del connector"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
