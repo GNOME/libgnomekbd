@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 2.30.0, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
+AC_INIT(libgnomekbd, 2.30.1, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
 AC_PREREQ(2.59)
 
 VERSION_INFO=5:0:1
