@@ -3,21 +3,33 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Raivis Dejus <orvils@gmail.com>, 2009.
+# Peteris Krisjanis <pecisk@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-01-08 22:31+0000\n"
-"PO-Revision-Date: 2009-01-25 18:21+0200\n"
-"Last-Translator: Raivis Dejus <orvils@gmail.com>\n"
-"Language-Team: Latvian <locale@laka.lv>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2010-04-21 21:03+0000\n"
+"PO-Revision-Date: 2010-04-26 11:57+0300\n"
+"Last-Translator: Peteris Krisjanis <pecisk@gmail.com>\n"
+"Language-Team: Latviešu <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"X-Generator: Lokalize 1.0\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:311
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Gadījās kļūda ielādējot attēlu: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:639
+msgid "XKB initialization error"
+msgstr "XKB inicializācijas kļūda"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -28,41 +40,32 @@ msgstr ""
 "Autortiesības &#169; X.Org Fonds un XKeyboardConfig komanda\n"
 "Licences informācija pieejama pakotnes metadatos"
 
-#: ../libgnomekbd/gkbd-indicator.c:627
-msgid "XKB initialization error"
-msgstr "XKB inicializācijas kļūda"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Kļūda ielādējot attēlu: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:754
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "izkārtojums \"%s\""
 msgstr[1] "izkārtojumi \"%s\""
-msgstr[2] "izkārtojumu \"%s\""
+msgstr[2] "izkārtojumi \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:773
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "iespēja \"%s\""
 msgstr[1] "iespējas \"%s\""
-msgstr[2] "iespēju \"%s\""
+msgstr[2] "iespējas \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:781
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modelis \"%s\", %s un %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:782
 msgid "no layout"
 msgstr "nav izkārtojuma"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:783
 msgid "no options"
 msgstr "nav iespēju"
 
@@ -72,11 +75,11 @@ msgid ""
 "Useful for re-applying xmodmap based adjustments"
 msgstr ""
 "Skriptu kolekcija palaišanai kad vien tastatūras stāvoklis ir pārlādēts. "
-"Noderīgs xmodmap bāzētu uzstādījumu pārlikšanai"
+"Noderīgs xmodmap bāzētu iestatījumu pārlikšanai"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME direktorijas pieejamo modmap failu saraksts."
+msgstr "$HOME direktorijā pieejamo modmap failu saraksts."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
@@ -84,11 +87,11 @@ msgstr "Noklusētā grupa, ko piesaista loga veidošanai"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
 msgid "Keep and manage separate group per window"
-msgstr "Uzturēt un pārvalda atsevišķas grupas katram logam"
+msgstr "Uzturēt un pārvaldīt atsevišķas grupas katram logam"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
 msgid "Keyboard Update Handlers"
-msgstr "Tastatūras atjauninājumu apdarinātājs"
+msgstr "Tastatūras atjauninājumu apdarinātāji"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
 msgid "Keyboard layout"
@@ -103,139 +106,183 @@ msgid "Keyboard options"
 msgstr "Tastatūras iespējas"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Ielādēt eksotiskus, reti izmantotus izkārtojumus un opcijas"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+msgid "Load extra configuration items"
+msgstr "Ielādēt papildus konfigurācijas vienības"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
 msgstr "Saglabāt/atjaunot indikatorus kopā ar izkārtojuma grupām"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "Sekundārās grupas"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
-msgstr "Rādīt karogus sīkrīkā"
+msgstr "Rādīt karogus sīklietotnē"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Rādīt karogus sīkrīkā, lai norādītu pašreizējo izkārtojumu"
+msgstr "Rādīt karogus sīklietotnē, lai norādītu pašreizējo izkārtojumu"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "Grupu nosaukumu vietā rādīt izkārtojumu nosaukumus"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr "Grupu nosaukumu vietā rādīt izkārtojumu nosaukumus (XFree versijām, kas uztur vairākus izkārtojumus)"
+msgstr ""
+"Grupu nosaukumu vietā rādīt izkārtojumu nosaukumus (XFree versijām, kas "
+"uztur vairākus izkārtojumus)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Aizliegt \"X sysconfig changed\" brīdinājuma paziņojumu"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "Tastatūras priekšskatījums, X nobīde"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "Tastatūras priekšskatījums, Y nobīde"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
-msgstr "Tastatūras pirmsapskate, augstums"
+msgstr "Tastatūras priekšskatījums, augstums"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
-msgstr "Tastatūras pirmsapskate, platums"
+msgstr "Tastatūras priekšskatījums, platums"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The background color"
+msgstr "Fona krāsa"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The background color for the layout indicator"
+msgstr "Izkārtojuma indikatora fona krāsa"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font family"
+msgstr "Fonta ģimene"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font family for the layout indicator"
+msgstr "Izkārtojuma indikatora fonta ģimene"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The font size"
+msgstr "Fonta izmērs"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The font size for the layout indicator"
+msgstr "Izkārtojuma indikatora fonta izmērs"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+msgid "The foreground color"
+msgstr "Priekšplāna krāsa"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+msgid "The foreground color for the layout indicator"
+msgstr "Izkārtojuma indikatora priekšplāna krāsa"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Tastatūras indikatora aktivizēto spraudņu saraksts"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "tastatūras izkārtojums"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "tastatūras modelis"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
-msgstr "modmap faila saraksts"
+msgstr "modmap failu saraksts"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Aktivizēt vairāk spraudņus"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
 msgstr "Aktīvie s_praudņi:"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "Pievienot spraudni"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
 msgid "Close the dialog"
 msgstr "Aizvērt logu"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
 msgid "Configure the selected plugin"
 msgstr "Konfigurēt izvēlēto spraudni"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
 msgid "Deactivate selected plugin"
 msgstr "Deaktivizēt izvēlēto spraudni"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
 msgid "Decrease the plugin priority"
 msgstr "Samazināt spraudņa prioritāti"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
 msgid "Increase the plugin priority"
 msgstr "Palielināt spraudņa prioritāti"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
 msgstr "Tastatūras indikatora spraudņi"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
 msgstr "Aktīvo spraudņu saraksts"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "Pievienot spraudni"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
 msgid "_Available plugins:"
 msgstr "Pieej_amie spraudņi:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:120
+#: ../capplet/gkbd-indicator-plugins-capplet.c:118
 #: ../capplet/gkbd-indicator-plugins-add.c:106
 msgid "No description."
 msgstr "Nav apraksta."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:258
+#: ../capplet/gkbd-indicator-plugins-capplet.c:256
 msgid "Unable to open help file"
-msgstr "Nevar atvērt palīdzības failu"
+msgstr "Neizdevās atvērt palīdzības failu"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:360
+#: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Neizdevās inicializēt GConf: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
-msgstr "Aktivizēt/deaktivizēt uzstādītos spraudņus"
+msgstr "Aktivizēt/deaktivizēt instalētos spraudņus"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
 msgstr "Tastatūras indikatora spraudņi"
 
-#: ../test/gkbd-indicator-test.c:59
+#: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
 msgstr "Tastatūras indikatora pārbaude (%s)"
 
-#: ../test/gkbd-indicator-test.c:68
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikators:"
 
