@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd MASTER\n"
+"Project-Id-Version: libgnomekbd 2.30\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-12-21 21:47+0000\n"
+"POT-Creation-Date: 2010-04-21 21:03+0000\n"
 "PO-Revision-Date: 2010-02-02 14:29+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -20,6 +20,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Pildi laadimisel tekkis viga: %s"
+
+msgid "XKB initialization error"
+msgstr "XKB lähtestamise viga"
 
 #, c-format
 msgid ""
@@ -30,13 +37,6 @@ msgstr ""
 "Klaviatuuripaigutus \"%s\"\n"
 "Autoriõigused &#169; X.Org Foundation ja XKeyboardConfig'i kaasaaitajad\n"
 "Litsentsi andmed leiad paki metaandmetest"
-
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Pildi laadimisel tekkis viga: %s"
-
-msgid "XKB initialization error"
-msgstr "XKB lähtestamise viga"
 
 #, c-format
 msgid "layout \"%s\""
@@ -100,9 +100,11 @@ msgstr "Näidikute salvestamine ja taastamine koos paigutuste gruppidega"
 msgid "Secondary groups"
 msgstr "Teisejärgulised grupid"
 
+#. TRANSLATORS: real national flags
 msgid "Show flags in the applet"
 msgstr "Rakendis lippude näitamine"
 
+#. TRANSLATORS: real national flags
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Rakendis lippude näitamine hetkel aktiivse paigutuse kohta"
 
