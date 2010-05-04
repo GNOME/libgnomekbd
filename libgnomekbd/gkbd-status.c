@@ -152,6 +152,7 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	cairo_font_options_t *fo;
 	static GHashTable *ln2cnt_map = NULL;
 
+	xkl_debug (160, "Rendering cairo for group %d\n", group);
 	if (globals.ind_cfg.background_color != NULL &&
 	    globals.ind_cfg.background_color[0] != 0) {
 		if (sscanf

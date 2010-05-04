@@ -318,7 +318,7 @@ gkbd_indicator_extract_layout_name (int group, XklEngine * engine,
 				    gchar ** short_group_names,
 				    gchar ** full_group_names)
 {
-	char *layout_name;
+	char *layout_name = NULL;
 	if (group < g_strv_length (short_group_names)) {
 		if (xkl_engine_get_features (engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
@@ -352,7 +352,7 @@ gkbd_indicator_extract_layout_name (int group, XklEngine * engine,
 	}
 
 	if (layout_name == NULL)
-		layout_name = g_strdup ("??");
+		layout_name = g_strdup ("");
 
 	return layout_name;
 }
