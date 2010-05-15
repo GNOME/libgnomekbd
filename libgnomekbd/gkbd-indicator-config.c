@@ -110,13 +110,14 @@ gkbd_indicator_config_load_font (GkbdIndicatorConfig * ind_config)
 
 	if (ind_config->font_family == NULL ||
 	    ind_config->font_family[0] == '\0') {
-		PangoFontDescription *fd;
+		PangoFontDescription *fd = NULL;
 		GtkStyle *style =
 		    gtk_rc_get_style_by_paths (gtk_settings_get_default (),
 					       GTK_STYLE_PATH,
 					       GTK_STYLE_PATH,
 					       GTK_TYPE_LABEL);
-		fd = style->font_desc;
+		if (style != NULL)
+			fd = style->font_desc;
 		if (fd != NULL) {
 			ind_config->font_family =
 			    g_strdup (pango_font_description_get_family
@@ -154,16 +155,22 @@ gkbd_indicator_config_load_colors (GkbdIndicatorConfig * ind_config)
 					       GTK_STYLE_PATH,
 					       GTK_STYLE_PATH,
 					       GTK_TYPE_LABEL);
-		ind_config->foreground_color =
-		    g_strdup_printf ("%g %g %g",
-				     ((double) style->
-				      fg[GTK_STATE_NORMAL].red) / 0x10000,
-				     ((double) style->
-				      fg[GTK_STATE_NORMAL].green) /
-				     0x10000,
-				     ((double) style->
-				      fg[GTK_STATE_NORMAL].blue) /
-				     0x10000);
+		if (style != NULL) {
+			ind_config->foreground_color =
+			    g_strdup_printf ("%g %g %g", ((double)
+							  style->
+							  fg
+							  [GTK_STATE_NORMAL].red)
+					     / 0x10000, ((double)
+							 style->
+							 fg
+							 [GTK_STATE_NORMAL].green)
+					     / 0x10000, ((double)
+							 style->
+							 fg
+							 [GTK_STATE_NORMAL].blue)
+					     / 0x10000);
+		}
 
 	}
 
