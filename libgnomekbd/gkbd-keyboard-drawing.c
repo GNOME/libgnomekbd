@@ -1293,14 +1293,19 @@ draw_keyboard_to_context (GkbdKeyboardDrawingRenderContext * context,
 			(GFunc) draw_keyboard_item, &data);
 }
 
-static void
+static gboolean
 create_cairo (GkbdKeyboardDrawing * drawing)
 {
-	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
+	GtkStateType state;
+	if (drawing == NULL || drawing->pixmap == NULL)
+		return FALSE;
 	drawing->renderContext->cr =
 	    gdk_cairo_create (GDK_DRAWABLE (drawing->pixmap));
+
+	state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	drawing->renderContext->dark_color =
 	    &gtk_widget_get_style (GTK_WIDGET (drawing))->dark[state];
+	return TRUE;
 }
 
 static void
@@ -1333,9 +1338,10 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 			    [state], TRUE, 0, 0, allocation.width,
 			    allocation.height);
 
-	create_cairo (drawing);
-	draw_keyboard_to_context (drawing->renderContext, drawing);
-	destroy_cairo (drawing);
+	if (create_cairo (drawing)) {
+		draw_keyboard_to_context (drawing->renderContext, drawing);
+		destroy_cairo (drawing);
+	}
 }
 
 static void
@@ -1498,10 +1504,12 @@ key_event (GtkWidget * widget,
 
 	key->pressed = (event->type == GDK_KEY_PRESS);
 
-	create_cairo (drawing);
-	draw_key (drawing->renderContext, drawing, key);
-	redraw_overlapping_doodads (drawing->renderContext, drawing, key);
-	destroy_cairo (drawing);
+	if (create_cairo (drawing)) {
+		draw_key (drawing->renderContext, drawing, key);
+		redraw_overlapping_doodads (drawing->renderContext,
+					    drawing, key);
+		destroy_cairo (drawing);
+	}
 
 	invalidate_key_region (drawing, key);
 	return FALSE;
@@ -1526,16 +1534,18 @@ unpress_keys (GkbdKeyboardDrawing * drawing)
 	if (!drawing->xkb)
 		return FALSE;
 
-	create_cairo (drawing);
-	for (i = drawing->xkb->min_key_code;
-	     i <= drawing->xkb->max_key_code; i++)
-		if (drawing->keys[i].pressed) {
-			drawing->keys[i].pressed = FALSE;
-			draw_key (drawing->renderContext, drawing,
-				  drawing->keys + i);
-			invalidate_key_region (drawing, drawing->keys + i);
-		}
-	destroy_cairo (drawing);
+	if (create_cairo (drawing)) {
+		for (i = drawing->xkb->min_key_code;
+		     i <= drawing->xkb->max_key_code; i++)
+			if (drawing->keys[i].pressed) {
+				drawing->keys[i].pressed = FALSE;
+				draw_key (drawing->renderContext, drawing,
+					  drawing->keys + i);
+				invalidate_key_region (drawing,
+						       drawing->keys + i);
+			}
+		destroy_cairo (drawing);
+	}
 
 	return FALSE;
 }
@@ -1838,6 +1848,39 @@ alloc_cdik (GkbdKeyboardDrawing * drawing)
 		    drawing->xkb->max_key_code + 1);
 }
 
+static void
+process_indicators_state_notify (XkbIndicatorNotifyEvent * iev,
+				 GkbdKeyboardDrawing * drawing)
+{
+	/* Good question: should we track indicators when the keyboard is
+	   NOT really taken from the screen */
+	gint i;
+
+	for (i = 0; i <= drawing->xkb->indicators->phys_indicators; i++)
+		if (drawing->physical_indicators[i] != NULL
+		    && (iev->changed & 1 << i)) {
+			gint state = (iev->state & 1 << i) != FALSE;
+
+			if ((state && !drawing->physical_indicators[i]->on)
+			    || (!state
+				&& drawing->physical_indicators[i]->on)) {
+				drawing->physical_indicators[i]->on =
+				    state;
+				if (create_cairo (drawing)) {
+					draw_doodad (drawing->
+						     renderContext,
+						     drawing,
+						     drawing->physical_indicators
+						     [i]);
+					destroy_cairo (drawing);
+				}
+				invalidate_indicator_doodad_region
+				    (drawing,
+				     drawing->physical_indicators[i]);
+			}
+		}
+}
+
 static GdkFilterReturn
 xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 			       GdkEvent * event,
@@ -1879,49 +1922,11 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 
 		case XkbIndicatorStateNotify:
 			{
-				/* Good question: should we track indicators when the keyboard is
-				   NOT really taken from the screen */
-				XkbIndicatorNotifyEvent *iev =
-				    &((XkbEvent *) gdkxev)->indicators;
-				gint i;
-
-				for (i = 0;
-				     i <=
-				     drawing->xkb->
-				     indicators->phys_indicators; i++)
-					if (drawing->physical_indicators[i]
-					    != NULL
-					    && (iev->changed & 1 << i)) {
-						gint state =
-						    (iev->state & 1 << i)
-						    != FALSE;
-
-						if ((state
-						     &&
-						     !drawing->physical_indicators
-						     [i]->on) || (!state
-								  &&
-								  drawing->physical_indicators
-								  [i]->on))
-						{
-							drawing->physical_indicators
-							    [i]->on =
-							    state;
-							create_cairo
-							    (drawing);
-							draw_doodad
-							    (drawing->renderContext,
-							     drawing,
-							     drawing->physical_indicators
-							     [i]);
-							destroy_cairo
-							    (drawing);
-							invalidate_indicator_doodad_region
-							    (drawing,
-							     drawing->physical_indicators
-							     [i]);
-						}
-					}
+				process_indicators_state_notify (&
+								 ((XkbEvent
+								   *)
+								  gdkxev)->indicators,
+drawing);
 			}
 			break;
 
