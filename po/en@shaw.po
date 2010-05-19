@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-05-05 06:44+0000\n"
-"PO-Revision-Date: 2010-05-12 18:37 -0400\n"
+"POT-Creation-Date: 2010-05-15 21:00+0000\n"
+"PO-Revision-Date: 2010-05-18 10:04 -0400\n"
 "Last-Translator: Thomas Thurman <tthurman@gnome.org>\n"
 "Language-Team: Shavian <ubuntu-l10n-en-shaw@launchpad.net>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "XKB initialization 𐑻𐑼"
 
 #, c-format
 #, fuzzy
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2408
 msgid ""
 "Keyboard layout \"%s\"\nCopyright &#169; X.Org Foundation and XKeyboardConfig "
 "contributors\nFor licensing see package metadata"
@@ -159,42 +159,34 @@ msgstr "𐑞 𐑒𐑰𐑚𐑪𐑮𐑛 𐑐𐑮𐑰𐑝𐑿, 𐑣𐑲𐑑"
 msgid "The Keyboard Preview, width"
 msgstr "𐑞 𐑒𐑰𐑚𐑪𐑮𐑛 𐑐𐑮𐑰𐑝𐑿, 𐑢𐑦𐑛𐑔"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "The background color"
 msgstr "𐑞 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "The background color for the layout indicator"
 msgstr "𐑞 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑓𐑹 𐑞 𐑤𐑱𐑬𐑑 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑼"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
 msgid "The font family"
 msgstr "𐑞 𐑓𐑪𐑯𐑑 𐑓𐑨𐑥𐑦𐑤𐑦"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
 msgid "The font family for the layout indicator"
 msgstr "𐑞 𐑓𐑪𐑯𐑑 𐑓𐑨𐑥𐑦𐑤𐑦 𐑓𐑹 𐑞 𐑤𐑱𐑬𐑑 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑼"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
 msgid "The font size"
 msgstr "𐑞 𐑓𐑪𐑯𐑑 𐑕𐑲𐑟"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
 msgid "The font size for the layout indicator"
 msgstr "𐑞 𐑓𐑪𐑯𐑑 𐑕𐑲𐑟 𐑓𐑹 𐑞 𐑤𐑱𐑬𐑑 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑼"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The foreground color"
 msgstr "𐑞 𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼"
 
-#, fuzzy
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "The foreground color for the layout indicator"
 msgstr "𐑞 𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑓𐑹 𐑞 𐑤𐑱𐑬𐑑 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑼"
