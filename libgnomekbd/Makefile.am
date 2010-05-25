@@ -1,5 +1,8 @@
 lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 
+uidir="$(pkgdatadir)/ui"
+ui_DATA = show-layout.ui
+
 common_CFLAGS = \
 	-I$(top_srcdir) -Wall 			\
 	$(GDK_CFLAGS)					\
@@ -16,6 +19,7 @@ common_CFLAGS = \
 libgnomekbd_la_CFLAGS = $(common_CFLAGS)
 
 libgnomekbdui_la_CFLAGS = $(common_CFLAGS)		\
+	-DUIDIR=\"$(uidir)\"				\
 	$(GTK_CFLAGS)
 
 common_LDFLAGS = -version-info @VERSION_INFO@ -no-undefined

@@ -208,5 +208,8 @@ void gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
 				  GtkWindow * parent_window,
 				  const gchar * description);
 
+
+GtkWidget* gkbd_keyboard_drawing_new_dialog (gint group, gchar* group_name);
+
 G_END_DECLS
 #endif				/* #ifndef GKBD_KEYBOARD_DRAWING_H */
