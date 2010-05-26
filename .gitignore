@@ -1,4 +1,6 @@
 aclocal.m4
+.anjuta
+.anjuta_sym_db.db
 autom4te.cache
 config.guess
 config.h
@@ -21,3 +23,4 @@ Makefile.in
 missing
 mkinstalldirs
 stamp-h1
+*~
