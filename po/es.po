@@ -4,23 +4,33 @@
 # This file is distributed under the same license as the libgnomekbd package.
 #
 # Claudio Saavedra <csaavedra@alumnos.utalca.cl>, 2007.
-# Jorge González <jorgegonz@svn.gnome.org>, 2007, 200, 2009.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-12-21 21:47+0000\n"
-"PO-Revision-Date: 2009-12-28 20:20+0100\n"
+"POT-Creation-Date: 2010-05-25 23:57+0000\n"
+"PO-Revision-Date: 2010-05-26 17:59+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:312
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Hubo un error al cargar una imagen: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:643
+msgid "XKB initialization error"
+msgstr "Error de inicialización de XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2412
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -31,39 +41,40 @@ msgstr ""
 "Copyright &#169; la Fundación X.Org y los contribuidores de XKeyboardConfig\n"
 "Para la licencia vea los metadatos del paquete"
 
-#: ../libgnomekbd/gkbd-indicator.c:119
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2499
+msgid "Unknown"
+msgstr "Desconocida"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2544
 #, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Hubo un error al cargar una imagen: %s"
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout \"%s\""
+msgstr "Distribución del teclado «%s»"
 
-#: ../libgnomekbd/gkbd-indicator.c:706
-msgid "XKB initialization error"
-msgstr "Error de inicialización de XKB"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "esquema «%s»"
-msgstr[1] "esquemas «%s»"
+msgstr[0] "distribución «%s»"
+msgstr[1] "distribuciones «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "opción «%s»"
 msgstr[1] "opciones «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modelo «%s», %s y %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
-msgstr "sin esquema"
+msgstr "sin distribución"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "sin opciones"
 
@@ -93,7 +104,7 @@ msgstr "Manejadores de Actualización de Teclado"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
 msgid "Keyboard layout"
-msgstr "Esquema de teclado"
+msgstr "Distribución de teclado"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
 msgid "Keyboard model"
@@ -113,97 +124,100 @@ msgstr "Cargar elementos de configuración adicionales"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
-msgstr "Guardar/restaurar indicadores junto con los grupos de esquemas"
+msgstr "Guardar/restaurar indicadores junto con los grupos de distribuciones"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "Grupos secundarios"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "Muestra banderas en la miniaplicación"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Muestra banderas en la miniaplicación para indicar el esquema actual"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
-msgid "Show layout names instead of group names"
-msgstr "Muestra nombres de los esquemas en vez de nombres de los grupos"
-
+#. TRANSLATORS: real national flags
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+msgid "Show flags in the applet to indicate the current layout"
+msgstr ""
+"Muestra banderas en la miniaplicación para indicar la distribución actual"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+msgid "Show layout names instead of group names"
+msgstr "Muestra nombres de las distribuciones en vez de nombres de los grupos"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"Muestra los nombres de los esquemas en vez de los nombres de los grupos "
-"(sólo para versiones de XFree que soportan esquemas múltiples)"
+"Muestra los nombres de las distribuciones en vez de los nombres de los "
+"grupos (sólo para versiones de XFree que soportan distribuciones múltiples)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Suprime el mensaje de advertencia «sysconfig de X modificado»"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
-msgid "The Keyboard Preview, X offset"
-msgstr "Vista Previa de Teclado, offset X"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
-msgid "The Keyboard Preview, Y offset"
-msgstr "Vista Previa de Teclado, offset Y"
-
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
-msgid "The Keyboard Preview, height"
-msgstr "Vista Previa de Teclado, altura"
+msgid "The Keyboard Preview, X offset"
+msgstr "Vista previa de teclado, desplazamiento X"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
-msgid "The Keyboard Preview, width"
-msgstr "Vista Previa de Teclado, anchura"
+msgid "The Keyboard Preview, Y offset"
+msgstr "Vista previa de teclado, desplazamiento Y"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+msgid "The Keyboard Preview, height"
+msgstr "Vista previa de teclado, altura"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+msgid "The Keyboard Preview, width"
+msgstr "Vista previa de teclado, anchura"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "The background color"
 msgstr "El color de fondo"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "The background color for the layout indicator"
 msgstr "El color de fondo para el indicador de distribución"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
 msgid "The font family"
 msgstr "La familia tipográfica"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
 msgid "The font family for the layout indicator"
 msgstr "La familia tipográfica para el indicador de distribución"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
 msgid "The font size"
 msgstr "El tamaño de tipografía"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
 msgid "The font size for the layout indicator"
 msgstr "El tamaño de tipografía para el indicador de distribución"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The foreground color"
 msgstr "El color de primer plano"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "The foreground color for the layout indicator"
 msgstr "El color de primer plano para el indicador de distribución"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "La lista de complementos del Indicador de Teclado activados"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
-msgstr "esquema de teclado"
+msgstr "distribución de teclado"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "modelo de teclado"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "lista de archivos modmap"
 
