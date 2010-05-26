@@ -80,7 +80,7 @@ noinst_HEADERS = gkbd-indicator-plugin-manager.h \
 
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
-             $(schema_in_files)
+             $(schema_in_files) $(ui_DATA)
 
 GLIB_GENMARSHAL = $(shell pkg-config --variable=glib_genmarshal glib-2.0)
 
