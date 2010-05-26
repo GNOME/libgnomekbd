@@ -7,6 +7,7 @@ libgnomekbd/gkbd-keyboard-config.c
 libgnomekbd/gkbd-status.c
 libgnomekbd/gkbd-util.c
 libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in
+[type: gettext/glade]libgnomekbd/show-layout.ui
 [type: gettext/glade]capplet/gkbd-indicator-plugins.ui
 [type: gettext/glade]capplet/gkbd-indicator-plugins_add.ui
 capplet/gkbd-indicator-plugins-capplet.c
