@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-05-25 23:57+0000\n"
-"PO-Revision-Date: 2010-05-26 17:59+0200\n"
+"POT-Creation-Date: 2010-05-26 22:36+0000\n"
+"PO-Revision-Date: 2010-05-28 19:46+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,6 @@ msgstr "Desconocida"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2544
 #, c-format
-#| msgid "Keyboard layout"
 msgid "Keyboard Layout \"%s\""
 msgstr "Distribución del teclado «%s»"
 
@@ -220,6 +219,11 @@ msgstr "modelo de teclado"
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "lista de archivos modmap"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "Distribución de teclado"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
