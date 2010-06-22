@@ -53,8 +53,17 @@ typedef struct _gki_globals {
 	gulong config_changed_handler;
 } gki_globals;
 
+static gchar *settings_signal_names[] = {
+	"notify::gtk-theme-name",
+	"notify::gtk-key-theme-name",
+	"notify::gtk-font-name",
+	"notify::font-options",
+};
+
 struct _GkbdStatusPrivate {
 	gdouble angle;
+	gulong settings_signal_handlers[sizeof (settings_signal_names) /
+					sizeof (settings_signal_names[0])];
 };
 
 /* one instance for ALL widgets */
@@ -81,9 +90,9 @@ gkbd_status_set_current_page_for_group (GkbdStatus * gki, int group);
 static void
 gkbd_status_set_current_page (GkbdStatus * gki);
 static void
-gkbd_status_cleanup (GkbdStatus * gki);
+gkbd_status_global_cleanup (GkbdStatus * gki);
 static void
-gkbd_status_fill (GkbdStatus * gki);
+gkbd_status_global_fill (GkbdStatus * gki);
 static void
 gkbd_status_set_tooltips (GkbdStatus * gki, const char *str);
 
@@ -96,7 +105,7 @@ gkbd_status_set_tooltips (GkbdStatus * gki, const char *str)
 }
 
 void
-gkbd_status_cleanup (GkbdStatus * gki)
+gkbd_status_global_cleanup (GkbdStatus * gki)
 {
 	while (globals.icons) {
 		if (globals.icons->data)
@@ -107,7 +116,7 @@ gkbd_status_cleanup (GkbdStatus * gki)
 }
 
 void
-gkbd_status_fill (GkbdStatus * gki)
+gkbd_status_global_fill (GkbdStatus * gki)
 {
 	int grp;
 	int total_groups = xkl_engine_get_num_groups (globals.engine);
@@ -401,8 +410,8 @@ gkbd_status_update_tooltips (GkbdStatus * gki)
 void
 gkbd_status_reinit_ui (GkbdStatus * gki)
 {
-	gkbd_status_cleanup (gki);
-	gkbd_status_fill (gki);
+	gkbd_status_global_cleanup (gki);
+	gkbd_status_global_fill (gki);
 
 	gkbd_status_set_current_page (gki);
 }
@@ -627,13 +636,15 @@ gkbd_status_theme_changed (GtkSettings * settings, GParamSpec * pspec,
 static void
 gkbd_status_init (GkbdStatus * gki)
 {
+	int i;
+
 	if (!g_slist_length (globals.widget_instances))
 		gkbd_status_global_init ();
 
 	gki->priv = g_new0 (GkbdStatusPrivate, 1);
 
 	/* This should give NA a hint about the order */
-	gtk_status_icon_set_name (GTK_STATUS_ICON(gki), "keyboard");
+	gtk_status_icon_set_name (GTK_STATUS_ICON (gki), "keyboard");
 
 	xkl_debug (100, "Initiating the widget startup process for %p\n",
 		   gki);
@@ -646,7 +657,7 @@ gkbd_status_init (GkbdStatus * gki)
 
 	gkbd_status_set_tooltips (gki, NULL);
 
-	gkbd_status_fill (gki);
+	gkbd_status_global_fill (gki);
 	gkbd_status_set_current_page (gki);
 
 	/* append AFTER all initialization work is finished */
@@ -658,37 +669,37 @@ gkbd_status_init (GkbdStatus * gki)
 	g_signal_connect (gki, "activate",
 			  G_CALLBACK (gkbd_status_activate), NULL);
 
-	g_signal_connect_after (gtk_settings_get_default (),
-				"notify::gtk-theme-name",
-				G_CALLBACK (gkbd_status_theme_changed),
-				gki);
-	g_signal_connect_after (gtk_settings_get_default (),
-				"notify::gtk-key-theme-name",
-				G_CALLBACK (gkbd_status_theme_changed),
-				gki);
-	g_signal_connect_after (gtk_settings_get_default (),
-				"notify::gtk-font-name",
-				G_CALLBACK (gkbd_status_theme_changed),
-				gki);
-	g_signal_connect_after (gdk_screen_get_default (),
-				"notify::font-options",
-				G_CALLBACK (gkbd_status_theme_changed),
-				gki);
+	for (i = sizeof (settings_signal_names) /
+	     sizeof (settings_signal_names[0]); --i >= 0;)
+		gki->priv->settings_signal_handlers[i] =
+		    g_signal_connect_after (gtk_settings_get_default (),
+					    settings_signal_names[i],
+					    G_CALLBACK
+					    (gkbd_status_theme_changed),
+					    gki);
 }
 
 static void
 gkbd_status_finalize (GObject * obj)
 {
+	int i;
 	GkbdStatus *gki = GKBD_STATUS (obj);
 	xkl_debug (100,
 		   "Starting the gnome-kbd-status widget shutdown process for %p\n",
 		   gki);
 
+	for (i = sizeof (settings_signal_names) /
+	     sizeof (settings_signal_names[0]); --i >= 0;)
+		g_signal_handler_disconnect (gtk_settings_get_default (),
+					     gki->
+					     priv->settings_signal_handlers
+					     [i]);
+
 	/* remove BEFORE all termination work is finished */
 	globals.widget_instances =
 	    g_slist_remove (globals.widget_instances, gki);
 
-	gkbd_status_cleanup (gki);
+	gkbd_status_global_cleanup (gki);
 
 	xkl_debug (100,
 		   "The instance of gnome-kbd-status successfully finalized\n");
