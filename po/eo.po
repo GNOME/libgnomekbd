@@ -1,7 +1,6 @@
 # Esperanto translation for libgnomekbd
 # Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the libgnomekbd package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 # Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2010.
 #
 msgid ""
