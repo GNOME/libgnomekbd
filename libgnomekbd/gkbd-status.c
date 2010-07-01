@@ -249,6 +249,8 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	globals.real_width = (lwidth / PANGO_SCALE) + 4;
 	if (globals.real_width > globals.current_width)
 		globals.real_width = globals.current_width;
+	if (globals.real_width < globals.current_height)
+		globals.real_width = globals.current_height;
 }
 
 static inline guint8
