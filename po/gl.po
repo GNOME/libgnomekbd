@@ -1,5 +1,5 @@
 # translation of libgnomekbd-master-po-gl-70481.po to Galego
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2010 Fran Diéguez
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Ignacio Casal Quinteiro <icq@cvs.gnome.org>, 2007, 2008.
@@ -12,23 +12,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd-master-po-gl-70481\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-30 18:04+0200\n"
-"PO-Revision-Date: 2010-05-30 18:05+0200\n"
+"POT-Creation-Date: 2010-07-21 13:33+0200\n"
+"PO-Revision-Date: 2010-07-21 13:34+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <gnome@g11.net>\n"
+"Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: gl\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\\\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:312
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Produciuse un erro ao cargar unha imaxe: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:643
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:656
 msgid "XKB initialization error"
 msgstr "Erro de inicialización do XKB"
 
