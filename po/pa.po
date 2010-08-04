@@ -8,17 +8,26 @@ msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-12-21 21:47+0000\n"
-"PO-Revision-Date: 2010-03-21 19:28+0530\n"
+"POT-Creation-Date: 2010-05-26 22:36+0000\n"
+"PO-Revision-Date: 2010-08-04 14:51+0530\n"
 "Last-Translator: A S Alam <aalam@users.sf.net>\n"
-"Language-Team: Punjabi/Panjabi <kde-i18n-doc@kde.org>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Lokalize 1.0\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:312
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "ਇੱਕ ਚਿੱਤਰ ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ ਆਈ ਹੈ: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:643
+msgid "XKB initialization error"
+msgstr "XKB ਸ਼ੁਰੂਆਤ ਗਲਤੀ"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2412
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -29,39 +38,40 @@ msgstr ""
 "Copyright &#169; X.Org ਫਾਊਂਡੇਸ਼ਨ ਅਤੇ XKeyboardConfig ਯੋਗਦਾਨੀ\n"
 "ਲਾਈਸੈਂਸ ਲਈ ਪੈਕੇਜ ਮੇਟਾਡਾਟਾ ਵੇਖੋ"
 
-#: ../libgnomekbd/gkbd-indicator.c:119
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2499
+msgid "Unknown"
+msgstr "ਅਣਜਾਣ"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2544
 #, c-format
-msgid "There was an error loading an image: %s"
-msgstr "ਇੱਕ ਚਿੱਤਰ ਲੋਡ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ ਆਈ ਹੈ: %s"
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout \"%s\""
+msgstr "ਕੀ-ਬੋਰਡ ਲੇਆਉਟ \"%s\""
 
-#: ../libgnomekbd/gkbd-indicator.c:706
-msgid "XKB initialization error"
-msgstr "XKB ਸ਼ੁਰੂਆਤ ਗਲਤੀ"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ਲੇਆਉਟ \"%s\""
 msgstr[1] "\"%s\" ਲੇਆਉਟ"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ਚੋਣ \"%s\""
 msgstr[1] "ਚੋਣਾਂ \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "ਮਾਡਲ \"%s\", %s ਅਤੇ %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "ਲੇਆਉਟ ਨਹੀਂ"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "ਕੋਈ ਚੋਣ ਨਹੀਂ"
 
@@ -117,91 +127,98 @@ msgstr "ਲੇਆਉਟ ਗਰੁੱਪਾਂ ਨਾਲ ਇੰਡੀਕੇਟਰ
 msgid "Secondary groups"
 msgstr "ਸੈਕੰਡਰੀ ਗਰੁੱਪ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "ਐਪਲਿਟ ਵਿੱਚ ਝੰਡੇ ਵੇਖੋ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "ਮੌਜੂਦਾ ਲੇਆਉਟ ਨੂੰ ਵੇਖਾਉਦੇ ਝੰਡੇ ਐਪਲਿਟ ਵਿੱਚ ਵੇਖੋ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "ਗਰੁੱਪ ਨਾਂ ਦੀ ਬਜਾਏ ਲੇਆਉਟ ਨਾਂ ਵੇਖਾਓ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr "ਗਰੁੱਪ ਨਾਂ ਦੀ ਬਜਾਏ ਲੇਆਉਟ ਨਾਂ ਵੇਖੋ (XFree ਵਲੋਂ ਸਹਾਇਕ ਬਹੁ ਲੇਆਉਟ ਦੇ ਵਰਜਨ ਲਈ ਹੀ)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "\"X sysconfig changed (X sysconfig ਬਦਲੀ)\" ਚੇਤਾਵਨੀ ਸੁਨੇਹਾ ਦਬਾਉ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, X ਆਫਸੈੱਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, Y ਆਫਸੈਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, ਉਚਾਈ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
 msgstr "ਕੀ-ਬੋਰਡ ਝਲਕ, ਚੌੜਾਈ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "The background color"
 msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "The background color for the layout indicator"
 msgstr "ਲੇਆਉਟ ਇੰਡੀਕੇਟਰ ਲਈ ਬੈਕਗਰਾਊਂਡ ਰੰਗ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
 msgid "The font family"
 msgstr "ਫੋਂਟ ਫੈਮਲੀ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
 msgid "The font family for the layout indicator"
 msgstr "ਲੇਆਉਟ ਇੰਡੀਕੇਟਰ ਲਈ ਫੋਂਟ ਫੈਮਲੀ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
 msgid "The font size"
 msgstr "ਫੋਂਟ ਸਾਈਜ਼"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
 msgid "The font size for the layout indicator"
 msgstr "ਲੇਆਉਟ ਇੰਡੀਕੇਟਰ ਲਈ ਫੋਂਟ ਸਾਈਜ਼"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The foreground color"
 msgstr "ਫਾਰਗਰਾਊਂਡ ਰੰਗ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "The foreground color for the layout indicator"
 msgstr "ਲੇਆਉਟ ਇੰਡੀਕੇਟਰ ਲਈ ਫਾਰਗਰਾਊਂਡ ਰੰਗ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "ਚਾਲੂ ਕੀ-ਬੋਰਡ ਇੰਡੀਕੇਟਰ ਪਲੱਗਇਨ ਦੀ ਲਿਸਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "ਕੀ-ਬੋਰਡ ਲੇਆਉਟ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "ਕੀ-ਬੋਰਡ ਮਾਡਲ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "modmap ਫਾਇਲ ਲਿਸਟ"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "ਕੀ-ਬੋਰਡ ਲੇਆਉਟ"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
