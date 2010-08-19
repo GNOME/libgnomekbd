@@ -272,44 +272,29 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	int iw = gdk_pixbuf_get_width (image);
 	int ih = gdk_pixbuf_get_height (image);
 	GtkAllocation allocation;
-	gboolean scaling_needed;
 	double xwiratio, ywiratio, wiratio;
-	int sw, sh, ox, oy;
-	GdkPixbuf *scaled;
+        cairo_t *cr;
 
 	gtk_widget_get_allocation (flag, &allocation);
-	scaling_needed =
-	    !((allocation.width == iw &&
-	       allocation.height <= ih) ||
-	      (allocation.width >= iw && allocation.height == ih));
+
+        cr = gdk_cairo_create (event->window);
+        gdk_cairo_region (cr, event->region);
+        cairo_clip (cr);
 
 	/* widget-to-image scales, X and Y */
 	xwiratio = 1.0 * allocation.width / iw;
 	ywiratio = 1.0 * allocation.height / ih;
 	wiratio = xwiratio < ywiratio ? xwiratio : ywiratio;
 
-	/* scaled width and height */
-	sw = iw * wiratio;
-	sh = ih * wiratio;
+        /* transform cairo context */
+        cairo_translate (cr, allocation.width / 2.0, allocation.height / 2.0);
+        cairo_scale (cr, wiratio, wiratio);
+        cairo_translate (cr, - iw / 2.0, - ih / 2.0);
 
-	/* offsets */
-	ox = (allocation.width - sw) >> 1;
-	oy = (allocation.height - sh) >> 1;
+        gdk_cairo_set_source_pixbuf (cr, image, 0, 0);
+        cairo_paint (cr);
 
-	scaled =
-	    scaling_needed ? gdk_pixbuf_scale_simple (image, sw, sh,
-						      GDK_INTERP_HYPER) :
-	    image;
-
-	gdk_draw_pixbuf (GDK_DRAWABLE (gtk_widget_get_window (flag)),
-			 NULL,
-			 scaled,
-			 0, 0,
-			 ox, oy, sw, sh,
-			 scaling_needed ? GDK_RGB_DITHER_NORMAL :
-			 GDK_RGB_DITHER_NONE, 0, 0);
-	if (scaling_needed)
-		g_object_unref (G_OBJECT (scaled));
+        cairo_destroy (cr);
 }
 
 gchar *
