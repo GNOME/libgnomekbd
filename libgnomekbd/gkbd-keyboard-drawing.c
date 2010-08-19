@@ -1383,8 +1383,8 @@ static gboolean
 expose_event (GtkWidget * widget,
 	      GdkEventExpose * event, GkbdKeyboardDrawing * drawing)
 {
-	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	GtkAllocation allocation;
+        cairo_t *cr;
 
 	if (!drawing->xkb)
 		return FALSE;
@@ -1392,12 +1392,14 @@ expose_event (GtkWidget * widget,
 	if (drawing->pixmap == NULL)
 		return FALSE;
 
-	gdk_draw_drawable (gtk_widget_get_window (widget),
-			   gtk_widget_get_style (widget)->fg_gc[state],
-			   drawing->pixmap,
-			   event->area.x, event->area.y,
-			   event->area.x, event->area.y,
-			   event->area.width, event->area.height);
+        cr = gdk_cairo_create (event->window);
+        gdk_cairo_region (cr, event->region);
+        cairo_clip (cr);
+
+        gdk_cairo_set_source_pixmap (cr, drawing->pixmap, 0, 0);
+        cairo_paint (cr);
+
+        cairo_destroy (cr);
 
 	if (gtk_widget_has_focus (widget)) {
 		gtk_widget_get_allocation (widget, &allocation);
