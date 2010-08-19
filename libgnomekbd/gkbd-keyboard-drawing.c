@@ -1324,6 +1324,7 @@ static void
 draw_keyboard (GkbdKeyboardDrawing * drawing)
 {
 	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
+        GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (drawing));
 	GtkAllocation allocation;
 
 	if (!drawing->xkb)
@@ -1335,14 +1336,12 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 	    gdk_pixmap_new (gtk_widget_get_window (GTK_WIDGET (drawing)),
 			    allocation.width, allocation.height, -1);
 
-	/* blank background */
-	gdk_draw_rectangle (drawing->pixmap,
-			    gtk_widget_get_style (GTK_WIDGET
-						  (drawing))->base_gc
-			    [state], TRUE, 0, 0, allocation.width,
-			    allocation.height);
-
 	if (create_cairo (drawing)) {
+	        /* blank background */
+                gdk_cairo_set_source_color (drawing->renderContext->cr,
+                                            &style->base[state]);
+                cairo_paint (drawing->renderContext->cr);
+
 		draw_keyboard_to_context (drawing->renderContext, drawing);
 		destroy_cairo (drawing);
 	}
