@@ -2,25 +2,33 @@
 # Courtesy of Prevod.org team (http://prevod.org/) -- 2003, 2004, 2005, 2006, 2007.
 #
 # This file is distributed under the same license as the gnome-control-center package.
-#
-# Милош Поповић <gpopac@gmail.com>
+# Милош Поповић <gpopac@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-12-21 21:47+0000\n"
-"PO-Revision-Date: 2010-03-25 17:17+0100\n"
-"Last-Translator: Горан Ракић <grakic@devbase.net>\n"
-"Language-Team: Serbian (sr) <gnom@prevod.org>\n"
+"POT-Creation-Date: 2010-05-26 22:36+0000\n"
+"PO-Revision-Date: 2010-08-22 00:23+0200\n"
+"Last-Translator: Милош Поповић <gpopac@gmail.com>\n"
+"Language-Team: Serbian <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4;    plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 :    n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:312
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Догодила се грешка приликом учитавања слике: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:643
+msgid "XKB initialization error"
+msgstr "Не могу да покренем XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2412
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -31,41 +39,44 @@ msgstr ""
 "Ауторска права &#169; X.Org Foundation и XKeyboardConfig приложници\n"
 "За услове лиценцирања погледајте мета податке пакета"
 
-#: ../libgnomekbd/gkbd-indicator.c:119
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2499
+msgid "Unknown"
+msgstr "Непознато"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2544
 #, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Догодила се грешка приликом учитавања слике: %s"
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout \"%s\""
+msgstr "Распоред тастатуре „%s“"
 
-#: ../libgnomekbd/gkbd-indicator.c:706
-msgid "XKB initialization error"
-msgstr "Не могу да покренем XKB"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "Распореди „%s“"
+msgstr[0] "Распоред „%s“"
 msgstr[1] "Распореди „%s“"
 msgstr[2] "Распореди „%s“"
+msgstr[3] "Распоред „%s“"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
-msgstr[0] "Опције „%s“"
+msgstr[0] "Опција „%s“"
 msgstr[1] "Опције „%s“"
 msgstr[2] "Опције „%s“"
+msgstr[3] "Опција „%s“"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "модел „%s“, „%s“ и „%s“"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "нема распореда"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "нема опција"
 
@@ -121,20 +132,22 @@ msgstr "Сачувај/врати показатеље заједно са гр�
 msgid "Secondary groups"
 msgstr "Секунгарне групе"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "Прикажи заставице у програмчету"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
 msgstr ""
 "Прикажи заставице у програмчету како које ће указивати на тренутни распоред"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "Прикажи називе распореда уместо имена група"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -142,73 +155,78 @@ msgstr ""
 "Прикажи називе распореда уместо имена група (само за XFree издања која "
 "подржавају више распореда)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Сакриј упозорење „измењена системска подешавања Икса“"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "Преглед тастатуре, X померај"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "Преглед тастатуре, Y померај"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
 msgstr "Преглед тастатуре, висина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
 msgstr "Преглед тастатуре, ширина"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "The background color"
 msgstr "Боја позадине"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "The background color for the layout indicator"
 msgstr "Боја позадине у показивачу распореда тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
 msgid "The font family"
 msgstr "Фонт"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
 msgid "The font family for the layout indicator"
 msgstr "Фонт у показивачу распореда тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
 msgid "The font size"
 msgstr "Величина фонта"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
 msgid "The font size for the layout indicator"
 msgstr "Величина финта у показивачу распореда тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The foreground color"
 msgstr "Боја фонта"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "The foreground color for the layout indicator"
 msgstr "Боја фонта у показивачу распореда тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Листа омогућених додатака показивача тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "распоред тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "модел тастатуре"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "списак modmap датотека"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "Распоред тастатуре"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
