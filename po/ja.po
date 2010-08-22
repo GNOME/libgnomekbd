@@ -1,24 +1,34 @@
 # libgnomekbd ja.po.
-# Copyright (C) 2007-2009 Free Software Foundation, Inc.
+# Copyright (C) 2007-2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the 'libgnomekbd' package.
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2007,2008.
-# Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2009.
+# Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2009-2010.
+# Hideki Yamane (Debian-JP) <henrich@debian.or.jp>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-09-20 22:59+0900\n"
-"PO-Revision-Date: 2009-09-20 23:15+0900\n"
-"Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
+"POT-Creation-Date: 2010-08-22 08:05+0000\n"
+"PO-Revision-Date: 2010-08-23 00:59+0900\n"
+"Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "イメージを読み込む際にエラーが発生しました: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:656
+msgid "XKB initialization error"
+msgstr "XKB の初期化エラー"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2413
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -29,37 +39,37 @@ msgstr ""
 "Copyright &#169; X.Org Foundation と XKeyboardConfig の貢献者\n"
 "ライセンスに関してはパッケージ内のメタデータを参照のこと"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB の初期化エラー"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2500
+msgid "Unknown"
+msgstr "不明"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:161
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2545
 #, c-format
-msgid "There was an error loading an image: %s"
-msgstr "イメージを読み込む際にエラーが発生しました: %s"
+msgid "Keyboard Layout \"%s\""
+msgstr "キーボードのレイアウト \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "レイアウト \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "オプション \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "型式 \"%s\"、%s と %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "レイアウトなし"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "オプションなし"
 
@@ -109,27 +119,29 @@ msgstr "追加の(extra)設定アイテムを読み込む"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
-msgstr "保存/復帰の表示器をレイアウトのグループにまとめる"
+msgstr "保存/復帰のインジケータをレイアウトのグループにまとめる"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
 msgstr "二番目のグループ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "アプレットの中に国旗を表示するかどうか"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
 msgstr ""
 "アプレットの中に現在のキーボード・レイアウトを表す国旗を表示するかどうかで"
 "す。"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "グループ名ではなくレイアウト名を表示する"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -137,41 +149,77 @@ msgstr ""
 "グループ名ではなくレイアウト名を表示します (複数のレイアウトを同時にサポート"
 "できる XFree のバージョンのみ利用できます)。"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "\"Ｘのシステム規模の設定変更\" に対する警告メッセージを表示しない"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "キーボード・プレビューを表示する位置 (Ｘ座標)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "キーボード・プレビューを表示する位置 (Ｙ座標)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
 msgstr "キーボード・プレビューの高さ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
 msgstr "キーボード・プレビューの幅"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+msgid "The background color"
+msgstr "背景色"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+msgid "The background color for the layout indicator"
+msgstr "レイアウト・インジケータの背景色"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+msgid "The font family"
+msgstr "フォントファミリ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+msgid "The font family for the layout indicator"
+msgstr "レイアウト・インジケータのフォントファミリ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+msgid "The font size"
+msgstr "フォントサイズ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+msgid "The font size for the layout indicator"
+msgstr "レイアウト・インジケータのフォントサイズ"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+msgid "The foreground color"
+msgstr "前景色"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+msgid "The foreground color for the layout indicator"
+msgstr "レイアウト・インジケータの前景色"
+
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "利用可能なキーボード表示器のプラグインのリスト"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "現在利用しているキーボードのレイアウトです。"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "現在利用しているキーボードの型式です。"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "modmap ファイルの並び"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "キーボードのレイアウト"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -203,7 +251,7 @@ msgstr "プラグインの優先度を上げます"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
-msgstr "キーボード表示器のプラグイン"
+msgstr "キーボード・インジケータのプラグイン"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
@@ -237,13 +285,13 @@ msgstr "インストール済みのプラグインを設定します"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
-msgstr "キーボード表示器のプラグイン"
+msgstr "キーボード・インジケータのプラグイン"
 
 #: ../test/gkbd-indicator-test.c:57
 #, c-format
 msgid "Keyboard Indicator Test (%s)"
-msgstr "キーボード表示器のテスト (%s)"
+msgstr "キーボード・インジケータのテスト (%s)"
 
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
-msgstr "表示器:"
+msgstr "インジケータ:"
