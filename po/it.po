@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-13 16:53+0100\n"
-"PO-Revision-Date: 2010-03-13 16:56+0100\n"
+"POT-Creation-Date: 2010-09-04 19:55+0200\n"
+"PO-Revision-Date: 2010-09-04 19:55+0200\n"
 "Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -19,16 +19,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:236
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Si è verificato un errore nel caricare un'immagine: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:713 ../libgnomekbd/gkbd-status.c:562
+#: ../libgnomekbd/gkbd-indicator.c:720 ../libgnomekbd/gkbd-status.c:656
 msgid "XKB initialization error"
 msgstr "Errore di inizializzazione di XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2413
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -39,30 +39,39 @@ msgstr ""
 "Copyright &#169; X.Org Foundation e collaboratori di XKeyboardConfig\n"
 "Per la licenza consultare i metadati del pacchetto"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2500
+msgid "Unknown"
+msgstr "Sconosciuta"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2545
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Disposizione tastiera «%s»"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "disposizione «%s»"
 msgstr[1] "disposizioni «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "opzione «%s»"
 msgstr[1] "opzioni «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modello «%s», %s e %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "nessuna disposizione"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "nessuna opzione"
 
@@ -211,6 +220,10 @@ msgstr "Modello tastiera"
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "Elenco file modmap"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Disposizione tastiera"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
