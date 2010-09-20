@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-08-22 08:05+0000\n"
+"POT-Creation-Date: 2010-09-17 20:48+0000\n"
 "PO-Revision-Date: 2010-08-23 00:59+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "There was an error loading an image: %s"
 msgstr "イメージを読み込む際にエラーが発生しました: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:656
+#: ../libgnomekbd/gkbd-indicator.c:720 ../libgnomekbd/gkbd-status.c:656
 msgid "XKB initialization error"
 msgstr "XKB の初期化エラー"
 
@@ -151,15 +151,15 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"Ｘのシステム規模の設定変更\" に対する警告メッセージを表示しない"
+msgstr "\"Xのシステム規模の設定変更\" に対する警告メッセージを表示しない"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
-msgstr "キーボード・プレビューを表示する位置 (Ｘ座標)"
+msgstr "キーボード・プレビューを表示する位置 (X座標)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
-msgstr "キーボード・プレビューを表示する位置 (Ｙ座標)"
+msgstr "キーボード・プレビューを表示する位置 (Y座標)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
