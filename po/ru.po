@@ -12,28 +12,29 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 12:05+0200\n"
-"PO-Revision-Date: 2010-03-17 20:41+0300\n"
-"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
-"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2010-09-20 10:13+0000\n"
+"PO-Revision-Date: 2010-09-21 10:41+0300\n"
+"Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:236
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Произошла ошибка при загрузке изображения: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:713 ../libgnomekbd/gkbd-status.c:562
+#: ../libgnomekbd/gkbd-indicator.c:720 ../libgnomekbd/gkbd-status.c:656
 msgid "XKB initialization error"
-msgstr "Произошла ошибка при инициализации XKB"
+msgstr "Ошибка инициализации XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2413
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -44,7 +45,16 @@ msgstr ""
 "Авторские права © X.Org Foundation и авторы XKeyboardConfig\n"
 "Сведения о лицензировании находятся в метаданных пакета"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2500
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2545
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "Раскладка клавиатуры «%s»"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -52,7 +62,7 @@ msgstr[0] "раскладка «%s»"
 msgstr[1] "раскладки «%s»"
 msgstr[2] "раскладки «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -60,16 +70,16 @@ msgstr[0] "параметр «%s»"
 msgstr[1] "параметры «%s»"
 msgstr[2] "параметры «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "модель «%s», %s и %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "нет раскладки"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "нет параметров"
 
@@ -83,11 +93,11 @@ msgstr ""
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
 msgid "A list of modmap files available in the $HOME directory."
-msgstr "Список modmap-файлов в домашнем каталоге"
+msgstr "Список modmap-файлов, доступных в домашнем каталоге."
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
 msgid "Default group, assigned on window creation"
-msgstr "Группа по умолчанию, присваиваемая при создании окна"
+msgstr "Группа по умолчанию, назначаемая при создании окна"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
 msgid "Keep and manage separate group per window"
@@ -119,7 +129,7 @@ msgstr "Загружать дополнительные параметры"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
 msgid "Save/restore indicators together with layout groups"
-msgstr "Сохранять/восстанавливать индикаторы вместе с группами"
+msgstr "Сохранять/восстанавливать индикаторы вместе с группами раскладок"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
 msgid "Secondary groups"
@@ -128,12 +138,12 @@ msgstr "Второстепенные группы"
 #. TRANSLATORS: real national flags
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
-msgstr "Показывать флаги"
+msgstr "Показывать флаги в апплете"
 
 #. TRANSLATORS: real national flags
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Показывать флаги, соответствующие текущей раскладке клавиатуры"
+msgstr "Показывать флаги в апплете для указания текущей раскладки"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
@@ -144,8 +154,8 @@ msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"Показывать имена раскладок вместо имён групп (только для версий XFree, "
-"поддерживающих множественные раскладки)"
+"Показывать названия раскладок вместо названий групп (только для версий "
+"XFree, поддерживающих множественные раскладки)"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
@@ -205,19 +215,23 @@ msgstr "Список включённых модулей клавиатурно�
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
-msgstr "клавиатурная раскладка"
+msgstr "раскладка клавиатуры"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
-msgstr "клавиатурная модель"
+msgstr "модуль клавиатуры"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "список modmap-файлов"
 
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Раскладка клавиатуры"
+
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
-msgstr "Включить модули"
+msgstr "Включить дополнительные модули"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:2
 msgid "Active _plugins:"
@@ -271,7 +285,7 @@ msgstr "Не удалось открыть файл справки"
 #: ../capplet/gkbd-indicator-plugins-capplet.c:372
 #, c-format
 msgid "Failed to init GConf: %s\n"
-msgstr "Произошла ошибка при инициализации GConf: %s\n"
+msgstr "Сбой при инициализации GConf: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
