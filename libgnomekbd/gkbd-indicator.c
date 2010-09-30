@@ -233,12 +233,12 @@ gkbd_indicator_key_pressed (GtkWidget *
 			    GkbdIndicator * gki)
 {
 	switch (event->keyval) {
-	case GDK_KP_Enter:
-	case GDK_ISO_Enter:
-	case GDK_3270_Enter:
-	case GDK_Return:
-	case GDK_space:
-	case GDK_KP_Space:
+	case GDK_KEY_KP_Enter:
+	case GDK_KEY_ISO_Enter:
+	case GDK_KEY_3270_Enter:
+	case GDK_KEY_Return:
+	case GDK_KEY_space:
+	case GDK_KEY_KP_Space:
 		gkbd_desktop_config_lock_next_group (&globals.cfg);
 		return TRUE;
 	default:
