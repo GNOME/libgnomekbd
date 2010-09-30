@@ -1302,10 +1302,10 @@ static gboolean
 create_cairo (GkbdKeyboardDrawing * drawing)
 {
 	GtkStateType state;
-	if (drawing == NULL || drawing->pixmap == NULL)
+	if (drawing == NULL || drawing->surface == NULL)
 		return FALSE;
 	drawing->renderContext->cr =
-	    gdk_cairo_create (GDK_DRAWABLE (drawing->pixmap));
+	    gdk_cairo_create (GDK_DRAWABLE (drawing->surface));
 
 	state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	drawing->renderContext->dark_color =
@@ -1333,8 +1333,8 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 
 	gtk_widget_get_allocation (GTK_WIDGET (drawing), &allocation);
 
-	drawing->pixmap =
-	    gdk_pixmap_new (gtk_widget_get_window (GTK_WIDGET (drawing)),
+	drawing->surface =
+	    gdk_window_create_similar_surface (gtk_widget_get_window (GTK_WIDGET (drawing)),
 			    allocation.width, allocation.height, -1);
 
 	if (create_cairo (drawing)) {
@@ -1381,33 +1381,26 @@ free_render_context (GkbdKeyboardDrawing * drawing)
 }
 
 static gboolean
-expose_event (GtkWidget * widget,
-	      GdkEventExpose * event, GkbdKeyboardDrawing * drawing)
+draw (GtkWidget * widget,
+      cairo_t *cr, GkbdKeyboardDrawing * drawing)
 {
 	GtkAllocation allocation;
-	cairo_t *cr;
 
 	if (!drawing->xkb)
 		return FALSE;
 
-	if (drawing->pixmap == NULL)
+	if (drawing->surface == NULL)
 		return FALSE;
 
-	cr = gdk_cairo_create (event->window);
-	gdk_cairo_region (cr, event->region);
-	cairo_clip (cr);
-
-	gdk_cairo_set_source_pixmap (cr, drawing->pixmap, 0, 0);
-	cairo_paint (cr);
-
-	cairo_destroy (cr);
+        cairo_set_source_surface (cr, drawing->surface, 0, 0);
+        cairo_paint (cr);
 
 	if (gtk_widget_has_focus (widget)) {
 		gtk_widget_get_allocation (widget, &allocation);
 		gtk_paint_focus (gtk_widget_get_style (widget),
-				 gtk_widget_get_window (widget),
+				 cr,
 				 gtk_widget_get_state (widget),
-				 &event->area, widget, "keyboard-drawing",
+				 widget, "keyboard-drawing",
 				 0, 0, allocation.width,
 				 allocation.height);
 	}
@@ -1470,9 +1463,9 @@ size_allocate (GtkWidget * widget,
 {
 	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 
-	if (drawing->pixmap) {
-		g_object_unref (drawing->pixmap);
-		drawing->pixmap = NULL;
+	if (drawing->surface) {
+                cairo_surface_destroy (drawing->surface);
+		drawing->surface = NULL;
 	}
 
 	if (!context_setup_scaling (context, drawing,
@@ -1973,7 +1966,9 @@ destroy (GkbdKeyboardDrawing * drawing)
 		drawing->idle_redraw = 0;
 	}
 
-	g_object_unref (drawing->pixmap);
+        if (drawing->surface != NULL) {
+                cairo_surface_destroy (drawing->surface);
+        }
 }
 
 static void
@@ -2010,7 +2005,7 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 		drawing->screen_num =
 		    gdk_screen_get_number (gdk_screen_get_default ());
 
-	drawing->pixmap = NULL;
+	drawing->surface = NULL;
 	alloc_render_context (drawing);
 
 	drawing->keyboard_items = NULL;
@@ -2071,8 +2066,8 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 			       GDK_EXPOSURE_MASK | GDK_KEY_PRESS_MASK |
 			       GDK_KEY_RELEASE_MASK | GDK_BUTTON_PRESS_MASK
 			       | GDK_FOCUS_CHANGE_MASK);
-	g_signal_connect (G_OBJECT (drawing), "expose-event",
-			  G_CALLBACK (expose_event), drawing);
+	g_signal_connect (G_OBJECT (drawing), "draw",
+			  G_CALLBACK (draw), drawing);
 	g_signal_connect_after (G_OBJECT (drawing), "key-press-event",
 				G_CALLBACK (key_event), drawing);
 	g_signal_connect_after (G_OBJECT (drawing), "key-release-event",
@@ -2154,30 +2149,6 @@ gkbd_keyboard_drawing_set_mods (GkbdKeyboardDrawing * drawing, guint mods)
 		drawing->mods = mods;
 		gtk_widget_queue_draw (GTK_WIDGET (drawing));
 	}
-}
-
-/* returns a pixbuf with the keyboard drawing at the current pixel size
- * (which can then be saved to disk, etc) */
-GdkPixbuf *
-gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
-{
-	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
-
-	if (drawing->pixmap == NULL)
-		draw_keyboard (drawing);
-
-	return gdk_pixbuf_get_from_drawable (NULL, drawing->pixmap, NULL,
-					     0, 0, 0, 0,
-					     xkb_to_pixmap_coord (context,
-								  drawing->
-								  xkb->
-								  geom->
-								  width_mm),
-					     xkb_to_pixmap_coord (context,
-								  drawing->
-								  xkb->
-								  geom->
-								  height_mm));
 }
 
 /**

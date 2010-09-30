@@ -123,7 +123,7 @@ struct _GkbdKeyboardDrawing {
 
 	GtkDrawingArea parent;
 
-	GdkPixmap *pixmap;
+	cairo_surface_t *surface;
 	XkbDescRec *xkb;
 	gboolean xkbOnDisplay;
 	guint l3mod;
