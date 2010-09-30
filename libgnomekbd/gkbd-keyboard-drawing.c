@@ -2614,7 +2614,7 @@ gkbd_keyboard_drawing_new_dialog (gint group, gchar * group_name)
 
 	g_object_set_data (G_OBJECT (dialog), "kbdraw", kbdraw);
 
-	g_signal_connect_swapped (GTK_OBJECT (dialog), "destroy",
+	g_signal_connect_swapped (dialog, "destroy",
 				  G_CALLBACK (g_object_unref),
 				  g_object_get_data (G_OBJECT (dialog),
 						     "builderData"));

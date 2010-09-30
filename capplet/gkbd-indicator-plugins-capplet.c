@@ -305,13 +305,13 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 	gtk_builder_connect_signals (builder, NULL);
 
 	g_object_set_data (G_OBJECT (capplet), "uiData", builder);
-	g_signal_connect_swapped (GTK_OBJECT (capplet),
+	g_signal_connect_swapped (capplet,
 				  "destroy", G_CALLBACK (g_object_unref),
 				  builder);
 	g_signal_connect_swapped (G_OBJECT (capplet), "unrealize",
 				  G_CALLBACK (g_main_loop_quit), loop);
 
-	g_signal_connect (GTK_OBJECT (capplet),
+	g_signal_connect (capplet,
 			  "response", G_CALLBACK (CappletResponse), NULL);
 
 	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnUp"));
