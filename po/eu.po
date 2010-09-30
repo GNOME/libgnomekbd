@@ -1,14 +1,14 @@
-# translation of eu.po to Basque
+# translation of eu_to_be_translate.po to Basque
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008, 2009, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: eu\n"
+"Project-Id-Version: eu_to_be_translate\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 19:19+0100\n"
-"PO-Revision-Date: 2010-03-24 10:23+0100\n"
+"POT-Creation-Date: 2010-09-30 23:52+0200\n"
+"PO-Revision-Date: 2010-09-30 23:53+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:236
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Errorea gertatu da irudi bat kargatzean: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:707 ../libgnomekbd/gkbd-status.c:550
+#: ../libgnomekbd/gkbd-indicator.c:720 ../libgnomekbd/gkbd-status.c:656
 msgid "XKB initialization error"
 msgstr "Errorea XKB hasieratzean"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2413
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -37,30 +37,39 @@ msgstr ""
 "Copyright-a &#169; X.Org Fundazioa eta XKeyboardConfig-en laguntzaileak\n"
 "Lizentziari buruz jakiteko ikusi paketearen metadatuak"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2500
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2545
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "\"%s\" teklatuaren diseinua"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "\"%s\" diseinua"
 msgstr[1] "\"%s\" diseinuak"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "\"%s\" aukera"
 msgstr[1] "\"%s\" aukerak"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "\"%s\" modeloa, %s eta %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "diseinurik ez"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "aukerarik ez"
 
@@ -116,19 +125,21 @@ msgstr "Gorde/Leheneratu adierazleak diseinu-taldeekin batera"
 msgid "Secondary groups"
 msgstr "Bigarren mailako taldeak"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
 msgid "Show flags in the applet"
 msgstr "Erakutsi banderak miniaplikazioan"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
+#. TRANSLATORS: real national flags
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Erakutsi banderak miniaplikazioan uneko diseinua adierazteko"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
 msgid "Show layout names instead of group names"
 msgstr "Erakutsi diseinuen izenak talde-izenen ordez"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -136,73 +147,77 @@ msgstr ""
 "Erakutsi diseinuen izenak taldeen izenen ordez (hainbat diseinu onartzen "
 "duen XFree bertsioan soilik)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
 msgid "Suppress the \"X sysconfig changed\" warning message"
 msgstr "Kendu \"Xen sysconfig-a aldatuta\" abisuaren mezua"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
 msgid "The Keyboard Preview, X offset"
 msgstr "Teklatuaren aurrebista, X desplazamendua"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
 msgid "The Keyboard Preview, Y offset"
 msgstr "Teklatuaren aurrebista, Y desplazamendua"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
 msgid "The Keyboard Preview, height"
 msgstr "Teklatuaren aurrebista, altuera"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
 msgid "The Keyboard Preview, width"
 msgstr "Teklatuaren aurrebista, zabalera"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
 msgid "The background color"
 msgstr "Atzeko planoaren kolorea"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
 msgid "The background color for the layout indicator"
 msgstr "Atzeko planoaren kolorea diseinuaren adierazlearentzako"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
 msgid "The font family"
 msgstr "Letra-tipoen familia"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
 msgid "The font family for the layout indicator"
 msgstr "Letra-tipoen familia diseinuaren adierazlearentzako"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
 msgid "The font size"
 msgstr "Letra-tamaina"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
 msgid "The font size for the layout indicator"
 msgstr "Letra-tamaina diseinuaren adierazlearentzako"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
 msgid "The foreground color"
 msgstr "Aurreko planoaren kolorea"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
 msgid "The foreground color for the layout indicator"
 msgstr "Aurreko planoaren kolorea diseinuaren adierazlearentzako"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Gaitutako 'Teklatu-adierazlearen plugin'-en zerrenda"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
 msgstr "teklatuaren diseinua"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
 msgid "keyboard model"
 msgstr "teklatu modeloa"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "modmap fitxategien zerrenda"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Teklatuaren diseinua"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -278,4 +293,3 @@ msgstr "Teklatu-adierazlearen proba (%s)"
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Adierazlea:"
-
