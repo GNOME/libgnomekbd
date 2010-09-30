@@ -817,7 +817,7 @@ gkbd_indicator_global_init (void)
 	GConfClient *gconf_client;
 	XklConfigRec *xklrec = xkl_config_rec_new ();
 
-	globals.engine = xkl_engine_get_instance (GDK_DISPLAY ());
+	globals.engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
 	if (globals.engine == NULL) {
 		xkl_debug (0, "Libxklavier initialization error");
 		return;

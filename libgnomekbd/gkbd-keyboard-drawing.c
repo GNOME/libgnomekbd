@@ -2524,7 +2524,7 @@ gkbd_keyboard_drawing_new_dialog (gint group, gchar * group_name)
 	GdkRectangle *rect;
 	GError *error = NULL;
 	char title[128] = "";
-	XklEngine *engine = xkl_engine_get_instance (GDK_DISPLAY ());
+	XklEngine *engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_file (builder, UIDIR "/show-layout.ui",

@@ -376,7 +376,7 @@ main (int argc, char **argv)
 	}
 	gconf_error = NULL;
 	/*GkbdIndicatorInstallGlibLogAppender(  ); */
-	gipc.engine = xkl_engine_get_instance (GDK_DISPLAY ());
+	gipc.engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
 	gipc.config_registry =
 	    xkl_config_registry_get_instance (gipc.engine);
 
