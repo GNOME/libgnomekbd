@@ -659,37 +659,45 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 	return result;
 }
 
-GSList *
-gkbd_keyboard_config_add_default_switch_option_if_necessary (GSList *
+gchar **
+gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
 							     layouts_list,
-							     GSList *
+							     gchar **
 							     options_list,
 							     gboolean *
 							     was_appended)
 {
 	*was_appended = FALSE;
-	if (g_slist_length (layouts_list) >= 2) {
+	if (g_strv_length (layouts_list) >= 2) {
 		gboolean any_switcher = False;
-		GSList *option = options_list;
-		while (option != NULL) {
-			char *g, *o;
-			if (gkbd_keyboard_config_split_items
-			    (option->data, &g, &o)) {
-				if (!g_ascii_strcasecmp
-				    (g, GROUP_SWITCHERS_GROUP)) {
-					any_switcher = True;
-					break;
+		if (*options_list != NULL) {
+			gchar **option = options_list;
+			while (*option != NULL) {
+				char *g, *o;
+				if (gkbd_keyboard_config_split_items
+				    (*option, &g, &o)) {
+					if (!g_ascii_strcasecmp
+					    (g, GROUP_SWITCHERS_GROUP)) {
+						any_switcher = True;
+						break;
+					}
 				}
+				option++;
 			}
-			option = option->next;
 		}
 		if (!any_switcher) {
 			const gchar *id =
 			    gkbd_keyboard_config_merge_items
 			    (GROUP_SWITCHERS_GROUP,
 			     DEFAULT_GROUP_SWITCH);
-			options_list =
-			    g_slist_append (options_list, g_strdup (id));
+			gint old_size = g_strv_length (options_list);
+			gchar **new_options_list =
+			    g_new0 (gchar *, old_size + 2);
+			memcpy (new_options_list, options_list,
+				old_size * sizeof (gchar *));
+			new_options_list[old_size] = g_strdup (id);
+			g_free (options_list);
+			options_list = new_options_list;
 			*was_appended = TRUE;
 		}
 	}
