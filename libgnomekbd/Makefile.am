@@ -3,10 +3,14 @@ lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 uidir="$(pkgdatadir)/ui"
 ui_DATA = show-layout.ui
 
+gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
+		    org.gnome.libgnomekbd.keyboard.gschema.xml \
+		    org.gnome.libgnomekbd.gschema.xml
+@GSETTINGS_RULES@
+
 common_CFLAGS = \
 	-I$(top_srcdir) -Wall 			\
 	$(GDK_CFLAGS)					\
-	$(GCONF_CFLAGS)					\
 	$(LIBXKLAVIER_CFLAGS)				\
 	$(XLIB_CFLAGS)					\
 	-I$(top_srcdir)/intl				\
@@ -26,7 +30,6 @@ common_LDFLAGS = -version-info @VERSION_INFO@ -no-undefined
 
 common_LIBADD = \
 		$(GDK_LIBS) \
-		$(GCONF_LIBS) \
 		$(LIBXKLAVIER_LIBS) \
 		$(XLIB_LIBS)
 
@@ -72,15 +75,13 @@ gnomekbdinc_HEADERS = \
 
 @INTLTOOL_DESKTOP_RULE@
 
-@INTLTOOL_SCHEMAS_RULE@
-
 noinst_HEADERS = gkbd-indicator-plugin-manager.h \
                  $(extra_nih) \
                  gkbd-config-private.h
 
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
-             $(schema_in_files) $(ui_DATA)
+             $(ui_DATA) $(gsettings_SCHEMAS)
 
 GLIB_GENMARSHAL = $(shell pkg-config --variable=glib_genmarshal glib-2.0)
 
@@ -101,21 +102,4 @@ gkbd-keyboard-drawing-marshal.c: gkbd-keyboard-drawing-marshal.h
                             --body > gkbd-keyboard-drawing-marshal.tmp \
           && mv gkbd-keyboard-drawing-marshal.tmp gkbd-keyboard-drawing-marshal.c ) \
         || ( rm -f gkbd-keyboard-drawing-marshal.tmp && exit 1 )
-
-schemadir   = $(GCONF_SCHEMA_FILE_DIR)
-schema_in_files= desktop_gnome_peripherals_keyboard_xkb.schemas.in
-
-schema_DATA = $(schema_in_files:.schemas.in=.schemas)
-
-if GCONF_SCHEMAS_INSTALL
-# don't do this if we are building in eg. rpm
-install-data-local:
-	if test -z "$(DESTDIR)" ; then \
-		for p in $(schema_DATA) ; do \
-			GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p; \
-		done \
-	fi
-else
-install-data-local:
-endif
 

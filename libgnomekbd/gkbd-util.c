@@ -27,8 +27,6 @@
 
 #include <libxklavier/xklavier.h>
 
-#include <gconf/gconf-client.h>
-
 #include <gkbd-config-private.h>
 
 static void
@@ -62,55 +60,22 @@ const gchar GKBD_PREVIEW_CONFIG_KEY_HEIGHT[] =
 GdkRectangle *
 gkbd_preview_load_position (void)
 {
-	GError *gerror = NULL;
 	GdkRectangle *rv = NULL;
 	gint x, y, w, h;
-	GConfClient *conf_client = gconf_client_get_default ();
+	GSettings *settings = g_settings_new (GKBD_SCHEMA);
 
-	if (conf_client == NULL)
+	if (settings == NULL)
 		return NULL;
 
-	x = gconf_client_get_int (conf_client,
-				  GKBD_PREVIEW_CONFIG_KEY_X, &gerror);
-	if (gerror != NULL) {
-		xkl_debug (0, "Error getting the preview x: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		g_object_unref (G_OBJECT (conf_client));
-		return NULL;
-	}
+	x = g_settings_get_int (settings, GKBD_PREVIEW_CONFIG_KEY_X);
 
-	y = gconf_client_get_int (conf_client,
-				  GKBD_PREVIEW_CONFIG_KEY_Y, &gerror);
-	if (gerror != NULL) {
-		xkl_debug (0, "Error getting the preview y: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		g_object_unref (G_OBJECT (conf_client));
-		return NULL;
-	}
+	y = g_settings_get_int (settings, GKBD_PREVIEW_CONFIG_KEY_Y);
 
-	w = gconf_client_get_int (conf_client,
-				  GKBD_PREVIEW_CONFIG_KEY_WIDTH, &gerror);
-	if (gerror != NULL) {
-		xkl_debug (0, "Error getting the preview width: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		g_object_unref (G_OBJECT (conf_client));
-		return NULL;
-	}
+	w = g_settings_get_int (settings, GKBD_PREVIEW_CONFIG_KEY_WIDTH);
 
-	h = gconf_client_get_int (conf_client,
-				  GKBD_PREVIEW_CONFIG_KEY_HEIGHT, &gerror);
-	if (gerror != NULL) {
-		xkl_debug (0, "Error getting the preview height: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		g_object_unref (G_OBJECT (conf_client));
-		return NULL;
-	}
+	h = g_settings_get_int (settings, GKBD_PREVIEW_CONFIG_KEY_HEIGHT);
 
-	g_object_unref (G_OBJECT (conf_client));
+	g_object_unref (G_OBJECT (settings));
 
 	rv = g_new (GdkRectangle, 1);
 	if (x == -1 || y == -1 || w == -1 || h == -1) {
@@ -135,25 +100,17 @@ gkbd_preview_load_position (void)
 void
 gkbd_preview_save_position (GdkRectangle * rect)
 {
-	GConfClient *conf_client = gconf_client_get_default ();
-	GConfChangeSet *cs;
-	GError *gerror = NULL;
+	GSettings *settings = g_settings_new (GKBD_SCHEMA);
 
-	cs = gconf_change_set_new ();
+	g_settings_delay (settings);
 
-	gconf_change_set_set_int (cs, GKBD_PREVIEW_CONFIG_KEY_X, rect->x);
-	gconf_change_set_set_int (cs, GKBD_PREVIEW_CONFIG_KEY_Y, rect->y);
-	gconf_change_set_set_int (cs, GKBD_PREVIEW_CONFIG_KEY_WIDTH,
-				  rect->width);
-	gconf_change_set_set_int (cs, GKBD_PREVIEW_CONFIG_KEY_HEIGHT,
-				  rect->height);
+	g_settings_set_int (settings, GKBD_PREVIEW_CONFIG_KEY_X, rect->x);
+	g_settings_set_int (settings, GKBD_PREVIEW_CONFIG_KEY_Y, rect->y);
+	g_settings_set_int (settings, GKBD_PREVIEW_CONFIG_KEY_WIDTH,
+			    rect->width);
+	g_settings_set_int (settings, GKBD_PREVIEW_CONFIG_KEY_HEIGHT,
+			    rect->height);
 
-	gconf_client_commit_change_set (conf_client, cs, TRUE, &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error saving preview configuration: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-	}
-	gconf_change_set_unref (cs);
-	g_object_unref (G_OBJECT (conf_client));
+	g_settings_apply (settings);
+	g_object_unref (G_OBJECT (settings));
 }

@@ -39,28 +39,33 @@ CappletFillActivePluginList (GkbdIndicatorPluginsCapplet * gipc)
 	GtkListStore *activePluginsModel =
 	    GTK_LIST_STORE (gtk_tree_view_get_model
 			    (GTK_TREE_VIEW (activePlugins)));
-	GSList *pluginPathNode = gipc->applet_cfg.enabled_plugins;
+	gchar **pluginPathNode = gipc->applet_cfg.enabled_plugins;
 	GHashTable *allPluginRecs = gipc->plugin_manager.all_plugin_recs;
 
 	gtk_list_store_clear (activePluginsModel);
 	if (allPluginRecs == NULL)
 		return;
 
-	while (pluginPathNode != NULL) {
-		GtkTreeIter iter;
-		const char *fullPath = (const char *) pluginPathNode->data;
-		const GkbdIndicatorPlugin *plugin =
-		    gkbd_indicator_plugin_manager_get_plugin (&gipc->
-							      plugin_manager,
-							      fullPath);
-		if (plugin != NULL) {
-			gtk_list_store_append (activePluginsModel, &iter);
-			gtk_list_store_set (activePluginsModel, &iter,
-					    NAME_COLUMN, plugin->name,
-					    FULLPATH_COLUMN, fullPath, -1);
-		}
+	if (pluginPathNode != NULL) {
+		while (*pluginPathNode != NULL) {
+			GtkTreeIter iter;
+			const char *fullPath = *pluginPathNode;
+			const GkbdIndicatorPlugin *plugin =
+			    gkbd_indicator_plugin_manager_get_plugin
+			    (&gipc->plugin_manager,
+			     fullPath);
+			if (plugin != NULL) {
+				gtk_list_store_append (activePluginsModel,
+						       &iter);
+				gtk_list_store_set (activePluginsModel,
+						    &iter, NAME_COLUMN,
+						    plugin->name,
+						    FULLPATH_COLUMN,
+						    fullPath, -1);
+			}
 
-		pluginPathNode = g_slist_next (pluginPathNode);
+			pluginPathNode++;
+		}
 	}
 }
 
@@ -110,8 +115,10 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 	GtkWidget *btnRemove = CappletGetUiWidget (gipc, "btnRemove");
 	GtkWidget *btnUp = CappletGetUiWidget (gipc, "btnUp");
 	GtkWidget *btnDown = CappletGetUiWidget (gipc, "btnDown");
-	GtkWidget *btnProperties = CappletGetUiWidget (gipc, "btnProperties");
-	GtkWidget *lblDescription = CappletGetUiWidget (gipc, "lblDescription");
+	GtkWidget *btnProperties =
+	    CappletGetUiWidget (gipc, "btnProperties");
+	GtkWidget *lblDescription =
+	    CappletGetUiWidget (gipc, "lblDescription");
 
 	gtk_label_set_text (GTK_LABEL (lblDescription),
 			    g_strconcat ("<small><i>",
@@ -127,9 +134,9 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 		gint *indices = gtk_tree_path_get_indices (treePath);
 		char *fullPath = CappletGetSelectedActivePluginPath (gipc);
 		const GkbdIndicatorPlugin *plugin =
-		    gkbd_indicator_plugin_manager_get_plugin (&gipc->
-							      plugin_manager,
-							      fullPath);
+		    gkbd_indicator_plugin_manager_get_plugin
+		    (&gipc->plugin_manager,
+		     fullPath);
 
 		isAnythingSelected = TRUE;
 
@@ -142,8 +149,7 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 			     NULL);
 			gtk_label_set_text (GTK_LABEL (lblDescription),
 					    g_strconcat ("<small><i>",
-							 plugin->
-							 description,
+							 plugin->description,
 							 "</i></small>",
 							 NULL));
 			gtk_label_set_use_markup (GTK_LABEL
@@ -168,15 +174,12 @@ CappletPromotePlugin (GtkWidget * btnUp,
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gipc);
 	if (fullPath != NULL) {
-		gkbd_indicator_plugin_manager_promote_plugin (&gipc->
-							      plugin_manager,
-							      gipc->
-							      applet_cfg.
-							      enabled_plugins,
-							      fullPath);
+		gkbd_indicator_plugin_manager_promote_plugin
+		    (&gipc->plugin_manager,
+		     gipc->applet_cfg.enabled_plugins, fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gipc);
-		gkbd_indicator_config_save_to_gconf (&gipc->applet_cfg);
+		gkbd_indicator_config_save (&gipc->applet_cfg);
 	}
 }
 
@@ -185,15 +188,12 @@ CappletDemotePlugin (GtkWidget * btnUp, GkbdIndicatorPluginsCapplet * gipc)
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gipc);
 	if (fullPath != NULL) {
-		gkbd_indicator_plugin_manager_demote_plugin (&gipc->
-							     plugin_manager,
-							     gipc->
-							     applet_cfg.
-							     enabled_plugins,
-							     fullPath);
+		gkbd_indicator_plugin_manager_demote_plugin
+		    (&gipc->plugin_manager,
+		     gipc->applet_cfg.enabled_plugins, fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gipc);
-		gkbd_indicator_config_save_to_gconf (&gipc->applet_cfg);
+		gkbd_indicator_config_save (&gipc->applet_cfg);
 	}
 }
 
@@ -203,15 +203,12 @@ CappletDisablePlugin (GtkWidget * btnRemove,
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gipc);
 	if (fullPath != NULL) {
-		gkbd_indicator_plugin_manager_disable_plugin (&gipc->
-							      plugin_manager,
-							      &gipc->
-							      applet_cfg.
-							      enabled_plugins,
-							      fullPath);
+		gkbd_indicator_plugin_manager_disable_plugin
+		    (&gipc->plugin_manager,
+		     &gipc->applet_cfg.enabled_plugins, fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gipc);
-		gkbd_indicator_config_save_to_gconf (&gipc->applet_cfg);
+		gkbd_indicator_config_save (&gipc->applet_cfg);
 	}
 }
 
@@ -221,14 +218,9 @@ CappletConfigurePlugin (GtkWidget * btnRemove,
 {
 	char *fullPath = CappletGetSelectedActivePluginPath (gipc);
 	if (fullPath != NULL) {
-		gkbd_indicator_plugin_manager_configure_plugin (&gipc->
-								plugin_manager,
-								&gipc->
-								plugin_container,
-								fullPath,
-								GTK_WINDOW
-								(gipc->
-								 capplet));
+		gkbd_indicator_plugin_manager_configure_plugin
+		    (&gipc->plugin_manager, &gipc->plugin_container,
+		     fullPath, GTK_WINDOW (gipc->capplet));
 		g_free (fullPath);
 	}
 }
@@ -292,15 +284,17 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 
 	/* default domain! */
 	if (!gtk_builder_add_from_file (builder,
-	                                UIDIR "/gkbd-indicator-plugins.ui",
-	                                &error)) {
-		g_warning ("Could not load builder file: %s", error->message);
-		g_error_free(error);
+					UIDIR "/gkbd-indicator-plugins.ui",
+					&error)) {
+		g_warning ("Could not load builder file: %s",
+			   error->message);
+		g_error_free (error);
 		return;
 	}
 
 	gipc->capplet = capplet =
-	    GTK_WIDGET (gtk_builder_get_object (builder, "gkbd_indicator_plugins"));
+	    GTK_WIDGET (gtk_builder_get_object
+			(builder, "gkbd_indicator_plugins"));
 
 	gtk_builder_connect_signals (builder, NULL);
 
@@ -315,26 +309,23 @@ CappletSetup (GkbdIndicatorPluginsCapplet * gipc)
 			  "response", G_CALLBACK (CappletResponse), NULL);
 
 	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnUp"));
-	g_signal_connect (button,  "clicked",
-				       G_CALLBACK
-				       (CappletPromotePlugin), gipc);
+	g_signal_connect (button, "clicked",
+			  G_CALLBACK (CappletPromotePlugin), gipc);
 	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnDown"));
-	g_signal_connect (button, 
-				       "clicked",
-				       G_CALLBACK
-				       (CappletDemotePlugin), gipc);
+	g_signal_connect (button,
+			  "clicked",
+			  G_CALLBACK (CappletDemotePlugin), gipc);
 	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnAdd"));
-	g_signal_connect (button,  "clicked",
-				       G_CALLBACK
-				       (CappletEnablePlugin), gipc);
-	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnRemove"));
-	g_signal_connect (button,  "clicked",
-				       G_CALLBACK
-				       (CappletDisablePlugin), gipc);
-	button = GTK_WIDGET (gtk_builder_get_object (builder, "btnProperties"));
-	g_signal_connect (button,  "clicked",
-				       G_CALLBACK
-				       (CappletConfigurePlugin), gipc);
+	g_signal_connect (button, "clicked",
+			  G_CALLBACK (CappletEnablePlugin), gipc);
+	button =
+	    GTK_WIDGET (gtk_builder_get_object (builder, "btnRemove"));
+	g_signal_connect (button, "clicked",
+			  G_CALLBACK (CappletDisablePlugin), gipc);
+	button =
+	    GTK_WIDGET (gtk_builder_get_object (builder, "btnProperties"));
+	g_signal_connect (button, "clicked",
+			  G_CALLBACK (CappletConfigurePlugin), gipc);
 
 	activePlugins = CappletGetUiWidget (gipc, "activePlugins");
 	activePluginsModel =
@@ -360,46 +351,32 @@ main (int argc, char **argv)
 {
 	GkbdIndicatorPluginsCapplet gipc;
 
-	GError *gconf_error = NULL;
-	GConfClient *confClient;
-
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 	memset (&gipc, 0, sizeof (gipc));
 	gtk_init_with_args (&argc, &argv, "gkbd", NULL, NULL, NULL);
-	if (!gconf_init (argc, argv, &gconf_error)) {
-		g_warning (_("Failed to init GConf: %s\n"),
-			   gconf_error->message);
-		g_error_free (gconf_error);
-		return 1;
-	}
-	gconf_error = NULL;
 	/*GkbdIndicatorInstallGlibLogAppender(  ); */
-	gipc.engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+	gipc.engine =
+	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
+				     (gdk_display_get_default ()));
 	gipc.config_registry =
 	    xkl_config_registry_get_instance (gipc.engine);
 
-	confClient = gconf_client_get_default ();
-	gkbd_indicator_plugin_container_init (&gipc.plugin_container,
-					      confClient);
-	g_object_unref (confClient);
+	gkbd_indicator_plugin_container_init (&gipc.plugin_container);
 
-	gkbd_keyboard_config_init (&gipc.kbd_cfg, confClient, gipc.engine);
-	gkbd_keyboard_config_init (&initialSysKbdConfig, confClient,
-				   gipc.engine);
+	gkbd_keyboard_config_init (&gipc.kbd_cfg, gipc.engine);
+	gkbd_keyboard_config_init (&initialSysKbdConfig, gipc.engine);
 
-	gkbd_indicator_config_init (&gipc.applet_cfg, confClient,
-				    gipc.engine);
+	gkbd_indicator_config_init (&gipc.applet_cfg, gipc.engine);
 
 	gkbd_indicator_plugin_manager_init (&gipc.plugin_manager);
 
 	gkbd_keyboard_config_load_from_x_initial (&initialSysKbdConfig,
 						  NULL);
-	gkbd_keyboard_config_load_from_gconf (&gipc.kbd_cfg,
-					      &initialSysKbdConfig);
+	gkbd_keyboard_config_load (&gipc.kbd_cfg, &initialSysKbdConfig);
 
-	gkbd_indicator_config_load_from_gconf (&gipc.applet_cfg);
+	gkbd_indicator_config_load (&gipc.applet_cfg);
 
 	loop = g_main_loop_new (NULL, TRUE);
 

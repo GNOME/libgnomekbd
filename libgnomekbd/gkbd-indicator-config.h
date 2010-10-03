@@ -36,10 +36,10 @@ typedef struct _GkbdIndicatorConfig {
 	gchar *foreground_color;
 	gchar *background_color;
 
-	GSList *enabled_plugins;
+	gchar **enabled_plugins;
 
 	/* private, transient */
-	GConfClient *conf_client;
+	GSettings *settings;
 	GSList *image_filenames;
 	GtkIconTheme *icon_theme;
 	int config_listener_id;
@@ -52,16 +52,14 @@ typedef struct _GkbdIndicatorConfig {
  * for loading approptiate images
  */
 extern void gkbd_indicator_config_init (GkbdIndicatorConfig *
-					applet_config,
-					GConfClient * conf_client,
-					XklEngine * engine);
+					applet_config, XklEngine * engine);
 extern void gkbd_indicator_config_term (GkbdIndicatorConfig *
 					applet_config);
 
-extern void gkbd_indicator_config_load_from_gconf (GkbdIndicatorConfig
-						   * applet_config);
-extern void gkbd_indicator_config_save_to_gconf (GkbdIndicatorConfig *
-						 applet_config);
+extern void gkbd_indicator_config_load (GkbdIndicatorConfig
+					* applet_config);
+extern void gkbd_indicator_config_save (GkbdIndicatorConfig *
+					applet_config);
 
 extern void gkbd_indicator_config_refresh_style (GkbdIndicatorConfig *
 						 applet_config);
@@ -85,8 +83,8 @@ extern void gkbd_indicator_config_activate (GkbdIndicatorConfig *
 
 extern void gkbd_indicator_config_start_listen (GkbdIndicatorConfig *
 						applet_config,
-						GConfClientNotifyFunc
-						func, gpointer user_data);
+						GCallback func,
+						gpointer user_data);
 
 extern void gkbd_indicator_config_stop_listen (GkbdIndicatorConfig *
 					       applet_config);

@@ -32,19 +32,15 @@
 /**
  * GkbdDesktopConfig
  */
-#define GKBD_DESKTOP_CONFIG_KEY_PREFIX  GKBD_CONFIG_KEY_PREFIX "/general"
-
-const gchar GKBD_DESKTOP_CONFIG_DIR[] = GKBD_DESKTOP_CONFIG_KEY_PREFIX;
-const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[] =
-    GKBD_DESKTOP_CONFIG_KEY_PREFIX "/defaultGroup";
+const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[] = "default-group";
 const gchar GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW[] =
-    GKBD_DESKTOP_CONFIG_KEY_PREFIX "/groupPerWindow";
+    "group-per-window";
 const gchar GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS[] =
-    GKBD_DESKTOP_CONFIG_KEY_PREFIX "/handleIndicators";
+    "handle-indicators";
 const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[]
-    = GKBD_DESKTOP_CONFIG_KEY_PREFIX "/layoutNamesAsGroupNames";
+    = "layout-names-as-group-names";
 const gchar GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS[]
-    = GKBD_DESKTOP_CONFIG_KEY_PREFIX "/loadExtraItems";
+    = "load-extra-items";
 
 /**
  * static common functions
@@ -129,135 +125,53 @@ static gboolean
 	return TRUE;
 }
 
-void
-gkbd_desktop_config_add_listener (GConfClient * conf_client,
-				  const gchar * key,
-				  GConfClientNotifyFunc func,
-				  gpointer user_data, int *pid)
-{
-	GError *gerror = NULL;
-	xkl_debug (150, "Listening to [%s]\n", key);
-	*pid = gconf_client_notify_add (conf_client,
-					key, func, user_data, NULL,
-					&gerror);
-	if (0 == *pid) {
-		g_warning ("Error listening for configuration: [%s]\n",
-			   gerror->message);
-		g_error_free (gerror);
-	}
-}
-
-void
-gkbd_desktop_config_remove_listener (GConfClient * conf_client, int *pid)
-{
-	if (*pid != 0) {
-		gconf_client_notify_remove (conf_client, *pid);
-		*pid = 0;
-	}
-}
-
 /**
  * extern GkbdDesktopConfig config functions
  */
 void
-gkbd_desktop_config_init (GkbdDesktopConfig * config,
-			  GConfClient * conf_client, XklEngine * engine)
+gkbd_desktop_config_init (GkbdDesktopConfig * config, XklEngine * engine)
 {
-	GError *gerror = NULL;
-
 	memset (config, 0, sizeof (*config));
-	config->conf_client = conf_client;
+	config->settings = g_settings_new (GKBD_DESKTOP_SCHEMA);
 	config->engine = engine;
-	g_object_ref (config->conf_client);
-
-	gconf_client_add_dir (config->conf_client,
-			      GKBD_DESKTOP_CONFIG_DIR,
-			      GCONF_CLIENT_PRELOAD_NONE, &gerror);
-	if (gerror != NULL) {
-		g_warning ("err: %s\n", gerror->message);
-		g_error_free (gerror);
-		gerror = NULL;
-	}
 }
 
 void
 gkbd_desktop_config_term (GkbdDesktopConfig * config)
 {
-	g_object_unref (config->conf_client);
-	config->conf_client = NULL;
+	g_object_unref (config->settings);
+	config->settings = NULL;
 }
 
 void
-gkbd_desktop_config_load_from_gconf (GkbdDesktopConfig * config)
+gkbd_desktop_config_load (GkbdDesktopConfig * config)
 {
-	GError *gerror = NULL;
-
 	config->group_per_app =
-	    gconf_client_get_bool (config->conf_client,
-				   GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW,
-				   &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		config->group_per_app = FALSE;
-		g_error_free (gerror);
-		gerror = NULL;
-	}
+	    g_settings_get_boolean (config->settings,
+				    GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW);
 	xkl_debug (150, "group_per_app: %d\n", config->group_per_app);
 
 	config->handle_indicators =
-	    gconf_client_get_bool (config->conf_client,
-				   GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS,
-				   &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		config->handle_indicators = FALSE;
-		g_error_free (gerror);
-		gerror = NULL;
-	}
+	    g_settings_get_boolean (config->settings,
+				    GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS);
 	xkl_debug (150, "handle_indicators: %d\n",
 		   config->handle_indicators);
 
 	config->layout_names_as_group_names =
-	    gconf_client_get_bool (config->conf_client,
-				   GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES,
-				   &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		config->layout_names_as_group_names = TRUE;
-		g_error_free (gerror);
-		gerror = NULL;
-	}
+	    g_settings_get_boolean (config->settings,
+				    GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES);
 	xkl_debug (150, "layout_names_as_group_names: %d\n",
 		   config->layout_names_as_group_names);
 
 	config->load_extra_items =
-	    gconf_client_get_bool (config->conf_client,
-				   GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS,
-				   &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		config->load_extra_items = FALSE;
-		g_error_free (gerror);
-		gerror = NULL;
-	}
+	    g_settings_get_boolean (config->settings,
+				    GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS);
 	xkl_debug (150, "load_extra_items: %d\n",
 		   config->load_extra_items);
 
 	config->default_group =
-	    gconf_client_get_int (config->conf_client,
-				  GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
-				  &gerror);
-	if (gerror != NULL) {
-		g_warning ("Error reading configuration:%s\n",
-			   gerror->message);
-		config->default_group = -1;
-		g_error_free (gerror);
-		gerror = NULL;
-	}
+	    g_settings_get_int (config->settings,
+				GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP);
 
 	if (config->default_group < -1
 	    || config->default_group >=
@@ -267,38 +181,27 @@ gkbd_desktop_config_load_from_gconf (GkbdDesktopConfig * config)
 }
 
 void
-gkbd_desktop_config_save_to_gconf (GkbdDesktopConfig * config)
+gkbd_desktop_config_save (GkbdDesktopConfig * config)
 {
-	GConfChangeSet *cs;
-	GError *gerror = NULL;
+	g_settings_delay (config->settings);
 
-	cs = gconf_change_set_new ();
+	g_settings_set_boolean (config->settings,
+				GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW,
+				config->group_per_app);
+	g_settings_set_boolean (config->settings,
+				GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS,
+				config->handle_indicators);
+	g_settings_set_boolean (config->settings,
+				GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES,
+				config->layout_names_as_group_names);
+	g_settings_set_boolean (config->settings,
+				GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS,
+				config->load_extra_items);
+	g_settings_set_int (config->settings,
+			    GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
+			    config->default_group);
 
-	gconf_change_set_set_bool (cs,
-				   GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW,
-				   config->group_per_app);
-	gconf_change_set_set_bool (cs,
-				   GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS,
-				   config->handle_indicators);
-	gconf_change_set_set_bool (cs,
-				   GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES,
-				   config->layout_names_as_group_names);
-	gconf_change_set_set_bool (cs,
-				   GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS,
-				   config->load_extra_items);
-	gconf_change_set_set_int (cs,
-				  GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP,
-				  config->default_group);
-
-	gconf_client_commit_change_set (config->conf_client, cs, TRUE,
-					&gerror);
-	if (gerror != NULL) {
-		g_warning ("Error saving active configuration: %s\n",
-			   gerror->message);
-		g_error_free (gerror);
-		gerror = NULL;
-	}
-	gconf_change_set_unref (cs);
+	g_settings_apply (config->settings);
 }
 
 gboolean
@@ -339,20 +242,19 @@ gkbd_desktop_config_restore_group (GkbdDesktopConfig * config)
 
 void
 gkbd_desktop_config_start_listen (GkbdDesktopConfig * config,
-				  GConfClientNotifyFunc func,
-				  gpointer user_data)
+				  GCallback func, gpointer user_data)
 {
-	gkbd_desktop_config_add_listener (config->conf_client,
-					  GKBD_DESKTOP_CONFIG_DIR, func,
-					  user_data,
-					  &config->config_listener_id);
+	config->config_listener_id =
+	    g_signal_connect (config->settings, "changed", func,
+			      user_data);
 }
 
 void
 gkbd_desktop_config_stop_listen (GkbdDesktopConfig * config)
 {
-	gkbd_desktop_config_remove_listener (config->conf_client,
-					     &config->config_listener_id);
+	g_signal_handler_disconnect (config->settings,
+				     config->config_listener_id);
+	config->config_listener_id = 0;
 }
 
 gboolean

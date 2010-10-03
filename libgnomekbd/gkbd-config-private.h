@@ -25,6 +25,8 @@
 
 #define GKBD_CONFIG_KEY_PREFIX "/desktop/gnome/peripherals/keyboard"
 
+#define GKBD_SCHEMA "org.gnome.libgnomekbd"
+
 extern const gchar GKBD_PREVIEW_CONFIG_DIR[];
 extern const gchar GKBD_PREVIEW_CONFIG_KEY_X[];
 extern const gchar GKBD_PREVIEW_CONFIG_KEY_Y[];
@@ -34,36 +36,16 @@ extern const gchar GKBD_PREVIEW_CONFIG_KEY_HEIGHT[];
 /**
  * General config functions (private)
  */
-extern void
- gkbd_desktop_config_add_listener (GConfClient * conf_client,
-				   const gchar * key,
-				   GConfClientNotifyFunc func,
-				   gpointer user_data, int *pid);
-
-
-extern void
- gkbd_desktop_config_remove_listener (GConfClient * conf_client, int *pid);
 
 extern void gkbd_keyboard_config_model_set (GkbdKeyboardConfig *
 					    kbd_config,
 					    const gchar * model_name);
 
-extern void gkbd_keyboard_config_layouts_reset (GkbdKeyboardConfig *
-						kbd_config);
-extern void gkbd_keyboard_config_layouts_add (GkbdKeyboardConfig *
-					      kbd_config,
-					      const gchar * layout_name,
-					      const gchar * variant_name);
-
-extern void gkbd_keyboard_config_layouts_reset (GkbdKeyboardConfig *
-						kbd_config);
-extern void gkbd_keyboard_config_options_reset (GkbdKeyboardConfig *
-						kbd_config);
-
-extern void gkbd_keyboard_config_options_add (GkbdKeyboardConfig *
-					      kbd_config,
+extern void gkbd_keyboard_config_options_set (GkbdKeyboardConfig *
+					      kbd_config, gint idx,
 					      const gchar * group_name,
 					      const gchar * option_name);
+
 extern gboolean gkbd_keyboard_config_options_is_set (GkbdKeyboardConfig *
 						     kbd_config,
 						     const gchar *
@@ -77,7 +59,7 @@ extern gboolean gkbd_keyboard_config_dump_settings (GkbdKeyboardConfig *
 
 extern void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
 					       kbd_config,
-					       GConfClientNotifyFunc func,
+					       GCallback func,
 					       gpointer user_data);
 
 extern void gkbd_keyboard_config_stop_listen (GkbdKeyboardConfig *

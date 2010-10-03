@@ -24,6 +24,7 @@
 #include <libxklavier/xklavier.h>
 
 #include <gkbd-indicator-plugin-manager.h>
+#include <gkbd-config-private.h>
 
 #define FOREACH_INITED_PLUGIN() \
 { \
@@ -78,12 +79,14 @@ gkbd_indicator_plugin_manager_add_plugins_dir (GkbdIndicatorPluginManager *
 							   "Loaded plugin from [%s]: [%s]/[%s]...\n",
 							   full_path,
 							   plugin->name,
-							   plugin->description);
+							   plugin->
+							   description);
 						rec->full_path = full_path;
 						rec->module = module;
 						rec->plugin = plugin;
 						g_hash_table_insert
-						    (manager->all_plugin_recs,
+						    (manager->
+						     all_plugin_recs,
 						     full_path, rec);
 						continue;
 					}
@@ -160,41 +163,49 @@ gkbd_indicator_plugin_manager_term (GkbdIndicatorPluginManager * manager)
 void
  gkbd_indicator_plugin_manager_init_enabled_plugins
     (GkbdIndicatorPluginManager * manager,
-     GkbdIndicatorPluginContainer * pc, GSList * enabled_plugins) {
-	GSList *plugin_name_node = enabled_plugins;
+     GkbdIndicatorPluginContainer * pc, gchar ** enabled_plugins) {
+	gchar **plugin_name_node = enabled_plugins;
 	if (manager->all_plugin_recs == NULL)
 		return;
 	xkl_debug (100, "Initializing all enabled plugins...\n");
-	while (plugin_name_node != NULL) {
-		const char *full_path = plugin_name_node->data;
-		if (full_path != NULL) {
-			GkbdIndicatorPluginManagerRecord *rec =
-			    (GkbdIndicatorPluginManagerRecord *)
-			    g_hash_table_lookup (manager->all_plugin_recs,
-						 full_path);
+	if (plugin_name_node != NULL) {
+		while (*plugin_name_node != NULL) {
+			const char *full_path = *plugin_name_node;
+			if (full_path != NULL) {
+				GkbdIndicatorPluginManagerRecord *rec =
+				    (GkbdIndicatorPluginManagerRecord *)
+				    g_hash_table_lookup
+				    (manager->all_plugin_recs,
+				     full_path);
 
-			if (rec != NULL) {
-				const GkbdIndicatorPlugin *plugin =
-				    rec->plugin;
-				gboolean initialized = FALSE;
-				xkl_debug (100,
-					   "Initializing plugin: [%s] from [%s]...\n",
-					   plugin->name, full_path);
-				if (plugin->init_callback != NULL)
-					initialized =
-					    (*plugin->init_callback) (pc);
-				else
-					initialized = TRUE;
+				if (rec != NULL) {
+					const GkbdIndicatorPlugin *plugin =
+					    rec->plugin;
+					gboolean initialized = FALSE;
+					xkl_debug (100,
+						   "Initializing plugin: [%s] from [%s]...\n",
+						   plugin->name,
+						   full_path);
+					if (plugin->init_callback != NULL)
+						initialized =
+						    (*plugin->
+						     init_callback)
+						    (pc);
+					else
+						initialized = TRUE;
 
-				manager->inited_plugin_recs =
-				    g_slist_append
-				    (manager->inited_plugin_recs, rec);
-				xkl_debug (100,
-					   "Plugin [%s] initialized: %d\n",
-					   plugin->name, initialized);
+					manager->inited_plugin_recs =
+					    g_slist_append
+					    (manager->inited_plugin_recs,
+					     rec);
+					xkl_debug (100,
+						   "Plugin [%s] initialized: %d\n",
+						   plugin->name,
+						   initialized);
+				}
 			}
+			plugin_name_node++;
 		}
-		plugin_name_node = g_slist_next (plugin_name_node);
 	}
 }
 
@@ -216,7 +227,7 @@ gkbd_indicator_plugin_manager_toggle_plugins (GkbdIndicatorPluginManager *
 					      manager,
 					      GkbdIndicatorPluginContainer
 					      * pc,
-					      GSList * enabled_plugins)
+					      gchar ** enabled_plugins)
 {
 	gkbd_indicator_plugin_manager_term_initialized_plugins (manager);
 	gkbd_indicator_plugin_manager_init_enabled_plugins (manager, pc,
@@ -262,84 +273,93 @@ gkbd_indicator_plugin_manager_get_plugin (GkbdIndicatorPluginManager *
 void
 gkbd_indicator_plugin_manager_promote_plugin (GkbdIndicatorPluginManager *
 					      manager,
-					      GSList * enabled_plugins,
+					      gchar ** enabled_plugins,
 					      const char *full_path)
 {
-	GSList *the_node = enabled_plugins;
-	GSList *prev_node = NULL;
+	gchar **the_node = enabled_plugins;
+	gchar **prev_node = NULL;
 
-	while (the_node != NULL) {
-		if (!strcmp (the_node->data, full_path)) {
-			if (prev_node != NULL) {
-				char *tmp = (char *) prev_node->data;
-				prev_node->data = the_node->data;
-				the_node->data = tmp;
+	if (the_node != NULL) {
+		while (*the_node != NULL) {
+			if (!strcmp (*the_node, full_path)) {
+				if (prev_node != NULL) {
+					char *tmp = *prev_node;
+					*prev_node = *the_node;
+					*the_node = tmp;
+				}
+				break;
 			}
-			break;
+			prev_node = the_node;
+			the_node++;
 		}
-		prev_node = the_node;
-		the_node = g_slist_next (the_node);
 	}
 }
 
 void
 gkbd_indicator_plugin_manager_demote_plugin (GkbdIndicatorPluginManager *
 					     manager,
-					     GSList * enabled_plugins,
+					     gchar ** enabled_plugins,
 					     const char *full_path)
 {
-	GSList *the_node = g_slist_find_custom (enabled_plugins, full_path,
-						(GCompareFunc) strcmp);
+	gchar **the_node = enabled_plugins;
 	if (the_node != NULL) {
-		GSList *next_node = g_slist_next (the_node);
-		if (next_node != NULL) {
-			char *tmp = (char *) next_node->data;
-			next_node->data = the_node->data;
-			the_node->data = tmp;
+		while (*the_node != NULL) {
+			if (!strcmp (*the_node, full_path)) {
+				gchar **next_node = the_node + 1;
+				if (*next_node != NULL) {
+					char *tmp = *next_node;
+					*next_node = *the_node;
+					*the_node = tmp;
+				}
+			}
+			the_node++;
 		}
 	}
 }
 
 void
-gkbd_indicator_plugin_manager_enable_plugin (GkbdIndicatorPluginManager *
-					     manager,
-					     GSList ** enabled_plugins,
-					     const char *full_path)
-{
+ gkbd_indicator_plugin_manager_enable_plugin
+    (GkbdIndicatorPluginManager * manager,
+     gchar *** enabled_plugins, const char *full_path) {
 	if (NULL !=
 	    gkbd_indicator_plugin_manager_get_plugin (manager,
 						      full_path)) {
-		*enabled_plugins =
-		    g_slist_append (*enabled_plugins,
-				    (gpointer) g_strdup (full_path));
+		gint old_length = g_strv_length (*enabled_plugins);
+		gchar **new_enabled_plugins =
+		    g_new0 (gchar *, old_length + 2);
+		memcpy (new_enabled_plugins, *enabled_plugins,
+			old_length * sizeof (gchar *));
+		new_enabled_plugins[old_length] = g_strdup (full_path);
+		g_free (*enabled_plugins);
+		*enabled_plugins = new_enabled_plugins;
 	}
 }
 
 void
-gkbd_indicator_plugin_manager_disable_plugin (GkbdIndicatorPluginManager *
-					      manager,
-					      GSList ** enabled_plugins,
-					      const char *full_path)
-{
-	GSList *the_node =
-	    g_slist_find_custom (*enabled_plugins, full_path,
-				 (GCompareFunc) strcmp);
-	if (the_node != NULL) {
-		g_free (the_node->data);
-		*enabled_plugins =
-		    g_slist_delete_link (*enabled_plugins, the_node);
+ gkbd_indicator_plugin_manager_disable_plugin
+    (GkbdIndicatorPluginManager * manager,
+     gchar *** enabled_plugins, const char *full_path) {
+	gchar **p = *enabled_plugins;
+	if (p != NULL) {
+		while (*p != NULL) {
+			if (!strcmp (*p, full_path)) {
+				gint remains = g_strv_length (p);
+				memmove (p, p + 1, remains * sizeof(gchar*));
+				return;
+			}
+			p++;
+		}
 	}
 }
 
 int
-gkbd_indicator_plugin_manager_window_created (GkbdIndicatorPluginManager *
-					      manager, Window win,
-					      Window parent)
-{
+ gkbd_indicator_plugin_manager_window_created
+    (GkbdIndicatorPluginManager * manager, Window win, Window parent) {
 	FOREACH_INITED_PLUGIN ();
 	if (plugin->window_created_callback) {
 		int group_to_assign =
-		    (*plugin->window_created_callback) (win, parent);
+		    (*plugin->window_created_callback) (win,
+							parent);
 		if (group_to_assign != -1) {
 			xkl_debug (100,
 				   "Plugin [%s] assigned group %d to new window %ld\n",
@@ -351,19 +371,16 @@ gkbd_indicator_plugin_manager_window_created (GkbdIndicatorPluginManager *
 	return -1;
 }
 
-GtkWidget *
-gkbd_indicator_plugin_manager_decorate_widget (GkbdIndicatorPluginManager *
-					       manager, GtkWidget * widget,
-					       const gint group,
-					       const char
-					       *group_description,
-					       GkbdKeyboardConfig *
-					       kbd_config)
-{
+GtkWidget
+    * gkbd_indicator_plugin_manager_decorate_widget
+    (GkbdIndicatorPluginManager * manager, GtkWidget * widget,
+     const gint group, const char *group_description,
+     GkbdKeyboardConfig * kbd_config) {
 	FOREACH_INITED_PLUGIN ();
 	if (plugin->decorate_widget_callback) {
 		GtkWidget *decorated_widget =
-		    (*plugin->decorate_widget_callback) (widget, group,
+		    (*plugin->decorate_widget_callback) (widget,
+							 group,
 							 group_description,
 							 kbd_config);
 		if (decorated_widget != NULL) {
@@ -378,29 +395,25 @@ gkbd_indicator_plugin_manager_decorate_widget (GkbdIndicatorPluginManager *
 }
 
 void
-gkbd_indicator_plugin_manager_configure_plugin (GkbdIndicatorPluginManager
-						* manager,
-						GkbdIndicatorPluginContainer
-						* pc,
-						const char *full_path,
-						GtkWindow * parent)
-{
+ gkbd_indicator_plugin_manager_configure_plugin
+    (GkbdIndicatorPluginManager * manager,
+     GkbdIndicatorPluginContainer * pc, const char *full_path,
+     GtkWindow * parent) {
 	const GkbdIndicatorPlugin *plugin =
-	    gkbd_indicator_plugin_manager_get_plugin (manager, full_path);
+	    gkbd_indicator_plugin_manager_get_plugin (manager,
+						      full_path);
 	if (plugin->configure_properties_callback != NULL)
 		plugin->configure_properties_callback (pc, parent);
 }
 
 void
-gkbd_indicator_plugin_container_init (GkbdIndicatorPluginContainer * pc,
-				      GConfClient * conf_client)
+gkbd_indicator_plugin_container_init (GkbdIndicatorPluginContainer * pc)
 {
-	pc->conf_client = conf_client;
-	g_object_ref (pc->conf_client);
+	pc->settings = g_settings_new (GKBD_SCHEMA);
 }
 
 void
 gkbd_indicator_plugin_container_term (GkbdIndicatorPluginContainer * pc)
 {
-	g_object_unref (pc->conf_client);
+	g_object_unref (pc->settings);
 }

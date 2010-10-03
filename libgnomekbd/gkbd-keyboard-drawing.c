@@ -1101,8 +1101,9 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->
-						       doodad->indicator.shape_ndx]);
+			   &drawing->xkb->geom->shapes[doodad->doodad->
+						       indicator.
+						       shape_ndx]);
 }
 
 static void
@@ -1116,8 +1117,8 @@ invalidate_key_region (GkbdKeyboardDrawing * drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->
-						       xkbkey->shape_ndx]);
+			   &drawing->xkb->geom->shapes[key->xkbkey->
+						       shape_ndx]);
 }
 
 static void
@@ -1324,7 +1325,7 @@ static void
 draw_keyboard (GkbdKeyboardDrawing * drawing)
 {
 	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
-        GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (drawing));
+	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (drawing));
 	GtkAllocation allocation;
 
 	if (!drawing->xkb)
@@ -1337,10 +1338,10 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 			    allocation.width, allocation.height, -1);
 
 	if (create_cairo (drawing)) {
-	        /* blank background */
-                gdk_cairo_set_source_color (drawing->renderContext->cr,
-                                            &style->base[state]);
-                cairo_paint (drawing->renderContext->cr);
+		/* blank background */
+		gdk_cairo_set_source_color (drawing->renderContext->cr,
+					    &style->base[state]);
+		cairo_paint (drawing->renderContext->cr);
 
 		draw_keyboard_to_context (drawing->renderContext, drawing);
 		destroy_cairo (drawing);
@@ -1384,7 +1385,7 @@ expose_event (GtkWidget * widget,
 	      GdkEventExpose * event, GkbdKeyboardDrawing * drawing)
 {
 	GtkAllocation allocation;
-        cairo_t *cr;
+	cairo_t *cr;
 
 	if (!drawing->xkb)
 		return FALSE;
@@ -1392,14 +1393,14 @@ expose_event (GtkWidget * widget,
 	if (drawing->pixmap == NULL)
 		return FALSE;
 
-        cr = gdk_cairo_create (event->window);
-        gdk_cairo_region (cr, event->region);
-        cairo_clip (cr);
+	cr = gdk_cairo_create (event->window);
+	gdk_cairo_region (cr, event->region);
+	cairo_clip (cr);
 
-        gdk_cairo_set_source_pixmap (cr, drawing->pixmap, 0, 0);
-        cairo_paint (cr);
+	gdk_cairo_set_source_pixmap (cr, drawing->pixmap, 0, 0);
+	cairo_paint (cr);
 
-        cairo_destroy (cr);
+	cairo_destroy (cr);
 
 	if (gtk_widget_has_focus (widget)) {
 		gtk_widget_get_allocation (widget, &allocation);
@@ -1686,8 +1687,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				    drawing->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
-							      xkbkey->
-							      name.name);
+							      xkbkey->name.
+							      name);
 
 				if (keycode == INVALID_KEYCODE)
 					continue;
@@ -1798,9 +1799,8 @@ init_colors (GkbdKeyboardDrawing * drawing)
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->
-					  colors[i].spec,
-					  drawing->colors + i);
+		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
+					  spec, drawing->colors + i);
 
 		if (!result)
 			g_warning
@@ -1930,8 +1930,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 				process_indicators_state_notify (&
 								 ((XkbEvent
 								   *)
-								  gdkxev)->indicators,
-drawing);
+								  gdkxev)->
+indicators, drawing);
 			}
 			break;
 
@@ -2169,9 +2169,15 @@ gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing * drawing)
 	return gdk_pixbuf_get_from_drawable (NULL, drawing->pixmap, NULL,
 					     0, 0, 0, 0,
 					     xkb_to_pixmap_coord (context,
-								  drawing->xkb->geom->width_mm),
+								  drawing->
+								  xkb->
+								  geom->
+								  width_mm),
 					     xkb_to_pixmap_coord (context,
-								  drawing->xkb->geom->height_mm));
+								  drawing->
+								  xkb->
+								  geom->
+								  height_mm));
 }
 
 /**
@@ -2524,7 +2530,9 @@ gkbd_keyboard_drawing_new_dialog (gint group, gchar * group_name)
 	GdkRectangle *rect;
 	GError *error = NULL;
 	char title[128] = "";
-	XklEngine *engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+	XklEngine *engine =
+	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
+				     (gdk_display_get_default ()));
 
 	builder = gtk_builder_new ();
 	gtk_builder_add_from_file (builder, UIDIR "/show-layout.ui",

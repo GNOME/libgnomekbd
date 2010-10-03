@@ -41,71 +41,76 @@ extern void
  gkbd_indicator_plugin_manager_term (GkbdIndicatorPluginManager * manager);
 
 extern void
- gkbd_indicator_plugin_manager_init_enabled_plugins (GkbdIndicatorPluginManager * manager,
-						     GkbdIndicatorPluginContainer
-						     * pc,
-						     GSList *
-						     enabled_plugins);
+ gkbd_indicator_plugin_manager_init_enabled_plugins
+    (GkbdIndicatorPluginManager * manager,
+     GkbdIndicatorPluginContainer * pc, gchar ** enabled_plugins);
 
 extern void
- gkbd_indicator_plugin_manager_term_initialized_plugins (GkbdIndicatorPluginManager * manager);
+ gkbd_indicator_plugin_manager_term_initialized_plugins
+    (GkbdIndicatorPluginManager * manager);
 
 extern void
- gkbd_indicator_plugin_manager_toggle_plugins (GkbdIndicatorPluginManager * manager,
-					       GkbdIndicatorPluginContainer
-					       * pc,
-					       GSList * enabled_plugins);
+gkbd_indicator_plugin_manager_toggle_plugins (GkbdIndicatorPluginManager *
+					      manager,
+					      GkbdIndicatorPluginContainer
+					      * pc,
+					      gchar ** enabled_plugins);
 
-extern const GkbdIndicatorPlugin
-    *
+extern const GkbdIndicatorPlugin *
 gkbd_indicator_plugin_manager_get_plugin (GkbdIndicatorPluginManager *
 					  manager, const char *full_path);
 
 extern void
- gkbd_indicator_plugin_manager_promote_plugin (GkbdIndicatorPluginManager * manager,
-					       GSList * enabled_plugins,
-					       const char *full_path);
-
-extern void
- gkbd_indicator_plugin_manager_demote_plugin (GkbdIndicatorPluginManager * manager,
-					      GSList * enabled_plugins,
+gkbd_indicator_plugin_manager_promote_plugin (GkbdIndicatorPluginManager *
+					      manager,
+					      gchar ** enabled_plugins,
 					      const char *full_path);
 
 extern void
- gkbd_indicator_plugin_manager_enable_plugin (GkbdIndicatorPluginManager * manager,
-					      GSList ** enabled_plugins,
+gkbd_indicator_plugin_manager_demote_plugin (GkbdIndicatorPluginManager *
+					     manager,
+					     gchar ** enabled_plugins,
+					     const char *full_path);
+
+extern void
+gkbd_indicator_plugin_manager_enable_plugin (GkbdIndicatorPluginManager *
+					     manager,
+					     gchar *** enabled_plugins,
+					     const char *full_path);
+
+extern void
+gkbd_indicator_plugin_manager_disable_plugin (GkbdIndicatorPluginManager *
+					      manager,
+					      gchar *** enabled_plugins,
 					      const char *full_path);
 
 extern void
- gkbd_indicator_plugin_manager_disable_plugin (GkbdIndicatorPluginManager * manager,
-					       GSList ** enabled_plugins,
-					       const char *full_path);
-
-extern void
- gkbd_indicator_plugin_manager_configure_plugin (GkbdIndicatorPluginManager * manager,
-						 GkbdIndicatorPluginContainer
-						 * pc,
-						 const char *full_path,
-						 GtkWindow * parent);
+gkbd_indicator_plugin_manager_configure_plugin (GkbdIndicatorPluginManager
+						* manager,
+						GkbdIndicatorPluginContainer
+						* pc,
+						const char *full_path,
+						GtkWindow * parent);
 
 /* actual calling plugin notification methods */
 
 extern void
- gkbd_indicator_plugin_manager_group_changed (GkbdIndicatorPluginManager * manager,
-					      GtkWidget * notebook,
-					      int new_group);
+gkbd_indicator_plugin_manager_group_changed (GkbdIndicatorPluginManager *
+					     manager, GtkWidget * notebook,
+					     int new_group);
 
 extern void
- gkbd_indicator_plugin_manager_config_changed (GkbdIndicatorPluginManager * manager,
-					       GkbdKeyboardConfig * from,
-					       GkbdKeyboardConfig * to);
+gkbd_indicator_plugin_manager_config_changed (GkbdIndicatorPluginManager *
+					      manager,
+					      GkbdKeyboardConfig * from,
+					      GkbdKeyboardConfig * to);
 
 extern int
- gkbd_indicator_plugin_manager_window_created (GkbdIndicatorPluginManager * manager,
-					       Window win, Window parent);
+gkbd_indicator_plugin_manager_window_created (GkbdIndicatorPluginManager *
+					      manager, Window win,
+					      Window parent);
 
-extern GtkWidget
-    *
+extern GtkWidget *
 gkbd_indicator_plugin_manager_decorate_widget (GkbdIndicatorPluginManager *
 					       manager, GtkWidget * widget,
 					       const gint group, const char

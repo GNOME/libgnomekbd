@@ -22,10 +22,11 @@
 
 #include <X11/Xlib.h>
 #include <glib.h>
-#include <gconf/gconf-client.h>
+#include <gio/gio.h>
 #include <libxklavier/xklavier.h>
 
-extern const gchar GKBD_KEYBOARD_CONFIG_DIR[];
+#define GKBD_KEYBOARD_SCHEMA "org.gnome.libgnomekbd.keyboard"
+
 extern const gchar GKBD_KEYBOARD_CONFIG_KEY_MODEL[];
 extern const gchar GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS[];
 extern const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[];
@@ -35,11 +36,11 @@ extern const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[];
  */
 typedef struct _GkbdKeyboardConfig {
 	gchar *model;
-	GSList *layouts_variants;
-	GSList *options;
+	gchar **layouts_variants;
+	gchar **options;
 
 	/* private, transient */
-	GConfClient *conf_client;
+	GSettings *settings;
 	int config_listener_id;
 	XklEngine *engine;
 } GkbdKeyboardConfig;
@@ -48,17 +49,14 @@ typedef struct _GkbdKeyboardConfig {
  * GkbdKeyboardConfig functions
  */
 extern void gkbd_keyboard_config_init (GkbdKeyboardConfig * kbd_config,
-				       GConfClient * conf_client,
 				       XklEngine * engine);
 extern void gkbd_keyboard_config_term (GkbdKeyboardConfig * kbd_config);
 
-extern void gkbd_keyboard_config_load_from_gconf (GkbdKeyboardConfig *
-						  kbd_config,
-						  GkbdKeyboardConfig *
-						  kbd_config_default);
+extern void gkbd_keyboard_config_load (GkbdKeyboardConfig * kbd_config,
+				       GkbdKeyboardConfig *
+				       kbd_config_default);
 
-extern void gkbd_keyboard_config_save_to_gconf (GkbdKeyboardConfig *
-						kbd_config);
+extern void gkbd_keyboard_config_save (GkbdKeyboardConfig * kbd_config);
 
 extern void gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig *
 						      kbd_config,
@@ -70,7 +68,7 @@ extern void gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig *
 
 extern void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
 					       kbd_config,
-					       GConfClientNotifyFunc func,
+					       GCallback func,
 					       gpointer user_data);
 
 extern void gkbd_keyboard_config_stop_listen (GkbdKeyboardConfig *
@@ -113,12 +111,12 @@ extern gchar *gkbd_keyboard_config_to_string (const GkbdKeyboardConfig *
 					      config);
 
 extern GSList
-    *gkbd_keyboard_config_add_default_switch_option_if_necessary (GSList *
-								  layouts_list,
-								  GSList *
-								  options_list,
-								  gboolean
-								  *
-								  was_appended);
+    * gkbd_keyboard_config_add_default_switch_option_if_necessary (GSList *
+								   layouts_list,
+								   GSList *
+								   options_list,
+								   gboolean
+								   *
+								   was_appended);
 
 #endif

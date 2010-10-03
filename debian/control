@@ -7,7 +7,6 @@ Build-Depends: debhelper (>= 5),
         autotools-dev,
         cdbs,
         libglib2.0-dev (>= 2.16),
-        libgconf2-dev (>= 2.14.0),
         libgtk2.0-dev (>= 2.13),
         libxklavier-dev (>= 4.0),
         libxml-parser-perl,
@@ -23,7 +22,6 @@ Section: libdevel
 Architecture: any
 Depends: libgnomekbd4 (= ${binary:Version}),
         libglib2.0-dev (>= 2.6),
-        libgconf2-dev,
         libx11-dev,
         libgtk2.0-dev,
         libxklavier-dev

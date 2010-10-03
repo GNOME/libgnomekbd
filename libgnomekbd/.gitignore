@@ -3,6 +3,7 @@ desktop_gnome_peripherals_keyboard_xkb.schemas
 *.la
 .libs
 *.lo
+*.gschema.valid
 Makefile
 Makefile.in
 *marshal.c

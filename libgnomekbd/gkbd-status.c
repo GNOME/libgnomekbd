@@ -215,8 +215,10 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	layout_name = gkbd_indicator_extract_layout_name (group,
 							  globals.engine,
 							  &globals.kbd_cfg,
-							  globals.short_group_names,
-							  globals.full_group_names);
+							  globals.
+							  short_group_names,
+							  globals.
+							  full_group_names);
 	lbl_title =
 	    gkbd_indicator_create_label_title (group, &ln2cnt_map,
 					       layout_name);
@@ -305,13 +307,14 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	if (globals.ind_cfg.show_flags) {
 
 		image_filename =
-		    (char *) g_slist_nth_data (globals.
-					       ind_cfg.image_filenames,
-					       group);
+		    (char *) g_slist_nth_data (globals.ind_cfg.
+					       image_filenames, group);
 
 		image = gdk_pixbuf_new_from_file_at_size (image_filename,
-							  globals.current_width,
-							  globals.current_height,
+							  globals.
+							  current_width,
+							  globals.
+							  current_height,
 							  &gerror);
 
 		if (image == NULL) {
@@ -326,7 +329,8 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 								    NULL ?
 								    "Unknown"
 								    :
-								    gerror->message);
+								    gerror->
+								    message);
 			g_signal_connect (G_OBJECT (dialog), "response",
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
@@ -420,12 +424,11 @@ gkbd_status_reinit_ui (GkbdStatus * gki)
 
 /* Should be called once for all widgets */
 static void
-gkbd_status_cfg_changed (GConfClient * client,
-			 guint cnxn_id, GConfEntry * entry)
+gkbd_status_cfg_changed (GSettings * settings, gchar * key)
 {
 	xkl_debug (100,
 		   "General configuration changed in GConf - reiniting...\n");
-	gkbd_desktop_config_load_from_gconf (&globals.cfg);
+	gkbd_desktop_config_load (&globals.cfg);
 	gkbd_desktop_config_activate (&globals.cfg);
 	ForAllIndicators () {
 		gkbd_status_reinit_ui (gki);
@@ -434,12 +437,11 @@ gkbd_status_cfg_changed (GConfClient * client,
 
 /* Should be called once for all widgets */
 static void
-gkbd_status_ind_cfg_changed (GConfClient * client,
-			     guint cnxn_id, GConfEntry * entry)
+gkbd_status_ind_cfg_changed (GSettings * settings, gchar * key)
 {
 	xkl_debug (100,
 		   "Applet configuration changed in GConf - reiniting...\n");
-	gkbd_indicator_config_load_from_gconf (&globals.ind_cfg);
+	gkbd_indicator_config_load (&globals.ind_cfg);
 
 	gkbd_indicator_config_free_image_filenames (&globals.ind_cfg);
 	gkbd_indicator_config_load_image_filenames (&globals.ind_cfg,
@@ -465,17 +467,14 @@ gkbd_status_load_group_names (const gchar ** layout_ids,
 		    xkl_engine_get_num_groups (globals.engine);
 		xkl_debug (150, "group descriptions loaded: %d!\n",
 			   total_groups);
-		globals.full_group_names =
-		    g_new0 (char *, total_groups + 1);
 
 		if (xkl_engine_get_features (globals.engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
-			GSList *lst = globals.kbd_cfg.layouts_variants;
-			for (i = 0; lst; lst = lst->next, i++) {
-				globals.full_group_names[i] =
-				    g_strdup ((char *) lst->data);
-			}
+			globals.full_group_names =
+			    g_strdupv (globals.kbd_cfg.layouts_variants);
 		} else {
+			globals.full_group_names =
+			    g_new0 (char *, total_groups + 1);
 			for (i = total_groups; --i >= 0;) {
 				globals.full_group_names[i] =
 				    g_strdup_printf ("Group %d", i);
@@ -693,9 +692,8 @@ gkbd_status_finalize (GObject * obj)
 	for (i = sizeof (settings_signal_names) /
 	     sizeof (settings_signal_names[0]); --i >= 0;)
 		g_signal_handler_disconnect (gtk_settings_get_default (),
-					     gki->
-					     priv->settings_signal_handlers
-					     [i]);
+					     gki->priv->
+					     settings_signal_handlers[i]);
 
 	/* remove BEFORE all termination work is finished */
 	globals.widget_instances =
@@ -730,13 +728,15 @@ gkbd_status_global_term (void)
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.state_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.state_changed_handler);
+					     globals.
+					     state_changed_handler);
 		globals.state_changed_handler = 0;
 	}
 	if (g_signal_handler_is_connected
 	    (globals.engine, globals.config_changed_handler)) {
 		g_signal_handler_disconnect (globals.engine,
-					     globals.config_changed_handler);
+					     globals.
+					     config_changed_handler);
 		globals.config_changed_handler = 0;
 	}
 
@@ -768,16 +768,15 @@ gkbd_status_class_init (GkbdStatusClass * klass)
 static void
 gkbd_status_global_init (void)
 {
-	GConfClient *gconf_client;
 	XklConfigRec *xklrec = xkl_config_rec_new ();
 
-	globals.engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()));
+	globals.engine =
+	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
+				     (gdk_display_get_default ()));
 	if (globals.engine == NULL) {
 		xkl_debug (0, "Libxklavier initialization error");
 		return;
 	}
-
-	gconf_client = gconf_client_get_default ();
 
 	globals.state_changed_handler =
 	    g_signal_connect (globals.engine, "X-state-changed",
@@ -788,16 +787,11 @@ gkbd_status_global_init (void)
 			      G_CALLBACK (gkbd_status_kbd_cfg_callback),
 			      NULL);
 
-	gkbd_desktop_config_init (&globals.cfg, gconf_client,
-				  globals.engine);
-	gkbd_keyboard_config_init (&globals.kbd_cfg, gconf_client,
-				   globals.engine);
-	gkbd_indicator_config_init (&globals.ind_cfg, gconf_client,
-				    globals.engine);
+	gkbd_desktop_config_init (&globals.cfg, globals.engine);
+	gkbd_keyboard_config_init (&globals.kbd_cfg, globals.engine);
+	gkbd_indicator_config_init (&globals.ind_cfg, globals.engine);
 
-	g_object_unref (gconf_client);
-
-	gkbd_desktop_config_load_from_gconf (&globals.cfg);
+	gkbd_desktop_config_load (&globals.cfg);
 	gkbd_desktop_config_activate (&globals.cfg);
 
 	globals.registry =
@@ -808,7 +802,7 @@ gkbd_status_global_init (void)
 	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
 						  xklrec);
 
-	gkbd_indicator_config_load_from_gconf (&globals.ind_cfg);
+	gkbd_indicator_config_load (&globals.ind_cfg);
 
 	gkbd_indicator_config_load_image_filenames (&globals.ind_cfg,
 						    &globals.kbd_cfg);
@@ -819,11 +813,9 @@ gkbd_status_global_init (void)
 				      (const gchar **) xklrec->variants);
 	g_object_unref (G_OBJECT (xklrec));
 
-	gkbd_desktop_config_start_listen (&globals.cfg,
-					  (GConfClientNotifyFunc)
+	gkbd_desktop_config_start_listen (&globals.cfg, (GCallback)
 					  gkbd_status_cfg_changed, NULL);
-	gkbd_indicator_config_start_listen (&globals.ind_cfg,
-					    (GConfClientNotifyFunc)
+	gkbd_indicator_config_start_listen (&globals.ind_cfg, (GCallback)
 					    gkbd_status_ind_cfg_changed,
 					    NULL);
 	gkbd_status_start_listen ();

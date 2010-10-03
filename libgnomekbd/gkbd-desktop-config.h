@@ -22,10 +22,11 @@
 
 #include <X11/Xlib.h>
 #include <glib.h>
-#include <gconf/gconf-client.h>
+#include <gio/gio.h>
 #include <libxklavier/xklavier.h>
 
-extern const gchar GKBD_DESKTOP_CONFIG_DIR[];
+#define GKBD_DESKTOP_SCHEMA "org.gnome.libgnomekbd.desktop"
+
 extern const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[];
 extern const gchar GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW[];
 extern const gchar GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS[];
@@ -42,7 +43,7 @@ typedef struct _GkbdDesktopConfig {
 	gboolean load_extra_items;
 
 	/* private, transient */
-	GConfClient *conf_client;
+	GSettings *settings;
 	int config_listener_id;
 	XklEngine *engine;
 } GkbdDesktopConfig;
@@ -51,14 +52,12 @@ typedef struct _GkbdDesktopConfig {
  * GkbdDesktopConfig functions
  */
 extern void gkbd_desktop_config_init (GkbdDesktopConfig * config,
-				      GConfClient * conf_client,
 				      XklEngine * engine);
 extern void gkbd_desktop_config_term (GkbdDesktopConfig * config);
 
-extern void gkbd_desktop_config_load_from_gconf (GkbdDesktopConfig *
-						 config);
+extern void gkbd_desktop_config_load (GkbdDesktopConfig * config);
 
-extern void gkbd_desktop_config_save_to_gconf (GkbdDesktopConfig * config);
+extern void gkbd_desktop_config_save (GkbdDesktopConfig * config);
 
 extern gboolean gkbd_desktop_config_activate (GkbdDesktopConfig * config);
 
@@ -84,7 +83,7 @@ extern void gkbd_desktop_config_lock_prev_group (GkbdDesktopConfig *
 extern void gkbd_desktop_config_restore_group (GkbdDesktopConfig * config);
 
 extern void gkbd_desktop_config_start_listen (GkbdDesktopConfig * config,
-					      GConfClientNotifyFunc func,
+					      GCallback func,
 					      gpointer user_data);
 
 extern void gkbd_desktop_config_stop_listen (GkbdDesktopConfig * config);

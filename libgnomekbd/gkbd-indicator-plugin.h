@@ -21,7 +21,6 @@
 #define __GKBD_INDICATOR_PLUGIN_H__
 
 #include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
 #include <libgnomekbd/gkbd-keyboard-config.h>
 
 #define MAX_LOCAL_NAME_BUF_LENGTH 512
@@ -29,15 +28,18 @@
 struct _GkbdIndicatorPlugin;
 
 typedef struct _GkbdIndicatorPluginContainer {
-	GConfClient *conf_client;
+	GSettings *settings;
 } GkbdIndicatorPluginContainer;
 
 typedef const struct _GkbdIndicatorPlugin
 *(*GkbdIndicatorPluginGetPluginFunc) (void);
 
 typedef
- gboolean (*GkbdIndicatorPluginInitFunc) (GkbdIndicatorPluginContainer *
-					  pc);
+
+
+
+gboolean (*GkbdIndicatorPluginInitFunc) (GkbdIndicatorPluginContainer *
+					 pc);
 
 typedef void (*GkbdIndicatorPluginGroupChangedFunc) (GtkWidget * notebook,
 						     int new_group);
@@ -105,14 +107,17 @@ typedef struct _GkbdIndicatorPlugin {
  */
 
 extern void
- gkbd_indicator_plugin_container_init (GkbdIndicatorPluginContainer * pc,
-				       GConfClient * conf_client);
+ gkbd_indicator_plugin_container_init (GkbdIndicatorPluginContainer * pc);
 
 extern void
  gkbd_indicator_plugin_container_term (GkbdIndicatorPluginContainer * pc);
 
 extern void
- gkbd_indicator_plugin_container_reinit_ui (GkbdIndicatorPluginContainer * pc);
+
+
+
+gkbd_indicator_plugin_container_reinit_ui (GkbdIndicatorPluginContainer *
+					   pc);
 
 extern guint
 gkbd_indicator_plugin_get_num_groups (GkbdIndicatorPluginContainer * pc);
