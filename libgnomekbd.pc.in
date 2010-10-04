@@ -6,6 +6,6 @@ includedir=@includedir@
 Name: libgnomekbd
 Description: GNOME keyboard shared library
 Version: @VERSION@
-Requires: gmodule-export-2.0 gdk-2.0 >= @GDK_REQUIRED@ gconf-2.0 >= @GCONF_REQUIRED@ libxklavier >= @LIBXKLAVIER_REQUIRED@
+Requires: gmodule-export-2.0 gdk-2.0 >= @GDK_REQUIRED@ libxklavier >= @LIBXKLAVIER_REQUIRED@
 Libs: -L${libdir} -lgnomekbd
 Cflags: -I${includedir}
