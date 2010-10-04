@@ -29,5 +29,11 @@ extern GdkRectangle *gkbd_preview_load_position (void);
 
 extern void gkbd_preview_save_position (GdkRectangle * rect);
 
+/* Missing in glib */
+extern gboolean gkbd_strv_remove (gchar ** arr, const gchar * element);
+
+extern gchar **gkbd_strv_append (gchar ** arr, gchar * element);
+
+extern void gkbd_strv_behead (gchar ** arr);
 
 #endif

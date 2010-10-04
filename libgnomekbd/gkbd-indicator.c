@@ -534,7 +534,7 @@ gkbd_indicator_load_group_names (const gchar ** layout_ids,
 			    g_strdupv (globals.kbd_cfg.layouts_variants);
 		} else {
 			globals.full_group_names =
-			    g_new0 (char *, total_groups + 1);
+			    g_new0 (gchar *, total_groups + 1);
 			for (i = total_groups; --i >= 0;) {
 				globals.full_group_names[i] =
 				    g_strdup_printf ("Group %d", i);

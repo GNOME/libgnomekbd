@@ -114,3 +114,41 @@ gkbd_preview_save_position (GdkRectangle * rect)
 	g_settings_apply (settings);
 	g_object_unref (G_OBJECT (settings));
 }
+
+gboolean
+gkbd_strv_remove (gchar ** arr, const gchar * element)
+{
+	gchar **p = arr;
+	if (p != NULL) {
+		while (*p != NULL) {
+			if (!strcmp (*p, element)) {
+				gkbd_strv_behead (p);
+				return TRUE;
+			}
+			p++;
+		}
+	}
+	return FALSE;
+}
+
+gchar **
+gkbd_strv_append (gchar ** arr, gchar * element)
+{
+	gint old_length = (arr == NULL) ? 0 : g_strv_length (arr);
+	gchar **new_arr = g_new0 (gchar *, old_length + 2);
+	if (arr != NULL) {
+		memcpy (new_arr, arr, old_length * sizeof (gchar *));
+		g_free (arr);
+	}
+	new_arr[old_length] = element;
+	return new_arr;
+}
+
+void
+gkbd_strv_behead (gchar ** arr)
+{
+	if (arr == NULL || *arr == NULL)
+		return;
+	g_free (*arr);
+	memmove (arr, arr + 1, g_strv_length (arr) * sizeof (gchar *));
+}

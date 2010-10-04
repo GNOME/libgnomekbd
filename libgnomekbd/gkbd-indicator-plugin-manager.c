@@ -25,6 +25,7 @@
 
 #include <gkbd-indicator-plugin-manager.h>
 #include <gkbd-config-private.h>
+#include <gkbd-util.h>
 
 #define FOREACH_INITED_PLUGIN() \
 { \
@@ -324,14 +325,9 @@ void
 	if (NULL !=
 	    gkbd_indicator_plugin_manager_get_plugin (manager,
 						      full_path)) {
-		gint old_length = g_strv_length (*enabled_plugins);
-		gchar **new_enabled_plugins =
-		    g_new0 (gchar *, old_length + 2);
-		memcpy (new_enabled_plugins, *enabled_plugins,
-			old_length * sizeof (gchar *));
-		new_enabled_plugins[old_length] = g_strdup (full_path);
-		g_free (*enabled_plugins);
-		*enabled_plugins = new_enabled_plugins;
+		*enabled_plugins =
+		    gkbd_strv_append (*enabled_plugins,
+				      g_strdup (full_path));
 	}
 }
 
@@ -339,17 +335,7 @@ void
  gkbd_indicator_plugin_manager_disable_plugin
     (GkbdIndicatorPluginManager * manager,
      gchar *** enabled_plugins, const char *full_path) {
-	gchar **p = *enabled_plugins;
-	if (p != NULL) {
-		while (*p != NULL) {
-			if (!strcmp (*p, full_path)) {
-				gint remains = g_strv_length (p);
-				memmove (p, p + 1, remains * sizeof(gchar*));
-				return;
-			}
-			p++;
-		}
-	}
+	gkbd_strv_remove (*enabled_plugins, full_path);
 }
 
 int

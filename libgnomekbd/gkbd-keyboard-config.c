@@ -28,6 +28,7 @@
 
 #include <gkbd-keyboard-config.h>
 #include <gkbd-config-private.h>
+#include <gkbd-util.h>
 
 /**
  * GkbdKeyboardConfig
@@ -184,44 +185,57 @@ gkbd_keyboard_config_copy_from_xkl_config (GkbdKeyboardConfig * kbd_config,
 	gkbd_keyboard_config_model_set (kbd_config, pdata->model);
 	xkl_debug (150, "Loaded Kbd model: [%s]\n", pdata->model);
 
+	/* Layouts */
 	g_strfreev (kbd_config->layouts_variants);
-	p = pdata->layouts;
-	p1 = pdata->variants;
-	kbd_config->layouts_variants =
-	    g_new0 (gchar *, g_strv_length (pdata->layouts) + 1);
-	i = 0;
-	while (p != NULL && *p != NULL) {
-		const gchar *full_layout =
-		    gkbd_keyboard_config_merge_items (*p, *p1);
-		xkl_debug (150,
-			   "Loaded Kbd layout (with variant): [%s]\n",
-			   full_layout);
-		kbd_config->layouts_variants[i++] = g_strdup (full_layout);
-		p++;
-		p1++;
+	kbd_config->layouts_variants = NULL;
+	if (pdata->layouts != NULL) {
+		p = pdata->layouts;
+		p1 = pdata->variants;
+		kbd_config->layouts_variants =
+		    g_new0 (gchar *, g_strv_length (pdata->layouts) + 1);
+		i = 0;
+		while (*p != NULL) {
+			const gchar *full_layout =
+			    gkbd_keyboard_config_merge_items (*p, *p1);
+			xkl_debug (150,
+				   "Loaded Kbd layout (with variant): [%s]\n",
+				   full_layout);
+			kbd_config->layouts_variants[i++] =
+			    g_strdup (full_layout);
+			p++;
+			p1++;
+		}
 	}
 
+	/* Options */
 	g_strfreev (kbd_config->options);
-	kbd_config->options =
-	    g_new0 (gchar *, g_strv_length (pdata->options) + 1);
-	p = pdata->options;
-	i = 0;
-	while (p != NULL && *p != NULL) {
-		char group[XKL_MAX_CI_NAME_LENGTH];
-		char *option = *p;
-		char *delim =
-		    (option != NULL) ? strchr (option, ':') : NULL;
-		int len;
-		if ((delim != NULL) &&
-		    ((len = (delim - option)) < XKL_MAX_CI_NAME_LENGTH)) {
-			strncpy (group, option, len);
-			group[len] = 0;
-			xkl_debug (150, "Loaded Kbd option: [%s][%s]\n",
-				   group, option);
-			gkbd_keyboard_config_options_set (kbd_config, i++,
-							  group, option);
+	kbd_config->options = NULL;
+
+	if (pdata->options != NULL) {
+		p = pdata->options;
+		kbd_config->options =
+		    g_new0 (gchar *, g_strv_length (pdata->options) + 1);
+		i = 0;
+		while (*p != NULL) {
+			char group[XKL_MAX_CI_NAME_LENGTH];
+			char *option = *p;
+			char *delim =
+			    (option != NULL) ? strchr (option, ':') : NULL;
+			int len;
+			if ((delim != NULL) &&
+			    ((len =
+			      (delim - option)) <
+			     XKL_MAX_CI_NAME_LENGTH)) {
+				strncpy (group, option, len);
+				group[len] = 0;
+				xkl_debug (150,
+					   "Loaded Kbd option: [%s][%s]\n",
+					   group, option);
+				gkbd_keyboard_config_options_set
+				    (kbd_config, i++, group, option);
+			}
+			p++;
 		}
-		p++;
 	}
 }
 
@@ -690,14 +704,8 @@ gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
 			    gkbd_keyboard_config_merge_items
 			    (GROUP_SWITCHERS_GROUP,
 			     DEFAULT_GROUP_SWITCH);
-			gint old_size = g_strv_length (options_list);
-			gchar **new_options_list =
-			    g_new0 (gchar *, old_size + 2);
-			memcpy (new_options_list, options_list,
-				old_size * sizeof (gchar *));
-			new_options_list[old_size] = g_strdup (id);
-			g_free (options_list);
-			options_list = new_options_list;
+			options_list =
+			    gkbd_strv_append (options_list, g_strdup (id));
 			*was_appended = TRUE;
 		}
 	}
