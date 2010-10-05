@@ -1,3 +1,7 @@
+2.91.1:
+	Changed API - from gconf to gsettings. There will be more changes.
+	Ported to GTK3
+
 2.32.0:
 	Some translations updated
 
