@@ -6,25 +6,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-03-14 02:06+0900\n"
-"PO-Revision-Date: 2010-03-14 02:08+0900\n"
+"POT-Creation-Date: 2010-10-09 07:36+0900\n"
+"PO-Revision-Date: 2010-10-09 07:36+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
+"Language: Korean\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:236
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "그림을 읽어들이는 데 오류가 발생했습니다: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:713 ../libgnomekbd/gkbd-status.c:562
+#: ../libgnomekbd/gkbd-indicator.c:720 ../libgnomekbd/gkbd-status.c:656
 msgid "XKB initialization error"
 msgstr "XKB 초기화 오류"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2403
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2413
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -35,28 +36,37 @@ msgstr ""
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2500
+msgid "Unknown"
+msgstr "알 수 없음"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2545
+#, c-format
+msgid "Keyboard Layout \"%s\""
+msgstr "키보드 배치 \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:757
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "배치 \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:776
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "옵션 \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:784
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "모델 \"%s\", %s 및 %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:785
 msgid "no layout"
 msgstr "배치 없음"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:786
 msgid "no options"
 msgstr "옵션 없음"
 
@@ -164,11 +174,11 @@ msgstr "키보드 배치 창의 배경 색"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
 msgid "The font family"
-msgstr "글꼴 패밀리"
+msgstr "글꼴 계열"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
 msgid "The font family for the layout indicator"
-msgstr "키보드 배치 창의 글꼴 패밀리"
+msgstr "키보드 배치 창의 글꼴 계열"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
 msgid "The font size"
@@ -201,6 +211,10 @@ msgstr "키보드 모델"
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
 msgid "modmap file list"
 msgstr "modmap 파일 목록"
+
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "키보드 배치"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
