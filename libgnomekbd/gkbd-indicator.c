@@ -856,11 +856,13 @@ gkbd_indicator_global_init (void)
 	gkbd_indicator_plugin_manager_init_enabled_plugins
 	    (&globals.plugin_manager, &globals.plugin_container,
 	     globals.ind_cfg.enabled_plugins);
-	gkbd_desktop_config_start_listen (&globals.cfg, (GCallback)
-					  gkbd_indicator_cfg_changed,
+	gkbd_desktop_config_start_listen (&globals.cfg,
+					  G_CALLBACK
+					  (gkbd_indicator_cfg_changed),
 					  NULL);
-	gkbd_indicator_config_start_listen (&globals.ind_cfg, (GCallback)
-					    gkbd_indicator_ind_cfg_changed,
+	gkbd_indicator_config_start_listen (&globals.ind_cfg,
+					    G_CALLBACK
+					    (gkbd_indicator_ind_cfg_changed),
 					    NULL);
 	gkbd_indicator_start_listen ();
 

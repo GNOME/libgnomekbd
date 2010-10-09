@@ -813,10 +813,12 @@ gkbd_status_global_init (void)
 				      (const gchar **) xklrec->variants);
 	g_object_unref (G_OBJECT (xklrec));
 
-	gkbd_desktop_config_start_listen (&globals.cfg, (GCallback)
-					  gkbd_status_cfg_changed, NULL);
-	gkbd_indicator_config_start_listen (&globals.ind_cfg, (GCallback)
-					    gkbd_status_ind_cfg_changed,
+	gkbd_desktop_config_start_listen (&globals.cfg,
+					  G_CALLBACK
+					  (gkbd_status_cfg_changed), NULL);
+	gkbd_indicator_config_start_listen (&globals.ind_cfg,
+					    G_CALLBACK
+					    (gkbd_status_ind_cfg_changed),
 					    NULL);
 	gkbd_status_start_listen ();
 
