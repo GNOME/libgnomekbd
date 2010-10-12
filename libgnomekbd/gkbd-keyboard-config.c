@@ -56,7 +56,12 @@ g_strv_equal (gchar ** l1, gchar ** l2)
 {
 	if (l1 == l2)
 		return TRUE;
-	while (l1 != NULL && l2 != NULL) {
+	if (l1 == NULL)
+		return g_strv_length (l2) == 0;
+	if (l2 == NULL)
+		return g_strv_length (l1) == 0;
+
+	while ((*l1 != NULL) && (*l2 != NULL)) {
 		if (*l1 != *l2) {
 			if (*l1 && *l2) {
 				if (g_ascii_strcasecmp (*l1, *l2))
@@ -68,7 +73,7 @@ g_strv_equal (gchar ** l1, gchar ** l2)
 		l1++;
 		l2++;
 	}
-	return (*l1 && *l2);
+	return (*l1 == NULL) && (*l2 == NULL);
 }
 
 gboolean
