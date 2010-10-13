@@ -36,6 +36,8 @@
 
 #define GROUP_SWITCHERS_GROUP "grp"
 #define DEFAULT_GROUP_SWITCH "grp:shift_caps_toggle"
+#define XMODMAP_KNOWN_FILE ".xmodmap"
+#define XMODMAP_CMD "xmodmap"
 
 const gchar GKBD_KEYBOARD_CONFIG_KEY_MODEL[] = "model";
 const gchar GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS[] = "layouts";
@@ -562,6 +564,31 @@ gkbd_keyboard_config_activate (GkbdKeyboardConfig * kbd_config)
 	gkbd_keyboard_config_copy_to_xkl_config (kbd_config, data);
 	rv = xkl_config_rec_activate (data, kbd_config->engine);
 	g_object_unref (G_OBJECT (data));
+
+	/* Small bit of extensibility by using xmodmap */
+	if (rv) {
+		gchar *xmodmap_file = g_build_filename (g_get_home_dir (),
+							XMODMAP_KNOWN_FILE,
+							NULL);
+		if (g_file_test (xmodmap_file, G_FILE_TEST_EXISTS)) {
+			GError *error = NULL;
+			xkl_debug (150, "Loading custom xmodmap file %s\n",
+				   xmodmap_file);
+			gchar *command =
+			    g_strconcat (XMODMAP_CMD, " ", xmodmap_file,
+					 NULL);
+			/* Fire and forget - do not care about errors */
+			if (!g_spawn_command_line_async (command, &error)) {
+				xkl_debug (0,
+					   "Error loading custom xmodmap file: [%s]\n",
+					   error->message);
+				g_error_free (error);
+			}
+			g_free (command);
+		}
+
+		g_free (xmodmap_file);
+	}
 
 	return rv;
 }
