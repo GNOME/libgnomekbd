@@ -1,1 +1,4 @@
 capplet/gkbd-indicator-plugins-capplet.desktop.in
+libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in

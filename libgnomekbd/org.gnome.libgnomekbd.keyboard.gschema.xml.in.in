@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schemalist>
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.keyboard" path="/desktop/gnome/peripherals/keyboard/kbd/">
+    <key name="model" type="s">
+      <default>''</default>
+      <_summary>Keyboard model</_summary>
+      <_description>keyboard model</_description>
+    </key>
+    <key name="layouts" type="as">
+      <default>[]</default>
+      <_summary>Keyboard layout</_summary>
+      <_description>keyboard layout</_description>
+    </key>
+    <key name="options" type="as">
+      <default>[]</default>
+      <_summary>Keyboard options</_summary>
+      <_description>Keyboard options</_description>
+    </key>
+  </schema>
+</schemalist>

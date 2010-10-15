@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<schemalist>
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.desktop" path="/desktop/gnome/peripherals/keyboard/general/">
+    <key name="default-group" type="i">
+      <default>-1</default>
+      <_summary>Default group, assigned on window creation</_summary>
+      <_description>Default group, assigned on window creation</_description>
+    </key>
+    <key name="group-per-window" type="b">
+      <default>true</default>
+      <_summary>Keep and manage separate group per window</_summary>
+      <_description>Keep and manage separate group per window</_description>
+    </key>
+    <key name="handle-indicators" type="b">
+      <default>false</default>
+      <_summary>Save/restore indicators together with layout groups</_summary>
+      <_description>Save/restore indicators together with layout groups</_description>
+    </key>
+    <key name="layout-names-as-group-names" type="b">
+      <default>true</default>
+      <_summary>Show layout names instead of group names</_summary>
+      <_description>Show layout names instead of group names (only for versions of XFree supporting multiple layouts)</_description>
+    </key>
+    <key name="load-extra-items" type="b">
+      <default>false</default>
+      <_summary>Load extra configuration items</_summary>
+      <_description>Load exotic, rarely used layouts and options</_description>
+    </key>
+  </schema>
+</schemalist>

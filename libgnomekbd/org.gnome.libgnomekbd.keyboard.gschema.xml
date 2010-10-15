@@ -1,17 +1,17 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="org.gnome.libgnomekbd.keyboard" path="/desktop/gnome/peripherals/keyboard/kbd/">
-    <key name="model" type="s">
+  <schema path="/desktop/gnome/peripherals/keyboard/kbd/" id="org.gnome.libgnomekbd.keyboard" gettext-domain="libgnomekbd">
+    <key type="s" name="model">
       <default>''</default>
       <summary>Keyboard model</summary>
       <description>keyboard model</description>
     </key>
-    <key name="layouts" type="as">
+    <key type="as" name="layouts">
       <default>[]</default>
       <summary>Keyboard layout</summary>
       <description>keyboard layout</description>
     </key>
-    <key name="options" type="as">
+    <key type="as" name="options">
       <default>[]</default>
       <summary>Keyboard options</summary>
       <description>Keyboard options</description>

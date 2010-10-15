@@ -9,3 +9,6 @@ Makefile.in
 *marshal.c
 *marshal.h
 *.o
+org.gnome.libgnomekbd.*gschema.xml
+org.gnome.libgnomekbd.*gschema.xml.in
+

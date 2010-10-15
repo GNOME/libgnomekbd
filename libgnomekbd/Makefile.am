@@ -8,6 +8,8 @@ gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
 		    org.gnome.libgnomekbd.gschema.xml
 @GSETTINGS_RULES@
 
+@INTLTOOL_XML_NOMERGE_RULE@
+
 common_CFLAGS = \
 	-I$(top_srcdir) -Wall 			\
 	$(GDK_CFLAGS)					\
@@ -60,7 +62,12 @@ BUILT_SOURCES = gkbd-indicator-marshal.c \
         gkbd-keyboard-drawing-marshal.c            \
         gkbd-keyboard-drawing-marshal.h
 
-CLEANFILES = $(BUILT_SOURCES) $(schema_DATA)
+DISTCLEANFILES = $(BUILT_SOURCES) $(gsettings_SCHEMAS)
+
+MAINTAINERCLEANFILES =                  \
+        *~                              \
+        Makefile.in                     \
+        $(gsettings_SCHEMAS:.xml=.valid)
 
 gnomekbdincdir = $(includedir)/libgnomekbd
 gnomekbdinc_HEADERS = \
@@ -81,7 +88,9 @@ noinst_HEADERS = gkbd-indicator-plugin-manager.h \
 
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
-             $(ui_DATA) $(gsettings_SCHEMAS)
+             $(ui_DATA) \
+             $(gsettings_SCHEMAS:.xml=.xml.in.in) 
+
 
 GLIB_GENMARSHAL = $(shell pkg-config --variable=glib_genmarshal glib-2.0)
 

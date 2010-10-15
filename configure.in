@@ -33,6 +33,7 @@ GNOME_COMPILE_WARNINGS
 
 AC_ISC_POSIX
 AC_PROG_CC
+AC_PROG_CC_C_O
 AC_STDC_HEADERS
 AM_PROG_LIBTOOL
 
@@ -90,6 +91,9 @@ libgnomekbd.pc
 libgnomekbdui.pc
 po/Makefile.in
 libgnomekbd/Makefile
+libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
 test/Makefile
 capplet/Makefile
 capplet/gkbd-indicator-plugins-capplet.desktop.in

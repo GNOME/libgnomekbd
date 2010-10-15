@@ -6,6 +6,9 @@ libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-keyboard-config.c
 libgnomekbd/gkbd-status.c
 libgnomekbd/gkbd-util.c
+[type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in
+[type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in
+[type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in
 [type: gettext/glade]libgnomekbd/show-layout.ui
 [type: gettext/glade]capplet/gkbd-indicator-plugins.ui
 [type: gettext/glade]capplet/gkbd-indicator-plugins_add.ui
