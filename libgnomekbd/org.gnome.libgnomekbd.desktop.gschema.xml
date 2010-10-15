@@ -1,16 +1,6 @@
 <?xml version="1.0"?>
 <schemalist>
   <schema id="org.gnome.libgnomekbd.desktop" path="/desktop/gnome/peripherals/keyboard/general/">
-    <key name="update-handlers" type="as">
-      <default>[]</default>
-      <summary>Keyboard Update Handlers</summary>
-      <description>A collection of scripts to run whenever the keyboard state is reloaded.  Useful for re-applying xmodmap based adjustments</description>
-    </key>
-    <key name="known-file-list" type="as">
-      <default>[]</default>
-      <summary>modmap file list</summary>
-      <description>A list of modmap files available in the $HOME directory.</description>
-    </key>
     <key name="default-group" type="i">
       <default>-1</default>
       <summary>Default group, assigned on window creation</summary>
@@ -35,11 +25,6 @@
       <default>false</default>
       <summary>Load extra configuration items</summary>
       <description>Load exotic, rarely used layouts and options</description>
-    </key>
-    <key name="disable-sysconfig-chg-warning" type="b">
-      <default>false</default>
-      <summary>Suppress the "X sysconfig changed" warning message</summary>
-      <description>Suppress the "X sysconfig changed" warning message</description>
     </key>
   </schema>
 </schemalist>
