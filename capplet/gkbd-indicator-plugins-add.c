@@ -201,7 +201,7 @@ CappletEnablePlugin (GtkWidget * btnAdd,
 			   NULL);
 	g_object_set_data (G_OBJECT (gipc->capplet),
 			   "gkbd_indicator_plugins_add.btnOK", NULL);
-	gtk_widget_hide_all (popup);
+	gtk_widget_hide (popup);
 	if (response == GTK_RESPONSE_OK) {
 		char *fullPath =
 		    CappletGetSelectedPluginPath (GTK_TREE_VIEW
