@@ -1,3 +1,8 @@
+2.91.2:
+	Further changes related to GTK3.
+	Simple xmodmap support introduced (moved from g-s-d).
+	I18N fixed, A number of translations updated
+
 2.91.1:
 	Changed API - from gconf to gsettings. There will be more changes.
 	Ported to GTK3
