@@ -7,9 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd gnome-2-32\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-10-02 08:29+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2010-10-29 20:32+0000\n"
 "PO-Revision-Date: 2010-10-02 23:22+0000\n"
 "Last-Translator: Sahran <sahran@live.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -18,203 +17,172 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:323
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:326
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "سۈرەتنى ئوقۇشتا خاتالىق كۆرۈلدى: %s"
 
-#: ../libgnomekbd/gkbd-indicator.c:720 ../libgnomekbd/gkbd-status.c:656
+#: ../libgnomekbd/gkbd-indicator.c:715 ../libgnomekbd/gkbd-status.c:655
 msgid "XKB initialization error"
 msgstr "XKB نى دەسلەپلەشتۈرۈشتە خاتالىق كۆرۈلدى"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2413
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2390
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
-msgstr ""
-"ھەرپتاختا ئورۇنلاشتۇرۇلۇشى \"%s\"\n"
+msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى \"%s\"\n"
 "نەشر ھوقۇقى &#169; X.Org ۋەخپىسى ۋە XKeyboardConfig تۆھپىكارلارغا تەۋە\n"
 "ئىجازەتنامىنى بوغچىنىڭ مېتا سانلىق-مەلۇماتىدىن كۆرۈڭ"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2500
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2477
 msgid "Unknown"
 msgstr "نامەلۇم"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2545
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2524
 #, c-format
 msgid "Keyboard Layout \"%s\""
 msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:757
+#: ../libgnomekbd/gkbd-keyboard-config.c:672
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ئورۇنلاشتۇرۇلۇشى \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:776
+#: ../libgnomekbd/gkbd-keyboard-config.c:690
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "تاللانما \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:784
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "مودېل \"%s\"، %s ۋە %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:785
+#: ../libgnomekbd/gkbd-keyboard-config.c:699
 msgid "no layout"
 msgstr "ئورۇنلاشتۇرۇلۇشى يوق"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:786
+#: ../libgnomekbd/gkbd-keyboard-config.c:700
 msgid "no options"
 msgstr "تاللانما يوق"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"ھەرپتاختا ھالىتىنى قايتا يۈكلىگەندە بىر گۇرۇپپا قوليازما ئىجرا قىلىش لازىم. "
-"xmodmap ئاساسىدىكى تەڭشەكنى قايتا قوللىنىشتا كېرەكلىك."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME مۇندەرىجىدىكى modmap ھۆججەتلەر تىزىملىكى."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "كۆزنەك قۇرۇلغاندا بېكىتىلگەن كۆڭۈلدىكى گۇرۇپپا"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "ھەر بىر كۆزنەككە ئايرىم-ئايرىم گۇرۇپپا ساقلاپ قال ۋە باشقۇر"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "ھەرپتاختا يېڭىلاش بىر تەرەپ قىلغۇچ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "ھەرپتاختا مودېلى"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "ھەرپتاختا تاللانمىسى"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
-msgstr ""
-"ئۆزگەرگەن، ئاز ئۇچرايدىغان ھەرپتاختا ئورۇنلاشتۇرۇلۇشى ۋە سەپلىمىسىنى يۈكلە"
+msgstr "ئۆزگەرگەن، ئاز ئۇچرايدىغان ھەرپتاختا ئورۇنلاشتۇرۇلۇشى ۋە سەپلىمىسىنى يۈكلە"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
 msgstr "قوشۇمچە سەپلىمە تۇرلىرىنى يۈكلە"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
 msgstr "كۆرسەتكۈچنى جايلاشتۇرۇش گۇرۇپپىسى بىلەن قوشۇپ ساقلا/ئەسلىگە قايتۇر"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "ئىككىلەمچى گۇرۇپپا"
-
-#. TRANSLATORS: real national flags
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet"
-msgstr "قوللانچاقتا بايراقلارنى كۆرسەت"
-
-#. TRANSLATORS: real national flags
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
-msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
-"قوللانچاقتا بايراقلارنى كۆرسىتىش ئارقىلىق ھازىرقى ئورۇنلاشتۇرۇشنى كۆرسەت"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
 msgstr "گۇرۇپپا ئاتىنى ئەمەس ئورۇنلاشتۇرۇش ئاتىنى كۆرسەت"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr ""
-"گۇرۇپپا ئاتىنى ئەمەس ئورۇنلاشتۇرۇش ئاتىنى كۆرسەت(بىر نەچچە خىل "
-"ئورۇنلاشتۇرۇشنى ئىشلەتكىلى بولىدىغان XFree نىڭ نەشرىدىلا كۈچكە ئىگە)"
+msgstr "گۇرۇپپا ئاتىنى ئەمەس ئورۇنلاشتۇرۇش ئاتىنى كۆرسەت(بىر نەچچە خىل ئورۇنلاشتۇرۇشنى ئىشلەتكىلى بولىدىغان XFree نىڭ نەشرىدىلا كۈچكە ئىگە)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X sysconfig ئۆزگەردى\" دېگەن ئاگاھلاندۇرۇش ئۇچۇرىنى كۆرسەتمە"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "ئىككىلەمچى گۇرۇپپا"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "قوللانچاقتا بايراقلارنى كۆرسەت"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "قوللانچاقتا بايراقلارنى كۆرسىتىش ئارقىلىق ھازىرقى ئورۇنلاشتۇرۇشنى كۆرسەت"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "ھەرپتاختىنى ئالدىن كۆرسىتىدىغان كۆزنەكنىڭ X كوئوردېناتى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "The Keyboard Preview, Y offset"
 msgstr "ھەرپتاختىنى ئالدىن كۆرسىتىدىغان كۆزنەكنىڭ Y كوئوردېناتى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "The Keyboard Preview, height"
 msgstr "ھەرپتاختىنى ئالدىن كۆرسىتىدىغان كۆزنەكنىڭ ئېگىزلىكى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "The Keyboard Preview, width"
 msgstr "ھەرپتاختىنى ئالدىن كۆرسىتىدىغان كۆزنەكنىڭ كەڭلىكى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
 msgid "The background color"
 msgstr "تەگلىك رەڭگى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The background color for the layout indicator"
 msgstr "ئورۇنلاشتۇرۇلۇش كۆرسەتكۈچىنىڭ تەگلىك رەڭگى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font family"
 msgstr "خەت نۇسخىسى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font family for the layout indicator"
 msgstr "ئورۇنلاشتۇرۇلۇش كۆرسەتكۈچىنىڭ خەت نۇسخىسى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The font size"
 msgstr "خەت چوڭلۇقى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The font size for the layout indicator"
 msgstr "ئورۇنلاشتۇرۇلۇش كۆرسەتكۈچىنىڭ خەت چوڭلۇقى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
 msgstr "ئالدى رەڭگى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The foreground color for the layout indicator"
 msgstr "ئورۇنلاشتۇرۇلۇش كۆرسەتكۈچىنىڭ ئالدى رەڭگى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "ئورۇنلاشتۇرۇلۇش كۆرسەتكۈچى قىستۇرمىلىرىنىڭ تىزىملىكى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "ھەرپتاختا مودېلى"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "ھەرپتاختا تاللانمىسى"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
 msgid "keyboard layout"
 msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
 msgid "keyboard model"
 msgstr "ھەرپتاختا مودېلى"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
-msgid "modmap file list"
-msgstr "modmap ھۆججەت تىزىملىكى"
 
 #: ../libgnomekbd/show-layout.ui.h:1
 msgid "Keyboard Layout"
@@ -264,19 +232,14 @@ msgstr "قىستۇرما قوش"
 msgid "_Available plugins:"
 msgstr "ئىشلىتىلىشچان قىستۇرمىلار(_A):"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
 msgstr "چۈشەندۈرۈشى يوق."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
 msgstr "ياردەم ھۆججىتىنى ئاچالمىدى"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "GConf نى دەسلەپلەشتۈرەلمىدى: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
@@ -294,3 +257,25 @@ msgstr "ھەرپتاختا كۆرسەتكۈچى سىنىقى(%s)"
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "كۆرسەتكۈچ:"
+
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "ھەرپتاختا ھالىتىنى قايتا يۈكلىگەندە بىر گۇرۇپپا قوليازما ئىجرا قىلىش "
+#~ "لازىم. xmodmap ئاساسىدىكى تەڭشەكنى قايتا قوللىنىشتا كېرەكلىك."
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "$HOME مۇندەرىجىدىكى modmap ھۆججەتلەر تىزىملىكى."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "ھەرپتاختا يېڭىلاش بىر تەرەپ قىلغۇچ"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "\"X sysconfig ئۆزگەردى\" دېگەن ئاگاھلاندۇرۇش ئۇچۇرىنى كۆرسەتمە"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap ھۆججەت تىزىملىكى"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "GConf نى دەسلەپلەشتۈرەلمىدى: %s\n"
