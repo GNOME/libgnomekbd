@@ -206,7 +206,7 @@ msgstr "Culoarea de prim-plan a indicatorului de aranjament"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
 msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Lista modulelor activate Indicator tastatură"
+msgstr "Lista modulelor indicator tastatură activate"
 
 #: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
 msgid "keyboard layout"
