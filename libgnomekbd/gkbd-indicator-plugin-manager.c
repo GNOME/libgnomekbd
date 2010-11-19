@@ -395,7 +395,7 @@ void
 void
 gkbd_indicator_plugin_container_init (GkbdIndicatorPluginContainer * pc)
 {
-	pc->settings = g_settings_new (GKBD_SCHEMA);
+	pc->settings = g_settings_new ("org.gnome.libgnomekbd.indicator");
 }
 
 void

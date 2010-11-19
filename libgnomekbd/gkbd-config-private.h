@@ -25,7 +25,7 @@
 
 #define GKBD_CONFIG_KEY_PREFIX "/desktop/gnome/peripherals/keyboard"
 
-#define GKBD_SCHEMA "org.gnome.libgnomekbd"
+#define GKBD_SCHEMA_PREVIEW "org.gnome.libgnomekbd.preview"
 
 extern const gchar GKBD_PREVIEW_CONFIG_DIR[];
 extern const gchar GKBD_PREVIEW_CONFIG_KEY_X[];

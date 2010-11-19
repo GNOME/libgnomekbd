@@ -45,24 +45,17 @@ gkbd_install_glib_log_appender (void)
 	xkl_set_log_appender (gkbd_log_appender);
 }
 
-#define GKBD_PREVIEW_CONFIG_KEY_PREFIX  GKBD_CONFIG_KEY_PREFIX "/preview"
-
-const gchar GKBD_PREVIEW_CONFIG_DIR[] = GKBD_PREVIEW_CONFIG_KEY_PREFIX;
-const gchar GKBD_PREVIEW_CONFIG_KEY_X[] =
-    GKBD_PREVIEW_CONFIG_KEY_PREFIX "/x";
-const gchar GKBD_PREVIEW_CONFIG_KEY_Y[] =
-    GKBD_PREVIEW_CONFIG_KEY_PREFIX "/y";
-const gchar GKBD_PREVIEW_CONFIG_KEY_WIDTH[] =
-    GKBD_PREVIEW_CONFIG_KEY_PREFIX "/width";
-const gchar GKBD_PREVIEW_CONFIG_KEY_HEIGHT[] =
-    GKBD_PREVIEW_CONFIG_KEY_PREFIX "/height";
+const gchar GKBD_PREVIEW_CONFIG_KEY_X[] = "x";
+const gchar GKBD_PREVIEW_CONFIG_KEY_Y[] = "y";
+const gchar GKBD_PREVIEW_CONFIG_KEY_WIDTH[] = "width";
+const gchar GKBD_PREVIEW_CONFIG_KEY_HEIGHT[] = "height";
 
 GdkRectangle *
 gkbd_preview_load_position (void)
 {
 	GdkRectangle *rv = NULL;
 	gint x, y, w, h;
-	GSettings *settings = g_settings_new (GKBD_SCHEMA);
+	GSettings *settings = g_settings_new (GKBD_SCHEMA_PREVIEW);
 
 	if (settings == NULL)
 		return NULL;
@@ -100,7 +93,7 @@ gkbd_preview_load_position (void)
 void
 gkbd_preview_save_position (GdkRectangle * rect)
 {
-	GSettings *settings = g_settings_new (GKBD_SCHEMA);
+	GSettings *settings = g_settings_new (GKBD_SCHEMA_PREVIEW);
 
 	g_settings_delay (settings);
 
