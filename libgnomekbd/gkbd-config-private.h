@@ -23,8 +23,6 @@
 #include "libgnomekbd/gkbd-desktop-config.h"
 #include "libgnomekbd/gkbd-keyboard-config.h"
 
-#define GKBD_CONFIG_KEY_PREFIX "/desktop/gnome/peripherals/keyboard"
-
 #define GKBD_SCHEMA_PREVIEW "org.gnome.libgnomekbd.preview"
 
 extern const gchar GKBD_PREVIEW_CONFIG_DIR[];
