@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the libgnomekbd package.
 # Gheyret Kenji <gheyret@yahoo.com>, 2010.
 # Sahran <sahran@live.com>, 2010.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd gnome-2-32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-10-29 20:32+0000\n"
+"POT-Creation-Date: 2010-11-14 18:57+0000\n"
 "PO-Revision-Date: 2010-10-02 23:22+0000\n"
 "Last-Translator: Sahran <sahran@live.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
