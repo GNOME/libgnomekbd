@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-12-21 21:47+0000\n"
-"PO-Revision-Date: 2010-01-02 13:00+0700\n"
+"POT-Creation-Date: 2010-10-15 20:30+0000\n"
+"PO-Revision-Date: 2010-11-23 21:48+0700\n"
 "Last-Translator:  Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2391
+#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:326
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "มีข้อผิดพลาดขณะโหลดภาพ: %s"
+
+#: ../libgnomekbd/gkbd-indicator.c:715 ../libgnomekbd/gkbd-status.c:655
+msgid "XKB initialization error"
+msgstr "เกิดข้อผิดพลาดกับการตั้งต้น XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2390
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -29,177 +38,157 @@ msgstr ""
 "สงวนลิขสิทธิ์ &#169; X.Org Foundation และผู้ร่วมสมทบงานกับ XKeyboardConfig\n"
 "ดูสัญญาอนุญาตได้จากข้อมูลกำกับแพกเกจ"
 
-#: ../libgnomekbd/gkbd-indicator.c:119
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2477
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2524
 #, c-format
-msgid "There was an error loading an image: %s"
-msgstr "มีข้อผิดพลาดขณะโหลดภาพ: %s"
+msgid "Keyboard Layout \"%s\""
+msgstr "ผังแป้นพิมพ์ \"%s\""
 
-#: ../libgnomekbd/gkbd-indicator.c:706
-msgid "XKB initialization error"
-msgstr "เกิดข้อผิดพลาดกับการเริ่มต้น XKB"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:672
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ผัง \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:690
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ตัวเลือก \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "รุ่น \"%s\", %s และ %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:699
 msgid "no layout"
 msgstr "ไม่ระบุผังแป้นพิมพ์"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:700
 msgid "no options"
 msgstr "ไม่ระบุตัวเลือก"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"รวมชุดสคริปต์สำหรับทำงานเมื่อโหลดสถานะแป้นพิมพ์ขึ้นใหม่ "
-"มีประโยชน์สำหรับการปรับเปลี่ยนข้อมูลโดยใช้ xmodmap"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "รายการแฟ้มของ modmap ที่มีในไดเรกทอรี $HOME"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "กลุ่มปริยาย สำหรับกำหนดตอนสร้างหน้าต่าง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "จำและจัดการภาษาแยกตามหน้าต่าง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "เครื่องมือจัดการปรับข้อมูลแป้นพิมพ์"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "ผังแป้นพิมพ์"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "รุ่นแป้นพิมพ์"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "ตัวเลือกแป้นพิมพ์"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
 msgstr "โหลดผังแป้นพิมพ์และตัวเลือกแปลกๆ ที่ไม่ค่อยได้ใช้"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
 msgstr "โหลดรายการค่าตั้งพิเศษเพิ่มเติม"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
 msgstr "บันทึก/เรียกคืน ตัวบ่งชี้พร้อมกับภาษาแป้นพิมพ์ด้วย"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "กลุ่มสำรอง"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Show flags in the applet"
-msgstr "แสดงสถานะในแอพเพล็ต"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "แสดงสถานะในแอพเพล็ตเพื่อบ่งชึ้ผังปัจจุบัน"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
 msgstr "แสดงชื่อผังแทนชื่อภาษา"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr "แสดงชื่อผังแทนชื่อภาษา (สำหรับ XFree รุ่นที่รองรับการใช้หลายผังพร้อมกันเท่านั้น)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "งดใช้ข้อความเตือน \"ค่าตั้งระบบ X มีการเปลี่ยนแปลง\""
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "กลุ่มสำรอง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "แสดงธงในแอพเพล็ต"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "แสดงธงในแอพเพล็ตเพื่อบ่งชึ้ผังปัจจุบัน"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ตำแหน่งในแนวนอน"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "The Keyboard Preview, Y offset"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ตำแหน่งในแนวตั้ง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "The Keyboard Preview, height"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ความสูง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "The Keyboard Preview, width"
 msgstr "การแสดงตัวอย่างแป้นพิมพ์, ความกว้าง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
 msgid "The background color"
 msgstr "สีพื้นหลัง"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The background color for the layout indicator"
 msgstr "สีพื้นหลังของตัวบอกภาษาแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font family"
 msgstr "แบบอักษร"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font family for the layout indicator"
 msgstr "แบบอักษรสำหรับตัวบอกภาษาแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The font size"
 msgstr "ขนาดตัวอักษร"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The font size for the layout indicator"
 msgstr "ขนาดตัวอักษรสำหรับตัวบอกภาษาแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
 msgstr "สีตัวอักษร"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The foreground color for the layout indicator"
 msgstr "สีตัวอักษรสำหรับตัวบอกภาษาแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "รายการปลั๊กอินที่ใช้ของแอพเพล็ตแสดงผังแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "ผังแป้นพิมพ์"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "รุ่นแป้นพิมพ์"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "ตัวเลือกแป้นพิมพ์"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
 msgid "keyboard layout"
 msgstr "ผังแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
 msgid "keyboard model"
 msgstr "รุ่นแป้นพิมพ์"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
-msgid "modmap file list"
-msgstr "รายการแฟ้ม modmap"
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "ผังแป้นพิมพ์"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -245,19 +234,14 @@ msgstr "เพิ่มปลั๊กอิน"
 msgid "_Available plugins:"
 msgstr "ปลั๊กอิน_ที่มี:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
 msgstr "ไม่มีคำอธิบาย"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
 msgstr "ไม่สามารถเปิดแฟ้มวิธีใช้"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "เริ่ม GConf ไม่สำเร็จ: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
@@ -275,6 +259,28 @@ msgstr "ทดสอบแอพเพล็ตแสดงภาษาแป้
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "ตัวบ่งชี้:"
+
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "รวมชุดสคริปต์สำหรับทำงานเมื่อโหลดสถานะแป้นพิมพ์ขึ้นใหม่ "
+#~ "มีประโยชน์สำหรับการปรับเปลี่ยนข้อมูลโดยใช้ xmodmap"
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "รายการแฟ้มของ modmap ที่มีในไดเรกทอรี $HOME"
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "เครื่องมือจัดการปรับข้อมูลแป้นพิมพ์"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "งดใช้ข้อความเตือน \"ค่าตั้งระบบ X มีการเปลี่ยนแปลง\""
+
+#~ msgid "modmap file list"
+#~ msgstr "รายการแฟ้ม modmap"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "เริ่ม GConf ไม่สำเร็จ: %s\n"
 
 #~ msgid ""
 #~ "Keyboard settings in gconf will be overridden from the system ASAP "
