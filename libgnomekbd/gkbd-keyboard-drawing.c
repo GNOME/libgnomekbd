@@ -2384,7 +2384,7 @@ gkbd_keyboard_drawing_draw_page (GtkPrintOperation * operation,
 	gdouble dpi_y = gtk_print_context_get_dpi_y (context);
 	gchar *header;
 
-	gtk_print_operation_set_unit (operation, GTK_PIXELS);
+	gtk_print_operation_set_unit (operation, GTK_UNIT_PIXEL);
 
 	header = g_strdup_printf
 	    (_("Keyboard layout \"%s\"\n"
