@@ -26,11 +26,13 @@ libgnomekbd_la_CFLAGS = $(common_CFLAGS)
 
 libgnomekbdui_la_CFLAGS = $(common_CFLAGS)		\
 	-DUIDIR=\"$(uidir)\"				\
+	$(GLIB_CFLAGS) \
 	$(GTK_CFLAGS)
 
 common_LDFLAGS = -version-info @VERSION_INFO@ -no-undefined
 
 common_LIBADD = \
+		$(GLIB_LIBS) \
 		$(GDK_LIBS) \
 		$(LIBXKLAVIER_LIBS) \
 		$(XLIB_LIBS)
