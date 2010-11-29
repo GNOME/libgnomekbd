@@ -1384,6 +1384,8 @@ static gboolean
 draw (GtkWidget * widget,
       cairo_t *cr, GkbdKeyboardDrawing * drawing)
 {
+	GtkAllocation allocation;
+
 	if (!drawing->xkb)
 		return FALSE;
 
@@ -1394,10 +1396,13 @@ draw (GtkWidget * widget,
         cairo_paint (cr);
 
 	if (gtk_widget_has_focus (widget)) {
-                gtk_render_focus (gtk_widget_get_style_context (widget),
-                                  cr, 0, 0,
-                                  gtk_widget_get_allocated_width (widget),
-                                  gtk_widget_get_allocated_height (widget));
+		gtk_widget_get_allocation (widget, &allocation);
+		gtk_paint_focus (gtk_widget_get_style (widget),
+				 cr,
+				 gtk_widget_get_state (widget),
+				 widget, "keyboard-drawing",
+				 0, 0, allocation.width,
+				 allocation.height);
 	}
 
 	return FALSE;

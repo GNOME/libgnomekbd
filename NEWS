@@ -1,3 +1,7 @@
+2.91.3.1:
+	The patch from dev branch of gtk was used in 2.91.3 - 
+	so 2.91.3 was not buildable with gtk+ master. Reverted
+
 2.91.3:
 	More changes related to GTK3.
 	Eliminated one crasher
