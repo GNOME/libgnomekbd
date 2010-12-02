@@ -1305,7 +1305,7 @@ create_cairo (GkbdKeyboardDrawing * drawing)
 	if (drawing == NULL || drawing->surface == NULL)
 		return FALSE;
 	drawing->renderContext->cr =
-	    gdk_cairo_create (GDK_DRAWABLE (drawing->surface));
+	    cairo_create (drawing->surface);
 
 	state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	drawing->renderContext->dark_color =
@@ -2384,7 +2384,7 @@ gkbd_keyboard_drawing_draw_page (GtkPrintOperation * operation,
 	gdouble dpi_y = gtk_print_context_get_dpi_y (context);
 	gchar *header;
 
-	gtk_print_operation_set_unit (operation, GTK_PIXELS);
+	gtk_print_operation_set_unit (operation, GTK_UNIT_PIXEL);
 
 	header = g_strdup_printf
 	    (_("Keyboard layout \"%s\"\n"
