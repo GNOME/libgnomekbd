@@ -1304,8 +1304,7 @@ create_cairo (GkbdKeyboardDrawing * drawing)
 	GtkStateType state;
 	if (drawing == NULL || drawing->surface == NULL)
 		return FALSE;
-	drawing->renderContext->cr =
-	    gdk_cairo_create (GDK_WINDOW (drawing->surface));
+	drawing->renderContext->cr = cairo_create (drawing->surface);
 
 	state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	drawing->renderContext->dark_color =
