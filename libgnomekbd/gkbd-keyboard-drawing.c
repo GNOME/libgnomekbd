@@ -1334,7 +1334,7 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 
 	drawing->surface =
 	    gdk_window_create_similar_surface (gtk_widget_get_window (GTK_WIDGET (drawing)),
-			    allocation.width, allocation.height, -1);
+			    CAIRO_CONTENT_COLOR, allocation.width, allocation.height);
 
 	if (create_cairo (drawing)) {
 		/* blank background */
