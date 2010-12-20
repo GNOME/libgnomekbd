@@ -12,10 +12,11 @@ msgstr ""
 "Project-Id-Version: libgnomekbd MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-05-26 22:36+0000\n"
+"POT-Creation-Date: 2010-12-04 23:46+0000\n"
 "PO-Revision-Date: 2010-05-27 08:23+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,33 +68,11 @@ msgstr "paigutus puudub"
 msgid "no options"
 msgstr "valikud puuduvad"
 
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"Kogumik skripte, mida käivitatakse klaviatuuri oleku ümberlaadimisel. See on "
-"kasulik näiteks xmodmap'il põhinevate sätete rakendamiseks"
-
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME kataloogis olevate modmap-failide nimekiri."
-
 msgid "Default group, assigned on window creation"
 msgstr "Vaikimisi grupp, mis on seotud akna loomisega"
 
 msgid "Keep and manage separate group per window"
 msgstr "Iga akna kohta hoitakse ja hallatakse eraldi gruppi"
-
-msgid "Keyboard Update Handlers"
-msgstr "Klaviatuuriuuenduste käsitlejad"
-
-msgid "Keyboard layout"
-msgstr "Klaviatuuri paigutus"
-
-msgid "Keyboard model"
-msgstr "Klaviatuuri mudel"
-
-msgid "Keyboard options"
-msgstr "Klaviatuuri valikud"
 
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Eksootiliste, harva kasutatavate paigutuste ja valikute laadimine"
@@ -103,17 +82,6 @@ msgstr "Seadistuste lisavalikute laadimine"
 
 msgid "Save/restore indicators together with layout groups"
 msgstr "Näidikute salvestamine ja taastamine koos paigutuste gruppidega"
-
-msgid "Secondary groups"
-msgstr "Teisejärgulised grupid"
-
-#. TRANSLATORS: real national flags
-msgid "Show flags in the applet"
-msgstr "Rakendis lippude näitamine"
-
-#. TRANSLATORS: real national flags
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Rakendis lippude näitamine hetkel aktiivse paigutuse kohta"
 
 msgid "Show layout names instead of group names"
 msgstr "Grupinimede asemel paigutuste nimede näitamine "
@@ -125,8 +93,14 @@ msgstr ""
 "Grupinimede asemel paigutuste nimede näitamine (ainult mitme paugutuse toega "
 "XFree versioonidele)"
 
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X sysconfig changed\" teadete peitmine"
+msgid "Secondary groups"
+msgstr "Teisejärgulised grupid"
+
+msgid "Show flags in the applet"
+msgstr "Rakendis lippude näitamine"
+
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Rakendis lippude näitamine hetkel aktiivse paigutuse kohta"
 
 msgid "The Keyboard Preview, X offset"
 msgstr "Klaviatuuri eelvaade, X-telje nihe"
@@ -167,14 +141,20 @@ msgstr "Paigutuse näidiku teksti värvus"
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Lubatud klaviatuurinäidiku pluginate nimekiri"
 
+msgid "Keyboard layout"
+msgstr "Klaviatuuri paigutus"
+
+msgid "Keyboard model"
+msgstr "Klaviatuuri mudel"
+
+msgid "Keyboard options"
+msgstr "Klaviatuuri valikud"
+
 msgid "keyboard layout"
 msgstr "klaviatuuri paigutus"
 
 msgid "keyboard model"
 msgstr "klaviatuuri mudel"
-
-msgid "modmap file list"
-msgstr "modmap-failide loend"
 
 msgid "Keyboard Layout"
 msgstr "Klaviatuuri paigutus"
@@ -218,10 +198,6 @@ msgstr "Kirjeldus puudub."
 msgid "Unable to open help file"
 msgstr "Abiteabe faili pole võimalik avada"
 
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "Tõrge GConf'i lähtestamisel: %s\n"
-
 msgid "Enable/disable installed plugins"
 msgstr "Paigaldatud pluginate lubamine ja keelamine"
 
@@ -234,3 +210,25 @@ msgstr "Klaviatuurinäidiku test (%s)"
 
 msgid "Indicator:"
 msgstr "Näidik:"
+
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "Kogumik skripte, mida käivitatakse klaviatuuri oleku ümberlaadimisel. See "
+#~ "on kasulik näiteks xmodmap'il põhinevate sätete rakendamiseks"
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "$HOME kataloogis olevate modmap-failide nimekiri."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "Klaviatuuriuuenduste käsitlejad"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "\"X sysconfig changed\" teadete peitmine"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap-failide loend"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "Tõrge GConf'i lähtestamisel: %s\n"
