@@ -34,7 +34,7 @@ extern "C" {
 
 #define GKBD_TYPE_STATUS             (gkbd_status_get_type ())
 #define GKBD_STATUS(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GKBD_TYPE_STATUS, GkbdStatus))
-#define GKBD_INDCATOR_CLASS(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), GKBD_TYPE_STATUS,  GkbdStatusClass))
+#define GKBD_STATUS_CLASS(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), GKBD_TYPE_STATUS,  GkbdStatusClass))
 #define GKBD_IS_STATUS(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GKBD_TYPE_STATUS))
 #define GKBD_IS_STATUS_CLASS(obj)    (G_TYPE_CHECK_CLASS_TYPE ((obj), GKBD_TYPE_STATUS))
 #define GKBD_STATUS_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GKBD_TYPE_STATUS, GkbdStatusClass))

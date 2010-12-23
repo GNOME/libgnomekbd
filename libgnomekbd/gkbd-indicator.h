@@ -34,7 +34,7 @@ extern "C" {
 
 #define GKBD_TYPE_INDICATOR             (gkbd_indicator_get_type ())
 #define GKBD_INDICATOR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GKBD_TYPE_INDICATOR, GkbdIndicator))
-#define GKBD_INDCATOR_CLASS(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), GKBD_TYPE_INDICATOR,  GkbdIndicatorClass))
+#define GKBD_INDICATOR_CLASS(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), GKBD_TYPE_INDICATOR,  GkbdIndicatorClass))
 #define GKBD_IS_INDICATOR(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GKBD_TYPE_INDICATOR))
 #define GKBD_IS_INDICATOR_CLASS(obj)    (G_TYPE_CHECK_CLASS_TYPE ((obj), GKBD_TYPE_INDICATOR))
 #define GKBD_INDICATOR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GKBD_TYPE_INDICATOR, GkbdIndicatorClass))
