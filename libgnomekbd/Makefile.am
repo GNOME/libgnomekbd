@@ -11,7 +11,7 @@ gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
 @INTLTOOL_XML_NOMERGE_RULE@
 
 common_CFLAGS = \
-	-I$(top_srcdir) -Wall 			\
+	-I$(top_srcdir) 				\
 	$(GDK_CFLAGS)					\
 	$(LIBXKLAVIER_CFLAGS)				\
 	$(XLIB_CFLAGS)					\
@@ -114,3 +114,29 @@ gkbd-keyboard-drawing-marshal.c: gkbd-keyboard-drawing-marshal.h
           && mv gkbd-keyboard-drawing-marshal.tmp gkbd-keyboard-drawing-marshal.c ) \
         || ( rm -f gkbd-keyboard-drawing-marshal.tmp && exit 1 )
 
+-include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ARGS = --add-include-path=$(srcdir) --warn-all
+INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
+
+if HAVE_INTROSPECTION
+introspection_sources = $(gnomekbdinc_HEADERS) \
+        $(libgnomekbd_la_SOURCES) \
+        $(libgnomekbdui_la_SOURCES) \
+        gkbd-indicator-plugin-manager.h
+
+Gkbd-3.0.gir: libgnomekbd.la libgnomekbdui.la
+Gkbd_3_0_gir_INCLUDES = GObject-2.0 Gtk-3.0
+Gkbd_3_0_gir_CFLAGS = $(libgnomekbdui_la_CFLAGS)
+Gkbd_3_0_gir_LIBS = libgnomekbd.la libgnomekbdui.la
+Gkbd_3_0_gir_FILES = $(introspection_sources)
+INTROSPECTION_GIRS += Gkbd-3.0.gir
+
+girdir = $(datadir)/gir-1.0
+gir_DATA = $(INTROSPECTION_GIRS)
+
+typelibdir = $(libdir)/girepository-1.0
+typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+CLEANFILES = $(gir_DATA) $(typelib_DATA)
+endif

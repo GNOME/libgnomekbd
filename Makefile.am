@@ -6,12 +6,15 @@ SUBDIRS = libgnomekbd $(TEST) capplet po
 
 ACLOCAL_AMFLAGS = -I m4
 
+DISTCHECK_CONFIGURE_FLAGS = --enable-introspection
+
 DISTCLEANFILES = \
   intltool-extract \
   intltool-merge \
   intltool-update
  
 EXTRA_DIST = \
+        m4/introspection.m4 \
         libgnomekbd.pc.in \
         libgnomekbdui.pc.in \
         intltool-extract.in \
