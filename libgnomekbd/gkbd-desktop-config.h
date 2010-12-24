@@ -35,7 +35,8 @@ extern const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[];
 /*
  * General configuration
  */
-typedef struct _GkbdDesktopConfig {
+typedef struct _GkbdDesktopConfig GkbdDesktopConfig;
+struct _GkbdDesktopConfig {
 	gint default_group;
 	gboolean group_per_app;
 	gboolean handle_indicators;
@@ -46,7 +47,7 @@ typedef struct _GkbdDesktopConfig {
 	GSettings *settings;
 	int config_listener_id;
 	XklEngine *engine;
-} GkbdDesktopConfig;
+};
 
 /**
  * GkbdDesktopConfig functions

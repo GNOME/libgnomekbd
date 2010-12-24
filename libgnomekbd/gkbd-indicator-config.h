@@ -27,7 +27,8 @@
 /*
  * Indicator configuration
  */
-typedef struct _GkbdIndicatorConfig {
+typedef struct _GkbdIndicatorConfig GkbdIndicatorConfig;
+struct _GkbdIndicatorConfig {
 	int secondary_groups_mask;
 	gboolean show_flags;
 
@@ -44,7 +45,7 @@ typedef struct _GkbdIndicatorConfig {
 	GtkIconTheme *icon_theme;
 	int config_listener_id;
 	XklEngine *engine;
-} GkbdIndicatorConfig;
+};
 
 /**
  * GkbdIndicatorConfig functions - 

@@ -23,16 +23,18 @@
 #include <gmodule.h>
 #include <libgnomekbd/gkbd-indicator-plugin.h>
 
-typedef struct _GkbdIndicatorPluginManager {
+typedef struct _GkbdIndicatorPluginManager GkbdIndicatorPluginManager;
+struct _GkbdIndicatorPluginManager {
 	GHashTable *all_plugin_recs;
 	GSList *inited_plugin_recs;
-} GkbdIndicatorPluginManager;
+};
 
-typedef struct _GkbdIndicatorPluginManagerRecord {
+typedef struct _GkbdIndicatorPluginManagerRecord GkbdIndicatorPluginManagerRecord;
+struct _GkbdIndicatorPluginManagerRecord {
 	const char *full_path;
 	GModule *module;
 	const GkbdIndicatorPlugin *plugin;
-} GkbdIndicatorPluginManagerRecord;
+};
 
 extern void
  gkbd_indicator_plugin_manager_init (GkbdIndicatorPluginManager * manager);

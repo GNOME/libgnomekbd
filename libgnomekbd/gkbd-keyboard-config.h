@@ -34,7 +34,8 @@ extern const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[];
 /*
  * Keyboard Configuration
  */
-typedef struct _GkbdKeyboardConfig {
+typedef struct _GkbdKeyboardConfig GkbdKeyboardConfig;
+struct _GkbdKeyboardConfig {
 	gchar *model;
 	gchar **layouts_variants;
 	gchar **options;
@@ -43,7 +44,7 @@ typedef struct _GkbdKeyboardConfig {
 	GSettings *settings;
 	int config_listener_id;
 	XklEngine *engine;
-} GkbdKeyboardConfig;
+};
 
 /**
  * GkbdKeyboardConfig functions

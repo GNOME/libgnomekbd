@@ -27,9 +27,10 @@
 
 struct _GkbdIndicatorPlugin;
 
-typedef struct _GkbdIndicatorPluginContainer {
+typedef struct _GkbdIndicatorPluginContainer GkbdIndicatorPluginContainer;
+struct _GkbdIndicatorPluginContainer {
 	GSettings *settings;
-} GkbdIndicatorPluginContainer;
+};
 
 typedef const struct _GkbdIndicatorPlugin
 *(*GkbdIndicatorPluginGetPluginFunc) (void);
@@ -70,7 +71,8 @@ typedef
 void (*GkbdIndicatorPluginConfigureProperties)
  (GkbdIndicatorPluginContainer * pc, GtkWindow * parent);
 
-typedef struct _GkbdIndicatorPlugin {
+typedef struct _GkbdIndicatorPlugin GkbdIndicatorPlugin;
+struct _GkbdIndicatorPlugin {
 	const char *name;
 
 	const char *description;
@@ -100,7 +102,7 @@ typedef struct _GkbdIndicatorPlugin {
 /* not implemented */
 	GkbdIndicatorPluginCreateWidget create_widget_callback;
 
-} GkbdIndicatorPlugin;
+};
 
 /**
  * Functions accessible for plugins
