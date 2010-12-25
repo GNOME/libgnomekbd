@@ -357,6 +357,10 @@ int
 	return -1;
 }
 
+/**
+ * gkbd_indicator_plugin_manager_decorate_widget:
+ * Returns: (transfer full): A widget to use
+ */
 GtkWidget
     * gkbd_indicator_plugin_manager_decorate_widget
     (GkbdIndicatorPluginManager * manager, GtkWidget * widget,

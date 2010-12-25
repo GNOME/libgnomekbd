@@ -593,6 +593,10 @@ gkbd_keyboard_config_activate (GkbdKeyboardConfig * kbd_config)
 	return rv;
 }
 
+/**
+ * gkbd_keyboard_config_start_listen:
+ * @func: (scope notified): a function to call when settings are changed
+ */
 void
 gkbd_keyboard_config_start_listen (GkbdKeyboardConfig * kbd_config,
 				   GCallback func, gpointer user_data)
@@ -705,6 +709,10 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 	return result;
 }
 
+/**
+ * gkbd_keyboard_config_add_default_switch_option_if_necessary:
+ * Returns: (transfer full): List of options
+ */
 gchar **
 gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
 							     layouts_list,

@@ -838,6 +838,10 @@ gkbd_status_get_xkl_engine ()
 	return globals.engine;
 }
 
+/**
+ * gkbd_status_get_group_names:
+ * Returns: (transfer none): List of group names
+ */
 gchar **
 gkbd_status_get_group_names ()
 {

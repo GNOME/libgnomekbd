@@ -320,6 +320,10 @@ gkbd_indicator_config_activate (GkbdIndicatorConfig * ind_config)
 					      secondary_groups_mask);
 }
 
+/**
+ * gkbd_indicator_config_start_listen:
+ * @func: (scope notified): a function to call when settings are changed
+ */
 void
 gkbd_indicator_config_start_listen (GkbdIndicatorConfig *
 				    ind_config,

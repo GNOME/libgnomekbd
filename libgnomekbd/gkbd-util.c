@@ -50,6 +50,10 @@ const gchar GKBD_PREVIEW_CONFIG_KEY_Y[] = "y";
 const gchar GKBD_PREVIEW_CONFIG_KEY_WIDTH[] = "width";
 const gchar GKBD_PREVIEW_CONFIG_KEY_HEIGHT[] = "height";
 
+/**
+ * gkbd_preview_load_position:
+ * Returns: (transfer full): A rectangle to use
+ */
 GdkRectangle *
 gkbd_preview_load_position (void)
 {
@@ -124,6 +128,10 @@ gkbd_strv_remove (gchar ** arr, const gchar * element)
 	return FALSE;
 }
 
+/**
+ * gkbd_strv_append:
+ * Returns: (transfer full): Append string to strv array
+ */
 gchar **
 gkbd_strv_append (gchar ** arr, gchar * element)
 {

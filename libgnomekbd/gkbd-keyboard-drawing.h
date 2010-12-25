@@ -169,8 +169,6 @@ struct _GkbdKeyboardDrawingClass {
 GType gkbd_keyboard_drawing_get_type (void);
 GtkWidget *gkbd_keyboard_drawing_new (void);
 
-GdkPixbuf *gkbd_keyboard_drawing_get_pixbuf (GkbdKeyboardDrawing *
-					     kbdrawing);
 gboolean gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 				       cairo_t * cr,
 				       PangoLayout * layout,

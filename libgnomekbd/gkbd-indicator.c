@@ -117,7 +117,8 @@ gkbd_indicator_load_images ()
 							    GTK_BUTTONS_OK,
 							    _
 							    ("There was an error loading an image: %s"),
-							    gerror->message);
+							    gerror->
+							    message);
 				g_signal_connect (G_OBJECT (dialog),
 						  "response",
 						  G_CALLBACK
@@ -410,10 +411,8 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 		    gkbd_indicator_extract_layout_name (group,
 							globals.engine,
 							&globals.kbd_cfg,
-							globals.
-							short_group_names,
-							globals.
-							full_group_names);
+							globals.short_group_names,
+							globals.full_group_names);
 
 		lbl_title =
 		    gkbd_indicator_create_label_title (group,
@@ -602,7 +601,8 @@ gkbd_indicator_set_current_page (GkbdIndicator * gki)
 	cur_state = xkl_engine_get_current_state (globals.engine);
 	if (cur_state->group >= 0)
 		gkbd_indicator_set_current_page_for_group (gki,
-							   cur_state->group);
+							   cur_state->
+							   group);
 }
 
 void
@@ -898,6 +898,10 @@ gkbd_indicator_get_xkl_engine ()
 	return globals.engine;
 }
 
+/**
+ * gkbd_indicator_get_group_names:
+ * Returns: (transfer none): List of group names
+ */
 gchar **
 gkbd_indicator_get_group_names ()
 {
@@ -950,6 +954,10 @@ gkbd_indicator_plugin_container_reinit_ui (GkbdIndicatorPluginContainer *
 	} NextIndicator ();
 }
 
+/**
+ * gkbd_indicator_plugin_load_localized_group_names:
+ * Returns: (transfer none): all group names
+ */
 gchar **gkbd_indicator_plugin_load_localized_group_names
     (GkbdIndicatorPluginContainer * pc) {
 	return globals.full_group_names;
