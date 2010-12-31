@@ -53,8 +53,7 @@ main (int argc, char **argv)
 	mainwin = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 
 	gki = gkbd_indicator_new ();
-	gkbd_indicator_set_tooltips_format (_
-					    ("Keyboard Indicator Test (%s)"));
+
 	gkbd_indicator_set_parent_tooltips (GKBD_INDICATOR (gki), TRUE);
 
 	gtk_window_resize (GTK_WINDOW (mainwin), 250, 250);

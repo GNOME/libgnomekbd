@@ -51,6 +51,7 @@ libgnomekbd_la_SOURCES = \
                          gkbd-util.c
 
 libgnomekbdui_la_SOURCES = \
+                         gkbd-configuration.c \
                          gkbd-indicator-config.c \
                          gkbd-indicator.c \
                          gkbd-status.c \
@@ -73,6 +74,7 @@ MAINTAINERCLEANFILES =                  \
 
 gnomekbdincdir = $(includedir)/libgnomekbd
 gnomekbdinc_HEADERS = \
+                      gkbd-configuration.h \
                       gkbd-desktop-config.h \
                       gkbd-keyboard-config.h \
                       gkbd-indicator.h \

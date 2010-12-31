@@ -24,13 +24,9 @@
 
 #include <libxklavier/xklavier.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-	typedef struct _GkbdIndicator GkbdIndicator;
-	typedef struct _GkbdIndicatorPrivate GkbdIndicatorPrivate;
-	typedef struct _GkbdIndicatorClass GkbdIndicatorClass;
+G_BEGIN_DECLS typedef struct _GkbdIndicator GkbdIndicator;
+typedef struct _GkbdIndicatorPrivate GkbdIndicatorPrivate;
+typedef struct _GkbdIndicatorClass GkbdIndicatorClass;
 
 #define GKBD_TYPE_INDICATOR             (gkbd_indicator_get_type ())
 #define GKBD_INDICATOR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GKBD_TYPE_INDICATOR, GkbdIndicator))
@@ -39,42 +35,35 @@ extern "C" {
 #define GKBD_IS_INDICATOR_CLASS(obj)    (G_TYPE_CHECK_CLASS_TYPE ((obj), GKBD_TYPE_INDICATOR))
 #define GKBD_INDICATOR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GKBD_TYPE_INDICATOR, GkbdIndicatorClass))
 
-	struct _GkbdIndicator {
-		GtkNotebook parent;
-		GkbdIndicatorPrivate *priv;
-	};
+struct _GkbdIndicator {
+	GtkNotebook parent;
+	GkbdIndicatorPrivate *priv;
+};
 
-	struct _GkbdIndicatorClass {
-		GtkNotebookClass parent_class;
+struct _GkbdIndicatorClass {
+	GtkNotebookClass parent_class;
 
-		void (*reinit_ui) (GkbdIndicator * gki);
-	};
+	void (*reinit_ui) (GkbdIndicator * gki);
+};
 
-	extern GType gkbd_indicator_get_type (void);
+extern GType gkbd_indicator_get_type (void);
 
-	extern GtkWidget *gkbd_indicator_new (void);
+extern GtkWidget *gkbd_indicator_new (void);
 
-	extern void gkbd_indicator_reinit_ui (GkbdIndicator * gki);
+extern void gkbd_indicator_reinit_ui (GkbdIndicator * gki);
 
-	extern void gkbd_indicator_set_angle (GkbdIndicator * gki,
-					      gdouble angle);
+extern void gkbd_indicator_set_angle (GkbdIndicator * gki, gdouble angle);
 
-	extern XklEngine *gkbd_indicator_get_xkl_engine (void);
+extern XklEngine *gkbd_indicator_get_xkl_engine (void);
 
-	extern gchar **gkbd_indicator_get_group_names (void);
+extern gchar **gkbd_indicator_get_group_names (void);
 
-	extern gchar *gkbd_indicator_get_image_filename (guint group);
+extern gchar *gkbd_indicator_get_image_filename (guint group);
 
-	extern gdouble gkbd_indicator_get_max_width_height_ratio (void);
+extern gdouble gkbd_indicator_get_max_width_height_ratio (void);
 
-	extern void
-	 gkbd_indicator_set_parent_tooltips (GkbdIndicator *
-					     gki, gboolean ifset);
+extern void
+ gkbd_indicator_set_parent_tooltips (GkbdIndicator * gki, gboolean ifset);
 
-	extern void
-	 gkbd_indicator_set_tooltips_format (const gchar str[]);
-
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 #endif

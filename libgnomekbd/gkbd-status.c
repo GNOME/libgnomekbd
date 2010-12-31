@@ -30,18 +30,10 @@
 
 #include <gkbd-desktop-config.h>
 #include <gkbd-indicator-config.h>
+#include <gkbd-configuration.h>
 
 typedef struct _gki_globals {
-	XklEngine *engine;
-	XklConfigRegistry *registry;
-
-	GkbdDesktopConfig cfg;
-	GkbdIndicatorConfig ind_cfg;
-	GkbdKeyboardConfig kbd_cfg;
-
-	const gchar *tooltips_format;
-	gchar **full_group_names;
-	gchar **short_group_names;
+	GkbdConfiguration *config;
 
 	gint current_width;
 	gint current_height;
@@ -49,8 +41,6 @@ typedef struct _gki_globals {
 
 	GSList *icons;		/* list of GdkPixbuf */
 	GSList *widget_instances;	/* list of GkbdStatus */
-	gulong state_changed_handler;
-	gulong config_changed_handler;
 } gki_globals;
 
 static gchar *settings_signal_names[] = {
@@ -61,7 +51,6 @@ static gchar *settings_signal_names[] = {
 };
 
 struct _GkbdStatusPrivate {
-	gdouble angle;
 	gulong settings_signal_handlers[sizeof (settings_signal_names) /
 					sizeof (settings_signal_names[0])];
 };
@@ -119,7 +108,9 @@ void
 gkbd_status_global_fill (GkbdStatus * gki)
 {
 	int grp;
-	int total_groups = xkl_engine_get_num_groups (globals.engine);
+	int total_groups =
+	    xkl_engine_get_num_groups (gkbd_configuration_get_xkl_engine
+				       (globals.config));
 
 	for (grp = 0; grp < total_groups; grp++) {
 		GdkPixbuf *page = gkbd_status_prepare_drawing (gki, grp);
@@ -131,18 +122,8 @@ static void
 gkbd_status_activate (GkbdStatus * gki)
 {
 	xkl_debug (150, "Mouse button pressed on applet\n");
-	gkbd_desktop_config_lock_next_group (&globals.cfg);
+	gkbd_configuration_lock_next_group (globals.config);
 }
-
-/* hackish xref */
-extern gchar *gkbd_indicator_extract_layout_name (int group,
-						  XklEngine * engine,
-						  GkbdKeyboardConfig *
-						  kbd_cfg,
-						  gchar **
-						  short_group_names,
-						  gchar **
-						  full_group_names);
 
 extern gchar *gkbd_indicator_create_label_title (int group,
 						 GHashTable **
@@ -161,11 +142,14 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	cairo_font_options_t *fo;
 	static GHashTable *ln2cnt_map = NULL;
 
+	GkbdIndicatorConfig *ind_cfg =
+	    gkbd_configuration_get_indicator_config (globals.config);
+
 	xkl_debug (160, "Rendering cairo for group %d\n", group);
-	if (globals.ind_cfg.background_color != NULL &&
-	    globals.ind_cfg.background_color[0] != 0) {
+	if (ind_cfg->background_color != NULL &&
+	    ind_cfg->background_color[0] != 0) {
 		if (sscanf
-		    (globals.ind_cfg.background_color, "%lg %lg %lg", &r,
+		    (ind_cfg->background_color, "%lg %lg %lg", &r,
 		     &g, &b) == 3) {
 			cairo_set_source_rgb (cr, r, g, b);
 			cairo_rectangle (cr, 0, 0, globals.current_width,
@@ -174,30 +158,27 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 		}
 	}
 
-	if (globals.ind_cfg.foreground_color != NULL &&
-	    globals.ind_cfg.foreground_color[0] != 0) {
+	if (ind_cfg->foreground_color != NULL &&
+	    ind_cfg->foreground_color[0] != 0) {
 		if (sscanf
-		    (globals.ind_cfg.foreground_color, "%lg %lg %lg", &r,
+		    (ind_cfg->foreground_color, "%lg %lg %lg", &r,
 		     &g, &b) == 3) {
 			cairo_set_source_rgb (cr, r, g, b);
 		}
 	}
 
-	if (globals.ind_cfg.font_family != NULL &&
-	    globals.ind_cfg.font_family[0] != 0) {
-		cairo_select_font_face (cr, globals.ind_cfg.font_family,
+	if (ind_cfg->font_family != NULL && ind_cfg->font_family[0] != 0) {
+		cairo_select_font_face (cr, ind_cfg->font_family,
 					CAIRO_FONT_SLANT_NORMAL,
 					CAIRO_FONT_WEIGHT_NORMAL);
 	}
 
 	pfd = pango_font_description_new ();
-	pango_font_description_set_family (pfd,
-					   globals.ind_cfg.font_family);
+	pango_font_description_set_family (pfd, ind_cfg->font_family);
 	pango_font_description_set_style (pfd, PANGO_STYLE_NORMAL);
 	pango_font_description_set_weight (pfd, PANGO_WEIGHT_NORMAL);
 	pango_font_description_set_size (pfd,
-					 globals.ind_cfg.font_size *
-					 PANGO_SCALE);
+					 ind_cfg->font_size * PANGO_SCALE);
 
 	pcc = pango_cairo_create_context (cr);
 
@@ -212,18 +193,15 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 
 	pl = pango_layout_new (pcc);
 
-	layout_name = gkbd_indicator_extract_layout_name (group,
-							  globals.engine,
-							  &globals.kbd_cfg,
-							  globals.
-							  short_group_names,
-							  globals.
-							  full_group_names);
+	layout_name =
+	    gkbd_configuration_extract_layout_name (globals.config, group);
 	lbl_title =
 	    gkbd_indicator_create_label_title (group, &ln2cnt_map,
 					       layout_name);
 
-	if (group + 1 == xkl_engine_get_num_groups (globals.engine)) {
+	if (group + 1 ==
+	    xkl_engine_get_num_groups (gkbd_configuration_get_xkl_engine
+				       (globals.config))) {
 		g_hash_table_destroy (ln2cnt_map);
 		ln2cnt_map = NULL;
 	}
@@ -304,11 +282,11 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 	if (globals.current_width == 0)
 		return NULL;
 
-	if (globals.ind_cfg.show_flags) {
+	if (gkbd_configuration_if_flags_shown (globals.config)) {
 
 		image_filename =
-		    (char *) g_slist_nth_data (globals.ind_cfg.
-					       image_filenames, group);
+		    gkbd_configuration_get_image_filename (globals.config,
+							   group);
 
 		image = gdk_pixbuf_new_from_file_at_size (image_filename,
 							  globals.
@@ -400,17 +378,12 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 static void
 gkbd_status_update_tooltips (GkbdStatus * gki)
 {
-	XklState *state = xkl_engine_get_current_state (globals.engine);
-	gchar *buf;
-	if (state == NULL || state->group < 0
-	    || state->group >= g_strv_length (globals.full_group_names))
-		return;
-
-	buf = g_strdup_printf (globals.tooltips_format,
-			       globals.full_group_names[state->group]);
-
-	gkbd_status_set_tooltips (gki, buf);
-	g_free (buf);
+	gchar *buf =
+	    gkbd_configuration_get_current_tooltip (globals.config);
+	if (buf != NULL) {
+		gkbd_status_set_tooltips (gki, buf);
+		g_free (buf);
+	}
 }
 
 void
@@ -422,123 +395,13 @@ gkbd_status_reinit_ui (GkbdStatus * gki)
 	gkbd_status_set_current_page (gki);
 }
 
-/* Should be called once for all widgets */
-static void
-gkbd_status_cfg_changed (GSettings * settings, gchar * key)
-{
-	xkl_debug (100,
-		   "General configuration changed in GConf - reiniting...\n");
-	gkbd_desktop_config_load (&globals.cfg);
-	gkbd_desktop_config_activate (&globals.cfg);
-	ForAllIndicators () {
-		gkbd_status_reinit_ui (gki);
-	} NextIndicator ();
-}
-
-/* Should be called once for all widgets */
-static void
-gkbd_status_ind_cfg_changed (GSettings * settings, gchar * key)
-{
-	xkl_debug (100,
-		   "Applet configuration changed in GConf - reiniting...\n");
-	gkbd_indicator_config_load (&globals.ind_cfg);
-
-	gkbd_indicator_config_free_image_filenames (&globals.ind_cfg);
-	gkbd_indicator_config_load_image_filenames (&globals.ind_cfg,
-						    &globals.kbd_cfg);
-
-	gkbd_indicator_config_activate (&globals.ind_cfg);
-
-	ForAllIndicators () {
-		gkbd_status_reinit_ui (gki);
-	} NextIndicator ();
-}
-
-static void
-gkbd_status_load_group_names (const gchar ** layout_ids,
-			      const gchar ** variant_ids)
-{
-	if (!gkbd_desktop_config_load_group_descriptions
-	    (&globals.cfg, globals.registry, layout_ids, variant_ids,
-	     &globals.short_group_names, &globals.full_group_names)) {
-		/* We just populate no short names (remain NULL) - 
-		 * full names are going to be used anyway */
-		gint i, total_groups =
-		    xkl_engine_get_num_groups (globals.engine);
-		xkl_debug (150, "group descriptions loaded: %d!\n",
-			   total_groups);
-
-		if (xkl_engine_get_features (globals.engine) &
-		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
-			globals.full_group_names =
-			    g_strdupv (globals.kbd_cfg.layouts_variants);
-		} else {
-			globals.full_group_names =
-			    g_new0 (char *, total_groups + 1);
-			for (i = total_groups; --i >= 0;) {
-				globals.full_group_names[i] =
-				    g_strdup_printf ("Group %d", i);
-			}
-		}
-	}
-}
-
-/* Should be called once for all widgets */
-static void
-gkbd_status_kbd_cfg_callback (GkbdStatus * gki)
-{
-	XklConfigRec *xklrec = xkl_config_rec_new ();
-	xkl_debug (100,
-		   "XKB configuration changed on X Server - reiniting...\n");
-
-	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
-						  xklrec);
-
-	gkbd_indicator_config_free_image_filenames (&globals.ind_cfg);
-	gkbd_indicator_config_load_image_filenames (&globals.ind_cfg,
-						    &globals.kbd_cfg);
-
-	g_strfreev (globals.full_group_names);
-	globals.full_group_names = NULL;
-
-	if (globals.short_group_names != NULL) {
-		g_strfreev (globals.short_group_names);
-		globals.short_group_names = NULL;
-	}
-
-	gkbd_status_load_group_names ((const gchar **) xklrec->layouts,
-				      (const gchar **) xklrec->variants);
-
-	ForAllIndicators () {
-		gkbd_status_reinit_ui (gki);
-	} NextIndicator ();
-	g_object_unref (G_OBJECT (xklrec));
-}
-
-/* Should be called once for all applets */
-static void
-gkbd_status_state_callback (XklEngine * engine,
-			    XklEngineStateChange changeType,
-			    gint group, gboolean restore)
-{
-	xkl_debug (150, "group is now %d, restore: %d\n", group, restore);
-
-	if (changeType == GROUP_CHANGED) {
-		ForAllIndicators () {
-			xkl_debug (200, "do repaint\n");
-			gkbd_status_set_current_page_for_group (gki,
-								group);
-		}
-		NextIndicator ();
-	}
-}
-
-
 void
 gkbd_status_set_current_page (GkbdStatus * gki)
 {
 	XklState *cur_state;
-	cur_state = xkl_engine_get_current_state (globals.engine);
+	XklEngine *engine =
+	    gkbd_configuration_get_xkl_engine (globals.config);
+	cur_state = xkl_engine_get_current_state (engine);
 	if (cur_state->group >= 0)
 		gkbd_status_set_current_page_for_group (gki,
 							cur_state->group);
@@ -562,8 +425,10 @@ static GdkFilterReturn
 gkbd_status_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 {
 	XEvent *xevent = (XEvent *) xev;
+	XklEngine *engine =
+	    gkbd_configuration_get_xkl_engine (globals.config);
 
-	xkl_engine_filter_events (globals.engine, xevent);
+	xkl_engine_filter_events (engine, xevent);
 	switch (xevent->type) {
 	case ReparentNotify:
 		{
@@ -578,8 +443,7 @@ gkbd_status_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 				if (xid == rne->window) {
 					/* if so - make it transparent... */
 					xkl_engine_set_window_transparent
-					    (globals.engine, rne->window,
-					     TRUE);
+					    (engine, rne->window, TRUE);
 				}
 			}
 		NextIndicator ()}
@@ -598,17 +462,12 @@ gkbd_status_start_listen (void)
 	gdk_window_add_filter (gdk_get_default_root_window (),
 			       (GdkFilterFunc) gkbd_status_filter_x_evt,
 			       NULL);
-
-	xkl_engine_start_listen (globals.engine,
-				 XKLL_TRACK_KEYBOARD_STATE);
 }
 
 /* Should be called once for all widgets */
 static void
 gkbd_status_stop_listen (void)
 {
-	xkl_engine_stop_listen (globals.engine, XKLL_TRACK_KEYBOARD_STATE);
-
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  gkbd_status_filter_x_evt, NULL);
 	gdk_window_remove_filter
@@ -630,7 +489,8 @@ static void
 gkbd_status_theme_changed (GtkSettings * settings, GParamSpec * pspec,
 			   GkbdStatus * gki)
 {
-	gkbd_indicator_config_refresh_style (&globals.ind_cfg);
+	gkbd_indicator_config_refresh_style
+	    (gkbd_configuration_get_indicator_config (globals.config));
 	gkbd_status_reinit_ui (gki);
 }
 
@@ -650,7 +510,7 @@ gkbd_status_init (GkbdStatus * gki)
 	xkl_debug (100, "Initiating the widget startup process for %p\n",
 		   gki);
 
-	if (globals.engine == NULL) {
+	if (gkbd_configuration_get_xkl_engine (globals.config) == NULL) {
 		gkbd_status_set_tooltips (gki,
 					  _("XKB initialization error"));
 		return;
@@ -718,32 +578,9 @@ gkbd_status_global_term (void)
 	xkl_debug (100, "*** Last  GkbdStatus instance *** \n");
 	gkbd_status_stop_listen ();
 
-	gkbd_desktop_config_stop_listen (&globals.cfg);
-	gkbd_indicator_config_stop_listen (&globals.ind_cfg);
+	g_object_unref (globals.config);
+	globals.config = NULL;
 
-	gkbd_indicator_config_term (&globals.ind_cfg);
-	gkbd_keyboard_config_term (&globals.kbd_cfg);
-	gkbd_desktop_config_term (&globals.cfg);
-
-	if (g_signal_handler_is_connected
-	    (globals.engine, globals.state_changed_handler)) {
-		g_signal_handler_disconnect (globals.engine,
-					     globals.
-					     state_changed_handler);
-		globals.state_changed_handler = 0;
-	}
-	if (g_signal_handler_is_connected
-	    (globals.engine, globals.config_changed_handler)) {
-		g_signal_handler_disconnect (globals.engine,
-					     globals.
-					     config_changed_handler);
-		globals.config_changed_handler = 0;
-	}
-
-	g_object_unref (G_OBJECT (globals.registry));
-	globals.registry = NULL;
-	g_object_unref (G_OBJECT (globals.engine));
-	globals.engine = NULL;
 	xkl_debug (100, "*** Terminated globals *** \n");
 }
 
@@ -756,70 +593,15 @@ gkbd_status_class_init (GkbdStatusClass * klass)
 
 	memset (&globals, 0, sizeof (globals));
 
-	/* Initing some global vars */
-	globals.tooltips_format = "%s";
-
 	/* Initing vtable */
 	object_class->finalize = gkbd_status_finalize;
-
-	/* Signals */
 }
 
 static void
 gkbd_status_global_init (void)
 {
-	XklConfigRec *xklrec = xkl_config_rec_new ();
+	globals.config = gkbd_configuration_get ();
 
-	globals.engine =
-	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
-				     (gdk_display_get_default ()));
-	if (globals.engine == NULL) {
-		xkl_debug (0, "Libxklavier initialization error");
-		return;
-	}
-
-	globals.state_changed_handler =
-	    g_signal_connect (globals.engine, "X-state-changed",
-			      G_CALLBACK (gkbd_status_state_callback),
-			      NULL);
-	globals.config_changed_handler =
-	    g_signal_connect (globals.engine, "X-config-changed",
-			      G_CALLBACK (gkbd_status_kbd_cfg_callback),
-			      NULL);
-
-	gkbd_desktop_config_init (&globals.cfg, globals.engine);
-	gkbd_keyboard_config_init (&globals.kbd_cfg, globals.engine);
-	gkbd_indicator_config_init (&globals.ind_cfg, globals.engine);
-
-	gkbd_desktop_config_load (&globals.cfg);
-	gkbd_desktop_config_activate (&globals.cfg);
-
-	globals.registry =
-	    xkl_config_registry_get_instance (globals.engine);
-	xkl_config_registry_load (globals.registry,
-				  globals.cfg.load_extra_items);
-
-	gkbd_keyboard_config_load_from_x_current (&globals.kbd_cfg,
-						  xklrec);
-
-	gkbd_indicator_config_load (&globals.ind_cfg);
-
-	gkbd_indicator_config_load_image_filenames (&globals.ind_cfg,
-						    &globals.kbd_cfg);
-
-	gkbd_indicator_config_activate (&globals.ind_cfg);
-
-	gkbd_status_load_group_names ((const gchar **) xklrec->layouts,
-				      (const gchar **) xklrec->variants);
-	g_object_unref (G_OBJECT (xklrec));
-
-	gkbd_desktop_config_start_listen (&globals.cfg,
-					  G_CALLBACK
-					  (gkbd_status_cfg_changed), NULL);
-	gkbd_indicator_config_start_listen (&globals.ind_cfg,
-					    G_CALLBACK
-					    (gkbd_status_ind_cfg_changed),
-					    NULL);
 	gkbd_status_start_listen ();
 
 	xkl_debug (100, "*** Inited globals *** \n");
@@ -835,7 +617,7 @@ gkbd_status_new (void)
 XklEngine *
 gkbd_status_get_xkl_engine ()
 {
-	return globals.engine;
+	return gkbd_configuration_get_xkl_engine (globals.config);
 }
 
 /**
@@ -845,21 +627,14 @@ gkbd_status_get_xkl_engine ()
 gchar **
 gkbd_status_get_group_names ()
 {
-	return globals.full_group_names;
+	return (gchar **)
+	    gkbd_configuration_get_group_names (globals.config);
 }
 
 gchar *
 gkbd_status_get_image_filename (guint group)
 {
-	if (!globals.ind_cfg.show_flags)
-		return NULL;
-	return gkbd_indicator_config_get_images_file (&globals.ind_cfg,
-						      &globals.kbd_cfg,
+	return gkbd_configuration_get_image_filename (globals.config,
 						      group);
 }
 
-void
-gkbd_status_set_angle (GkbdStatus * gki, gdouble angle)
-{
-	gki->priv->angle = angle;
-}

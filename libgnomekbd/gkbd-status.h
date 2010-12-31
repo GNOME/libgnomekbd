@@ -24,13 +24,9 @@
 
 #include <libxklavier/xklavier.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-	typedef struct _GkbdStatus GkbdStatus;
-	typedef struct _GkbdStatusPrivate GkbdStatusPrivate;
-	typedef struct _GkbdStatusClass GkbdStatusClass;
+G_BEGIN_DECLS typedef struct _GkbdStatus GkbdStatus;
+typedef struct _GkbdStatusPrivate GkbdStatusPrivate;
+typedef struct _GkbdStatusClass GkbdStatusClass;
 
 #define GKBD_TYPE_STATUS             (gkbd_status_get_type ())
 #define GKBD_STATUS(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GKBD_TYPE_STATUS, GkbdStatus))
@@ -39,34 +35,26 @@ extern "C" {
 #define GKBD_IS_STATUS_CLASS(obj)    (G_TYPE_CHECK_CLASS_TYPE ((obj), GKBD_TYPE_STATUS))
 #define GKBD_STATUS_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GKBD_TYPE_STATUS, GkbdStatusClass))
 
-	struct _GkbdStatus {
-		GtkStatusIcon parent;
-		GkbdStatusPrivate *priv;
-	};
+struct _GkbdStatus {
+	GtkStatusIcon parent;
+	GkbdStatusPrivate *priv;
+};
 
-	struct _GkbdStatusClass {
-		GtkNotebookClass parent_class;
-	};
+struct _GkbdStatusClass {
+	GtkNotebookClass parent_class;
+};
 
-	extern GType gkbd_status_get_type (void);
+extern GType gkbd_status_get_type (void);
 
-	extern GtkStatusIcon *gkbd_status_new (void);
+extern GtkStatusIcon *gkbd_status_new (void);
 
-	extern void gkbd_status_reinit_ui (GkbdStatus * gki);
+extern void gkbd_status_reinit_ui (GkbdStatus * gki);
 
-	extern void gkbd_status_set_angle (GkbdStatus * gki,
-					   gdouble angle);
+extern XklEngine *gkbd_status_get_xkl_engine (void);
 
-	extern XklEngine *gkbd_status_get_xkl_engine (void);
+extern gchar **gkbd_status_get_group_names (void);
 
-	extern gchar **gkbd_status_get_group_names (void);
+extern gchar *gkbd_status_get_image_filename (guint group);
 
-	extern gchar *gkbd_status_get_image_filename (guint group);
-
-	extern void
-	 gkbd_status_set_tooltips_format (const gchar str[]);
-
-#ifdef __cplusplus
-}
-#endif
+G_END_DECLS
 #endif
