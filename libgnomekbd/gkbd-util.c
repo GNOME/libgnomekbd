@@ -130,7 +130,7 @@ gkbd_strv_remove (gchar ** arr, const gchar * element)
 
 /**
  * gkbd_strv_append:
- * Returns: (transfer full): Append string to strv array
+ * Returns: (transfer full) (array zero-terminated=1): Append string to strv array
  */
 gchar **
 gkbd_strv_append (gchar ** arr, gchar * element)

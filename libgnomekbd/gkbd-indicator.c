@@ -642,7 +642,7 @@ gkbd_indicator_get_xkl_engine ()
 
 /**
  * gkbd_indicator_get_group_names:
- * Returns: (transfer none): List of group names
+ * Returns: (transfer none) (array zero-terminated=1): List of group names
  */
 gchar **
 gkbd_indicator_get_group_names ()
@@ -696,7 +696,7 @@ gkbd_indicator_plugin_container_reinit_ui (GkbdIndicatorPluginContainer *
 
 /**
  * gkbd_indicator_plugin_load_localized_group_names:
- * Returns: (transfer none): all group names
+ * Returns: (transfer none) (array zero-terminated=1): all group names
  */
 gchar **gkbd_indicator_plugin_load_localized_group_names
     (GkbdIndicatorPluginContainer * pc) {

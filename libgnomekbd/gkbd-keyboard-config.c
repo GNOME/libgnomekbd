@@ -711,7 +711,7 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 
 /**
  * gkbd_keyboard_config_add_default_switch_option_if_necessary:
- * Returns: (transfer full): List of options
+ * Returns: (transfer full) (array zero-terminated=1): List of options
  */
 gchar **
 gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
