@@ -315,6 +315,10 @@ gkbd_configuration_class_init (GkbdConfigurationClass * klass)
 				  sizeof (GkbdConfigurationPrivate));
 }
 
+/**
+ * gkbd_configuration_get: 
+ * Returns: (transfer full): singleton of GkbdConfiguration
+ */
 GkbdConfiguration *
 gkbd_configuration_get (void)
 {
@@ -336,6 +340,10 @@ gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 	return configuration->priv->engine;
 }
 
+/**
+ * gkbd_configuration_get_group_names:
+ * Returns: (transfer full) (array zero-terminated=): full group names
+ */
 gchar **
 gkbd_configuration_get_group_names (GkbdConfiguration * configuration)
 {
@@ -352,6 +360,10 @@ gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 					   image_filenames, group);
 }
 
+/**
+ * gkbd_configuration_get_short_group_names:
+ * Returns: (transfer full) (array zero-terminated=): short group names
+ */
 gchar **
 gkbd_configuration_get_short_group_names (GkbdConfiguration *
 					  configuration)
@@ -433,18 +445,30 @@ gkbd_configuration_lock_next_group (GkbdConfiguration * configuration)
 	gkbd_desktop_config_lock_next_group (&configuration->priv->cfg);
 }
 
+/**
+ * gkbd_configuration_get_indicator_config: 
+ * Returns: (transfer none): indicator config
+ */
 GkbdIndicatorConfig *
 gkbd_configuration_get_indicator_config (GkbdConfiguration * configuration)
 {
 	return &configuration->priv->ind_cfg;
 }
 
+/**
+ * gkbd_configuration_get_keyboard_config: 
+ * Returns: (transfer none): keyboard config
+ */
 GkbdKeyboardConfig *
 gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
 {
 	return &configuration->priv->kbd_cfg;
 }
 
+/**
+ * gkbd_configuration_load_images: 
+ * Returns: (transfer full) (element-type GdkPixbuf): list of images
+ */
 GSList *
 gkbd_configuration_load_images (GkbdConfiguration * configuration)
 {
