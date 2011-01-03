@@ -38,7 +38,6 @@ typedef struct _gki_globals {
 	GkbdIndicatorPluginContainer plugin_container;
 	GkbdIndicatorPluginManager plugin_manager;
 
-	GSList *widget_instances;
 	GSList *images;
 } gki_globals;
 
@@ -49,15 +48,6 @@ struct _GkbdIndicatorPrivate {
 
 /* one instance for ALL widgets */
 static gki_globals globals;
-
-#define ForAllIndicators() \
-	{ \
-		GSList* cur; \
-		for (cur = globals.widget_instances; cur != NULL; cur = cur->next) { \
-			GkbdIndicator * gki = (GkbdIndicator*)cur->data;
-#define NextIndicator() \
-		} \
-	}
 
 G_DEFINE_TYPE (GkbdIndicator, gkbd_indicator, GTK_TYPE_NOTEBOOK)
 
@@ -152,8 +142,8 @@ gkbd_indicator_fill (GkbdIndicator * gki)
 		    gkbd_indicator_plugin_manager_decorate_widget
 		    (&globals.plugin_manager, page, grp,
 		     full_group_name,
-		     gkbd_configuration_get_keyboard_config (globals.
-							     config));
+		     gkbd_configuration_get_keyboard_config
+		     (globals.config));
 
 		page = decorated_page == NULL ? page : decorated_page;
 
@@ -233,44 +223,6 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 	cairo_destroy (cr);
 }
 
-gchar *
-gkbd_indicator_create_label_title (int group, GHashTable ** ln2cnt_map,
-				   gchar * layout_name)
-{
-	gpointer pcounter = NULL;
-	char *prev_layout_name = NULL;
-	char *lbl_title = NULL;
-	int counter = 0;
-
-	if (group == 0) {
-		*ln2cnt_map =
-		    g_hash_table_new_full (g_str_hash, g_str_equal,
-					   g_free, NULL);
-	}
-
-	/* Process layouts with repeating description */
-	if (g_hash_table_lookup_extended
-	    (*ln2cnt_map, layout_name, (gpointer *) & prev_layout_name,
-	     &pcounter)) {
-		/* "next" same description */
-		gchar appendix[10] = "";
-		gint utf8length;
-		gunichar cidx;
-		counter = GPOINTER_TO_INT (pcounter);
-		/* Unicode subscript 2, 3, 4 */
-		cidx = 0x2081 + counter;
-		utf8length = g_unichar_to_utf8 (cidx, appendix);
-		appendix[utf8length] = '\0';
-		lbl_title = g_strconcat (layout_name, appendix, NULL);
-	} else {
-		/* "first" time this description */
-		lbl_title = g_strdup (layout_name);
-	}
-	g_hash_table_insert (*ln2cnt_map, layout_name,
-			     GINT_TO_POINTER (counter + 1));
-	return lbl_title;
-}
-
 static GtkWidget *
 gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 {
@@ -303,9 +255,9 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 							    group);
 
 		lbl_title =
-		    gkbd_indicator_create_label_title (group,
-						       &ln2cnt_map,
-						       layout_name);
+		    gkbd_configuration_create_label_title (group,
+							   &ln2cnt_map,
+							   layout_name);
 
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
 		label = gtk_label_new (lbl_title);
@@ -370,16 +322,16 @@ gkbd_indicator_reinit_ui (GkbdIndicator * gki)
 
 /* Should be called once for all widgets */
 static void
-gkbd_indicator_kbd_cfg_callback (GkbdConfiguration * configuration)
+gkbd_indicator_cfg_callback (GkbdConfiguration * configuration)
 {
 	gkbd_indicator_plugin_manager_toggle_plugins
 	    (&globals.plugin_manager, &globals.plugin_container,
-	     gkbd_configuration_get_indicator_config (globals.config)->
-	     enabled_plugins);
+	     gkbd_configuration_get_indicator_config (globals.
+						      config)->enabled_plugins);
 
-	ForAllIndicators () {
-		gkbd_indicator_reinit_ui (gki);
-	} NextIndicator ();
+	ForAllObjects (configuration) {
+		gkbd_indicator_reinit_ui (GKBD_INDICATOR (gki));
+	} NextObject ()
 }
 
 /* Should be called once for all applets */
@@ -387,13 +339,14 @@ static void
 gkbd_indicator_state_callback (GkbdConfiguration * configuration,
 			       gint group)
 {
-	ForAllIndicators () {
+	ForAllObjects (configuration) {
 		gkbd_indicator_plugin_manager_group_changed
 		    (&globals.plugin_manager, GTK_WIDGET (gki), group);
 		xkl_debug (200, "do repaint\n");
-		gkbd_indicator_set_current_page_for_group (gki, group);
+		gkbd_indicator_set_current_page_for_group (GKBD_INDICATOR
+							   (gki), group);
 	}
-	NextIndicator ();
+	NextObject ()
 }
 
 
@@ -405,7 +358,8 @@ gkbd_indicator_set_current_page (GkbdIndicator * gki)
 	XklState *cur_state = xkl_engine_get_current_state (engine);
 	if (cur_state->group >= 0)
 		gkbd_indicator_set_current_page_for_group (gki,
-							   cur_state->group);
+							   cur_state->
+							   group);
 }
 
 void
@@ -432,7 +386,7 @@ gkbd_indicator_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 		{
 			XReparentEvent *rne = (XReparentEvent *) xev;
 
-			ForAllIndicators () {
+			ForAllObjects (globals.config) {
 				GdkWindow *w =
 				    gtk_widget_get_parent_window
 				    (GTK_WIDGET (gki));
@@ -445,7 +399,7 @@ gkbd_indicator_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 					    (engine, rne->window, TRUE);
 				}
 			}
-			NextIndicator ()
+			NextObject ()
 		}
 		break;
 	}
@@ -488,7 +442,7 @@ gkbd_indicator_init (GkbdIndicator * gki)
 	GtkWidget *def_drawing;
 	GtkNotebook *notebook;
 
-	if (!g_slist_length (globals.widget_instances))
+	if (!gkbd_configuration_if_any_object_exists (globals.config))
 		gkbd_indicator_global_init ();
 
 	gki->priv = g_new0 (GkbdIndicatorPrivate, 1);
@@ -523,8 +477,7 @@ gkbd_indicator_init (GkbdIndicator * gki)
 	gtk_widget_add_events (GTK_WIDGET (gki), GDK_BUTTON_PRESS_MASK);
 
 	/* append AFTER all initialization work is finished */
-	globals.widget_instances =
-	    g_slist_append (globals.widget_instances, gki);
+	gkbd_configuration_append_object (globals.config, G_OBJECT (gki));
 }
 
 static void
@@ -536,8 +489,7 @@ gkbd_indicator_finalize (GObject * obj)
 		   gki);
 
 	/* remove BEFORE all termination work is finished */
-	globals.widget_instances =
-	    g_slist_remove (globals.widget_instances, gki);
+	gkbd_configuration_remove_object (globals.config, G_OBJECT (gki));
 
 	gkbd_indicator_cleanup (gki);
 
@@ -548,7 +500,7 @@ gkbd_indicator_finalize (GObject * obj)
 
 	G_OBJECT_CLASS (gkbd_indicator_parent_class)->finalize (obj);
 
-	if (!g_slist_length (globals.widget_instances))
+	if (!gkbd_configuration_if_any_object_exists (globals.config))
 		gkbd_indicator_global_term ();
 }
 
@@ -602,8 +554,7 @@ gkbd_indicator_global_init (void)
 			  G_CALLBACK (gkbd_indicator_state_callback),
 			  NULL);
 	g_signal_connect (globals.config, "changed",
-			  G_CALLBACK (gkbd_indicator_kbd_cfg_callback),
-			  NULL);
+			  G_CALLBACK (gkbd_indicator_cfg_callback), NULL);
 
 	gkbd_indicator_plugin_container_init (&globals.plugin_container);
 
@@ -612,8 +563,8 @@ gkbd_indicator_global_init (void)
 	gkbd_indicator_plugin_manager_init (&globals.plugin_manager);
 	gkbd_indicator_plugin_manager_init_enabled_plugins
 	    (&globals.plugin_manager, &globals.plugin_container,
-	     gkbd_configuration_get_indicator_config (globals.config)->
-	     enabled_plugins);
+	     gkbd_configuration_get_indicator_config (globals.
+						      config)->enabled_plugins);
 
 	gkbd_indicator_start_listen ();
 
@@ -689,9 +640,9 @@ void
 gkbd_indicator_plugin_container_reinit_ui (GkbdIndicatorPluginContainer *
 					   pc)
 {
-	ForAllIndicators () {
-		gkbd_indicator_reinit_ui (gki);
-	} NextIndicator ();
+	ForAllObjects (globals.config) {
+		gkbd_indicator_reinit_ui (GKBD_INDICATOR (gki));
+	} NextObject ()
 }
 
 /**

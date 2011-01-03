@@ -1,10 +1,10 @@
 /*
  * Copyright (C) 2010 Canonical Ltd.
+ * Copyright (C) 2010-2011 Sergey V. Udaltsov <svu@gnome.org>
  * 
  * Authors: Jan Arne Petersen <jpetersen@openismus.com>
+ *          Sergey V. Udaltsov <svu@gnome.org>
  * 
- * Based on gkbd-status.c by Sergey V. Udaltsov <svu@gnome.org>
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -46,6 +46,8 @@ struct _GkbdConfigurationPrivate {
 
 	gulong state_changed_handler;
 	gulong config_changed_handler;
+
+	GSList *widget_instances;
 };
 
 enum {
@@ -107,10 +109,8 @@ gkbd_configuration_load_group_names (GkbdConfiguration * configuration,
 							  xklrec->layouts,
 							  (const char **)
 							  xklrec->variants,
-							  &priv->
-							  short_group_names,
-							  &priv->
-							  full_group_names))
+							  &priv->short_group_names,
+							  &priv->full_group_names))
 	{
 		/* We just populate no short names (remain NULL) - 
 		 * full names are going to be used anyway */
@@ -356,8 +356,8 @@ gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 {
 	if (!configuration->priv->ind_cfg.show_flags)
 		return NULL;
-	return (gchar *) g_slist_nth_data (configuration->priv->ind_cfg.
-					   image_filenames, group);
+	return (gchar *) g_slist_nth_data (configuration->priv->
+					   ind_cfg.image_filenames, group);
 }
 
 /**
@@ -383,8 +383,8 @@ gkbd_configuration_get_current_tooltip (GkbdConfiguration * configuration)
 		return NULL;
 
 	return g_strdup_printf (configuration->priv->tooltips_format,
-				configuration->priv->
-				full_group_names[state->group]);
+				configuration->
+				priv->full_group_names[state->group]);
 }
 
 gboolean
@@ -405,8 +405,8 @@ gkbd_configuration_extract_layout_name (GkbdConfiguration * configuration,
 		if (xkl_engine_get_features (engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *full_layout_name =
-			    configuration->priv->kbd_cfg.
-			    layouts_variants[group];
+			    configuration->priv->
+			    kbd_cfg.layouts_variants[group];
 			char *variant_name;
 			if (!gkbd_keyboard_config_split_items
 			    (full_layout_name, &layout_name,
@@ -470,16 +470,38 @@ gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
  * Returns: (transfer full) (element-type GdkPixbuf): list of images
  */
 GSList *
+gkbd_configuration_get_all_objects (GkbdConfiguration * configuration)
+{
+	return configuration->priv->widget_instances;
+}
+
+extern void
+gkbd_configuration_append_object (GkbdConfiguration * configuration,
+				  GObject * obj)
+{
+	configuration->priv->widget_instances =
+	    g_slist_append (configuration->priv->widget_instances, obj);
+}
+
+extern void
+gkbd_configuration_remove_object (GkbdConfiguration * configuration,
+				  GObject * obj)
+{
+	configuration->priv->widget_instances =
+	    g_slist_remove (configuration->priv->widget_instances, obj);
+}
+
+GSList *
 gkbd_configuration_load_images (GkbdConfiguration * configuration)
 {
 	int i;
 	GSList *image_filename, *images;
 
 	images = NULL;
-	gkbd_indicator_config_load_image_filenames (&configuration->
-						    priv->ind_cfg,
-						    &configuration->
-						    priv->kbd_cfg);
+	gkbd_indicator_config_load_image_filenames (&configuration->priv->
+						    ind_cfg,
+						    &configuration->priv->
+						    kbd_cfg);
 
 	if (!configuration->priv->ind_cfg.show_flags)
 		return NULL;
@@ -515,8 +537,8 @@ gkbd_configuration_free_images (GkbdConfiguration * configuration,
 	GdkPixbuf *pi;
 	GSList *img_node;
 
-	gkbd_indicator_config_free_image_filenames (&configuration->
-						    priv->ind_cfg);
+	gkbd_indicator_config_free_image_filenames (&configuration->priv->
+						    ind_cfg);
 
 	while ((img_node = images) != NULL) {
 		pi = GDK_PIXBUF (img_node->data);
@@ -527,4 +549,50 @@ gkbd_configuration_free_images (GkbdConfiguration * configuration,
 		images = g_slist_remove_link (images, img_node);
 		g_slist_free_1 (img_node);
 	}
+}
+
+gchar *
+gkbd_configuration_create_label_title (int group, GHashTable ** ln2cnt_map,
+				       gchar * layout_name)
+{
+	gpointer pcounter = NULL;
+	char *prev_layout_name = NULL;
+	char *lbl_title = NULL;
+	int counter = 0;
+
+	if (group == 0) {
+		*ln2cnt_map =
+		    g_hash_table_new_full (g_str_hash, g_str_equal,
+					   g_free, NULL);
+	}
+
+	/* Process layouts with repeating description */
+	if (g_hash_table_lookup_extended
+	    (*ln2cnt_map, layout_name, (gpointer *) & prev_layout_name,
+	     &pcounter)) {
+		/* "next" same description */
+		gchar appendix[10] = "";
+		gint utf8length;
+		gunichar cidx;
+		counter = GPOINTER_TO_INT (pcounter);
+		/* Unicode subscript 2, 3, 4 */
+		cidx = 0x2081 + counter;
+		utf8length = g_unichar_to_utf8 (cidx, appendix);
+		appendix[utf8length] = '\0';
+		lbl_title = g_strconcat (layout_name, appendix, NULL);
+	} else {
+		/* "first" time this description */
+		lbl_title = g_strdup (layout_name);
+	}
+	g_hash_table_insert (*ln2cnt_map, layout_name,
+			     GINT_TO_POINTER (counter + 1));
+	return lbl_title;
+}
+
+extern gboolean
+gkbd_configuration_if_any_object_exists (GkbdConfiguration * configuration)
+{
+	return (configuration != NULL)
+	    && (g_slist_length (configuration->priv->widget_instances) !=
+		0);
 }

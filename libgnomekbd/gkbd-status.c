@@ -40,7 +40,6 @@ typedef struct _gki_globals {
 	int real_width;
 
 	GSList *icons;		/* list of GdkPixbuf */
-	GSList *widget_instances;	/* list of GkbdStatus */
 } gki_globals;
 
 static gchar *settings_signal_names[] = {
@@ -58,16 +57,8 @@ struct _GkbdStatusPrivate {
 /* one instance for ALL widgets */
 static gki_globals globals;
 
-#define ForAllIndicators() \
-	{ \
-		GSList* cur; \
-		for (cur = globals.widget_instances; cur != NULL; cur = cur->next) { \
-			GkbdStatus * gki = (GkbdStatus*)cur->data;
-#define NextIndicator() \
-		} \
-	}
-
 G_DEFINE_TYPE (GkbdStatus, gkbd_status, GTK_TYPE_STATUS_ICON)
+
 static void
 gkbd_status_global_init (void);
 static void
@@ -124,11 +115,6 @@ gkbd_status_activate (GkbdStatus * gki)
 	xkl_debug (150, "Mouse button pressed on applet\n");
 	gkbd_configuration_lock_next_group (globals.config);
 }
-
-extern gchar *gkbd_indicator_create_label_title (int group,
-						 GHashTable **
-						 ln2cnt_map,
-						 gchar * layout_name);
 
 static void
 gkbd_status_render_cairo (cairo_t * cr, int group)
@@ -196,8 +182,8 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 	layout_name =
 	    gkbd_configuration_extract_layout_name (globals.config, group);
 	lbl_title =
-	    gkbd_indicator_create_label_title (group, &ln2cnt_map,
-					       layout_name);
+	    gkbd_configuration_create_label_title (group, &ln2cnt_map,
+						   layout_name);
 
 	if (group + 1 ==
 	    xkl_engine_get_num_groups (gkbd_configuration_get_xkl_engine
@@ -289,10 +275,8 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 							   group);
 
 		image = gdk_pixbuf_new_from_file_at_size (image_filename,
-							  globals.
-							  current_width,
-							  globals.
-							  current_height,
+							  globals.current_width,
+							  globals.current_height,
 							  &gerror);
 
 		if (image == NULL) {
@@ -307,8 +291,7 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 								    NULL ?
 								    "Unknown"
 								    :
-								    gerror->
-								    message);
+								    gerror->message);
 			g_signal_connect (G_OBJECT (dialog), "response",
 					  G_CALLBACK (gtk_widget_destroy),
 					  NULL);
@@ -342,6 +325,7 @@ gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 		char pngfilename[20];
 		g_sprintf (pngfilename, "label%d.png", group);
 		cairo_surface_write_to_png (cs, pngfilename);
+		xkl_debug(150, "file %s is created\n", pngfilename);
 #endif
 		pixbuf_data =
 		    g_new0 (guchar,
@@ -395,6 +379,27 @@ gkbd_status_reinit_ui (GkbdStatus * gki)
 	gkbd_status_set_current_page (gki);
 }
 
+/* Should be called once for all widgets */
+static void
+gkbd_status_cfg_callback (GkbdConfiguration * configuration)
+{
+	ForAllObjects (configuration) {
+		gkbd_status_reinit_ui (GKBD_STATUS (gki));
+	} NextObject ()
+}
+
+/* Should be called once for all applets */
+static void
+gkbd_status_state_callback (GkbdConfiguration * configuration, gint group)
+{
+	ForAllObjects (configuration) {
+		xkl_debug (200, "do repaint\n");
+		gkbd_status_set_current_page_for_group (GKBD_STATUS (gki),
+							group);
+	}
+	NextObject ()
+}
+
 void
 gkbd_status_set_current_page (GkbdStatus * gki)
 {
@@ -434,7 +439,7 @@ gkbd_status_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 		{
 			XReparentEvent *rne = (XReparentEvent *) xev;
 
-			ForAllIndicators () {
+			ForAllObjects (globals.config) {
 				guint32 xid =
 				    gtk_status_icon_get_x11_window_id
 				    (GTK_STATUS_ICON (gki));
@@ -446,7 +451,7 @@ gkbd_status_filter_x_evt (GdkXEvent * xev, GdkEvent * event)
 					    (engine, rne->window, TRUE);
 				}
 			}
-		NextIndicator ()}
+		NextObject ()}
 		break;
 	}
 	return GDK_FILTER_CONTINUE;
@@ -499,12 +504,12 @@ gkbd_status_init (GkbdStatus * gki)
 {
 	int i;
 
-	if (!g_slist_length (globals.widget_instances))
+	if (!gkbd_configuration_if_any_object_exists (globals.config))
 		gkbd_status_global_init ();
 
 	gki->priv = g_new0 (GkbdStatusPrivate, 1);
 
-	/* This should give NA a hint about the order */
+	/* This should give Notification Area a hint about the order of icons */
 	gtk_status_icon_set_name (GTK_STATUS_ICON (gki), "keyboard");
 
 	xkl_debug (100, "Initiating the widget startup process for %p\n",
@@ -522,8 +527,7 @@ gkbd_status_init (GkbdStatus * gki)
 	gkbd_status_set_current_page (gki);
 
 	/* append AFTER all initialization work is finished */
-	globals.widget_instances =
-	    g_slist_append (globals.widget_instances, gki);
+	gkbd_configuration_append_object (globals.config, G_OBJECT (gki));
 
 	g_signal_connect (gki, "size-changed",
 			  G_CALLBACK (gkbd_status_size_changed), NULL);
@@ -552,12 +556,12 @@ gkbd_status_finalize (GObject * obj)
 	for (i = sizeof (settings_signal_names) /
 	     sizeof (settings_signal_names[0]); --i >= 0;)
 		g_signal_handler_disconnect (gtk_settings_get_default (),
-					     gki->priv->
-					     settings_signal_handlers[i]);
+					     gki->
+					     priv->settings_signal_handlers
+					     [i]);
 
 	/* remove BEFORE all termination work is finished */
-	globals.widget_instances =
-	    g_slist_remove (globals.widget_instances, gki);
+	gkbd_configuration_remove_object (globals.config, G_OBJECT (gki));
 
 	gkbd_status_global_cleanup (gki);
 
@@ -568,7 +572,7 @@ gkbd_status_finalize (GObject * obj)
 
 	G_OBJECT_CLASS (gkbd_status_parent_class)->finalize (obj);
 
-	if (!g_slist_length (globals.widget_instances))
+	if (!gkbd_configuration_if_any_object_exists (globals.config))
 		gkbd_status_global_term ();
 }
 
@@ -601,6 +605,11 @@ static void
 gkbd_status_global_init (void)
 {
 	globals.config = gkbd_configuration_get ();
+
+	g_signal_connect (globals.config, "group-changed",
+			  G_CALLBACK (gkbd_status_state_callback), NULL);
+	g_signal_connect (globals.config, "changed",
+			  G_CALLBACK (gkbd_status_cfg_callback), NULL);
 
 	gkbd_status_start_listen ();
 
@@ -637,4 +646,3 @@ gkbd_status_get_image_filename (guint group)
 	return gkbd_configuration_get_image_filename (globals.config,
 						      group);
 }
-

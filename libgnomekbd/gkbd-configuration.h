@@ -1,10 +1,10 @@
 /*
  * Copyright (C) 2010 Canonical Ltd.
+ * Copyright (C) 2010-2011 Sergey V. Udaltsov <svu@gnome.org>
  * 
  * Authors: Jan Arne Petersen <jpetersen@openismus.com>
+ *          Sergey V. Udaltsov <svu@gnome.org>
  * 
- * Based on gkbd-status.h by Sergey V. Udaltsov <svu@gnome.org>
- *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License as published by the Free Software Foundation; either
@@ -78,8 +78,31 @@ extern GkbdIndicatorConfig
     * gkbd_configuration_get_indicator_config (GkbdConfiguration *
 					       configuration);
 extern GkbdKeyboardConfig
-    *gkbd_configuration_get_keyboard_config (GkbdConfiguration *
-					     configuration);
+    * gkbd_configuration_get_keyboard_config (GkbdConfiguration *
+					      configuration);
+
+extern GSList *gkbd_configuration_get_all_objects (GkbdConfiguration *
+						   configuration);
+
+extern gboolean gkbd_configuration_if_any_object_exists (GkbdConfiguration
+							 * configuration);
+
+extern void gkbd_configuration_append_object (GkbdConfiguration *
+					      configuration,
+					      GObject * obj);
+
+extern void gkbd_configuration_remove_object (GkbdConfiguration *
+					      configuration,
+					      GObject * obj);
+
+#define ForAllObjects(config) \
+	{ \
+		GSList* cur; \
+		for (cur = gkbd_configuration_get_all_objects (config); cur != NULL; cur = cur->next) { \
+			GObject* gki = (GObject*)cur->data;
+#define NextObject() \
+		} \
+	}
 
 extern GSList *gkbd_configuration_load_images (GkbdConfiguration *
 					       configuration);
@@ -87,6 +110,11 @@ extern GSList *gkbd_configuration_load_images (GkbdConfiguration *
 extern void gkbd_configuration_free_images (GkbdConfiguration *
 					    configuration,
 					    GSList * images);
+
+extern gchar *gkbd_configuration_create_label_title (int group,
+						     GHashTable **
+						     ln2cnt_map,
+						     gchar * layout_name);
 
 G_END_DECLS
 #endif
