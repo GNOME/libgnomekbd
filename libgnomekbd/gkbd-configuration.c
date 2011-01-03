@@ -342,7 +342,7 @@ gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 
 /**
  * gkbd_configuration_get_group_names:
- * Returns: (transfer full) (array zero-terminated=): full group names
+ * Returns: (transfer full) (array zero-terminated=1): full group names
  */
 gchar **
 gkbd_configuration_get_group_names (GkbdConfiguration * configuration)
@@ -362,7 +362,7 @@ gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 
 /**
  * gkbd_configuration_get_short_group_names:
- * Returns: (transfer full) (array zero-terminated=): short group names
+ * Returns: (transfer full) (array zero-terminated=1): short group names
  */
 gchar **
 gkbd_configuration_get_short_group_names (GkbdConfiguration *
@@ -466,8 +466,8 @@ gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
 }
 
 /**
- * gkbd_configuration_load_images: 
- * Returns: (transfer full) (element-type GdkPixbuf): list of images
+ * gkbd_configuration_get_all_objects: 
+ * Returns: (transfer none): list of widgets/status icons/...
  */
 GSList *
 gkbd_configuration_get_all_objects (GkbdConfiguration * configuration)
@@ -491,6 +491,10 @@ gkbd_configuration_remove_object (GkbdConfiguration * configuration,
 	    g_slist_remove (configuration->priv->widget_instances, obj);
 }
 
+/**
+ * gkbd_configuration_load_images: 
+ * Returns: (transfer full) (element-type GdkPixbuf): list of images
+ */
 GSList *
 gkbd_configuration_load_images (GkbdConfiguration * configuration)
 {
