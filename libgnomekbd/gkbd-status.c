@@ -24,7 +24,6 @@
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
 #include <glib/gi18n.h>
-#include <glib/gprintf.h>
 
 #include <gkbd-status.h>
 
@@ -64,15 +63,17 @@ gkbd_status_global_init (void);
 static void
 gkbd_status_global_term (void);
 static GdkPixbuf *
-gkbd_status_prepare_drawing (GkbdStatus * gki, int group);
+gkbd_status_prepare_drawing (int group);
 static void
 gkbd_status_set_current_page_for_group (GkbdStatus * gki, int group);
 static void
 gkbd_status_set_current_page (GkbdStatus * gki);
 static void
-gkbd_status_global_cleanup (GkbdStatus * gki);
+gkbd_status_reinit_globals (void);
 static void
-gkbd_status_global_fill (GkbdStatus * gki);
+gkbd_status_cleanup_icons (void);
+static void
+gkbd_status_fill_icons (void);
 static void
 gkbd_status_set_tooltips (GkbdStatus * gki, const char *str);
 
@@ -85,7 +86,7 @@ gkbd_status_set_tooltips (GkbdStatus * gki, const char *str)
 }
 
 void
-gkbd_status_global_cleanup (GkbdStatus * gki)
+gkbd_status_cleanup_icons ()
 {
 	while (globals.icons) {
 		if (globals.icons->data)
@@ -96,7 +97,7 @@ gkbd_status_global_cleanup (GkbdStatus * gki)
 }
 
 void
-gkbd_status_global_fill (GkbdStatus * gki)
+gkbd_status_fill_icons ()
 {
 	int grp;
 	int total_groups =
@@ -104,7 +105,7 @@ gkbd_status_global_fill (GkbdStatus * gki)
 				       (globals.config));
 
 	for (grp = 0; grp < total_groups; grp++) {
-		GdkPixbuf *page = gkbd_status_prepare_drawing (gki, grp);
+		GdkPixbuf *page = gkbd_status_prepare_drawing (grp);
 		globals.icons = g_slist_append (globals.icons, page);
 	}
 }
@@ -259,7 +260,7 @@ convert_bgra_to_rgba (guint8 const *src, guint8 * dst, int width,
 }
 
 static GdkPixbuf *
-gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
+gkbd_status_prepare_drawing (int group)
 {
 	GError *gerror = NULL;
 	char *image_filename;
@@ -371,11 +372,15 @@ gkbd_status_update_tooltips (GkbdStatus * gki)
 }
 
 void
+gkbd_status_reinit_globals ()
+{
+	gkbd_status_cleanup_icons ();
+	gkbd_status_fill_icons ();
+}
+
+void
 gkbd_status_reinit_ui (GkbdStatus * gki)
 {
-	gkbd_status_global_cleanup (gki);
-	gkbd_status_global_fill (gki);
-
 	gkbd_status_set_current_page (gki);
 }
 
@@ -383,6 +388,7 @@ gkbd_status_reinit_ui (GkbdStatus * gki)
 static void
 gkbd_status_cfg_callback (GkbdConfiguration * configuration)
 {
+	gkbd_status_reinit_globals ();
 	ForAllObjects (configuration) {
 		gkbd_status_reinit_ui (GKBD_STATUS (gki));
 	} NextObject ()
@@ -403,10 +409,9 @@ gkbd_status_state_callback (GkbdConfiguration * configuration, gint group)
 void
 gkbd_status_set_current_page (GkbdStatus * gki)
 {
-	XklState *cur_state;
 	XklEngine *engine =
 	    gkbd_configuration_get_xkl_engine (globals.config);
-	cur_state = xkl_engine_get_current_state (engine);
+	XklState *cur_state = xkl_engine_get_current_state (engine);
 	if (cur_state->group >= 0)
 		gkbd_status_set_current_page_for_group (gki,
 							cur_state->group);
@@ -486,6 +491,7 @@ gkbd_status_size_changed (GkbdStatus * gki, gint size)
 	if (globals.current_height != size) {
 		globals.current_height = size;
 		globals.current_width = size * 3 / 2;
+		gkbd_status_reinit_globals ();
 		gkbd_status_reinit_ui (gki);
 	}
 }
@@ -496,6 +502,7 @@ gkbd_status_theme_changed (GtkSettings * settings, GParamSpec * pspec,
 {
 	gkbd_indicator_config_refresh_style
 	    (gkbd_configuration_get_indicator_config (globals.config));
+	gkbd_status_reinit_globals ();
 	gkbd_status_reinit_ui (gki);
 }
 
@@ -523,7 +530,7 @@ gkbd_status_init (GkbdStatus * gki)
 
 	gkbd_status_set_tooltips (gki, NULL);
 
-	gkbd_status_global_fill (gki);
+	gkbd_status_fill_icons ();
 	gkbd_status_set_current_page (gki);
 
 	/* append AFTER all initialization work is finished */
@@ -563,7 +570,7 @@ gkbd_status_finalize (GObject * obj)
 	/* remove BEFORE all termination work is finished */
 	gkbd_configuration_remove_object (globals.config, G_OBJECT (gki));
 
-	gkbd_status_global_cleanup (gki);
+	gkbd_status_cleanup_icons ();
 
 	xkl_debug (100,
 		   "The instance of gnome-kbd-status successfully finalized\n");
