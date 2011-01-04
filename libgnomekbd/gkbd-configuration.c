@@ -109,10 +109,8 @@ gkbd_configuration_load_group_names (GkbdConfiguration * configuration,
 							  xklrec->layouts,
 							  (const char **)
 							  xklrec->variants,
-							  &priv->
-							  short_group_names,
-							  &priv->
-							  full_group_names))
+							  &priv->short_group_names,
+							  &priv->full_group_names))
 	{
 		/* We just populate no short names (remain NULL) - 
 		 * full names are going to be used anyway */
@@ -358,8 +356,8 @@ gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 {
 	if (!configuration->priv->ind_cfg.show_flags)
 		return NULL;
-	return (gchar *) g_slist_nth_data (configuration->priv->ind_cfg.
-					   image_filenames, group);
+	return (gchar *) g_slist_nth_data (configuration->priv->
+					   ind_cfg.image_filenames, group);
 }
 
 /**
@@ -385,8 +383,8 @@ gkbd_configuration_get_current_tooltip (GkbdConfiguration * configuration)
 		return NULL;
 
 	return g_strdup_printf (configuration->priv->tooltips_format,
-				configuration->priv->
-				full_group_names[state->group]);
+				configuration->
+				priv->full_group_names[state->group]);
 }
 
 gboolean
@@ -407,8 +405,8 @@ gkbd_configuration_extract_layout_name (GkbdConfiguration * configuration,
 		if (xkl_engine_get_features (engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *full_layout_name =
-			    configuration->priv->kbd_cfg.
-			    layouts_variants[group];
+			    configuration->priv->
+			    kbd_cfg.layouts_variants[group];
 			char *variant_name;
 			if (!gkbd_keyboard_config_split_items
 			    (full_layout_name, &layout_name,
@@ -519,10 +517,10 @@ gkbd_configuration_load_images (GkbdConfiguration * configuration)
 	GSList *image_filename, *images;
 
 	images = NULL;
-	gkbd_indicator_config_load_image_filenames (&configuration->
-						    priv->ind_cfg,
-						    &configuration->
-						    priv->kbd_cfg);
+	gkbd_indicator_config_load_image_filenames (&configuration->priv->
+						    ind_cfg,
+						    &configuration->priv->
+						    kbd_cfg);
 
 	if (!configuration->priv->ind_cfg.show_flags)
 		return NULL;
@@ -558,8 +556,8 @@ gkbd_configuration_free_images (GkbdConfiguration * configuration,
 	GdkPixbuf *pi;
 	GSList *img_node;
 
-	gkbd_indicator_config_free_image_filenames (&configuration->
-						    priv->ind_cfg);
+	gkbd_indicator_config_free_image_filenames (&configuration->priv->
+						    ind_cfg);
 
 	while ((img_node = images) != NULL) {
 		pi = GDK_PIXBUF (img_node->data);
@@ -616,4 +614,37 @@ gkbd_configuration_if_any_object_exists (GkbdConfiguration * configuration)
 	return (configuration != NULL)
 	    && (g_slist_length (configuration->priv->widget_instances) !=
 		0);
+}
+
+static GdkFilterReturn
+gkbd_configuration_filter_x_evt (GdkXEvent * xev, GdkEvent * event,
+				 GkbdConfiguration * configuration)
+{
+	xkl_engine_filter_events (configuration->priv->engine,
+				  (XEvent *) xev);
+	return GDK_FILTER_CONTINUE;
+}
+
+void
+gkbd_configuration_start_listen (GkbdConfiguration * configuration)
+{
+	gdk_window_add_filter (NULL, (GdkFilterFunc)
+			       gkbd_configuration_filter_x_evt,
+			       configuration);
+	gdk_window_add_filter (gdk_get_default_root_window (),
+			       (GdkFilterFunc)
+			       gkbd_configuration_filter_x_evt,
+			       configuration);
+}
+
+void
+gkbd_configuration_stop_listen (GkbdConfiguration * configuration)
+{
+	gdk_window_remove_filter (NULL, (GdkFilterFunc)
+				  gkbd_configuration_filter_x_evt,
+				  configuration);
+	gdk_window_remove_filter (gdk_get_default_root_window (),
+				  (GdkFilterFunc)
+				  gkbd_configuration_filter_x_evt,
+				  configuration);
 }

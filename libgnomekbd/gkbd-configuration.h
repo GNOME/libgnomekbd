@@ -87,6 +87,12 @@ extern void gkbd_configuration_lock_group (GkbdConfiguration *
 extern guint gkbd_configuration_get_current_group (GkbdConfiguration *
 						   configuration);
 
+extern void gkbd_configuration_start_listen (GkbdConfiguration *
+					     configuration);
+
+extern void gkbd_configuration_stop_listen (GkbdConfiguration *
+					    configuration);
+
 extern GkbdIndicatorConfig
     * gkbd_configuration_get_indicator_config (GkbdConfiguration *
 					       configuration);
