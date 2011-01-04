@@ -65,8 +65,8 @@ extern gchar **gkbd_configuration_get_short_group_names (GkbdConfiguration
 							 * configuration);
 
 extern gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
-						      configuration,
-						      guint group);
+						     configuration,
+						     guint group);
 
 extern gchar *gkbd_configuration_get_current_tooltip (GkbdConfiguration *
 						      configuration);
@@ -83,6 +83,9 @@ extern void gkbd_configuration_lock_next_group (GkbdConfiguration *
 
 extern void gkbd_configuration_lock_group (GkbdConfiguration *
 					   configuration, guint group);
+
+extern guint gkbd_configuration_get_current_group (GkbdConfiguration *
+						   configuration);
 
 extern GkbdIndicatorConfig
     * gkbd_configuration_get_indicator_config (GkbdConfiguration *
