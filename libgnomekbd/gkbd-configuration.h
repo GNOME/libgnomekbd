@@ -87,6 +87,10 @@ extern void gkbd_configuration_lock_group (GkbdConfiguration *
 extern guint gkbd_configuration_get_current_group (GkbdConfiguration *
 						   configuration);
 
+extern gchar *gkbd_configuration_get_group_name (GkbdConfiguration *
+						 configuration,
+						 guint group);
+
 extern void gkbd_configuration_start_listen (GkbdConfiguration *
 					     configuration);
 

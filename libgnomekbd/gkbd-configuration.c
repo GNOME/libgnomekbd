@@ -648,3 +648,28 @@ gkbd_configuration_stop_listen (GkbdConfiguration * configuration)
 				  gkbd_configuration_filter_x_evt,
 				  configuration);
 }
+
+/**
+ * gkbd_configuration_get_group_name:
+ * Returns: (transfer full): group name
+ */
+gchar *
+gkbd_configuration_get_group_name (GkbdConfiguration * configuration,
+				   guint group)
+{
+	gchar *layout, *variant;
+	gchar **lv;
+
+	if (configuration == NULL)
+		return NULL;
+
+	lv = configuration->priv->kbd_cfg.layouts_variants;
+	if (group >= g_strv_length (lv))
+		return NULL;
+
+	if (gkbd_keyboard_config_split_items
+	    (lv[group], &layout, &variant)) {
+		return g_strdup (layout);
+	}
+	return NULL;
+}
