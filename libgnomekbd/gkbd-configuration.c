@@ -445,6 +445,13 @@ gkbd_configuration_lock_next_group (GkbdConfiguration * configuration)
 	gkbd_desktop_config_lock_next_group (&configuration->priv->cfg);
 }
 
+void
+gkbd_configuration_lock_group (GkbdConfiguration * configuration, guint group)
+{
+	xkl_engine_lock_group (configuration->priv->engine, group);
+}
+
+
 /**
  * gkbd_configuration_get_indicator_config: 
  * Returns: (transfer none): indicator config

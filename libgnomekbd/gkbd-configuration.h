@@ -60,23 +60,33 @@ extern XklEngine *gkbd_configuration_get_xkl_engine (GkbdConfiguration *
 
 extern gchar **gkbd_configuration_get_group_names (GkbdConfiguration *
 						   configuration);
+
 extern gchar **gkbd_configuration_get_short_group_names (GkbdConfiguration
 							 * configuration);
-extern gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
-						     configuration,
-						     guint group);
+*extern gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
+						      configuration,
+						      guint group);
+
 extern gchar *gkbd_configuration_get_current_tooltip (GkbdConfiguration *
 						      configuration);
+
 extern gboolean gkbd_configuration_if_flags_shown (GkbdConfiguration *
 						   configuration);
+
 extern gchar *gkbd_configuration_extract_layout_name (GkbdConfiguration *
 						      configuration,
 						      int group);
+
 extern void gkbd_configuration_lock_next_group (GkbdConfiguration *
 						configuration);
+
+extern void gkbd_configuration_lock_group (GkbdConfiguration *
+					   configuration, guint group);
+
 extern GkbdIndicatorConfig
     * gkbd_configuration_get_indicator_config (GkbdConfiguration *
 					       configuration);
+
 extern GkbdKeyboardConfig
     * gkbd_configuration_get_keyboard_config (GkbdConfiguration *
 					      configuration);
