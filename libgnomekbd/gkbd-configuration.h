@@ -63,7 +63,8 @@ extern gchar **gkbd_configuration_get_group_names (GkbdConfiguration *
 
 extern gchar **gkbd_configuration_get_short_group_names (GkbdConfiguration
 							 * configuration);
-*extern gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
+
+extern gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
 						      configuration,
 						      guint group);
 
