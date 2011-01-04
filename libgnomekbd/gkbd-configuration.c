@@ -342,7 +342,7 @@ gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 
 /**
  * gkbd_configuration_get_group_names:
- * Returns: (transfer full) (array zero-terminated=1): full group names
+ * Returns: (transfer none) (array zero-terminated=1): full group names
  */
 gchar **
 gkbd_configuration_get_group_names (GkbdConfiguration * configuration)
@@ -362,7 +362,7 @@ gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 
 /**
  * gkbd_configuration_get_short_group_names:
- * Returns: (transfer full) (array zero-terminated=1): short group names
+ * Returns: (transfer none) (array zero-terminated=1): short group names
  */
 gchar **
 gkbd_configuration_get_short_group_names (GkbdConfiguration *
