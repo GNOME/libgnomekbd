@@ -514,13 +514,7 @@ GSList *
 gkbd_configuration_load_images (GkbdConfiguration * configuration)
 {
 	int i;
-	GSList *image_filename, *images;
-
-	images = NULL;
-	gkbd_indicator_config_load_image_filenames (&configuration->priv->
-						    ind_cfg,
-						    &configuration->priv->
-						    kbd_cfg);
+	GSList *image_filename, *images = NULL;
 
 	if (!configuration->priv->ind_cfg.show_flags)
 		return NULL;
@@ -555,9 +549,6 @@ gkbd_configuration_free_images (GkbdConfiguration * configuration,
 {
 	GdkPixbuf *pi;
 	GSList *img_node;
-
-	gkbd_indicator_config_free_image_filenames (&configuration->priv->
-						    ind_cfg);
 
 	while ((img_node = images) != NULL) {
 		pi = GDK_PIXBUF (img_node->data);
