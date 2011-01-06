@@ -212,7 +212,6 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			return NULL;
 		image = GDK_PIXBUF (pimage);
 		flag = gtk_drawing_area_new ();
-		xkl_debug (0, "%d:%p:%p\n", group, image, flag);
 		gtk_widget_add_events (GTK_WIDGET (flag),
 				       GDK_BUTTON_PRESS_MASK);
 		g_signal_connect (G_OBJECT (flag), "draw",

@@ -184,6 +184,9 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 	GkbdConfigurationPrivate *priv;
 	XklConfigRec *xklrec = xkl_config_rec_new ();
 
+	xkl_debug (100, "The config startup process for %p started\n",
+		   configuration);
+
 	priv = GKBD_CONFIGURATION_GET_PRIVATE (configuration);
 	configuration->priv = priv;
 
@@ -242,7 +245,7 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 					    configuration);
 	xkl_engine_start_listen (priv->engine, XKLL_TRACK_KEYBOARD_STATE);
 
-	xkl_debug (100, "Initiating the widget startup process for %p\n",
+	xkl_debug (100, "The config startup process for %p completed\n",
 		   configuration);
 }
 

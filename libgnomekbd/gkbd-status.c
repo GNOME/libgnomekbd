@@ -388,6 +388,7 @@ gkbd_status_reinit_ui (GkbdStatus * gki)
 static void
 gkbd_status_cfg_callback (GkbdConfiguration * configuration)
 {
+	xkl_debug (150, "Config changed: reinit ui\n");
 	gkbd_status_reinit_globals ();
 	ForAllObjects (configuration) {
 		gkbd_status_reinit_ui (GKBD_STATUS (gki));
@@ -398,8 +399,9 @@ gkbd_status_cfg_callback (GkbdConfiguration * configuration)
 static void
 gkbd_status_state_callback (GkbdConfiguration * configuration, gint group)
 {
+	xkl_debug (150, "Set page to group %d\n", group);
 	ForAllObjects (configuration) {
-		xkl_debug (200, "do repaint\n");
+		xkl_debug (150, "do repaint for icon %p\n", gki);
 		gkbd_status_set_current_page_for_group (GKBD_STATUS (gki),
 							group);
 	}
@@ -420,12 +422,15 @@ gkbd_status_set_current_page (GkbdStatus * gki)
 void
 gkbd_status_set_current_page_for_group (GkbdStatus * gki, int group)
 {
-	xkl_debug (200, "Revalidating for group %d\n", group);
+	GdkPixbuf *page = GDK_PIXBUF (g_slist_nth_data (globals.icons, group));
+	xkl_debug (150, "Revalidating for group %d: %p\n", group, page);
 
-	gtk_status_icon_set_from_pixbuf (GTK_STATUS_ICON (gki),
-					 GDK_PIXBUF (g_slist_nth_data
-						     (globals.icons,
-						      group)));
+	if (page == NULL) {
+		xkl_debug (0, "Page for group %d is not ready\n", group);
+		return;
+	}
+
+	gtk_status_icon_set_from_pixbuf (GTK_STATUS_ICON (gki), page);
 
 	gkbd_status_update_tooltips (gki);
 }
@@ -488,6 +493,7 @@ gkbd_status_stop_listen (void)
 static void
 gkbd_status_size_changed (GkbdStatus * gki, gint size)
 {
+	xkl_debug (150, "Size changed to %d\n", size);
 	if (globals.current_height != size) {
 		globals.current_height = size;
 		globals.current_width = size * 3 / 2;
@@ -500,6 +506,7 @@ static void
 gkbd_status_theme_changed (GtkSettings * settings, GParamSpec * pspec,
 			   GkbdStatus * gki)
 {
+	xkl_debug (150, "Theme changed\n");
 	gkbd_indicator_config_refresh_style
 	    (gkbd_configuration_get_indicator_config (globals.config));
 	gkbd_status_reinit_globals ();
@@ -519,7 +526,7 @@ gkbd_status_init (GkbdStatus * gki)
 	/* This should give Notification Area a hint about the order of icons */
 	gtk_status_icon_set_name (GTK_STATUS_ICON (gki), "keyboard");
 
-	xkl_debug (100, "Initiating the widget startup process for %p\n",
+	xkl_debug (100, "The status icon startup process for %p started\n",
 		   gki);
 
 	if (gkbd_configuration_get_xkl_engine (globals.config) == NULL) {
@@ -527,11 +534,6 @@ gkbd_status_init (GkbdStatus * gki)
 					  _("XKB initialization error"));
 		return;
 	}
-
-	gkbd_status_set_tooltips (gki, NULL);
-
-	gkbd_status_fill_icons ();
-	gkbd_status_set_current_page (gki);
 
 	/* append AFTER all initialization work is finished */
 	gkbd_configuration_append_object (globals.config, G_OBJECT (gki));
@@ -549,6 +551,9 @@ gkbd_status_init (GkbdStatus * gki)
 					    G_CALLBACK
 					    (gkbd_status_theme_changed),
 					    gki);
+
+	xkl_debug (100, "The status icon startup process for %p completed\n",
+		   gki);
 }
 
 static void
