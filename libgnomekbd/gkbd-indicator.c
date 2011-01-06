@@ -69,26 +69,6 @@ static void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str);
 
 void
-gkbd_indicator_load_images ()
-{
-	globals.images = gkbd_configuration_load_images (globals.config);
-}
-
-static void
-gkbd_indicator_free_images ()
-{
-	gkbd_configuration_free_images (globals.config, globals.images);
-	globals.images = NULL;
-}
-
-static void
-gkbd_indicator_update_images (void)
-{
-	gkbd_indicator_free_images ();
-	gkbd_indicator_load_images ();
-}
-
-void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str)
 {
 	g_assert (str == NULL || g_utf8_validate (str, -1, NULL));
@@ -191,20 +171,15 @@ gkbd_indicator_button_pressed (GtkWidget *
 }
 
 static void
-flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
+draw_flag (GtkWidget * flag, cairo_t * cr, GdkPixbuf * image)
 {
 	/* Image width and height */
 	int iw = gdk_pixbuf_get_width (image);
 	int ih = gdk_pixbuf_get_height (image);
 	GtkAllocation allocation;
 	double xwiratio, ywiratio, wiratio;
-	cairo_t *cr;
 
 	gtk_widget_get_allocation (flag, &allocation);
-
-	cr = gdk_cairo_create (event->window);
-	gdk_cairo_region (cr, event->region);
-	cairo_clip (cr);
 
 	/* widget-to-image scales, X and Y */
 	xwiratio = 1.0 * allocation.width / iw;
@@ -219,8 +194,6 @@ flag_exposed (GtkWidget * flag, GdkEventExpose * event, GdkPixbuf * image)
 
 	gdk_cairo_set_source_pixbuf (cr, image, 0, 0);
 	cairo_paint (cr);
-
-	cairo_destroy (cr);
 }
 
 static GtkWidget *
@@ -239,10 +212,11 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 			return NULL;
 		image = GDK_PIXBUF (pimage);
 		flag = gtk_drawing_area_new ();
+		xkl_debug (0, "%d:%p:%p\n", group, image, flag);
 		gtk_widget_add_events (GTK_WIDGET (flag),
 				       GDK_BUTTON_PRESS_MASK);
-		g_signal_connect (G_OBJECT (flag), "expose_event",
-				  G_CALLBACK (flag_exposed), image);
+		g_signal_connect (G_OBJECT (flag), "draw",
+				  G_CALLBACK (draw_flag), image);
 		gtk_container_add (GTK_CONTAINER (ebox), flag);
 	} else {
 		char *lbl_title = NULL;
@@ -509,6 +483,9 @@ gkbd_indicator_global_term (void)
 {
 	xkl_debug (100, "*** Last  GkbdIndicator instance *** \n");
 
+	gkbd_configuration_free_images (globals.config, globals.images);
+	globals.images = NULL;
+
 	gkbd_indicator_plugin_manager_term_initialized_plugins
 	    (&globals.plugin_manager);
 	gkbd_indicator_plugin_manager_term (&globals.plugin_manager);
@@ -558,7 +535,7 @@ gkbd_indicator_global_init (void)
 
 	gkbd_indicator_plugin_container_init (&globals.plugin_container);
 
-	gkbd_indicator_update_images ();
+	globals.images = gkbd_configuration_load_images (globals.config);
 
 	gkbd_indicator_plugin_manager_init (&globals.plugin_manager);
 	gkbd_indicator_plugin_manager_init_enabled_plugins
