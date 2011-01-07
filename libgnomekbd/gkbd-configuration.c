@@ -48,11 +48,16 @@ struct _GkbdConfigurationPrivate {
 	gulong config_changed_handler;
 
 	GSList *widget_instances;
+
+	Atom caps_lock_atom;
+	Atom num_lock_atom;
+	Atom scroll_lock_atom;
 };
 
 enum {
 	SIGNAL_CHANGED,
 	SIGNAL_GROUP_CHANGED,
+	SIGNAL_INDICATORS_CHANGED,
 	LAST_SIGNAL
 };
 
@@ -170,17 +175,25 @@ gkbd_configuration_state_callback (XklEngine * engine,
 				   gint group, gboolean restore,
 				   GkbdConfiguration * configuration)
 {
-	xkl_debug (150, "group is now %d, restore: %d\n", group, restore);
+	xkl_debug (150, "change type: %d, group is now %d, restore: %d\n",
+		   changeType, group, restore);
 
-	if (changeType == GROUP_CHANGED) {
+	switch (changeType) {
+	case GROUP_CHANGED:
 		g_signal_emit (configuration,
 			       signals[SIGNAL_GROUP_CHANGED], 0, group);
+		break;
+	case INDICATORS_CHANGED:
+		g_signal_emit (configuration,
+			       signals[SIGNAL_INDICATORS_CHANGED], 0);
+		break;
 	}
 }
 
 static void
 gkbd_configuration_init (GkbdConfiguration * configuration)
 {
+	Display *display;
 	GkbdConfigurationPrivate *priv;
 	XklConfigRec *xklrec = xkl_config_rec_new ();
 
@@ -193,13 +206,17 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 	/* Initing some global vars */
 	priv->tooltips_format = "%s";
 
-	priv->engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
-						(gdk_display_get_default
-						 ()));
+	display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	priv->engine = xkl_engine_get_instance (display);
 	if (priv->engine == NULL) {
 		xkl_debug (0, "Libxklavier initialization error");
 		return;
 	}
+
+	priv->caps_lock_atom = XInternAtom (display, "Caps Lock", False);
+	priv->num_lock_atom = XInternAtom (display, "Num Lock", False);
+	priv->scroll_lock_atom =
+	    XInternAtom (display, "Scroll Lock", False);
 
 	priv->state_changed_handler =
 	    g_signal_connect (priv->engine, "X-state-changed",
@@ -313,6 +330,10 @@ gkbd_configuration_class_init (GkbdConfigurationClass * klass)
 						      g_cclosure_marshal_VOID__INT,
 						      G_TYPE_NONE,
 						      1, G_TYPE_INT);
+	signals[SIGNAL_INDICATORS_CHANGED] =
+	    g_signal_new ("indicators-changed", GKBD_TYPE_CONFIGURATION,
+			  G_SIGNAL_RUN_LAST, 0, NULL, NULL,
+			  g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 
 	g_type_class_add_private (klass,
 				  sizeof (GkbdConfigurationPrivate));
@@ -666,4 +687,39 @@ gkbd_configuration_get_group_name (GkbdConfiguration * configuration,
 		return g_strdup (layout);
 	}
 	return NULL;
+}
+
+gboolean
+gkbd_configuration_get_caps_lock_state (GkbdConfiguration * configuration)
+{
+	Bool state;
+	Display *display =
+	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	XkbGetNamedIndicator (display, configuration->priv->caps_lock_atom,
+			      NULL, &state, NULL, NULL);
+	return state;
+}
+
+gboolean
+gkbd_configuration_get_num_lock_state (GkbdConfiguration * configuration)
+{
+	Bool state;
+	Display *display =
+	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	XkbGetNamedIndicator (display, configuration->priv->num_lock_atom,
+			      NULL, &state, NULL, NULL);
+	return state;
+}
+
+gboolean
+gkbd_configuration_get_scroll_lock_state (GkbdConfiguration *
+					  configuration)
+{
+	Bool state;
+	Display *display =
+	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	XkbGetNamedIndicator (display,
+			      configuration->priv->scroll_lock_atom, NULL,
+			      &state, NULL, NULL);
+	return state;
 }

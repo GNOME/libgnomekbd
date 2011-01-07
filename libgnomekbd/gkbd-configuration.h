@@ -140,5 +140,12 @@ extern gchar *gkbd_configuration_create_label_title (int group,
 						     ln2cnt_map,
 						     gchar * layout_name);
 
+extern gboolean gkbd_configuration_get_caps_lock_state (GkbdConfiguration *
+							configuration);
+extern gboolean gkbd_configuration_get_num_lock_state (GkbdConfiguration *
+						       configuration);
+extern gboolean gkbd_configuration_get_scroll_lock_state (GkbdConfiguration
+							  * configuration);
+
 G_END_DECLS
 #endif
