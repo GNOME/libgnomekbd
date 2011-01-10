@@ -1,3 +1,9 @@
+2.91.5:
+	Big refactoring: common code from both indicators is separated into GkbdConfiguration.
+	Introspection added, for embedding into JS-driven gnome-shell
+	A number of bugs and build issues fixed 
+	Still trying to catch fast changing gtk APIs.
+
 2.91.4:
 	Updated to the latest gtk+ changes, updated et translation
 
