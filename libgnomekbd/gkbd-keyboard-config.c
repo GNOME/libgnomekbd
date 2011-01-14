@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <X11/keysym.h>
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 
 #include <gkbd-keyboard-config.h>
 #include <gkbd-config-private.h>
