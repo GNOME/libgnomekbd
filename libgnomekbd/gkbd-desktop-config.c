@@ -276,7 +276,7 @@ gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 {
 	gchar **sld, **lld, **svd, **lvd;
 	gchar **psld, **plld, **plvd;
-	gchar **psgn, **pfgn;
+	gchar **psgn, **pfgn, **psvd;
 	gint total_descriptions;
 
 	if (!gkbd_desktop_config_get_lv_descriptions
@@ -295,8 +295,11 @@ gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 	plld = lld;
 	psld = sld;
 	plvd = lvd;
+	psvd = svd;
 	while (plld != NULL && *plld != NULL) {
-		*psgn++ = g_strdup (*psld++);
+		gchar *sd = (*psvd[0] == '\0') ? *psld : *psvd;
+		psld++, psvd++;
+		*psgn++ = g_strdup (sd);
 		*pfgn++ = g_strdup (gkbd_keyboard_config_format_full_layout
 				    (*plld++, *plvd++));
 	}
