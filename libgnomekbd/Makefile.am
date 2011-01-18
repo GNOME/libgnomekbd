@@ -99,6 +99,7 @@ noinst_HEADERS = gkbd-indicator-plugin-manager.h \
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
              $(ui_DATA) \
+             $(icons_DATA) \
              $(gsettings_SCHEMAS:.xml=.xml.in.in) 
 
 
