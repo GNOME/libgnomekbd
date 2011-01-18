@@ -3,6 +3,11 @@ lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 uidir="$(pkgdatadir)/ui"
 ui_DATA = show-layout.ui
 
+iconsdir="$(pkgdatadir)/icons"
+icons_DATA = keyboard-caps-lock.svg \
+             keyboard-num-lock.svg \
+             keyboard-scroll-lock.svg 
+
 gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
 		    org.gnome.libgnomekbd.keyboard.gschema.xml \
 		    org.gnome.libgnomekbd.gschema.xml
@@ -19,6 +24,7 @@ common_CFLAGS = \
 	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
 	-DG_LOG_DOMAIN=\"GnomeKbdIndicator\"		\
 	-DDATADIR=\"$(datadir)\"			\
+	-DICONSDIR=\"$(iconsdir)\"			\
 	-DSYSCONFDIR=\"$(sysconfdir)\"			\
 	-DLIBDIR=\"$(libdir)\"				
 

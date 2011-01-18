@@ -256,6 +256,8 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 							     "icons/flags",
 							     NULL));
 	g_free (sp);
+
+	gtk_icon_theme_prepend_search_path (ind_config->icon_theme, ICONSDIR);
 }
 
 void
