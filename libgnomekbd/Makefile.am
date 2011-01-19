@@ -4,9 +4,9 @@ uidir="$(pkgdatadir)/ui"
 ui_DATA = show-layout.ui
 
 iconsdir="$(pkgdatadir)/icons"
-icons_DATA = keyboard-caps-lock.svg \
-             keyboard-num-lock.svg \
-             keyboard-scroll-lock.svg 
+icons_DATA = kbdled-caps-lock.svg \
+             kbdled-num-lock.svg \
+             kbdled-scroll-lock.svg 
 
 gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
 		    org.gnome.libgnomekbd.keyboard.gschema.xml \
