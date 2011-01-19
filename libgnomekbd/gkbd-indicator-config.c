@@ -257,7 +257,7 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 							     NULL));
 	g_free (sp);
 
-	gtk_icon_theme_prepend_search_path (ind_config->icon_theme, ICONSDIR);
+	gtk_icon_theme_append_search_path (ind_config->icon_theme, ICONSDIR);
 }
 
 void
