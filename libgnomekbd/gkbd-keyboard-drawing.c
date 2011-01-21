@@ -2029,6 +2029,7 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 	drawing->track_config = 0;
 
 	gtk_widget_set_double_buffered (GTK_WIDGET (drawing), FALSE);
+        gtk_widget_set_has_window (GTK_WIDGET (drawing), FALSE);
 
 	/* XXX: XkbClientMapMask | XkbIndicatorMapMask | XkbNamesMask | XkbGeometryMask */
 	drawing->xkb = XkbGetKeyboard (drawing->display,
