@@ -611,14 +611,15 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 }
 
 static void
-set_markup(GkbdKeyboardDrawingRenderContext * context,
-		     gchar *txt)
+set_markup (GkbdKeyboardDrawingRenderContext * context, gchar * txt)
 {
 	PangoLayout *layout = context->layout;
-	txt = strcmp("<", txt) ? txt : "&lt;";
-	txt = strcmp("&", txt) ? txt : "&amp;";
+	txt = strcmp ("<", txt) ? txt : "&lt;";
+	txt = strcmp ("&", txt) ? txt : "&amp;";
 	if (g_utf8_strlen (txt, -1) > 1) {
-		gchar* buf = g_strdup_printf ("<span size=\"x-small\">%s</span>", txt);
+		gchar *buf =
+		    g_strdup_printf ("<span size=\"x-small\">%s</span>",
+				     txt);
 		pango_layout_set_markup (layout, buf, -1);
 		g_free (buf);
 	} else {
@@ -639,123 +640,123 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 		break;
 
 	case GDK_KEY_space:
-		set_markup(context, "");
+		set_markup (context, "");
 		break;
 
 	case GDK_KEY_Sys_Req:
-		set_markup(context, "Sys Rq");
+		set_markup (context, "Sys Rq");
 		break;
 
 	case GDK_KEY_Page_Up:
-		set_markup(context, "Page\nUp");
+		set_markup (context, "Page\nUp");
 		break;
 
 	case GDK_KEY_Page_Down:
-		set_markup(context, "Page\nDown");
+		set_markup (context, "Page\nDown");
 		break;
 
 	case GDK_KEY_Num_Lock:
-		set_markup(context, "Num\nLock");
+		set_markup (context, "Num\nLock");
 		break;
 
 	case GDK_KEY_KP_Page_Up:
-		set_markup(context, "Pg Up");
+		set_markup (context, "Pg Up");
 		break;
 
 	case GDK_KEY_KP_Page_Down:
-		set_markup(context, "Pg Dn");
+		set_markup (context, "Pg Dn");
 		break;
 
 	case GDK_KEY_KP_Home:
-		set_markup(context, "Home");
+		set_markup (context, "Home");
 		break;
 
 	case GDK_KEY_KP_Left:
-		set_markup(context, "Left");
+		set_markup (context, "Left");
 		break;
 
 	case GDK_KEY_KP_End:
-		set_markup(context, "End");
+		set_markup (context, "End");
 		break;
 
 	case GDK_KEY_KP_Up:
-		set_markup(context, "Up");
+		set_markup (context, "Up");
 		break;
 
 	case GDK_KEY_KP_Begin:
-		set_markup(context, "Begin");
+		set_markup (context, "Begin");
 		break;
 
 	case GDK_KEY_KP_Right:
-		set_markup(context, "Right");
+		set_markup (context, "Right");
 		break;
 
 	case GDK_KEY_KP_Enter:
-		set_markup(context, "Enter");
+		set_markup (context, "Enter");
 		break;
 
 	case GDK_KEY_KP_Down:
-		set_markup(context, "Down");
+		set_markup (context, "Down");
 		break;
 
 	case GDK_KEY_KP_Insert:
-		set_markup(context, "Ins");
+		set_markup (context, "Ins");
 		break;
 
 	case GDK_KEY_KP_Delete:
-		set_markup(context, "Del");
+		set_markup (context, "Del");
 		break;
 
 	case GDK_KEY_dead_grave:
-		set_markup(context, "ˋ");
+		set_markup (context, "ˋ");
 		break;
 
 	case GDK_KEY_dead_acute:
-		set_markup(context, "ˊ");
+		set_markup (context, "ˊ");
 		break;
 
 	case GDK_KEY_dead_circumflex:
-		set_markup(context, "ˆ");
+		set_markup (context, "ˆ");
 		break;
 
 	case GDK_KEY_dead_tilde:
-		set_markup(context, "~");
+		set_markup (context, "~");
 		break;
 
 	case GDK_KEY_dead_macron:
-		set_markup(context, "ˉ");
+		set_markup (context, "ˉ");
 		break;
 
 	case GDK_KEY_dead_breve:
-		set_markup(context, "˘");
+		set_markup (context, "˘");
 		break;
 
 	case GDK_KEY_dead_abovedot:
-		set_markup(context, "˙");
+		set_markup (context, "˙");
 		break;
 
 	case GDK_KEY_dead_diaeresis:
-		set_markup(context, "¨");
+		set_markup (context, "¨");
 		break;
 
 	case GDK_KEY_dead_abovering:
-		set_markup(context, "˚");
+		set_markup (context, "˚");
 		break;
 
 	case GDK_KEY_dead_doubleacute:
-		set_markup(context, "˝");
+		set_markup (context, "˝");
 		break;
 
 	case GDK_KEY_dead_caron:
-		set_markup(context, "ˇ");
+		set_markup (context, "ˇ");
 		break;
 
 	case GDK_KEY_dead_cedilla:
-		set_markup(context, "¸");
+		set_markup (context, "¸");
 		break;
 
 	case GDK_KEY_dead_ogonek:
-		set_markup(context, "˛");
+		set_markup (context, "˛");
 		break;
 
 		/* case GDK_KEY_dead_iota:
@@ -763,33 +764,32 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 		 * case GDK_KEY_dead_semivoiced_sound: */
 
 	case GDK_KEY_dead_belowdot:
-		set_markup(context, " ̣");
+		set_markup (context, " ̣");
 		break;
 
 	case GDK_KEY_horizconnector:
-		set_markup(context, "horiz\nconn");
+		set_markup (context, "horiz\nconn");
 		break;
 
 	case GDK_KEY_Mode_switch:
-		set_markup(context, "AltGr");
+		set_markup (context, "AltGr");
 		break;
 
 	case GDK_KEY_Multi_key:
-		set_markup(context, "Compose");
+		set_markup (context, "Compose");
 		break;
 
 	default:
 		uc = gdk_keyval_to_unicode (keyval);
 		if (uc != 0 && g_unichar_isgraph (uc)) {
 			buf[g_unichar_to_utf8 (uc, buf)] = '\0';
-			set_markup(context, buf);
+			set_markup (context, buf);
 		} else {
 			gchar *name = gdk_keyval_name (keyval);
 			if (name) {
-				set_markup(context, name);
-			}
-			else
-				set_markup(context, "");
+				set_markup (context, name);
+			} else
+				set_markup (context, "");
 		}
 	}
 }
@@ -995,6 +995,31 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 	}
 }
 
+/**
+   The x offset is calculated for complex shapes. It is the rightmost of the vertical lines in the outline
+ */
+static gint
+calc_origin_offset_x (XkbOutlineRec * outline)
+{
+	gint rv = 0;
+	gint i;
+	if (outline->num_points < 3)
+		return 0;
+	XkbPointPtr point = outline->points;
+	for (i = outline->num_points; --i > 0;) {
+		gint x1 = point->x;
+		gint y1 = point++->y;
+		gint x2 = point->x;
+		gint y2 = point->y;
+
+		/*vertical, bottom to top (clock-wise), on the left */
+		if ((x1 == x2) && (y1 > y2) && (x1 > rv)) {
+			rv = x1;
+		}
+	}
+	return rv;
+}
+
 /* groups are from 0-3 */
 static void
 draw_key (GkbdKeyboardDrawingRenderContext * context,
@@ -1002,6 +1027,8 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 {
 	XkbShapeRec *shape;
 	GdkColor *color;
+	XkbOutlineRec *outline;
+	int origin_offset_x;
 	/* gint i; */
 
 	if (!drawing->xkb)
@@ -1030,9 +1057,9 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 #endif
 
 	/* draw the primary outline */
-	draw_outline (context,
-		      shape->primary ? shape->primary : shape->outlines,
-		      color, key->angle, key->origin_x, key->origin_y);
+	outline = shape->primary ? shape->primary : shape->outlines;
+	draw_outline (context, outline, color, key->angle, key->origin_x,
+		      key->origin_y);
 #if 0
 	/* don't draw other outlines for now, since
 	 * the text placement does not take them into account 
@@ -1045,9 +1072,9 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 			      key->angle, key->origin_x, key->origin_y);
 	}
 #endif
-
+	origin_offset_x = calc_origin_offset_x (outline);
 	draw_key_label (context, drawing, key->keycode, key->angle,
-			key->origin_x, key->origin_y,
+			key->origin_x + origin_offset_x, key->origin_y,
 			shape->bounds.x2, shape->bounds.y2);
 }
 
@@ -1348,8 +1375,11 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 	gtk_widget_get_allocation (GTK_WIDGET (drawing), &allocation);
 
 	drawing->surface =
-	    gdk_window_create_similar_surface (gtk_widget_get_window (GTK_WIDGET (drawing)),
-			    CAIRO_CONTENT_COLOR, allocation.width, allocation.height);
+	    gdk_window_create_similar_surface (gtk_widget_get_window
+					       (GTK_WIDGET (drawing)),
+					       CAIRO_CONTENT_COLOR,
+					       allocation.width,
+					       allocation.height);
 
 	if (create_cairo (drawing)) {
 		/* blank background */
@@ -1395,8 +1425,7 @@ free_render_context (GkbdKeyboardDrawing * drawing)
 }
 
 static gboolean
-draw (GtkWidget * widget,
-      cairo_t *cr, GkbdKeyboardDrawing * drawing)
+draw (GtkWidget * widget, cairo_t * cr, GkbdKeyboardDrawing * drawing)
 {
 	GtkAllocation allocation;
 
@@ -1406,8 +1435,8 @@ draw (GtkWidget * widget,
 	if (drawing->surface == NULL)
 		return FALSE;
 
-        cairo_set_source_surface (cr, drawing->surface, 0, 0);
-        cairo_paint (cr);
+	cairo_set_source_surface (cr, drawing->surface, 0, 0);
+	cairo_paint (cr);
 
 	if (gtk_widget_has_focus (widget)) {
 		gtk_widget_get_allocation (widget, &allocation);
@@ -1478,7 +1507,7 @@ size_allocate (GtkWidget * widget,
 	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 
 	if (drawing->surface) {
-                cairo_surface_destroy (drawing->surface);
+		cairo_surface_destroy (drawing->surface);
 		drawing->surface = NULL;
 	}
 
@@ -1980,9 +2009,9 @@ destroy (GkbdKeyboardDrawing * drawing)
 		drawing->idle_redraw = 0;
 	}
 
-        if (drawing->surface != NULL) {
-                cairo_surface_destroy (drawing->surface);
-        }
+	if (drawing->surface != NULL) {
+		cairo_surface_destroy (drawing->surface);
+	}
 }
 
 static void
@@ -2029,7 +2058,7 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 	drawing->track_config = 0;
 
 	gtk_widget_set_double_buffered (GTK_WIDGET (drawing), FALSE);
-        gtk_widget_set_has_window (GTK_WIDGET (drawing), FALSE);
+	gtk_widget_set_has_window (GTK_WIDGET (drawing), FALSE);
 
 	/* XXX: XkbClientMapMask | XkbIndicatorMapMask | XkbNamesMask | XkbGeometryMask */
 	drawing->xkb = XkbGetKeyboard (drawing->display,
