@@ -1003,9 +1003,9 @@ calc_origin_offset_x (XkbOutlineRec * outline)
 {
 	gint rv = 0;
 	gint i;
+	XkbPointPtr point = outline->points;
 	if (outline->num_points < 3)
 		return 0;
-	XkbPointPtr point = outline->points;
 	for (i = outline->num_points; --i > 0;) {
 		gint x1 = point->x;
 		gint y1 = point++->y;
