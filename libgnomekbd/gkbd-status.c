@@ -327,7 +327,7 @@ gkbd_status_prepare_drawing (int group)
 		char pngfilename[20];
 		g_sprintf (pngfilename, "label%d.png", group);
 		cairo_surface_write_to_png (cs, pngfilename);
-		xkl_debug(150, "file %s is created\n", pngfilename);
+		xkl_debug (150, "file %s is created\n", pngfilename);
 #endif
 		pixbuf_data =
 		    g_new0 (guchar,
@@ -423,7 +423,8 @@ gkbd_status_set_current_page (GkbdStatus * gki)
 void
 gkbd_status_set_current_page_for_group (GkbdStatus * gki, int group)
 {
-	GdkPixbuf *page = GDK_PIXBUF (g_slist_nth_data (globals.icons, group));
+	GdkPixbuf *page =
+	    GDK_PIXBUF (g_slist_nth_data (globals.icons, group));
 	xkl_debug (150, "Revalidating for group %d: %p\n", group, page);
 
 	if (page == NULL) {
@@ -553,7 +554,8 @@ gkbd_status_init (GkbdStatus * gki)
 					    (gkbd_status_theme_changed),
 					    gki);
 
-	xkl_debug (100, "The status icon startup process for %p completed\n",
+	xkl_debug (100,
+		   "The status icon startup process for %p completed\n",
 		   gki);
 }
 
