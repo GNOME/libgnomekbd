@@ -1427,8 +1427,6 @@ free_render_context (GkbdKeyboardDrawing * drawing)
 static gboolean
 draw (GtkWidget * widget, cairo_t * cr, GkbdKeyboardDrawing * drawing)
 {
-	GtkAllocation allocation;
-
 	if (!drawing->xkb)
 		return FALSE;
 
@@ -1437,16 +1435,6 @@ draw (GtkWidget * widget, cairo_t * cr, GkbdKeyboardDrawing * drawing)
 
 	cairo_set_source_surface (cr, drawing->surface, 0, 0);
 	cairo_paint (cr);
-
-	if (gtk_widget_has_focus (widget)) {
-		gtk_widget_get_allocation (widget, &allocation);
-		gtk_paint_focus (gtk_widget_get_style (widget),
-				 cr,
-				 gtk_widget_get_state (widget),
-				 widget, "keyboard-drawing",
-				 0, 0, allocation.width,
-				 allocation.height);
-	}
 
 	return FALSE;
 }
