@@ -1121,8 +1121,10 @@ invalidate_region (GkbdKeyboardDrawing * drawing,
 	    xkb_to_pixmap_coord (drawing->renderContext,
 				 y_max - y_min) + 12;
 
-	gtk_widget_queue_draw_area (GTK_WIDGET (drawing), x, y, width,
-				    height);
+	gtk_widget_queue_draw (GTK_WIDGET (drawing));
+	// TODO: find out why x and y are counted from the window corner, not widget corner
+	//gtk_widget_queue_draw_area (GTK_WIDGET (drawing), x, y, width,
+	//			    height);
 }
 
 static void
