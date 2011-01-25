@@ -123,7 +123,6 @@ struct _GkbdKeyboardDrawing {
 
 	GtkDrawingArea parent;
 
-	cairo_surface_t *surface;
 	XkbDescRec *xkb;
 	gboolean xkbOnDisplay;
 	guint l3mod;
@@ -139,7 +138,6 @@ struct _GkbdKeyboardDrawing {
 	GdkColor *colors;
 
 	guint timeout;
-	guint idle_redraw;
 
 	GkbdKeyboardDrawingGroupLevel **groupLevels;
 

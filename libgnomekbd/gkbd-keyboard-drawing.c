@@ -434,23 +434,19 @@ draw_outline (GkbdKeyboardDrawingRenderContext * context,
 	      GdkColor * color, gint angle, gint origin_x, gint origin_y)
 {
 #ifdef KBDRAW_DEBUG
-	printf (" num_points in %p: %d\n", outline, outline->num_points);
+	printf ("origin: %d, %d, num_points in %p: %d\n", origin_x,
+		origin_y, outline, outline->num_points);
 #endif
 
 	if (outline->num_points == 1) {
-		if (color)
-			draw_rectangle (context, color, angle, origin_x,
-					origin_y, outline->points[0].x,
-					outline->points[0].y,
-					outline->corner_radius);
-
 #ifdef KBDRAW_DEBUG
-		printf ("pointsxy:%d %d %d\n", outline->points[0].x,
-			outline->points[0].y, outline->corner_radius);
+		printf
+		    ("1 point (rectangle): width, height: %d, %d, radius %d\n",
+		     outline->points[0].x, outline->points[0].y,
+		     outline->corner_radius);
 #endif
-
-		draw_rectangle (context, NULL, angle, origin_x, origin_y,
-				outline->points[0].x,
+		draw_rectangle (context, color, angle, origin_x,
+				origin_y, outline->points[0].x,
 				outline->points[0].y,
 				outline->corner_radius);
 	} else if (outline->num_points == 2) {
@@ -460,24 +456,23 @@ draw_outline (GkbdKeyboardDrawingRenderContext * context,
 				   origin_x + outline->points[0].x,
 				   origin_y + outline->points[0].y,
 				   angle, &rotated_x0, &rotated_y0);
-		if (color)
-			draw_rectangle (context, color, angle, rotated_x0,
-					rotated_y0, outline->points[1].x,
-					outline->points[1].y,
-					outline->corner_radius);
-
-		draw_rectangle (context, NULL, angle, rotated_x0,
+#ifdef KBDRAW_DEBUG
+		printf
+		    ("2 points (rectangle): from %d, %d, width, height: %d, %d, radius %d\n",
+		     rotated_x0, rotated_y0, outline->points[1].x,
+		     outline->points[1].y, outline->corner_radius);
+#endif
+		draw_rectangle (context, color, angle, rotated_x0,
 				rotated_y0, outline->points[1].x,
 				outline->points[1].y,
 				outline->corner_radius);
 	} else {
-		if (color)
-			draw_polygon (context, color, origin_x, origin_y,
-				      outline->points,
-				      outline->num_points,
-				      outline->corner_radius);
-
-		draw_polygon (context, NULL, origin_x, origin_y,
+#ifdef KBDRAW_DEBUG
+		printf ("multiple points (%d) from %d %d, radius %d\n",
+			outline->num_points, origin_x, origin_y,
+			outline->corner_radius);
+#endif
+		draw_polygon (context, color, origin_x, origin_y,
 			      outline->points, outline->num_points,
 			      outline->corner_radius);
 	}
@@ -1341,13 +1336,13 @@ draw_keyboard_to_context (GkbdKeyboardDrawingRenderContext * context,
 }
 
 static gboolean
-create_cairo (GkbdKeyboardDrawing * drawing)
+prepare_cairo (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
 	GtkStateType state;
-	if (drawing == NULL || drawing->surface == NULL)
+	if (drawing == NULL)
 		return FALSE;
-	drawing->renderContext->cr = cairo_create (drawing->surface);
 
+	drawing->renderContext->cr = cr;
 	state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	drawing->renderContext->dark_color =
 	    &gtk_widget_get_style (GTK_WIDGET (drawing))->dark[state];
@@ -1355,15 +1350,7 @@ create_cairo (GkbdKeyboardDrawing * drawing)
 }
 
 static void
-destroy_cairo (GkbdKeyboardDrawing * drawing)
-{
-	cairo_destroy (drawing->renderContext->cr);
-	drawing->renderContext->cr = NULL;
-	drawing->renderContext->dark_color = NULL;
-}
-
-static void
-draw_keyboard (GkbdKeyboardDrawing * drawing)
+draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
 	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
 	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (drawing));
@@ -1374,21 +1361,12 @@ draw_keyboard (GkbdKeyboardDrawing * drawing)
 
 	gtk_widget_get_allocation (GTK_WIDGET (drawing), &allocation);
 
-	drawing->surface =
-	    gdk_window_create_similar_surface (gtk_widget_get_window
-					       (GTK_WIDGET (drawing)),
-					       CAIRO_CONTENT_COLOR,
-					       allocation.width,
-					       allocation.height);
-
-	if (create_cairo (drawing)) {
+	if (prepare_cairo (drawing, cr)) {
 		/* blank background */
-		gdk_cairo_set_source_color (drawing->renderContext->cr,
-					    &style->base[state]);
-		cairo_paint (drawing->renderContext->cr);
+		gdk_cairo_set_source_color (cr, &style->base[state]);
+		cairo_paint (cr);
 
 		draw_keyboard_to_context (drawing->renderContext, drawing);
-		destroy_cairo (drawing);
 	}
 }
 
@@ -1430,23 +1408,7 @@ draw (GtkWidget * widget, cairo_t * cr, GkbdKeyboardDrawing * drawing)
 	if (!drawing->xkb)
 		return FALSE;
 
-	if (drawing->surface == NULL)
-		return FALSE;
-
-	cairo_set_source_surface (cr, drawing->surface, 0, 0);
-	cairo_paint (cr);
-
-	return FALSE;
-}
-
-static gboolean
-idle_redraw (gpointer user_data)
-{
-	GkbdKeyboardDrawing *drawing = user_data;
-
-	drawing->idle_redraw = 0;
-	draw_keyboard (drawing);
-	gtk_widget_queue_draw (GTK_WIDGET (drawing));
+	draw_keyboard (drawing, cr);
 	return FALSE;
 }
 
@@ -1494,18 +1456,12 @@ size_allocate (GtkWidget * widget,
 {
 	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 
-	if (drawing->surface) {
-		cairo_surface_destroy (drawing->surface);
-		drawing->surface = NULL;
-	}
-
 	if (!context_setup_scaling (context, drawing,
 				    allocation->width, allocation->height,
 				    50, 50))
 		return;
 
-	if (!drawing->idle_redraw)
-		drawing->idle_redraw = g_idle_add (idle_redraw, drawing);
+	gtk_widget_queue_draw (GTK_WIDGET (drawing));
 }
 
 static gint
@@ -1534,13 +1490,6 @@ key_event (GtkWidget * widget,
 
 	key->pressed = (event->type == GDK_KEY_PRESS);
 
-	if (create_cairo (drawing)) {
-		draw_key (drawing->renderContext, drawing, key);
-		redraw_overlapping_doodads (drawing->renderContext,
-					    drawing, key);
-		destroy_cairo (drawing);
-	}
-
 	invalidate_key_region (drawing, key);
 	return FALSE;
 }
@@ -1564,18 +1513,14 @@ unpress_keys (GkbdKeyboardDrawing * drawing)
 	if (!drawing->xkb)
 		return FALSE;
 
-	if (create_cairo (drawing)) {
-		for (i = drawing->xkb->min_key_code;
-		     i <= drawing->xkb->max_key_code; i++)
-			if (drawing->keys[i].pressed) {
-				drawing->keys[i].pressed = FALSE;
-				draw_key (drawing->renderContext, drawing,
-					  drawing->keys + i);
-				invalidate_key_region (drawing,
-						       drawing->keys + i);
-			}
-		destroy_cairo (drawing);
-	}
+	for (i = drawing->xkb->min_key_code;
+	     i <= drawing->xkb->max_key_code; i++)
+		if (drawing->keys[i].pressed) {
+			drawing->keys[i].pressed = FALSE;
+			draw_key (drawing->renderContext, drawing,
+				  drawing->keys + i);
+			invalidate_key_region (drawing, drawing->keys + i);
+		}
 
 	return FALSE;
 }
@@ -1895,14 +1840,6 @@ process_indicators_state_notify (XkbIndicatorNotifyEvent * iev,
 				&& drawing->physical_indicators[i]->on)) {
 				drawing->physical_indicators[i]->on =
 				    state;
-				if (create_cairo (drawing)) {
-					draw_doodad
-					    (drawing->renderContext,
-					     drawing,
-					     drawing->physical_indicators
-					     [i]);
-					destroy_cairo (drawing);
-				}
 				invalidate_indicator_doodad_region
 				    (drawing,
 				     drawing->physical_indicators[i]);
@@ -1992,14 +1929,6 @@ destroy (GkbdKeyboardDrawing * drawing)
 		g_source_remove (drawing->timeout);
 		drawing->timeout = 0;
 	}
-	if (drawing->idle_redraw > 0) {
-		g_source_remove (drawing->idle_redraw);
-		drawing->idle_redraw = 0;
-	}
-
-	if (drawing->surface != NULL) {
-		cairo_surface_destroy (drawing->surface);
-	}
 }
 
 static void
@@ -2036,7 +1965,6 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 		drawing->screen_num =
 		    gdk_screen_get_number (gdk_screen_get_default ());
 
-	drawing->surface = NULL;
 	alloc_render_context (drawing);
 
 	drawing->keyboard_items = NULL;
