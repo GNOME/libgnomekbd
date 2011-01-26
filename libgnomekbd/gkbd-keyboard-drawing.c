@@ -429,8 +429,7 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 		points[3].y = y;
 
 		/* the points we've calculated are relative to 0,0 */
-		draw_polygon (context, color, 0, 0, points, 4,
-			      radius);
+		draw_polygon (context, color, 0, 0, points, 4, radius);
 	}
 }
 
@@ -1100,6 +1099,7 @@ invalidate_region (GkbdKeyboardDrawing * drawing,
 		   gint origin_x, gint origin_y, XkbShapeRec * shape)
 {
 	GdkPoint points[4];
+	GtkAllocation alloc;
 	gint x_min, x_max, y_min, y_max;
 	gint x, y, width, height;
 	gint xx, yy;
@@ -1142,10 +1142,10 @@ invalidate_region (GkbdKeyboardDrawing * drawing,
 	    xkb_to_pixmap_coord (drawing->renderContext,
 				 y_max - y_min) + 12;
 
-	gtk_widget_queue_draw (GTK_WIDGET (drawing));
-	// TODO: find out why x and y are counted from the window corner, not widget corner
-	//gtk_widget_queue_draw_area (GTK_WIDGET (drawing), x, y, width,
-	//			    height);
+	gtk_widget_get_allocation (GTK_WIDGET (drawing), &alloc);
+	gtk_widget_queue_draw_area (GTK_WIDGET (drawing),
+				    x + alloc.x, y + alloc.y,
+				    width, height);
 }
 
 static void
@@ -1218,7 +1218,6 @@ draw_indicator_doodad (GkbdKeyboardDrawingRenderContext * context,
 	color = drawing->colors + (doodad->on ?
 				   indicator_doodad->on_color_ndx :
 				   indicator_doodad->off_color_ndx);
-printf ("draw_indicator_doodad!\n");
 
 	for (i = 0; i < 1; i++)
 		draw_outline (context, shape->outlines + i, color,
