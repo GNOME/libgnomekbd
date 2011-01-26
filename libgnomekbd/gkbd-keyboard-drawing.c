@@ -39,6 +39,8 @@
 
 #define GTK_RESPONSE_PRINT 2
 
+#define CAIRO_LINE_WIDTH 1.0
+
 enum {
 	BAD_KEYCODE = 0,
 	NUM_SIGNALS
@@ -282,8 +284,10 @@ rounded_polygon (cairo_t * cr,
 
 	if (filled)
 		cairo_fill (cr);
-	else
+	else {
+		cairo_set_line_width (cr, CAIRO_LINE_WIDTH);
 		cairo_stroke (cr);
+	}
 }
 
 static void
@@ -360,23 +364,25 @@ curve_rectangle (cairo_t * cr,
 static void
 draw_curve_rectangle (cairo_t * cr,
 		      gboolean filled,
-		      GdkColor * fill_color,
+		      GdkColor * color,
 		      gint x, gint y, gint width, gint height, gint radius)
 {
 	curve_rectangle (cr, x, y, width, height, radius);
 
-	gdk_cairo_set_source_color (cr, fill_color);
+	gdk_cairo_set_source_color (cr, color);
 
 	if (filled)
 		cairo_fill (cr);
-	else
+	else {
+		cairo_set_line_width (cr, CAIRO_LINE_WIDTH);
 		cairo_stroke (cr);
+	}
 }
 
 /* x, y, width, height are in the xkb coordinate system */
 static void
 draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
-		GdkColor * fill_color,
+		GdkColor * color,
 		gint angle,
 		gint xkb_x, gint xkb_y, gint xkb_width, gint xkb_height,
 		gint radius)
@@ -385,10 +391,10 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 		gint x, y, width, height;
 		gboolean filled;
 
-		if (fill_color) {
+		if (color) {
 			filled = TRUE;
 		} else {
-			fill_color = context->dark_color;
+			color = context->dark_color;
 			filled = FALSE;
 		}
 
@@ -399,7 +405,7 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 		height =
 		    xkb_to_pixmap_coord (context, xkb_y + xkb_height) - y;
 
-		draw_curve_rectangle (context->cr, filled, fill_color,
+		draw_curve_rectangle (context->cr, filled, color,
 				      x, y, width, height,
 				      xkb_to_pixmap_double (context,
 							    radius));
@@ -423,7 +429,7 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 		points[3].y = y;
 
 		/* the points we've calculated are relative to 0,0 */
-		draw_polygon (context, fill_color, 0, 0, points, 4,
+		draw_polygon (context, color, 0, 0, points, 4,
 			      radius);
 	}
 }
@@ -445,7 +451,13 @@ draw_outline (GkbdKeyboardDrawingRenderContext * context,
 		     outline->points[0].x, outline->points[0].y,
 		     outline->corner_radius);
 #endif
-		draw_rectangle (context, color, angle, origin_x,
+		if (color)
+			draw_rectangle (context, color, angle, origin_x,
+					origin_y, outline->points[0].x,
+					outline->points[0].y,
+					outline->corner_radius);
+
+		draw_rectangle (context, NULL, angle, origin_x,
 				origin_y, outline->points[0].x,
 				outline->points[0].y,
 				outline->corner_radius);
@@ -462,7 +474,12 @@ draw_outline (GkbdKeyboardDrawingRenderContext * context,
 		     rotated_x0, rotated_y0, outline->points[1].x,
 		     outline->points[1].y, outline->corner_radius);
 #endif
-		draw_rectangle (context, color, angle, rotated_x0,
+		if (color)
+			draw_rectangle (context, color, angle, rotated_x0,
+					rotated_y0, outline->points[1].x,
+					outline->points[1].y,
+					outline->corner_radius);
+		draw_rectangle (context, NULL, angle, rotated_x0,
 				rotated_y0, outline->points[1].x,
 				outline->points[1].y,
 				outline->corner_radius);
@@ -472,7 +489,11 @@ draw_outline (GkbdKeyboardDrawingRenderContext * context,
 			outline->num_points, origin_x, origin_y,
 			outline->corner_radius);
 #endif
-		draw_polygon (context, color, origin_x, origin_y,
+		if (color)
+			draw_polygon (context, color, origin_x, origin_y,
+				      outline->points, outline->num_points,
+				      outline->corner_radius);
+		draw_polygon (context, NULL, origin_x, origin_y,
 			      outline->points, outline->num_points,
 			      outline->corner_radius);
 	}
@@ -1197,6 +1218,7 @@ draw_indicator_doodad (GkbdKeyboardDrawingRenderContext * context,
 	color = drawing->colors + (doodad->on ?
 				   indicator_doodad->on_color_ndx :
 				   indicator_doodad->off_color_ndx);
+printf ("draw_indicator_doodad!\n");
 
 	for (i = 0; i < 1; i++)
 		draw_outline (context, shape->outlines + i, color,
