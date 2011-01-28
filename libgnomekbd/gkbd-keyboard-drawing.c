@@ -509,46 +509,46 @@ parse_xkb_color_spec (gchar * colorspec, GdkColor * color)
 		color->green = 0;
 		color->blue = 0;
 	} else if (g_ascii_strcasecmp (colorspec, "white") == 0) {
-		color->red = 65535;
-		color->green = 65535;
-		color->blue = 65535;
+		color->red = 0xFFFF;
+		color->green = 0xFFFF;
+		color->blue = 0xFFFF;
 	} else if (g_ascii_strncasecmp (colorspec, "grey", 4) == 0 ||
 		   g_ascii_strncasecmp (colorspec, "gray", 4) == 0) {
 		level = strtol (colorspec + 4, NULL, 10);
 
-		color->red = 65535 - 65535 * level / 100;
-		color->green = 65535 - 65535 * level / 100;
-		color->blue = 65535 - 65535 * level / 100;
+		color->red = 0xFFFF - 0xFFFF * level / 100;
+		color->green = 0xFFFF - 0xFFFF * level / 100;
+		color->blue = 0xFFFF - 0xFFFF * level / 100;
 	} else if (g_ascii_strcasecmp (colorspec, "red") == 0) {
-		color->red = 65535;
+		color->red = 0xFFFF;
 		color->green = 0;
 		color->blue = 0;
 	} else if (g_ascii_strcasecmp (colorspec, "green") == 0) {
 		color->red = 0;
-		color->green = 65535;
+		color->green = 0xFFFF;
 		color->blue = 0;
 	} else if (g_ascii_strcasecmp (colorspec, "blue") == 0) {
 		color->red = 0;
 		color->green = 0;
-		color->blue = 65535;
+		color->blue = 0xFFFF;
 	} else if (g_ascii_strncasecmp (colorspec, "red", 3) == 0) {
 		level = strtol (colorspec + 3, NULL, 10);
 
-		color->red = 65535 * level / 100;
+		color->red = 0xFFFF * level / 100;
 		color->green = 0;
 		color->blue = 0;
 	} else if (g_ascii_strncasecmp (colorspec, "green", 5) == 0) {
 		level = strtol (colorspec + 5, NULL, 10);
 
 		color->red = 0;
-		color->green = 65535 * level / 100;;
+		color->green = 0xFFFF * level / 100;;
 		color->blue = 0;
 	} else if (g_ascii_strncasecmp (colorspec, "blue", 4) == 0) {
 		level = strtol (colorspec + 4, NULL, 10);
 
 		color->red = 0;
 		color->green = 0;
-		color->blue = 65535 * level / 100;
+		color->blue = 0xFFFF * level / 100;
 	} else
 		return FALSE;
 
@@ -1014,7 +1014,7 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
    The x offset is calculated for complex shapes. It is the rightmost of the vertical lines in the outline
  */
 static gint
-calc_origin_offset_x (XkbOutlineRec * outline)
+calc_shape_origin_offset_x (XkbOutlineRec * outline)
 {
 	gint rv = 0;
 	gint i;
@@ -1087,7 +1087,7 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 			      key->angle, key->origin_x, key->origin_y);
 	}
 #endif
-	origin_offset_x = calc_origin_offset_x (outline);
+	origin_offset_x = calc_shape_origin_offset_x (outline);
 	draw_key_label (context, drawing, key->keycode, key->angle,
 			key->origin_x + origin_offset_x, key->origin_y,
 			shape->bounds.x2, shape->bounds.y2);
@@ -1388,6 +1388,18 @@ draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 		/* blank background */
 		gdk_cairo_set_source_color (cr, &style->base[state]);
 		cairo_paint (cr);
+#ifdef KBDRAW_DEBUG
+		GdkColor red = { 0xFFFF, 0xFFFF, 0, 0 };
+		gdk_cairo_set_source_color (cr, &red);
+
+		cairo_move_to (cr, 0, 0);
+		cairo_line_to (cr, allocation.width, 0);
+		cairo_line_to (cr, allocation.width, allocation.height);
+		cairo_line_to (cr, 0, allocation.height);
+		cairo_close_path (cr);
+
+		cairo_stroke (cr);
+#endif
 
 		draw_keyboard_to_context (drawing->renderContext, drawing);
 	}
@@ -1968,16 +1980,12 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 
 	drawing->display =
 	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
-	printf ("dpy: %p\n", (void *) drawing->display);
 
 	if (!XkbQueryExtension
 	    (drawing->display, &opcode, &drawing->xkb_event_type, &error,
 	     &major, &minor))
 		g_critical
 		    ("XkbQueryExtension failed! Stuff probably won't work.");
-
-	printf ("evt/error/major/minor: %d/%d/%d/%d\n",
-		drawing->xkb_event_type, error, major, minor);
 
 	/* XXX: this stuff probably doesn't matter.. also, gdk_screen_get_default can fail */
 	if (gtk_widget_has_screen (GTK_WIDGET (drawing)))
@@ -2080,10 +2088,42 @@ gkbd_keyboard_drawing_new (void)
 			(gkbd_keyboard_drawing_get_type (), NULL));
 }
 
+static GtkSizeRequestMode
+get_request_mode (GtkWidget * widget)
+{
+	return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+}
+
+static void
+get_preferred_width (GtkWidget * widget,
+		     gint * minimum_width, gint * natural_width)
+{
+	GdkScreen *scr = gdk_screen_get_default ();
+	gint w = gdk_screen_get_width (scr);
+	*minimum_width = *natural_width = w - (w >> 2);
+}
+
+static void
+get_preferred_height_for_width (GtkWidget * widget,
+				gint width,
+				gint * minimum_height,
+				gint * natural_height)
+{
+	GkbdKeyboardDrawing *drawing = GKBD_KEYBOARD_DRAWING (widget);
+	*minimum_height = *natural_height =
+	    width * drawing->xkb->geom->height_mm /
+	    drawing->xkb->geom->width_mm;
+}
+
 static void
 gkbd_keyboard_drawing_class_init (GkbdKeyboardDrawingClass * klass)
 {
 	klass->bad_keycode = NULL;
+	GTK_WIDGET_CLASS (klass)->get_preferred_height_for_width =
+	    get_preferred_height_for_width;
+	GTK_WIDGET_CLASS (klass)->get_preferred_width =
+	    get_preferred_width;
+	GTK_WIDGET_CLASS (klass)->get_request_mode = get_request_mode;
 
 	gkbd_keyboard_drawing_signals[BAD_KEYCODE] =
 	    g_signal_new ("bad-keycode", gkbd_keyboard_drawing_get_type (),
@@ -2559,20 +2599,12 @@ gkbd_keyboard_drawing_new_dialog (gint group, gchar * group_name)
 	g_signal_connect (G_OBJECT (dialog), "response",
 			  G_CALLBACK (show_layout_response), NULL);
 
-	rect = gkbd_preview_load_position ();
-	if (rect != NULL) {
-		gtk_window_move (GTK_WINDOW (dialog), rect->x, rect->y);
-		gtk_window_resize (GTK_WINDOW (dialog), rect->width,
-				   rect->height);
-		g_free (rect);
-	} else
-		gtk_window_resize (GTK_WINDOW (dialog), 700, 400);
-
 	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 
-	gtk_container_add (GTK_CONTAINER
-			   (gtk_builder_get_object
-			    (builder, "preview_vbox")), kbdraw);
+	gtk_box_pack_start (GTK_BOX
+			    (gtk_builder_get_object
+			     (builder, "preview_vbox")), kbdraw, TRUE,
+			    TRUE, 0);
 
 	g_object_set_data (G_OBJECT (dialog), "kbdraw", kbdraw);
 
@@ -2580,6 +2612,12 @@ gkbd_keyboard_drawing_new_dialog (gint group, gchar * group_name)
 				  G_CALLBACK (g_object_unref),
 				  g_object_get_data (G_OBJECT (dialog),
 						     "builderData"));
+
+	rect = gkbd_preview_load_position ();
+	if (rect != NULL) {
+		gtk_window_move (GTK_WINDOW (dialog), rect->x, rect->y);
+		g_free (rect);
+	}
 
 	gtk_widget_show_all (dialog);
 
