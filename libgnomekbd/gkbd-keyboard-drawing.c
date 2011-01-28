@@ -1496,7 +1496,7 @@ size_allocate (GtkWidget * widget,
 				    50, 50))
 		return;
 
-	gtk_widget_queue_draw (GTK_WIDGET (drawing));
+	gtk_widget_set_allocation (GTK_WIDGET (drawing), allocation);
 }
 
 static gint
