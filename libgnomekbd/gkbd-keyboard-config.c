@@ -328,12 +328,13 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 	gchar *pc;
 
 	pc = g_settings_get_string (kbd_config->settings, param_names[0]);
-	if (pc == NULL) {
+
+	if (pc == NULL || pc[0] == '\0') {
 		gkbd_keyboard_config_model_set (kbd_config, NULL);
 	} else {
 		gkbd_keyboard_config_model_set (kbd_config, pc);
-		g_free (pc);
 	}
+	g_free (pc);
 	xkl_debug (150, "Loaded Kbd model: [%s]\n",
 		   kbd_config->model ? kbd_config->model : "(null)");
 
@@ -342,10 +343,20 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 	kbd_config->layouts_variants =
 	    g_settings_get_strv (kbd_config->settings, param_names[1]);
 
+	if (kbd_config->layouts_variants != NULL && kbd_config->layouts_variants[0] == NULL) {
+		g_strfreev (kbd_config->layouts_variants);
+		kbd_config->layouts_variants = NULL;
+	}
+
 	g_strfreev (kbd_config->options);
 
 	kbd_config->options =
 	    g_settings_get_strv (kbd_config->settings, param_names[2]);
+
+	if (kbd_config->options != NULL && kbd_config->options[0] == NULL) {
+		g_strfreev (kbd_config->options);
+		kbd_config->options = NULL;
+	}
 }
 
 static void
