@@ -7,7 +7,7 @@
       <_description>Default group, assigned on window creation</_description>
     </key>
     <key name="group-per-window" type="b">
-      <default>true</default>
+      <default>false</default>
       <_summary>Keep and manage separate group per window</_summary>
       <_description>Keep and manage separate group per window</_description>
     </key>
