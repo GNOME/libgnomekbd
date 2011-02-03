@@ -11,4 +11,5 @@ Makefile.in
 *.o
 org.gnome.libgnomekbd.*gschema.xml
 org.gnome.libgnomekbd.*gschema.xml.in
+gkbd-keyboard-display
 

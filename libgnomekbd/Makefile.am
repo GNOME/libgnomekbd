@@ -1,3 +1,5 @@
+bin_PROGRAMS=gkbd-keyboard-display
+
 lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 
 uidir="$(pkgdatadir)/ui"
@@ -65,6 +67,20 @@ libgnomekbdui_la_SOURCES = \
                          gkbd-indicator-plugin-manager.c \
                          gkbd-keyboard-drawing-marshal.c \
                          gkbd-keyboard-drawing.c
+
+gkbd_keyboard_display_SOURCES=gkbd-keyboard-display.c
+
+gkbd_keyboard_display_CFLAGS=$(common_CFLAGS) \
+        -DGNOMELOCALEDIR="\"$(datadir)/locale\"" \
+	$(GLIB_CFLAGS) \
+	$(GTK_CFLAGS)
+
+gkbd_keyboard_display_LDADD = \
+                $(GCONF_LIBS)   \
+                $(GTK_LIBS)     \
+                $(LIBXKLAVIER_LIBS)     \
+                $(top_builddir)/libgnomekbd/libgnomekbd.la \
+                $(top_builddir)/libgnomekbd/libgnomekbdui.la
 
 BUILT_SOURCES = gkbd-indicator-marshal.c \
 	gkbd-indicator-marshal.h         \

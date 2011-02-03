@@ -2502,7 +2502,7 @@ show_layout_response (GtkWidget * dialog, gint resp)
 }
 
 GtkWidget *
-gkbd_keyboard_drawing_new_dialog (gint group, gchar * group_name)
+gkbd_keyboard_drawing_new_dialog (gint group, const gchar * group_name)
 {
 	static GkbdKeyboardDrawingGroupLevel groupsLevels[] = { {
 								 0, 1}, {
