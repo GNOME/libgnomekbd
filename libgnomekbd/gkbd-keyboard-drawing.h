@@ -177,6 +177,9 @@ gboolean gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing *
 					     kbdrawing,
 					     XkbComponentNamesRec * names);
 
+void gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * kbdrawing,
+				       const gchar * id);
+
 G_CONST_RETURN gchar
     * gkbd_keyboard_drawing_get_keycodes (GkbdKeyboardDrawing * kbdrawing);
 G_CONST_RETURN gchar
@@ -204,9 +207,13 @@ void gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
 				  GtkWindow * parent_window,
 				  const gchar * description);
 
+GtkWidget *gkbd_keyboard_drawing_dialog_new (void);
 
-GtkWidget *gkbd_keyboard_drawing_new_dialog (gint group,
-					     const gchar * group_name);
+void gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog,
+					     gint group);
+
+void gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
+					      const gchar * layout);
 
 G_END_DECLS
 #endif				/* #ifndef GKBD_KEYBOARD_DRAWING_H */

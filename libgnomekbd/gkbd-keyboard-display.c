@@ -28,9 +28,13 @@
 
 static GMainLoop *loop;
 static gint group = 0;
-static GOptionEntry options[] =
-    { {"group", 'g', 0, G_OPTION_ARG_INT, &group, "Group to display",
-       "group number (1, 2, 3, 4)"}, NULL
+static gchar *layout = NULL;
+static GOptionEntry options[] = {
+	{"group", 'g', 0, G_OPTION_ARG_INT, &group, "Group to display",
+	 "group number (1, 2, 3, 4)"},
+	{"layout", 'l', 0, G_OPTION_ARG_STRING, &layout,
+	 "Layout to display", "layout (with optional variant)"},
+	NULL
 };
 
 static void
@@ -42,13 +46,15 @@ destroy_dialog ()
 int
 main (int argc, char **argv)
 {
+	Display *display;
 	GError *error = NULL;
-	XklEngine *engine;
-	const gchar **names = NULL;
+	XklEngine *engine = NULL;
+	GtkWidget *dlg = NULL;
 
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
+
 	gtk_init_with_args (&argc, &argv, NULL, options, NULL, &error);
 
 	if (error != NULL) {
@@ -56,23 +62,27 @@ main (int argc, char **argv)
 		exit (1);
 	}
 
-	engine =
-	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
-				     (gdk_display_get_default ()));
+	if (layout == NULL && group == 0) {
+		g_critical ("Either layout or group have to be specified");
+		exit (1);
+	}
+
+	display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	engine = xkl_engine_get_instance (display);
 	if (group < 0 || group > xkl_engine_get_num_groups (engine)) {
 		g_critical ("The group number is invalid: %d", group);
 		exit (2);
 	}
 
-	names = xkl_engine_get_groups_names (engine);
+	dlg = gkbd_keyboard_drawing_dialog_new ();
+	if (layout != NULL)
+		gkbd_keyboard_drawing_dialog_set_layout (dlg, layout);
+	else
+		gkbd_keyboard_drawing_dialog_set_group (dlg, group - 1);
 
-	group--;
-
-	GtkWidget *dlg =
-	    gkbd_keyboard_drawing_new_dialog (group, names[group]);
 	g_signal_connect (G_OBJECT (dlg), "destroy", destroy_dialog, NULL);
 
-	gtk_widget_set_visible (dlg, TRUE);
+	gtk_widget_show_all (dlg);
 
 	loop = g_main_loop_new (NULL, TRUE);
 

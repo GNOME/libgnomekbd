@@ -48,6 +48,20 @@ enum {
 
 static guint gkbd_keyboard_drawing_signals[NUM_SIGNALS] = { 0 };
 
+static GkbdKeyboardDrawingGroupLevel defaultGroupsLevels[] = {
+	{0, 1},
+	{0, 3},
+	{0, 0},
+	{0, 2}
+};
+
+static GkbdKeyboardDrawingGroupLevel *pGroupsLevels[] = {
+	defaultGroupsLevels,
+	defaultGroupsLevels + 1,
+	defaultGroupsLevels + 2,
+	defaultGroupsLevels + 3
+};
+
 static void gkbd_keyboard_drawing_set_mods (GkbdKeyboardDrawing * drawing,
 					    guint mods);
 
@@ -2501,57 +2515,32 @@ show_layout_response (GtkWidget * dialog, gint resp)
 	}
 }
 
-GtkWidget *
-gkbd_keyboard_drawing_new_dialog (gint group, const gchar * group_name)
+static void
+gkbd_keyboard_drawing_dialog_set_group_name (GtkWidget * dialog,
+					     const gchar * group_name)
 {
-	static GkbdKeyboardDrawingGroupLevel groupsLevels[] = { {
-								 0, 1}, {
-									 0,
-									 3},
-	{
-	 0, 0}, {
-		 0, 2}
-	};
-	static GkbdKeyboardDrawingGroupLevel *pGroupsLevels[] = {
-		groupsLevels, groupsLevels + 1, groupsLevels + 2,
-		groupsLevels + 3
-	};
-
-	GtkBuilder *builder;
-	GtkWidget *dialog, *kbdraw;
-	XkbComponentNamesRec component_names;
-	XklConfigRec *xkl_data;
-	GdkRectangle *rect;
-	GError *error = NULL;
 	char title[128] = "";
-	XklEngine *engine =
-	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
-				     (gdk_display_get_default ()));
-
-	builder = gtk_builder_new ();
-	gtk_builder_add_from_file (builder, UIDIR "/show-layout.ui",
-				   &error);
-
-	if (error) {
-		g_error ("building ui from %s failed: %s",
-			 UIDIR "/show-layout.ui", error->message);
-		g_clear_error (&error);
-	}
-
-
-	dialog =
-	    GTK_WIDGET (gtk_builder_get_object
-			(builder, "gswitchit_layout_view"));
-	kbdraw = gkbd_keyboard_drawing_new ();
-
 	snprintf (title, sizeof (title), _("Keyboard Layout \"%s\""),
 		  group_name);
 	gtk_window_set_title (GTK_WINDOW (dialog), title);
 	g_object_set_data_full (G_OBJECT (dialog), "group_name",
 				g_strdup (group_name), g_free);
+}
 
-	gkbd_keyboard_drawing_set_groups_levels (GKBD_KEYBOARD_DRAWING
-						 (kbdraw), pGroupsLevels);
+void
+gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog, gint group)
+{
+	GtkWidget *kbdraw;
+	XkbComponentNamesRec component_names;
+	XklConfigRec *xkl_data;
+	XklEngine *engine =
+	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
+				     (gdk_display_get_default ()));
+	const gchar **names = xkl_engine_get_groups_names (engine);
+	const gchar *group_name = names[group];
+
+	kbdraw = g_object_get_data (G_OBJECT (dialog), "kbdraw");
+	gkbd_keyboard_drawing_dialog_set_group_name (dialog, group_name);
 
 	xkl_data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_server (xkl_data, engine)) {
@@ -2594,6 +2583,33 @@ gkbd_keyboard_drawing_new_dialog (gint group, const gchar * group_name)
 		}
 	}
 	g_object_unref (G_OBJECT (xkl_data));
+}
+
+GtkWidget *
+gkbd_keyboard_drawing_dialog_new ()
+{
+	GtkBuilder *builder;
+	GtkWidget *dialog, *kbdraw;
+	GdkRectangle *rect;
+	GError *error = NULL;
+
+	builder = gtk_builder_new ();
+	gtk_builder_add_from_file (builder, UIDIR "/show-layout.ui",
+				   &error);
+
+	if (error) {
+		g_error ("building ui from %s failed: %s",
+			 UIDIR "/show-layout.ui", error->message);
+		g_clear_error (&error);
+	}
+
+	dialog =
+	    GTK_WIDGET (gtk_builder_get_object
+			(builder, "gswitchit_layout_view"));
+	kbdraw = gkbd_keyboard_drawing_new ();
+
+	gkbd_keyboard_drawing_set_groups_levels (GKBD_KEYBOARD_DRAWING
+						 (kbdraw), pGroupsLevels);
 
 	g_object_set_data (G_OBJECT (dialog), "builderData", builder);
 	g_signal_connect (G_OBJECT (dialog), "response",
@@ -2619,7 +2635,84 @@ gkbd_keyboard_drawing_new_dialog (gint group, const gchar * group_name)
 		g_free (rect);
 	}
 
-	gtk_widget_show_all (dialog);
-
 	return dialog;
+}
+
+void
+gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * drawing,
+				  const gchar * id)
+{
+	if (drawing != NULL) {
+		if (id != NULL) {
+			XklConfigRec *data;
+			char **p, *layout, *variant;
+			XkbComponentNamesRec component_names;
+			XklEngine *engine =
+			    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
+						     (gdk_display_get_default
+						      ()));
+
+			data = xkl_config_rec_new ();
+			if (xkl_config_rec_get_from_server (data, engine)) {
+				if ((p = data->layouts) != NULL)
+					g_strfreev (data->layouts);
+
+				if ((p = data->variants) != NULL)
+					g_strfreev (data->variants);
+
+				data->layouts = g_new0 (char *, 2);
+				data->variants = g_new0 (char *, 2);
+				if (gkbd_keyboard_config_split_items
+				    (id, &layout, &variant)
+				    && variant != NULL) {
+					data->layouts[0] =
+					    (layout ==
+					     NULL) ? NULL :
+					    g_strdup (layout);
+					data->variants[0] =
+					    (variant ==
+					     NULL) ? NULL :
+					    g_strdup (variant);
+				} else {
+					data->layouts[0] =
+					    (id ==
+					     NULL) ? NULL : g_strdup (id);
+					data->variants[0] = NULL;
+				}
+
+				if (xkl_xkb_config_native_prepare
+				    (engine, data, &component_names)) {
+					gkbd_keyboard_drawing_set_keyboard
+					    (drawing, &component_names);
+
+					xkl_xkb_config_native_cleanup
+					    (engine, &component_names);
+				}
+			}
+			g_object_unref (G_OBJECT (data));
+		} else
+			gkbd_keyboard_drawing_set_keyboard (drawing, NULL);
+
+	}
+}
+
+void
+gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
+					 const gchar * layout)
+{
+	Display *display;
+	Atom atom;
+	const gchar *group_name;
+	GkbdKeyboardDrawing *kbdraw =
+	    GKBD_KEYBOARD_DRAWING (g_object_get_data
+				   (G_OBJECT (dialog), "kbdraw"));
+
+	if (layout == NULL || layout[0] == 0)
+		return;
+
+	display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	gkbd_keyboard_drawing_set_layout (kbdraw, layout);
+	atom = kbdraw->xkb->names->groups[0];
+	group_name = XGetAtomName (display, atom);
+	gkbd_keyboard_drawing_dialog_set_group_name (dialog, group_name);
 }
