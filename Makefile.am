@@ -4,7 +4,7 @@ endif
 
 SUBDIRS = libgnomekbd $(TEST) capplet po
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-introspection
 
