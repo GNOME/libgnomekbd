@@ -18,7 +18,7 @@ dnl ***************************************************************************
 GLIB_REQUIRED=2.18
 GDK_REQUIRED=2.91.7
 GTK_REQUIRED=2.90
-LIBXKLAVIER_REQUIRED=5.0
+LIBXKLAVIER_REQUIRED=5.1
 
 AC_SUBST([GDK_REQUIRED])
 AC_SUBST([GTK_REQUIRED])
