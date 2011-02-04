@@ -23,7 +23,7 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
 
-#include <libxklavier/xkl_engine.h>
+#include <libxklavier/xklavier.h>
 #include <libgnomekbd/gkbd-keyboard-drawing.h>
 
 static GMainLoop *loop;
@@ -69,15 +69,21 @@ main (int argc, char **argv)
 
 	display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 	engine = xkl_engine_get_instance (display);
+
 	if (group < 0 || group > xkl_engine_get_num_groups (engine)) {
 		g_critical ("The group number is invalid: %d", group);
 		exit (2);
 	}
 
 	dlg = gkbd_keyboard_drawing_dialog_new ();
-	if (layout != NULL)
-		gkbd_keyboard_drawing_dialog_set_layout (dlg, layout);
-	else
+	if (layout != NULL) {
+		XklConfigRegistry *registry =
+		    xkl_config_registry_get_instance (engine);
+		xkl_config_registry_load (registry, TRUE);
+		gkbd_keyboard_drawing_dialog_set_layout (dlg, registry,
+							 layout);
+		g_object_unref (registry);
+	} else
 		gkbd_keyboard_drawing_dialog_set_group (dlg, group - 1);
 
 	g_signal_connect (G_OBJECT (dlg), "destroy", destroy_dialog, NULL);

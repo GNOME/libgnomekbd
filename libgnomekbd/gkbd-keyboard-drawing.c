@@ -27,7 +27,6 @@
 #include <memory.h>
 #include <math.h>
 #include <glib/gi18n-lib.h>
-#include <libxklavier/xklavier.h>
 
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
@@ -2575,9 +2574,11 @@ gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog, gint group)
 
 		if (xkl_xkb_config_native_prepare
 		    (engine, xkl_data, &component_names)) {
-			gkbd_keyboard_drawing_set_keyboard
+			if (!gkbd_keyboard_drawing_set_keyboard
 			    (GKBD_KEYBOARD_DRAWING (kbdraw),
-			     &component_names);
+			     &component_names))
+				gkbd_keyboard_drawing_set_keyboard
+				    (GKBD_KEYBOARD_DRAWING (kbdraw), NULL);
 			xkl_xkb_config_native_cleanup (engine,
 						       &component_names);
 		}
@@ -2682,11 +2683,15 @@ gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * drawing,
 
 				if (xkl_xkb_config_native_prepare
 				    (engine, data, &component_names)) {
-					gkbd_keyboard_drawing_set_keyboard
-					    (drawing, &component_names);
+					if (!gkbd_keyboard_drawing_set_keyboard (drawing, &component_names))
+						gkbd_keyboard_drawing_set_keyboard
+						    (drawing, NULL);
 
 					xkl_xkb_config_native_cleanup
 					    (engine, &component_names);
+				} else {
+					xkl_debug (0,
+						   "Could not find the keyboard\n");
 				}
 			}
 			g_object_unref (G_OBJECT (data));
@@ -2698,21 +2703,41 @@ gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * drawing,
 
 void
 gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
-					 const gchar * layout)
+					 XklConfigRegistry * registry,
+					 const gchar * full_layout)
 {
-	Display *display;
-	Atom atom;
-	const gchar *group_name;
+	const gchar *group_name = "?";
+	XklConfigItem *xki = xkl_config_item_new ();
+	gchar *layout = NULL, *variant = NULL;
+
 	GkbdKeyboardDrawing *kbdraw =
 	    GKBD_KEYBOARD_DRAWING (g_object_get_data
 				   (G_OBJECT (dialog), "kbdraw"));
 
-	if (layout == NULL || layout[0] == 0)
+	if (full_layout == NULL || full_layout[0] == 0)
 		return;
 
-	display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
-	gkbd_keyboard_drawing_set_layout (kbdraw, layout);
-	atom = kbdraw->xkb->names->groups[0];
-	group_name = XGetAtomName (display, atom);
+	gkbd_keyboard_drawing_set_layout (kbdraw, full_layout);
+
+	if (gkbd_keyboard_config_split_items
+	    (full_layout, &layout, &variant)) {
+		if (variant != NULL) {
+			strncpy (xki->name, variant,
+				 XKL_MAX_CI_NAME_LENGTH);
+			xki->name[XKL_MAX_CI_NAME_LENGTH - 1] = 0;
+			if (xkl_config_registry_find_variant
+			    (registry, layout, xki))
+				group_name = xki->description;
+		} else {
+			strncpy (xki->name, layout,
+				 XKL_MAX_CI_NAME_LENGTH);
+			xki->name[XKL_MAX_CI_NAME_LENGTH - 1] = 0;
+			if (xkl_config_registry_find_layout
+			    (registry, xki))
+				group_name = xki->description;
+		}
+	}
+
 	gkbd_keyboard_drawing_dialog_set_group_name (dialog, group_name);
+	g_object_unref (xki);
 }

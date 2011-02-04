@@ -23,6 +23,7 @@
 #include <gtk/gtk.h>
 #include <X11/XKBlib.h>
 #include <X11/extensions/XKBgeom.h>
+#include <libxklavier/xklavier.h>
 
 G_BEGIN_DECLS
 #define GKBD_KEYBOARD_DRAWING(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), gkbd_keyboard_drawing_get_type (), \
@@ -213,6 +214,7 @@ void gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog,
 					     gint group);
 
 void gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
+					      XklConfigRegistry * registry,
 					      const gchar * layout);
 
 G_END_DECLS
