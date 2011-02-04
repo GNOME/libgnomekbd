@@ -68,7 +68,7 @@ libgnomekbdui_la_SOURCES = \
                          gkbd-keyboard-drawing-marshal.c \
                          gkbd-keyboard-drawing.c
 
-gkbd_keyboard_display_SOURCES=gkbd-keyboard-display.c
+gkbd_keyboard_display_SOURCES=gkbd-keyboard-display.c libgnomekbdui.la
 
 gkbd_keyboard_display_CFLAGS=$(common_CFLAGS) \
         -DGNOMELOCALEDIR="\"$(datadir)/locale\"" \
