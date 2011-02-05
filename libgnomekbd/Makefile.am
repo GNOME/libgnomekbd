@@ -79,8 +79,8 @@ gkbd_keyboard_display_LDADD = \
                 $(GCONF_LIBS)   \
                 $(GTK_LIBS)     \
                 $(LIBXKLAVIER_LIBS)     \
-                $(top_builddir)/libgnomekbd/libgnomekbd.la \
-                $(top_builddir)/libgnomekbd/libgnomekbdui.la
+                libgnomekbd.la \
+                libgnomekbdui.la
 
 BUILT_SOURCES = gkbd-indicator-marshal.c \
 	gkbd-indicator-marshal.h         \
