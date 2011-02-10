@@ -211,6 +211,7 @@ void gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
 GtkWidget *gkbd_keyboard_drawing_dialog_new (void);
 
 void gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog,
+					     XklConfigRegistry * registry,
 					     gint group);
 
 void gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,

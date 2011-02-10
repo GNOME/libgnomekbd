@@ -2479,8 +2479,79 @@ gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
 	g_object_unref (print);
 }
 
+void
+gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * drawing,
+				  const gchar * id)
+{
+	XklConfigRec *data;
+	char **p, *layout, *variant;
+	XkbComponentNamesRec component_names;
+	XklEngine *engine;
+
+	if (drawing == NULL)
+		return;
+
+	if (id == NULL) {
+		gkbd_keyboard_drawing_set_keyboard (drawing, NULL);
+		return;
+	}
+
+	engine = xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
+					  (gdk_display_get_default ()));
+
+	data = xkl_config_rec_new ();
+	if (xkl_config_rec_get_from_server (data, engine)) {
+		if ((p = data->layouts) != NULL)
+			g_strfreev (data->layouts);
+
+		if ((p = data->variants) != NULL)
+			g_strfreev (data->variants);
+
+		data->layouts = g_new0 (char *, 2);
+		data->variants = g_new0 (char *, 2);
+		if (gkbd_keyboard_config_split_items
+		    (id, &layout, &variant)
+		    && variant != NULL) {
+			data->layouts[0] =
+			    (layout == NULL) ? NULL : g_strdup (layout);
+			data->variants[0] =
+			    (variant == NULL) ? NULL : g_strdup (variant);
+		} else {
+			data->layouts[0] =
+			    (id == NULL) ? NULL : g_strdup (id);
+			data->variants[0] = NULL;
+		}
+
+		if (xkl_xkb_config_native_prepare
+		    (engine, data, &component_names)) {
+			if (!gkbd_keyboard_drawing_set_keyboard
+			    (drawing, &component_names))
+				gkbd_keyboard_drawing_set_keyboard
+				    (drawing, NULL);
+
+			xkl_xkb_config_native_cleanup
+			    (engine, &component_names);
+		} else {
+			xkl_debug (0, "Could not find the keyboard\n");
+		}
+	}
+	g_object_unref (G_OBJECT (data));
+}
+
 static void
-show_layout_response (GtkWidget * dialog, gint resp)
+gkbd_keyboard_drawing_dialog_set_layout_name (GtkWidget * dialog,
+					      const gchar * layout_name)
+{
+	char title[128] = "";
+	snprintf (title, sizeof (title), _("Keyboard Layout \"%s\""),
+		  layout_name);
+	gtk_window_set_title (GTK_WINDOW (dialog), title);
+	g_object_set_data_full (G_OBJECT (dialog), "layout_name",
+				g_strdup (layout_name), g_free);
+}
+
+static void
+gkbd_keyboard_drawing_dialog_response (GtkWidget * dialog, gint resp)
 {
 	GdkRectangle rect;
 	GtkWidget *kbdraw;
@@ -2514,32 +2585,16 @@ show_layout_response (GtkWidget * dialog, gint resp)
 	}
 }
 
-static void
-gkbd_keyboard_drawing_dialog_set_group_name (GtkWidget * dialog,
-					     const gchar * group_name)
-{
-	char title[128] = "";
-	snprintf (title, sizeof (title), _("Keyboard Layout \"%s\""),
-		  group_name);
-	gtk_window_set_title (GTK_WINDOW (dialog), title);
-	g_object_set_data_full (G_OBJECT (dialog), "group_name",
-				g_strdup (group_name), g_free);
-}
-
 void
-gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog, gint group)
+gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog,
+					XklConfigRegistry * registry,
+					gint group)
 {
-	GtkWidget *kbdraw;
 	XkbComponentNamesRec component_names;
 	XklConfigRec *xkl_data;
 	XklEngine *engine =
 	    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
 				     (gdk_display_get_default ()));
-	const gchar **names = xkl_engine_get_groups_names (engine);
-	const gchar *group_name = names[group];
-
-	kbdraw = g_object_get_data (G_OBJECT (dialog), "kbdraw");
-	gkbd_keyboard_drawing_dialog_set_group_name (dialog, group_name);
 
 	xkl_data = xkl_config_rec_new ();
 	if (xkl_config_rec_get_from_server (xkl_data, engine)) {
@@ -2547,9 +2602,11 @@ gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog, gint group)
 		int num_variants = g_strv_length (xkl_data->variants);
 		if (group >= 0 && group < num_layouts
 		    && group < num_variants) {
-			char *l = g_strdup (xkl_data->layouts[group]);
-			char *v = g_strdup (xkl_data->variants[group]);
-			char **p;
+			XklConfigItem *xki = xkl_config_item_new ();
+			gchar *l = g_strdup (xkl_data->layouts[group]);
+			gchar *v = g_strdup (xkl_data->variants[group]);
+			const gchar *layout_name = NULL;
+			gchar **p;
 			int i;
 
 			if ((p = xkl_data->layouts) != NULL)
@@ -2570,10 +2627,32 @@ gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog, gint group)
 			xkl_data->variants[0] = v;
 			xkl_data->layouts[1] = xkl_data->variants[1] =
 			    NULL;
+
+			if (v[0] != 0) {
+				strncpy (xki->name, v,
+					 XKL_MAX_CI_NAME_LENGTH);
+				xki->name[XKL_MAX_CI_NAME_LENGTH - 1] = 0;
+				if (xkl_config_registry_find_variant
+				    (registry, l, xki))
+					layout_name = xki->description;
+			} else {
+				strncpy (xki->name, l,
+					 XKL_MAX_CI_NAME_LENGTH);
+				xki->name[XKL_MAX_CI_NAME_LENGTH - 1] = 0;
+				if (xkl_config_registry_find_layout
+				    (registry, xki))
+					layout_name = xki->description;
+			}
+			gkbd_keyboard_drawing_dialog_set_layout_name
+			    (dialog, layout_name);
+			g_object_unref (xki);
 		}
 
 		if (xkl_xkb_config_native_prepare
 		    (engine, xkl_data, &component_names)) {
+			GtkWidget *kbdraw =
+			    g_object_get_data (G_OBJECT (dialog),
+					       "kbdraw");
 			if (!gkbd_keyboard_drawing_set_keyboard
 			    (GKBD_KEYBOARD_DRAWING (kbdraw),
 			     &component_names))
@@ -2583,6 +2662,7 @@ gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog, gint group)
 						       &component_names);
 		}
 	}
+
 	g_object_unref (G_OBJECT (xkl_data));
 }
 
@@ -2614,7 +2694,8 @@ gkbd_keyboard_drawing_dialog_new ()
 
 	g_object_set_data (G_OBJECT (dialog), "builderData", builder);
 	g_signal_connect (G_OBJECT (dialog), "response",
-			  G_CALLBACK (show_layout_response), NULL);
+			  G_CALLBACK
+			  (gkbd_keyboard_drawing_dialog_response), NULL);
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), TRUE);
 
@@ -2640,73 +2721,11 @@ gkbd_keyboard_drawing_dialog_new ()
 }
 
 void
-gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * drawing,
-				  const gchar * id)
-{
-	if (drawing != NULL) {
-		if (id != NULL) {
-			XklConfigRec *data;
-			char **p, *layout, *variant;
-			XkbComponentNamesRec component_names;
-			XklEngine *engine =
-			    xkl_engine_get_instance (GDK_DISPLAY_XDISPLAY
-						     (gdk_display_get_default
-						      ()));
-
-			data = xkl_config_rec_new ();
-			if (xkl_config_rec_get_from_server (data, engine)) {
-				if ((p = data->layouts) != NULL)
-					g_strfreev (data->layouts);
-
-				if ((p = data->variants) != NULL)
-					g_strfreev (data->variants);
-
-				data->layouts = g_new0 (char *, 2);
-				data->variants = g_new0 (char *, 2);
-				if (gkbd_keyboard_config_split_items
-				    (id, &layout, &variant)
-				    && variant != NULL) {
-					data->layouts[0] =
-					    (layout ==
-					     NULL) ? NULL :
-					    g_strdup (layout);
-					data->variants[0] =
-					    (variant ==
-					     NULL) ? NULL :
-					    g_strdup (variant);
-				} else {
-					data->layouts[0] =
-					    (id ==
-					     NULL) ? NULL : g_strdup (id);
-					data->variants[0] = NULL;
-				}
-
-				if (xkl_xkb_config_native_prepare
-				    (engine, data, &component_names)) {
-					if (!gkbd_keyboard_drawing_set_keyboard (drawing, &component_names))
-						gkbd_keyboard_drawing_set_keyboard
-						    (drawing, NULL);
-
-					xkl_xkb_config_native_cleanup
-					    (engine, &component_names);
-				} else {
-					xkl_debug (0,
-						   "Could not find the keyboard\n");
-				}
-			}
-			g_object_unref (G_OBJECT (data));
-		} else
-			gkbd_keyboard_drawing_set_keyboard (drawing, NULL);
-
-	}
-}
-
-void
 gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
 					 XklConfigRegistry * registry,
 					 const gchar * full_layout)
 {
-	const gchar *group_name = "?";
+	const gchar *layout_name = "?";
 	XklConfigItem *xki = xkl_config_item_new ();
 	gchar *layout = NULL, *variant = NULL;
 
@@ -2727,17 +2746,17 @@ gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
 			xki->name[XKL_MAX_CI_NAME_LENGTH - 1] = 0;
 			if (xkl_config_registry_find_variant
 			    (registry, layout, xki))
-				group_name = xki->description;
+				layout_name = xki->description;
 		} else {
 			strncpy (xki->name, layout,
 				 XKL_MAX_CI_NAME_LENGTH);
 			xki->name[XKL_MAX_CI_NAME_LENGTH - 1] = 0;
 			if (xkl_config_registry_find_layout
 			    (registry, xki))
-				group_name = xki->description;
+				layout_name = xki->description;
 		}
 	}
 
-	gkbd_keyboard_drawing_dialog_set_group_name (dialog, group_name);
+	gkbd_keyboard_drawing_dialog_set_layout_name (dialog, layout_name);
 	g_object_unref (xki);
 }

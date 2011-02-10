@@ -50,6 +50,7 @@ main (int argc, char **argv)
 	GError *error = NULL;
 	XklEngine *engine = NULL;
 	GtkWidget *dlg = NULL;
+	XklConfigRegistry *registry;
 
 	bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
@@ -76,15 +77,15 @@ main (int argc, char **argv)
 	}
 
 	dlg = gkbd_keyboard_drawing_dialog_new ();
+	registry = xkl_config_registry_get_instance (engine);
+	xkl_config_registry_load (registry, TRUE);
 	if (layout != NULL) {
-		XklConfigRegistry *registry =
-		    xkl_config_registry_get_instance (engine);
-		xkl_config_registry_load (registry, TRUE);
 		gkbd_keyboard_drawing_dialog_set_layout (dlg, registry,
 							 layout);
-		g_object_unref (registry);
 	} else
-		gkbd_keyboard_drawing_dialog_set_group (dlg, group - 1);
+		gkbd_keyboard_drawing_dialog_set_group (dlg, registry,
+							group - 1);
+	g_object_unref (registry);
 
 	g_signal_connect (G_OBJECT (dlg), "destroy", destroy_dialog, NULL);
 
