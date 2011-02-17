@@ -807,6 +807,10 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 		set_markup (context, "Compose");
 		break;
 
+	case GDK_KEY_VoidSymbol:
+		set_markup (context, "");
+		break;
+
 	default:
 		uc = gdk_keyval_to_unicode (keyval);
 		if (uc != 0 && g_unichar_isgraph (uc)) {
