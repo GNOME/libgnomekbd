@@ -112,9 +112,13 @@ noinst_HEADERS = gkbd-indicator-plugin-manager.h \
                  $(extra_nih) \
                  gkbd-config-private.h
 
+convertdir = $(datadir)/GConf/gsettings
+convert_DATA = libgnomekbd.convert
+
 EXTRA_DIST = gkbd-indicator-marshal.list \
              gkbd-keyboard-drawing-marshal.list \
              $(ui_DATA) \
+             $(convert_DATA) \
              $(icons_DATA) \
              $(gsettings_SCHEMAS:.xml=.xml.in.in) 
 
