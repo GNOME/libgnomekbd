@@ -1,15 +1,15 @@
-# translation of libgnomekbd.master.gu.po to Gujarati
+# translation of gu.po to Gujarati
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Ankit Patel <ankit@redhat.com>, 2007.
-# Sweta Kothari <swkothar@redhat.com>, 2008, 2009.
+# Sweta Kothari <swkothar@redhat.com>, 2008, 2009, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd.master.gu\n"
+"Project-Id-Version: gu\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-08-16 20:00+0000\n"
-"PO-Revision-Date: 2009-09-09 12:55+0530\n"
+"POT-Creation-Date: 2010-12-31 03:01+0000\n"
+"PO-Revision-Date: 2011-02-21 12:14+0530\n"
 "Last-Translator: Sweta Kothari <swkothar@redhat.com>\n"
 "Language-Team: Gujarati\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,11 @@ msgstr ""
 "\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:514 ../libgnomekbd/gkbd-status.c:515
+msgid "XKB initialization error"
+msgstr "XKB આરંભ કરવામાં ભૂલ"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2404
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -31,147 +35,166 @@ msgstr ""
 "સર્વાધિકાર &#169; X.Org ફાઉન્ડેશન અનો XKeyboardConfig સહાયકારક\n"
 "પેકેજ મેટાડેટા જોવા લાઇસેંસદેવા માટેa"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB આરંભ કરવામાં ભૂલ"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2491
+msgid "Unknown"
+msgstr "અજ્ઞાત"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:161
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2538
 #, c-format
-msgid "There was an error loading an image: %s"
-msgstr "ચિત્ર લાવવામાં ભૂલ હતી: %s"
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout \"%s\""
+msgstr "કીબોર્ડ લેઆઉટ \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:676
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "લેઆઉટ \"%s\""
 msgstr[1] "લેઆઉટો \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:694
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "વિકલ્પ \"%s\""
 msgstr[1] "વિકલ્પો \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:702
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "મોડેલ \"%s\", %s અને %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:703
 msgid "no layout"
 msgstr "કોઈ લેઆઉટ નથી"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:704
 msgid "no options"
 msgstr "કોઈ વિકલ્પો નથી"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"જ્યારેપણ કીબોર્ડ પરિસ્થિતિ પુનઃલવાય ત્યારે ચલાવવાની સ્ક્રિપ્ટોનો સમૂહ. xmodmap આધારિત "
-"સંતુલનો પુનઃ-લાગુ પાડવા માટે ઉપયોગી"
+#: ../libgnomekbd/gkbd-status.c:304
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "ચિત્ર લાવવામાં ભૂલ હતી: %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME ડિરેક્ટરીમાં ઉપલબ્ધ modmap ફાઈલોની યાદી."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "મૂળભૂત જૂથ, વિન્ડો બનાવટ પર સોંપાયેલ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "વિન્ડો પ્રતિ અલગ જૂથ જાળવો અને વ્યવસ્થા કરો"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "કીબોર્ડ સુધારા નિયંત્રકો"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "કીબોર્ડ લેઆઉટ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "કીબોર્ડ મોડેલ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "કીબોર્ડ વિકલ્પો"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
 msgstr "વિલાયતી, ઓછુ વપરાયેલ દેખાવો અને વિકલ્પોને લોડ કરો"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
 msgstr "વધારાની રૂપરેખાંકન વસ્તુને લોડ કરો"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
 msgstr "લેઆઉટ જૂથો સાથે સૂચકો એકસાથે સંગ્રહો/પુનઃજાળવો"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "ગૌણ જૂથો"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Show flags in the applet"
-msgstr "એપ્લેટમાં ફ્લેગો બતાવો"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "વર્તમાન લેઆઉટ સૂચવવા માટે એપ્લેટમાં ફ્લેગો બતાવો"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
 msgstr "જૂથ નામોની જગ્યાએ લેઆઉટ નામો બતાવો"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr "જૂથ નામોની જગ્યાએ લેઆઉટ નામો બતાવો (XFree આધાર આપતા ઘણાબધા લેઆઉટોની આવૃત્તિઓ માટે જ)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X sysconfig બદલાયેલ\" ચેતવણી સંદેશો સંકોચો"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "ગૌણ જૂથો"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "એપ્લેટમાં ફ્લેગો બતાવો"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "વર્તમાન લેઆઉટ સૂચવવા માટે એપ્લેટમાં ફ્લેગો બતાવો"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "કીબોર્ડ પૂર્વદર્શન, X ઓફસેટ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "The Keyboard Preview, Y offset"
 msgstr "કીબોર્ડ પૂર્વદર્શન, Y ઓફસેટ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "The Keyboard Preview, height"
 msgstr "કીબોર્ડ પૂર્વદર્શન, ઊંચાઈ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "The Keyboard Preview, width"
 msgstr "કીબોર્ડ પૂર્વદર્શન, પહોળાઈ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The background color"
+msgstr "પાશ્ર્વભાગ રંગ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The background color for the layout indicator"
+msgstr "લેઆઉટ સૂચક માટે પાશ્ર્વભાગ રંગ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font family"
+msgstr "ફોન્ટ કુટુંબ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font family for the layout indicator"
+msgstr "લેઆઉટ સૂચક માટે ફોન્ટ કુટુંબ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The font size"
+msgstr "ફોન્ટ માપ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The font size for the layout indicator"
+msgstr "લેઆઉટ સૂચક માટે ફોન્ટ માપ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The foreground color"
+msgstr "અગ્રભાગ રંગ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The foreground color for the layout indicator"
+msgstr "લેઆઉટ સૂચક માટે અગ્રભાગ રંગ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "સક્રિય કરેલ કીબોર્ડ સૂચક પ્લગઈનોની યાદી"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "કીબોર્ડ લેઆઉટ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "કીબોર્ડ મોડેલ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "કીબોર્ડ વિકલ્પો"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
 msgid "keyboard layout"
 msgstr "કીબોર્ડ લેઆઉટ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
 msgid "keyboard model"
 msgstr "કીબોર્ડ મોડેલ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
-msgid "modmap file list"
-msgstr "modmap ફાઈલ યાદી"
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "કીબોર્ડ લેઆઉટ"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -217,19 +240,14 @@ msgstr "પ્લગઈન ઉમેરો"
 msgid "_Available plugins:"
 msgstr "ઉપલબ્ધ પ્લગઈનો (_A):"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
 msgstr "કોઈ વર્ણન નથી."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
 msgstr "મદદ ફાઇલને ખોલવામાં અસમર્થ"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "GConf નો આરંભ કરવામાં નિષ્ફળ: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
@@ -239,12 +257,7 @@ msgstr "સ્થાપિત પ્લગઈનો સક્રિય/નિષ
 msgid "Keyboard Indicator plugins"
 msgstr "કીબોર્ડ સૂચક પ્લગઈનો"
 
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "કીબોર્ડ સૂચક ચકાસણી (%s)"
-
-#: ../test/gkbd-indicator-test.c:66
+#: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "સૂચક:"
 
