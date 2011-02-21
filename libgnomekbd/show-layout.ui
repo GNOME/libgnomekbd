@@ -45,21 +45,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="btnHelp">
-                <property name="label">gtk-help</property>
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="can_default">True</property>
-                <property name="receives_default">False</property>
-                <property name="use_stock">True</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">False</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkButton" id="btnClose">
                 <property name="label">gtk-close</property>
                 <property name="visible">True</property>
@@ -85,7 +70,6 @@
     </child>
     <action-widgets>
       <action-widget response="2">btnPrint</action-widget>
-      <action-widget response="-11">btnHelp</action-widget>
       <action-widget response="-7">btnClose</action-widget>
     </action-widgets>
   </object>
