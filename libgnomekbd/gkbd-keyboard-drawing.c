@@ -834,7 +834,7 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 static void
 draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 		   GkbdKeyboardDrawing * drawing,
-		   gint angle, gint x, gint y)
+		   gint angle, gint x, gint y, gboolean is_pressed)
 {
 	PangoLayout *layout = context->layout;
 	GdkColor *color;
@@ -842,6 +842,11 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 	gint x_off, y_off;
 	gint i;
 
+	if (is_pressed)
+		color =
+		    &gtk_widget_get_style (GTK_WIDGET (drawing))->text
+		    [GTK_STATE_SELECTED];
+	else
 	color =
 	    drawing->colors + (drawing->xkb->geom->label_color -
 			       drawing->xkb->geom->colors);
@@ -896,7 +901,8 @@ draw_key_label_helper (GkbdKeyboardDrawingRenderContext * context,
 		       gint angle,
 		       GkbdKeyboardDrawingGroupLevelPosition glp,
 		       gint x,
-		       gint y, gint width, gint height, gint padding)
+		       gint y, gint width, gint height, gint padding,
+		       gboolean is_pressed)
 {
 	gint label_x, label_y, label_max_width, ycell;
 
@@ -954,7 +960,8 @@ draw_key_label_helper (GkbdKeyboardDrawingRenderContext * context,
 	cairo_rectangle (context->cr, x + padding / 2, y + padding / 2,
 			 width - padding, height - padding);
 	cairo_clip (context->cr);
-	draw_pango_layout (context, drawing, angle, label_x, label_y);
+	draw_pango_layout (context, drawing, angle, label_x, label_y,
+			   is_pressed);
 	cairo_restore (context->cr);
 }
 
@@ -964,7 +971,8 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 		guint keycode,
 		gint angle,
 		gint xkb_origin_x,
-		gint xkb_origin_y, gint xkb_width, gint xkb_height)
+		gint xkb_origin_y, gint xkb_width, gint xkb_height,
+		gboolean is_pressed)
 {
 	gint x, y, width, height;
 	gint padding;
@@ -1014,7 +1022,8 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 				draw_key_label_helper (context, drawing,
 						       keysym, angle, glp,
 						       x, y, width, height,
-						       padding);
+						       padding,
+						       is_pressed);
 				/* reverse y order */
 			}
 		} else {
@@ -1025,7 +1034,8 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 
 			draw_key_label_helper (context, drawing, keysym,
 					       angle, glp, x, y, width,
-					       height, padding);
+					       height, padding,
+					       is_pressed);
 			/* reverse y order */
 		}
 	}
@@ -1111,7 +1121,7 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 	origin_offset_x = calc_shape_origin_offset_x (outline);
 	draw_key_label (context, drawing, key->keycode, key->angle,
 			key->origin_x + origin_offset_x, key->origin_y,
-			shape->bounds.x2, shape->bounds.y2);
+			shape->bounds.x2, shape->bounds.y2, key->pressed);
 }
 
 static void
@@ -1182,9 +1192,8 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->doodad->
-						       indicator.
-						       shape_ndx]);
+			   &drawing->xkb->geom->shapes[doodad->
+						       doodad->indicator.shape_ndx]);
 }
 
 static void
@@ -1198,8 +1207,8 @@ invalidate_key_region (GkbdKeyboardDrawing * drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->xkbkey->
-						       shape_ndx]);
+			   &drawing->xkb->geom->shapes[key->
+						       xkbkey->shape_ndx]);
 }
 
 static void
@@ -1218,7 +1227,7 @@ draw_text_doodad (GkbdKeyboardDrawingRenderContext * context,
 				 doodad->origin_y + text_doodad->top);
 
 	set_markup (context, text_doodad->text);
-	draw_pango_layout (context, drawing, doodad->angle, x, y);
+	draw_pango_layout (context, drawing, doodad->angle, x, y, FALSE);
 }
 
 static void
@@ -1712,8 +1721,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				    drawing->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
-							      xkbkey->name.
-							      name);
+							      xkbkey->
+							      name.name);
 
 				if (keycode == INVALID_KEYCODE)
 					continue;
@@ -1824,8 +1833,9 @@ init_colors (GkbdKeyboardDrawing * drawing)
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
-					  spec, drawing->colors + i);
+		    parse_xkb_color_spec (drawing->xkb->geom->
+					  colors[i].spec,
+					  drawing->colors + i);
 
 		if (!result)
 			g_warning
@@ -1947,8 +1957,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 				process_indicators_state_notify (&
 								 ((XkbEvent
 								   *)
-								  gdkxev)->
-indicators, drawing);
+								  gdkxev)->indicators,
+drawing);
 			}
 			break;
 
