@@ -1,3 +1,9 @@
+2.91.90:
+	A lot of improvements in the drawing widget.
+	Updated for new libxklavier 5.1
+	Separate gkbd-keyboard-display app
+	Updated translations
+
 2.91.5:
 	Big refactoring: common code from both indicators is separated into GkbdConfiguration.
 	Introspection added, for embedding into JS-driven gnome-shell
