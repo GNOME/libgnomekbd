@@ -663,10 +663,6 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 	gunichar uc;
 
 	switch (keyval) {
-	case GDK_KEY_Caps_Lock:
-		set_markup (context, "Caps Lock");
-		break;
-
 	case GDK_KEY_Scroll_Lock:
 		set_markup (context, "Scroll\nLock");
 		break;
@@ -823,7 +819,18 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 		} else {
 			gchar *name = gdk_keyval_name (keyval);
 			if (name) {
-				set_markup (context, name);
+				gchar *fixed_name = g_strdup (name), *p;
+				/* Replace underscores with spaces */
+				for (p = fixed_name; *p; p++)
+					if (*p == '_')
+						*p = ' ';
+				/* Get rid of scary ISO_ prefix */
+				if (g_strstr_len (fixed_name, -1, "ISO "))
+					set_markup (context,
+						    fixed_name + 4);
+				else
+					set_markup (context, fixed_name);
+				g_free (fixed_name);
 			} else
 				set_markup (context, "");
 		}
@@ -847,9 +854,9 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 		    &gtk_widget_get_style (GTK_WIDGET (drawing))->text
 		    [GTK_STATE_SELECTED];
 	else
-	color =
-	    drawing->colors + (drawing->xkb->geom->label_color -
-			       drawing->xkb->geom->colors);
+		color =
+		    drawing->colors + (drawing->xkb->geom->label_color -
+				       drawing->xkb->geom->colors);
 
 	if (angle != context->angle) {
 		PangoMatrix matrix = PANGO_MATRIX_INIT;
@@ -1192,8 +1199,9 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->
-						       doodad->indicator.shape_ndx]);
+			   &drawing->xkb->geom->shapes[doodad->doodad->
+						       indicator.
+						       shape_ndx]);
 }
 
 static void
@@ -1207,8 +1215,8 @@ invalidate_key_region (GkbdKeyboardDrawing * drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->
-						       xkbkey->shape_ndx]);
+			   &drawing->xkb->geom->shapes[key->xkbkey->
+						       shape_ndx]);
 }
 
 static void
@@ -1721,8 +1729,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				    drawing->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
-							      xkbkey->
-							      name.name);
+							      xkbkey->name.
+							      name);
 
 				if (keycode == INVALID_KEYCODE)
 					continue;
@@ -1833,9 +1841,8 @@ init_colors (GkbdKeyboardDrawing * drawing)
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->
-					  colors[i].spec,
-					  drawing->colors + i);
+		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
+					  spec, drawing->colors + i);
 
 		if (!result)
 			g_warning
@@ -1957,8 +1964,8 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 				process_indicators_state_notify (&
 								 ((XkbEvent
 								   *)
-								  gdkxev)->indicators,
-drawing);
+								  gdkxev)->
+indicators, drawing);
 			}
 			break;
 
