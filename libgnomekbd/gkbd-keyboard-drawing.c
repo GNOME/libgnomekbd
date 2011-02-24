@@ -664,7 +664,7 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 
 	switch (keyval) {
 	case GDK_KEY_Caps_Lock:
-		set_markup (context, "Caps\nLock");
+		set_markup (context, "Caps Lock");
 		break;
 
 	case GDK_KEY_Scroll_Lock:
