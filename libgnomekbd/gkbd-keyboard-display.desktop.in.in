@@ -1,0 +1,14 @@
+[Desktop Entry]
+_Name=Keyboard Layout View
+_Comment=Keyboard Layout Preview Application
+Exec=gkbd-keyboard-display
+Terminal=false
+Type=Application
+StartupNotify=true
+NoDisplay=true
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=libgnomekbd
+X-GNOME-Bugzilla-Component=Drawing
+X-GNOME-Bugzilla-Version=@VERSION@
+Categories=GNOME;GTK;Core;
+OnlyShowIn=GNOME;

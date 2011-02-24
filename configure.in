@@ -96,6 +96,7 @@ libgnomekbd/Makefile
 libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
 libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in
 libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
+libgnomekbd/gkbd-keyboard-display.desktop.in
 test/Makefile
 capplet/Makefile
 capplet/gkbd-indicator-plugins-capplet.desktop.in

@@ -1,15 +1,16 @@
 .deps
-desktop_gnome_peripherals_keyboard_xkb.schemas
-*.la
 .libs
+*.la
 *.lo
 *.gschema.valid
-Makefile
-Makefile.in
+*.gschema.xml
+*.gschema.xml.in
+*.o
+*.desktop
+*.desktop.in
 *marshal.c
 *marshal.h
-*.o
-org.gnome.libgnomekbd.*gschema.xml
-org.gnome.libgnomekbd.*gschema.xml.in
+Makefile
+Makefile.in
 gkbd-keyboard-display
 

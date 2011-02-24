@@ -6,6 +6,7 @@ libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-keyboard-config.c
 libgnomekbd/gkbd-status.c
 libgnomekbd/gkbd-util.c
+libgnomekbd/gkbd-keyboard-display.desktop.in.in
 [type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in
 [type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in
 [type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in

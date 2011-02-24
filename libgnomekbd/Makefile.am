@@ -87,7 +87,11 @@ BUILT_SOURCES = gkbd-indicator-marshal.c \
         gkbd-keyboard-drawing-marshal.c            \
         gkbd-keyboard-drawing-marshal.h
 
-DISTCLEANFILES = $(BUILT_SOURCES) $(gsettings_SCHEMAS)
+DISTCLEANFILES = $(BUILT_SOURCES) \
+        $(gsettings_SCHEMAS) \
+        gkbd-keyboard-display.desktop \
+        gkbd-keyboard-display.desktop.in
+        
 
 MAINTAINERCLEANFILES =                  \
         *~                              \
@@ -106,6 +110,10 @@ gnomekbdinc_HEADERS = \
                       gkbd-keyboard-drawing.h \
                       gkbd-util.h
 
+sysdir = $(datadir)/applications
+sys_in_in_files = gkbd-keyboard-display.desktop.in.in
+sys_DATA = $(sys_in_in_files:.desktop.in.in=.desktop)
+
 @INTLTOOL_DESKTOP_RULE@
 
 noinst_HEADERS = gkbd-indicator-plugin-manager.h \
@@ -120,6 +128,7 @@ EXTRA_DIST = gkbd-indicator-marshal.list \
              $(ui_DATA) \
              $(convert_DATA) \
              $(icons_DATA) \
+             $(sys_in_in_files) \
              $(gsettings_SCHEMAS:.xml=.xml.in.in) 
 
 
