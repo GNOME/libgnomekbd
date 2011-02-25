@@ -2567,10 +2567,7 @@ static void
 gkbd_keyboard_drawing_dialog_set_layout_name (GtkWidget * dialog,
 					      const gchar * layout_name)
 {
-	char title[128] = "";
-	snprintf (title, sizeof (title), _("Keyboard Layout \"%s\""),
-		  layout_name);
-	gtk_window_set_title (GTK_WINDOW (dialog), title);
+	gtk_window_set_title (GTK_WINDOW (dialog), layout_name);
 	g_object_set_data_full (G_OBJECT (dialog), "layout_name",
 				g_strdup (layout_name), g_free);
 }
