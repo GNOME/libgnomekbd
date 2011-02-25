@@ -1,10 +1,10 @@
 # GNOME klaviatuuriteegi eesti keele tõlge.
 # Estonian translation of libgnomekbd.
 #
-# Copyright (C) 2007, 2009, 2010 The GNOME Project
+# Copyright (C) 2007, 2009–2011 The GNOME Project
 # This file is distributed under the same license as the libgnomekbd package.
 #
-# Ivar Smolin <okul linux ee>, 2007, 2009, 2010.
+# Ivar Smolin <okul linux ee>, 2007, 2009–2011.
 # Priit Laes <amd store20 com>, 2007.
 #
 msgid ""
@@ -12,19 +12,15 @@ msgstr ""
 "Project-Id-Version: libgnomekbd MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-12-04 23:46+0000\n"
-"PO-Revision-Date: 2010-05-27 08:23+0300\n"
+"POT-Creation-Date: 2011-02-25 01:17+0000\n"
+"PO-Revision-Date: 2011-02-25 11:46+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
-"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Pildi laadimisel tekkis viga: %s"
 
 msgid "XKB initialization error"
 msgstr "XKB lähtestamise viga"
@@ -36,15 +32,11 @@ msgid ""
 "For licensing see package metadata"
 msgstr ""
 "Klaviatuuripaigutus \"%s\"\n"
-"Autoriõigused &#169; X.Org Foundation ja XKeyboardConfig'i kaasaaitajad\n"
+"Autoriõigused &#169; X.Org Foundation ja XKeyboardConfigi kaasaaitajad\n"
 "Litsentsi andmed leiad paki metaandmetest"
 
 msgid "Unknown"
 msgstr "Tundmatu"
-
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "Klaviatuuri paigutus \"%s\""
 
 #, c-format
 msgid "layout \"%s\""
@@ -67,6 +59,16 @@ msgstr "paigutus puudub"
 
 msgid "no options"
 msgstr "valikud puuduvad"
+
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Pildi laadimisel tekkis viga: %s"
+
+msgid "Keyboard Layout"
+msgstr "Klaviatuuri paigutus"
+
+msgid "Preview keyboard layouts"
+msgstr "Klaviatuuripaigutuste eelvaatlemine"
 
 msgid "Default group, assigned on window creation"
 msgstr "Vaikimisi grupp, mis on seotud akna loomisega"
@@ -156,9 +158,6 @@ msgstr "klaviatuuri paigutus"
 msgid "keyboard model"
 msgstr "klaviatuuri mudel"
 
-msgid "Keyboard Layout"
-msgstr "Klaviatuuri paigutus"
-
 msgid "Activate more plugins"
 msgstr "Täiendavate pluginate aktiveerimine"
 
@@ -204,31 +203,5 @@ msgstr "Paigaldatud pluginate lubamine ja keelamine"
 msgid "Keyboard Indicator plugins"
 msgstr "Klaviatuurinäidiku pluginad"
 
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "Klaviatuurinäidiku test (%s)"
-
 msgid "Indicator:"
 msgstr "Näidik:"
-
-#~ msgid ""
-#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
-#~ "Useful for re-applying xmodmap based adjustments"
-#~ msgstr ""
-#~ "Kogumik skripte, mida käivitatakse klaviatuuri oleku ümberlaadimisel. See "
-#~ "on kasulik näiteks xmodmap'il põhinevate sätete rakendamiseks"
-
-#~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "$HOME kataloogis olevate modmap-failide nimekiri."
-
-#~ msgid "Keyboard Update Handlers"
-#~ msgstr "Klaviatuuriuuenduste käsitlejad"
-
-#~ msgid "Suppress the \"X sysconfig changed\" warning message"
-#~ msgstr "\"X sysconfig changed\" teadete peitmine"
-
-#~ msgid "modmap file list"
-#~ msgstr "modmap-failide loend"
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "Tõrge GConf'i lähtestamisel: %s\n"
