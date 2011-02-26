@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd HEAD fr\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-05-26 22:36+0000\n"
+"POT-Creation-Date: 2011-02-25 01:17+0000\n"
 "PO-Revision-Date: 2010-08-15 21:32+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -19,16 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:312
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Une erreur s'est produite en chargeant une image : %s"
-
-#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:643
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "Erreur d'initialisation XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2412
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -39,109 +34,76 @@ msgstr ""
 "Copyright &#169; X.Org Foundation et contributeurs XKeyboardConfig\n"
 "Les détails de licence se trouvent dans les méta-données du paquet."
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2499
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
 msgid "Unknown"
 msgstr "Inconnu"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2544
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "Agencement de clavier « %s »"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:757
+#: ../libgnomekbd/gkbd-keyboard-config.c:701
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "agencement « %s »"
 msgstr[1] "agencements « %s »"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:776
+#: ../libgnomekbd/gkbd-keyboard-config.c:719
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "option « %s »"
 msgstr[1] "options « %s »"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:784
+#: ../libgnomekbd/gkbd-keyboard-config.c:727
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modèle « %s », %s et %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:785
+#: ../libgnomekbd/gkbd-keyboard-config.c:728
 msgid "no layout"
 msgstr "aucun agencement"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:786
+#: ../libgnomekbd/gkbd-keyboard-config.c:729
 msgid "no options"
 msgstr "aucune option"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"Un ensemble de scripts à exécuter à chaque rechargement de l'état du "
-"clavier. Utile pour réappliquer des ajustements basés sur xmodmap."
+#: ../libgnomekbd/gkbd-status.c:290
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Une erreur s'est produite en chargeant une image : %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "Une liste de fichiers modmap disponibles dans le répertoire $HOME."
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Agencement de clavier"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Prévisualiser les agencements de clavier"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "Groupe par défaut, attribué lors de la création d'une fenêtre"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "Gère et maintient des groupes distincts par fenêtre"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "Gestionnaires de mise à jour de claviers"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "Agencement de clavier"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "Modèle de clavier"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "Options de clavier"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Charger les agencements et options rarement utilisés"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
 msgstr "Charger les objets de configuration supplémentaires"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
 msgstr "Enregistre et restaure les indicateurs avec les groupes d'agencements"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "Groupes secondaires"
-
-#. TRANSLATORS: real national flags
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet"
-msgstr "Affiche les drapeaux dans l'applet"
-
-#. TRANSLATORS: real national flags
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Affiche des drapeaux dans l'applet pour indiquer l'agencement actuel"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
 msgstr "Affiche les noms d'agencement au lieu des noms de groupe"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -149,77 +111,89 @@ msgstr ""
 "Affiche les noms d'agencement au lieu des noms de groupe (uniquement pour "
 "les versions de XFree prenant en charge les agencements multiples)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "Supprime le message d'avertisssement « sysconfig X modifée »"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "Groupes secondaires"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "Affiche les drapeaux dans l'applet"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Affiche des drapeaux dans l'applet pour indiquer l'agencement actuel"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "L'aperçu du clavier, décalage X"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "The Keyboard Preview, Y offset"
 msgstr "L'aperçu du clavier, décalage Y"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "The Keyboard Preview, height"
 msgstr "L'aperçu du clavier, hauteur"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "The Keyboard Preview, width"
 msgstr "L'aperçu du clavier, largeur"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
 msgid "The background color"
 msgstr "La couleur d'arrière-plan"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The background color for the layout indicator"
 msgstr "La couleur d'arrière-plan pour l'indicateur d'agencement"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font family"
 msgstr "La police de caractères"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font family for the layout indicator"
 msgstr "La police de caractères pour l'indicateur d'agencement"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The font size"
 msgstr "La taille de police"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The font size for the layout indicator"
 msgstr "La taille de police pour l'indicateur d'agencement"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
 msgstr "La couleur de premier plan"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The foreground color for the layout indicator"
 msgstr "La couleur de premier plan pour l'indicateur d'agencement"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "La liste des greffons activés de l'Indicateur de claviers"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "Agencement de clavier"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "Modèle de clavier"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "Options de clavier"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
 msgid "keyboard layout"
 msgstr "agencement de clavier"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
 msgid "keyboard model"
 msgstr "modèle de clavier"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
-msgid "modmap file list"
-msgstr "liste de fichiers modmap"
-
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Agencement de clavier"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -265,19 +239,14 @@ msgstr "Ajouter un greffon"
 msgid "_Available plugins:"
 msgstr "Greffons _disponibles :"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
 msgstr "Aucune description."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
 msgstr "Impossible d'ouvrir le fichier d'aide"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "L'initialisation de GConf a échoué : %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
@@ -287,11 +256,34 @@ msgstr "Active ou désactive les greffons installés"
 msgid "Keyboard Indicator plugins"
 msgstr "Greffons de l'Indicateur de claviers"
 
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "Test de l'Indicateur de claviers (%s)"
-
-#: ../test/gkbd-indicator-test.c:66
+#: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "Indicateur :"
+
+#~ msgid "Keyboard Layout \"%s\""
+#~ msgstr "Agencement de clavier « %s »"
+
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "Un ensemble de scripts à exécuter à chaque rechargement de l'état du "
+#~ "clavier. Utile pour réappliquer des ajustements basés sur xmodmap."
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "Une liste de fichiers modmap disponibles dans le répertoire $HOME."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "Gestionnaires de mise à jour de claviers"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "Supprime le message d'avertisssement « sysconfig X modifée »"
+
+#~ msgid "modmap file list"
+#~ msgstr "liste de fichiers modmap"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "L'initialisation de GConf a échoué : %s\n"
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "Test de l'Indicateur de claviers (%s)"
