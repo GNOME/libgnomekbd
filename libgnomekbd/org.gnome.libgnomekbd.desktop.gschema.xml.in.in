@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <schemalist>
-  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.desktop" path="/desktop/gnome/peripherals/keyboard/general/">
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.desktop" path="/org/gnome/libgnomekbd/desktop/">
     <key name="default-group" type="i">
+      <range min="0" max="4"/>
       <default>-1</default>
       <_summary>Default group, assigned on window creation</_summary>
       <_description>Default group, assigned on window creation</_description>

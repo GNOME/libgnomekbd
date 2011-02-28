@@ -1,33 +1,38 @@
 <?xml version="1.0"?>
 <schemalist>
-  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd" path="/desktop/gnome/peripherals/keyboard/">
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd" path="/org/gnome/libgnomekbd/">
     <child name="preview" schema="org.gnome.libgnomekbd.preview"/>
     <child name="indicator" schema="org.gnome.libgnomekbd.indicator"/>
   </schema>
-  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.preview" path="/desktop/gnome/peripherals/keyboard/preview/">
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.preview" path="/org/gnome/libgnomekbd/preview/">
     <key name="x" type="i">
+      <range min="-1" max="65535"/>
       <default>-1</default>
       <_summary>The Keyboard Preview, X offset</_summary>
       <_description>The Keyboard Preview, X offset</_description>
     </key>
     <key name="y" type="i">
+      <range min="-1" max="65535"/>
       <default>-1</default>
       <_summary>The Keyboard Preview, Y offset</_summary>
       <_description>The Keyboard Preview, Y offset</_description>
     </key>
     <key name="width" type="i">
+      <range min="-1" max="65535"/>
       <default>-1</default>
       <_summary>The Keyboard Preview, width</_summary>
       <_description>The Keyboard Preview, width</_description>
     </key>
     <key name="height" type="i">
+      <range min="-1" max="65535"/>
       <default>-1</default>
       <_summary>The Keyboard Preview, height</_summary>
       <_description>The Keyboard Preview, height</_description>
     </key>
   </schema>
-  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.indicator" path="/desktop/gnome/peripherals/keyboard/indicator/">
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.indicator" path="/org/gnome/libgnomekbd/indicator/">
     <key name="secondary" type="i">
+      <range min="0" max="15"/>
       <default>0</default>
       <_summary>Secondary groups</_summary>
       <_description>Secondary groups</_description>

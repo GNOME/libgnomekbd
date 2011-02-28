@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <schemalist>
-  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.keyboard" path="/desktop/gnome/peripherals/keyboard/kbd/">
+  <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.keyboard" path="/org/gnome/libgnomekbd/keyboard/">
     <key name="model" type="s">
       <default>''</default>
       <_summary>Keyboard model</_summary>
