@@ -48,6 +48,7 @@
       <_description>The font family for the layout indicator</_description>
     </key>
     <key name="font-size" type="i">
+      <range min="1" max="65535"/>
       <default>10</default>
       <_summary>The font size</_summary>
       <_description>The font size for the layout indicator</_description>
