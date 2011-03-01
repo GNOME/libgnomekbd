@@ -297,11 +297,12 @@ gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 	plvd = lvd;
 	psvd = svd;
 	while (plld != NULL && *plld != NULL) {
-		gchar *sd = (*psvd[0] == '\0') ? *psld : *psvd;
+		*psgn++ = g_strdup ((*psvd[0] == '\0') ? *psld : *psvd);
+		*pfgn++ =
+		    g_strdup (gkbd_keyboard_config_format_full_description
+			      (*plld++, *plvd++));
 		psld++, psvd++;
-		*psgn++ = g_strdup (sd);
-		*pfgn++ = g_strdup (gkbd_keyboard_config_format_full_layout
-				    (*plld++, *plvd++));
+		plld++, plvd++;
 	}
 	g_strfreev (sld);
 	g_strfreev (lld);

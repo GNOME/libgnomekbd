@@ -102,22 +102,23 @@ extern gboolean gkbd_keyboard_config_get_descriptions (XklConfigRegistry *
 						       gchar **
 						       variant_descr);
 
-extern const gchar *gkbd_keyboard_config_format_full_layout (const gchar
-							     *
-							     layout_descr,
-							     const gchar *
-							     variant_descr);
+extern const gchar *gkbd_keyboard_config_format_full_description (const
+								  gchar *
+								  layout_descr,
+								  const
+								  gchar *
+								  variant_descr);
 
 extern gchar *gkbd_keyboard_config_to_string (const GkbdKeyboardConfig *
 					      config);
 
 extern gchar
-    **gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
-								   layouts_list,
-								   gchar **
-								   options_list,
-								   gboolean
-								   *
-								   was_appended);
+    **
+gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
+							     layouts_list,
+							     gchar **
+							     options_list,
+							     gboolean *
+							     was_appended);
 
 #endif

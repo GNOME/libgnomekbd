@@ -343,7 +343,8 @@ gkbd_keyboard_config_load_params (GkbdKeyboardConfig * kbd_config,
 	kbd_config->layouts_variants =
 	    g_settings_get_strv (kbd_config->settings, param_names[1]);
 
-	if (kbd_config->layouts_variants != NULL && kbd_config->layouts_variants[0] == NULL) {
+	if (kbd_config->layouts_variants != NULL
+	    && kbd_config->layouts_variants[0] == NULL) {
 		g_strfreev (kbd_config->layouts_variants);
 		kbd_config->layouts_variants = NULL;
 	}
@@ -661,17 +662,13 @@ gkbd_keyboard_config_get_descriptions (XklConfigRegistry * config_registry,
 }
 
 const gchar *
-gkbd_keyboard_config_format_full_layout (const gchar * layout_descr,
-					 const gchar * variant_descr)
+gkbd_keyboard_config_format_full_description (const gchar * layout_descr,
+					      const gchar * variant_descr)
 {
-	static gchar full_descr[XKL_MAX_CI_DESC_LENGTH * 2];
 	if (variant_descr == NULL || variant_descr[0] == 0)
-		g_snprintf (full_descr, sizeof (full_descr), "%s",
-			    layout_descr);
+		return layout_descr;
 	else
-		g_snprintf (full_descr, sizeof (full_descr), "%s %s",
-			    layout_descr, variant_descr);
-	return full_descr;
+		return variant_descr;
 }
 
 gchar *
