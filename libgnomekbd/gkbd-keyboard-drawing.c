@@ -64,6 +64,13 @@ static GkbdKeyboardDrawingGroupLevel *pGroupsLevels[] = {
 static void gkbd_keyboard_drawing_set_mods (GkbdKeyboardDrawing * drawing,
 					    guint mods);
 
+extern gboolean xkl_xkb_config_native_prepare (XklEngine * engine,
+					       const XklConfigRec * data,
+					       gpointer component_names);
+
+extern void xkl_xkb_config_native_cleanup (XklEngine * engine,
+					   gpointer component_names);
+
 static gint
 xkb_to_pixmap_coord (GkbdKeyboardDrawingRenderContext * context, gint n)
 {
