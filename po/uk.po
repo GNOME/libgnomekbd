@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-02-11 14:19+0200\n"
-"PO-Revision-Date: 2011-02-11 16:48+0300\n"
+"POT-Creation-Date: 2011-03-04 17:31+0200\n"
+"PO-Revision-Date: 2011-03-04 17:32+0300\n"
 "Last-Translator: Korostil Daniel <ted.korostiled@gmail.com>\n"
 "Language-Team: translation@linux.org.ua\n"
 "Language: uk\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "XKB initialization error"
 msgstr "Помилка запуску XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2426
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2458
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -34,16 +34,11 @@ msgstr ""
 "Copyright &#169; X.Org Foundation та учасники розробки XKeyboardConfig\n"
 "Ліцензію викладено в метаданих пакунка"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2546
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "Розкладка клавіатури «%s»"
-
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2584
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2608
 msgid "Unknown"
 msgstr "Невідомо"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:701
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -51,7 +46,7 @@ msgstr[0] "розкладка «%s»"
 msgstr[1] "розкладки «%s»"
 msgstr[2] "розкладок «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:719
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -59,16 +54,16 @@ msgstr[0] "параметр «%s»"
 msgstr[1] "параметри «%s»"
 msgstr[2] "параметрів «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:727
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "модель «%s», %s та %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:728
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 msgid "no layout"
 msgstr "немає розкладки"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:729
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no options"
 msgstr "немає параметрів"
 
@@ -76,6 +71,15 @@ msgstr "немає параметрів"
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Помилка завантаження зображення: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Розкладка клавіатури"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Перегляд розкладки клавіатури"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
@@ -193,10 +197,6 @@ msgstr "розкладка клавіатури"
 msgid "keyboard model"
 msgstr "модель клавіатури"
 
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Розкладка клавіатури"
-
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Увімкнути більше додатків"
@@ -261,6 +261,9 @@ msgstr "Додатки до індикатора клавіатури"
 #: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "Індикатор:"
+
+#~ msgid "Keyboard Layout \"%s\""
+#~ msgstr "Розкладка клавіатури «%s»"
 
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
