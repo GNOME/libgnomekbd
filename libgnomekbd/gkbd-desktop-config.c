@@ -300,7 +300,7 @@ gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 		*psgn++ = g_strdup ((*psvd[0] == '\0') ? *psld : *psvd);
 		*pfgn++ =
 		    g_strdup (gkbd_keyboard_config_format_full_description
-			      (*plld++, *plvd++));
+			      (*plld, *plvd));
 		psld++, psvd++;
 		plld++, plvd++;
 	}
