@@ -6,28 +6,28 @@
 # Mancomún - Centro de Referencia e Servizos de Software Libre <g11n@mancomun.org>, 2009.
 # Antón Méixome <meixome@mancomun.org>, 2009.
 # Antón Méixome <meixome@certima.net>, 2010.
-# Fran Diéguez <frandieguez@ubuntu.com>, 2009, 2010, 2011.
+# Fran Diéguez <frandieguez@gnome.org>, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd-master-po-gl-70481\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-27 03:20+0100\n"
-"PO-Revision-Date: 2011-01-24 19:44+0100\n"
-"Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <gnome-gl-list@gnome.org>\n"
+"POT-Creation-Date: 2011-03-15 15:48+0100\n"
+"PO-Revision-Date: 2011-03-15 15:48+0100\n"
+"Last-Translator: Fran Diéguez <frandieguez@gnome.org>\n"
+"Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:535
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "Erro de inicialización do XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2404
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2460
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -39,39 +39,34 @@ msgstr ""
 "XKeyboardConfig\n"
 "Para a licenza vaia aos metadatos do paquete"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2491
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2610
 msgid "Unknown"
 msgstr "Descoñecida"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2538
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "Disposición do teclado «%s»"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:690
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "disposición «%s»"
 msgstr[1] "disposicións «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:708
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "opción «%s»"
 msgstr[1] "opcións «%s»"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:716
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modelo «%s», %s e %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:717
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 msgid "no layout"
 msgstr "sen disposición"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:718
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no options"
 msgstr "sen opcións"
 
@@ -79,6 +74,15 @@ msgstr "sen opcións"
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Produciuse un erro ao cargar unha imaxe: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Disposición do teclado"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Previsualizar as distribucións de teclado"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
@@ -196,10 +200,6 @@ msgstr "disposición do teclado"
 msgid "keyboard model"
 msgstr "modelo de teclado"
 
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Disposición do teclado"
-
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Activar máis engadidos"
@@ -264,6 +264,9 @@ msgstr "Engadidos do indicador de teclado"
 #: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "Indicador:"
+
+#~ msgid "Keyboard Layout \"%s\""
+#~ msgstr "Disposición do teclado «%s»"
 
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
