@@ -5,15 +5,15 @@
 # Hendrik Richter <hendrikr@gnome.org>, 2007.
 # Andre Klapper <ak-47@gmx.net>, 2008.
 # Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009, 2010.
-# Mario Blättermann <mariobl@gnome.org>, 2010.
+# Mario Blättermann <mariobl@gnome.org>, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-05-26 22:36+0000\n"
-"PO-Revision-Date: 2010-07-18 18:24+0100\n"
+"POT-Creation-Date: 2011-02-25 01:17+0000\n"
+"PO-Revision-Date: 2011-02-17 15:04+0100\n"
 "Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,16 +23,11 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:312
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "Beim Laden des Bildes ist ein Fehler aufgetreten: %s"
-
-#: ../libgnomekbd/gkbd-indicator.c:735 ../libgnomekbd/gkbd-status.c:643
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "XKB-Initialisierungsfehler"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2412
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -43,112 +38,77 @@ msgstr ""
 "Copyright &#169; X.Org Foundation und XKeyboardConfig-Mitwirkende\n"
 "Für Informationen über die Lizenz siehe Paket-Metadaten"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2499
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2544
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "Tastaturbelegung »%s«"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:757
+#: ../libgnomekbd/gkbd-keyboard-config.c:701
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "Belegung »%s«"
 msgstr[1] "Belegungen »%s«"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:776
+#: ../libgnomekbd/gkbd-keyboard-config.c:719
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "Option »%s«"
 msgstr[1] "Optionen »%s«"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:784
+#: ../libgnomekbd/gkbd-keyboard-config.c:727
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "Modell »%s«, %s und %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:785
+#: ../libgnomekbd/gkbd-keyboard-config.c:728
 msgid "no layout"
 msgstr "Keine Belegung"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:786
+#: ../libgnomekbd/gkbd-keyboard-config.c:729
 msgid "no options"
 msgstr "Keine Optionen"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"Skriptsammlung, die beim Neuladen des Tastaturstatus ausgeführt wird. "
-"Nützlich, wenn auf xmodpmap basierende Anpassungen wiederholt angewendet "
-"werden."
+#: ../libgnomekbd/gkbd-status.c:290
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Beim Laden des Bildes ist ein Fehler aufgetreten: %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr ""
-"Eine Liste von modmap-Dateien, die im Persönlichen Ordner verfügbar ist."
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Tastaturbelegung"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Vorschau auf Tastaturbelegungen"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "Vorgegebene Gruppe, zugewiesen bei der Fenstererstellung"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "Separate Gruppe pro Fenster beibehalten und verwalten"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "Tastatur-Aktualisierungsroutine"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "Tastaturbelegung"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "Tastatur-Modell"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "Tastatur-Optionen"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Exotische, wenig verwendete Belegungen und Optionen laden"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
 msgstr "Zusätzliche Konfigurationsobjekte laden"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
 msgstr ""
 "Speichern und Wiederherstellen der Anzeigen zusammen mit den Belegungsgruppen"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "Sekundäre Gruppen"
-
-#. TRANSLATORS: real national flags
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet"
-msgstr "Markierungen im Applet zeigen"
-
-#. TRANSLATORS: real national flags
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Markierungen im Applet zeigen, um die aktuelle Belegung anzuzeigen"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
 msgstr "Belegungsnamen anstatt Gruppennamen zeigen"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -156,77 +116,89 @@ msgstr ""
 "Belegungsnamen anstatt Gruppennamen anzeigen (Nur für XFree-Versionen, die "
 "mehrere Tastaturbelegungen unterstützen)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "Die »X sysconfig changed«-Warnmeldung unterdrücken"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "Sekundäre Gruppen"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "Markierungen im Applet zeigen"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Markierungen im Applet zeigen, um die aktuelle Belegung anzuzeigen"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "Die Tastaturvorschau, X-Position"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "The Keyboard Preview, Y offset"
 msgstr "Die Tastaturvorschau, Y-Position"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "The Keyboard Preview, height"
 msgstr "Die Tastaturvorschau, Höhe"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "The Keyboard Preview, width"
 msgstr "Die Tastaturvorschau, Breite"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
 msgid "The background color"
 msgstr "Die Hintergrundfarbe"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The background color for the layout indicator"
 msgstr "Die Hintergrundfarbe für den Tastaturindikator"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:26
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font family"
 msgstr "Die Schriftfamilie"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:27
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font family for the layout indicator"
 msgstr "Die Schriftfamilie für den Tastaturindikator"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:28
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The font size"
 msgstr "Die Schriftgröße"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:29
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The font size for the layout indicator"
 msgstr "Die Schriftgröße für den Tastaturindikator"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:30
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
 msgstr "Die Vordergrundfarbe"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:31
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The foreground color for the layout indicator"
 msgstr "Die Vordergrundfarbe für den Tastaturindikator"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:32
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "Die Liste der aktivierten Tastatur-Anzeige-Plugins"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:33
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "Tastaturbelegung"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "Tastatur-Modell"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "Tastatur-Optionen"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
 msgid "keyboard layout"
 msgstr "Tastaturbelegung"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:34
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
 msgid "keyboard model"
 msgstr "Tastatur-Modell"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:35
-msgid "modmap file list"
-msgstr "modmap-Dateiliste"
-
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Tastaturbelegung"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -272,19 +244,14 @@ msgstr "Plugin hinzufügen"
 msgid "_Available plugins:"
 msgstr "_Verfügbare Plugins:"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
 msgstr "Keine Beschreibung."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
 msgstr "Hilfe-Datei kann nicht geöffnet werden"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "Initialisieren von GConf gescheitert: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
@@ -294,14 +261,39 @@ msgstr "Aktivieren oder Deaktivieren installierter Plugins"
 msgid "Keyboard Indicator plugins"
 msgstr "Tastatur-Anzeige-Plugins"
 
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "Tastatur-Anzeige-Test (%s)"
-
-#: ../test/gkbd-indicator-test.c:66
+#: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "Anzeige:"
+
+#~ msgid "Keyboard Layout \"%s\""
+#~ msgstr "Tastaturbelegung »%s«"
+
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "Skriptsammlung, die beim Neuladen des Tastaturstatus ausgeführt wird. "
+#~ "Nützlich, wenn auf xmodpmap basierende Anpassungen wiederholt angewendet "
+#~ "werden."
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr ""
+#~ "Eine Liste von modmap-Dateien, die im Persönlichen Ordner verfügbar ist."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "Tastatur-Aktualisierungsroutine"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "Die »X sysconfig changed«-Warnmeldung unterdrücken"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap-Dateiliste"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "Initialisieren von GConf gescheitert: %s\n"
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "Tastatur-Anzeige-Test (%s)"
 
 #~ msgid ""
 #~ "Keyboard settings in gconf will be overridden from the system ASAP "
@@ -312,11 +304,11 @@ msgstr "Anzeige:"
 
 #~ msgid ""
 #~ "Very soon, keyboard settings in gconf will be overridden (from the system "
-#~ "configuration) This key has been deprecated since GNOME 2.12, please unset "
-#~ "the model, layouts and options keys to get the default system "
+#~ "configuration) This key has been deprecated since GNOME 2.12, please "
+#~ "unset the model, layouts and options keys to get the default system "
 #~ "configuration."
 #~ msgstr ""
 #~ "Sehr bald werden Tastatureinstellungen in gconf überschrieben (von der "
 #~ "Systemkonfiguration). Dieser Schlüssel wird seit GNOME 2.12 veraltet, "
-#~ "bitte entfernen Sie die Schlüssel für das Modell, das Layout und Optionen, "
-#~ "um die Standard-Systemkonfiguration zu erlangen."
+#~ "bitte entfernen Sie die Schlüssel für das Modell, das Layout und "
+#~ "Optionen, um die Standard-Systemkonfiguration zu erlangen."
