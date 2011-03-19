@@ -8,24 +8,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-12-31 03:01+0000\n"
-"PO-Revision-Date: 2011-02-06 23:42+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgno"
+"mekbd&component=general\n"
+"POT-Creation-Date: 2011-03-07 22:07+0000\n"
+"PO-Revision-Date: 2011-03-10 22:45+0200\n"
 "Last-Translator: Rudolfs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 "X-Generator: Lokalize 1.1\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:514 ../libgnomekbd/gkbd-status.c:515
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "XKB inicializācijas kļūda"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2404
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2458
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -36,17 +36,11 @@ msgstr ""
 "Autortiesības &#169; X.Org Fonds un XKeyboardConfig komanda\n"
 "Licences informācija pieejama pakotnes metadatos"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2491
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2608
 msgid "Unknown"
 msgstr "Nezināms"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2538
-#, c-format
-#| msgid "Keyboard layout"
-msgid "Keyboard Layout \"%s\""
-msgstr "Tastatūras izkārtojums \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:676
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
@@ -54,7 +48,7 @@ msgstr[0] "izkārtojums \"%s\""
 msgstr[1] "izkārtojumi \"%s\""
 msgstr[2] "izkārtojumi \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:694
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
@@ -62,23 +56,33 @@ msgstr[0] "iespēja \"%s\""
 msgstr[1] "iespējas \"%s\""
 msgstr[2] "iespējas \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:702
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "modelis \"%s\", %s un %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:703
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 msgid "no layout"
 msgstr "nav izkārtojuma"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:704
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no options"
 msgstr "nav iespēju"
 
-#: ../libgnomekbd/gkbd-status.c:304
+#: ../libgnomekbd/gkbd-status.c:290
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Gadījās kļūda ielādējot attēlu: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Tastatūras izkārtojums"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+#| msgid "keyboard layout"
+msgid "Preview keyboard layouts"
+msgstr "Priekšskatīt tastatūras izkārtojums"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
@@ -196,11 +200,6 @@ msgstr "tastatūras izkārtojums"
 msgid "keyboard model"
 msgstr "tastatūras modelis"
 
-#: ../libgnomekbd/show-layout.ui.h:1
-#| msgid "Keyboard layout"
-msgid "Keyboard Layout"
-msgstr "Tastatūras izkārtojums"
-
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "Aktivizēt vairāk spraudņus"
@@ -265,28 +264,3 @@ msgstr "Tastatūras indikatora spraudņi"
 #: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "Indikators:"
-
-#~ msgid ""
-#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
-#~ "Useful for re-applying xmodmap based adjustments"
-#~ msgstr ""
-#~ "Skriptu kolekcija palaišanai kad vien tastatūras stāvoklis ir pārlādēts. "
-#~ "Noderīgs xmodmap bāzētu iestatījumu pārlikšanai"
-
-#~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "$HOME direktorijā pieejamo modmap failu saraksts."
-
-#~ msgid "Keyboard Update Handlers"
-#~ msgstr "Tastatūras atjauninājumu apdarinātāji"
-
-#~ msgid "Suppress the \"X sysconfig changed\" warning message"
-#~ msgstr "Aizliegt \"X sysconfig changed\" brīdinājuma paziņojumu"
-
-#~ msgid "modmap file list"
-#~ msgstr "modmap failu saraksts"
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "Neizdevās inicializēt GConf: %s\n"
-
-#~ msgid "Keyboard Indicator Test (%s)"
-#~ msgstr "Tastatūras indikatora pārbaude (%s)"
