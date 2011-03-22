@@ -11,5 +11,5 @@ X-GNOME-Bugzilla-Bugzilla=GNOME
 X-GNOME-Bugzilla-Product=libgnomekbd
 X-GNOME-Bugzilla-Component=Drawing
 X-GNOME-Bugzilla-Version=@VERSION@
-Categories=GNOME;GTK;Core;
+Categories=GNOME;GTK;Core;System;
 OnlyShowIn=GNOME;
