@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd gnome-2-32\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-11-20 11:00+0000\n"
+"POT-Creation-Date: 2011-03-07 22:07+0000\n"
 "PO-Revision-Date: 2010-10-02 23:22+0000\n"
 "Last-Translator: Sahran <sahran@live.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -17,16 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:326
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "سۈرەتنى ئوقۇشتا خاتالىق كۆرۈلدى: %s"
-
-#: ../libgnomekbd/gkbd-indicator.c:715 ../libgnomekbd/gkbd-status.c:655
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "XKB نى دەسلەپلەشتۈرۈشتە خاتالىق كۆرۈلدى"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2390
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2458
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -36,39 +31,49 @@ msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى \"%s\"\n"
 "نەشر ھوقۇقى &#169; X.Org ۋەخپىسى ۋە XKeyboardConfig تۆھپىكارلارغا تەۋە\n"
 "ئىجازەتنامىنى بوغچىنىڭ مېتا سانلىق-مەلۇماتىدىن كۆرۈڭ"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2477
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2608
 msgid "Unknown"
 msgstr "نامەلۇم"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2524
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:672
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ئورۇنلاشتۇرۇلۇشى \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:690
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "تاللانما \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:698
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "مودېل \"%s\"، %s ۋە %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:699
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 msgid "no layout"
 msgstr "ئورۇنلاشتۇرۇلۇشى يوق"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:700
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no options"
 msgstr "تاللانما يوق"
+
+#: ../libgnomekbd/gkbd-status.c:290
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "سۈرەتنى ئوقۇشتا خاتالىق كۆرۈلدى: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+#| msgid "keyboard layout"
+msgid "Preview keyboard layouts"
+msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى ئالدىن كۆرۈش"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
@@ -184,10 +189,6 @@ msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى"
 msgid "keyboard model"
 msgstr "ھەرپتاختا مودېلى"
 
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى"
-
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "تېخىمۇ كۆپ قىستۇرمىلارنى ئاكتىپلا"
@@ -249,14 +250,15 @@ msgstr "ئورنىتىلغان قىستۇرمىلارنى قوزغات/چەكل�
 msgid "Keyboard Indicator plugins"
 msgstr "ھەرپتاختا كۆرسەتكۈچى قىستۇرمىلىرى"
 
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "ھەرپتاختا كۆرسەتكۈچى سىنىقى(%s)"
-
-#: ../test/gkbd-indicator-test.c:66
+#: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "كۆرسەتكۈچ:"
+
+#~ msgid "Keyboard Layout \"%s\""
+#~ msgstr "ھەرپتاختا ئورۇنلاشتۇرۇلۇشى \"%s\""
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "ھەرپتاختا كۆرسەتكۈچى سىنىقى(%s)"
 
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
