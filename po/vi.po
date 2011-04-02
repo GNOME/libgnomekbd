@@ -1,6 +1,7 @@
 # Vietnamese translation for LibGnomeKBD.
 # Copyright © 2008 Gnome i18n Project for Vietnamese.
 # Clytie Siddall <clytie@riverland.net.au>, 2007-2008.
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2011
 #
 msgid ""
 msgstr ""
@@ -8,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
 "POT-Creation-Date: 2011-02-25 01:17+0000\n"
-"PO-Revision-Date: 2008-09-02 15:32+0700\n"
+"PO-Revision-Date: 2011-04-02 12:46+0700\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +35,7 @@ msgstr ""
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
 msgid "Unknown"
-msgstr ""
+msgstr "Không rõ"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:701
 #, c-format
@@ -68,16 +69,14 @@ msgstr "Gặp lỗi khi nạp ảnh: %s"
 
 #: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
 #: ../libgnomekbd/show-layout.ui.h:1
-#, fuzzy
 #| msgid "Keyboard layout"
 msgid "Keyboard Layout"
 msgstr "Bố trí bàn phím"
 
 #: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-#, fuzzy
 #| msgid "keyboard layout"
 msgid "Preview keyboard layouts"
-msgstr "bố trí bàn phím"
+msgstr "Xem thử bố trí bàn phím"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
@@ -89,11 +88,11 @@ msgstr "Giữ và quản lý một nhóm riêng cho mỗi cửa sổ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
-msgstr ""
+msgstr "Nạp tuỳ chọn và bố trí kì cục, ít khi dùng"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
-msgstr ""
+msgstr "Nạp mục cấu hình bổ sung"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
@@ -141,35 +140,35 @@ msgstr "Ô xem thử bàn phím, bề rộng"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
 msgid "The background color"
-msgstr ""
+msgstr "Màu nền"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The background color for the layout indicator"
-msgstr ""
+msgstr "Màu nền của bộ chỉ báo bố trí"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font family"
-msgstr ""
+msgstr "Phông chữ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font family for the layout indicator"
-msgstr ""
+msgstr "Phông chữ của bộ chỉ báo bố trí"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The font size"
-msgstr ""
+msgstr "Kích thước phông"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The font size for the layout indicator"
-msgstr ""
+msgstr "Kích thước phông chữ của bộ chỉ báo bố trí"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
-msgstr ""
+msgstr "Màu chữ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The foreground color for the layout indicator"
-msgstr ""
+msgstr "Màu chữ của bộ chỉ báo bố trí"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
