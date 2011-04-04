@@ -37,7 +37,6 @@
 /**
  * GkbdIndicatorConfig
  */
-#define GTK_STYLE_PATH "*PanelWidget*"
 
 const gchar GKBD_INDICATOR_CONFIG_KEY_SHOW_FLAGS[] = "show-flags";
 const gchar GKBD_INDICATOR_CONFIG_KEY_ENABLED_PLUGINS[] =
@@ -65,26 +64,8 @@ gkbd_indicator_config_load_font (GkbdIndicatorConfig * ind_config)
 	    g_settings_get_int (ind_config->settings,
 				GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE);
 
-	if (ind_config->font_family == NULL ||
-	    ind_config->font_family[0] == '\0') {
-		PangoFontDescription *fd = NULL;
-		GtkStyle *style =
-		    gtk_rc_get_style_by_paths (gtk_settings_get_default (),
-					       GTK_STYLE_PATH,
-					       GTK_STYLE_PATH,
-					       GTK_TYPE_LABEL);
-		if (style != NULL)
-			fd = style->font_desc;
-		if (fd != NULL) {
-			ind_config->font_family =
-			    g_strdup (pango_font_description_get_family
-				      (fd));
-			ind_config->font_size =
-			    pango_font_description_get_size (fd) /
-			    PANGO_SCALE;
-		}
-	}
-	xkl_debug (150, "font: [%s], size %d\n", ind_config->font_family,
+	xkl_debug (150, "font: [%s], size %d\n",
+		   ind_config->font_family ? ind_config->font_family : "(null)",
 		   ind_config->font_size);
 
 }
@@ -96,35 +77,58 @@ gkbd_indicator_config_load_colors (GkbdIndicatorConfig * ind_config)
 	    g_settings_get_string (ind_config->settings,
 				   GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR);
 
-	if (ind_config->foreground_color == NULL ||
-	    ind_config->foreground_color[0] == '\0') {
-		GtkStyle *style =
-		    gtk_rc_get_style_by_paths (gtk_settings_get_default (),
-					       GTK_STYLE_PATH,
-					       GTK_STYLE_PATH,
-					       GTK_TYPE_LABEL);
-		if (style != NULL) {
-			ind_config->foreground_color =
-			    g_strdup_printf ("%g %g %g", ((double)
-							  style->fg
-							  [GTK_STATE_NORMAL].
-							  red)
-					     / 0x10000, ((double)
-							 style->fg
-							 [GTK_STATE_NORMAL].
-							 green)
-					     / 0x10000, ((double)
-							 style->fg
-							 [GTK_STATE_NORMAL].
-							 blue)
-					     / 0x10000);
-		}
-
-	}
-
 	ind_config->background_color =
 	    g_settings_get_string (ind_config->settings,
 				   GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR);
+}
+
+void
+gkbd_indicator_config_get_font_for_widget (GkbdIndicatorConfig * ind_config,
+					   GtkWidget           * widget,
+					   gchar               ** font_family,
+					   int                  * font_size)
+{
+	GtkStyleContext *context;
+	const PangoFontDescription *fd = NULL;
+
+	g_return_if_fail (GTK_IS_WIDGET (widget));
+
+	if (ind_config->font_family != NULL &&
+	    ind_config->font_family[0] != '\0') {
+		if (font_family)
+			*font_family = g_strdup (ind_config->font_family);
+		if (font_size)
+			*font_size = ind_config->font_size;
+
+		return;
+	}
+
+	context = gtk_widget_get_style_context (widget);
+	fd = gtk_style_context_get_font (context, GTK_STATE_FLAG_NORMAL);
+
+	if (font_family)
+		*font_family = g_strdup (pango_font_description_get_family (fd));
+	if (font_size)
+		*font_size = pango_font_description_get_size (fd) / PANGO_SCALE;
+}
+
+gchar *
+gkbd_indicator_config_get_fg_color_for_widget (GkbdIndicatorConfig * ind_config,
+					       GtkWidget           * widget)
+{
+	GtkStyleContext *context;
+	GdkRGBA          rgba;
+
+	g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+
+	if (ind_config->foreground_color != NULL &&
+	    ind_config->foreground_color[0] != '\0')
+		return g_strdup (ind_config->foreground_color);
+
+	context = gtk_widget_get_style_context (widget);
+	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &rgba);
+
+	return g_strdup_printf ("%g %g %g", rgba.red, rgba.green, rgba.blue);
 }
 
 void

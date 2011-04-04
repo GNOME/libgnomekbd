@@ -62,6 +62,16 @@ extern void gkbd_indicator_config_load (GkbdIndicatorConfig
 extern void gkbd_indicator_config_save (GkbdIndicatorConfig *
 					applet_config);
 
+extern void
+gkbd_indicator_config_get_font_for_widget (GkbdIndicatorConfig * ind_config,
+					   GtkWidget           * widget,
+					   gchar               ** font_family,
+					   int                  * font_size);
+
+extern gchar *
+gkbd_indicator_config_get_fg_color_for_widget (GkbdIndicatorConfig * ind_config,
+					       GtkWidget           * widget);
+
 extern void gkbd_indicator_config_refresh_style (GkbdIndicatorConfig *
 						 applet_config);
 

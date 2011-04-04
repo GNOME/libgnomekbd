@@ -59,22 +59,26 @@ static gki_globals globals;
 
 G_DEFINE_TYPE (GkbdStatus, gkbd_status, GTK_TYPE_STATUS_ICON)
 
+typedef struct {
+	GtkWidget *tray_icon;
+} GkbdStatusPrivHack;
+
 static void
 gkbd_status_global_init (void);
 static void
 gkbd_status_global_term (void);
 static GdkPixbuf *
-gkbd_status_prepare_drawing (int group);
+gkbd_status_prepare_drawing (GkbdStatus * gki, int group);
 static void
 gkbd_status_set_current_page_for_group (GkbdStatus * gki, int group);
 static void
 gkbd_status_set_current_page (GkbdStatus * gki);
 static void
-gkbd_status_reinit_globals (void);
+gkbd_status_reinit_globals (GkbdStatus * gki);
 static void
 gkbd_status_cleanup_icons (void);
 static void
-gkbd_status_fill_icons (void);
+gkbd_status_fill_icons (GkbdStatus * gki);
 static void
 gkbd_status_set_tooltips (GkbdStatus * gki, const char *str);
 
@@ -97,8 +101,8 @@ gkbd_status_cleanup_icons ()
 	}
 }
 
-void
-gkbd_status_fill_icons ()
+static void
+gkbd_status_fill_icons (GkbdStatus * gki)
 {
 	int grp;
 	int total_groups =
@@ -106,7 +110,7 @@ gkbd_status_fill_icons ()
 				       (globals.config));
 
 	for (grp = 0; grp < total_groups; grp++) {
-		GdkPixbuf *page = gkbd_status_prepare_drawing (grp);
+		GdkPixbuf *page = gkbd_status_prepare_drawing (gki, grp);
 		globals.icons = g_slist_append (globals.icons, page);
 	}
 }
@@ -119,9 +123,12 @@ gkbd_status_activate (GkbdStatus * gki)
 }
 
 static void
-gkbd_status_render_cairo (cairo_t * cr, int group)
+gkbd_status_render_cairo (GkbdStatusPrivHack * gkh, cairo_t * cr, int group)
 {
 	double r, g, b;
+	GdkColor *fg_color;
+	gchar *font_family;
+	int font_size;
 	PangoFontDescription *pfd;
 	PangoContext *pcc;
 	PangoLayout *pl;
@@ -146,27 +153,29 @@ gkbd_status_render_cairo (cairo_t * cr, int group)
 		}
 	}
 
-	if (ind_cfg->foreground_color != NULL &&
-	    ind_cfg->foreground_color[0] != 0) {
-		if (sscanf
-		    (ind_cfg->foreground_color, "%lg %lg %lg", &r,
-		     &g, &b) == 3) {
-			cairo_set_source_rgb (cr, r, g, b);
-		}
-	}
+	g_object_get (gkh->tray_icon, "fg-color", &fg_color, NULL);
+	cairo_set_source_rgb (cr, fg_color->red, fg_color->green, fg_color->blue);
+	gdk_color_free (fg_color);
 
-	if (ind_cfg->font_family != NULL && ind_cfg->font_family[0] != 0) {
-		cairo_select_font_face (cr, ind_cfg->font_family,
+	gkbd_indicator_config_get_font_for_widget (ind_cfg,
+						   gkh->tray_icon,
+						   &font_family,
+						   &font_size);
+
+	if (font_family != NULL && font_family[0] != 0) {
+		cairo_select_font_face (cr, font_family,
 					CAIRO_FONT_SLANT_NORMAL,
 					CAIRO_FONT_WEIGHT_NORMAL);
 	}
 
 	pfd = pango_font_description_new ();
-	pango_font_description_set_family (pfd, ind_cfg->font_family);
+	pango_font_description_set_family (pfd, font_family);
 	pango_font_description_set_style (pfd, PANGO_STYLE_NORMAL);
 	pango_font_description_set_weight (pfd, PANGO_WEIGHT_NORMAL);
 	pango_font_description_set_size (pfd,
 					 ind_cfg->font_size * PANGO_SCALE);
+
+	g_free (font_family);
 
 	pcc = pango_cairo_create_context (cr);
 
@@ -261,7 +270,7 @@ convert_bgra_to_rgba (guint8 const *src, guint8 * dst, int width,
 }
 
 static GdkPixbuf *
-gkbd_status_prepare_drawing (int group)
+gkbd_status_prepare_drawing (GkbdStatus * gki, int group)
 {
 	GError *gerror = NULL;
 	char *image_filename;
@@ -321,7 +330,8 @@ gkbd_status_prepare_drawing (int group)
 						globals.current_height);
 		unsigned char *cairo_data;
 		guchar *pixbuf_data;
-		gkbd_status_render_cairo (cairo_create (cs), group);
+		gkbd_status_render_cairo ((GkbdStatusPrivHack *) GTK_STATUS_ICON (gki)->priv,
+					  cairo_create (cs), group);
 		cairo_data = cairo_image_surface_get_data (cs);
 #if 0
 		char pngfilename[20];
@@ -372,11 +382,11 @@ gkbd_status_update_tooltips (GkbdStatus * gki)
 	}
 }
 
-void
-gkbd_status_reinit_globals ()
+static void
+gkbd_status_reinit_globals (GkbdStatus * gki)
 {
 	gkbd_status_cleanup_icons ();
-	gkbd_status_fill_icons ();
+	gkbd_status_fill_icons (gki);
 }
 
 void
@@ -389,8 +399,11 @@ gkbd_status_reinit_ui (GkbdStatus * gki)
 static void
 gkbd_status_cfg_callback (GkbdConfiguration * configuration)
 {
+	GSList *objects;
 	xkl_debug (150, "Config changed: reinit ui\n");
-	gkbd_status_reinit_globals ();
+	objects = gkbd_configuration_get_all_objects (configuration);
+	if (objects)
+		gkbd_status_reinit_globals (objects->data);
 	ForAllObjects (configuration) {
 		gkbd_status_reinit_ui (GKBD_STATUS (gki));
 	} NextObject ()
@@ -499,7 +512,7 @@ gkbd_status_size_changed (GkbdStatus * gki, gint size)
 	if (globals.current_height != size) {
 		globals.current_height = size;
 		globals.current_width = size * 3 / 2;
-		gkbd_status_reinit_globals ();
+		gkbd_status_reinit_globals (gki);
 		gkbd_status_reinit_ui (gki);
 	}
 }
@@ -511,7 +524,7 @@ gkbd_status_theme_changed (GtkSettings * settings, GParamSpec * pspec,
 	xkl_debug (150, "Theme changed\n");
 	gkbd_indicator_config_refresh_style
 	    (gkbd_configuration_get_indicator_config (globals.config));
-	gkbd_status_reinit_globals ();
+	gkbd_status_reinit_globals (gki);
 	gkbd_status_reinit_ui (gki);
 }
 
