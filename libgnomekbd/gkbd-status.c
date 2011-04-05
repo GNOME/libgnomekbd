@@ -393,6 +393,12 @@ void
 gkbd_status_reinit_ui (GkbdStatus * gki)
 {
 	gkbd_status_set_current_page (gki);
+        /* To work around combined bugs in notification-area
+         * and GtkStatusIcon, reshow the icon here, to ensure
+         * size changes are picked up.
+         */
+        gtk_status_icon_set_visible (GTK_STATUS_ICON (gki), FALSE);
+        gtk_status_icon_set_visible (GTK_STATUS_ICON (gki), TRUE);
 }
 
 /* Should be called once for all widgets */
@@ -509,6 +515,11 @@ static void
 gkbd_status_size_changed (GkbdStatus * gki, gint size)
 {
 	xkl_debug (150, "Size changed to %d\n", size);
+        /* Ignore the initial size 200 that we get before
+         * we are embedded
+         */
+        if (!gtk_status_icon_is_embedded (GTK_STATUS_ICON (gki)))
+                return;
 	if (globals.current_height != size) {
 		globals.current_height = size;
 		globals.current_width = size * 3 / 2;
