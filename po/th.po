@@ -1,16 +1,16 @@
 # Thai translation of libgnomekbd.
-# Copyright (C) 2007-2010 Free Software Foundation, Inc.
+# Copyright (C) 2007-2011 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 # aka.ape <aka.ape@gmail.com>, 2007.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2007-2010.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2007-2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2010-10-15 20:30+0000\n"
-"PO-Revision-Date: 2010-11-23 21:48+0700\n"
+"POT-Creation-Date: 2011-03-07 22:07+0000\n"
+"PO-Revision-Date: 2011-04-24 18:13+0700\n"
 "Last-Translator:  Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -18,16 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:119 ../libgnomekbd/gkbd-status.c:326
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "มีข้อผิดพลาดขณะโหลดภาพ: %s"
-
-#: ../libgnomekbd/gkbd-indicator.c:715 ../libgnomekbd/gkbd-status.c:655
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "เกิดข้อผิดพลาดกับการตั้งต้น XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2390
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2458
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -38,39 +33,48 @@ msgstr ""
 "สงวนลิขสิทธิ์ &#169; X.Org Foundation และผู้ร่วมสมทบงานกับ XKeyboardConfig\n"
 "ดูสัญญาอนุญาตได้จากข้อมูลกำกับแพกเกจ"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2477
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2608
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2524
-#, c-format
-msgid "Keyboard Layout \"%s\""
-msgstr "ผังแป้นพิมพ์ \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:672
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ผัง \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:690
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ตัวเลือก \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:698
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "รุ่น \"%s\", %s และ %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:699
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 msgid "no layout"
 msgstr "ไม่ระบุผังแป้นพิมพ์"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:700
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no options"
 msgstr "ไม่ระบุตัวเลือก"
+
+#: ../libgnomekbd/gkbd-status.c:290
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "มีข้อผิดพลาดขณะโหลดภาพ: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "ผังแป้นพิมพ์"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "ดูตัวอย่างผังแป้นพิมพ์"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
@@ -186,10 +190,6 @@ msgstr "ผังแป้นพิมพ์"
 msgid "keyboard model"
 msgstr "รุ่นแป้นพิมพ์"
 
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "ผังแป้นพิมพ์"
-
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
 msgstr "เปิดใช้ปลั๊กอินเพิ่มเติม"
@@ -251,14 +251,15 @@ msgstr "เปิด/ปิดการใช้ปลั๊กอิน"
 msgid "Keyboard Indicator plugins"
 msgstr "ปลั๊กอินแอพเพล็ตแสดงภาษาแป้นพิมพ์"
 
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "ทดสอบแอพเพล็ตแสดงภาษาแป้นพิมพ์ (%s)"
-
-#: ../test/gkbd-indicator-test.c:66
+#: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "ตัวบ่งชี้:"
+
+#~ msgid "Keyboard Layout \"%s\""
+#~ msgstr "ผังแป้นพิมพ์ \"%s\""
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "ทดสอบแอพเพล็ตแสดงภาษาแป้นพิมพ์ (%s)"
 
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
