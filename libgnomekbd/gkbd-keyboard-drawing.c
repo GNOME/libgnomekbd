@@ -2145,8 +2145,11 @@ static void
 get_preferred_width (GtkWidget * widget,
 		     gint * minimum_width, gint * natural_width)
 {
+	GdkRectangle rect;
 	GdkScreen *scr = gdk_screen_get_default ();
-	gint w = gdk_screen_get_width (scr);
+	gint w, monitor = gdk_screen_get_primary_monitor (scr);
+	gdk_screen_get_monitor_geometry (scr, monitor, &rect);
+	w = rect.width;
 	*minimum_width = *natural_width = w - (w >> 2);
 }
 
