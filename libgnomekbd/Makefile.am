@@ -167,6 +167,7 @@ Gkbd-3.0.gir: libgnomekbd.la libgnomekbdui.la
 Gkbd_3_0_gir_INCLUDES = GObject-2.0 Gtk-3.0 xlib-2.0
 Gkbd_3_0_gir_CFLAGS = $(libgnomekbdui_la_CFLAGS)
 Gkbd_3_0_gir_LIBS = libgnomekbd.la libgnomekbdui.la
+Gkbd_3_0_gir_LDFLAGS = $(libgnomekbdui_la_LIBADD)
 Gkbd_3_0_gir_FILES = $(introspection_sources)
 INTROSPECTION_GIRS += Gkbd-3.0.gir
 
