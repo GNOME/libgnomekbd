@@ -2146,8 +2146,21 @@ get_preferred_width (GtkWidget * widget,
 		     gint * minimum_width, gint * natural_width)
 {
 	GdkRectangle rect;
-	GdkScreen *scr = gdk_screen_get_default ();
-	gint w, monitor = gdk_screen_get_primary_monitor (scr);
+	gint w, monitor;
+	GdkDisplay *display = gtk_widget_get_display (widget);
+	GdkDeviceManager *gdm = gdk_display_get_device_manager (display);
+	GdkScreen *scr = NULL;
+	GList *devices =
+	    gdk_device_manager_list_devices (gdm, GDK_SOURCE_KEYBOARD);
+	if (g_list_length (devices) > 0) {
+		gint x, y;
+		GdkDevice *dev = GDK_DEVICE (devices->data);
+		gdk_device_get_position (dev, &scr, &x, &y);
+		monitor = gdk_screen_get_monitor_at_point (scr, x, y);
+	} else {
+		scr = gdk_screen_get_default ();
+		monitor = gdk_screen_get_primary_monitor (scr);
+	}
 	gdk_screen_get_monitor_geometry (scr, monitor, &rect);
 	w = rect.width;
 	*minimum_width = *natural_width = w - (w >> 2);
