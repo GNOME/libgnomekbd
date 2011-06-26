@@ -1,0 +1,259 @@
+#
+# Ihar Hrachyshka <ihar.hrachyshka@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd.master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-06-25 21:46+0000\n"
+"PO-Revision-Date: 2011-06-25 21:46+0000\n"
+"Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
+"Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "Памылка ініцыяцыі XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2476
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Клавіятурная раскладка \"%s\"\n"
+"Аўтарскія правы &#169; Фонд X.Org і ўдзельнікі XKeyboardConfig\n"
+"Ліцэнзійныя ўмовы глядзіце ў метаданых пакунка"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2626
+msgid "Unknown"
+msgstr "Невядома"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "раскладка \"%s\""
+msgstr[1] "раскладкі \"%s\""
+msgstr[2] "раскладкі \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "опцыя \"%s\""
+msgstr[1] "опцыі \"%s\""
+msgstr[2] "опцыі \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "мадэль \"%s\", %s і %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
+msgid "no layout"
+msgstr "няма раскладкі"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
+msgid "no options"
+msgstr "няма опцый"
+
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Узнікла памылка загрузкі выявы: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Клавіятурная раскладка"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Папярэдні агляд клавіятурных раскладак"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+msgid "Default group, assigned on window creation"
+msgstr "Прадвызначаная група, якая прызначаецца пры стварэнні новага акна"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+msgid "Keep and manage separate group per window"
+msgstr "Абслугоўваць асобныя групы для кожнага акна"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Загружаць экзатычныя і рэдкія раскладкі і опцыі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
+msgid "Load extra configuration items"
+msgstr "Загружаць дадатковыя элементы настройкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "Захоўваць і аднаўляць індыкатары разам з групамі раскладак"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Show layout names instead of group names"
+msgstr "Паказваць назвы раскладак разам з назвамі груп"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Паказваць назвы раскладак замест назваў груп (толькі для версій XFree, "
+"якія падтрымліваюць некалькі раскладак)"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "Другасныя опцыі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "Паказваць сцягі ў аплеце"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Паказваць сцягі ў аплеце для азначэння актыўнай раскладкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, X offset"
+msgstr "Папярэдні агляд клавіятуры, X-зрух"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "The Keyboard Preview, Y offset"
+msgstr "Папярэдні агляд клавіятуры, Y-зрух"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "The Keyboard Preview, height"
+msgstr "Папярэдні агляд клавіятуры, вышыня"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "The Keyboard Preview, width"
+msgstr "Папярэдні агляд клавіятуры, шырыня"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The background color"
+msgstr "Фонавы колер"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The background color for the layout indicator"
+msgstr "Фонавы колер індыкатара актыўнай раскладкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font family"
+msgstr "Гарнітура шрыфту"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font family for the layout indicator"
+msgstr "Гарнітура шрыфту для індыкатара актыўнай раскладкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The font size"
+msgstr "Памер шрыфту"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The font size for the layout indicator"
+msgstr "Памер шрыфту для індыкатара актыўнай раскладкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The foreground color"
+msgstr "Колер пярэдняга плана"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The foreground color for the layout indicator"
+msgstr "Колер пярэдняга плана для індыкатара актыўнай раскладкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Спіс уключаных плугінаў індыкатара актыўнай раскладкі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "Клавіятурная раскладка"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "Мадэль клавіятуры"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "Опцыі клавіятуры"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "клавіятурная раскладка"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "keyboard model"
+msgstr "мадэль клавіятуры"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
+msgid "Activate more plugins"
+msgstr "Уключыць болей плугінаў"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
+msgid "Active _plugins:"
+msgstr "Уключаныя _плугіны:"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
+msgid "Close the dialog"
+msgstr "Зачыніць дыялог"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
+msgid "Configure the selected plugin"
+msgstr "Настройка вылучанага плугіна"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
+msgid "Deactivate selected plugin"
+msgstr "Выключыць вылучаны плугін"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
+msgid "Decrease the plugin priority"
+msgstr "Зменшыць прыярытэт плугіна"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
+msgid "Increase the plugin priority"
+msgstr "Павялічыць прыярытэт плугіна"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
+msgid "Keyboard Indicator Plugins"
+msgstr "Плугіны індыкатара раскладкі"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
+msgid "The list of active plugins"
+msgstr "Спіс уключаных плугінаў"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "Новы плугін"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
+msgid "_Available plugins:"
+msgstr "_Наяўныя плугіны:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
+msgid "No description."
+msgstr "Няма апісання."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
+msgid "Unable to open help file"
+msgstr "Не ўдалося адчыніць файл даведкі"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "Задзейнічанне ўсталяваных плугінаў"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "Плугіны індыкатара раскладкі"
+
+#: ../test/gkbd-indicator-test.c:65
+msgid "Indicator:"
+msgstr "Індыкатар:"
