@@ -1,0 +1,257 @@
+# Persian translation for libgnomekbd.
+# Copyright (C) 2011 Iranian Free Software Users Group (IFSUG.org)translation team.
+# Copyright (C) 2011 libgnomekbd's COPYRIGHT HOLDER
+# This file is distributed under the same license as the libgnomekbd package.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-06-26 21:07+0000\n"
+"PO-Revision-Date: 2011-07-12 23:07+0330\n"
+"Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
+"Language-Team: Persian <translate@ifsug.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Language: Persian\n"
+"X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:443
+#: ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "خطا راه‌اندازی XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2476
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"چیدمان صفحه‌کلید «%s»\n"
+"حق رونوشت &#169; بنیاد X.Org و مشارکت‌کنندگان XKeyboardConfigبرای گواهینامه‌ها فوق‌داده‌های بسته را مشاهده کنید"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2626
+msgid "Unknown"
+msgstr "ناشناس"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:698
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "چیدمان «%s»"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:716
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "ترجیحات «%s»"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:724
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "مدل «%s»، %s و %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
+msgid "no layout"
+msgstr "هیچ چیدمانی"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
+msgid "no options"
+msgstr "هیچ گزینه‌ای"
+
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "یک خطا هنگام بارگیری یک تصویر رُخ داد: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "چیدمان صفحه‌کلید"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "پیش‌نمایش چیدمان‌های صفحه‌کلید"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+msgid "Default group, assigned on window creation"
+msgstr "گروه پیش‌فرض، اختصاص داده شده به ساخت پنجره"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+msgid "Keep and manage separate group per window"
+msgstr "نگه‌داشتن و مدیریت گروه‌های مجزا در هر پنجره"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
+msgid "Load exotic, rarely used layouts and options"
+msgstr "بارگیری چیدمان‌ها و گزینه‌های بیگانه و کم استفاده"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
+msgid "Load extra configuration items"
+msgstr "بارگیری پیکربندی‌های اضافه"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "ذخیره/بازآوری شاخص‌ها با هم همراه با گروه‌های چیدمان"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Show layout names instead of group names"
+msgstr "نمایش نام چیدمان‌ها بجای نام گروه‌ها"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
+msgstr "نمایش نام چیدمان‌ها بجای نام گروه‌ها (تنها برای نسخه‌هایی از XFree که از چیدمان‌های متعدد پشتیبانی میکنند)"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "گروه‌های ثانوی"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "نمایش پرچم‌ها در برنامک"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "نمایش پرچم‌ها در برنام برای مشخص کردن چیدمان فعلی"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, X offset"
+msgstr "پیش‌نمایش صفحه‌کلید، افست X"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "The Keyboard Preview, Y offset"
+msgstr "پیش‌نمایش صفحه‌کلید، افست Y"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "The Keyboard Preview, height"
+msgstr "پیش‌نمایش صفحه‌کلید، ارتفاع"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "The Keyboard Preview, width"
+msgstr "پیش‌نمایش صفحه‌کلید، پهنا"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The background color"
+msgstr "رنگ پس‌زمینه"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The background color for the layout indicator"
+msgstr "رنگ پس‌زمینه برای شاخص چیدمان"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font family"
+msgstr "خانواده قلم"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font family for the layout indicator"
+msgstr "خانواده قلم برای شاخص چیدمان"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The font size"
+msgstr "اندازه قلم"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The font size for the layout indicator"
+msgstr "اندازه‌ی قلم برای شاخص چیدمان"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The foreground color"
+msgstr "رنگ پیش‌زمینه"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The foreground color for the layout indicator"
+msgstr "رنگ پیش‌زمینه برای شاخص چیدمان"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "فهرست افزونه‌های شاخص صفحه‌کلید فعال"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
+msgstr "چیدمان صفحه‌کلید"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "مدل صفحه‌کلید"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "گزینه‌های صفحه‌کلید"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "چیدمان صفحه‌کلید"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "keyboard model"
+msgstr "مدل صفحه‌کلید"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:1
+msgid "Activate more plugins"
+msgstr "فعال‌کردن افزونه‌های بیشتر"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:2
+msgid "Active _plugins:"
+msgstr "افزونه‌های _فعال:"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:3
+msgid "Close the dialog"
+msgstr "بستن محاوره"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:4
+msgid "Configure the selected plugin"
+msgstr "پیکربندی افزونه انتخاب شده"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:5
+msgid "Deactivate selected plugin"
+msgstr "غیرفعال کردن افزونه انتخاب شده"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:6
+msgid "Decrease the plugin priority"
+msgstr "کاهش الویت افزونه"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:7
+msgid "Increase the plugin priority"
+msgstr "افزایش الویت افزونه"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:8
+msgid "Keyboard Indicator Plugins"
+msgstr "افزونه‌های شاخص صفحه‌کلید"
+
+#: ../capplet/gkbd-indicator-plugins.ui.h:9
+msgid "The list of active plugins"
+msgstr "فهرست افزونه‌های فعال"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
+msgid "Add Plugin"
+msgstr "اضافه‌کردن افزونه"
+
+#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
+msgid "_Available plugins:"
+msgstr "افزونه‌های _موجود:"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
+msgid "No description."
+msgstr "بدون توضیح."
+
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
+msgid "Unable to open help file"
+msgstr "نمی‌توان پرونده راهنما را باز کرد"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
+msgid "Enable/disable installed plugins"
+msgstr "فعال/غیرفعال کردن افرونه‌های نصب شده"
+
+#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
+msgid "Keyboard Indicator plugins"
+msgstr "افزونه‌های شاخص صفحه‌کلید"
+
+#: ../test/gkbd-indicator-test.c:65
+msgid "Indicator:"
+msgstr "شاخص:"
+
