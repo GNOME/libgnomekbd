@@ -1,3 +1,7 @@
+3.1.90:
+	A couple of minor bugs fixed
+	A number of translations updated
+
 3.0.0.1:
 	Fix color of status indicator in fallback mode.
 	Fix initial size of status indicator.
