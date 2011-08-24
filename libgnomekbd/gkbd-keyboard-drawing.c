@@ -28,6 +28,7 @@
 #include <math.h>
 #include <glib/gi18n-lib.h>
 
+#include <gkbd-keyboard-config.h>
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
 #include <gkbd-util.h>
@@ -1343,28 +1344,6 @@ typedef struct {
 	GkbdKeyboardDrawing *drawing;
 	GkbdKeyboardDrawingRenderContext *context;
 } DrawKeyboardItemData;
-
-static void
-redraw_overlapping_doodads (GkbdKeyboardDrawingRenderContext * context,
-			    GkbdKeyboardDrawing * drawing,
-			    GkbdKeyboardDrawingKey * key)
-{
-	GList *list;
-	gboolean do_draw = FALSE;
-
-	for (list = drawing->keyboard_items; list; list = list->next) {
-		GkbdKeyboardDrawingItem *item = list->data;
-
-		if (do_draw
-		    && item->type ==
-		    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD)
-			draw_doodad (context, drawing,
-				     (GkbdKeyboardDrawingDoodad *) item);
-
-		if (list->data == key)
-			do_draw = TRUE;
-	}
-}
 
 static void
 draw_keyboard_item (GkbdKeyboardDrawingItem * item,

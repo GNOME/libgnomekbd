@@ -26,6 +26,7 @@
 
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
+#include <X11/XKBlib.h>
 #include <glib/gi18n-lib.h>
 
 #include <gkbd-configuration.h>
@@ -401,7 +402,7 @@ gkbd_configuration_get_current_tooltip (GkbdConfiguration * configuration)
 {
 	XklState *state =
 	    xkl_engine_get_current_state (configuration->priv->engine);
-	gchar *buf;
+
 	if (state == NULL || state->group < 0
 	    || state->group >=
 	    g_strv_length (configuration->priv->full_group_names))

@@ -18,6 +18,7 @@
  */
 
 #include <stdlib.h>
+#include <libintl.h>
 #include <config.h>
 
 #include <gtk/gtk.h>
@@ -34,7 +35,7 @@ static GOptionEntry options[] = {
 	 "group number (1, 2, 3, 4)"},
 	{"layout", 'l', 0, G_OPTION_ARG_STRING, &layout,
 	 "Layout to display", "layout (with optional variant)"},
-	NULL
+	{ NULL }
 };
 
 static void
