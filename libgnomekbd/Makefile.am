@@ -51,7 +51,8 @@ libgnomekbd_la_LIBADD =  $(common_LIBADD)
 libgnomekbdui_la_LDFLAGS = $(common_LDFLAGS)
 libgnomekbdui_la_LIBADD = libgnomekbd.la \
                            $(common_LIBADD) \
-                           $(GTK_LIBS)
+                           $(GTK_LIBS) \
+                           $(LIBM)
 
 libgnomekbd_la_SOURCES = \
                          gkbd-desktop-config.c \
