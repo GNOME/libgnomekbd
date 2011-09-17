@@ -10,9 +10,9 @@ msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-02 20:36+0000\n"
-"PO-Revision-Date: 2011-04-03 21:51+0900\n"
-"Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
+"POT-Creation-Date: 2011-09-04 16:12+0000\n"
+"PO-Revision-Date: 2011-09-11 07:40+0900\n"
+"Last-Translator: Jiro Matsuzawa <jmatsuzawa@src.gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB の初期化エラー"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2460
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2455
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -35,7 +35,7 @@ msgstr ""
 "Copyright &#169; X.Org Foundation と XKeyboardConfig の貢献者\n"
 "ライセンスに関してはパッケージ内のメタデータを参照のこと"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2610
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2605
 msgid "Unknown"
 msgstr "不明"
 
@@ -64,7 +64,7 @@ msgstr "レイアウトなし"
 msgid "no options"
 msgstr "オプションなし"
 
-#: ../libgnomekbd/gkbd-status.c:290
+#: ../libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "イメージを読み込む際にエラーが発生しました: %s"
@@ -96,7 +96,7 @@ msgstr "追加の(extra)設定アイテムを読み込む"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
-msgstr "保存/復帰のインジケータをレイアウトのグループにまとめる"
+msgstr "保存/復帰のインジケーターをレイアウトのグループにまとめる"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
@@ -146,7 +146,7 @@ msgstr "背景色"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The background color for the layout indicator"
-msgstr "レイアウト・インジケータの背景色"
+msgstr "レイアウト・インジケーターの背景色"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font family"
@@ -154,7 +154,7 @@ msgstr "フォントファミリ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font family for the layout indicator"
-msgstr "レイアウト・インジケータのフォントファミリ"
+msgstr "レイアウト・インジケーターのフォントファミリ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The font size"
@@ -162,7 +162,7 @@ msgstr "フォントサイズ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The font size for the layout indicator"
-msgstr "レイアウト・インジケータのフォントサイズ"
+msgstr "レイアウト・インジケーターのフォントサイズ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
@@ -170,7 +170,7 @@ msgstr "前景色"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The foreground color for the layout indicator"
-msgstr "レイアウト・インジケータの前景色"
+msgstr "レイアウト・インジケーターの前景色"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
@@ -226,7 +226,7 @@ msgstr "プラグインの優先度を上げます"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:8
 msgid "Keyboard Indicator Plugins"
-msgstr "キーボード・インジケータのプラグイン"
+msgstr "キーボード・インジケーターのプラグイン"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:9
 msgid "The list of active plugins"
@@ -255,11 +255,11 @@ msgstr "インストール済みのプラグインを設定します"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
 msgid "Keyboard Indicator plugins"
-msgstr "キーボード・インジケータのプラグイン"
+msgstr "キーボード・インジケーターのプラグイン"
 
 #: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
-msgstr "インジケータ:"
+msgstr "インジケーター:"
 
 #~ msgid "Keyboard Layout \"%s\""
 #~ msgstr "キーボードのレイアウト \"%s\""
@@ -272,10 +272,10 @@ msgstr "インジケータ:"
 #~ "トは xmodmap による調整結果をもう一度適用する際に便利です。"
 
 #~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "$HOME フォルダで利用可能な modmap ファイルの並びです。"
+#~ msgstr "$HOME フォルダーで利用可能な modmap ファイルの並びです。"
 
 #~ msgid "Keyboard Update Handlers"
-#~ msgstr "キーボードの更新ハンドラ"
+#~ msgstr "キーボードの更新ハンドラー"
 
 #~ msgid "Suppress the \"X sysconfig changed\" warning message"
 #~ msgstr "\"Xのシステム規模の設定変更\" に対する警告メッセージを表示しない"
@@ -287,4 +287,4 @@ msgstr "インジケータ:"
 #~ msgstr "GConf の初期化に失敗しました: %s\n"
 
 #~ msgid "Keyboard Indicator Test (%s)"
-#~ msgstr "キーボード・インジケータのテスト (%s)"
+#~ msgstr "キーボード・インジケーターのテスト (%s)"
