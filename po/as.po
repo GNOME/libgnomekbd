@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-24 22:21+0000\n"
+"POT-Creation-Date: 2011-03-31 11:05+0000\n"
 "PO-Revision-Date: 2011-03-22 19:25+0000\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 1.0\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:560
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
 msgid "XKB initialization error"
 msgstr "XKB আৰম্ভ ত্ৰুটি"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2455
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2460
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -33,7 +33,7 @@ msgstr ""
 "স্বত্বাধিকাৰ &#169; X.Org Foundation আৰু XKeyboardConfig অৱদানকাৰীসমূহ\n"
 "অনুজ্ঞাপত্ৰ সংক্ৰান্ত তথ্য জনাৰ বাবে অনুগ্ৰহ কৰি পেকেইজৰ মেটাডাটা চাওক"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2605
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2610
 msgid "Unknown"
 msgstr "অজ্ঞাত"
 
@@ -64,7 +64,7 @@ msgstr "কোনো বিন্যাস উপস্থিত নাই"
 msgid "no options"
 msgstr "কোনো বিকল্প উপস্থিত নাই"
 
-#: ../libgnomekbd/gkbd-status.c:299
+#: ../libgnomekbd/gkbd-status.c:290
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "ছবি লোড কৰোতে এটা ত্ৰুটি দেখা দিছিল: %s"
@@ -107,8 +107,8 @@ msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"দলৰ নামৰ পৰিবৰ্তে বিন্যাসৰ নাম দেখুৱাওক (অকল একাধিক বিন্যাস বিশিষ্ট XFree-ৰ "
-"সংস্কৰণৰ বাবে)"
+"দলৰ নামৰ পৰিবৰ্তে বিন্যাসৰ নাম দেখুৱাওক (অকল একাধিক বিন্যাস বিশিষ্ট "
+"XFree-ৰ সংস্কৰণৰ বাবে)"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
 msgid "Secondary groups"
@@ -241,7 +241,7 @@ msgstr "উপলব্ধ প্লাগিনসমূহ: (_A)"
 #: ../capplet/gkbd-indicator-plugins-capplet.c:125
 #: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
-msgstr "কোনো বিবৰণ উপস্থিত নাই ।"
+msgstr "কোনো বিবৰণ উপস্থিত নাই।"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
@@ -263,11 +263,11 @@ msgstr "সূচক:"
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
 #~ "Useful for re-applying xmodmap based adjustments"
 #~ msgstr ""
-#~ "কিবোৰ্ডৰ অবস্থান লোড কৰাৰ পিছত সঞ্চালনৰ উদ্দেশ্যে স্ক্ৰিপ্টৰ দল । xmodmap ভিত্তিক "
-#~ "পৰিবৰ্তন পুনৰায় প্ৰয়োগ কৰিবলৈ সহায়ক ।"
+#~ "কিবোৰ্ডৰ অবস্থান লোড কৰাৰ পিছত সঞ্চালনৰ উদ্দেশ্যে স্ক্ৰিপ্টৰ দল। xmodmap "
+#~ "ভিত্তিক পৰিবৰ্তন পুনৰায় প্ৰয়োগ কৰিবলৈ সহায়ক।"
 
 #~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "$HOME পঞ্জিকাত উপলব্ধ modmap নথিপত্ৰৰ তালিকা ।"
+#~ msgstr "$HOME পঞ্জিকাত উপলব্ধ modmap নথিপত্ৰৰ তালিকা।"
 
 #~ msgid "Keyboard Update Handlers"
 #~ msgstr "কিবোৰ্ড উন্নতৰ হেন্ডলাৰ"
