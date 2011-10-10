@@ -1,177 +1,202 @@
 # translation of libgnomekbd.master.te.po to Telugu
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2011 Swecha Telugu Localisation Team <localization@swecha.net>.
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Krishna Babu K <kkrothap@redhat.com>, 2008, 2009.
+# Hari Krishna <hari@swecha.net>, 2011.
+# Krishna Babu K <kkrothap@redhat.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.master.te\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-08-16 20:00+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&component=general\n"
+"POT-Creation-Date: 2011-02-25 01:17+0000\n"
 "PO-Revision-Date: 2009-09-17 19:07+0530\n"
-"Last-Translator: Krishna Babu K <kkrothap@redhat.com>\n"
-"Language-Team: Telugu <en@li.org>\n"
+"Last-Translator: Hari Krishna <hari@swecha.net>\n"
+"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"\n"
 "\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
+msgid "XKB initialization error"
+msgstr "XKB సిద్దీకరణ దోషం"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
-"కీబోర్డు వాస్తు \"%s\"\n"
+"కీబోర్డు నమూనా \"%s\"\n"
 "కాపీరైట్ &#169; X.Org వ్యవస్థాపన మరియు Xకీబోర్డుఆకృతీకరణ సహాయకులు\n"
 "లైసెన్సింగ్ కొరకు ప్యాకేజి మెటాడాటా ను చూడండి"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB సిద్దీకరణ దోషం"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
+msgid "Unknown"
+msgstr "తెలియని"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "చిత్రమును నింపుటకు అక్కడ ఒక్క దోషం ఉంది: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:701
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "వాస్తు \"%s\""
-msgstr[1] "వాస్తు \"%s\""
+msgstr[0] "నమూనా \"%s\""
+msgstr[1] "నమూనా \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:719
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ఐచ్చికం \"%s\""
 msgstr[1] "ఐచ్చికం \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:727
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "నమూనా \"%s\", %s మరియు %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:728
 msgid "no layout"
-msgstr "ఏ వాస్తులేదు"
+msgstr "ఏ నమూనాలేదు"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:729
 msgid "no options"
 msgstr "ఏ ఐచ్చికాలులేవు"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"కీబోర్డు స్థితి తిరిగినింప బడినప్పుడు నడువవలిసిన లిపిల యొక్క సంపుటం. xmodmap ఆధారిత సర్దుబాట్లను "
-"తిరిగి-ఆపాదించుటకు ఉపయోగం"
+#: ../libgnomekbd/gkbd-status.c:290
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "చిత్రమును నింపుటకు అక్కడ ఒక్క దోషం ఉంది: %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME సంచయం నందు అందుబాటులో ఉన్న modmap దస్త్రాల యొక్క జాబితా."
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "కీబోర్డు నమూనా"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "కీబోర్డు నమూనా ఉపదర్శనం "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "అప్రమేయ సమూహం, విండో సృష్టీకరణనందు అప్పగించబడింది"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "ప్రత్యేక సమూహాన్ని విండోకు నిర్వహించు మరియు ఉంచు"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "కీబోర్డు నవీకరణ సంభాలికలు"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "కీబోర్డు వాస్తు"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "కీబోర్డు నమూనా"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "కీబోర్డు ఐచ్చికాలు"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Load exotic, rarely used layouts and options"
 msgstr "అసాధారణమైన, అరుదుగా వుపయోగించు నమూనాలను మరియు ఐచ్చికాలను లోడుచేయుము"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Load extra configuration items"
 msgstr "అదనపు ఆకృతీకరణ అంశములను లోడుచేయుము"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
-msgstr "వాస్తు సమూహాలతో సంయుక్తంగా దాయు/తిరిగినిల్వఉంచు సూచికలు"
+msgstr "నమూనా సమూహాలతో సంయుక్తంగా దాయు/తిరిగినిల్వఉంచు సూచికలు"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "రెండవ సమూహాలు"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Show flags in the applet"
-msgstr "ఆప్లెట్ నందు ప్లాగ్సను చూపుము"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "ప్రస్తుత వాస్తును సూచించుటకు ఆప్లెట్ నందు ప్లాగ్స్ ను చూపుము"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Show layout names instead of group names"
-msgstr "సమూహనామాల బదులుగా వాస్తునామాలను చూపుము"
+msgstr "సమూహనామాల బదులుగా నమూనానామాలను చూపుము"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"సమూహనామాల బదులుగా వాస్తునామాలను చూపుము (XFree మద్దతిచ్చు బహుళ వాస్తుల యొక్క వర్షన్‌ల కొరకు "
+"సమూహనామాల బదులుగా నమూనానామాలను చూపుము (XFree మద్దతిచ్చు బహుళ నమూనాల యొక్క వర్షన్‌ల కొరకు "
 "మాత్రమే)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X సిస్టమ్ఆకృతీకరణ మార్చబడింది\" హెచ్చరిక సందేశం కుదించుము"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "Secondary groups"
+msgstr "రెండవ సమూహాలు"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "Show flags in the applet"
+msgstr "ఆప్లెట్ నందు ప్లాగ్సను చూపుము"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "ప్రస్తుత నమూనాను సూచించుటకు ఆప్లెట్ నందు ప్లాగ్స్ ను చూపుము"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "కీబోర్డు ఉపదర్శనం, X ఆఫ్‌సెట్"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "The Keyboard Preview, Y offset"
 msgstr "కీబోర్డు ఉపదర్శనం, Y ఆఫ్‌సెట్"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "The Keyboard Preview, height"
 msgstr "కీబోర్డు ఉపదర్శనం, ఎత్తు"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "The Keyboard Preview, width"
 msgstr "కీబోర్డు ఉపదర్శనం, వెడల్పు"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The background color"
+msgstr "పూర్వ రంగ వర్ణాలు "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The background color for the layout indicator"
+msgstr "కూర్పు సూచిక కు పూర్వరంగ వర్ణాలు "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font family"
+msgstr "అక్షరశైలి కుటుంబం  "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font family for the layout indicator"
+msgstr "కూర్పు సూచిక కు అక్షరశైలి కుటుంబం"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The font size"
+msgstr "అక్షరశైలి పరిమాణం "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The font size for the layout indicator"
+msgstr "కూర్పు సూచిక కు అక్షరశైలి పరిమాణం "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The foreground color"
+msgstr "దృశ్యరంగం వర్ణం "
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The foreground color for the layout indicator"
+msgstr "కూర్పు సూచిక కుదృశ్యరంగం వర్ణం"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
 msgid "The list of enabled Keyboard Indicator plugins"
 msgstr "చేతనపరిచిన కీబోర్డు సూచిక ప్లగ్ఇన్ల యొక్క జాబితా"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
-msgid "keyboard layout"
-msgstr "కీబోర్డు వాస్తు"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
-msgid "keyboard model"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard layout"
 msgstr "కీబోర్డు నమూనా"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
-msgid "modmap file list"
-msgstr "modmap దస్త్రం జాబీతా"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "Keyboard model"
+msgstr "కీబోర్డు నమూనా"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard options"
+msgstr "కీబోర్డు ఐచ్చికాలు"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "కీబోర్డు నమూనా"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "keyboard model"
+msgstr "కీబోర్డు నమూనా"
 
 #: ../capplet/gkbd-indicator-plugins.ui.h:1
 msgid "Activate more plugins"
@@ -217,19 +242,14 @@ msgstr "ప్లగ్ఇన్ జతచేయుము"
 msgid "_Available plugins:"
 msgstr "అందుబాటులో ఉన్న ప్లగ్ఇన్లు(_A):"
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
+#: ../capplet/gkbd-indicator-plugins-capplet.c:125
+#: ../capplet/gkbd-indicator-plugins-add.c:110
 msgid "No description."
 msgstr "ఏ వివరణలేదు."
 
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
+#: ../capplet/gkbd-indicator-plugins-capplet.c:248
 msgid "Unable to open help file"
 msgstr "సహాయపు దస్త్రాన్ని తెరువలేదు"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "GConf ను సిద్దముచేయుటలో విఫలమైంది: %s\n"
 
 #: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
 msgid "Enable/disable installed plugins"
@@ -239,12 +259,31 @@ msgstr "సంస్థాపించిన ప్లగ్ఇన్లను �
 msgid "Keyboard Indicator plugins"
 msgstr "కీబోర్డు సూచిక ప్లగ్ఇన్లు"
 
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "కీబోర్డు సూచిక పరిశీలన (%s)"
-
-#: ../test/gkbd-indicator-test.c:66
+#: ../test/gkbd-indicator-test.c:65
 msgid "Indicator:"
 msgstr "సూచిక:"
 
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "కీబోర్డు స్థితి తిరిగినింప బడినప్పుడు నడువవలిసిన లిపిల యొక్క సంపుటం. xmodmap ఆధారిత సర్దుబాట్లను "
+#~ "తిరిగి-ఆపాదించుటకు ఉపయోగం"
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "$HOME సంచయం నందు అందుబాటులో ఉన్న modmap దస్త్రాల యొక్క జాబితా."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "కీబోర్డు నవీకరణ సంభాలికలు"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "\"X సిస్టమ్ఆకృతీకరణ మార్చబడింది\" హెచ్చరిక సందేశం కుదించుము"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap దస్త్రం జాబీతా"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "GConf ను సిద్దముచేయుటలో విఫలమైంది: %s\n"
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "కీబోర్డు సూచిక పరిశీలన (%s)"
