@@ -126,7 +126,7 @@ static void
 gkbd_status_render_cairo (GkbdStatusPrivHack * gkh, cairo_t * cr, int group)
 {
 	double r, g, b;
-	GdkColor *fg_color;
+	GdkRGBA *fg_color;
 	gchar *font_family;
 	int font_size;
 	PangoFontDescription *pfd;
@@ -155,7 +155,7 @@ gkbd_status_render_cairo (GkbdStatusPrivHack * gkh, cairo_t * cr, int group)
 
 	g_object_get (gkh->tray_icon, "fg-color", &fg_color, NULL);
 	cairo_set_source_rgb (cr, fg_color->red, fg_color->green, fg_color->blue);
-	gdk_color_free (fg_color);
+	gdk_rgba_free (fg_color);
 
 	gkbd_indicator_config_get_font_for_widget (ind_cfg,
 						   gkh->tray_icon,
