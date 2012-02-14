@@ -563,6 +563,10 @@ gkbd_indicator_set_parent_tooltips (GkbdIndicator * gki, gboolean spt)
 	gkbd_indicator_update_tooltips (gki);
 }
 
+/**
+ * gkbd_indicator_get_xkl_engine:
+ * Returns: (transfer none): The engine shared by all GkbdIndicator objects
+ */
 XklEngine *
 gkbd_indicator_get_xkl_engine ()
 {

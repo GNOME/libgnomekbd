@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 3.2.0, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
+AC_INIT(libgnomekbd, 3.3.90, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
 AC_PREREQ(2.62)
 
 VERSION_INFO=7:0:0
@@ -18,7 +18,7 @@ dnl ***************************************************************************
 GLIB_REQUIRED=2.18
 GDK_REQUIRED=2.91.7
 GTK_REQUIRED=2.90
-LIBXKLAVIER_REQUIRED=5.1
+LIBXKLAVIER_REQUIRED=5.2
 
 AC_SUBST([GDK_REQUIRED])
 AC_SUBST([GTK_REQUIRED])

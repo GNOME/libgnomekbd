@@ -662,6 +662,10 @@ gkbd_status_new (void)
 	    GTK_STATUS_ICON (g_object_new (gkbd_status_get_type (), NULL));
 }
 
+/**
+ * gkbd_status_get_xkl_engine:
+ * Returns: (transfer none): The engine shared by all GkbdStatus objects
+ */
 XklEngine *
 gkbd_status_get_xkl_engine ()
 {

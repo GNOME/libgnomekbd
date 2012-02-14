@@ -360,6 +360,10 @@ gkbd_configuration_get (void)
 	return instance;
 }
 
+/**
+ * gkbd_configuration_get_xkl_engine:
+ * Returns: (transfer none): The engine used by GkbdConfiguration object
+ */
 XklEngine *
 gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 {
@@ -508,7 +512,7 @@ gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
 
 /**
  * gkbd_configuration_get_all_objects: 
- * Returns: (transfer none): list of widgets/status icons/...
+ * Returns: (transfer none) (element-type GObject): list of widgets/status icons/...
  */
 GSList *
 gkbd_configuration_get_all_objects (GkbdConfiguration * configuration)
@@ -569,6 +573,10 @@ gkbd_configuration_load_images (GkbdConfiguration * configuration)
 	return images;
 }
 
+/**
+ * gkbd_configuration_free_images: 
+ * @images: (element-type GdkPixbuf): list of images
+ */
 void
 gkbd_configuration_free_images (GkbdConfiguration * configuration,
 				GSList * images)
