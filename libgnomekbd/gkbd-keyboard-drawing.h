@@ -116,7 +116,7 @@ struct _GkbdKeyboardDrawingRenderContext {
 	gint scale_numerator;
 	gint scale_denominator;
 
-	GdkColor *dark_color;
+	GdkRGBA dark_color;
 };
 
 struct _GkbdKeyboardDrawing {
@@ -136,7 +136,7 @@ struct _GkbdKeyboardDrawing {
 	/* list of stuff to draw in priority order */
 	GList *keyboard_items;
 
-	GdkColor *colors;
+	GdkRGBA *colors;
 
 	guint timeout;
 

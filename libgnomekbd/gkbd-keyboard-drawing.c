@@ -315,7 +315,7 @@ rounded_polygon (cairo_t * cr,
 
 static void
 draw_polygon (GkbdKeyboardDrawingRenderContext * context,
-	      GdkColor * fill_color,
+	      GdkRGBA * fill_color,
 	      gint xkb_x,
 	      gint xkb_y, XkbPointRec * xkb_points, guint num_points,
 	      gdouble radius)
@@ -327,11 +327,11 @@ draw_polygon (GkbdKeyboardDrawingRenderContext * context,
 	if (fill_color) {
 		filled = TRUE;
 	} else {
-		fill_color = context->dark_color;
+		fill_color = &context->dark_color;
 		filled = FALSE;
 	}
 
-	gdk_cairo_set_source_color (context->cr, fill_color);
+	gdk_cairo_set_source_rgba (context->cr, fill_color);
 
 	points = g_new (GdkPoint, num_points);
 
@@ -387,12 +387,12 @@ curve_rectangle (cairo_t * cr,
 static void
 draw_curve_rectangle (cairo_t * cr,
 		      gboolean filled,
-		      GdkColor * color,
+		      GdkRGBA * color,
 		      gint x, gint y, gint width, gint height, gint radius)
 {
 	curve_rectangle (cr, x, y, width, height, radius);
 
-	gdk_cairo_set_source_color (cr, color);
+	gdk_cairo_set_source_rgba (cr, color);
 
 	if (filled)
 		cairo_fill (cr);
@@ -405,7 +405,7 @@ draw_curve_rectangle (cairo_t * cr,
 /* x, y, width, height are in the xkb coordinate system */
 static void
 draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
-		GdkColor * color,
+		GdkRGBA * color,
 		gint angle,
 		gint xkb_x, gint xkb_y, gint xkb_width, gint xkb_height,
 		gint radius)
@@ -417,7 +417,7 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 		if (color) {
 			filled = TRUE;
 		} else {
-			color = context->dark_color;
+			color = &context->dark_color;
 			filled = FALSE;
 		}
 
@@ -459,7 +459,7 @@ draw_rectangle (GkbdKeyboardDrawingRenderContext * context,
 static void
 draw_outline (GkbdKeyboardDrawingRenderContext * context,
 	      XkbOutlineRec * outline,
-	      GdkColor * color, gint angle, gint origin_x, gint origin_y)
+	      GdkRGBA * color, gint angle, gint origin_x, gint origin_y)
 {
 #ifdef KBDRAW_DEBUG
 	printf ("origin: %d, %d, num_points in %p: %d\n", origin_x,
@@ -523,55 +523,56 @@ draw_outline (GkbdKeyboardDrawingRenderContext * context,
 
 /* see PSColorDef in xkbprint */
 static gboolean
-parse_xkb_color_spec (gchar * colorspec, GdkColor * color)
+parse_xkb_color_spec (gchar * colorspec, GdkRGBA * color)
 {
 	glong level;
 
+	color->alpha = 1;
 	if (g_ascii_strcasecmp (colorspec, "black") == 0) {
 		color->red = 0;
 		color->green = 0;
 		color->blue = 0;
 	} else if (g_ascii_strcasecmp (colorspec, "white") == 0) {
-		color->red = 0xFFFF;
-		color->green = 0xFFFF;
-		color->blue = 0xFFFF;
+		color->red = 1.0;
+		color->green = 1.0;
+		color->blue = 1.0;
 	} else if (g_ascii_strncasecmp (colorspec, "grey", 4) == 0 ||
 		   g_ascii_strncasecmp (colorspec, "gray", 4) == 0) {
 		level = strtol (colorspec + 4, NULL, 10);
 
-		color->red = 0xFFFF - 0xFFFF * level / 100;
-		color->green = 0xFFFF - 0xFFFF * level / 100;
-		color->blue = 0xFFFF - 0xFFFF * level / 100;
+		color->red = 1.0 - level / 100.0;
+		color->green = 1.0 - level / 100.0;
+		color->blue = 1.0 - level / 100.0;
 	} else if (g_ascii_strcasecmp (colorspec, "red") == 0) {
-		color->red = 0xFFFF;
+		color->red = 1.0;
 		color->green = 0;
 		color->blue = 0;
 	} else if (g_ascii_strcasecmp (colorspec, "green") == 0) {
 		color->red = 0;
-		color->green = 0xFFFF;
+		color->green = 1.0;
 		color->blue = 0;
 	} else if (g_ascii_strcasecmp (colorspec, "blue") == 0) {
 		color->red = 0;
 		color->green = 0;
-		color->blue = 0xFFFF;
+		color->blue = 1.0;
 	} else if (g_ascii_strncasecmp (colorspec, "red", 3) == 0) {
 		level = strtol (colorspec + 3, NULL, 10);
 
-		color->red = 0xFFFF * level / 100;
+		color->red = level / 100.0;
 		color->green = 0;
 		color->blue = 0;
 	} else if (g_ascii_strncasecmp (colorspec, "green", 5) == 0) {
 		level = strtol (colorspec + 5, NULL, 10);
 
 		color->red = 0;
-		color->green = 0xFFFF * level / 100;;
+		color->green = level / 100.0;
 		color->blue = 0;
 	} else if (g_ascii_strncasecmp (colorspec, "blue", 4) == 0) {
 		level = strtol (colorspec + 4, NULL, 10);
 
 		color->red = 0;
 		color->green = 0;
-		color->blue = 0xFFFF * level / 100;
+		color->blue = level / 100.0;
 	} else
 		return FALSE;
 
@@ -854,19 +855,20 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 		   gint angle, gint x, gint y, gboolean is_pressed)
 {
 	PangoLayout *layout = context->layout;
-	GdkColor *color;
+	GdkRGBA *pcolor, color;
 	PangoLayoutLine *line;
 	gint x_off, y_off;
 	gint i;
 
-	if (is_pressed)
-		color =
-		    &gtk_widget_get_style (GTK_WIDGET (drawing))->text
-		    [GTK_STATE_SELECTED];
-	else
-		color =
+	if (is_pressed) {
+		GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
+		pcolor = &color;
+		gtk_style_context_get_color (style_context, GTK_STATE_FLAG_SELECTED, pcolor);
+	} else {
+		pcolor =
 		    drawing->colors + (drawing->xkb->geom->label_color -
 				       drawing->xkb->geom->colors);
+	}
 
 	if (angle != context->angle) {
 		PangoMatrix matrix = PANGO_MATRIX_INIT;
@@ -907,7 +909,7 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 	}
 
 	cairo_move_to (context->cr, x, y);
-	gdk_cairo_set_source_color (context->cr, color);
+	gdk_cairo_set_source_rgba (context->cr, pcolor);
 	pango_cairo_show_layout (context->cr, layout);
 }
 
@@ -1089,7 +1091,7 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 	  GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 {
 	XkbShapeRec *shape;
-	GdkColor *color;
+	GdkRGBA *pcolor, color;
 	XkbOutlineRec *outline;
 	int origin_offset_x;
 	/* gint i; */
@@ -1105,23 +1107,23 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 
 	shape = drawing->xkb->geom->shapes + key->xkbkey->shape_ndx;
 
-	if (key->pressed)
-		color =
-		    &gtk_widget_get_style (GTK_WIDGET (drawing))->base
-		    [GTK_STATE_SELECTED];
-	else
-		color = drawing->colors + key->xkbkey->color_ndx;
+	if (key->pressed) {
+		GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
+		pcolor = &color;
+		gtk_style_context_get_background_color (style_context, GTK_STATE_FLAG_SELECTED, pcolor);
+	} else
+		pcolor = drawing->colors + key->xkbkey->color_ndx;
 
 #ifdef KBDRAW_DEBUG
 	printf
 	    (" outlines base in the shape: %p (total: %d), origin: (%d, %d), angle %d, colored: %s\n",
 	     shape->outlines, shape->num_outlines, key->origin_x,
-	     key->origin_y, key->angle, color ? "yes" : "no");
+	     key->origin_y, key->angle, pcolor ? "yes" : "no");
 #endif
 
 	/* draw the primary outline */
 	outline = shape->primary ? shape->primary : shape->outlines;
-	draw_outline (context, outline, color, key->angle, key->origin_x,
+	draw_outline (context, outline, pcolor, key->angle, key->origin_x,
 		      key->origin_y);
 #if 0
 	/* don't draw other outlines for now, since
@@ -1254,7 +1256,7 @@ draw_indicator_doodad (GkbdKeyboardDrawingRenderContext * context,
 		       GkbdKeyboardDrawingDoodad * doodad,
 		       XkbIndicatorDoodadRec * indicator_doodad)
 {
-	GdkColor *color;
+	GdkRGBA *color;
 	XkbShapeRec *shape;
 	gint i;
 
@@ -1281,7 +1283,7 @@ draw_shape_doodad (GkbdKeyboardDrawingRenderContext * context,
 		   XkbShapeDoodadRec * shape_doodad)
 {
 	XkbShapeRec *shape;
-	GdkColor *color;
+	GdkRGBA *color;
 	gint i;
 
 	if (!drawing->xkb)
@@ -1387,22 +1389,28 @@ draw_keyboard_to_context (GkbdKeyboardDrawingRenderContext * context,
 static gboolean
 prepare_cairo (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
-	GtkStateType state;
+	GtkStateFlags state;
+	GtkStyleContext *style_context;
 	if (drawing == NULL)
 		return FALSE;
 
+	style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
 	drawing->renderContext->cr = cr;
-	state = gtk_widget_get_state (GTK_WIDGET (drawing));
-	drawing->renderContext->dark_color =
-	    &gtk_widget_get_style (GTK_WIDGET (drawing))->dark[state];
+	state = gtk_widget_get_state_flags (GTK_WIDGET (drawing));
+	gtk_style_context_get_background_color (style_context, state, &drawing->renderContext->dark_color);
+
+	/* same approach as gtk - dark color = background color * 0.7 */
+	drawing->renderContext->dark_color.red *= 0.7;
+	drawing->renderContext->dark_color.green *= 0.7;
+	drawing->renderContext->dark_color.blue *= 0.7;
 	return TRUE;
 }
 
 static void
 draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
-	GtkStateType state = gtk_widget_get_state (GTK_WIDGET (drawing));
-	GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (drawing));
+	GtkStateFlags state = gtk_widget_get_state_flags (GTK_WIDGET (drawing));
+	GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
 	GtkAllocation allocation;
 
 	if (!drawing->xkb)
@@ -1412,11 +1420,13 @@ draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 
 	if (prepare_cairo (drawing, cr)) {
 		/* blank background */
-		gdk_cairo_set_source_color (cr, &style->base[state]);
+		GdkRGBA color;
+		gtk_style_context_get_background_color (style_context, state, &color);
+		gdk_cairo_set_source_rgba (cr, &color);
 		cairo_paint (cr);
 #ifdef KBDRAW_DEBUG
-		GdkColor red = { 0xFFFF, 0xFFFF, 0, 0 };
-		gdk_cairo_set_source_color (cr, &red);
+		GdkRGBA yellow = { 1.0, 1.0, 0, 1.0 };
+		gdk_cairo_set_source_rgba (cr, &yellow);
 
 		cairo_move_to (cr, 0, 0);
 		cairo_line_to (cr, allocation.width, 0);
@@ -1825,7 +1835,7 @@ init_colors (GkbdKeyboardDrawing * drawing)
 	if (!drawing->xkb)
 		return;
 
-	drawing->colors = g_new (GdkColor, drawing->xkb->geom->num_colors);
+	drawing->colors = g_new (GdkRGBA, drawing->xkb->geom->num_colors);
 
 	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
 		result =
@@ -2240,6 +2250,8 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 			      double width, double height,
 			      double dpi_x, double dpi_y)
 {
+	GtkStateFlags state = gtk_widget_get_state_flags (GTK_WIDGET (kbdrawing));
+	GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (kbdrawing));
 	GkbdKeyboardDrawingRenderContext context = {
 		cr,
 		kbdrawing->renderContext->angle,
@@ -2247,10 +2259,10 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 		pango_font_description_copy (gtk_widget_get_style
 					     (GTK_WIDGET
 					      (kbdrawing))->font_desc),
-		1, 1,
-		&gtk_widget_get_style (GTK_WIDGET (kbdrawing))->dark
-		    [gtk_widget_get_state (GTK_WIDGET (kbdrawing))]
+		1, 1
 	};
+
+	gtk_style_context_get_background_color (style_context, state, &context.dark_color);
 
 	if (!context_setup_scaling (&context, kbdrawing, width, height,
 				    dpi_x, dpi_y))
