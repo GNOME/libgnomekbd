@@ -1,9 +1,0 @@
-.deps
-gkbd-indicator-plugins-capplet
-gkbd-indicator-plugins-capplet.desktop
-gkbd-indicator-plugins-capplet.desktop.in
-.libs
-*.lo
-Makefile
-Makefile.in
-*.o

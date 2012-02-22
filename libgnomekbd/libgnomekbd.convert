@@ -18,7 +18,6 @@ font-family = /desktop/gnome/peripherals/keyboard/indicator/fontFamily
 font-size = /desktop/gnome/peripherals/keyboard/indicator/fontSize
 foreground-color = /desktop/gnome/peripherals/keyboard/indicator/foregroundColor
 background-color = /desktop/gnome/peripherals/keyboard/indicator/backgroundColor
-enabled-plugins = /desktop/gnome/peripherals/keyboard/indicator/enabledPlugins
 
 [org.gnome.libgnomekbd.keyboard]
 model = /desktop/gnome/peripherals/keyboard/kbd/model

@@ -63,10 +63,5 @@
       <_summary>The background color</_summary>
       <_description>The background color for the layout indicator</_description>
     </key>
-    <key name="enabled-plugins" type="as">
-      <default>[]</default>
-      <_summary>The list of enabled Keyboard Indicator plugins</_summary>
-      <_description>The list of enabled Keyboard Indicator plugins</_description>
-    </key>
   </schema>
 </schemalist>

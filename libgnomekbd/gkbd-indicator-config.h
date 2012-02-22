@@ -37,8 +37,6 @@ struct _GkbdIndicatorConfig {
 	gchar *foreground_color;
 	gchar *background_color;
 
-	gchar **enabled_plugins;
-
 	/* private, transient */
 	GSettings *settings;
 	GSList *image_filenames;

@@ -2,7 +2,7 @@ if BUILD_TESTS
 TEST = test
 endif
 
-SUBDIRS = libgnomekbd $(TEST) capplet po
+SUBDIRS = libgnomekbd $(TEST) po
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 

@@ -32,13 +32,8 @@
 #include <gkbd-indicator-config.h>
 #include <gkbd-configuration.h>
 
-#include <gkbd-indicator-plugin-manager.h>
-
 typedef struct _gki_globals {
 	GkbdConfiguration *config;
-
-	GkbdIndicatorPluginContainer plugin_container;
-	GkbdIndicatorPluginManager plugin_manager;
 
 	GSList *images;
 } gki_globals;
@@ -110,7 +105,7 @@ gkbd_indicator_fill (GkbdIndicator * gki)
 	    gkbd_configuration_get_group_names (globals.config);
 
 	for (grp = 0; grp < total_groups; grp++) {
-		GtkWidget *page, *decorated_page = NULL;
+		GtkWidget *page = NULL;
 		gchar *full_group_name =
 		    (grp <
 		     g_strv_length (full_group_names)) ?
@@ -119,15 +114,6 @@ gkbd_indicator_fill (GkbdIndicator * gki)
 
 		if (page == NULL)
 			page = gtk_label_new ("");
-
-		decorated_page =
-		    gkbd_indicator_plugin_manager_decorate_widget
-		    (&globals.plugin_manager, page, grp,
-		     full_group_name,
-		     gkbd_configuration_get_keyboard_config
-		     (globals.config));
-
-		page = decorated_page == NULL ? page : decorated_page;
 
 		gtk_notebook_append_page (notebook, page, NULL);
 		gtk_widget_show_all (page);
@@ -299,11 +285,6 @@ gkbd_indicator_reinit_ui (GkbdIndicator * gki)
 static void
 gkbd_indicator_cfg_callback (GkbdConfiguration * configuration)
 {
-	gkbd_indicator_plugin_manager_toggle_plugins
-	    (&globals.plugin_manager, &globals.plugin_container,
-	     gkbd_configuration_get_indicator_config (globals.
-						      config)->enabled_plugins);
-
 	ForAllObjects (configuration) {
 		gkbd_indicator_reinit_ui (GKBD_INDICATOR (gki));
 	} NextObject ()
@@ -315,8 +296,6 @@ gkbd_indicator_state_callback (GkbdConfiguration * configuration,
 			       gint group)
 {
 	ForAllObjects (configuration) {
-		gkbd_indicator_plugin_manager_group_changed
-		    (&globals.plugin_manager, GTK_WIDGET (gki), group);
 		xkl_debug (200, "do repaint\n");
 		gkbd_indicator_set_current_page_for_group (GKBD_INDICATOR
 							   (gki), group);
@@ -487,11 +466,6 @@ gkbd_indicator_global_term (void)
 	gkbd_configuration_free_images (globals.config, globals.images);
 	globals.images = NULL;
 
-	gkbd_indicator_plugin_manager_term_initialized_plugins
-	    (&globals.plugin_manager);
-	gkbd_indicator_plugin_manager_term (&globals.plugin_manager);
-	gkbd_indicator_plugin_container_term (&globals.plugin_container);
-
 	gkbd_indicator_stop_listen ();
 	g_object_unref (globals.config);
 	globals.config = NULL;
@@ -534,15 +508,7 @@ gkbd_indicator_global_init (void)
 	g_signal_connect (globals.config, "changed",
 			  G_CALLBACK (gkbd_indicator_cfg_callback), NULL);
 
-	gkbd_indicator_plugin_container_init (&globals.plugin_container);
-
 	globals.images = gkbd_configuration_load_images (globals.config);
-
-	gkbd_indicator_plugin_manager_init (&globals.plugin_manager);
-	gkbd_indicator_plugin_manager_init_enabled_plugins
-	    (&globals.plugin_manager, &globals.plugin_container,
-	     gkbd_configuration_get_indicator_config (globals.
-						      config)->enabled_plugins);
 
 	gkbd_indicator_start_listen ();
 
@@ -616,23 +582,3 @@ gkbd_indicator_set_angle (GkbdIndicator * gki, gdouble angle)
 	gki->priv->angle = angle;
 }
 
-/* Plugin support */
-/* Preserve the plugin container functions during the linking */
-void
-gkbd_indicator_plugin_container_reinit_ui (GkbdIndicatorPluginContainer *
-					   pc)
-{
-	ForAllObjects (globals.config) {
-		gkbd_indicator_reinit_ui (GKBD_INDICATOR (gki));
-	} NextObject ()
-}
-
-/**
- * gkbd_indicator_plugin_load_localized_group_names:
- * Returns: (transfer none) (array zero-terminated=1): all group names
- */
-gchar **gkbd_indicator_plugin_load_localized_group_names
-    (GkbdIndicatorPluginContainer * pc) {
-	return (gchar **)
-	    gkbd_configuration_get_group_names (globals.config);
-}

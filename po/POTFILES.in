@@ -1,7 +1,6 @@
 libgnomekbd/gkbd-desktop-config.c
 libgnomekbd/gkbd-indicator.c
 libgnomekbd/gkbd-indicator-config.c
-libgnomekbd/gkbd-indicator-plugin-manager.c
 libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-keyboard-config.c
 libgnomekbd/gkbd-status.c
@@ -11,9 +10,4 @@ libgnomekbd/gkbd-keyboard-display.desktop.in.in
 [type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in
 [type: gettext/xml]libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in
 [type: gettext/glade]libgnomekbd/show-layout.ui
-[type: gettext/glade]capplet/gkbd-indicator-plugins.ui
-[type: gettext/glade]capplet/gkbd-indicator-plugins_add.ui
-capplet/gkbd-indicator-plugins-capplet.c
-capplet/gkbd-indicator-plugins-capplet.desktop.in.in
-capplet/gkbd-indicator-plugins-add.c
 test/gkbd-indicator-test.c

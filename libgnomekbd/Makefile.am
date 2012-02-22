@@ -23,7 +23,6 @@ common_CFLAGS = \
 	$(LIBXKLAVIER_CFLAGS)				\
 	$(XLIB_CFLAGS)					\
 	-I$(top_srcdir)/intl				\
-	-DSYS_PLUGIN_DIR=\"$(libdir)/gnomekbd/\"	\
 	-DG_LOG_DOMAIN=\"GnomeKbdIndicator\"		\
 	-DDATADIR=\"$(datadir)\"			\
 	-DICONSDIR=\"$(iconsdir)\"			\
@@ -65,7 +64,6 @@ libgnomekbdui_la_SOURCES = \
                          gkbd-indicator.c \
                          gkbd-status.c \
                          gkbd-indicator-marshal.c \
-                         gkbd-indicator-plugin-manager.c \
                          gkbd-keyboard-drawing-marshal.c \
                          gkbd-keyboard-drawing.c
 
@@ -107,7 +105,6 @@ gnomekbdinc_HEADERS = \
                       gkbd-indicator.h \
                       gkbd-status.h \
                       gkbd-indicator-config.h \
-                      gkbd-indicator-plugin.h \
                       gkbd-keyboard-drawing.h \
                       gkbd-util.h
 
@@ -117,8 +114,7 @@ sys_DATA = $(sys_in_in_files:.desktop.in.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
 
-noinst_HEADERS = gkbd-indicator-plugin-manager.h \
-                 $(extra_nih) \
+noinst_HEADERS = $(extra_nih) \
                  gkbd-config-private.h
 
 convertdir = $(datadir)/GConf/gsettings
@@ -161,8 +157,7 @@ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 if HAVE_INTROSPECTION
 introspection_sources = $(gnomekbdinc_HEADERS) \
         $(libgnomekbd_la_SOURCES) \
-        $(libgnomekbdui_la_SOURCES) \
-        gkbd-indicator-plugin-manager.h
+        $(libgnomekbdui_la_SOURCES)
 
 Gkbd-3.0.gir: libgnomekbd.la libgnomekbdui.la
 Gkbd_3_0_gir_INCLUDES = GObject-2.0 Gtk-3.0 xlib-2.0 Xkl-1.0

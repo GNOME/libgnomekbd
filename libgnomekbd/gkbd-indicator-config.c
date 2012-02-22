@@ -39,8 +39,6 @@
  */
 
 const gchar GKBD_INDICATOR_CONFIG_KEY_SHOW_FLAGS[] = "show-flags";
-const gchar GKBD_INDICATOR_CONFIG_KEY_ENABLED_PLUGINS[] =
-    "enabled-plugins";
 const gchar GKBD_INDICATOR_CONFIG_KEY_SECONDARIES[] = "secondary";
 const gchar GKBD_INDICATOR_CONFIG_KEY_FONT_FAMILY[] = "font-family";
 const gchar GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE[] = "font-size";
@@ -280,8 +278,6 @@ gkbd_indicator_config_term (GkbdIndicatorConfig * ind_config)
 
 	gkbd_indicator_config_free_image_filenames (ind_config);
 
-	g_strfreev (ind_config->enabled_plugins);
-	ind_config->enabled_plugins = NULL;
 	g_object_unref (ind_config->settings);
 	ind_config->settings = NULL;
 }
@@ -299,11 +295,6 @@ gkbd_indicator_config_load (GkbdIndicatorConfig * ind_config)
 
 	gkbd_indicator_config_load_font (ind_config);
 	gkbd_indicator_config_load_colors (ind_config);
-
-	g_strfreev (ind_config->enabled_plugins);
-	ind_config->enabled_plugins =
-	    g_settings_get_strv (ind_config->settings,
-				 GKBD_INDICATOR_CONFIG_KEY_ENABLED_PLUGINS);
 }
 
 void
@@ -317,10 +308,6 @@ gkbd_indicator_config_save (GkbdIndicatorConfig * ind_config)
 	g_settings_set_boolean (ind_config->settings,
 				GKBD_INDICATOR_CONFIG_KEY_SHOW_FLAGS,
 				ind_config->show_flags);
-	g_settings_set_strv (ind_config->settings,
-			     GKBD_INDICATOR_CONFIG_KEY_ENABLED_PLUGINS,
-			     (const gchar *
-			      const *) ind_config->enabled_plugins);
 
 	g_settings_apply (ind_config->settings);
 }
