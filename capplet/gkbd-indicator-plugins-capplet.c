@@ -230,7 +230,9 @@ CappletResponse (GtkDialog * dialog, gint response)
 {
 	if (response == GTK_RESPONSE_HELP) {
 		GError *error = NULL;
-		GdkAppLaunchContext *ctx = gdk_app_launch_context_new ();
+		GdkAppLaunchContext *ctx =
+		    gdk_display_get_app_launch_context
+		    (gtk_widget_get_display (GTK_WIDGET (dialog)));
 
 		g_app_info_launch_default_for_uri
 		    ("ghelp:gkbd?gkb-indicator-applet-plugins",
