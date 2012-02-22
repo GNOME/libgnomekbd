@@ -591,10 +591,11 @@ gkbd_keyboard_config_activate (GkbdKeyboardConfig * kbd_config)
 					      NULL);
 			if (g_file_test (xmodmap_file, G_FILE_TEST_EXISTS)) {
 				GError *error = NULL;
+				gchar *command;
 				xkl_debug (150,
 					   "Loading custom xmodmap file %s\n",
 					   xmodmap_file);
-				gchar *command =
+				command =
 				    g_strconcat (XMODMAP_CMD, " ",
 						 xmodmap_file,
 						 NULL);
