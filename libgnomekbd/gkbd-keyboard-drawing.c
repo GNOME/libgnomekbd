@@ -861,9 +861,12 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 	gint i;
 
 	if (is_pressed) {
-		GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
+		GtkStyleContext *style_context =
+		    gtk_widget_get_style_context (GTK_WIDGET (drawing));
 		pcolor = &color;
-		gtk_style_context_get_color (style_context, GTK_STATE_FLAG_SELECTED, pcolor);
+		gtk_style_context_get_color (style_context,
+					     GTK_STATE_FLAG_SELECTED,
+					     pcolor);
 	} else {
 		pcolor =
 		    drawing->colors + (drawing->xkb->geom->label_color -
@@ -1108,9 +1111,12 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 	shape = drawing->xkb->geom->shapes + key->xkbkey->shape_ndx;
 
 	if (key->pressed) {
-		GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
+		GtkStyleContext *style_context =
+		    gtk_widget_get_style_context (GTK_WIDGET (drawing));
 		pcolor = &color;
-		gtk_style_context_get_background_color (style_context, GTK_STATE_FLAG_SELECTED, pcolor);
+		gtk_style_context_get_background_color (style_context,
+							GTK_STATE_FLAG_SELECTED,
+							pcolor);
 	} else
 		pcolor = drawing->colors + key->xkbkey->color_ndx;
 
@@ -1394,10 +1400,13 @@ prepare_cairo (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 	if (drawing == NULL)
 		return FALSE;
 
-	style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
+	style_context =
+	    gtk_widget_get_style_context (GTK_WIDGET (drawing));
 	drawing->renderContext->cr = cr;
 	state = gtk_widget_get_state_flags (GTK_WIDGET (drawing));
-	gtk_style_context_get_background_color (style_context, state, &drawing->renderContext->dark_color);
+	gtk_style_context_get_background_color (style_context, state,
+						&drawing->
+						renderContext->dark_color);
 
 	/* same approach as gtk - dark color = background color * 0.7 */
 	drawing->renderContext->dark_color.red *= 0.7;
@@ -1409,8 +1418,10 @@ prepare_cairo (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 static void
 draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
-	GtkStateFlags state = gtk_widget_get_state_flags (GTK_WIDGET (drawing));
-	GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (drawing));
+	GtkStateFlags state =
+	    gtk_widget_get_state_flags (GTK_WIDGET (drawing));
+	GtkStyleContext *style_context =
+	    gtk_widget_get_style_context (GTK_WIDGET (drawing));
 	GtkAllocation allocation;
 
 	if (!drawing->xkb)
@@ -1421,7 +1432,8 @@ draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 	if (prepare_cairo (drawing, cr)) {
 		/* blank background */
 		GdkRGBA color;
-		gtk_style_context_get_background_color (style_context, state, &color);
+		gtk_style_context_get_background_color (style_context,
+							state, &color);
 		gdk_cairo_set_source_rgba (cr, &color);
 		cairo_paint (cr);
 #ifdef KBDRAW_DEBUG
@@ -2250,8 +2262,10 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 			      double width, double height,
 			      double dpi_x, double dpi_y)
 {
-	GtkStateFlags state = gtk_widget_get_state_flags (GTK_WIDGET (kbdrawing));
-	GtkStyleContext *style_context = gtk_widget_get_style_context (GTK_WIDGET (kbdrawing));
+	GtkStateFlags state =
+	    gtk_widget_get_state_flags (GTK_WIDGET (kbdrawing));
+	GtkStyleContext *style_context =
+	    gtk_widget_get_style_context (GTK_WIDGET (kbdrawing));
 	GkbdKeyboardDrawingRenderContext context = {
 		cr,
 		kbdrawing->renderContext->angle,
@@ -2262,7 +2276,8 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 		1, 1
 	};
 
-	gtk_style_context_get_background_color (style_context, state, &context.dark_color);
+	gtk_style_context_get_background_color (style_context, state,
+						&context.dark_color);
 
 	if (!context_setup_scaling (&context, kbdrawing, width, height,
 				    dpi_x, dpi_y))
