@@ -1,3 +1,7 @@
+3.3.90: Some build fixes
+	Some deprecated APIs changed to the new ones
+	The introspection is now linked to libxklavier (new version 5.2 is required)
+
 3.2.0:
 	Updated Assamese translation
 
