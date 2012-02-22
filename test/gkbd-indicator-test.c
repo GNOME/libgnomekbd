@@ -57,7 +57,8 @@ main (int argc, char **argv)
 	gkbd_indicator_set_parent_tooltips (GKBD_INDICATOR (gki), TRUE);
 
 	gtk_window_resize (GTK_WINDOW (mainwin), 250, 250);
-	vbox = gtk_vbox_new (TRUE, 6);
+	vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+	gtk_box_set_homogeneous (GTK_BOX (vbox), TRUE);
 
 	gtk_container_add (GTK_CONTAINER (mainwin), vbox);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
