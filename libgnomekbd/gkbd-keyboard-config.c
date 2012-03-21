@@ -309,9 +309,11 @@ gkbd_keyboard_config_copy_to_xkl_config (GkbdKeyboardConfig * kbd_config,
 			char *group, *option;
 			if (gkbd_keyboard_config_split_items
 			    (*the_option, &group, &option)
-			    && option != NULL)
+			    && option != NULL) {
 				*(p++) = g_strdup (option);
-			else {
+				g_free (group);
+				g_free (option);
+			} else {
 				*(p++) = g_strdup ("");
 				xkl_debug (150, "Could not split [%s]\n",
 					   *the_option);
