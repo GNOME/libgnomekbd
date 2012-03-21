@@ -500,6 +500,54 @@ gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig * kbd_config,
 		g_object_unref (G_OBJECT (data));
 }
 
+static gboolean
+gkbd_keyboard_config_options_equals (GkbdKeyboardConfig * kbd_config1,
+				     GkbdKeyboardConfig * kbd_config2)
+{
+	int num_options, num_options2;
+
+	num_options =
+	    (kbd_config1->options ==
+	     NULL) ? 0 : g_strv_length (kbd_config1->options);
+	num_options2 =
+	    (kbd_config2->options ==
+	     NULL) ? 0 : g_strv_length (kbd_config2->options);
+
+	if (num_options != num_options2)
+		return False;
+
+	if (num_options != 0) {
+		int i;
+		char *group1, *option1;
+
+		for (i = 0; i < num_options; i++) {
+			int j;
+			char *group2, *option2;
+			gboolean are_equal = FALSE;
+
+			if (!gkbd_keyboard_config_split_items (kbd_config1->options[i], &group1, &option1))
+				continue;
+
+			g_free (group1);
+
+			for (j = 0; j < num_options && !are_equal; j++) {
+				if (gkbd_keyboard_config_split_items (kbd_config2->options[j], &group2, &option2)) {
+					are_equal = strcmp (option1, option2) == 0;
+					g_free (group2);
+					g_free (option2);
+				}
+			}
+
+			g_free (option1);
+
+			if (!are_equal)
+				return False;
+		}
+	}
+
+	return True;
+}
+
 gboolean
 gkbd_keyboard_config_equals (GkbdKeyboardConfig * kbd_config1,
 			     GkbdKeyboardConfig * kbd_config2)
@@ -511,9 +559,14 @@ gkbd_keyboard_config_equals (GkbdKeyboardConfig * kbd_config1,
 	    (kbd_config2->model != NULL) &&
 	    g_ascii_strcasecmp (kbd_config1->model, kbd_config2->model))
 		return False;
-	return g_strv_equal (kbd_config1->layouts_variants,
-			     kbd_config2->layouts_variants)
-	    && g_strv_equal (kbd_config1->options, kbd_config2->options);
+	if (!g_strv_equal (kbd_config1->layouts_variants,
+			     kbd_config2->layouts_variants))
+		return False;
+
+	if (!gkbd_keyboard_config_options_equals (kbd_config1, kbd_config2))
+		return False;
+
+	return True;
 }
 
 void
