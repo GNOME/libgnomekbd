@@ -1,3 +1,6 @@
+3.4.0.1:
+	Small memory leak fix in 3.4.0 was a bad idea. Reverted
+
 3.4.0:
 	Dropping obsolete plugins architecture
 	Small memory leak fixed
