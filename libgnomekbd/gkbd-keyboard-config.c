@@ -526,17 +526,11 @@ gkbd_keyboard_config_options_equals (GkbdKeyboardConfig * kbd_config1,
 			if (!gkbd_keyboard_config_split_items (kbd_config1->options[i], &group1, &option1))
 				continue;
 
-			g_free (group1);
-
 			for (j = 0; j < num_options && !are_equal; j++) {
 				if (gkbd_keyboard_config_split_items (kbd_config2->options[j], &group2, &option2)) {
 					are_equal = strcmp (option1, option2) == 0;
-					g_free (group2);
-					g_free (option2);
 				}
 			}
-
-			g_free (option1);
 
 			if (!are_equal)
 				return False;
