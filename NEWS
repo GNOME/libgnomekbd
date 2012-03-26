@@ -1,3 +1,6 @@
+3.4.0.2:
+	3.4.0.1 did not fix it all. Now, hopefully, it is nailed.
+
 3.4.0.1:
 	Small memory leak fix in 3.4.0 was a bad idea. Reverted
 
