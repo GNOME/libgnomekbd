@@ -527,6 +527,8 @@ gkbd_keyboard_config_options_equals (GkbdKeyboardConfig * kbd_config1,
 			    (kbd_config1->options[i], &group1, &option1))
 				continue;
 
+			option1 = g_strdup (option1);
+
 			for (j = 0; j < num_options && !are_equal; j++) {
 				if (gkbd_keyboard_config_split_items
 				    (kbd_config2->options[j], &group2,
@@ -535,6 +537,8 @@ gkbd_keyboard_config_options_equals (GkbdKeyboardConfig * kbd_config1,
 					    strcmp (option1, option2) == 0;
 				}
 			}
+
+			g_free (option1);
 
 			if (!are_equal)
 				return False;
