@@ -523,16 +523,12 @@ gkbd_keyboard_config_options_equals (GkbdKeyboardConfig * kbd_config1,
 			char *group2, *option2;
 			gboolean are_equal = FALSE;
 
-			if (!gkbd_keyboard_config_split_items
-			    (kbd_config1->options[i], &group1, &option1))
+			if (!gkbd_keyboard_config_split_items (kbd_config1->options[i], &group1, &option1))
 				continue;
 
 			for (j = 0; j < num_options && !are_equal; j++) {
-				if (gkbd_keyboard_config_split_items
-				    (kbd_config2->options[j], &group2,
-				     &option2)) {
-					are_equal =
-					    strcmp (option1, option2) == 0;
+				if (gkbd_keyboard_config_split_items (kbd_config2->options[j], &group2, &option2)) {
+					are_equal = strcmp (option1, option2) == 0;
 				}
 			}
 
@@ -556,11 +552,10 @@ gkbd_keyboard_config_equals (GkbdKeyboardConfig * kbd_config1,
 	    g_ascii_strcasecmp (kbd_config1->model, kbd_config2->model))
 		return False;
 	if (!g_strv_equal (kbd_config1->layouts_variants,
-			   kbd_config2->layouts_variants))
+			     kbd_config2->layouts_variants))
 		return False;
 
-	if (!gkbd_keyboard_config_options_equals
-	    (kbd_config1, kbd_config2))
+	if (!gkbd_keyboard_config_options_equals (kbd_config1, kbd_config2))
 		return False;
 
 	return True;
@@ -630,44 +625,46 @@ gkbd_keyboard_config_activate (GkbdKeyboardConfig * kbd_config)
 	gkbd_keyboard_config_copy_to_xkl_config (kbd_config, data);
 	rv = xkl_config_rec_activate (data, kbd_config->engine);
 	g_object_unref (G_OBJECT (data));
-	return rv;
-}
 
-void
-gkbd_keyboard_config_patch (GkbdKeyboardConfig * kbd_config)
-{
 	/* Small bit of extensibility by using xmodmap */
-	int i =
-	    sizeof (XMODMAP_KNOWN_FILES) / sizeof (XMODMAP_KNOWN_FILES[0]);
-	while (--i >= 0) {
-		gchar *xmodmap_file = g_build_filename (g_get_home_dir (),
-							XMODMAP_KNOWN_FILES
-							[i],
-							NULL);
-		if (g_file_test (xmodmap_file, G_FILE_TEST_EXISTS)) {
-			GError *error = NULL;
-			gchar *command;
-			xkl_debug (150,
-				   "Loading custom xmodmap file %s\n",
-				   xmodmap_file);
-			command =
-			    g_strconcat (XMODMAP_CMD, " ",
-					 xmodmap_file, NULL);
-			/* Fire and forget - do not care about errors */
-			if (!g_spawn_command_line_async (command, &error)) {
-				xkl_debug (0,
-					   "Error loading custom xmodmap file: [%s]\n",
-					   error->message);
-				g_error_free (error);
+	if (rv) {
+		int i =
+		    sizeof (XMODMAP_KNOWN_FILES) /
+		    sizeof (XMODMAP_KNOWN_FILES[0]);
+		while (--i >= 0) {
+			gchar *xmodmap_file =
+			    g_build_filename (g_get_home_dir (),
+					      XMODMAP_KNOWN_FILES[i],
+					      NULL);
+			if (g_file_test (xmodmap_file, G_FILE_TEST_EXISTS)) {
+				GError *error = NULL;
+				gchar *command;
+				xkl_debug (150,
+					   "Loading custom xmodmap file %s\n",
+					   xmodmap_file);
+				command =
+				    g_strconcat (XMODMAP_CMD, " ",
+						 xmodmap_file,
+						 NULL);
+				/* Fire and forget - do not care about errors */
+				if (!g_spawn_command_line_async
+				    (command, &error)) {
+					xkl_debug (0,
+						   "Error loading custom xmodmap file: [%s]\n",
+						   error->message);
+					g_error_free (error);
+				}
+				g_free (command);
+
+				/* One file is enough */
+				i = 0;
 			}
-			g_free (command);
 
-			/* One file is enough */
-			i = 0;
+			g_free (xmodmap_file);
 		}
-
-		g_free (xmodmap_file);
 	}
+
+	return rv;
 }
 
 /**
