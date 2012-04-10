@@ -2,10 +2,10 @@ bin_PROGRAMS=gkbd-keyboard-display
 
 lib_LTLIBRARIES = libgnomekbd.la libgnomekbdui.la
 
-uidir="$(pkgdatadir)/ui"
+uidir=$(pkgdatadir)/ui
 ui_DATA = show-layout.ui
 
-iconsdir="$(pkgdatadir)/icons"
+iconsdir=$(pkgdatadir)/icons
 icons_DATA = kbdled-caps-lock.svg \
              kbdled-num-lock.svg \
              kbdled-scroll-lock.svg 
