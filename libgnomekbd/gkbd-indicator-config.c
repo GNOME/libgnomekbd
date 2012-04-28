@@ -63,8 +63,8 @@ gkbd_indicator_config_load_font (GkbdIndicatorConfig * ind_config)
 				GKBD_INDICATOR_CONFIG_KEY_FONT_SIZE);
 
 	xkl_debug (150, "font: [%s], size %d\n",
-		   ind_config->font_family ? ind_config->font_family : "(null)",
-		   ind_config->font_size);
+		   ind_config->font_family ? ind_config->
+		   font_family : "(null)", ind_config->font_size);
 
 }
 
@@ -81,10 +81,10 @@ gkbd_indicator_config_load_colors (GkbdIndicatorConfig * ind_config)
 }
 
 void
-gkbd_indicator_config_get_font_for_widget (GkbdIndicatorConfig * ind_config,
-					   GtkWidget           * widget,
-					   gchar               ** font_family,
-					   int                  * font_size)
+gkbd_indicator_config_get_font_for_widget (GkbdIndicatorConfig *
+					   ind_config, GtkWidget * widget,
+					   gchar ** font_family,
+					   int *font_size)
 {
 	GtkStyleContext *context;
 	const PangoFontDescription *fd = NULL;
@@ -105,17 +105,20 @@ gkbd_indicator_config_get_font_for_widget (GkbdIndicatorConfig * ind_config,
 	fd = gtk_style_context_get_font (context, GTK_STATE_FLAG_NORMAL);
 
 	if (font_family)
-		*font_family = g_strdup (pango_font_description_get_family (fd));
+		*font_family =
+		    g_strdup (pango_font_description_get_family (fd));
 	if (font_size)
-		*font_size = pango_font_description_get_size (fd) / PANGO_SCALE;
+		*font_size =
+		    pango_font_description_get_size (fd) / PANGO_SCALE;
 }
 
 gchar *
-gkbd_indicator_config_get_fg_color_for_widget (GkbdIndicatorConfig * ind_config,
-					       GtkWidget           * widget)
+gkbd_indicator_config_get_fg_color_for_widget (GkbdIndicatorConfig *
+					       ind_config,
+					       GtkWidget * widget)
 {
 	GtkStyleContext *context;
-	GdkRGBA          rgba;
+	GdkRGBA rgba;
 
 	g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
 
@@ -124,9 +127,11 @@ gkbd_indicator_config_get_fg_color_for_widget (GkbdIndicatorConfig * ind_config,
 		return g_strdup (ind_config->foreground_color);
 
 	context = gtk_widget_get_style_context (widget);
-	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &rgba);
+	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL,
+				     &rgba);
 
-	return g_strdup_printf ("%g %g %g", rgba.red, rgba.green, rgba.blue);
+	return g_strdup_printf ("%g %g %g", rgba.red, rgba.green,
+				rgba.blue);
 }
 
 void
@@ -167,7 +172,8 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 
 				/* Unbelievable but happens */
 				if (icon_info != NULL &&
-				    gtk_icon_info_get_filename (icon_info) == NULL) {
+				    gtk_icon_info_get_filename (icon_info)
+				    == NULL) {
 					gtk_icon_info_free (icon_info);
 					icon_info = NULL;
 				}
@@ -239,10 +245,9 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 	ind_config->icon_theme = gtk_icon_theme_get_default ();
 
 	gtk_icon_theme_append_search_path (ind_config->icon_theme, sp =
-					   g_build_filename (g_get_home_dir
-							     (),
-							     ".icons/flags",
-							     NULL));
+					   g_build_filename
+					   (g_get_user_data_dir (),
+					    "icons/flags", NULL));
 	g_free (sp);
 
 	gtk_icon_theme_append_search_path (ind_config->icon_theme,
@@ -259,7 +264,8 @@ gkbd_indicator_config_init (GkbdIndicatorConfig * ind_config,
 							     NULL));
 	g_free (sp);
 
-	gtk_icon_theme_append_search_path (ind_config->icon_theme, ICONSDIR);
+	gtk_icon_theme_append_search_path (ind_config->icon_theme,
+					   ICONSDIR);
 }
 
 void
@@ -316,8 +322,7 @@ void
 gkbd_indicator_config_activate (GkbdIndicatorConfig * ind_config)
 {
 	xkl_engine_set_secondary_groups_mask (ind_config->engine,
-					      ind_config->
-					      secondary_groups_mask);
+					      ind_config->secondary_groups_mask);
 }
 
 /**
