@@ -83,9 +83,6 @@ extern gboolean gkbd_keyboard_config_equals (GkbdKeyboardConfig *
 extern gboolean gkbd_keyboard_config_activate (GkbdKeyboardConfig *
 					       kbd_config);
 
-extern void gkbd_keyboard_config_patch (GkbdKeyboardConfig *
-					       kbd_config);
-
 extern const gchar *gkbd_keyboard_config_merge_items (const gchar * parent,
 						      const gchar * child);
 

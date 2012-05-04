@@ -37,8 +37,6 @@
 #define GROUP_SWITCHERS_GROUP "grp"
 #define DEFAULT_GROUP_SWITCH "grp:shift_caps_toggle"
 
-#define XMODMAP_CMD "xmodmap"
-
 const gchar GKBD_KEYBOARD_CONFIG_KEY_MODEL[] = "model";
 const gchar GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS[] = "layouts";
 const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[] = "options";
@@ -48,8 +46,6 @@ const gchar *GKBD_KEYBOARD_CONFIG_ACTIVE[] = {
 	GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS,
 	GKBD_KEYBOARD_CONFIG_KEY_OPTIONS
 };
-
-const gchar *XMODMAP_KNOWN_FILES[] = { ".xmodmap", ".Xmodmap" };
 
 /**
  * static common functions
@@ -635,43 +631,6 @@ gkbd_keyboard_config_activate (GkbdKeyboardConfig * kbd_config)
 	rv = xkl_config_rec_activate (data, kbd_config->engine);
 	g_object_unref (G_OBJECT (data));
 	return rv;
-}
-
-void
-gkbd_keyboard_config_patch (GkbdKeyboardConfig * kbd_config)
-{
-	/* Small bit of extensibility by using xmodmap */
-	int i =
-	    sizeof (XMODMAP_KNOWN_FILES) / sizeof (XMODMAP_KNOWN_FILES[0]);
-	while (--i >= 0) {
-		gchar *xmodmap_file = g_build_filename (g_get_home_dir (),
-							XMODMAP_KNOWN_FILES
-							[i],
-							NULL);
-		if (g_file_test (xmodmap_file, G_FILE_TEST_EXISTS)) {
-			GError *error = NULL;
-			gchar *command;
-			xkl_debug (150,
-				   "Loading custom xmodmap file %s\n",
-				   xmodmap_file);
-			command =
-			    g_strconcat (XMODMAP_CMD, " ",
-					 xmodmap_file, NULL);
-			/* Fire and forget - do not care about errors */
-			if (!g_spawn_command_line_async (command, &error)) {
-				xkl_debug (0,
-					   "Error loading custom xmodmap file: [%s]\n",
-					   error->message);
-				g_error_free (error);
-			}
-			g_free (command);
-
-			/* One file is enough */
-			i = 0;
-		}
-
-		g_free (xmodmap_file);
-	}
 }
 
 /**
