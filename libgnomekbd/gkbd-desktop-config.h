@@ -49,7 +49,7 @@ struct _GkbdDesktopConfig {
 	XklEngine *engine;
 };
 
-/**
+/*
  * GkbdDesktopConfig functions
  */
 extern void gkbd_desktop_config_init (GkbdDesktopConfig * config,

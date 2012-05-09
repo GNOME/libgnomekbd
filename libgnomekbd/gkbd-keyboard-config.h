@@ -46,7 +46,7 @@ struct _GkbdKeyboardConfig {
 	XklEngine *engine;
 };
 
-/**
+/*
  * GkbdKeyboardConfig functions
  */
 extern void gkbd_keyboard_config_init (GkbdKeyboardConfig * kbd_config,

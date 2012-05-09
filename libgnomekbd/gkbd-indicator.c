@@ -531,6 +531,7 @@ gkbd_indicator_set_parent_tooltips (GkbdIndicator * gki, gboolean spt)
 
 /**
  * gkbd_indicator_get_xkl_engine:
+ *
  * Returns: (transfer none): The engine shared by all GkbdIndicator objects
  */
 XklEngine *
@@ -541,6 +542,7 @@ gkbd_indicator_get_xkl_engine ()
 
 /**
  * gkbd_indicator_get_group_names:
+ *
  * Returns: (transfer none) (array zero-terminated=1): List of group names
  */
 gchar **

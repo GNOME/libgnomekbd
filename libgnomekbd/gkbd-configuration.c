@@ -342,7 +342,8 @@ gkbd_configuration_class_init (GkbdConfigurationClass * klass)
 }
 
 /**
- * gkbd_configuration_get: 
+ * gkbd_configuration_get:
+ *
  * Returns: (transfer full): singleton of GkbdConfiguration
  */
 GkbdConfiguration *
@@ -362,6 +363,7 @@ gkbd_configuration_get (void)
 
 /**
  * gkbd_configuration_get_xkl_engine:
+ *
  * Returns: (transfer none): The engine used by GkbdConfiguration object
  */
 XklEngine *
@@ -372,6 +374,7 @@ gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 
 /**
  * gkbd_configuration_get_group_names:
+ *
  * Returns: (transfer none) (array zero-terminated=1): full group names
  */
 gchar **
@@ -392,6 +395,7 @@ gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 
 /**
  * gkbd_configuration_get_short_group_names:
+ *
  * Returns: (transfer none) (array zero-terminated=1): short group names
  */
 gchar **
@@ -491,7 +495,8 @@ gkbd_configuration_get_current_group (GkbdConfiguration * configuration)
 }
 
 /**
- * gkbd_configuration_get_indicator_config: 
+ * gkbd_configuration_get_indicator_config:
+ *
  * Returns: (transfer none): indicator config
  */
 GkbdIndicatorConfig *
@@ -501,7 +506,8 @@ gkbd_configuration_get_indicator_config (GkbdConfiguration * configuration)
 }
 
 /**
- * gkbd_configuration_get_keyboard_config: 
+ * gkbd_configuration_get_keyboard_config:
+ *
  * Returns: (transfer none): keyboard config
  */
 GkbdKeyboardConfig *
@@ -511,7 +517,8 @@ gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
 }
 
 /**
- * gkbd_configuration_get_all_objects: 
+ * gkbd_configuration_get_all_objects:
+ *
  * Returns: (transfer none) (element-type GObject): list of widgets/status icons/...
  */
 GSList *
@@ -537,7 +544,8 @@ gkbd_configuration_remove_object (GkbdConfiguration * configuration,
 }
 
 /**
- * gkbd_configuration_load_images: 
+ * gkbd_configuration_load_images:
+ *
  * Returns: (transfer full) (element-type GdkPixbuf): list of images
  */
 GSList *
@@ -574,7 +582,7 @@ gkbd_configuration_load_images (GkbdConfiguration * configuration)
 }
 
 /**
- * gkbd_configuration_free_images: 
+ * gkbd_configuration_free_images:
  * @images: (element-type GdkPixbuf): list of images
  */
 void
@@ -676,6 +684,7 @@ gkbd_configuration_stop_listen (GkbdConfiguration * configuration)
 
 /**
  * gkbd_configuration_get_group_name:
+ *
  * Returns: (transfer full): group name
  */
 gchar *

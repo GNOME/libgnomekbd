@@ -30,7 +30,7 @@
 #include <gkbd-config-private.h>
 #include <gkbd-util.h>
 
-/**
+/*
  * GkbdKeyboardConfig
  */
 
@@ -47,7 +47,7 @@ const gchar *GKBD_KEYBOARD_CONFIG_ACTIVE[] = {
 	GKBD_KEYBOARD_CONFIG_KEY_OPTIONS
 };
 
-/**
+/*
  * static common functions
  */
 
@@ -123,7 +123,7 @@ gkbd_keyboard_config_get_lv_descriptions (XklConfigRegistry *
 	return *layout_descr != NULL;
 }
 
-/**
+/*
  * extern common functions
  */
 const gchar *
@@ -177,7 +177,7 @@ gkbd_keyboard_config_split_items (const gchar * merged, gchar ** parent,
 	return TRUE;
 }
 
-/**
+/*
  * static GkbdKeyboardConfig functions
  */
 
@@ -404,7 +404,7 @@ gkbd_keyboard_config_save_params (GkbdKeyboardConfig * kbd_config,
 	}
 }
 
-/**
+/*
  * extern GkbdKeyboardConfig config functions
  */
 void
@@ -747,6 +747,7 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 
 /**
  * gkbd_keyboard_config_add_default_switch_option_if_necessary:
+ *
  * Returns: (transfer full) (array zero-terminated=1): List of options
  */
 gchar **

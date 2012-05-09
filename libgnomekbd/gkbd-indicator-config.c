@@ -35,7 +35,7 @@
 #include <gkbd-config-private.h>
 
 /**
- * GkbdIndicatorConfig
+ * GkbdIndicatorConfig:
  */
 
 const gchar GKBD_INDICATOR_CONFIG_KEY_SHOW_FLAGS[] = "show-flags";
@@ -47,7 +47,7 @@ const gchar GKBD_INDICATOR_CONFIG_KEY_FOREGROUND_COLOR[] =
 const gchar GKBD_INDICATOR_CONFIG_KEY_BACKGROUND_COLOR[] =
     "background-color";
 
-/**
+/*
  * static applet config functions
  */
 

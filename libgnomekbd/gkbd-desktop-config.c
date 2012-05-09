@@ -30,7 +30,7 @@
 #include <gkbd-config-private.h>
 
 /**
- * GkbdDesktopConfig
+ * GkbdDesktopConfig:
  */
 const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[] = "default-group";
 const gchar GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW[] =
@@ -42,7 +42,7 @@ const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[]
 const gchar GKBD_DESKTOP_CONFIG_KEY_LOAD_EXTRA_ITEMS[]
     = "load-extra-items";
 
-/**
+/*
  * static common functions
  */
 
@@ -125,7 +125,7 @@ static gboolean
 	return TRUE;
 }
 
-/**
+/*
  * extern GkbdDesktopConfig config functions
  */
 void

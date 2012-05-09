@@ -45,7 +45,7 @@ struct _GkbdIndicatorConfig {
 	XklEngine *engine;
 };
 
-/**
+/*
  * GkbdIndicatorConfig functions - 
  * some of them require GkbdKeyboardConfig as well - 
  * for loading approptiate images

@@ -664,6 +664,7 @@ gkbd_status_new (void)
 
 /**
  * gkbd_status_get_xkl_engine:
+ *
  * Returns: (transfer none): The engine shared by all GkbdStatus objects
  */
 XklEngine *
@@ -674,6 +675,7 @@ gkbd_status_get_xkl_engine ()
 
 /**
  * gkbd_status_get_group_names:
+ *
  * Returns: (transfer none) (array zero-terminated=1): List of group names
  */
 gchar **
