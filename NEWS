@@ -1,3 +1,7 @@
+3.5.2:
+	Removed xmodmap support, would be handled in g-s-d through the scripts.
+	Some minor build fixes as well.
+
 3.4.0.2:
 	3.4.0.1 did not fix it all. Now, hopefully, it is nailed.
 
