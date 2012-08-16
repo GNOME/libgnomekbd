@@ -2,23 +2,29 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Sandeep Shedmake <sandeep.shedmake@gmail.com>, 2008.
-# Sandeep Shedmake <sshedmak@redhat.com>, 2009.
+# Sandeep Shedmake <sshedmak@redhat.com>, 2008.
+# Sandeep Shedmake <sshedmak@redhat.com>, 2009, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: mr\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-08-16 20:00+0000\n"
-"PO-Revision-Date: 2009-09-09 17:41+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-02-22 23:49+0000\n"
+"PO-Revision-Date: 2012-08-16 14:27+0530\n"
 "Last-Translator: Sandeep Shedmake <sshedmak@redhat.com>\n"
 "Language-Team: Marathi <fedora-trans-mr@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.4\n"
+"Language: mr\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "XKB सुरू करतेवेळी त्रुटी"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2482
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -29,220 +35,238 @@ msgstr ""
 "सर्वहक्काधीकर &#169; X.Org Foundation व XKeyboardConfig सहमभागी\n"
 "संकुल मेटामाहिती करीता परवाना पहा"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB सुरू करतेवेळी त्रुटी"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2632
+msgid "Unknown"
+msgstr "अपरिचीत"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "प्रतिमा दाखल करतेवेळी त्रुटी: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:699
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "मांडणी \"%s\""
 msgstr[1] "मांडणी \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:717
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "पर्याय \"%s\""
 msgstr[1] "पर्याय \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "प्रारूप \"%s\", %s व %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no layout"
 msgstr "मांडणी नाही"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:727
 msgid "no options"
 msgstr "पर्याय नाही"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"कळफलक स्थिती पुनःदाखल केल्यास चालविण्याजोगी लिपींचा संच. xmodmap आधारीत तडजोड "
-"पुनःवापरणी करीता फायदेशीर ठरते"
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "प्रतिमा दाखल करतेवेळी त्रुटी: %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "modmap फाइलीची यादी $HOME संचयीकेमध्ये उपलब्ध आहे."
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "किबोर्ड मांडणी"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+#| msgid "keyboard layout"
+msgid "Preview keyboard layouts"
+msgstr "किबोर्ड मांडणीचे पुनरावलोकन"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "चौकट निर्माण केल्यावर मुलभूत गटाची, नेमणूक केली जाते"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "प्रत्येक चौकटीकरीता स्वतंत्र गट ठेवा व नियंत्रीत करा"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "कळफलक अद्ययावत हातळणी"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "कळफलक मांडणी"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "कळफलक मॉडेल"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "कळफलक पर्याय"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid "Load exotic, rarely used layouts and options"
-msgstr "एक्जॉटीक, क्वचीत वापरलेली मांडणी व पर्याय लोड करा"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
-msgid "Load extra configuration items"
-msgstr "अगाऊ संरचना घटके लोड करा"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Save/restore indicators together with layout groups"
 msgstr "मांडणी गटासह सूचक संचयन/पुनःसंचयन करा"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "दुय्यम गट"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Show flags in the applet"
-msgstr "ऐपलेट मधील बाबी दर्शवा"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "सद्य मांडणी सूचीत करण्यासाठी ऐपलेटमधील बाबी दर्शवा"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Show layout names instead of group names"
 msgstr "गटातील नावं ऐवजी मांडणीतील नावं दर्शवा"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr "गटातील नावं ऐवजी मांडणीतील नावं दर्शवा (फक्त XFree बहु मांडणी समर्थीत आवृत्तीं करीता)"
+msgstr ""
+"गटातील नावं ऐवजी मांडणीतील नावं दर्शवा (फक्त XFree बहु मांडणी समर्थीत "
+"आवृत्तीं करीता)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X sysconfig बदलले\" सावधानता संदेश दुर्लक्ष करा"
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Load extra configuration items"
+msgstr "अगाऊ संरचना घटके लोड करा"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Load exotic, rarely used layouts and options"
+msgstr "एक्जॉटीक, क्वचीत वापरलेली मांडणी व पर्याय लोड करा"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
 msgid "The Keyboard Preview, X offset"
 msgstr "कळफलक पूर्वदृश्य, X ऑफसेट"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
 msgid "The Keyboard Preview, Y offset"
 msgstr "कळफलक पूर्वदृश्य, Y ऑफसेट"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
-msgid "The Keyboard Preview, height"
-msgstr "कळफलक पूर्वदृश्य, उंची"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
 msgid "The Keyboard Preview, width"
 msgstr "कळफलक पूर्वदृश्य, रुंदी"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "उपलब्ध कळफलक सूचक प्लगईनची यादी"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, height"
+msgstr "कळफलक पूर्वदृश्य, उंची"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
-msgid "keyboard layout"
-msgstr "कळफलक मांडणी"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "Secondary groups"
+msgstr "दुय्यम गट"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "Show flags in the applet"
+msgstr "ऐपलेट मधील बाबी दर्शवा"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "सद्य मांडणी सूचीत करण्यासाठी ऐपलेटमधील बाबी दर्शवा"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The font family"
+msgstr "फाँट फॅमिलि"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The font family for the layout indicator"
+msgstr "लेआउट इंडिकेटरकरीता फाँट फॅमिलि"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font size"
+msgstr "फाँट आकार"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font size for the layout indicator"
+msgstr "लेआउट इंडिकेटरकरीता फाँट आकार"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The foreground color"
+msgstr "पृष्ठभूमी रंग"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The foreground color for the layout indicator"
+msgstr "लेआउट इंडिकेटरकरीता पृष्ठभूमी रंग"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The background color"
+msgstr "पार्श्वभूमी रंग"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The background color for the layout indicator"
+msgstr "लेआउट इंडिकेटरकरीता पार्श्वभूमी रंग"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard model"
+msgstr "कळफलक मॉडेल"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
 msgid "keyboard model"
 msgstr "कळफलक प्रारूप"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
-msgid "modmap file list"
-msgstr "modmap फाइल यादी"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard layout"
+msgstr "कळफलक मांडणी"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "अधिक प्लगईन सक्रीय करा"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "कळफलक मांडणी"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "सक्रीय प्लगईन (_p):"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "संवाद बंद करा"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "निवडलेल्या प्लगईनची संयोजन करा"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "निवडलेले प्लगईन सक्रीय करू नका"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "प्लगईनचे प्राधान्य कमी करा"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "प्लगईनचे प्राधान्य वाढवा"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "कलफलक सूचक प्लगईन"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "सक्रीय प्लगईनची यादी"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "प्लगईन जोडा"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "उपलब्ध प्लगईन (_A):"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
-msgid "No description."
-msgstr "वर्णन नाही."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
-msgid "Unable to open help file"
-msgstr "मदत फाइल उघडण्यास अपयशी"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "GConf सुरू करण्यास अपयशी: %s\n"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "प्रतिष्ठापीत प्लगईन कार्यान्वीत/अकार्यान्वीत करा"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "कळफलक सूचक प्लगईन"
-
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "कळफलक सूचक चाचणी (%s)"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "Keyboard options"
+msgstr "कळफलक पर्याय"
 
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "सूचक:"
 
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "कळफलक स्थिती पुनःदाखल केल्यास चालविण्याजोगी लिपींचा संच. xmodmap आधारीत तडजोड "
+#~ "पुनःवापरणी करीता फायदेशीर ठरते"
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "modmap फाइलीची यादी $HOME संचयीकेमध्ये उपलब्ध आहे."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "कळफलक अद्ययावत हातळणी"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "\"X sysconfig बदलले\" सावधानता संदेश दुर्लक्ष करा"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "उपलब्ध कळफलक सूचक प्लगईनची यादी"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap फाइल यादी"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "अधिक प्लगईन सक्रीय करा"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "सक्रीय प्लगईन (_p):"
+
+#~ msgid "Close the dialog"
+#~ msgstr "संवाद बंद करा"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "निवडलेल्या प्लगईनची संयोजन करा"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "निवडलेले प्लगईन सक्रीय करू नका"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "प्लगईनचे प्राधान्य कमी करा"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "प्लगईनचे प्राधान्य वाढवा"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "कलफलक सूचक प्लगईन"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "सक्रीय प्लगईनची यादी"
+
+#~ msgid "Add Plugin"
+#~ msgstr "प्लगईन जोडा"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "उपलब्ध प्लगईन (_A):"
+
+#~ msgid "No description."
+#~ msgstr "वर्णन नाही."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "मदत फाइल उघडण्यास अपयशी"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "GConf सुरू करण्यास अपयशी: %s\n"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "प्रतिष्ठापीत प्लगईन कार्यान्वीत/अकार्यान्वीत करा"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "कळफलक सूचक प्लगईन"
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "कळफलक सूचक चाचणी (%s)"
