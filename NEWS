@@ -1,3 +1,6 @@
+3.5.90:
+	Updated 3 translations
+
 3.5.2:
 	Removed xmodmap support, would be handled in g-s-d through the scripts.
 	Some minor build fixes as well.
