@@ -235,7 +235,7 @@ msgstr "সূচক:"
 #~ msgstr "কোনো বিবৰণ উপস্থিত নাই।"
 
 #~ msgid "Unable to open help file"
-#~ msgstr "সহায় নথিপত্ৰ খুলিবলৈ ব্যৰ্থ"
+#~ msgstr "সহায় ফাইল খুলিবলৈ ব্যৰ্থ"
 
 #~ msgid "Enable/disable installed plugins"
 #~ msgstr "ইনস্টল কৰা প্লাগিনসমূহ সামৰ্থবান/অসামৰ্থবান কৰক"
@@ -251,7 +251,7 @@ msgstr "সূচক:"
 #~ "পৰিবৰ্তন পুনৰায় প্ৰয়োগ কৰিবলৈ সহায়ক।"
 
 #~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "$HOME পঞ্জিকাত উপলব্ধ modmap নথিপত্ৰৰ তালিকা।"
+#~ msgstr "$HOME পঞ্জিকাত উপলব্ধ modmap ফাইলৰ তালিকা।"
 
 #~ msgid "Keyboard Update Handlers"
 #~ msgstr "কিবৰ্ড উন্নতৰ হেন্ডলাৰ"
@@ -260,7 +260,7 @@ msgstr "সূচক:"
 #~ msgstr "\"X sysconfig changed\" সতৰ্কবাৰ্তা ৰোধ কৰক"
 
 #~ msgid "modmap file list"
-#~ msgstr "modmap নথিপত্ৰৰ তালিকা"
+#~ msgstr "modmap ফাইলৰ তালিকা"
 
 #~ msgid "Failed to init GConf: %s\n"
 #~ msgstr "GConf init কৰিবলৈ ব্যৰ্থ: %s\n"
