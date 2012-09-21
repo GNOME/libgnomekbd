@@ -4,22 +4,28 @@
 #
 # Runa Bhattacharjee <runabh@gmail.com>, 2007.
 # Runa Bhattacharjee <runab@fedoraproject.org>, 2008.
-# Runa Bhattacharjee <runab@redhat.com>, 2008, 2009.
+# Runa Bhattacharjee <runab@redhat.com>, 2008, 2009, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: bn_IN\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-08-16 20:00+0000\n"
-"PO-Revision-Date: 2009-08-26 18:02+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-02-22 23:49+0000\n"
+"PO-Revision-Date: 2012-09-21 12:26+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
-"Language-Team: Bengali INDIA <anubad@lists.ankur.org.in>\n"
+"Language-Team: Bengali (India) <anubad@lists.ankur.org.in>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.2\n"
+"Language: bn_IN\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "XKB প্রারম্ভ সংক্রান্ত সমস্যা"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2482
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -30,222 +36,240 @@ msgstr ""
 "স্বত্বাধিকার &#169; X.Org Foundation ও XKeyboardConfig নির্মাতাবৃন্দ\n"
 "লাইসেন্স সংক্রান্ত তথ্য জানার জন্য অনুগ্রহ করে প্যাকেজের মিটাডাটা দেখুন"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB প্রারম্ভ সংক্রান্ত সমস্যা"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2632
+msgid "Unknown"
+msgstr "অজানা"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "ছবি লোড করতে সমস্যা: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:699
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "বিন্যাস \"%s\""
 msgstr[1] "বিন্যাস \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:717
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "বিকল্প \"%s\""
 msgstr[1] "বিকল্প \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "মডেল \"%s\", %s এবং %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no layout"
 msgstr "কোনো বিন্যাস উপস্থিত নেই"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:727
 msgid "no options"
 msgstr "কোনো বিকল্প উপস্থিত নেই"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"কি-বোর্ডের অবস্থান লোড করার পরে সঞ্চালনের উদ্দেশ্যে স্ক্রিপ্টের সংকলন। xmodmap "
-"ভিত্তিক পরিবর্তন পুনরায় প্রয়োগ করতে সহায়ক।"
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "ছবি লোড করতে সমস্যা: %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME ডিরেক্টির মধ্যে উপলব্ধ modmap ফাইলের তালিকা।"
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "কি-বোর্ডের বিন্যাস"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+#| msgid "keyboard layout"
+msgid "Preview keyboard layouts"
+msgstr "কি-বোর্ড বিন্যাসের পূর্বদৃশ্য"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "ডিফল্ট দল, উইন্ডো নির্মাণকালে নির্ধারিত"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "প্রতিটি উইন্ডোর জন্য পৃথক সংকলন নির্ধারণ ও পরিচালনা করুন"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "কি-বোর্ড আপডেটের হ্যান্ডলার"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "কি-বোর্ডের বিন্যাস"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "কি-বোর্ডের মডেল"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "কি-বোর্ড সংক্রান্ত বিকল্প"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid "Load exotic, rarely used layouts and options"
-msgstr "বিরল ও কম ব্যবহৃত বিন্যাস ও বিকল্প লোড করা হবে"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
-msgid "Load extra configuration items"
-msgstr "কনফিগারেশনের অতিরিক্ত সামগ্রী লোড করা হবে"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Save/restore indicators together with layout groups"
 msgstr "বিন্যাসের সংকলনের সাথে সংরক্ষণ/পুনরুদ্ধার নির্দেশক"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "দ্বিতীয় সংকলন"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Show flags in the applet"
-msgstr "অ্যাপ্লেটে ফ্ল্যাগ প্রদর্শিত হবে"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "বর্তমানে ব্যবহৃত বিন্যাস নির্দেশের জন্য অ্যাপ্লেটে ফ্ল্যাগ প্রদর্শন করা হবে"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Show layout names instead of group names"
 msgstr "সংকলনের নামের পরিবর্তে বিন্যাসের নাম প্রদর্শন করা হবে"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"সংকলনের নামের পরিবর্তে বিন্যাসের নাম প্রদর্শন করা হবে (শুধুমাত্র একাধিক বিন্যাস "
+"সংকলনের নামের পরিবর্তে বিন্যাসের নাম প্রদর্শন করা হবে (শুধুমাত্র একাধিক "
+"বিন্যাস "
 "বিশিষ্ট XFree-র সংস্করণের জন্য)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "\"X sysconfig changed\" সতর্কবার্তা রোধ করা হবে"
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Load extra configuration items"
+msgstr "কনফিগারেশনের অতিরিক্ত সামগ্রী লোড করা হবে"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Load exotic, rarely used layouts and options"
+msgstr "বিরল ও কম ব্যবহৃত বিন্যাস ও বিকল্প লোড করা হবে"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
 msgid "The Keyboard Preview, X offset"
 msgstr "কি-বোর্ডের পূর্বপ্রদর্শন, X অফ-সেট"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
 msgid "The Keyboard Preview, Y offset"
 msgstr "কি-বোর্ডের পূর্বপ্রদর্শন, Y অফ-সেট"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
-msgid "The Keyboard Preview, height"
-msgstr "কি-বোর্ডের পূর্বপ্রদর্শন, উচ্চতা"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
 msgid "The Keyboard Preview, width"
 msgstr "কি-বোর্ডের পূর্বপ্রদর্শন, প্রস্থ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "সক্রিয় কি-বোর্ড নির্দেশক প্লাগ-ইনের তালিকা"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, height"
+msgstr "কি-বোর্ডের পূর্বপ্রদর্শন, উচ্চতা"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
-msgid "keyboard layout"
-msgstr "কি-বোর্ডের বিন্যাস"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "Secondary groups"
+msgstr "দ্বিতীয় সংকলন"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "Show flags in the applet"
+msgstr "অ্যাপ্লেটে ফ্ল্যাগ প্রদর্শিত হবে"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "Show flags in the applet to indicate the current layout"
+msgstr ""
+"বর্তমানে ব্যবহৃত বিন্যাস নির্দেশের জন্য অ্যাপ্লেটে ফ্ল্যাগ প্রদর্শন করা হবে"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The font family"
+msgstr "ফন্ট সংকলন"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The font family for the layout indicator"
+msgstr "বিন্যাস নির্দেশকের ক্ষেত্রে ব্যবহারযোগ্য ফন্ট সংকলন"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font size"
+msgstr "ফন্টের মাপ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font size for the layout indicator"
+msgstr "বিন্যাস নির্দেশকের ক্ষেত্রে ব্যবহারযোগ্য ফন্টের মাপ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The foreground color"
+msgstr "অগ্রভূমির রং"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The foreground color for the layout indicator"
+msgstr "বিন্যাস নির্দেশকের ক্ষেত্রে ব্যবহারযোগ্য অগ্রভূমির রং"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The background color"
+msgstr "পটভূমির রং"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The background color for the layout indicator"
+msgstr "বিন্যাস নির্দেশকের ক্ষেত্রে ব্যবহারযোগ্য পটভূমির রং"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard model"
+msgstr "কি-বোর্ডের মডেল"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
 msgid "keyboard model"
 msgstr "কি-বোর্ডের মডেল"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
-msgid "modmap file list"
-msgstr "modmap ফাইলের তালিকা"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard layout"
+msgstr "কি-বোর্ডের বিন্যাস"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "অতিরিক্ত প্লাগ-ইন সক্রিয় করুন"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "কি-বোর্ডের বিন্যাস"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "প্লাগ-ইন সক্রিয় করুন: (_p)"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "ডায়লগ বন্ধ করুন"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "নির্বাচিত প্লাগ-ইন কনফিগার করুন"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "নির্বাচিত প্লাগ-ইন নিষ্ক্রিয় করুন"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "প্লাগ-ইনের গুরুত্ব হ্রাস করুন"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "প্লাগ-ইনের গুরুত্ব বৃদ্ধি করুন"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "কি-বোর্ড নির্দেশক প্লাগ-ইন"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "সব সক্রিয় প্লাগ-ইনের তালিকা"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "প্লাগ-ইন যোগ করুন"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "উপলব্ধ প্লাগ-ইন: (_A)"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
-msgid "No description."
-msgstr "কোনো বিবরণ উপস্থিত নেই।"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
-msgid "Unable to open help file"
-msgstr "সহায়িকার ফাইল খুলতে ব্যর্থ"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "GConf init করতে ব্যর্থ: %s\n"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "ইনস্টল করা প্লাগ-ইন সক্রিয়/নিষ্ক্রিয় করুন"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "কি-বোর্ড নির্দেশকারী প্লাগ-ইন"
-
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "কি-বোর্ড নির্দেশক পরীক্ষা (%s)"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "Keyboard options"
+msgstr "কি-বোর্ড সংক্রান্ত বিকল্প"
 
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "নির্দেশক:"
 
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "কি-বোর্ডের অবস্থান লোড করার পরে সঞ্চালনের উদ্দেশ্যে স্ক্রিপ্টের সংকলন। xmodmap "
+#~ "ভিত্তিক পরিবর্তন পুনরায় প্রয়োগ করতে সহায়ক।"
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "$HOME ডিরেক্টির মধ্যে উপলব্ধ modmap ফাইলের তালিকা।"
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "কি-বোর্ড আপডেটের হ্যান্ডলার"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr "\"X sysconfig changed\" সতর্কবার্তা রোধ করা হবে"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "সক্রিয় কি-বোর্ড নির্দেশক প্লাগ-ইনের তালিকা"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap ফাইলের তালিকা"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "অতিরিক্ত প্লাগ-ইন সক্রিয় করুন"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "প্লাগ-ইন সক্রিয় করুন: (_p)"
+
+#~ msgid "Close the dialog"
+#~ msgstr "ডায়লগ বন্ধ করুন"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "নির্বাচিত প্লাগ-ইন কনফিগার করুন"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "নির্বাচিত প্লাগ-ইন নিষ্ক্রিয় করুন"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "প্লাগ-ইনের গুরুত্ব হ্রাস করুন"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "প্লাগ-ইনের গুরুত্ব বৃদ্ধি করুন"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "কি-বোর্ড নির্দেশক প্লাগ-ইন"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "সব সক্রিয় প্লাগ-ইনের তালিকা"
+
+#~ msgid "Add Plugin"
+#~ msgstr "প্লাগ-ইন যোগ করুন"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "উপলব্ধ প্লাগ-ইন: (_A)"
+
+#~ msgid "No description."
+#~ msgstr "কোনো বিবরণ উপস্থিত নেই।"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "সহায়িকার ফাইল খুলতে ব্যর্থ"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "GConf init করতে ব্যর্থ: %s\n"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "ইনস্টল করা প্লাগ-ইন সক্রিয়/নিষ্ক্রিয় করুন"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "কি-বোর্ড নির্দেশকারী প্লাগ-ইন"
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "কি-বোর্ড নির্দেশক পরীক্ষা (%s)"
