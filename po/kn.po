@@ -2,22 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Shankar Prasad <svenkate@redhat.com>, 2009.
+# Shankar Prasad <svenkate@redhat.com>, 2009, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.master.kn\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2009-08-16 20:00+0000\n"
-"PO-Revision-Date: 2009-09-20 13:57+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-02-22 23:49+0000\n"
+"PO-Revision-Date: 2012-10-05 17:15+0530\n"
 "Last-Translator: Shankar Prasad <svenkate@redhat.com>\n"
 "Language-Team: Kannada <en@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.2\n"
+"Language: kn\n"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2376
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "XKB ಆರಂಭಿಸುವಲ್ಲಿ ದೋಷ"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2482
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -28,107 +34,71 @@ msgstr ""
 "ಹಕ್ಕು &#169; X.Org ಫೌಂಡೇಶನ್ ಹಾಗು XKeyboardConfig ಸಹಾಯಕರು\n"
 "ಲೈಸೆನ್ಸಿಂಗ್ ಬಗೆಗಿನ ಮಾಹಿತಿಗಾಗಿ ಪ್ಯಾಕೇಜಿನ ಮೆಟಾಡಾಟವನ್ನು ನೋಡಿ"
 
-#: ../libgnomekbd/gkbd-indicator.c:611
-msgid "XKB initialization error"
-msgstr "XKB ಆರಂಭಿಸುವಲ್ಲಿ ದೋಷ"
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2632
+msgid "Unknown"
+msgstr "ಗೊತ್ತಿಲ್ಲದ"
 
-#: ../libgnomekbd/gkbd-indicator-config.c:161
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "ಚಿತ್ರವನ್ನು ಲೋಡ್ ಮಾಡುವಲ್ಲಿ ದೋಷ ಉಂಟಾಗಿದೆ: %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:752
+#: ../libgnomekbd/gkbd-keyboard-config.c:699
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "ವಿನ್ಯಾಸ \"%s\""
 msgstr[1] "ವಿನ್ಯಾಸಗಳು \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:771
+#: ../libgnomekbd/gkbd-keyboard-config.c:717
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "ಆಯ್ಕೆ \"%s\""
 msgstr[1] "ಆಯ್ಕೆಗಳು \"%s\""
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:779
+#: ../libgnomekbd/gkbd-keyboard-config.c:725
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "ಮಾದರಿ \"%s\", %s ಹಾಗು %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:780
+#: ../libgnomekbd/gkbd-keyboard-config.c:726
 msgid "no layout"
 msgstr "ಯಾವುದೆ ವಿನ್ಯಾಸವಿಲ್ಲ"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:781
+#: ../libgnomekbd/gkbd-keyboard-config.c:727
 msgid "no options"
 msgstr "ಯಾವುದೆ ಆಯ್ಕೆ ಇಲ್ಲ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid ""
-"A collection of scripts to run whenever the keyboard state is reloaded. "
-"Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"ಕೀಲಿಮಣೆಯನ್ನು ಮರಳಿ ಲೋಡ್ ಮಾಡಿದಾಗ ಚಲಾಯಿಸಬೇಕಿರುವ ಸ್ಕ್ರಿಪ್ಟುಗಳು. xmodmap ಆಧರಿತವಾದ "
-"ಸರಿಪಡಿಸುವಿಕೆಗಳನ್ನು ಮರಳಿ ಅನ್ವಯಿಸಲು ಸಹಕಾರಿಯಾಗುತ್ತದೆ"
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "ಚಿತ್ರವನ್ನು ಲೋಡ್ ಮಾಡುವಲ್ಲಿ ದೋಷ ಉಂಟಾಗಿದೆ: %s"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "$HOME ಕೋಶದಲ್ಲಿ ಲಭ್ಯವಿರುವ modmap ಕಡತಗಳ ಒಂದು ಪಟ್ಟಿ."
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+#| msgid "Keyboard layout"
+msgid "Keyboard Layout"
+msgstr "ಕೀಲಮಣೆ ವಿನ್ಯಾಸ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+#, fuzzy
+#| msgid "keyboard layout"
+msgid "Preview keyboard layouts"
+msgstr "ಕೀಲಮಣೆ ವಿನ್ಯಾಸ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
 msgstr "ಪೂರ್ವನಿಯೋಜಿತ ಗುಂಪು, ವಿಂಡೋ ನಿರ್ಮಾಣದಲ್ಲಿ ನಿಯೋಜಿಸಲಾಗಿದೆ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
 msgstr "ಪ್ರತಿ ವಿಂಡೋಗಾಗಿ ಪ್ರತ್ಯೇಕ ಗುಂಪನ್ನು ಇರಿಸಿಕೊಳ್ಳಿ ಹಾಗು ನಿರ್ವಹಿಸಿ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "ಕೀಲಿಮಣೆ ಅಪ್‌ಡೇಟ್ ಹ್ಯಾಂಡ್ಲರ್"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
-msgstr "ಕೀಲಮಣೆ ವಿನ್ಯಾಸ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "ಕೀಲಮಣೆ ಮಾದರಿ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "ಕೀಲಮಣೆ ಆಯ್ಕೆಗಳು"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid "Load exotic, rarely used layouts and options"
-msgstr "ನವೀನ, ವಿರಳವಾಗಿ ಬಳಸಲಾದ ಲೇಔಟ್‌ಗಳನ್ನು ಹಾಗು ಆಯ್ಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡು"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
-msgid "Load extra configuration items"
-msgstr "ಹೆಚ್ಚಿನ ಸಂರಚನಾ ಅಂಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಿ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Save/restore indicators together with layout groups"
 msgstr "ವಿನ್ಯಾಸ ಗುಂಪುಗಳೊಂದಿಗೆ ಸೂಚಕಗಳನ್ನು ಉಳಿಸು/ಮರಳಿ ಸ್ಥಾಪಿಸಿ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
-msgid "Secondary groups"
-msgstr "ಅಪ್ರಮುಖವಾದ ಗುಂಪುಗಳು"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
-msgid "Show flags in the applet"
-msgstr "ಆಪ್ಲೆಟ್‌ನಲ್ಲಿ ಗುರುತನ್ನು ತೋರಿಸು"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "ಪ್ರಸಕ್ತ ವಿನ್ಯಾಸವನ್ನು ಸೂಚಿಸಲು ಆಪ್ಲೆಟ್‌ನಲ್ಲಿ ಗುರುತನ್ನು ತೋರಿಸು"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Show layout names instead of group names"
 msgstr "ಗುಂಪಿನ ಹೆಸರುಗಳ ಬದಲು ವಿನ್ಯಾಸದ ಹೆಸರುಗಳನ್ನು ತೋರಿಸು"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -136,114 +106,167 @@ msgstr ""
 "ಗುಂಪಿನ ಹೆಸರುಗಳ ಬದಲು ವಿನ್ಯಾಸದ ಹೆಸರುಗಳನ್ನು ತೋರಿಸು (ಕೇವಲ XFree ಬೆಂಬಲವಿರುವ ಅನೇಕ "
 "ವಿನ್ಯಾಸಗಳಿಗಾಗಿನ ಆವೃತ್ತಿಗಾಗಿ ಮಾತ್ರ)"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr " \"X sysconfig changed\" ಎಚ್ಚರಿಕೆ ಸಂದೇಶವನ್ನು ತಡೆಹಿಡಿ"
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Load extra configuration items"
+msgstr "ಹೆಚ್ಚಿನ ಸಂರಚನಾ ಅಂಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಿ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Load exotic, rarely used layouts and options"
+msgstr "ನವೀನ, ವಿರಳವಾಗಿ ಬಳಸಲಾದ ಲೇಔಟ್‌ಗಳನ್ನು ಹಾಗು ಆಯ್ಕೆಗಳನ್ನು ಲೋಡ್ ಮಾಡು"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
 msgid "The Keyboard Preview, X offset"
 msgstr "ಕೀಲಿಮಣೆ ಮುನ್ನೋಟ, X ಆಫ್‌ಸೆಟ್"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
 msgid "The Keyboard Preview, Y offset"
 msgstr "ಕೀಲಿಮಣೆ ಮುನ್ನೋಟ, Y ಆಫ್‌ಸೆಟ್"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
-msgid "The Keyboard Preview, height"
-msgstr "ಕೀಲಿಮಣೆ ಮುನ್ನೋಟ, ಎತ್ತರ"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
 msgid "The Keyboard Preview, width"
 msgstr "ಕೀಲಿಮಣೆ ಮುನ್ನೋಟ, ಅಗಲ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "ಶಕ್ತಗೊಳಿಸಲಾದ ಕೀಲಿಮಣೆ ಸೂಚಕ ಪ್ಲಗ್‌ಇನ್‌ಗಳ ಪಟ್ಟಿ"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, height"
+msgstr "ಕೀಲಿಮಣೆ ಮುನ್ನೋಟ, ಎತ್ತರ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
-msgid "keyboard layout"
-msgstr "ಕೀಲಮಣೆ ವಿನ್ಯಾಸ"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "Secondary groups"
+msgstr "ಅಪ್ರಮುಖವಾದ ಗುಂಪುಗಳು"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "Show flags in the applet"
+msgstr "ಆಪ್ಲೆಟ್‌ನಲ್ಲಿ ಗುರುತನ್ನು ತೋರಿಸು"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "ಪ್ರಸಕ್ತ ವಿನ್ಯಾಸವನ್ನು ಸೂಚಿಸಲು ಆಪ್ಲೆಟ್‌ನಲ್ಲಿ ಗುರುತನ್ನು ತೋರಿಸು"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The font family"
+msgstr "ಅಕ್ಷರ ಶೈಲಿಯ ಪರಿವಾರ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The font family for the layout indicator"
+msgstr ""
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font size"
+msgstr "ಅಕ್ಷರಶೈಲಿ ಗಾತ್ರ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font size for the layout indicator"
+msgstr ""
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The foreground color"
+msgstr "ಮುನ್ನೆಲೆ ಬಣ್ಣ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The foreground color for the layout indicator"
+msgstr ""
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The background color"
+msgstr "ಹಿನ್ನೆಲೆ ಬಣ್ಣ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The background color for the layout indicator"
+msgstr ""
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard model"
+msgstr "ಕೀಲಮಣೆ ಮಾದರಿ"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
 msgid "keyboard model"
 msgstr "ಕೀಲಮಣೆ ಮಾದರಿ"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
-msgid "modmap file list"
-msgstr "modmap ಕಡತದ ಪಟ್ಟಿ"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard layout"
+msgstr "ಕೀಲಮಣೆ ವಿನ್ಯಾಸ"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "ಇನ್ನಷ್ಟು ಪ್ಲಗ್‌ ಇನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸು"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "ಕೀಲಮಣೆ ವಿನ್ಯಾಸ"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳು(_p):"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "ಸಂವಾದವನ್ನು ಮುಚ್ಚು"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಪ್ಲಗ್‌ಇನ್ ಅನ್ನು ಸಂರಚಿಸು"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಪ್ಲಗ್‌ಇನ್ ಅನ್ನು ಅಶಕ್ತಗೊಳಿಸು"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "ಪ್ಲಗ್‌ಇನ್ ಆದ್ಯತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡು"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "ಪ್ಲಗ್‌ಇನ್ ಆದ್ಯತೆಯನ್ನು ಹೆಚ್ಚು ಮಾಡು"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "ಕೀಲಿಮಣೆ ಸೂಚಕ ಪ್ಲಗ್‌ಇನ್‌ಗಳು"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳ ಪಟ್ಟಿ"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "ಪ್ಲಗ್‌ಇನ್‌ ಅನ್ನು ಸೇರಿಸು"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "ಲಭ್ಯವಿರುವ ಪ್ಲಗ್‌ಇನ್‌ಗಳು(_A):"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:118
-#: ../capplet/gkbd-indicator-plugins-add.c:106
-msgid "No description."
-msgstr "ಯಾವುದೆ ವಿವರಣೆ ಇಲ್ಲ."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:256
-msgid "Unable to open help file"
-msgstr "ನೆರವಿನ ಕಡತವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:372
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "GConf ಅನ್ನು init ಮಾಡುವಲ್ಲಿ ವಿಫಲತೆ: %s\n"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "ಅನುಸ್ಥಾಪಿಸಲಾದ ಪ್ಲಗ್‌ಇನ್‌ಗಳನ್ನು ಶಕ್ತಗೊಳಿಸು/ಅಶಕ್ತಗೊಳಿಸು"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "ಕೀಲಿಮಣೆ ಸೂಚಕ ಪ್ಲಗ್‌ಇನ್‌ಗಳು"
-
-#: ../test/gkbd-indicator-test.c:57
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "ಕೀಲಿಮಣೆ ಸೂಚಕ ಪರೀಕ್ಷೆ (%s)"
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "Keyboard options"
+msgstr "ಕೀಲಮಣೆ ಆಯ್ಕೆಗಳು"
 
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "ಸೂಚಕ:"
 
+#~ msgid ""
+#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
+#~ "Useful for re-applying xmodmap based adjustments"
+#~ msgstr ""
+#~ "ಕೀಲಿಮಣೆಯನ್ನು ಮರಳಿ ಲೋಡ್ ಮಾಡಿದಾಗ ಚಲಾಯಿಸಬೇಕಿರುವ ಸ್ಕ್ರಿಪ್ಟುಗಳು. xmodmap ಆಧರಿತವಾದ "
+#~ "ಸರಿಪಡಿಸುವಿಕೆಗಳನ್ನು ಮರಳಿ ಅನ್ವಯಿಸಲು ಸಹಕಾರಿಯಾಗುತ್ತದೆ"
+
+#~ msgid "A list of modmap files available in the $HOME directory."
+#~ msgstr "$HOME ಕೋಶದಲ್ಲಿ ಲಭ್ಯವಿರುವ modmap ಕಡತಗಳ ಒಂದು ಪಟ್ಟಿ."
+
+#~ msgid "Keyboard Update Handlers"
+#~ msgstr "ಕೀಲಿಮಣೆ ಅಪ್‌ಡೇಟ್ ಹ್ಯಾಂಡ್ಲರ್"
+
+#~ msgid "Suppress the \"X sysconfig changed\" warning message"
+#~ msgstr " \"X sysconfig changed\" ಎಚ್ಚರಿಕೆ ಸಂದೇಶವನ್ನು ತಡೆಹಿಡಿ"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "ಶಕ್ತಗೊಳಿಸಲಾದ ಕೀಲಿಮಣೆ ಸೂಚಕ ಪ್ಲಗ್‌ಇನ್‌ಗಳ ಪಟ್ಟಿ"
+
+#~ msgid "modmap file list"
+#~ msgstr "modmap ಕಡತದ ಪಟ್ಟಿ"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "ಇನ್ನಷ್ಟು ಪ್ಲಗ್‌ ಇನ್‌ಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸು"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳು(_p):"
+
+#~ msgid "Close the dialog"
+#~ msgstr "ಸಂವಾದವನ್ನು ಮುಚ್ಚು"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಪ್ಲಗ್‌ಇನ್ ಅನ್ನು ಸಂರಚಿಸು"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "ಆಯ್ಕೆ ಮಾಡಲಾದ ಪ್ಲಗ್‌ಇನ್ ಅನ್ನು ಅಶಕ್ತಗೊಳಿಸು"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "ಪ್ಲಗ್‌ಇನ್ ಆದ್ಯತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡು"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "ಪ್ಲಗ್‌ಇನ್ ಆದ್ಯತೆಯನ್ನು ಹೆಚ್ಚು ಮಾಡು"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "ಕೀಲಿಮಣೆ ಸೂಚಕ ಪ್ಲಗ್‌ಇನ್‌ಗಳು"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "ಸಕ್ರಿಯ ಪ್ಲಗ್‌ಇನ್‌ಗಳ ಪಟ್ಟಿ"
+
+#~ msgid "Add Plugin"
+#~ msgstr "ಪ್ಲಗ್‌ಇನ್‌ ಅನ್ನು ಸೇರಿಸು"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "ಲಭ್ಯವಿರುವ ಪ್ಲಗ್‌ಇನ್‌ಗಳು(_A):"
+
+#~ msgid "No description."
+#~ msgstr "ಯಾವುದೆ ವಿವರಣೆ ಇಲ್ಲ."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "ನೆರವಿನ ಕಡತವನ್ನು ತೆರೆಯಲು ಸಾಧ್ಯವಾಗಿಲ್ಲ"
+
+#~ msgid "Failed to init GConf: %s\n"
+#~ msgstr "GConf ಅನ್ನು init ಮಾಡುವಲ್ಲಿ ವಿಫಲತೆ: %s\n"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "ಅನುಸ್ಥಾಪಿಸಲಾದ ಪ್ಲಗ್‌ಇನ್‌ಗಳನ್ನು ಶಕ್ತಗೊಳಿಸು/ಅಶಕ್ತಗೊಳಿಸು"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "ಕೀಲಿಮಣೆ ಸೂಚಕ ಪ್ಲಗ್‌ಇನ್‌ಗಳು"
+
+#~ msgid "Keyboard Indicator Test (%s)"
+#~ msgstr "ಕೀಲಿಮಣೆ ಸೂಚಕ ಪರೀಕ್ಷೆ (%s)"
