@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: Tajik Gnome\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-10 09:29+0000\n"
-"PO-Revision-Date: 2013-01-21 15:36+0500\n"
+"POT-Creation-Date: 2013-12-19 14:38+0000\n"
+"PO-Revision-Date: 2014-01-28 22:32+0500\n"
 "Last-Translator: Victor Ibragimov <victor.ibragimov@gmail.com>\n"
 "Language-Team: \n"
-"Language: Tajik\n"
+"Language: tg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
-msgstr ""
+msgstr "Хатои омодасозии XKB"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2485
 #, c-format
@@ -30,6 +30,9 @@ msgid ""
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
+"Тарҳбандии клавиатура \"%s\"\n"
+"Ҳуқуқи муаллиф &#169; Ташкилоти X.Org ва саҳмгузорони XKeyboardConfig\n"
+"Барои иҷозатдиҳӣ ба бастаи метаиттилоот муроҷиат намоед"
 
 #: ../libgnomekbd/gkbd-keyboard-drawing.c:2635
 msgid "Unknown"
@@ -40,31 +43,32 @@ msgstr "Номаълум"
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "тарҳбандии \"%s\""
+msgstr[1] "тарҳбандии \"%s\""
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "имкони \"%s\""
+msgstr[1] "имкони \"%s\""
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
 msgid "model \"%s\", %s and %s"
-msgstr ""
+msgstr "намунаи \"%s\", %s ва %s"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
-msgstr ""
+msgstr "тарҳбандӣ нест"
 
 #: ../libgnomekbd/gkbd-keyboard-config.c:740
 msgid "no options"
-msgstr ""
+msgstr "имконот нест"
 
 #: ../libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
-msgstr ""
+msgstr "Ҳангоми боркунии тасвир хатогӣ ба вуҷуд омад: %s"
 
 #: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
 #: ../libgnomekbd/show-layout.ui.h:1
@@ -73,65 +77,67 @@ msgstr "Тарҳбандии клавиатура"
 
 #: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
 msgid "Preview keyboard layouts"
-msgstr ""
+msgstr "Пешнамоиши тарҳбандии клавиатура"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
 msgid "Default group, assigned on window creation"
-msgstr ""
+msgstr "Гурӯҳи пешфарзе, ки ҳангоми эҷоди равзана таъйин шуд"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
 msgid "Keep and manage separate group per window"
-msgstr ""
+msgstr "Нигоҳ доштан ва идора кардани гурӯҳи алоҳида барои ҳар равзана"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
 msgid "Save/restore indicators together with layout groups"
-msgstr ""
+msgstr "Захира/барқарор кардани индикаторҳо бо гурӯҳҳои тарҳбандӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Show layout names instead of group names"
-msgstr ""
+msgstr "Намоиш додани номҳои тарҳбандӣ ба ҷои номҳои гурӯҳӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
+"Намоиш додани номҳои тарҳбандӣ ба ҷои номҳои гурӯҳӣ (танҳо барои версияҳои "
+"XFree бо дастгирии якчанд тарҳбандӣ)"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
 msgid "Load extra configuration items"
-msgstr ""
+msgstr "Бор кардани объектҳои танзимотии иловагӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
 msgid "Load exotic, rarely used layouts and options"
-msgstr ""
+msgstr "Боргирии тарҳбандиҳои ғайриоддӣ, камчин ва имконот"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
 msgid "The Keyboard Preview, X offset"
-msgstr ""
+msgstr "Пешнамоиши клавиатура, тағйирёбии X"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
 msgid "The Keyboard Preview, Y offset"
-msgstr ""
+msgstr "Пешнамоиши клавиатура, тағйирёбии Y"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
 msgid "The Keyboard Preview, width"
-msgstr ""
+msgstr "Пешнамоиши клавиатура, бар"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, height"
-msgstr ""
+msgstr "Пешнамоиши клавиатура, баландӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
 msgid "Secondary groups"
-msgstr ""
+msgstr "Гурӯҳҳои иловагӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
 msgid "Show flags in the applet"
-msgstr ""
+msgstr "Намоиш додани байрақчаҳо дар зербарнома"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
+msgstr "Намоиш додани байрақчаҳо дар зербарнома барои намоиши тарҳбандии ҷорӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
 msgid "The font family"
@@ -139,7 +145,7 @@ msgstr "Гурӯҳи шрифт"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
 msgid "The font family for the layout indicator"
-msgstr ""
+msgstr "Гурӯҳи шрифтҳо барои индикатори тарҳбандӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
 msgid "The font size"
@@ -147,15 +153,15 @@ msgstr "Андозаи шрифт"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
 msgid "The font size for the layout indicator"
-msgstr ""
+msgstr "Андозаи шрифт барои индикатори тарҳбандӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
 msgid "The foreground color"
-msgstr ""
+msgstr "Ранги пешзамина"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The foreground color for the layout indicator"
-msgstr ""
+msgstr "Ранги пешзамина барои индикатори тарҳбандӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The background color"
@@ -163,15 +169,15 @@ msgstr "Ранги пасзамина"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
 msgid "The background color for the layout indicator"
-msgstr ""
+msgstr "Ранги пасзамина барои индикатори тарҳбандӣ"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
 msgid "Keyboard model"
-msgstr ""
+msgstr "Намунаи клавиатура"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
 msgid "keyboard model"
-msgstr ""
+msgstr "намунаи клавиатура"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
 msgid "Keyboard layout"
@@ -183,8 +189,8 @@ msgstr "Тарҳбандии клавиатура"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
 msgid "Keyboard options"
-msgstr ""
+msgstr "Имконоти клавиатура"
 
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
-msgstr ""
+msgstr "Индикатор:"
