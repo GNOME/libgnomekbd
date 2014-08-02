@@ -1000,7 +1000,7 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 	gint padding;
 	gint g, l, glp;
 
-	if (!drawing->xkb)
+	if (!drawing->xkb || keycode == INVALID_KEYCODE)
 		return;
 
 	padding = 23 * context->scale_numerator / context->scale_denominator;	/* 2.3mm */
@@ -1742,8 +1742,6 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 							      xkbkey->name.
 							      name);
 
-				if (keycode == INVALID_KEYCODE)
-					continue;
 #ifdef KBDRAW_DEBUG
 				printf
 				    ("    initing key %d, shape: %p(%p + %d), code: %u\n",
