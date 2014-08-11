@@ -1945,26 +1945,10 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 		switch (kev->any.xkb_type) {
 		case XkbStateNotify:
 			if (((kev->state.changed & modifier_change_mask) &&
-			     drawing->track_modifiers)) {
-				free_cdik (drawing);
-				if (drawing->track_modifiers)
-					gkbd_keyboard_drawing_set_mods
-					    (drawing,
-					     kev->state.compat_state);
-				drawing->keys =
-				    g_new0 (GkbdKeyboardDrawingKey,
-					    drawing->xkb->max_key_code +
-					    1);
-
-				gtk_widget_get_allocation (GTK_WIDGET
-							   (drawing),
-							   &allocation);
-				size_allocate (GTK_WIDGET (drawing),
-					       &allocation, drawing);
-
-				init_keys_and_doodads (drawing);
-				init_colors (drawing);
-			}
+			     drawing->track_modifiers))
+				gkbd_keyboard_drawing_set_mods
+				    (drawing,
+				     kev->state.compat_state);
 			break;
 
 		case XkbIndicatorStateNotify:
