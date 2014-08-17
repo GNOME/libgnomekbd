@@ -1,28 +1,31 @@
 # libgnomekbd Finnish translation
 # Copyright (C) 2007-2008 Free Software Foundation Inc.
 #
+#
 # Ilkka Tuohela <hile@iki.fi>, 2007-2009.
 # Tommi Vainikainen <thv@iki.fi>, 2010-2011.
-#
+# Lasse Liehu <lasse.liehu@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-09 16:40+0300\n"
-"PO-Revision-Date: 2011-06-09 16:40+0300\n"
-"Last-Translator: Tommi Vainikainen <thv@iki.fi>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-08-08 21:24+0000\n"
+"PO-Revision-Date: 2014-08-09 13:13+0300\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.5\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:560
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB-alustusvirhe"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2463
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2485
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -33,34 +36,34 @@ msgstr ""
 "Tekijänoikeudet &#169; X.Org Foundation ja XKeyboardConfig-avustajat\n"
 "Katso lisensointiehdot paketin metatiedoista"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2613
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2635
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:698
+#: ../libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
 msgstr[0] "asettelu ”%s”"
 msgstr[1] "asettelut ”%s”"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:716
+#: ../libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
 msgstr[0] "lisävalinta ”%s”"
 msgstr[1] "lisävalinnat ”%s”"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:724
+#: ../libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
 msgid "model \"%s\", %s and %s"
 msgstr "malli ”%s”, %s ja %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:725
+#: ../libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
 msgstr "ei asettelua"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:726
+#: ../libgnomekbd/gkbd-keyboard-config.c:740
 msgid "no options"
 msgstr "ei lisävalintoja"
 
@@ -87,22 +90,14 @@ msgid "Keep and manage separate group per window"
 msgstr "Säilytä ja hallitse erillisiä ryhmiä ikkunoille"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
-msgid "Load exotic, rarely used layouts and options"
-msgstr "Lataa harvemmin käytettyjä asetteluita ja valintoja"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
-msgid "Load extra configuration items"
-msgstr "Lataa lisäasetteluita"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid "Save/restore indicators together with layout groups"
 msgstr "Tallenna ja palauta ilmaisimet asetteluryhmien mukana"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
 msgid "Show layout names instead of group names"
 msgstr "Näytä asettelujen nimet ryhmänimien sijasta"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -110,194 +105,94 @@ msgstr ""
 "Näytä asettelujen nimet ryhmänimien sijasta (vain XFree-versiolla, jotka "
 "tukevat useita asetteluja)"
 
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Load extra configuration items"
+msgstr "Lataa lisäasetteluita"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Lataa harvemmin käytettyjä asetteluita ja valintoja"
+
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
-msgid "Secondary groups"
-msgstr "Toissijaiset ryhmät"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
-msgid "Show flags in the applet"
-msgstr "Näytä liput sovelmassa"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Näytä sovelmassa lippu ilmaisemaan tämänhetkistä asettelua"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
 msgid "The Keyboard Preview, X offset"
 msgstr "Näppäimistön esikatselu, X-sijainti"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
 msgid "The Keyboard Preview, Y offset"
 msgstr "Näppäimistön esikatselu, Y-sijainti"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
-msgid "The Keyboard Preview, height"
-msgstr "Näppäimistön esikatselun korkeus"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
 msgid "The Keyboard Preview, width"
 msgstr "Näppäimistön esikatselun leveys"
 
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, height"
+msgstr "Näppäimistön esikatselun korkeus"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "Secondary groups"
+msgstr "Toissijaiset ryhmät"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "Show flags in the applet"
+msgstr "Näytä liput sovelmassa"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Näytä sovelmassa lippu ilmaisemaan tämänhetkistä asettelua"
+
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
-msgid "The background color"
-msgstr "Taustaväri"
+msgid "The font family"
+msgstr "Fonttiperhe"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
-msgid "The background color for the layout indicator"
-msgstr "Asetteluilmaisimen taustaväri"
+msgid "The font family for the layout indicator"
+msgstr "Asetteluilmaisimen fonttiperhe"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
-msgid "The font family"
-msgstr "Kirjasinperhe"
+msgid "The font size"
+msgstr "Fontin koko"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
-msgid "The font family for the layout indicator"
-msgstr "Asetteluilmaisimen kirjasinperhe"
+msgid "The font size for the layout indicator"
+msgstr "Asetteluilmaisimen fontin koko"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
-msgid "The font size"
-msgstr "Kirjasimen koko"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
-msgid "The font size for the layout indicator"
-msgstr "Asetteluilmaisimen kirjasimen koko"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
 msgid "The foreground color"
 msgstr "Edustaväri"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
 msgid "The foreground color for the layout indicator"
 msgstr "Asetteluilmaisimen edustaväri"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Luettelo käytössä olevista näppäimistön huomautusliitännäisistä"
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The background color"
+msgstr "Taustaväri"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The background color for the layout indicator"
+msgstr "Asetteluilmaisimen taustaväri"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
-msgid "Keyboard layout"
-msgstr "Näppäimistöasettelu"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
 msgid "Keyboard model"
 msgstr "Näppäimistön malli"
 
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "keyboard model"
+msgstr "näppäimistön malli"
+
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
-msgid "Keyboard options"
-msgstr "Näppäimistön lisävalinnat"
+msgid "Keyboard layout"
+msgstr "Näppäimistöasettelu"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
 msgid "keyboard layout"
 msgstr "näppäimistön asettelu"
 
 #: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
-msgid "keyboard model"
-msgstr "näppäimistön malli"
+msgid "Keyboard options"
+msgstr "Näppäimistön lisävalinnat"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "Ota lisää liitännäisiä käyttöön"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "Käytössä olevat _liitännäiset:"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "Sulje valintaikkuna"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "Valitun liitännäisen asetukset"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "Poista valittu liitännäinen käytöstä"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "Pienennä liitännäisen tärkeyttä"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "Kasvata liitännäisen tärkeyttä"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "Näppäimistöilmaisimen liitännäiset"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "Aktiiviset liitännäiset"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "Lisää liitännäinen"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "S_aatavilla olevat liitännäiset:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:125
-#: ../capplet/gkbd-indicator-plugins-add.c:110
-msgid "No description."
-msgstr "Ei kuvausta."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:248
-msgid "Unable to open help file"
-msgstr "ohjetiedostoa ei voi avata"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Määritä käytössä olevat asennetut liitännäiset"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Näppäimistöilmaisimen liitännäiset"
-
-#: ../test/gkbd-indicator-test.c:65
+#: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Ilmaisin:"
-
-#~ msgid ""
-#~ "A collection of scripts to run whenever the keyboard state is reloaded. "
-#~ "Useful for re-applying xmodmap based adjustments"
-#~ msgstr ""
-#~ "Joukko skriptejä, jotka suoritetaan ladattaessa näppäimistön tila "
-#~ "uudestaan. Hyödyllinen xmodmap-pohjaisten muutosten toteuttamisessa."
-
-#~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "Luettelo $HOME-kansiossa olevista modmap-tiedostoista."
-
-#~ msgid "Keyboard Update Handlers"
-#~ msgstr "Näppäimistön päivityksen käsittelijät"
-
-#~ msgid "Suppress the \"X sysconfig changed\" warning message"
-#~ msgstr "Älä näytä ”X sysconfig changed”-varoitusviestiä"
-
-#~ msgid "modmap file list"
-#~ msgstr "luettelo modmap-tiedostoista"
-
-#~ msgid "Failed to init GConf: %s\n"
-#~ msgstr "GConfia ei voitu alustaa: %s\n"
-
-#~ msgid "Keyboard Indicator Test (%s)"
-#~ msgstr "Näppäimistöilmaisimen testi (%s)"
-
-#~ msgid ""
-#~ "Keyboard settings in gconf will be overridden from the system ASAP "
-#~ "(deprecated)"
-#~ msgstr ""
-#~ "Näppäimistön valinnat gconfista ohitetaan järjestelmästä mahdollisimman "
-#~ "nopeasti (vanhentunut)"
-
-#~ msgid ""
-#~ "Very soon, keyboard settings in gconf will be overridden (from the system "
-#~ "configuration) This key has been deprecated since GNOME 2.12, please "
-#~ "unset the model, layouts and options keys to get the default system "
-#~ "configuration."
-#~ msgstr ""
-#~ "Hyvin pian, gconf-pohjaiset näppäimistöasetukset ohitetaan järjestelmän "
-#~ "määrittelyillä. Tämä valinta ei ole ollut käytössä Gnome 2.12-julkaisun "
-#~ "jälkeen. Poista mallin, asettelujen ja valintojen asetukset, jos haluat "
-#~ "järjestelmän oletusmäärittelyn."
