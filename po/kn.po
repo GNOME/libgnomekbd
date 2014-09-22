@@ -1,26 +1,26 @@
 # translation of libgnomekbd.master.kn.po to Kannada
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Shankar Prasad <svenkate@redhat.com>, 2009.
-# Shankar Prasad <svenkate@redhat.com>, 2009, 2013.
+# Shankar Prasad <svenkate@redhat.com>, 2009, 2013, 2014.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 14:46+0530\n"
-"PO-Revision-Date: 2013-10-27 02:30-0400\n"
-"Last-Translator: Shankar Prasad <svenkate@redhat.com>\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-09-02 09:29+0000\n"
+"PO-Revision-Date: 2014-09-22 12:44+0530\n"
+"Last-Translator: Shankar Prasad <svenkate AT redhat Dot com>\n"
 "Language-Team: Kannada <kde-i18n-doc@kde.org>\n"
+"Language: kn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: kn\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Zanata 3.2.3\n"
+"X-Generator: Lokalize 1.5\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:422
-#: ../libgnomekbd/gkbd-status.c:560
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB ಆರಂಭಿಸುವಲ್ಲಿ ದೋಷ"
 
@@ -195,3 +195,4 @@ msgstr "ಕೀಲಮಣೆ ಆಯ್ಕೆಗಳು"
 #: ../test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "ಸೂಚಕ:"
+
