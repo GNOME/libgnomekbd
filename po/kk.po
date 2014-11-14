@@ -1,0 +1,194 @@
+# Kazakh translation for libgnomekbd.
+# Copyright (C) 2014 libgnomekbd's COPYRIGHT HOLDER
+# This file is distributed under the same license as the libgnomekbd package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2014-11-09 22:24+0000\n"
+"PO-Revision-Date: 2014-11-14 09:01+0600\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 1.6.9\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "XKB инициализация қатесі"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2485
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Пернетақта жаймасы \"%s\"\n"
+"Copyright &#169; X.Org Foundation және XKeyboardConfig үлес қосушылары\n"
+"Лицензия жөнінде десте метаақпаратын қараңыз"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2635
+msgid "Unknown"
+msgstr "Белгісіз"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "жайма \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "опция \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "модель \"%s\", %s және %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "жайма жоқ"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "опциялар жоқ"
+
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Суретті жүктеу қатесі: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Пернетақта жаймасы"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Пернетақта жаймаларын алдын-ала қарау"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+msgid "Default group, assigned on window creation"
+msgstr "Үнсіз келісім тобы, терезе жасалған кезде оған тағайындалады"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+msgid "Keep and manage separate group per window"
+msgstr "Әр терезе үшін бөлек топтарды қолдану"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
+msgid "Save/restore indicators together with layout groups"
+msgstr "Индикаторларды жаймалар топтарымен бірге сақтау/қалпына келтіру"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
+msgid "Show layout names instead of group names"
+msgstr "Топтар аттары орнына жаймалар аттарын көрсету"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Топтар аттары орнына жаймалар аттарын көрсету (XFree нұсқасы бірнеше жайманы "
+"қолдаса ғана)"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Load extra configuration items"
+msgstr "Қосымша баптаулар нәрселерін жүктеу"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Экзотикалық, сирек қолданылатын жаймалар және опцияларды жүктеу"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "The Keyboard Preview, X offset"
+msgstr "Пернетақтаны алдын-ала қарау, X шегінісі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "The Keyboard Preview, Y offset"
+msgstr "Пернетақтаны алдын-ала қарау, Y шегінісі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "The Keyboard Preview, width"
+msgstr "Пернетақтаны алдын-ала қарау, ені"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, height"
+msgstr "Пернетақтаны алдын-ала қарау, биіктігі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "Secondary groups"
+msgstr "Екіншілік топтар"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "Show flags in the applet"
+msgstr "Апплетте жалаушаларды көрсету"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Апплетте ағымдағы жайманы көрсету үшін жалаушаларды қолдану"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The font family"
+msgstr "Қаріптер отбасы"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The font family for the layout indicator"
+msgstr "Жайма индикаторы үшін қаріптер отбасы"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font size"
+msgstr "Қаріп өлшемі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font size for the layout indicator"
+msgstr "Жайма индикаторы үшін қаріп өлшемі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The foreground color"
+msgstr "Алдыңғы көрініс түсі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The foreground color for the layout indicator"
+msgstr "Жайма индикаторы үшін алдыңғы көрініс түсі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The background color"
+msgstr "Фон түсі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The background color for the layout indicator"
+msgstr "Жайма индикаторы үшін фон түсі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard model"
+msgstr "Пернетақта моделі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "keyboard model"
+msgstr "пернетақта моделі"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard layout"
+msgstr "Пернетақта жаймасы"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "пернетақта жаймасы"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "Keyboard options"
+msgstr "Пернетақта опциялары"
+
+#: ../test/gkbd-indicator-test.c:66
+msgid "Indicator:"
+msgstr "Индикатор:"
