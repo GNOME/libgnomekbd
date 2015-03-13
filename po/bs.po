@@ -1,0 +1,197 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: libgnomekbd\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2015-02-26 22:46+0000\n"
+"PO-Revision-Date: 2015-02-04 16:15+0000\n"
+"Last-Translator: Samir Ribić <Unknown>\n"
+"Language-Team: Bosnian <bs@li.org>\n"
+"Language: bs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Launchpad-Export-Date: 2015-02-05 07:03+0000\n"
+"X-Generator: Launchpad (build 17331)\n"
+
+#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+msgid "XKB initialization error"
+msgstr "Ne mogu da pokrenem XKB"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2485
+#, c-format
+msgid ""
+"Keyboard layout \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Raspored tastature \"%s\"\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing seje package metadata"
+
+#: ../libgnomekbd/gkbd-keyboard-drawing.c:2635
+msgid "Unknown"
+msgstr "Nepoznato"
+
+#         translations.
+#: ../libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "raspored \"%s\""
+msgstr[1] "rasporedi \"%s\""
+msgstr[2] "rasporedi \"%s\""
+
+#         translations.
+#: ../libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opcija \"%s\""
+msgstr[1] "opcije \"%s\""
+msgstr[2] "opcije \"%s\""
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "model \"%s\", %s i %s"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "nema rasporeda"
+
+#: ../libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "nema opcija"
+
+#: ../libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Dogodila se greška prilikom učitavanja slike: %s"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
+#: ../libgnomekbd/show-layout.ui.h:1
+msgid "Keyboard Layout"
+msgstr "Raspored tastature"
+
+#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
+msgid "Preview keyboard layouts"
+msgstr "Pregled rasporeda tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+msgid "Default group, assigned on window creation"
+msgstr "Podrazumijevana grupa, dodijeljena po pravljenju prozora"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+msgid "Keep and manage separate group per window"
+msgstr "Drži i radi sa odvojenom grupom po prozoru"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
+msgid "Save/restore indicators together with layout groups"
+msgstr "Sačuvaj/vrati pokazatelje zajedno sa grupama rasporeda"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
+msgid "Show layout names instead of group names"
+msgstr "Prikaži nazive rasporeda umjesto imena grupa"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Prikaži nazive rasporeda umjesto imena grupa (samo za XFree izdanja koja "
+"podržavaju više rasporeda)"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+msgid "Load extra configuration items"
+msgstr "Učitava dodatne stavke za podešavanje"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Učitava neobične, rijetko korišćenje rasporede i opcije"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+msgid "The Keyboard Preview, X offset"
+msgstr "Pregled tastature, X pomjeraj"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+msgid "The Keyboard Preview, Y offset"
+msgstr "Pregled tastature, Y pomjeraj"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+msgid "The Keyboard Preview, width"
+msgstr "Pregled tastature, širina"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+msgid "The Keyboard Preview, height"
+msgstr "Pregled tastature, visina"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+msgid "Secondary groups"
+msgstr "Sekundarne grupe"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+msgid "Show flags in the applet"
+msgstr "Prikaži zastavice u programu"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Prikaži zastavice u programu koje će ukazivati na trenutni raspored"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+msgid "The font family"
+msgstr "Font"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+msgid "The font family for the layout indicator"
+msgstr "Font u pokazivaču rasporeda tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+msgid "The font size"
+msgstr "Veličina fonta"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+msgid "The font size for the layout indicator"
+msgstr "Veličina fonta u pokazivaču rasporeda tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+msgid "The foreground color"
+msgstr "Boja teksta"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+msgid "The foreground color for the layout indicator"
+msgstr "Boja teksta u pokazivaču rasporeda tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+msgid "The background color"
+msgstr "Boja pozadine"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+msgid "The background color for the layout indicator"
+msgstr "Boja pozadine u pokazivaču rasporeda tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+msgid "Keyboard model"
+msgstr "Model tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+msgid "keyboard model"
+msgstr "model tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+msgid "Keyboard layout"
+msgstr "Raspored tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+msgid "keyboard layout"
+msgstr "raspored tastature"
+
+#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+msgid "Keyboard options"
+msgstr "Opcije tastature"
+
+#: ../test/gkbd-indicator-test.c:66
+msgid "Indicator:"
+msgstr "Pokazivač:"
