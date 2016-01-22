@@ -1000,7 +1000,7 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 	gint padding;
 	gint g, l, glp;
 
-	if (!drawing->xkb || keycode == INVALID_KEYCODE)
+	if (!drawing->xkb || !drawing->groupLevels || keycode == INVALID_KEYCODE)
 		return;
 
 	padding = 23 * context->scale_numerator / context->scale_denominator;	/* 2.3mm */
