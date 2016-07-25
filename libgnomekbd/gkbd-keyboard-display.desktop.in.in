@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=Keyboard Layout
-_Comment=Preview keyboard layouts
+Name=Keyboard Layout
+Comment=Preview keyboard layouts
 Icon=preferences-desktop-keyboard
 Exec=gkbd-keyboard-display
 Terminal=false

@@ -13,9 +13,6 @@ icons_DATA = kbdled-caps-lock.svg \
 gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
 		    org.gnome.libgnomekbd.keyboard.gschema.xml \
 		    org.gnome.libgnomekbd.gschema.xml
-@GSETTINGS_RULES@
-
-@INTLTOOL_XML_NOMERGE_RULE@
 
 common_CFLAGS = \
 	-I$(top_srcdir) 				\
@@ -87,15 +84,12 @@ BUILT_SOURCES = gkbd-indicator-marshal.c \
         gkbd-keyboard-drawing-marshal.h
 
 DISTCLEANFILES = $(BUILT_SOURCES) \
-        $(gsettings_SCHEMAS) \
-        gkbd-keyboard-display.desktop \
-        gkbd-keyboard-display.desktop.in
-        
+        $(desktop_DATA)
 
 MAINTAINERCLEANFILES =                  \
+        $(desktop_DATA)			\
         *~                              \
-        Makefile.in                     \
-        $(gsettings_SCHEMAS:.xml=.valid)
+        Makefile.in
 
 gnomekbdincdir = $(includedir)/libgnomekbd
 gnomekbdinc_HEADERS = \
@@ -108,11 +102,17 @@ gnomekbdinc_HEADERS = \
                       gkbd-keyboard-drawing.h \
                       gkbd-util.h
 
-sysdir = $(datadir)/applications
-sys_in_in_files = gkbd-keyboard-display.desktop.in.in
-sys_DATA = $(sys_in_in_files:.desktop.in.in=.desktop)
+# Rule to create the .desktop files
+desktopdir = $(datadir)/applications
+desktop_in_files = gkbd-keyboard-display.desktop.in
+desktop_DATA = gkbd-keyboard-display.desktop
 
-@INTLTOOL_DESKTOP_RULE@
+$(desktop_in_files): gkbd-keyboard-display.desktop.in.in
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+
+# Substitute variables in a Desktop Entry file.
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) sed -e 's|@VERSION[@]|$(VERSION)|g' $< > $@
 
 noinst_HEADERS = $(extra_nih) \
                  gkbd-config-private.h
@@ -125,8 +125,8 @@ EXTRA_DIST = gkbd-indicator-marshal.list \
              $(ui_DATA) \
              $(convert_DATA) \
              $(icons_DATA) \
-             $(sys_in_in_files) \
-             $(gsettings_SCHEMAS:.xml=.xml.in.in) 
+             $(desktop_in_files) \
+             $(gsettings_SCHEMAS:.xml=.xml.in)
 
 
 GLIB_GENMARSHAL = $(shell pkg-config --variable=glib_genmarshal glib-2.0)

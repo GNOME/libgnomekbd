@@ -39,14 +39,12 @@ AM_PROG_LIBTOOL
 # ****
 # i18n
 # ****
+AM_GNU_GETTEXT_VERSION([0.19.4])
+AM_GNU_GETTEXT([external])
 
 GETTEXT_PACKAGE=libgnomekbd
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext package])
-
-AM_GLIB_GNU_GETTEXT
-
-IT_PROG_INTLTOOL([0.35.0])
 
 # *****************************************************************************
 

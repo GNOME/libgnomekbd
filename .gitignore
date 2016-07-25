@@ -12,7 +12,6 @@ configure
 depcomp
 INSTALL
 install-sh
-intltool-*.in
 libgnomekbd.pc
 libgnomekbdui.pc
 libtool
