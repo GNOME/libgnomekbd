@@ -4,28 +4,28 @@
     <key name="default-group" type="i">
       <range min="-1" max="4"/>
       <default>-1</default>
-      <_summary>Default group, assigned on window creation</_summary>
-      <_description>Default group, assigned on window creation</_description>
+      <summary>Default group, assigned on window creation</summary>
+      <description>Default group, assigned on window creation</description>
     </key>
     <key name="group-per-window" type="b">
       <default>false</default>
-      <_summary>Keep and manage separate group per window</_summary>
-      <_description>Keep and manage separate group per window</_description>
+      <summary>Keep and manage separate group per window</summary>
+      <description>Keep and manage separate group per window</description>
     </key>
     <key name="handle-indicators" type="b">
       <default>false</default>
-      <_summary>Save/restore indicators together with layout groups</_summary>
-      <_description>Save/restore indicators together with layout groups</_description>
+      <summary>Save/restore indicators together with layout groups</summary>
+      <description>Save/restore indicators together with layout groups</description>
     </key>
     <key name="layout-names-as-group-names" type="b">
       <default>true</default>
-      <_summary>Show layout names instead of group names</_summary>
-      <_description>Show layout names instead of group names (only for versions of XFree supporting multiple layouts)</_description>
+      <summary>Show layout names instead of group names</summary>
+      <description>Show layout names instead of group names (only for versions of XFree supporting multiple layouts)</description>
     </key>
     <key name="load-extra-items" type="b">
       <default>false</default>
-      <_summary>Load extra configuration items</_summary>
-      <_description>Load exotic, rarely used layouts and options</_description>
+      <summary>Load extra configuration items</summary>
+      <description>Load exotic, rarely used layouts and options</description>
     </key>
   </schema>
 </schemalist>

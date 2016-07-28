@@ -3,18 +3,18 @@
   <schema gettext-domain="@GETTEXT_PACKAGE@" id="org.gnome.libgnomekbd.keyboard" path="/org/gnome/libgnomekbd/keyboard/">
     <key name="model" type="s">
       <default>''</default>
-      <_summary>Keyboard model</_summary>
-      <_description>keyboard model</_description>
+      <summary>Keyboard model</summary>
+      <description>keyboard model</description>
     </key>
     <key name="layouts" type="as">
       <default>[]</default>
-      <_summary>Keyboard layout</_summary>
-      <_description>keyboard layout</_description>
+      <summary>Keyboard layout</summary>
+      <description>keyboard layout</description>
     </key>
     <key name="options" type="as">
       <default>[]</default>
-      <_summary>Keyboard options</_summary>
-      <_description>Keyboard options</_description>
+      <summary>Keyboard options</summary>
+      <description>Keyboard options</description>
     </key>
   </schema>
 </schemalist>
