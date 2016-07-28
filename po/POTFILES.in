@@ -1,11 +1,13 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
 libgnomekbd/gkbd-desktop-config.c
 libgnomekbd/gkbd-indicator.c
 libgnomekbd/gkbd-indicator-config.c
-libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-keyboard-config.c
+libgnomekbd/gkbd-keyboard-display.desktop.in.in
+libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-status.c
 libgnomekbd/gkbd-util.c
-libgnomekbd/gkbd-keyboard-display.desktop.in.in
 libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in
 libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in
 libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in

@@ -1,5 +1,6 @@
-capplet/gkbd-indicator-plugins-capplet.desktop.in
-libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
-libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
-libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in
+# List of source files that should *not* be translated.
+# Please keep this file sorted alphabetically.
 libgnomekbd/gkbd-keyboard-display.desktop.in
+libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in
