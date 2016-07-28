@@ -28,8 +28,6 @@ dnl ***************************************************************************
 
 GLIB_GSETTINGS
 
-GNOME_COMPILE_WARNINGS
-
 AC_ISC_POSIX
 AC_PROG_CC
 AC_PROG_CC_C_O
