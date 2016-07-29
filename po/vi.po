@@ -2,263 +2,259 @@
 # Copyright © 2008 Gnome i18n Project for Vietnamese.
 # Clytie Siddall <clytie@riverland.net.au>, 2007-2008.
 # Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2011
+# Trần Ngọc Quân <vnwildman@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libgnomekbd\n"
+"Project-Id-Version: libgnomekbd master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2011-02-25 01:17+0000\n"
-"PO-Revision-Date: 2011-04-02 12:46+0700\n"
-"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-07-28 21:11+0000\n"
+"PO-Revision-Date: 2016-07-29 08:28+0700\n"
+"Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
+"Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.7b1\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
+#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
-msgstr "Lỗi sơ khởi XKB"
+msgstr "Lỗi khởi tạo XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
+#: libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "bố cục “%s”"
+
+#: libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "tùy chọn “%s”"
+
+#: libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "mô hình “%s”, %s và %s"
+
+#: libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "không có bố cục"
+
+#: libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "không có tùy chọn"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Bố cục bàn phím"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "Xem thử bố cục bàn phím"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
-"Bố trí bàn phím « %s »\n"
+"Bố cục bàn phím “%s”\n"
 "Tác giả © Tổ chức X.Org và nhóm đóng góp XKeyboardConfig\n"
 "Xem siêu dữ liệu của gói để tìm điều kiện giấy phép"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
+#: libgnomekbd/gkbd-keyboard-drawing.c:2619
 msgid "Unknown"
 msgstr "Không rõ"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:701
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "bố trí « %s »"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:719
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "tùy chọn « %s »"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:727
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "mô hình « %s », %s và %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:728
-msgid "no layout"
-msgstr "không có bố trí"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:729
-msgid "no options"
-msgstr "không có tùy chọn"
-
-#: ../libgnomekbd/gkbd-status.c:290
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
-msgstr "Gặp lỗi khi nạp ảnh: %s"
+msgstr "Gặp lỗi khi tải ảnh: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-#| msgid "Keyboard layout"
-msgid "Keyboard Layout"
-msgstr "Bố trí bàn phím"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-#| msgid "keyboard layout"
-msgid "Preview keyboard layouts"
-msgstr "Xem thử bố trí bàn phím"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Nhóm mặc định, được gán khi tạo cửa sổ"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Giữ và quản lý một nhóm riêng cho mỗi cửa sổ"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
-msgid "Load exotic, rarely used layouts and options"
-msgstr "Nạp tuỳ chọn và bố trí kì cục, ít khi dùng"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
-msgid "Load extra configuration items"
-msgstr "Nạp mục cấu hình bổ sung"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
 msgid "Save/restore indicators together with layout groups"
-msgstr "Lưu/phục hồi các chỉ thị cùng với nhóm bố trí"
+msgstr "Sao lưu/phục hồi các chỉ thị cùng với nhóm bố cục"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
 msgid "Show layout names instead of group names"
-msgstr "Hiển thị tên bố trí thay cho tên nhóm"
+msgstr "Hiển thị tên bố cục thay cho tên nhóm"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"Hiển thị tên bố trí thay cho tên nhóm (chỉ cho phiên bản XFree có hỗ trợ "
-"nhiều bố trí)"
+"Hiển thị tên bố cục thay cho tên nhóm (chỉ cho phiên bản XFree có hỗ trợ "
+"nhiều bố cục)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
-msgid "Secondary groups"
-msgstr "Nhóm phụ"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
+msgid "Load extra configuration items"
+msgstr "Tải mục cấu hình bổ sung"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
-msgid "Show flags in the applet"
-msgstr "Hiển thị cờ trong tiểu dụng"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Tải tùy chọn và bố cục kì cục, ít khi dùng"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Hiển thị cờ trong tiểu dụng để ngụ ý bố trí đang dùng"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Bộ xem thử bàn phím, bù X"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Bộ xem thử bàn phím, bù Y"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
-msgid "The Keyboard Preview, height"
-msgstr "Ô xem thử bàn phím, bề cao"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
 msgid "The Keyboard Preview, width"
-msgstr "Ô xem thử bàn phím, bề rộng"
+msgstr "Ô xem thử bàn phím, chiều rộng"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
-msgid "The background color"
-msgstr "Màu nền"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
+msgid "The Keyboard Preview, height"
+msgstr "Ô xem thử bàn phím, chiều cao"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
-msgid "The background color for the layout indicator"
-msgstr "Màu nền của bộ chỉ báo bố trí"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
+msgid "Secondary groups"
+msgstr "Nhóm phụ"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
+msgid "Show flags in the applet"
+msgstr "Hiển thị cờ trong tiểu ứng dụng"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Hiển thị cờ trong tiểu ứng dụng để chỉ ra bố cục đang dùng"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
 msgid "The font family"
 msgstr "Phông chữ"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
 msgid "The font family for the layout indicator"
-msgstr "Phông chữ của bộ chỉ báo bố trí"
+msgstr "Phông chữ của bộ chỉ báo bố cục"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
 msgid "The font size"
 msgstr "Kích thước phông"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
 msgid "The font size for the layout indicator"
-msgstr "Kích thước phông chữ của bộ chỉ báo bố trí"
+msgstr "Kích thước phông chữ của bộ chỉ báo bố cục"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
 msgid "The foreground color"
 msgstr "Màu chữ"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
 msgid "The foreground color for the layout indicator"
-msgstr "Màu chữ của bộ chỉ báo bố trí"
+msgstr "Màu chữ của bộ chỉ báo bố cục"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Danh sách các phần bổ sung Chỉ thị Bàn phím đã bật"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
+msgid "The background color"
+msgstr "Màu nền"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
-msgid "Keyboard layout"
-msgstr "Bố trí bàn phím"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
+msgid "The background color for the layout indicator"
+msgstr "Màu nền của bộ chỉ báo bố cục"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
 msgid "Keyboard model"
 msgstr "Mô hình bàn phím"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
-msgid "Keyboard options"
-msgstr "Tùy chọn bàn phím"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
-msgid "keyboard layout"
-msgstr "bố trí bàn phím"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
 msgid "keyboard model"
 msgstr "mô hình bàn phím"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "Bật phần bổ sung thêm"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
+msgid "Keyboard layout"
+msgstr "Bố cục bàn phím"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "_Phần bổ sung đã bật:"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
+msgid "keyboard layout"
+msgstr "bố cục bàn phím"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "Đóng hộp thoại"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
+msgid "Keyboard options"
+msgstr "Tùy chọn bàn phím"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "Cấu hình phần bổ sung đã chọn"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "Tắt phần bổ sung đã chọn"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "Giảm mức ưu tiên của phần bổ sung"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "Tăng mức ưu tiên của phần bổ sung"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "Phần bổ sung Chỉ thị Bàn phím"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "Danh sách các phần bổ sung hoạt động"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "Thêm phần bổ sung"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "Phần bổ sung _sẵn sàng:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:125
-#: ../capplet/gkbd-indicator-plugins-add.c:110
-msgid "No description."
-msgstr "Không có mô tả."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:248
-msgid "Unable to open help file"
-msgstr "Không thể mở tập tin trợ giúp"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Bật/tắt phần bổ sung đã cài đặt"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Phần bổ sung chỉ thị bàn phím"
-
-#: ../test/gkbd-indicator-test.c:65
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Chỉ thị:"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "Danh sách các phần bổ sung Chỉ thị Bàn phím đã bật"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "Bật phần bổ sung thêm"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "_Phần bổ sung đã bật:"
+
+#~ msgid "Close the dialog"
+#~ msgstr "Đóng hộp thoại"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Cấu hình phần bổ sung đã chọn"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "Tắt phần bổ sung đã chọn"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "Giảm mức ưu tiên của phần bổ sung"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "Tăng mức ưu tiên của phần bổ sung"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "Phần bổ sung Chỉ thị Bàn phím"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "Danh sách các phần bổ sung hoạt động"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Thêm phần bổ sung"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "Phần bổ sung _sẵn sàng:"
+
+#~ msgid "No description."
+#~ msgstr "Không có mô tả."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Không thể mở tập tin trợ giúp"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "Bật/tắt phần bổ sung đã cài đặt"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "Phần bổ sung chỉ thị bàn phím"
 
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
@@ -268,13 +264,13 @@ msgstr "Chỉ thị:"
 #~ "ích để áp dụng lại sự điều chỉnh dựa vào xmodmap."
 
 #~ msgid "A list of modmap files available in the $HOME directory."
-#~ msgstr "Danh sách các tập tin modmap nằm trong thư mục « $HOME »."
+#~ msgstr "Danh sách các tập tin modmap nằm trong thư mục “$HOME”."
 
 #~ msgid "Keyboard Update Handlers"
 #~ msgstr "Bộ xử lý cập nhật bàn phím"
 
 #~ msgid "Suppress the \"X sysconfig changed\" warning message"
-#~ msgstr "Thu hồi thông điệp cảnh báo « Cấu hình hệ thống X bị thay đổi »"
+#~ msgstr "Thu hồi thông điệp cảnh báo “Cấu hình hệ thống X bị thay đổi”"
 
 #~ msgid "modmap file list"
 #~ msgstr "danh sách tập tin modmap"
@@ -289,7 +285,7 @@ msgstr "Chỉ thị:"
 #~ "Keyboard settings in gconf will be overridden from the system ASAP "
 #~ "(deprecated)"
 #~ msgstr ""
-#~ "Thiết lập bàn phím trong GConf sẽ bị ghi đè từ hệ thống càng sớm càng có "
+#~ "Cài đặt bàn phím trong GConf sẽ bị ghi đè từ hệ thống càng sớm càng có "
 #~ "thể (bị phản đối)"
 
 #~ msgid ""
@@ -298,6 +294,6 @@ msgstr "Chỉ thị:"
 #~ "unset the model, layouts and options keys to get the default system "
 #~ "configuration."
 #~ msgstr ""
-#~ "Thiết lập bàn phím trong GConf sắp bị ghi đè (từ cấu hình hệ thống). Khoá "
+#~ "Cài đặt bàn phím trong GConf sắp bị ghi đè (từ cấu hình hệ thống). Khóa "
 #~ "này bị phản đối kể từ GNOME 2.12: hãy bỏ đặt mô hình, các bố trí và phím "
 #~ "tùy chọn đều để trở về cấu hình hệ thống mặc định."
