@@ -6,23 +6,65 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-01 01:03+0100\n"
-"PO-Revision-Date: 2011-03-01 08:42+0100\n"
-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-07-28 21:05+0000\n"
+"PO-Revision-Date: 2016-08-01 12:23+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.8.8\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443
-#: ../libgnomekbd/gkbd-status.c:536
+#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB-initieringsfel"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
+#: libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "layout \"%s\""
+msgstr[1] "layouter \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "alternativ \"%s\""
+msgstr[1] "alternativ \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "modell \"%s\", %s och %s"
+
+#: libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "ingen layout"
+
+#: libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "inga alternativ"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Tangentbordslayout"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "Förhandsvisa tangentbordslayouter"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -33,254 +75,223 @@ msgstr ""
 "Copyright &#169; X.Org Foundation och XKeyboardConfig-bidragsgivarna\n"
 "Se paketets metadata för licensiering"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
+#: libgnomekbd/gkbd-keyboard-drawing.c:2619
 msgid "Unknown"
 msgstr "Okänd"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:701
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "layout \"%s\""
-msgstr[1] "layouter \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:719
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "alternativ \"%s\""
-msgstr[1] "alternativ \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:727
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "modell \"%s\", %s och %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:728
-msgid "no layout"
-msgstr "ingen layout"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:729
-msgid "no options"
-msgstr "inga alternativ"
-
-#: ../libgnomekbd/gkbd-status.c:290
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Det inträffade ett fel vid inläsning av en bild: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Tangentbordslayout"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-msgid "Preview keyboard layouts"
-msgstr "Förhandsvisa tangentbordslayouter"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Standardgrupp, tilldelade för fönsterskapande"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Behåll och hantera separat grupp per fönster"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
-msgid "Load exotic, rarely used layouts and options"
-msgstr "Läs in exotiska, sällan använda layouter och alternativ"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
-msgid "Load extra configuration items"
-msgstr "Läs in extra konfigurationsobjekt"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Spara/återställ indikatorer tillsammans med layoutgrupper"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
 msgid "Show layout names instead of group names"
 msgstr "Visa layoutnamn istället för gruppnamn"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "Visa layoutnamn istället för gruppnamn (endast för versioner av XFree som har stöd för flera layouter)"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Visa layoutnamn istället för gruppnamn (endast för versioner av XFree som "
+"har stöd för flera layouter)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
-msgid "Secondary groups"
-msgstr "Sekundära grupper"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
+msgid "Load extra configuration items"
+msgstr "Läs in extra konfigurationsobjekt"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
-msgid "Show flags in the applet"
-msgstr "Visa flaggor i panelprogrammet"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Läs in exotiska, sällan använda layouter och alternativ"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Visa flaggor i panelprogrammet för att indikera aktuell layout"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Tangentbordsförhandsvisning, X-position"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Tangentbordsförhandsvisning, Y-position"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
-msgid "The Keyboard Preview, height"
-msgstr "Tangentbordsförhandsvisning, höjd"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Tangentbordsförhandsvisning, bredd"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
-msgid "The background color"
-msgstr "Bakgrundsfärgen"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
+msgid "The Keyboard Preview, height"
+msgstr "Tangentbordsförhandsvisning, höjd"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
-msgid "The background color for the layout indicator"
-msgstr "Bakgrundsfärgen för layoutindikatorn"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
+msgid "Secondary groups"
+msgstr "Sekundära grupper"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
+msgid "Show flags in the applet"
+msgstr "Visa flaggor i panelprogrammet"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Visa flaggor i panelprogrammet för att indikera aktuell layout"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
 msgid "The font family"
 msgstr "Typsnittsfamiljen"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
 msgid "The font family for the layout indicator"
 msgstr "Typsnittsfamiljen för layoutindikatorn"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
 msgid "The font size"
 msgstr "Typsnittsstorleken"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
 msgid "The font size for the layout indicator"
 msgstr "Typsnittsstorleken för layoutindikatorn"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
 msgid "The foreground color"
 msgstr "Förgrundsfärgen"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Förgrundsfärgen för layoutindikatorn"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Listan över aktiverade insticksmoduler för tangentbordsindikator"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
+msgid "The background color"
+msgstr "Bakgrundsfärgen"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
-msgid "Keyboard layout"
-msgstr "Tangentbordslayout"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
+msgid "The background color for the layout indicator"
+msgstr "Bakgrundsfärgen för layoutindikatorn"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
 msgid "Keyboard model"
 msgstr "Tangentbordsmodell"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
-msgid "Keyboard options"
-msgstr "Tangentbordsalternativ"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
-msgid "keyboard layout"
-msgstr "tangentbordslayout"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
 msgid "keyboard model"
 msgstr "tangentbordsmodell"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "Aktivera fler insticksmoduler"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
+msgid "Keyboard layout"
+msgstr "Tangentbordslayout"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "Aktiva _insticksmoduler:"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
+msgid "keyboard layout"
+msgstr "tangentbordslayout"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "Stäng dialogrutan"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
+msgid "Keyboard options"
+msgstr "Tangentbordsalternativ"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "Konfigurera markerad insticksmodul"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "Inaktivera markerad insticksmodul"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "Sänk insticksmodulens prioritet"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "Öka insticksmodulens prioritet"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "Insticksmoduler för tangentbordsindikator"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "Listan över aktiva insticksmoduler"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "Lägg till insticksmodul"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "_Tillgängliga insticksmoduler:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:125
-#: ../capplet/gkbd-indicator-plugins-add.c:110
-msgid "No description."
-msgstr "Ingen beskrivning."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:248
-msgid "Unable to open help file"
-msgstr "Kunde inte öppna hjälpfilen"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Aktivera/inaktivera installerade insticksmoduler"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Insticksmoduler för tangentbordsindikator"
-
-#: ../test/gkbd-indicator-test.c:65
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikator:"
 
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "Listan över aktiverade insticksmoduler för tangentbordsindikator"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "Aktivera fler insticksmoduler"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "Aktiva _insticksmoduler:"
+
+#~ msgid "Close the dialog"
+#~ msgstr "Stäng dialogrutan"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Konfigurera markerad insticksmodul"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "Inaktivera markerad insticksmodul"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "Sänk insticksmodulens prioritet"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "Öka insticksmodulens prioritet"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "Insticksmoduler för tangentbordsindikator"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "Listan över aktiva insticksmoduler"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Lägg till insticksmodul"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "_Tillgängliga insticksmoduler:"
+
+#~ msgid "No description."
+#~ msgstr "Ingen beskrivning."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Kunde inte öppna hjälpfilen"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "Aktivera/inaktivera installerade insticksmoduler"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "Insticksmoduler för tangentbordsindikator"
+
 #~ msgid "Keyboard Layout \"%s\""
 #~ msgstr "Tangentbordslayout \"%s\""
+
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
 #~ "Useful for re-applying xmodmap based adjustments"
 #~ msgstr ""
 #~ "En samling skript att köra när tangentbordstillståndet läses om. "
 #~ "Användbart för att återtillämpa xmodmap-baserade justeringar"
+
 #~ msgid "A list of modmap files available in the $HOME directory."
 #~ msgstr "En lista över modmap-filer tillgängliga i $HOME-katalogen."
+
 #~ msgid "Keyboard Update Handlers"
 #~ msgstr "Tangentbordsuppdateringshanterare"
+
 #~ msgid "Suppress the \"X sysconfig changed\" warning message"
 #~ msgstr "Visa inte varningsmeddelandet \"X sysconfig changed\""
+
 #~ msgid "modmap file list"
 #~ msgstr "fillista för modmap"
+
 #~ msgid "Failed to init GConf: %s\n"
 #~ msgstr "Misslyckades med att initera GConf: %s\n"
+
 #~ msgid "Keyboard Indicator Test (%s)"
 #~ msgstr "Tangentbordsindikatortest (%s)"
+
 #~ msgid ""
 #~ "Keyboard settings in gconf will be overridden from the system ASAP "
 #~ "(deprecated)"
 #~ msgstr ""
 #~ "Tangentbordsinställningar i gconf kommer att åsidosättas från systemet så "
 #~ "snart som möjligt (föråldrad)"
+
 #~ msgid ""
 #~ "Very soon, keyboard settings in gconf will be overridden (from the system "
 #~ "configuration) This key has been deprecated since GNOME 2.12, please "
@@ -291,4 +302,3 @@ msgstr "Indikator:"
 #~ "(från systemkonfigurationen) Den här nyckeln har varit föråldrad sedan "
 #~ "GNOME 2.12, avmarkera nycklarna för modell, layouter och alternativ för "
 #~ "att få standardsystemkonfigurationen."
-
