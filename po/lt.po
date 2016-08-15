@@ -3,27 +3,73 @@
 # This file is distributed under the same license as the libgnomekbd package.
 # Gintautas Miliauskas <gintas@akl.lt>, 2007, 2008.
 # Žygimantas Beručka <zygis@gnome.org>, 2010.
+# Aurimas Černius <aurisc4@gmail.com>, 2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd.HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-23 01:15+0000\n"
-"PO-Revision-Date: 2011-09-03 00:38+0300\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2016-07-28 21:05+0000\n"
+"PO-Revision-Date: 2016-08-15 13:33+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
-"Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
+"Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lt\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443
-#: ../libgnomekbd/gkbd-status.c:560
+#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB inicializavimo klaida"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2476
+#: libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "išdėstymas \"%s\""
+msgstr[1] "išdėstymai \"%s\""
+msgstr[2] "išdėstymai \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "parinktis \"%s\""
+msgstr[1] "parinktys \"%s\""
+msgstr[2] "parinktys \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "modelis \"%s\", %s ir %s"
+
+#: libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "nėra išdėstymo"
+
+#: libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "nėra parinkčių"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Klaviatūros išdėstymas"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "Peržiūrėti klaviatūros išdėstymas"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -34,230 +80,187 @@ msgstr ""
 "Autorinės teisės &#169; X.Org Foundation ir XKeyboardConfig kontributoriai\n"
 "Licencija paketo metaduomenyse"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2626
+#: libgnomekbd/gkbd-keyboard-drawing.c:2619
 msgid "Unknown"
 msgstr "Nežinoma"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:698
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "išdėstymas \"%s\""
-msgstr[1] "išdėstymai \"%s\""
-msgstr[2] "išdėstymai \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:716
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "parinktis \"%s\""
-msgstr[1] "parinktys \"%s\""
-msgstr[2] "parinktys \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:724
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "modelis \"%s\", %s ir %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:725
-msgid "no layout"
-msgstr "nėra išdėstymo"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:726
-msgid "no options"
-msgstr "nėra parinkčių"
-
-#: ../libgnomekbd/gkbd-status.c:299
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Įvyko klaida įkeliant paveikslėlį: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Klaviatūros išdėstymas"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-#| msgid "keyboard layout"
-msgid "Preview keyboard layouts"
-msgstr "Peržiūrėti klaviatūros išdėstymas"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Standartinė grupė, priskiriama naujiems langams"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Valdyti grupes kiekvienam langui atskirai"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
-msgid "Load exotic, rarely used layouts and options"
-msgstr "Įkelti egzotiškus, retai naudojamus išdėstymus ir parinktis"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
-msgid "Load extra configuration items"
-msgstr "Įkelti papildomus konfigūravimo elementus"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Įrašymo/skaitymo indikatoriai kartu su išdėstymo grupėmis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
 msgid "Show layout names instead of group names"
 msgstr "Rodyti išdėstymų vardus vietoje grupių vardų"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "Rodyti išdėstymų vardus vietoje grupių vardų (tik XFree versijoms, palaikančioms kelis išdėstymus)"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Rodyti išdėstymų vardus vietoje grupių vardų (tik XFree versijoms, "
+"palaikančioms kelis išdėstymus)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
-msgid "Secondary groups"
-msgstr "Antrinės grupės"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
+msgid "Load extra configuration items"
+msgstr "Įkelti papildomus konfigūravimo elementus"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
-msgid "Show flags in the applet"
-msgstr "Rodyti savybes įtaise"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Įkelti egzotiškus, retai naudojamus išdėstymus ir parinktis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Rodyti savybes, rodančias pasirinktą išdėstymą, įtaise"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Klaviatūros vaizdas, X poslinkis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Klaviatūros vaizdas, Y poslinkis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
-msgid "The Keyboard Preview, height"
-msgstr "Klaviatūros vaizdas, aukštis"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Klaviatūros vaizdas, plotis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
-msgid "The background color"
-msgstr "Fono spalva"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
+msgid "The Keyboard Preview, height"
+msgstr "Klaviatūros vaizdas, aukštis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
-msgid "The background color for the layout indicator"
-msgstr "Išdėstymų indikatoriaus fono spalva"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
+msgid "Secondary groups"
+msgstr "Antrinės grupės"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
+msgid "Show flags in the applet"
+msgstr "Rodyti savybes įtaise"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Rodyti savybes, rodančias pasirinktą išdėstymą, įtaise"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
 msgid "The font family"
 msgstr "Šrifto šeima"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
 msgid "The font family for the layout indicator"
 msgstr "Šrifto šeima išsidėstymo indikatoriui"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
 msgid "The font size"
 msgstr "Šrifto dydis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
 msgid "The font size for the layout indicator"
 msgstr "Šrifto dydis išsidėstymo indikatoriui"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
 msgid "The foreground color"
 msgstr "Priekinio plano spalva"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Priekinio plano spalva išdėstymų indikatoriui"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Įjungtų klaviatūros indikatoriaus įskiepių sąrašas"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
+msgid "The background color"
+msgstr "Fono spalva"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
-msgid "Keyboard layout"
-msgstr "Klaviatūros išdėstymas"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
+msgid "The background color for the layout indicator"
+msgstr "Išdėstymų indikatoriaus fono spalva"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
 msgid "Keyboard model"
 msgstr "Klaviatūros modelis"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
-msgid "Keyboard options"
-msgstr "Klaviatūros parinktys"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
-msgid "keyboard layout"
-msgstr "klaviatūros išdėstymas"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
 msgid "keyboard model"
 msgstr "klaviatūros modelis"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "Įjungti daugiau įskiepių"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
+msgid "Keyboard layout"
+msgstr "Klaviatūros išdėstymas"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "Aktyvūs į_skiepiai:"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
+msgid "keyboard layout"
+msgstr "klaviatūros išdėstymas"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "Užverti dialogą"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
+msgid "Keyboard options"
+msgstr "Klaviatūros parinktys"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "Konfigūruoti pasirinktą įskiepį"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "Atjungti pažymėtą įskiepį"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "Sumažinti įskiepio prioritetą"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "Padidinti įskiepio prioritetą"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "Klaviatūros indikatoriaus įskiepiai"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "Aktyvių įskiepių sąrašas"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "Pridėti įskiepį"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "Įs_kiepiai:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:125
-#: ../capplet/gkbd-indicator-plugins-add.c:110
-msgid "No description."
-msgstr "Aprašymo nėra."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:248
-msgid "Unable to open help file"
-msgstr "Nepavyko atverti žinyno failo"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Įjungti/išjungti įdiegtus įskiepius"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Klaviatūros indikatoriaus įskiepiai"
-
-#: ../test/gkbd-indicator-test.c:65
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikatorius:"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "Įjungtų klaviatūros indikatoriaus įskiepių sąrašas"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "Įjungti daugiau įskiepių"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "Aktyvūs į_skiepiai:"
+
+#~ msgid "Close the dialog"
+#~ msgstr "Užverti dialogą"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Konfigūruoti pasirinktą įskiepį"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "Atjungti pažymėtą įskiepį"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "Sumažinti įskiepio prioritetą"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "Padidinti įskiepio prioritetą"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "Klaviatūros indikatoriaus įskiepiai"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "Aktyvių įskiepių sąrašas"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Pridėti įskiepį"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "Įs_kiepiai:"
+
+#~ msgid "No description."
+#~ msgstr "Aprašymo nėra."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Nepavyko atverti žinyno failo"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "Įjungti/išjungti įdiegtus įskiepius"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "Klaviatūros indikatoriaus įskiepiai"
 
 #~ msgid "Keyboard Layout \"%s\""
 #~ msgstr "Klaviatūros išdėstymas „%s“"
