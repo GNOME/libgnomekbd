@@ -2,31 +2,75 @@
 # Copyright (C) 2005-2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 #
-# Matej Urbančič <mateju@svn.gnome.org>, 2007 - 2011.
+# Matej Urbančič <mateju@svn.gnome.org>, 2007-2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd&component=general\n"
-"POT-Creation-Date: 2011-02-25 01:17+0000\n"
-"PO-Revision-Date: 2011-02-25 14:25+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=Indicator\n"
+"POT-Creation-Date: 2016-08-25 22:35+0200\n"
+"PO-Revision-Date: 2016-08-25 22:35+0200\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
-"Language: sl\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
-"X-Poedit-Language: Slovenian\n"
-"X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443
-#: ../libgnomekbd/gkbd-status.c:536
+#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "Napaka med začenjanjem XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
+#: libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "razporedi \"%s\""
+msgstr[1] "razpored \"%s\""
+msgstr[2] "razporeda \"%s\""
+msgstr[3] "razporedi \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "možnosti \"%s\""
+msgstr[1] "možnost \"%s\""
+msgstr[2] "možnosti \"%s\""
+msgstr[3] "možnosti \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "model \"%s\", %s in %s"
+
+#: libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "ni razporeda"
+
+#: libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "ni možnosti"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Razpored tipkovnice"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "Predogled razporedov tipkovnice"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -37,231 +81,187 @@ msgstr ""
 "Avtorske pravice &#169; X.Org Foundation in XKeyboardConfig razvijalci\n"
 "Za dovoljenja si oglejte metapodatke paketa"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
+#: libgnomekbd/gkbd-keyboard-drawing.c:2619
 msgid "Unknown"
 msgstr "Neznano"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:701
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "razporedi \"%s\""
-msgstr[1] "razpored \"%s\""
-msgstr[2] "razporeda \"%s\""
-msgstr[3] "razporedi \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:719
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "možnosti \"%s\""
-msgstr[1] "možnost \"%s\""
-msgstr[2] "možnosti \"%s\""
-msgstr[3] "možnosti \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:727
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "model \"%s\", %s in %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:728
-msgid "no layout"
-msgstr "ni razporeda"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:729
-msgid "no options"
-msgstr "ni možnosti"
-
-#: ../libgnomekbd/gkbd-status.c:290
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Prišlo je do napake med nalaganjem slike: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Razpored tipkovnice"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-msgid "Preview keyboard layouts"
-msgstr "Predogled razporedov tipkovnice"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Privzeta skupina, dodeljena pri ustvarjanju okna"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Ohrani in upravljaj ločene skupine po oknih"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
-msgid "Load exotic, rarely used layouts and options"
-msgstr "Nalaganje posebnih, redko uporabljenih razporeditev in možnosti"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
-msgid "Load extra configuration items"
-msgstr "Naloži dodatne predmete nastavljanja"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Shrani/povrni določila skupaj s skupinami razporeditev"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
 msgid "Show layout names instead of group names"
 msgstr "Pokaži imena razporeditev namesto imen skupin"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "Pokaži imena razporeditev namesto imen skupin (samo za različice XFree, ki podpirajo različne razporeditve)"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"Pokaži imena razporeditev namesto imen skupin (samo za različice XFree, ki "
+"podpirajo različne razporeditve)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
-msgid "Secondary groups"
-msgstr "Drugotne skupine"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
+msgid "Load extra configuration items"
+msgstr "Naloži dodatne predmete nastavljanja"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
-msgid "Show flags in the applet"
-msgstr "V vstavku pokaži zastave"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Nalaganje posebnih, redko uporabljenih razporeditev in možnosti"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Pokaži zastave apleta za prikaz trenutnega nabora"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Predogled tipkovnice, odmik X"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Predogled tipkovnice, odmik Y"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
-msgid "The Keyboard Preview, height"
-msgstr "Predogled tipkovnice, višina"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Predogled tipkovnice, širina"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
-msgid "The background color"
-msgstr "Barva ozadja"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
+msgid "The Keyboard Preview, height"
+msgstr "Predogled tipkovnice, višina"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
-msgid "The background color for the layout indicator"
-msgstr "Barva ozadja določila razporeditve"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
+msgid "Secondary groups"
+msgstr "Drugotne skupine"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
+msgid "Show flags in the applet"
+msgstr "V vstavku pokaži zastave"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Pokaži zastave apleta za prikaz trenutnega nabora"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
 msgid "The font family"
 msgstr "Družina pisave"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
 msgid "The font family for the layout indicator"
 msgstr "Družina pisave določila razporeditve"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
 msgid "The font size"
 msgstr "Velikost pisave"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
 msgid "The font size for the layout indicator"
 msgstr "Velikost pisave določila razporeditve"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
 msgid "The foreground color"
 msgstr "Barva pisave"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Barva pisave določila razporeditve"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Seznam dejavnih vstavkov določila tipkovnice"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
+msgid "The background color"
+msgstr "Barva ozadja"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
-msgid "Keyboard layout"
-msgstr "Razpored tipkovnice"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
+msgid "The background color for the layout indicator"
+msgstr "Barva ozadja določila razporeditve"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
 msgid "Keyboard model"
 msgstr "Model tipkovnice"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
-msgid "Keyboard options"
-msgstr "Možnosti tipkovnice"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
-msgid "keyboard layout"
-msgstr "razpored tipkovnice"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
 msgid "keyboard model"
 msgstr "model tipkovnice"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "Priklopi več vstavkov"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
+msgid "Keyboard layout"
+msgstr "Razpored tipkovnice"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "Dejavni _vstavki:"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
+msgid "keyboard layout"
+msgstr "razpored tipkovnice"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "Zapri pogovorno okno"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
+msgid "Keyboard options"
+msgstr "Možnosti tipkovnice"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "Nastavitev izbranega vstavka"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "Odklopi izbrani vstavek"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "Znižanje prednosti vstavka"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "Povečanje prednosti vstavka"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "Vstavek določila tipkovnice"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "Seznam dejavnih vstavkov"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "Dodaj vstavek"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "_Razpoložljivi vstavki:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:125
-#: ../capplet/gkbd-indicator-plugins-add.c:110
-msgid "No description."
-msgstr "Brez opisa."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:248
-msgid "Unable to open help file"
-msgstr "Ni mogoče odpreti datoteke pomoči"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Omogoči/onemogoči nameščene vstavke"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Vstavek določila tipkovnice"
-
-#: ../test/gkbd-indicator-test.c:65
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Kazalnik:"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "Seznam dejavnih vstavkov določila tipkovnice"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "Priklopi več vstavkov"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "Dejavni _vstavki:"
+
+#~ msgid "Close the dialog"
+#~ msgstr "Zapri pogovorno okno"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Nastavitev izbranega vstavka"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "Odklopi izbrani vstavek"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "Znižanje prednosti vstavka"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "Povečanje prednosti vstavka"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "Vstavek določila tipkovnice"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "Seznam dejavnih vstavkov"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Dodaj vstavek"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "_Razpoložljivi vstavki:"
+
+#~ msgid "No description."
+#~ msgstr "Brez opisa."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Ni mogoče odpreti datoteke pomoči"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "Omogoči/onemogoči nameščene vstavke"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "Vstavek določila tipkovnice"
 
 #~ msgid "Keyboard Layout \"%s\""
 #~ msgstr "Razpored tipkovnice \"%s\""
