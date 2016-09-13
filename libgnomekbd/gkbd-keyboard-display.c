@@ -57,6 +57,7 @@ main (int argc, char **argv)
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
+	gdk_set_allowed_backends ("x11");
 	gtk_init_with_args (&argc, &argv, NULL, options, NULL, &error);
 
 	if (error != NULL) {
