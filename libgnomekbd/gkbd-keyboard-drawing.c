@@ -1537,12 +1537,9 @@ size_allocate (GtkWidget * widget,
 {
 	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
 
-	if (!context_setup_scaling (context, drawing,
-				    allocation->width, allocation->height,
-				    50, 50))
-		return;
-
-	gtk_widget_set_allocation (GTK_WIDGET (drawing), allocation);
+	context_setup_scaling (context, drawing,
+			       allocation->width, allocation->height,
+			       50, 50);
 }
 
 static gint
