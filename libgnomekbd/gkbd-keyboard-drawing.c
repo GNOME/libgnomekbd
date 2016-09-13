@@ -1574,7 +1574,7 @@ key_event (GtkWidget * widget,
 	key->pressed = (event->type == GDK_KEY_PRESS);
 
 	invalidate_key_region (drawing, key);
-	return FALSE;
+	return TRUE;
 }
 
 static gint
