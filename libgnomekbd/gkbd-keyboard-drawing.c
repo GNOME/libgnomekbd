@@ -1895,6 +1895,9 @@ free_cdik (			/*colors doodads indicators keys */
 static void
 alloc_cdik (GkbdKeyboardDrawing * drawing)
 {
+	if (!drawing->xkb)
+		return;
+
 	drawing->physical_indicators_size =
 	    drawing->xkb->indicators->phys_indicators + 1;
 	drawing->physical_indicators =
@@ -2047,24 +2050,20 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 				       XkbGBN_SymbolsMask |
 				       XkbGBN_IndicatorMapMask,
 				       XkbUseCoreKbd);
-	if (drawing->xkb == NULL) {
-		g_critical
-		    ("XkbGetKeyboard failed to get keyboard from the server!");
-		return;
+	if (drawing->xkb) {
+		XkbGetNames (drawing->display, XkbAllNamesMask, drawing->xkb);
+		XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
+				       XkbIndicatorStateNotify,
+				       drawing->xkb->indicators->phys_indicators,
+				       drawing->xkb->indicators->phys_indicators);
 	}
 
-	XkbGetNames (drawing->display, XkbAllNamesMask, drawing->xkb);
 	drawing->l3mod = XkbKeysymToModifiers (drawing->display,
 					       GDK_KEY_ISO_Level3_Shift);
 
 	drawing->xkbOnDisplay = TRUE;
 
 	alloc_cdik (drawing);
-
-	XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
-			       XkbIndicatorStateNotify,
-			       drawing->xkb->indicators->phys_indicators,
-			       drawing->xkb->indicators->phys_indicators);
 
 	mask =
 	    (XkbStateNotifyMask | XkbNamesNotifyMask |
@@ -2312,8 +2311,12 @@ gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing * drawing,
 		drawing->xkbOnDisplay = TRUE;
 	}
 
-	if (drawing->xkb == NULL)
-		return FALSE;
+	if (drawing->xkb) {
+		XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
+				       XkbIndicatorStateNotify,
+				       drawing->xkb->indicators->phys_indicators,
+				       drawing->xkb->indicators->phys_indicators);
+	}
 
 	alloc_cdik (drawing);
 
