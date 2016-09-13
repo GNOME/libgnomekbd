@@ -1466,9 +1466,7 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 	pango_layout_set_ellipsize (context->layout, PANGO_ELLIPSIZE_END);
 
 	context->font_desc =
-	    pango_font_description_copy (gtk_widget_get_style
-					 (GTK_WIDGET
-					  (drawing))->font_desc);
+		pango_font_description_copy (pango_context_get_font_description (pangoContext));
 	context->angle = 0;
 	context->scale_numerator = 1;
 	context->scale_denominator = 1;
@@ -2249,13 +2247,13 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 	    gtk_widget_get_state_flags (GTK_WIDGET (kbdrawing));
 	GtkStyleContext *style_context =
 	    gtk_widget_get_style_context (GTK_WIDGET (kbdrawing));
+	PangoContext *pangoContext =
+		gtk_widget_get_pango_context (GTK_WIDGET (kbdrawing));
 	GkbdKeyboardDrawingRenderContext context = {
 		cr,
 		kbdrawing->renderContext->angle,
 		layout,
-		pango_font_description_copy (gtk_widget_get_style
-					     (GTK_WIDGET
-					      (kbdrawing))->font_desc),
+		pango_font_description_copy (pango_context_get_font_description (pangoContext)),
 		1, 1
 	};
 
