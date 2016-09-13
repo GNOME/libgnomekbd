@@ -2,26 +2,70 @@
 # Copyright © 2007, 2008, 2009, 2010, 2011, 2013 libgnomekbd
 # This file is distributed under the same license as the libgnomekbd package.
 # Duarte Loreto <happyguy_pt@hotmail.com>, 2007, 2008, 2009, 2010, 2011, 2013.
-# 
+# Tiago Santos <tiagofsantos81@sapo.pt>, 2014 - 2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.8\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-17 00:59+0000\n"
-"PO-Revision-Date: 2013-03-17 01:05+0000\n"
-"Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libgnomekbd&keywords=I18N+L10N&component=Indicator\n"
+"POT-Creation-Date: 2016-08-15 10:36+0000\n"
+"PO-Revision-Date: 2016-09-13 17:37+0100\n"
+"Last-Translator: Tiago Santos <tiagofsantos81@sapo.pt>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "Erro de inicialização do XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2485
+#: libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "disposição \"%s\""
+msgstr[1] "disposições \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opção \"%s\""
+msgstr[1] "opções \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "modelo \"%s\", %s e %s"
+
+#: libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "nenhuma disposição"
+
+#: libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "nenhuma opção"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Disposição de Teclado"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "Antever disposições de teclado"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
+msgid "preferences-desktop-keyboard"
+msgstr "preferências-ambiente-de-trabalho-teclado"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -32,68 +76,35 @@ msgstr ""
 "Copyright &#169; X.Org Foundation e contribuidores do XKeyboardConfig\n"
 "Sobre a licença consulte os metadados do pacote"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2635
+#: libgnomekbd/gkbd-keyboard-drawing.c:2619
 msgid "Unknown"
 msgstr "Desconhecida"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:712
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "disposição \"%s\""
-msgstr[1] "disposições \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:730
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "opção \"%s\""
-msgstr[1] "opções \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:738
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "modelo \"%s\", %s e %s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:739
-msgid "no layout"
-msgstr "nenhuma disposição"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:740
-msgid "no options"
-msgstr "nenhuma opção"
-
-#: ../libgnomekbd/gkbd-status.c:299
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Ocorreu um erro ao ler uma imagem: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Disposição de Teclado"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-msgid "Preview keyboard layouts"
-msgstr "Antever disposições de teclado"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Grupo por omissão, atribuido ao criar a janela"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Manter e gerir grupos distintos por janela"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Gravar/repor indicadores juntamente com grupos de disposições"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
 msgid "Show layout names instead of group names"
 msgstr "Apresentar nomes de disposições em vez de nomes de grupos"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -101,95 +112,101 @@ msgstr ""
 "Apresentar nomes de disposições em vez de nomes de grupos (apenas para "
 "versões do XFree que suportem múltiplas disposições)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
 msgid "Load extra configuration items"
 msgstr "Ler itens de configuração extra"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Ler disposições e opções exóticas e raramente utilizadas"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "A Antevisão de Teclado, deslocamento X"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "A Antevisão de Teclado, deslocamento Y"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
 msgid "The Keyboard Preview, width"
 msgstr "A Antevisão de Teclado, largura"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
 msgid "The Keyboard Preview, height"
 msgstr "A Antevisão de Teclado, altura"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
 msgid "Secondary groups"
 msgstr "Grupos secundários"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
 msgid "Show flags in the applet"
 msgstr "Apresentar as bandeiras na applet"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Apresentar as bandeiras na applet para indicar a disposição atual"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
 msgid "The font family"
 msgstr "A família de fonte"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
 msgid "The font family for the layout indicator"
 msgstr "A família de fonta para o indicador de disposição"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
 msgid "The font size"
 msgstr "O tamanho da fonte"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
 msgid "The font size for the layout indicator"
 msgstr "O tamanho da fonte para o indicador de disposição"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
 msgid "The foreground color"
 msgstr "A cor de primeiro plano"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "A cor de primeiro plano para o indicador de disposição"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
 msgid "The background color"
 msgstr "A cor de fundo"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
 msgid "The background color for the layout indicator"
 msgstr "A cor de fundo do indicador de disposição"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
 msgid "Keyboard model"
 msgstr "Modelo do teclado"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
 msgid "keyboard model"
 msgstr "Modelo do teclado"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
 msgid "Keyboard layout"
 msgstr "Disposição de teclado"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
 msgid "keyboard layout"
 msgstr "Disposição do teclado"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
 msgid "Keyboard options"
 msgstr "Opções de teclado"
 
-#: ../test/gkbd-indicator-test.c:66
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indicador:"
 
