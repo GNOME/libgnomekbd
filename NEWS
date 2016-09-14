@@ -1,3 +1,10 @@
+3.21.92:
+        Translation updates
+        Draw keys with invalid keycodes
+        Fix modifier key pressed state
+        Build system and minor code cleanups
+        Avoid crashes on wayland sessions
+
 3.6.0:
         Translation updates
 
