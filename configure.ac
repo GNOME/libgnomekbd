@@ -91,9 +91,9 @@ libgnomekbd.pc
 libgnomekbdui.pc
 po/Makefile.in
 libgnomekbd/Makefile
-libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
-libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in
-libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml
+libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml
+libgnomekbd/org.gnome.libgnomekbd.gschema.xml
 libgnomekbd/gkbd-keyboard-display.desktop.in
 test/Makefile
 ])

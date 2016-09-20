@@ -8,8 +8,8 @@ libgnomekbd/gkbd-keyboard-display.desktop.in.in
 libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-status.c
 libgnomekbd/gkbd-util.c
-libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in
-libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in
-libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in
+libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in
+libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in
 libgnomekbd/show-layout.ui
 test/gkbd-indicator-test.c

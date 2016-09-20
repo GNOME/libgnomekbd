@@ -13,6 +13,7 @@ icons_DATA = kbdled-caps-lock.svg \
 gsettings_SCHEMAS = org.gnome.libgnomekbd.desktop.gschema.xml \
 		    org.gnome.libgnomekbd.keyboard.gschema.xml \
 		    org.gnome.libgnomekbd.gschema.xml
+@GSETTINGS_RULES@
 
 common_CFLAGS = \
 	-I$(top_srcdir) 				\
