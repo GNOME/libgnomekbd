@@ -709,7 +709,7 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 		    g_strdup_printf (ngettext
 				     /* Translators: The count is related to the number of options. The %s
 				     * format specifier should not be modified, left "as is". */
-				     ("layout \"%s\"", "layouts \"%s\"",
+				     ("layout “%s”", "layouts “%s”",
 				      count), buffer->str);
 		g_string_truncate (buffer, 0);
 	}
@@ -727,7 +727,7 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 		    g_strdup_printf (ngettext
 				     /* Translators: The count is related to the number of options. The %s
 				     * format specifier should not be modified, left "as is". */
-				     ("option \"%s\"", "options \"%s\"",
+				     ("option “%s”", "options “%s”",
 				      count), buffer->str);
 		g_string_truncate (buffer, 0);
 	}
@@ -735,7 +735,7 @@ gkbd_keyboard_config_to_string (const GkbdKeyboardConfig * config)
 	g_string_free (buffer, TRUE);
 
 	result =
-	    g_strdup_printf (_("model \"%s\", %s and %s"), config->model,
+	    g_strdup_printf (_("model “%s”, %s and %s"), config->model,
 			     layouts ? layouts : _("no layout"),
 			     options ? options : _("no options"));
 

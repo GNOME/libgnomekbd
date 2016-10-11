@@ -2454,7 +2454,7 @@ gkbd_keyboard_drawing_draw_page (GtkPrintOperation * operation,
 	gtk_print_operation_set_unit (operation, GTK_UNIT_PIXEL);
 
 	header = g_strdup_printf
-	    (_("Keyboard layout \"%s\"\n"
+	    (_("Keyboard layout “%s”\n"
 	       "Copyright &#169; X.Org Foundation and "
 	       "XKeyboardConfig contributors\n"
 	       "For licensing see package metadata"), data->description);
