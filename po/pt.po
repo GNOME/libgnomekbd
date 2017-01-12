@@ -63,7 +63,7 @@ msgstr "Antever disposições de teclado"
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
 msgid "preferences-desktop-keyboard"
-msgstr "preferências-ambiente-de-trabalho-teclado"
+msgstr "preferences-desktop-keyboard"
 
 #: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format

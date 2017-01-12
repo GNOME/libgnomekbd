@@ -67,7 +67,7 @@ msgstr "Prikažite pregled rasporeda tastature"
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
 msgid "preferences-desktop-keyboard"
-msgstr "postavke-radne površi-tastature"
+msgstr "preferences-desktop-keyboard"
 
 #: libgnomekbd/gkbd-keyboard-drawing.c:2469
 #, c-format
