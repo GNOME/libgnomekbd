@@ -9,25 +9,66 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-04-05 21:57+0000\n"
-"PO-Revision-Date: 2014-04-09 05:31+0700\n"
-"Last-Translator: Dirgita <dirgitadevina@yahoo.co.id>\n"
+"product=libgnomekbd&keywords=I18N+L10N&component=Indicator\n"
+"POT-Creation-Date: 2016-10-11 14:04+0000\n"
+"PO-Revision-Date: 2017-03-20 05:42+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.5\n"
-"X-Poedit-Language: Indonesian\n"
-"X-Poedit-Country: Indonesia\n"
+"X-Generator: Poedit 1.8.12\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:422 ../libgnomekbd/gkbd-status.c:560
+#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "Kesalahan inisialisasi XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2485
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: libgnomekbd/gkbd-keyboard-config.c:712
+#, c-format
+msgid "layout \"%s\""
+msgid_plural "layouts \"%s\""
+msgstr[0] "tata letak \"%s\""
+
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: libgnomekbd/gkbd-keyboard-config.c:730
+#, c-format
+msgid "option \"%s\""
+msgid_plural "options \"%s\""
+msgstr[0] "opsi \"%s\""
+
+#: libgnomekbd/gkbd-keyboard-config.c:738
+#, c-format
+msgid "model \"%s\", %s and %s"
+msgstr "model \"%s\",%s dan%s"
+
+#: libgnomekbd/gkbd-keyboard-config.c:739
+msgid "no layout"
+msgstr "tidak ada tata letak"
+
+#: libgnomekbd/gkbd-keyboard-config.c:740
+msgid "no options"
+msgstr "tidak ada opsi"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Tata Letak Papan Tik"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "Menampilkan tata letak papan ketik"
+
+#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
+msgid "preferences-desktop-keyboard"
+msgstr "preferences-desktop-keyboard"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2457
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
@@ -38,66 +79,35 @@ msgstr ""
 "Hak cipta &#169; X.Org Foundation dan kontributor XKeyboardConfig\n"
 "Untuk lisensi lihat metadata paket"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2635
+#: libgnomekbd/gkbd-keyboard-drawing.c:2607
 msgid "Unknown"
 msgstr "Tak diketahui"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:712
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "tata letak \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:730
-#, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "opsi \"%s\""
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:738
-#, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "model \"%s\",%s dan%s"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:739
-msgid "no layout"
-msgstr "tidak ada tata letak"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:740
-msgid "no options"
-msgstr "tidak ada opsi"
-
-#: ../libgnomekbd/gkbd-status.c:299
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "Ada galat saat memuat suatu gambar: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Tata Letak Papan Tik"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-msgid "Preview keyboard layouts"
-msgstr "Menampilkan tata letak papan ketik"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Grup bawaan, ditetapkan pada penciptaan jendela"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Menjaga dan mengelola kelompok terpisah per jendela"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Simpan/kembalikan indikator bersama-sama dengan kelompok tata letak"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:22
 msgid "Show layout names instead of group names"
 msgstr "Tampilkan nama tata letak, bukan nama grup"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:23
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -105,145 +115,100 @@ msgstr ""
 "Tampilkan nama tata letak, bukan nama grup (hanya untuk versi XFree yang "
 "mendukung tata letak berganda)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:27
 msgid "Load extra configuration items"
 msgstr "Muat butir konfigurasi tambahan"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:28
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Muat opsi dan tata letak yang eksotis dan jarang dipakai"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Pratilik Papan Tik, ofset X"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Pratilik Papan Tik, ofset Y"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Pratilik Papan Tik, lebar"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:30
 msgid "The Keyboard Preview, height"
 msgstr "Pratilik Papan Tik, tinggi"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:38
 msgid "Secondary groups"
 msgstr "Kelompok sekunder"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:42
 msgid "Show flags in the applet"
 msgstr "Tunjukkan flag di applet"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:43
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Tampilkan flag di applet untuk menunjukkan tata letak saat ini"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:47
 msgid "The font family"
 msgstr "Keluarga fonta"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:48
 msgid "The font family for the layout indicator"
 msgstr "Keluarga fonta untuk indikator tata letak"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:53
 msgid "The font size"
 msgstr "Ukuran fonta"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:54
 msgid "The font size for the layout indicator"
 msgstr "Ukuran fonta untuk indikator tata letak"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:58
 msgid "The foreground color"
 msgstr "Warna latar depan"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Warna latar depan untuk indikator tata letak"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:63
 msgid "The background color"
 msgstr "Warna latar"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:64
 msgid "The background color for the layout indicator"
 msgstr "Warna latar belakang untuk indikator tata letak"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:6
 msgid "Keyboard model"
 msgstr "Model papan tik"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:7
 msgid "keyboard model"
 msgstr "model papan tik"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:11
 msgid "Keyboard layout"
 msgstr "Tata letak papan tik"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:12
 msgid "keyboard layout"
 msgstr "tata letak papan tik"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:17
 msgid "Keyboard options"
 msgstr "Opsi papan tik"
 
-#: ../test/gkbd-indicator-test.c:66
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikator:"
-
-#~ msgid "The list of enabled Keyboard Indicator plugins"
-#~ msgstr "Daftar plugin Indikator Papan Tik yang diaktifkan"
-
-#~ msgid "Activate more plugins"
-#~ msgstr "Aktifkan lebih banyak plugin"
-
-#~ msgid "Active _plugins:"
-#~ msgstr "_Plugin aktif:"
-
-#~ msgid "Close the dialog"
-#~ msgstr "Tutup dialog"
-
-#~ msgid "Configure the selected plugin"
-#~ msgstr "Mengkonfigurasi plugin dipilih"
-
-#~ msgid "Deactivate selected plugin"
-#~ msgstr "Nonaktifkan plugin yang dipilih"
-
-#~ msgid "Decrease the plugin priority"
-#~ msgstr "Penurunan prioritas plugin"
-
-#~ msgid "Increase the plugin priority"
-#~ msgstr "Penaikan prioritas plugin"
-
-#~ msgid "Keyboard Indicator Plugins"
-#~ msgstr "Plugin Indikator Papan Tik"
-
-#~ msgid "The list of active plugins"
-#~ msgstr "Daftar plugin yang aktif"
-
-#~ msgid "Add Plugin"
-#~ msgstr "Tambahkan Plugin"
-
-#~ msgid "_Available plugins:"
-#~ msgstr "Plugin Tersedi_a:"
-
-#~ msgid "No description."
-#~ msgstr "Tidak ada deskripsi."
-
-#~ msgid "Unable to open help file"
-#~ msgstr "Tidak dapat membuka berkas bantuan"
-
-#~ msgid "Enable/disable installed plugins"
-#~ msgstr "Mengaktifkan/menonaktifkan plugin terpasang"
-
-#~ msgid "Keyboard Indicator plugins"
-#~ msgstr "Plugin Indikator Papan Tik"
-
-#~ msgid "Keyboard Layout \"%s\""
-#~ msgstr "Tata Letak Papan Tik \"%s\""
