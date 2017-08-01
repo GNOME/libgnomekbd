@@ -108,12 +108,11 @@ desktopdir = $(datadir)/applications
 desktop_in_files = gkbd-keyboard-display.desktop.in
 desktop_DATA = gkbd-keyboard-display.desktop
 
-$(desktop_in_files): gkbd-keyboard-display.desktop.in.in
-	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
-
-# Substitute variables in a Desktop Entry file.
-$(desktop_DATA): $(desktop_in_files)
+%.desktop.in : %.desktop.in.in
 	$(AM_V_GEN) sed -e 's|@VERSION[@]|$(VERSION)|g' $< > $@
+
+%.desktop : %.desktop.in
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 noinst_HEADERS = $(extra_nih) \
                  gkbd-config-private.h
