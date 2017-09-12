@@ -1,3 +1,8 @@
+3.26.0:
+        Translation updates
+        Fix icon filename in Portuguese and Serbian translations
+        Fix untranslated app name on the panel
+
 3.22.0.1:
         Brown paper bag release to fix non-installed gschemas
 
