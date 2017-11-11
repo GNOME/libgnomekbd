@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libgnomekbd&keywords=I18N+L10N&component=Indicator\n"
-"POT-Creation-Date: 2016-10-11 14:04+0000\n"
+"POT-Creation-Date: 2017-04-27 15:27+0000\n"
 "PO-Revision-Date: 2017-01-14 11:27+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -32,8 +32,8 @@ msgstr "XKB-klargøringsfejl"
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "layout \"%s\""
-msgstr[1] "layout \"%s\""
+msgstr[0] "layout “%s”"
+msgstr[1] "layout “%s”"
 
 # Bestemt eller ubestemt?
 #. Translators: The count is related to the number of options. The %s
@@ -42,13 +42,13 @@ msgstr[1] "layout \"%s\""
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
-msgstr[0] "indstilling \"%s\""
-msgstr[1] "indstillinger \"%s\""
+msgstr[0] "indstilling “%s”"
+msgstr[1] "indstillinger “%s”"
 
 #: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
 msgid "model \"%s\", %s and %s"
-msgstr "model \"%s\", %s og %s"
+msgstr "model “%s”, %s og %s"
 
 #: libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
@@ -79,7 +79,7 @@ msgid ""
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
-"Tastaturlayout \"%s\"\n"
+"Tastaturlayout “%s”\n"
 "Copyright &#169; X.Org Foundation og XKeyboardConfig-bidragydere\n"
 "Licensen findes i pakkens metadata"
 
@@ -266,7 +266,7 @@ msgstr "Indikator:"
 #~ msgstr "Tastaturindikator-moduler"
 
 #~ msgid "Keyboard Layout \"%s\""
-#~ msgstr "Tastaturlayout \"%s\""
+#~ msgstr "Tastaturlayout “%s”"
 
 #~ msgid ""
 #~ "A collection of scripts to run whenever the keyboard state is reloaded. "
@@ -283,7 +283,7 @@ msgstr "Indikator:"
 
 # Jeg kan umuligt finde den rette danske oversættelse af den advarsel
 #~ msgid "Suppress the \"X sysconfig changed\" warning message"
-#~ msgstr "Undertryk advarslen \"X sysconfig changed\""
+#~ msgstr "Undertryk advarslen “X sysconfig changed”"
 
 #~ msgid "modmap file list"
 #~ msgstr "modmap-filliste"
