@@ -2129,6 +2129,10 @@ get_preferred_height_for_width (GtkWidget * widget,
 				gint * natural_height)
 {
 	GkbdKeyboardDrawing *drawing = GKBD_KEYBOARD_DRAWING (widget);
+
+	if (!drawing->xkb)
+		return;
+
 	*minimum_height = *natural_height =
 	    width * drawing->xkb->geom->height_mm /
 	    drawing->xkb->geom->width_mm;
