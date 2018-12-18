@@ -52,7 +52,7 @@ const gchar *GKBD_KEYBOARD_CONFIG_ACTIVE[] = {
  */
 
 static gboolean
-g_strv_equal (gchar ** l1, gchar ** l2)
+gkbd_strv_equal (gchar ** l1, gchar ** l2)
 {
 	if (l1 == l2)
 		return TRUE;
@@ -555,7 +555,7 @@ gkbd_keyboard_config_equals (GkbdKeyboardConfig * kbd_config1,
 	    (kbd_config2->model != NULL) &&
 	    g_ascii_strcasecmp (kbd_config1->model, kbd_config2->model))
 		return False;
-	if (!g_strv_equal (kbd_config1->layouts_variants,
+	if (!gkbd_strv_equal (kbd_config1->layouts_variants,
 			   kbd_config2->layouts_variants))
 		return False;
 
