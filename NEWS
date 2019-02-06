@@ -1,3 +1,7 @@
+3.26.1:
+        Translation updates
+        Fix build with new GLib
+
 3.26.0:
         Translation updates
         Fix icon filename in Portuguese and Serbian translations
