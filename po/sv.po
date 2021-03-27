@@ -1,15 +1,15 @@
 # Swedish translation for libgnomekbd.
-# Copyright (C) 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+# Copyright © 2007-2021 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 # Daniel Nylander <po@danielnylander.se>, 2007, 2008, 2009, 2010, 2011.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libgnomekbd&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-07-28 21:05+0000\n"
-"PO-Revision-Date: 2016-08-01 12:23+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/issues\n"
+"POT-Creation-Date: 2020-09-15 22:32+0000\n"
+"PO-Revision-Date: 2021-03-27 23:04+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,30 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB-initieringsfel"
 
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
 msgid "layout \"%s\""
 msgid_plural "layouts \"%s\""
-msgstr[0] "layout \"%s\""
-msgstr[1] "layouter \"%s\""
+msgstr[0] "layout ”%s”"
+msgstr[1] "layouter ”%s”"
 
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
 msgid "option \"%s\""
 msgid_plural "options \"%s\""
-msgstr[0] "alternativ \"%s\""
-msgstr[1] "alternativ \"%s\""
+msgstr[0] "alternativ ”%s”"
+msgstr[1] "alternativ ”%s”"
 
 #: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
 msgid "model \"%s\", %s and %s"
-msgstr "modell \"%s\", %s och %s"
+msgstr "modell ”%s”, %s och %s"
 
 #: libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
@@ -59,23 +63,18 @@ msgstr "Tangentbordslayout"
 msgid "Preview keyboard layouts"
 msgstr "Förhandsvisa tangentbordslayouter"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
-msgid "preferences-desktop-keyboard"
-msgstr "preferences-desktop-keyboard"
-
-#: libgnomekbd/gkbd-keyboard-drawing.c:2469
+#: libgnomekbd/gkbd-keyboard-drawing.c:2457
 #, c-format
 msgid ""
 "Keyboard layout \"%s\"\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
-"Tangentbordslayouten \"%s\"\n"
+"Tangentbordslayouten ”%s”\n"
 "Copyright &#169; X.Org Foundation och XKeyboardConfig-bidragsgivarna\n"
 "Se paketets metadata för licensiering"
 
-#: libgnomekbd/gkbd-keyboard-drawing.c:2619
+#: libgnomekbd/gkbd-keyboard-drawing.c:2607
 msgid "Unknown"
 msgstr "Okänd"
 
@@ -84,26 +83,26 @@ msgstr "Okänd"
 msgid "There was an error loading an image: %s"
 msgstr "Det inträffade ett fel vid inläsning av en bild: %s"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Standardgrupp, tilldelade för fönsterskapande"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Behåll och hantera separat grupp per fönster"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Spara/återställ indikatorer tillsammans med layoutgrupper"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:22
 msgid "Show layout names instead of group names"
 msgstr "Visa layoutnamn istället för gruppnamn"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:23
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -111,103 +110,106 @@ msgstr ""
 "Visa layoutnamn istället för gruppnamn (endast för versioner av XFree som "
 "har stöd för flera layouter)"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:27
 msgid "Load extra configuration items"
 msgstr "Läs in extra konfigurationsobjekt"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:28
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Läs in exotiska, sällan använda layouter och alternativ"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Tangentbordsförhandsvisning, X-position"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Tangentbordsförhandsvisning, Y-position"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Tangentbordsförhandsvisning, bredd"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:30
 msgid "The Keyboard Preview, height"
 msgstr "Tangentbordsförhandsvisning, höjd"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:38
 msgid "Secondary groups"
 msgstr "Sekundära grupper"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:42
 msgid "Show flags in the applet"
-msgstr "Visa flaggor i panelprogrammet"
+msgstr "Visa flaggor i miniprogrammet"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:43
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Visa flaggor i panelprogrammet för att indikera aktuell layout"
+msgstr "Visa flaggor i miniprogrammet för att indikera aktuell layout"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:47
 msgid "The font family"
 msgstr "Typsnittsfamiljen"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:48
 msgid "The font family for the layout indicator"
 msgstr "Typsnittsfamiljen för layoutindikatorn"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:53
 msgid "The font size"
 msgstr "Typsnittsstorleken"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:54
 msgid "The font size for the layout indicator"
 msgstr "Typsnittsstorleken för layoutindikatorn"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:58
 msgid "The foreground color"
 msgstr "Förgrundsfärgen"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Förgrundsfärgen för layoutindikatorn"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:63
 msgid "The background color"
 msgstr "Bakgrundsfärgen"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:64
 msgid "The background color for the layout indicator"
 msgstr "Bakgrundsfärgen för layoutindikatorn"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:6
 msgid "Keyboard model"
 msgstr "Tangentbordsmodell"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:7
 msgid "keyboard model"
 msgstr "tangentbordsmodell"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:11
 msgid "Keyboard layout"
 msgstr "Tangentbordslayout"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:12
 msgid "keyboard layout"
 msgstr "tangentbordslayout"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:17
 msgid "Keyboard options"
 msgstr "Tangentbordsalternativ"
 
 #: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikator:"
+
+#~ msgid "preferences-desktop-keyboard"
+#~ msgstr "preferences-desktop-keyboard"
 
 #~ msgid "The list of enabled Keyboard Indicator plugins"
 #~ msgstr "Listan över aktiverade insticksmoduler för tangentbordsindikator"
