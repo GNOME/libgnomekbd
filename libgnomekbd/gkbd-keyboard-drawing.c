@@ -927,6 +927,7 @@ draw_key_label_helper (GkbdKeyboardDrawingRenderContext * context,
 		       gboolean is_pressed)
 {
 	gint label_x, label_y, label_max_width, ycell;
+	PangoAlignment align;
 
 	if (keysym == 0)
 		return;
@@ -935,46 +936,30 @@ draw_key_label_helper (GkbdKeyboardDrawingRenderContext * context,
 		(unsigned) keysym, (char) keysym, (int) glp);
 #endif
 
+	ycell = ((glp == GKBD_KEYBOARD_DRAWING_POS_BOTTOMLEFT) ||
+		 (glp == GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT));
+	rotate_coordinate (x, y, x + padding,
+			   y + padding + (height -
+					  2 * padding) *
+			   ycell * 4 / 7, angle, &label_x,
+			   &label_y);
+	label_max_width = PANGO_SCALE * (width - 2 * padding);
+
 	switch (glp) {
 	case GKBD_KEYBOARD_DRAWING_POS_TOPLEFT:
 	case GKBD_KEYBOARD_DRAWING_POS_BOTTOMLEFT:
-		{
-			ycell =
-			    glp == GKBD_KEYBOARD_DRAWING_POS_BOTTOMLEFT;
-
-			rotate_coordinate (x, y, x + padding,
-					   y + padding + (height -
-							  2 * padding) *
-					   ycell * 4 / 7, angle, &label_x,
-					   &label_y);
-			label_max_width =
-			    PANGO_SCALE * (width - 2 * padding);
-			break;
-		}
+			align = PANGO_ALIGN_LEFT;
+		break;
 	case GKBD_KEYBOARD_DRAWING_POS_TOPRIGHT:
 	case GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT:
-		{
-			ycell =
-			    glp == GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT;
-
-			rotate_coordinate (x, y,
-					   x + padding + (width -
-							  2 * padding) *
-					   4 / 7,
-					   y + padding + (height -
-							  2 * padding) *
-					   ycell * 4 / 7, angle, &label_x,
-					   &label_y);
-			label_max_width =
-			    PANGO_SCALE * ((width - 2 * padding) -
-					   (width - 2 * padding) * 4 / 7);
-			break;
-		}
+			align = PANGO_ALIGN_RIGHT;
+		break;
 	default:
 		return;
 	}
 	set_key_label_in_layout (context, keysym);
 	pango_layout_set_width (context->layout, label_max_width);
+	pango_layout_set_alignment (context->layout, align);
 	label_y -= (pango_layout_get_line_count (context->layout) - 1) *
 	    (pango_font_description_get_size (context->font_desc) /
 	     PANGO_SCALE);
