@@ -666,12 +666,13 @@ set_markup (GkbdKeyboardDrawingRenderContext * context, gchar * txt)
 	}
 }
 
-static void
+static PangoDirection
 set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 			 guint keyval)
 {
 	gchar buf[5];
 	gunichar uc;
+	PangoDirection dir = PANGO_DIRECTION_LTR;
 
 	switch (keyval) {
 	case GDK_KEY_Scroll_Lock:
@@ -825,6 +826,7 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 	default:
 		uc = gdk_keyval_to_unicode (keyval);
 		if (uc != 0 && g_unichar_isgraph (uc)) {
+			dir = pango_unichar_direction (uc);
 			buf[g_unichar_to_utf8 (uc, buf)] = '\0';
 			set_markup (context, buf);
 		} else {
@@ -846,6 +848,7 @@ set_key_label_in_layout (GkbdKeyboardDrawingRenderContext * context,
 				set_markup (context, "");
 		}
 	}
+	return dir;
 }
 
 
