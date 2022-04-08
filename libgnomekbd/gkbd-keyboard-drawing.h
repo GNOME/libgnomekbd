@@ -145,7 +145,6 @@ struct _GkbdKeyboardDrawing {
 	guint mods;
 
 	Display *display;
-	gint screen_num;
 
 	gint xkb_event_type;
 

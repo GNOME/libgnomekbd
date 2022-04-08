@@ -2017,15 +2017,6 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 		g_critical
 		    ("XkbQueryExtension failed! Stuff probably won't work.");
 
-	/* XXX: this stuff probably doesn't matter.. also, gdk_screen_get_default can fail */
-	if (gtk_widget_has_screen (GTK_WIDGET (drawing)))
-		drawing->screen_num =
-		    gdk_screen_get_number (gtk_widget_get_screen
-					   (GTK_WIDGET (drawing)));
-	else
-		drawing->screen_num =
-		    gdk_screen_get_number (gdk_screen_get_default ());
-
 	alloc_render_context (drawing);
 
 	drawing->keyboard_items = NULL;
@@ -2124,13 +2115,9 @@ get_preferred_width (GtkWidget * widget,
 		     gint * minimum_width, gint * natural_width)
 {
 	GdkRectangle rect;
-	gint w, monitor;
-	GdkScreen *scr = NULL;
+	gint w;
 
-	scr = gdk_screen_get_default ();
-	monitor = gdk_screen_get_primary_monitor (scr);
-
-	gdk_screen_get_monitor_geometry (scr, monitor, &rect);
+	gdk_monitor_get_geometry (gdk_display_get_primary_monitor (gdk_display_get_default ()), &rect);
 	w = rect.width;
 	*minimum_width = *natural_width = w - (w >> 2);
 }

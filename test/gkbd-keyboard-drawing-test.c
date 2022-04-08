@@ -160,8 +160,6 @@ main (gint argc, gchar ** argv)
 {
 	GtkWidget *window;
 	GtkWidget *gkbd_keyboard_drawing;
-	GdkScreen *screen;
-	gint monitor;
 	GdkRectangle rect;
 	GOptionContext *context;
 	GError *error = NULL;
@@ -203,9 +201,9 @@ main (gint argc, gchar ** argv)
 	g_signal_connect (G_OBJECT (window), "destroy",
 			  G_CALLBACK (gtk_main_quit), NULL);
 
-	screen = gtk_window_get_screen (GTK_WINDOW (window));
-	monitor = gdk_screen_get_monitor_at_point (screen, 0, 0);
-	gdk_screen_get_monitor_geometry (screen, monitor, &rect);
+	gdk_monitor_get_geometry (gdk_display_get_monitor_at_window
+                                  (gdk_window_get_display (GDK_WINDOW (window)),
+                                   (GDK_WINDOW (window))), &rect);
 	gtk_window_set_default_size (GTK_WINDOW (window),
 				     rect.width * 4 / 5,
 				     rect.height * 1 / 2);
