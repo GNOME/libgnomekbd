@@ -174,7 +174,7 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 				if (icon_info != NULL &&
 				    gtk_icon_info_get_filename (icon_info)
 				    == NULL) {
-					gtk_icon_info_free (icon_info);
+					g_object_unref (icon_info);
 					icon_info = NULL;
 				}
 			}
@@ -188,7 +188,7 @@ gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 	if (icon_info != NULL) {
 		image_file =
 		    g_strdup (gtk_icon_info_get_filename (icon_info));
-		gtk_icon_info_free (icon_info);
+		g_object_unref (icon_info);
 	}
 
 	return image_file;
