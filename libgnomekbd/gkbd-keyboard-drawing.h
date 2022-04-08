@@ -181,15 +181,15 @@ gboolean gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing *
 void gkbd_keyboard_drawing_set_layout (GkbdKeyboardDrawing * kbdrawing,
 				       const gchar * id);
 
-G_CONST_RETURN gchar
+const gchar
     * gkbd_keyboard_drawing_get_keycodes (GkbdKeyboardDrawing * kbdrawing);
-G_CONST_RETURN gchar
+const gchar
     * gkbd_keyboard_drawing_get_geometry (GkbdKeyboardDrawing * kbdrawing);
-G_CONST_RETURN gchar
+const gchar
     * gkbd_keyboard_drawing_get_symbols (GkbdKeyboardDrawing * kbdrawing);
-G_CONST_RETURN gchar *gkbd_keyboard_drawing_get_types (GkbdKeyboardDrawing
+const gchar *gkbd_keyboard_drawing_get_types (GkbdKeyboardDrawing
 						       * kbdrawing);
-G_CONST_RETURN gchar *gkbd_keyboard_drawing_get_compat (GkbdKeyboardDrawing
+const gchar *gkbd_keyboard_drawing_get_compat (GkbdKeyboardDrawing
 							* kbdrawing);
 
 void gkbd_keyboard_drawing_set_track_modifiers (GkbdKeyboardDrawing *

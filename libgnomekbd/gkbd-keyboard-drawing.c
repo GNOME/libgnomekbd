@@ -2315,7 +2315,7 @@ gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing * drawing,
 	return TRUE;
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 gkbd_keyboard_drawing_get_keycodes (GkbdKeyboardDrawing * drawing)
 {
 	if (!drawing->xkb || drawing->xkb->names->keycodes <= 0)
@@ -2325,7 +2325,7 @@ gkbd_keyboard_drawing_get_keycodes (GkbdKeyboardDrawing * drawing)
 				     drawing->xkb->names->keycodes);
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 gkbd_keyboard_drawing_get_geometry (GkbdKeyboardDrawing * drawing)
 {
 	if (!drawing->xkb || drawing->xkb->names->geometry <= 0)
@@ -2335,7 +2335,7 @@ gkbd_keyboard_drawing_get_geometry (GkbdKeyboardDrawing * drawing)
 				     drawing->xkb->names->geometry);
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 gkbd_keyboard_drawing_get_symbols (GkbdKeyboardDrawing * drawing)
 {
 	if (!drawing->xkb || drawing->xkb->names->symbols <= 0)
@@ -2345,7 +2345,7 @@ gkbd_keyboard_drawing_get_symbols (GkbdKeyboardDrawing * drawing)
 				     drawing->xkb->names->symbols);
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 gkbd_keyboard_drawing_get_types (GkbdKeyboardDrawing * drawing)
 {
 	if (!drawing->xkb || drawing->xkb->names->types <= 0)
@@ -2355,7 +2355,7 @@ gkbd_keyboard_drawing_get_types (GkbdKeyboardDrawing * drawing)
 				     drawing->xkb->names->types);
 }
 
-G_CONST_RETURN gchar *
+const gchar *
 gkbd_keyboard_drawing_get_compat (GkbdKeyboardDrawing * drawing)
 {
 	if (!drawing->xkb || drawing->xkb->names->compat <= 0)
