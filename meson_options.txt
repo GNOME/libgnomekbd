@@ -1,0 +1,9 @@
+option('gir',
+       type: 'boolean', value: true,
+       description: 'Generate gir data (requires gobject-introspection)')
+option('vapi',
+       type: 'boolean', value: true,
+       description: 'Generate vapi data (requires vapigen)')
+option('tests',
+       type : 'boolean', value : true,
+       description: 'Enable tests')
