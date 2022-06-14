@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-15 10:36+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/issues\n"
+"POT-Creation-Date: 2022-06-14 11:18+0000\n"
 "PO-Revision-Date: 2016-08-21 15:37+0200\n"
 "Last-Translator: Piotr Drąg <piotdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -26,25 +26,29 @@ msgstr ""
 msgid "XKB initialization error"
 msgstr "Błąd inicjacji XKB"
 
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
+msgid "layout “%s”"
+msgid_plural "layouts “%s”"
 msgstr[0] "układ „%s”"
 msgstr[1] "układy „%s”"
 msgstr[2] "układy „%s”"
 
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
+msgid "option “%s”"
+msgid_plural "options “%s”"
 msgstr[0] "opcja „%s”"
 msgstr[1] "opcje „%s”"
 msgstr[2] "opcje „%s”"
 
 #: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
-msgid "model \"%s\", %s and %s"
+msgid "model “%s”, %s and %s"
 msgstr "model „%s”, %s i %s"
 
 #: libgnomekbd/gkbd-keyboard-config.c:739
@@ -64,15 +68,10 @@ msgstr "Układ klawiatury"
 msgid "Preview keyboard layouts"
 msgstr "Podgląd układów klawiatury"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
-msgid "preferences-desktop-keyboard"
-msgstr "preferences-desktop-keyboard"
-
-#: libgnomekbd/gkbd-keyboard-drawing.c:2469
+#: libgnomekbd/gkbd-keyboard-drawing.c:2457
 #, c-format
 msgid ""
-"Keyboard layout \"%s\"\n"
+"Keyboard layout “%s”\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
@@ -80,7 +79,7 @@ msgstr ""
 "Copyright &#169; X.Org Foundation oraz współtwórcy XKeyboardConfig\n"
 "Warunki licencji znajdują się w metadanych pakietu"
 
-#: libgnomekbd/gkbd-keyboard-drawing.c:2619
+#: libgnomekbd/gkbd-keyboard-drawing.c:2607
 msgid "Unknown"
 msgstr "Nieznany"
 
@@ -89,26 +88,26 @@ msgstr "Nieznany"
 msgid "There was an error loading an image: %s"
 msgstr "Wystąpił błąd podczas wczytywania obrazu: %s"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:7
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:8
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Domyślna grupa, ustawiana przy tworzeniu okna"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:12
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:13
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Przechowywanie i zarządzanie grupami, oddzielnymi dla każdego z okien"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:17
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:18
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Zapisywanie/przywracanie wskaźników razem z grupami układów"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:22
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:22
 msgid "Show layout names instead of group names"
 msgstr "Wyświetlanie nazw układów zamiast nazw grup"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:23
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -116,97 +115,97 @@ msgstr ""
 "Wyświetlanie nazw układów zamiast nazw grup (ma zastosowanie tylko do wersji "
 "XFree obsługujących wiele układów)"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:27
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:27
 msgid "Load extra configuration items"
 msgstr "Wczytanie dodatkowych elementów konfiguracji"
 
-#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in:28
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:28
 msgid "Load exotic, rarely used layouts and options"
 msgstr "Wczytanie egzotycznych, rzadko używanych układów i opcji"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:11
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Przesunięcie X podglądu klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:17
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:18
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Przesunięcie Y podglądu klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:23
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:24
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Szerokość podglądu klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:29
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:30
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:30
 msgid "The Keyboard Preview, height"
 msgstr "Wysokość podglądu klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:37
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:38
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:38
 msgid "Secondary groups"
 msgstr "Grupy drugorzędne"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:42
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:42
 msgid "Show flags in the applet"
 msgstr "Wyświetlanie flag w aplecie"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:43
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:43
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Wyświetlanie flag w aplecie, w celu wskazania bieżącego układu"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:47
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:47
 msgid "The font family"
 msgstr "Rodzina czcionek"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:48
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:48
 msgid "The font family for the layout indicator"
 msgstr "Rodzina czcionek wskaźnika układu"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:53
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:53
 msgid "The font size"
 msgstr "Rozmiar czcionki"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:54
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:54
 msgid "The font size for the layout indicator"
 msgstr "Rozmiar czcionki wskaźnika układu"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:58
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:58
 msgid "The foreground color"
 msgstr "Kolor pierwszoplanowy"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:59
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Kolor pierwszoplanowy wskaźnika układu"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:63
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:63
 msgid "The background color"
 msgstr "Kolor tła"
 
-#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in:64
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:64
 msgid "The background color for the layout indicator"
 msgstr "Kolor tła wskaźnika układu"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:6
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:6
 msgid "Keyboard model"
 msgstr "Model klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:7
 msgid "keyboard model"
 msgstr "model klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:11
 msgid "Keyboard layout"
 msgstr "Układ klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:12
 msgid "keyboard layout"
 msgstr "układ klawiatury"
 
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:16
-#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:17
 msgid "Keyboard options"
 msgstr "Opcje klawiatury"
 
