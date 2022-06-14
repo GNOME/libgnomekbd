@@ -80,9 +80,9 @@ gkbd_preview_load_position (void)
 		/* default values should be treated as 
 		 * "0.75 of the screen size" */
 		GdkRectangle rect;
-		GdkScreen *scr = gdk_screen_get_default ();
-		gint w, h, monitor = gdk_screen_get_primary_monitor (scr);
-		gdk_screen_get_monitor_geometry (scr, monitor, &rect);
+		gint w, h;
+		gdk_monitor_get_geometry (gdk_display_get_primary_monitor
+                                          (gdk_display_get_default ()), &rect);
 		w = rect.width; h = rect.height;
 		rv->x = w >> 3;
 		rv->y = h >> 3;
