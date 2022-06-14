@@ -37,69 +37,69 @@ struct _GkbdConfigurationClass {
 	GObjectClass parent_class;
 };
 
-extern GkbdConfiguration *gkbd_configuration_get (void);
+GkbdConfiguration *gkbd_configuration_get (void);
 
-extern XklEngine *gkbd_configuration_get_xkl_engine (GkbdConfiguration *
+XklEngine *gkbd_configuration_get_xkl_engine (GkbdConfiguration *
 						     configuration);
 
-extern gchar **gkbd_configuration_get_group_names (GkbdConfiguration *
+gchar **gkbd_configuration_get_group_names (GkbdConfiguration *
 						   configuration);
 
-extern gchar **gkbd_configuration_get_short_group_names (GkbdConfiguration
+gchar **gkbd_configuration_get_short_group_names (GkbdConfiguration
 							 * configuration);
 
-extern gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
+gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
 						     configuration,
 						     guint group);
 
-extern gchar *gkbd_configuration_get_current_tooltip (GkbdConfiguration *
+gchar *gkbd_configuration_get_current_tooltip (GkbdConfiguration *
 						      configuration);
 
-extern gboolean gkbd_configuration_if_flags_shown (GkbdConfiguration *
+gboolean gkbd_configuration_if_flags_shown (GkbdConfiguration *
 						   configuration);
 
-extern gchar *gkbd_configuration_extract_layout_name (GkbdConfiguration *
+gchar *gkbd_configuration_extract_layout_name (GkbdConfiguration *
 						      configuration,
 						      int group);
 
-extern void gkbd_configuration_lock_next_group (GkbdConfiguration *
+void gkbd_configuration_lock_next_group (GkbdConfiguration *
 						configuration);
 
-extern void gkbd_configuration_lock_group (GkbdConfiguration *
+void gkbd_configuration_lock_group (GkbdConfiguration *
 					   configuration, guint group);
 
-extern guint gkbd_configuration_get_current_group (GkbdConfiguration *
+guint gkbd_configuration_get_current_group (GkbdConfiguration *
 						   configuration);
 
-extern gchar *gkbd_configuration_get_group_name (GkbdConfiguration *
+gchar *gkbd_configuration_get_group_name (GkbdConfiguration *
 						 configuration,
 						 guint group);
 
-extern void gkbd_configuration_start_listen (GkbdConfiguration *
+void gkbd_configuration_start_listen (GkbdConfiguration *
 					     configuration);
 
-extern void gkbd_configuration_stop_listen (GkbdConfiguration *
+void gkbd_configuration_stop_listen (GkbdConfiguration *
 					    configuration);
 
-extern GkbdIndicatorConfig
+GkbdIndicatorConfig
     * gkbd_configuration_get_indicator_config (GkbdConfiguration *
 					       configuration);
 
-extern GkbdKeyboardConfig
+GkbdKeyboardConfig
     * gkbd_configuration_get_keyboard_config (GkbdConfiguration *
 					      configuration);
 
-extern GSList *gkbd_configuration_get_all_objects (GkbdConfiguration *
+GSList *gkbd_configuration_get_all_objects (GkbdConfiguration *
 						   configuration);
 
-extern gboolean gkbd_configuration_if_any_object_exists (GkbdConfiguration
+gboolean gkbd_configuration_if_any_object_exists (GkbdConfiguration
 							 * configuration);
 
-extern void gkbd_configuration_append_object (GkbdConfiguration *
+void gkbd_configuration_append_object (GkbdConfiguration *
 					      configuration,
 					      GObject * obj);
 
-extern void gkbd_configuration_remove_object (GkbdConfiguration *
+void gkbd_configuration_remove_object (GkbdConfiguration *
 					      configuration,
 					      GObject * obj);
 
@@ -112,23 +112,23 @@ extern void gkbd_configuration_remove_object (GkbdConfiguration *
 		} \
 	}
 
-extern GSList *gkbd_configuration_load_images (GkbdConfiguration *
+GSList *gkbd_configuration_load_images (GkbdConfiguration *
 					       configuration);
 
-extern void gkbd_configuration_free_images (GkbdConfiguration *
+void gkbd_configuration_free_images (GkbdConfiguration *
 					    configuration,
 					    GSList * images);
 
-extern gchar *gkbd_configuration_create_label_title (int group,
+gchar *gkbd_configuration_create_label_title (int group,
 						     GHashTable **
 						     ln2cnt_map,
 						     gchar * layout_name);
 
-extern gboolean gkbd_configuration_get_caps_lock_state (GkbdConfiguration *
+gboolean gkbd_configuration_get_caps_lock_state (GkbdConfiguration *
 							configuration);
-extern gboolean gkbd_configuration_get_num_lock_state (GkbdConfiguration *
+gboolean gkbd_configuration_get_num_lock_state (GkbdConfiguration *
 						       configuration);
-extern gboolean gkbd_configuration_get_scroll_lock_state (GkbdConfiguration
+gboolean gkbd_configuration_get_scroll_lock_state (GkbdConfiguration
 							  * configuration);
 
 G_END_DECLS

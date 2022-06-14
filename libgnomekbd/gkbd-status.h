@@ -44,17 +44,17 @@ struct _GkbdStatusClass {
 	GtkNotebookClass parent_class;
 };
 
-extern GType gkbd_status_get_type (void);
+GType gkbd_status_get_type (void);
 
-extern GtkStatusIcon *gkbd_status_new (void);
+GtkStatusIcon *gkbd_status_new (void);
 
-extern void gkbd_status_reinit_ui (GkbdStatus * gki);
+void gkbd_status_reinit_ui (GkbdStatus * gki);
 
-extern XklEngine *gkbd_status_get_xkl_engine (void);
+XklEngine *gkbd_status_get_xkl_engine (void);
 
-extern gchar **gkbd_status_get_group_names (void);
+gchar **gkbd_status_get_group_names (void);
 
-extern gchar *gkbd_status_get_image_filename (guint group);
+gchar *gkbd_status_get_image_filename (guint group);
 
 G_END_DECLS
 #endif

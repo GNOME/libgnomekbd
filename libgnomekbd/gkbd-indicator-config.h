@@ -50,52 +50,52 @@ struct _GkbdIndicatorConfig {
  * some of them require GkbdKeyboardConfig as well - 
  * for loading approptiate images
  */
-extern void gkbd_indicator_config_init (GkbdIndicatorConfig *
+void gkbd_indicator_config_init (GkbdIndicatorConfig *
 					applet_config, XklEngine * engine);
-extern void gkbd_indicator_config_term (GkbdIndicatorConfig *
+void gkbd_indicator_config_term (GkbdIndicatorConfig *
 					applet_config);
 
-extern void gkbd_indicator_config_load (GkbdIndicatorConfig
+void gkbd_indicator_config_load (GkbdIndicatorConfig
 					* applet_config);
-extern void gkbd_indicator_config_save (GkbdIndicatorConfig *
+void gkbd_indicator_config_save (GkbdIndicatorConfig *
 					applet_config);
 
-extern void
+void
 gkbd_indicator_config_get_font_for_widget (GkbdIndicatorConfig * ind_config,
 					   GtkWidget           * widget,
 					   gchar               ** font_family,
 					   int                  * font_size);
 
-extern gchar *
+gchar *
 gkbd_indicator_config_get_fg_color_for_widget (GkbdIndicatorConfig * ind_config,
 					       GtkWidget           * widget);
 
-extern void gkbd_indicator_config_refresh_style (GkbdIndicatorConfig *
+void gkbd_indicator_config_refresh_style (GkbdIndicatorConfig *
 						 applet_config);
 
-extern gchar
+gchar
     * gkbd_indicator_config_get_images_file (GkbdIndicatorConfig *
 					     applet_config,
 					     GkbdKeyboardConfig *
 					     kbd_config, int group);
 
-extern void gkbd_indicator_config_load_image_filenames (GkbdIndicatorConfig
+void gkbd_indicator_config_load_image_filenames (GkbdIndicatorConfig
 							* applet_config,
 							GkbdKeyboardConfig
 							* kbd_config);
-extern void gkbd_indicator_config_free_image_filenames (GkbdIndicatorConfig
+void gkbd_indicator_config_free_image_filenames (GkbdIndicatorConfig
 							* applet_config);
 
 /* Should be updated on Indicator/GConf configuration change */
-extern void gkbd_indicator_config_activate (GkbdIndicatorConfig *
+void gkbd_indicator_config_activate (GkbdIndicatorConfig *
 					    applet_config);
 
-extern void gkbd_indicator_config_start_listen (GkbdIndicatorConfig *
+void gkbd_indicator_config_start_listen (GkbdIndicatorConfig *
 						applet_config,
 						GCallback func,
 						gpointer user_data);
 
-extern void gkbd_indicator_config_stop_listen (GkbdIndicatorConfig *
+void gkbd_indicator_config_stop_listen (GkbdIndicatorConfig *
 					       applet_config);
 
 #endif

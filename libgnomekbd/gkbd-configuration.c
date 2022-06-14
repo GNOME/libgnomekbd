@@ -571,7 +571,7 @@ gkbd_configuration_get_all_objects (GkbdConfiguration * configuration)
 	return priv->widget_instances;
 }
 
-extern void
+void
 gkbd_configuration_append_object (GkbdConfiguration * configuration,
 				  GObject * obj)
 {
@@ -583,7 +583,7 @@ gkbd_configuration_append_object (GkbdConfiguration * configuration,
 	    g_slist_append (priv->widget_instances, obj);
 }
 
-extern void
+void
 gkbd_configuration_remove_object (GkbdConfiguration * configuration,
 				  GObject * obj)
 {
@@ -698,7 +698,7 @@ gkbd_configuration_create_label_title (int group, GHashTable ** ln2cnt_map,
 	return lbl_title;
 }
 
-extern gboolean
+gboolean
 gkbd_configuration_if_any_object_exists (GkbdConfiguration * configuration)
 {
 	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);

@@ -27,10 +27,6 @@
 
 #define GKBD_KEYBOARD_SCHEMA "org.gnome.libgnomekbd.keyboard"
 
-extern const gchar GKBD_KEYBOARD_CONFIG_KEY_MODEL[];
-extern const gchar GKBD_KEYBOARD_CONFIG_KEY_LAYOUTS[];
-extern const gchar GKBD_KEYBOARD_CONFIG_KEY_OPTIONS[];
-
 /*
  * Keyboard Configuration
  */
@@ -49,48 +45,48 @@ struct _GkbdKeyboardConfig {
 /*
  * GkbdKeyboardConfig functions
  */
-extern void gkbd_keyboard_config_init (GkbdKeyboardConfig * kbd_config,
+void gkbd_keyboard_config_init (GkbdKeyboardConfig * kbd_config,
 				       XklEngine * engine);
-extern void gkbd_keyboard_config_term (GkbdKeyboardConfig * kbd_config);
+void gkbd_keyboard_config_term (GkbdKeyboardConfig * kbd_config);
 
-extern void gkbd_keyboard_config_load (GkbdKeyboardConfig * kbd_config,
+void gkbd_keyboard_config_load (GkbdKeyboardConfig * kbd_config,
 				       GkbdKeyboardConfig *
 				       kbd_config_default);
 
-extern void gkbd_keyboard_config_save (GkbdKeyboardConfig * kbd_config);
+void gkbd_keyboard_config_save (GkbdKeyboardConfig * kbd_config);
 
-extern void gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig *
+void gkbd_keyboard_config_load_from_x_initial (GkbdKeyboardConfig *
 						      kbd_config,
 						      XklConfigRec * buf);
 
-extern void gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig *
+void gkbd_keyboard_config_load_from_x_current (GkbdKeyboardConfig *
 						      kbd_config,
 						      XklConfigRec * buf);
 
-extern void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
+void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
 					       kbd_config,
 					       GCallback func,
 					       gpointer user_data);
 
-extern void gkbd_keyboard_config_stop_listen (GkbdKeyboardConfig *
+void gkbd_keyboard_config_stop_listen (GkbdKeyboardConfig *
 					      kbd_config);
 
-extern gboolean gkbd_keyboard_config_equals (GkbdKeyboardConfig *
+gboolean gkbd_keyboard_config_equals (GkbdKeyboardConfig *
 					     kbd_config1,
 					     GkbdKeyboardConfig *
 					     kbd_config2);
 
-extern gboolean gkbd_keyboard_config_activate (GkbdKeyboardConfig *
+gboolean gkbd_keyboard_config_activate (GkbdKeyboardConfig *
 					       kbd_config);
 
-extern const gchar *gkbd_keyboard_config_merge_items (const gchar * parent,
+const gchar *gkbd_keyboard_config_merge_items (const gchar * parent,
 						      const gchar * child);
 
-extern gboolean gkbd_keyboard_config_split_items (const gchar * merged,
+gboolean gkbd_keyboard_config_split_items (const gchar * merged,
 						  gchar ** parent,
 						  gchar ** child);
 
-extern gboolean gkbd_keyboard_config_get_descriptions (XklConfigRegistry *
+gboolean gkbd_keyboard_config_get_descriptions (XklConfigRegistry *
 						       config_registry,
 						       const gchar * name,
 						       gchar **
@@ -102,17 +98,17 @@ extern gboolean gkbd_keyboard_config_get_descriptions (XklConfigRegistry *
 						       gchar **
 						       variant_descr);
 
-extern const gchar *gkbd_keyboard_config_format_full_description (const
+const gchar *gkbd_keyboard_config_format_full_description (const
 								  gchar *
 								  layout_descr,
 								  const
 								  gchar *
 								  variant_descr);
 
-extern gchar *gkbd_keyboard_config_to_string (const GkbdKeyboardConfig *
+gchar *gkbd_keyboard_config_to_string (const GkbdKeyboardConfig *
 					      config);
 
-extern gchar
+gchar
     **
 gkbd_keyboard_config_add_default_switch_option_if_necessary (gchar **
 							     layouts_list,

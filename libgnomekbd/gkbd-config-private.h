@@ -25,45 +25,39 @@
 
 #define GKBD_SCHEMA_PREVIEW "org.gnome.libgnomekbd.preview"
 
-extern const gchar GKBD_PREVIEW_CONFIG_DIR[];
-extern const gchar GKBD_PREVIEW_CONFIG_KEY_X[];
-extern const gchar GKBD_PREVIEW_CONFIG_KEY_Y[];
-extern const gchar GKBD_PREVIEW_CONFIG_KEY_WIDTH[];
-extern const gchar GKBD_PREVIEW_CONFIG_KEY_HEIGHT[];
-
 /**
  * General config functions (private)
  */
 
-extern void gkbd_keyboard_config_model_set (GkbdKeyboardConfig *
+void gkbd_keyboard_config_model_set (GkbdKeyboardConfig *
 					    kbd_config,
 					    const gchar * model_name);
 
-extern void gkbd_keyboard_config_options_set (GkbdKeyboardConfig *
+void gkbd_keyboard_config_options_set (GkbdKeyboardConfig *
 					      kbd_config, gint idx,
 					      const gchar * group_name,
 					      const gchar * option_name);
 
-extern gboolean gkbd_keyboard_config_options_is_set (GkbdKeyboardConfig *
+gboolean gkbd_keyboard_config_options_is_set (GkbdKeyboardConfig *
 						     kbd_config,
 						     const gchar *
 						     group_name,
 						     const gchar *
 						     option_name);
 
-extern gboolean gkbd_keyboard_config_dump_settings (GkbdKeyboardConfig *
+gboolean gkbd_keyboard_config_dump_settings (GkbdKeyboardConfig *
 						    kbd_config,
 						    const char *file_name);
 
-extern void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
+void gkbd_keyboard_config_start_listen (GkbdKeyboardConfig *
 					       kbd_config,
 					       GCallback func,
 					       gpointer user_data);
 
-extern void gkbd_keyboard_config_stop_listen (GkbdKeyboardConfig *
+void gkbd_keyboard_config_stop_listen (GkbdKeyboardConfig *
 					      kbd_config);
 
-extern gboolean gkbd_keyboard_config_get_lv_descriptions (XklConfigRegistry
+gboolean gkbd_keyboard_config_get_lv_descriptions (XklConfigRegistry
 							  *
 							  config_registry,
 							  const gchar *

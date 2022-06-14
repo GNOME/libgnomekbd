@@ -46,23 +46,23 @@ struct _GkbdIndicatorClass {
 	void (*reinit_ui) (GkbdIndicator * gki);
 };
 
-extern GType gkbd_indicator_get_type (void);
+GType gkbd_indicator_get_type (void);
 
-extern GtkWidget *gkbd_indicator_new (void);
+GtkWidget *gkbd_indicator_new (void);
 
-extern void gkbd_indicator_reinit_ui (GkbdIndicator * gki);
+void gkbd_indicator_reinit_ui (GkbdIndicator * gki);
 
-extern void gkbd_indicator_set_angle (GkbdIndicator * gki, gdouble angle);
+void gkbd_indicator_set_angle (GkbdIndicator * gki, gdouble angle);
 
-extern XklEngine *gkbd_indicator_get_xkl_engine (void);
+XklEngine *gkbd_indicator_get_xkl_engine (void);
 
-extern gchar **gkbd_indicator_get_group_names (void);
+gchar **gkbd_indicator_get_group_names (void);
 
-extern gchar *gkbd_indicator_get_image_filename (guint group);
+gchar *gkbd_indicator_get_image_filename (guint group);
 
-extern gdouble gkbd_indicator_get_max_width_height_ratio (void);
+gdouble gkbd_indicator_get_max_width_height_ratio (void);
 
-extern void
+void
  gkbd_indicator_set_parent_tooltips (GkbdIndicator * gki, gboolean ifset);
 
 G_END_DECLS

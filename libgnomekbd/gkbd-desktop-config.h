@@ -27,11 +27,6 @@
 
 #define GKBD_DESKTOP_SCHEMA "org.gnome.libgnomekbd.desktop"
 
-extern const gchar GKBD_DESKTOP_CONFIG_KEY_DEFAULT_GROUP[];
-extern const gchar GKBD_DESKTOP_CONFIG_KEY_GROUP_PER_WINDOW[];
-extern const gchar GKBD_DESKTOP_CONFIG_KEY_HANDLE_INDICATORS[];
-extern const gchar GKBD_DESKTOP_CONFIG_KEY_LAYOUT_NAMES_AS_GROUP_NAMES[];
-
 /*
  * General configuration
  */
@@ -52,17 +47,17 @@ struct _GkbdDesktopConfig {
 /*
  * GkbdDesktopConfig functions
  */
-extern void gkbd_desktop_config_init (GkbdDesktopConfig * config,
+void gkbd_desktop_config_init (GkbdDesktopConfig * config,
 				      XklEngine * engine);
-extern void gkbd_desktop_config_term (GkbdDesktopConfig * config);
+void gkbd_desktop_config_term (GkbdDesktopConfig * config);
 
-extern void gkbd_desktop_config_load (GkbdDesktopConfig * config);
+void gkbd_desktop_config_load (GkbdDesktopConfig * config);
 
-extern void gkbd_desktop_config_save (GkbdDesktopConfig * config);
+void gkbd_desktop_config_save (GkbdDesktopConfig * config);
 
-extern gboolean gkbd_desktop_config_activate (GkbdDesktopConfig * config);
+gboolean gkbd_desktop_config_activate (GkbdDesktopConfig * config);
 
-extern gboolean
+gboolean
 gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 					     * config,
 					     XklConfigRegistry *
@@ -75,18 +70,18 @@ gkbd_desktop_config_load_group_descriptions (GkbdDesktopConfig
 					     short_group_names,
 					     gchar *** full_group_names);
 
-extern void gkbd_desktop_config_lock_next_group (GkbdDesktopConfig *
+void gkbd_desktop_config_lock_next_group (GkbdDesktopConfig *
 						 config);
 
-extern void gkbd_desktop_config_lock_prev_group (GkbdDesktopConfig *
+void gkbd_desktop_config_lock_prev_group (GkbdDesktopConfig *
 						 config);
 
-extern void gkbd_desktop_config_restore_group (GkbdDesktopConfig * config);
+void gkbd_desktop_config_restore_group (GkbdDesktopConfig * config);
 
-extern void gkbd_desktop_config_start_listen (GkbdDesktopConfig * config,
+void gkbd_desktop_config_start_listen (GkbdDesktopConfig * config,
 					      GCallback func,
 					      gpointer user_data);
 
-extern void gkbd_desktop_config_stop_listen (GkbdDesktopConfig * config);
+void gkbd_desktop_config_stop_listen (GkbdDesktopConfig * config);
 
 #endif

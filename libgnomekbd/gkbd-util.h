@@ -23,17 +23,17 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 
-extern void gkbd_install_glib_log_appender (void);
+void gkbd_install_glib_log_appender (void);
 
-extern GdkRectangle *gkbd_preview_load_position (void);
+GdkRectangle *gkbd_preview_load_position (void);
 
-extern void gkbd_preview_save_position (GdkRectangle * rect);
+void gkbd_preview_save_position (GdkRectangle * rect);
 
 /* Missing in glib */
-extern gboolean gkbd_strv_remove (gchar ** arr, const gchar * element);
+gboolean gkbd_strv_remove (gchar ** arr, const gchar * element);
 
-extern gchar **gkbd_strv_append (gchar ** arr, gchar * element);
+gchar **gkbd_strv_append (gchar ** arr, gchar * element);
 
-extern void gkbd_strv_behead (gchar ** arr);
+void gkbd_strv_behead (gchar ** arr);
 
 #endif
