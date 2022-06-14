@@ -18,7 +18,7 @@ i18n = import('i18n')
 
 cc = meson.get_compiler('c')
 
-glib_req        = '>= 2.18.0'
+glib_req        = '>= 2.44.0'
 gdk_req         = '>= 2.91.7'
 gtk_req         = '>= 2.90'
 libxklavier_req = '>= 5.2'

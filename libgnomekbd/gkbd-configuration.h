@@ -30,28 +30,12 @@
 
 #include <libgnomekbd/gkbd-indicator-config.h>
 
-G_BEGIN_DECLS typedef struct _GkbdConfiguration GkbdConfiguration;
-typedef struct _GkbdConfigurationPrivate GkbdConfigurationPrivate;
-typedef struct _GkbdConfigurationClass GkbdConfigurationClass;
-
-#define GKBD_TYPE_CONFIGURATION           (gkbd_configuration_get_type ())
-#define GKBD_CONFIGURATION(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GKBD_TYPE_CONFIGURATION, GkbdConfiguration))
-#define GKBD_INDCATOR_CLASS(obj)          (G_TYPE_CHECK_CLASS_CAST ((obj), GKBD_TYPE_CONFIGURATION,  GkbdConfigurationClass))
-#define GKBD_IS_CONFIGURATION(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GKBD_TYPE_CONFIGURATION))
-#define GKBD_IS_CONFIGURATION_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE ((obj), GKBD_TYPE_CONFIGURATION))
-#define GKBD_CONFIGURATION_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GKBD_TYPE_CONFIGURATION, GkbdConfigurationClass))
-
-struct _GkbdConfiguration {
-	GObject parent;
-
-	GkbdConfigurationPrivate *priv;
-};
+#define GKBD_TYPE_CONFIGURATION gkbd_configuration_get_type ()
+G_DECLARE_DERIVABLE_TYPE (GkbdConfiguration, gkbd_configuration, GKBD, CONFIGURATION, GObject)
 
 struct _GkbdConfigurationClass {
 	GObjectClass parent_class;
 };
-
-extern GType gkbd_configuration_get_type (void);
 
 extern GkbdConfiguration *gkbd_configuration_get (void);
 

@@ -33,7 +33,7 @@
 
 #include <gkbd-desktop-config.h>
 
-struct _GkbdConfigurationPrivate {
+typedef struct {
 	XklEngine *engine;
 	XklConfigRegistry *registry;
 
@@ -54,7 +54,7 @@ struct _GkbdConfigurationPrivate {
 	Atom caps_lock_atom;
 	Atom num_lock_atom;
 	Atom scroll_lock_atom;
-};
+} GkbdConfigurationPrivate;
 
 enum {
 	SIGNAL_CHANGED,
@@ -65,17 +65,14 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0, };
 
-#define GKBD_CONFIGURATION_GET_PRIVATE(o) \
-	(G_TYPE_INSTANCE_GET_PRIVATE ((o), GKBD_TYPE_CONFIGURATION, GkbdConfigurationPrivate))
-
-G_DEFINE_TYPE (GkbdConfiguration, gkbd_configuration, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GkbdConfiguration, gkbd_configuration, G_TYPE_OBJECT)
 
 /* Should be called once for all widgets */
 static void
 gkbd_configuration_cfg_changed (GSettings * settings, gchar * key,
 				GkbdConfiguration * configuration)
 {
-	GkbdConfigurationPrivate *priv = configuration->priv;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 
 	xkl_debug (100,
 		   "General configuration changed in GConf - reiniting...\n");
@@ -90,7 +87,7 @@ static void
 gkbd_configuration_ind_cfg_changed (GSettings * settings, gchar * key,
 				    GkbdConfiguration * configuration)
 {
-	GkbdConfigurationPrivate *priv = configuration->priv;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 	xkl_debug (100,
 		   "Applet configuration changed in GConf - reiniting...\n");
 	gkbd_indicator_config_load (&priv->ind_cfg);
@@ -108,7 +105,7 @@ static void
 gkbd_configuration_load_group_names (GkbdConfiguration * configuration,
 				     XklConfigRec * xklrec)
 {
-	GkbdConfigurationPrivate *priv = configuration->priv;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 
 	if (!gkbd_desktop_config_load_group_descriptions (&priv->cfg,
 							  priv->registry,
@@ -146,7 +143,7 @@ static void
 gkbd_configuration_kbd_cfg_callback (XklEngine * engine,
 				     GkbdConfiguration * configuration)
 {
-	GkbdConfigurationPrivate *priv = configuration->priv;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 	XklConfigRec *xklrec = xkl_config_rec_new ();
 	xkl_debug (100,
 		   "XKB configuration changed on X Server - reiniting...\n");
@@ -196,14 +193,11 @@ static void
 gkbd_configuration_init (GkbdConfiguration * configuration)
 {
 	Display *display;
-	GkbdConfigurationPrivate *priv;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 	XklConfigRec *xklrec = xkl_config_rec_new ();
 
 	xkl_debug (100, "The config startup process for %p started\n",
 		   configuration);
-
-	priv = GKBD_CONFIGURATION_GET_PRIVATE (configuration);
-	configuration->priv = priv;
 
 	/* Initing some global vars */
 	priv->tooltips_format = "%s";
@@ -272,7 +266,7 @@ static void
 gkbd_configuration_finalize (GObject * obj)
 {
 	GkbdConfiguration *configuration = GKBD_CONFIGURATION (obj);
-	GkbdConfigurationPrivate *priv = configuration->priv;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 
 	xkl_debug (100,
 		   "Starting the gnome-kbd-configuration widget shutdown process for %p\n",
@@ -336,9 +330,6 @@ gkbd_configuration_class_init (GkbdConfigurationClass * klass)
 	    g_signal_new ("indicators-changed", GKBD_TYPE_CONFIGURATION,
 			  G_SIGNAL_RUN_LAST, 0, NULL, NULL,
 			  g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
-
-	g_type_class_add_private (klass,
-				  sizeof (GkbdConfigurationPrivate));
 }
 
 /**
@@ -369,7 +360,11 @@ gkbd_configuration_get (void)
 XklEngine *
 gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 {
-	return configuration->priv->engine;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	return priv->engine;
 }
 
 /**
@@ -380,17 +375,24 @@ gkbd_configuration_get_xkl_engine (GkbdConfiguration * configuration)
 gchar **
 gkbd_configuration_get_group_names (GkbdConfiguration * configuration)
 {
-	return configuration->priv->full_group_names;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	return priv->full_group_names;
 }
 
 gchar *
 gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
 				       guint group)
 {
-	if (!configuration->priv->ind_cfg.show_flags)
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	if (!priv->ind_cfg.show_flags)
 		return NULL;
-	return (gchar *) g_slist_nth_data (configuration->priv->
-					   ind_cfg.image_filenames, group);
+	return (gchar *) g_slist_nth_data (priv->ind_cfg.image_filenames, group);
 }
 
 /**
@@ -402,45 +404,63 @@ gchar **
 gkbd_configuration_get_short_group_names (GkbdConfiguration *
 					  configuration)
 {
-	return configuration->priv->short_group_names;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	return priv->short_group_names;
 }
 
 gchar *
 gkbd_configuration_get_current_tooltip (GkbdConfiguration * configuration)
 {
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
 	XklState *state =
-	    xkl_engine_get_current_state (configuration->priv->engine);
+	    xkl_engine_get_current_state (priv->engine);
 
 	if (state == NULL || state->group < 0
 	    || state->group >=
-	    g_strv_length (configuration->priv->full_group_names))
+	    g_strv_length (priv->full_group_names))
 		return NULL;
 
-	return g_strdup_printf (configuration->priv->tooltips_format,
-				configuration->
+	return g_strdup_printf (priv->tooltips_format,
 				priv->full_group_names[state->group]);
 }
 
 gboolean
 gkbd_configuration_if_flags_shown (GkbdConfiguration * configuration)
 {
-	return configuration->priv->ind_cfg.show_flags;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), FALSE);
+
+	return priv->ind_cfg.show_flags;
 }
 
 gchar *
 gkbd_configuration_extract_layout_name (GkbdConfiguration * configuration,
 					int group)
 {
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 	char *layout_name = NULL;
-	gchar **short_group_names = configuration->priv->short_group_names;
-	gchar **full_group_names = configuration->priv->full_group_names;
-	XklEngine *engine = configuration->priv->engine;
+	gchar **short_group_names;
+	gchar **full_group_names;
+	XklEngine *engine;
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	short_group_names = priv->short_group_names;
+	full_group_names = priv->full_group_names;
+	engine = priv->engine;
+
 	if (group < g_strv_length (short_group_names)) {
 		if (xkl_engine_get_features (engine) &
 		    XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *full_layout_name =
-			    configuration->priv->
-			    kbd_cfg.layouts_variants[group];
+			    priv->kbd_cfg.layouts_variants[group];
 			char *variant_name;
 			if (!gkbd_keyboard_config_split_items
 			    (full_layout_name, &layout_name,
@@ -476,22 +496,34 @@ gkbd_configuration_extract_layout_name (GkbdConfiguration * configuration,
 void
 gkbd_configuration_lock_next_group (GkbdConfiguration * configuration)
 {
-	gkbd_desktop_config_lock_next_group (&configuration->priv->cfg);
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_if_fail (GKBD_IS_CONFIGURATION (configuration));
+
+	gkbd_desktop_config_lock_next_group (&priv->cfg);
 }
 
 void
 gkbd_configuration_lock_group (GkbdConfiguration * configuration,
 			       guint group)
 {
-	xkl_engine_lock_group (configuration->priv->engine, group);
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_if_fail (GKBD_IS_CONFIGURATION (configuration));
+
+	xkl_engine_lock_group (priv->engine, group);
 }
 
 guint
 gkbd_configuration_get_current_group (GkbdConfiguration * configuration)
 {
-	XklState *state =
-	    xkl_engine_get_current_state (configuration->priv->engine);
-	return state ? state->group : 0;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+	XklState *state;
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), 0u);
+
+	state = xkl_engine_get_current_state (priv->engine);
+	return state ? state->group : 0u;
 }
 
 /**
@@ -502,7 +534,11 @@ gkbd_configuration_get_current_group (GkbdConfiguration * configuration)
 GkbdIndicatorConfig *
 gkbd_configuration_get_indicator_config (GkbdConfiguration * configuration)
 {
-	return &configuration->priv->ind_cfg;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	return &priv->ind_cfg;
 }
 
 /**
@@ -513,7 +549,11 @@ gkbd_configuration_get_indicator_config (GkbdConfiguration * configuration)
 GkbdKeyboardConfig *
 gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
 {
-	return &configuration->priv->kbd_cfg;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	return &priv->kbd_cfg;
 }
 
 /**
@@ -524,23 +564,35 @@ gkbd_configuration_get_keyboard_config (GkbdConfiguration * configuration)
 GSList *
 gkbd_configuration_get_all_objects (GkbdConfiguration * configuration)
 {
-	return configuration->priv->widget_instances;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	return priv->widget_instances;
 }
 
 extern void
 gkbd_configuration_append_object (GkbdConfiguration * configuration,
 				  GObject * obj)
 {
-	configuration->priv->widget_instances =
-	    g_slist_append (configuration->priv->widget_instances, obj);
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_if_fail (GKBD_IS_CONFIGURATION (configuration));
+
+	priv->widget_instances =
+	    g_slist_append (priv->widget_instances, obj);
 }
 
 extern void
 gkbd_configuration_remove_object (GkbdConfiguration * configuration,
 				  GObject * obj)
 {
-	configuration->priv->widget_instances =
-	    g_slist_remove (configuration->priv->widget_instances, obj);
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_if_fail (GKBD_IS_CONFIGURATION (configuration));
+
+	priv->widget_instances =
+	    g_slist_remove (priv->widget_instances, obj);
 }
 
 /**
@@ -553,14 +605,17 @@ gkbd_configuration_load_images (GkbdConfiguration * configuration)
 {
 	int i;
 	GSList *image_filename, *images = NULL;
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 
-	if (!configuration->priv->ind_cfg.show_flags)
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
+
+	if (!priv->ind_cfg.show_flags)
 		return NULL;
 
-	image_filename = configuration->priv->ind_cfg.image_filenames;
+	image_filename = priv->ind_cfg.image_filenames;
 
 	for (i =
-	     xkl_engine_get_max_num_groups (configuration->priv->engine);
+	     xkl_engine_get_max_num_groups (priv->engine);
 	     --i >= 0; image_filename = image_filename->next) {
 		GdkPixbuf *image = NULL;
 		char *image_file = (char *) image_filename->data;
@@ -591,6 +646,8 @@ gkbd_configuration_free_images (GkbdConfiguration * configuration,
 {
 	GdkPixbuf *pi;
 	GSList *img_node;
+
+	g_return_if_fail (GKBD_IS_CONFIGURATION (configuration));
 
 	while ((img_node = images) != NULL) {
 		pi = GDK_PIXBUF (img_node->data);
@@ -644,17 +701,19 @@ gkbd_configuration_create_label_title (int group, GHashTable ** ln2cnt_map,
 extern gboolean
 gkbd_configuration_if_any_object_exists (GkbdConfiguration * configuration)
 {
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
 	return (configuration != NULL)
-	    && (g_slist_length (configuration->priv->widget_instances) !=
-		0);
+	    && (g_slist_length (priv->widget_instances) != 0);
 }
 
 static GdkFilterReturn
 gkbd_configuration_filter_x_evt (GdkXEvent * xev, GdkEvent * event,
 				 GkbdConfiguration * configuration)
 {
-	xkl_engine_filter_events (configuration->priv->engine,
-				  (XEvent *) xev);
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	xkl_engine_filter_events (priv->engine, (XEvent *) xev);
 	return GDK_FILTER_CONTINUE;
 }
 
@@ -691,13 +750,14 @@ gchar *
 gkbd_configuration_get_group_name (GkbdConfiguration * configuration,
 				   guint group)
 {
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
 	gchar *layout, *variant;
 	gchar **lv;
 
 	if (configuration == NULL)
 		return NULL;
 
-	lv = configuration->priv->kbd_cfg.layouts_variants;
+	lv = priv->kbd_cfg.layouts_variants;
 	if (group >= g_strv_length (lv))
 		return NULL;
 
@@ -714,7 +774,11 @@ gkbd_configuration_get_caps_lock_state (GkbdConfiguration * configuration)
 	Bool state;
 	Display *display =
 	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
-	XkbGetNamedIndicator (display, configuration->priv->caps_lock_atom,
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), FALSE);
+
+	XkbGetNamedIndicator (display, priv->caps_lock_atom,
 			      NULL, &state, NULL, NULL);
 	return state;
 }
@@ -725,7 +789,11 @@ gkbd_configuration_get_num_lock_state (GkbdConfiguration * configuration)
 	Bool state;
 	Display *display =
 	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
-	XkbGetNamedIndicator (display, configuration->priv->num_lock_atom,
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), FALSE);
+
+	XkbGetNamedIndicator (display, priv->num_lock_atom,
 			      NULL, &state, NULL, NULL);
 	return state;
 }
@@ -737,8 +805,12 @@ gkbd_configuration_get_scroll_lock_state (GkbdConfiguration *
 	Bool state;
 	Display *display =
 	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
+
+	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), FALSE);
+
 	XkbGetNamedIndicator (display,
-			      configuration->priv->scroll_lock_atom, NULL,
+			      priv->scroll_lock_atom, NULL,
 			      &state, NULL, NULL);
 	return state;
 }
