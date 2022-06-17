@@ -24,29 +24,16 @@
 
 #include <libxklavier/xklavier.h>
 
-G_BEGIN_DECLS typedef struct _GkbdIndicator GkbdIndicator;
-typedef struct _GkbdIndicatorPrivate GkbdIndicatorPrivate;
-typedef struct _GkbdIndicatorClass GkbdIndicatorClass;
+G_BEGIN_DECLS
 
-#define GKBD_TYPE_INDICATOR             (gkbd_indicator_get_type ())
-#define GKBD_INDICATOR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GKBD_TYPE_INDICATOR, GkbdIndicator))
-#define GKBD_INDICATOR_CLASS(obj)       (G_TYPE_CHECK_CLASS_CAST ((obj), GKBD_TYPE_INDICATOR,  GkbdIndicatorClass))
-#define GKBD_IS_INDICATOR(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GKBD_TYPE_INDICATOR))
-#define GKBD_IS_INDICATOR_CLASS(obj)    (G_TYPE_CHECK_CLASS_TYPE ((obj), GKBD_TYPE_INDICATOR))
-#define GKBD_INDICATOR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GKBD_TYPE_INDICATOR, GkbdIndicatorClass))
-
-struct _GkbdIndicator {
-	GtkNotebook parent;
-	GkbdIndicatorPrivate *priv;
-};
+#define GKBD_TYPE_INDICATOR gkbd_indicator_get_type ()
+G_DECLARE_DERIVABLE_TYPE (GkbdIndicator, gkbd_indicator, GKBD, INDICATOR, GtkNotebook)
 
 struct _GkbdIndicatorClass {
 	GtkNotebookClass parent_class;
 
 	void (*reinit_ui) (GkbdIndicator * gki);
 };
-
-GType gkbd_indicator_get_type (void);
 
 GtkWidget *gkbd_indicator_new (void);
 

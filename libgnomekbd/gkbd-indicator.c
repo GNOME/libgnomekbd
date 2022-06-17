@@ -38,15 +38,15 @@ typedef struct _gki_globals {
 	GSList *images;
 } gki_globals;
 
-struct _GkbdIndicatorPrivate {
+typedef struct {
 	gboolean set_parent_tooltips;
 	gdouble angle;
-};
+} GkbdIndicatorPrivate;
 
 /* one instance for ALL widgets */
 static gki_globals globals;
 
-G_DEFINE_TYPE (GkbdIndicator, gkbd_indicator, GTK_TYPE_NOTEBOOK)
+G_DEFINE_TYPE_WITH_PRIVATE (GkbdIndicator, gkbd_indicator, GTK_TYPE_NOTEBOOK)
 
 static void
 gkbd_indicator_global_init (void);
@@ -68,11 +68,14 @@ gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str);
 void
 gkbd_indicator_set_tooltips (GkbdIndicator * gki, const char *str)
 {
-	g_assert (str == NULL || g_utf8_validate (str, -1, NULL));
+	GkbdIndicatorPrivate *priv = gkbd_indicator_get_instance_private (gki);
+
+	g_return_if_fail (GKBD_IS_INDICATOR (gki));
+	g_return_if_fail (str == NULL || g_utf8_validate (str, -1, NULL));
 
 	gtk_widget_set_tooltip_text (GTK_WIDGET (gki), str);
 
-	if (gki->priv->set_parent_tooltips) {
+	if (priv->set_parent_tooltips) {
 		GtkWidget *parent =
 		    gtk_widget_get_parent (GTK_WIDGET (gki));
 		if (parent) {
@@ -101,15 +104,9 @@ gkbd_indicator_fill (GkbdIndicator * gki)
 	    xkl_engine_get_num_groups (gkbd_configuration_get_xkl_engine
 				       (globals.config));
 	GtkNotebook *notebook = GTK_NOTEBOOK (gki);
-	gchar **full_group_names =
-	    gkbd_configuration_get_group_names (globals.config);
 
 	for (grp = 0; grp < total_groups; grp++) {
 		GtkWidget *page = NULL;
-		gchar *full_group_name =
-		    (grp <
-		     g_strv_length (full_group_names)) ?
-		    full_group_names[grp] : "?";
 		page = gkbd_indicator_prepare_drawing (gki, grp);
 
 		if (page == NULL)
@@ -187,6 +184,7 @@ draw_flag (GtkWidget * flag, cairo_t * cr, GdkPixbuf * image)
 static GtkWidget *
 gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 {
+	GkbdIndicatorPrivate *priv = gkbd_indicator_get_instance_private (gki);
 	gpointer pimage;
 	GdkPixbuf *image;
 	GtkWidget *ebox;
@@ -227,7 +225,7 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
                 gtk_widget_set_vexpand (label, TRUE);
                 
 		g_free (lbl_title);
-		gtk_label_set_angle (GTK_LABEL (label), gki->priv->angle);
+		gtk_label_set_angle (GTK_LABEL (label), priv->angle);
 
 		if (group + 1 ==
 		    xkl_engine_get_num_groups
@@ -238,7 +236,7 @@ gkbd_indicator_prepare_drawing (GkbdIndicator * gki, int group)
 
 		gtk_container_add (GTK_CONTAINER (ebox), label);
 
-		gtk_container_set_border_width (GTK_CONTAINER (label), 2);
+		gtk_container_set_border_width (GTK_CONTAINER (ebox), 2);
 	}
 
 	g_signal_connect (G_OBJECT (ebox),
@@ -402,8 +400,6 @@ gkbd_indicator_init (GkbdIndicator * gki)
 	if (!gkbd_configuration_if_any_object_exists (globals.config))
 		gkbd_indicator_global_init ();
 
-	gki->priv = g_new0 (GkbdIndicatorPrivate, 1);
-
 	notebook = GTK_NOTEBOOK (gki);
 
 	xkl_debug (100, "Initiating the widget startup process for %p\n",
@@ -452,8 +448,6 @@ gkbd_indicator_finalize (GObject * obj)
 
 	xkl_debug (100,
 		   "The instance of gnome-kbd-indicator successfully finalized\n");
-
-	g_free (gki->priv);
 
 	G_OBJECT_CLASS (gkbd_indicator_parent_class)->finalize (obj);
 
@@ -528,7 +522,11 @@ gkbd_indicator_new (void)
 void
 gkbd_indicator_set_parent_tooltips (GkbdIndicator * gki, gboolean spt)
 {
-	gki->priv->set_parent_tooltips = spt;
+	GkbdIndicatorPrivate *priv = gkbd_indicator_get_instance_private (gki);
+
+	g_return_if_fail (GKBD_IS_INDICATOR (gki));
+
+	priv->set_parent_tooltips = spt;
 	gkbd_indicator_update_tooltips (gki);
 }
 
@@ -584,6 +582,10 @@ gkbd_indicator_get_max_width_height_ratio (void)
 void
 gkbd_indicator_set_angle (GkbdIndicator * gki, gdouble angle)
 {
-	gki->priv->angle = angle;
+	GkbdIndicatorPrivate *priv = gkbd_indicator_get_instance_private (gki);
+
+	g_return_if_fail (GKBD_IS_INDICATOR (gki));
+
+	priv->angle = angle;
 }
 
