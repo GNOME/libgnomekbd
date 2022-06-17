@@ -44,8 +44,6 @@ typedef struct {
 	gchar **full_group_names;
 	gchar **short_group_names;
 
-	const gchar *tooltips_format;
-
 	gulong state_changed_handler;
 	gulong config_changed_handler;
 
@@ -154,11 +152,8 @@ gkbd_configuration_kbd_cfg_callback (XklEngine * engine,
 	gkbd_indicator_config_load_image_filenames (&priv->ind_cfg,
 						    &priv->kbd_cfg);
 
-	g_strfreev (priv->full_group_names);
-	priv->full_group_names = NULL;
-
-	g_strfreev (priv->short_group_names);
-	priv->short_group_names = NULL;
+	g_clear_pointer (&priv->full_group_names, g_strfreev);
+	g_clear_pointer (&priv->short_group_names, g_strfreev);
 
 	gkbd_configuration_load_group_names (configuration, xklrec);
 
@@ -200,8 +195,6 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 		   configuration);
 
 	/* Initing some global vars */
-	priv->tooltips_format = "%s";
-
 	display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 	priv->engine = xkl_engine_get_instance (display);
 	if (priv->engine == NULL) {
@@ -294,10 +287,8 @@ gkbd_configuration_finalize (GObject * obj)
 		priv->config_changed_handler = 0;
 	}
 
-	g_object_unref (priv->registry);
-	priv->registry = NULL;
-	g_object_unref (priv->engine);
-	priv->engine = NULL;
+	g_clear_object (&priv->registry);
+	g_clear_object (&priv->engine);
 
 	G_OBJECT_CLASS (gkbd_configuration_parent_class)->finalize (obj);
 }
@@ -426,8 +417,7 @@ gkbd_configuration_get_current_tooltip (GkbdConfiguration * configuration)
 	    g_strv_length (priv->full_group_names))
 		return NULL;
 
-	return g_strdup_printf (priv->tooltips_format,
-				priv->full_group_names[state->group]);
+	return g_strdup (priv->full_group_names[state->group]);
 }
 
 gboolean
@@ -744,7 +734,7 @@ gkbd_configuration_stop_listen (GkbdConfiguration * configuration)
 /**
  * gkbd_configuration_get_group_name:
  *
- * Returns: (transfer full): group name
+ * Returns: (transfer full) (nullable): group name
  */
 gchar *
 gkbd_configuration_get_group_name (GkbdConfiguration * configuration,
