@@ -41,7 +41,7 @@ struct _GkbdStatus {
 };
 
 struct _GkbdStatusClass {
-	GtkNotebookClass parent_class;
+	GtkStatusIconClass parent_class;
 };
 
 GType gkbd_status_get_type (void);
