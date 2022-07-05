@@ -26,6 +26,7 @@
 #include <string.h>
 #include <glib.h>
 #include "libgnomekbd/gkbd-keyboard-drawing.h"
+#include "libgnomekbd/gkbd-keyboard-drawing-private.h"
 
 
 static gchar *groups = NULL;

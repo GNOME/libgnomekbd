@@ -106,6 +106,7 @@ libgnomekbdui_deps = [
 libgnomekbdui_lib = library(
   'gnomekbdui',
   libgnomekbdui_sources,
+  'gkbd-keyboard-drawing-private.h',
   config_h,
   gkbd_keyboard_drawing_marshal,
   dependencies: libgnomekbdui_deps,

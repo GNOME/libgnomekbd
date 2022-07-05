@@ -26,134 +26,14 @@
 #include <libxklavier/xklavier.h>
 
 G_BEGIN_DECLS
-#define GKBD_KEYBOARD_DRAWING(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), gkbd_keyboard_drawing_get_type (), \
-                               GkbdKeyboardDrawing))
-#define GKBD_KEYBOARD_DRAWING_CLASS(clazz) (G_TYPE_CHECK_CLASS_CAST ((clazz), gkbd_keyboard_drawing_get_type () \
-                                       GkbdKeyboardDrawingClass))
-#define GKBD_IS_KEYBOARD_DRAWING(obj) G_TYPE_CHECK_INSTANCE_TYPE ((obj), gkbd_keyboard_drawing_get_type ())
-typedef struct _GkbdKeyboardDrawing GkbdKeyboardDrawing;
-typedef struct _GkbdKeyboardDrawingClass GkbdKeyboardDrawingClass;
 
-typedef struct _GkbdKeyboardDrawingItem GkbdKeyboardDrawingItem;
-typedef struct _GkbdKeyboardDrawingKey GkbdKeyboardDrawingKey;
-typedef struct _GkbdKeyboardDrawingDoodad GkbdKeyboardDrawingDoodad;
-typedef struct _GkbdKeyboardDrawingGroupLevel
- GkbdKeyboardDrawingGroupLevel;
-typedef struct _GkbdKeyboardDrawingRenderContext
- GkbdKeyboardDrawingRenderContext;
-
-typedef enum {
-	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_INVALID = 0,
-	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY,
-	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA,
-	GKBD_KEYBOARD_DRAWING_ITEM_TYPE_DOODAD
-} GkbdKeyboardDrawingItemType;
-
-typedef enum {
-	GKBD_KEYBOARD_DRAWING_POS_TOPLEFT,
-	GKBD_KEYBOARD_DRAWING_POS_TOPRIGHT,
-	GKBD_KEYBOARD_DRAWING_POS_BOTTOMLEFT,
-	GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT,
-	GKBD_KEYBOARD_DRAWING_POS_TOTAL,
-	GKBD_KEYBOARD_DRAWING_POS_FIRST =
-	    GKBD_KEYBOARD_DRAWING_POS_TOPLEFT,
-	GKBD_KEYBOARD_DRAWING_POS_LAST =
-	    GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT
-} GkbdKeyboardDrawingGroupLevelPosition;
-
-/* units are in xkb form */
-struct _GkbdKeyboardDrawingItem {
-	/*< private > */
-
-	GkbdKeyboardDrawingItemType type;
-	gint origin_x;
-	gint origin_y;
-	gint angle;
-	guint priority;
-};
-
-/* units are in xkb form */
-struct _GkbdKeyboardDrawingKey {
-	/*< private > */
-
-	GkbdKeyboardDrawingItemType type;
-	gint origin_x;
-	gint origin_y;
-	gint angle;
-	guint priority;
-
-	XkbKeyRec *xkbkey;
-	gboolean pressed;
-	guint keycode;
-};
-
-/* units are in xkb form */
-struct _GkbdKeyboardDrawingDoodad {
-	/*< private > */
-
-	GkbdKeyboardDrawingItemType type;
-	gint origin_x;
-	gint origin_y;
-	gint angle;
-	guint priority;
-
-	XkbDoodadRec *doodad;
-	gboolean on;		/* for indicator doodads */
-};
-
-struct _GkbdKeyboardDrawingGroupLevel {
+typedef struct {
 	gint group;
 	gint level;
-};
+} GkbdKeyboardDrawingGroupLevel;
 
-struct _GkbdKeyboardDrawingRenderContext {
-	cairo_t *cr;
-
-	gint angle;		/* current angle pango is set to draw at, in tenths of a degree */
-	PangoLayout *layout;
-	PangoFontDescription *font_desc;
-
-	gint scale_numerator;
-	gint scale_denominator;
-
-	GdkRGBA dark_color;
-};
-
-struct _GkbdKeyboardDrawing {
-	/*< private > */
-
-	GtkDrawingArea parent;
-
-	XkbDescRec *xkb;
-	gboolean xkbOnDisplay;
-	guint l3mod;
-
-	GkbdKeyboardDrawingRenderContext *renderContext;
-
-	/* Indexed by keycode */
-	GkbdKeyboardDrawingKey *keys;
-
-	/* list of stuff to draw in priority order */
-	GList *keyboard_items;
-
-	GdkRGBA *colors;
-
-	guint timeout;
-
-	GkbdKeyboardDrawingGroupLevel **groupLevels;
-
-	guint mods;
-
-	Display *display;
-
-	gint xkb_event_type;
-
-	GkbdKeyboardDrawingDoodad **physical_indicators;
-	gint physical_indicators_size;
-
-	guint track_config:1;
-	guint track_modifiers:1;
-};
+#define GKBD_TYPE_KEYBOARD_DRAWING gkbd_keyboard_drawing_get_type ()
+G_DECLARE_DERIVABLE_TYPE (GkbdKeyboardDrawing, gkbd_keyboard_drawing, GKBD, KEYBOARD_DRAWING, GtkDrawingArea)
 
 struct _GkbdKeyboardDrawingClass {
 	GtkDrawingAreaClass parent_class;
@@ -164,7 +44,6 @@ struct _GkbdKeyboardDrawingClass {
 	void (*bad_keycode) (GkbdKeyboardDrawing * drawing, guint keycode);
 };
 
-GType gkbd_keyboard_drawing_get_type (void);
 GtkWidget *gkbd_keyboard_drawing_new (void);
 
 gboolean gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,

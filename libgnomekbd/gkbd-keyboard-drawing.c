@@ -31,6 +31,7 @@
 #include <gkbd-keyboard-config.h>
 #include <gkbd-keyboard-drawing.h>
 #include <gkbd-keyboard-drawing-marshal.h>
+#include <gkbd-keyboard-drawing-private.h>
 #include <gkbd-util.h>
 
 #define noKBDRAW_DEBUG
@@ -49,6 +50,40 @@ enum {
 };
 
 static guint gkbd_keyboard_drawing_signals[NUM_SIGNALS] = { 0 };
+
+typedef struct {
+	XkbDescRec *xkb;
+	gboolean xkbOnDisplay;
+	guint l3mod;
+
+	GkbdKeyboardDrawingRenderContext *renderContext;
+
+	/* Indexed by keycode */
+	GkbdKeyboardDrawingKey *keys;
+
+	/* list of stuff to draw in priority order */
+	GList *keyboard_items;
+
+	GdkRGBA *colors;
+
+	guint timeout;
+
+	GkbdKeyboardDrawingGroupLevel **groupLevels;
+
+	guint mods;
+
+	Display *display;
+
+	gint xkb_event_type;
+
+	GkbdKeyboardDrawingDoodad **physical_indicators;
+	gint physical_indicators_size;
+
+	guint track_config:1;
+	guint track_modifiers:1;
+} GkbdKeyboardDrawingPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (GkbdKeyboardDrawing, gkbd_keyboard_drawing, GTK_TYPE_DRAWING_AREA)
 
 static GkbdKeyboardDrawingGroupLevel defaultGroupsLevels[] = {
 	{0, 1},
@@ -583,6 +618,7 @@ parse_xkb_color_spec (gchar * colorspec, GdkRGBA * color)
 static guint
 find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 #define KEYSYM_NAME_MAX_LENGTH 4
 	guint keycode;
 	gint i, j;
@@ -591,7 +627,7 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 	guint is_name_matched;
 	gchar *src, *dst;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return INVALID_KEYCODE;
 
 #ifdef KBDRAW_DEBUG
@@ -599,9 +635,9 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 		key_name[0], key_name[1], key_name[2], key_name[3]);
 #endif
 
-	pkey = drawing->xkb->names->keys + drawing->xkb->min_key_code;
-	for (keycode = drawing->xkb->min_key_code;
-	     keycode <= drawing->xkb->max_key_code; keycode++) {
+	pkey = priv->xkb->names->keys + priv->xkb->min_key_code;
+	for (keycode = priv->xkb->min_key_code;
+	     keycode <= priv->xkb->max_key_code; keycode++) {
 		is_name_matched = 1;
 		src = key_name;
 		dst = pkey->name;
@@ -622,8 +658,8 @@ find_keycode (GkbdKeyboardDrawing * drawing, gchar * key_name)
 		pkey++;
 	}
 
-	palias = drawing->xkb->names->key_aliases;
-	for (j = drawing->xkb->names->num_key_aliases; --j >= 0;) {
+	palias = priv->xkb->names->key_aliases;
+	for (j = priv->xkb->names->num_key_aliases; --j >= 0;) {
 		is_name_matched = 1;
 		src = key_name;
 		dst = palias->alias;
@@ -857,6 +893,7 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 		   GkbdKeyboardDrawing * drawing,
 		   gint angle, gint x, gint y, gboolean is_pressed)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	PangoLayout *layout = context->layout;
 	GdkRGBA *pcolor, color;
 	PangoLayoutLine *line;
@@ -872,8 +909,8 @@ draw_pango_layout (GkbdKeyboardDrawingRenderContext * context,
 					     pcolor);
 	} else {
 		pcolor =
-		    drawing->colors + (drawing->xkb->geom->label_color -
-				       drawing->xkb->geom->colors);
+		    priv->colors + (priv->xkb->geom->label_color -
+				    priv->xkb->geom->colors);
 	}
 
 	if (angle != context->angle) {
@@ -991,11 +1028,12 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 		gint xkb_origin_y, gint xkb_width, gint xkb_height,
 		gboolean is_pressed)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	gint x, y, width, height;
 	gint padding;
 	gint g, l, glp;
 
-	if (!drawing->xkb || !drawing->groupLevels || keycode == INVALID_KEYCODE)
+	if (!priv->xkb || !priv->groupLevels || keycode == INVALID_KEYCODE)
 		return;
 
 	padding = 23 * context->scale_numerator / context->scale_denominator;	/* 2.3mm */
@@ -1009,32 +1047,32 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 
 	for (glp = GKBD_KEYBOARD_DRAWING_POS_TOPLEFT;
 	     glp < GKBD_KEYBOARD_DRAWING_POS_TOTAL; glp++) {
-		if (drawing->groupLevels[glp] == NULL)
+		if (priv->groupLevels[glp] == NULL)
 			continue;
-		g = drawing->groupLevels[glp]->group;
-		l = drawing->groupLevels[glp]->level;
+		g = priv->groupLevels[glp]->group;
+		l = priv->groupLevels[glp]->level;
 
-		if (g < 0 || g >= XkbKeyNumGroups (drawing->xkb, keycode))
+		if (g < 0 || g >= XkbKeyNumGroups (priv->xkb, keycode))
 			continue;
 		if (l < 0
-		    || l >= XkbKeyGroupWidth (drawing->xkb, keycode, g))
+		    || l >= XkbKeyGroupWidth (priv->xkb, keycode, g))
 			continue;
 
 		/* Skip "exotic" levels like the "Ctrl" level in PC_SYSREQ */
 		if (l > 0) {
-			guint mods = XkbKeyKeyType (drawing->xkb, keycode,
+			guint mods = XkbKeyKeyType (priv->xkb, keycode,
 						    g)->mods.mask;
-			if ((mods & (ShiftMask | drawing->l3mod)) == 0)
+			if ((mods & (ShiftMask | priv->l3mod)) == 0)
 				continue;
 		}
 
-		if (drawing->track_modifiers) {
+		if (priv->track_modifiers) {
 			guint mods_rtrn;
 			KeySym keysym;
 
-			if (XkbTranslateKeyCode (drawing->xkb, keycode,
+			if (XkbTranslateKeyCode (priv->xkb, keycode,
 						 XkbBuildCoreState
-						 (drawing->mods, g),
+						 (priv->mods, g),
 						 &mods_rtrn, &keysym)) {
 				draw_key_label_helper (context, drawing,
 						       keysym, angle, glp,
@@ -1047,7 +1085,7 @@ draw_key_label (GkbdKeyboardDrawingRenderContext * context,
 			KeySym keysym;
 
 			keysym =
-			    XkbKeySymEntry (drawing->xkb, keycode, l, g);
+			    XkbKeySymEntry (priv->xkb, keycode, l, g);
 
 			draw_key_label_helper (context, drawing, keysym,
 					       angle, glp, x, y, width,
@@ -1088,22 +1126,23 @@ static void
 draw_key (GkbdKeyboardDrawingRenderContext * context,
 	  GkbdKeyboardDrawing * drawing, GkbdKeyboardDrawingKey * key)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	XkbShapeRec *shape;
 	GdkRGBA *pcolor, color;
 	XkbOutlineRec *outline;
 	int origin_offset_x;
 	/* gint i; */
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
 #ifdef KBDRAW_DEBUG
 	printf ("shape: %p (base %p, index %d)\n",
-		drawing->xkb->geom->shapes + key->xkbkey->shape_ndx,
-		drawing->xkb->geom->shapes, key->xkbkey->shape_ndx);
+		priv->xkb->geom->shapes + key->xkbkey->shape_ndx,
+		priv->xkb->geom->shapes, key->xkbkey->shape_ndx);
 #endif
 
-	shape = drawing->xkb->geom->shapes + key->xkbkey->shape_ndx;
+	shape = priv->xkb->geom->shapes + key->xkbkey->shape_ndx;
 
 	if (key->pressed) {
 		GtkStyleContext *style_context =
@@ -1113,7 +1152,7 @@ draw_key (GkbdKeyboardDrawingRenderContext * context,
 							GTK_STATE_FLAG_SELECTED,
 							pcolor);
 	} else
-		pcolor = drawing->colors + key->xkbkey->color_ndx;
+		pcolor = priv->colors + key->xkbkey->color_ndx;
 
 #ifdef KBDRAW_DEBUG
 	printf
@@ -1149,6 +1188,7 @@ invalidate_region (GkbdKeyboardDrawing * drawing,
 		   gdouble angle,
 		   gint origin_x, gint origin_y, XkbShapeRec * shape)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GdkPoint points[4];
 	GtkAllocation alloc;
 	gint x_min, x_max, y_min, y_max;
@@ -1182,15 +1222,15 @@ invalidate_region (GkbdKeyboardDrawing * drawing,
 	    MAX (MAX (points[0].y, points[1].y),
 		 MAX (points[2].y, points[3].y));
 
-	x = xkb_to_pixmap_coord (drawing->renderContext,
+	x = xkb_to_pixmap_coord (priv->renderContext,
 				 origin_x + x_min) - 6;
-	y = xkb_to_pixmap_coord (drawing->renderContext,
+	y = xkb_to_pixmap_coord (priv->renderContext,
 				 origin_y + y_min) - 6;
 	width =
-	    xkb_to_pixmap_coord (drawing->renderContext,
+	    xkb_to_pixmap_coord (priv->renderContext,
 				 x_max - x_min) + 12;
 	height =
-	    xkb_to_pixmap_coord (drawing->renderContext,
+	    xkb_to_pixmap_coord (priv->renderContext,
 				 y_max - y_min) + 12;
 
 	gtk_widget_get_allocation (GTK_WIDGET (drawing), &alloc);
@@ -1203,7 +1243,8 @@ static void
 invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 				    GkbdKeyboardDrawingDoodad * doodad)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return;
 
 	invalidate_region (drawing,
@@ -1212,7 +1253,7 @@ invalidate_indicator_doodad_region (GkbdKeyboardDrawing * drawing,
 			   doodad->doodad->indicator.left,
 			   doodad->origin_y +
 			   doodad->doodad->indicator.top,
-			   &drawing->xkb->geom->shapes[doodad->doodad->
+			   &priv->xkb->geom->shapes[doodad->doodad->
 						       indicator.
 						       shape_ndx]);
 }
@@ -1221,14 +1262,15 @@ static void
 invalidate_key_region (GkbdKeyboardDrawing * drawing,
 		       GkbdKeyboardDrawingKey * key)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return;
 
 	invalidate_region (drawing,
 			   key->angle,
 			   key->origin_x,
 			   key->origin_y,
-			   &drawing->xkb->geom->shapes[key->xkbkey->
+			   &priv->xkb->geom->shapes[key->xkbkey->
 						       shape_ndx]);
 }
 
@@ -1238,8 +1280,9 @@ draw_text_doodad (GkbdKeyboardDrawingRenderContext * context,
 		  GkbdKeyboardDrawingDoodad * doodad,
 		  XkbTextDoodadRec * text_doodad)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	gint x, y;
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
 	x = xkb_to_pixmap_coord (context,
@@ -1257,16 +1300,17 @@ draw_indicator_doodad (GkbdKeyboardDrawingRenderContext * context,
 		       GkbdKeyboardDrawingDoodad * doodad,
 		       XkbIndicatorDoodadRec * indicator_doodad)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GdkRGBA *color;
 	XkbShapeRec *shape;
 	gint i;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
-	shape = drawing->xkb->geom->shapes + indicator_doodad->shape_ndx;
+	shape = priv->xkb->geom->shapes + indicator_doodad->shape_ndx;
 
-	color = drawing->colors + (doodad->on ?
+	color = priv->colors + (doodad->on ?
 				   indicator_doodad->on_color_ndx :
 				   indicator_doodad->off_color_ndx);
 
@@ -1283,15 +1327,16 @@ draw_shape_doodad (GkbdKeyboardDrawingRenderContext * context,
 		   GkbdKeyboardDrawingDoodad * doodad,
 		   XkbShapeDoodadRec * shape_doodad)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	XkbShapeRec *shape;
 	GdkRGBA *color;
 	gint i;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
-	shape = drawing->xkb->geom->shapes + shape_doodad->shape_ndx;
-	color = drawing->colors + shape_doodad->color_ndx;
+	shape = priv->xkb->geom->shapes + shape_doodad->shape_ndx;
+	color = priv->colors + shape_doodad->color_ndx;
 
 	/* draw the primary outline filled */
 	draw_outline (context,
@@ -1353,9 +1398,10 @@ draw_keyboard_item (GkbdKeyboardDrawingItem * item,
 		    DrawKeyboardItemData * data)
 {
 	GkbdKeyboardDrawing *drawing = data->drawing;
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GkbdKeyboardDrawingRenderContext *context = data->context;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
 	switch (item->type) {
@@ -1379,17 +1425,19 @@ static void
 draw_keyboard_to_context (GkbdKeyboardDrawingRenderContext * context,
 			  GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	DrawKeyboardItemData data = { drawing, context };
 #ifdef KBDRAW_DEBUG
-	printf ("mods: %d\n", drawing->mods);
+	printf ("mods: %d\n", priv->mods);
 #endif
-	g_list_foreach (drawing->keyboard_items,
+	g_list_foreach (priv->keyboard_items,
 			(GFunc) draw_keyboard_item, &data);
 }
 
 static gboolean
 prepare_cairo (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GtkStateFlags state;
 	GtkStyleContext *style_context;
 	if (drawing == NULL)
@@ -1397,29 +1445,30 @@ prepare_cairo (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 
 	style_context =
 	    gtk_widget_get_style_context (GTK_WIDGET (drawing));
-	drawing->renderContext->cr = cr;
+	priv->renderContext->cr = cr;
 	state = gtk_widget_get_state_flags (GTK_WIDGET (drawing));
 	gtk_style_context_get_background_color (style_context, state,
-						&drawing->
+						&priv->
 						renderContext->dark_color);
 
 	/* same approach as gtk - dark color = background color * 0.7 */
-	drawing->renderContext->dark_color.red *= 0.7;
-	drawing->renderContext->dark_color.green *= 0.7;
-	drawing->renderContext->dark_color.blue *= 0.7;
+	priv->renderContext->dark_color.red *= 0.7;
+	priv->renderContext->dark_color.green *= 0.7;
+	priv->renderContext->dark_color.blue *= 0.7;
 	return TRUE;
 }
 
 static void
 draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GtkStateFlags state =
 	    gtk_widget_get_state_flags (GTK_WIDGET (drawing));
 	GtkStyleContext *style_context =
 	    gtk_widget_get_style_context (GTK_WIDGET (drawing));
 	GtkAllocation allocation;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
 	gtk_widget_get_allocation (GTK_WIDGET (drawing), &allocation);
@@ -1444,15 +1493,16 @@ draw_keyboard (GkbdKeyboardDrawing * drawing, cairo_t * cr)
 		cairo_stroke (cr);
 #endif
 
-		draw_keyboard_to_context (drawing->renderContext, drawing);
+		draw_keyboard_to_context (priv->renderContext, drawing);
 	}
 }
 
 static void
 alloc_render_context (GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GkbdKeyboardDrawingRenderContext *context =
-	    drawing->renderContext =
+	    priv->renderContext =
 	    g_new0 (GkbdKeyboardDrawingRenderContext, 1);
 
 	PangoContext *pangoContext =
@@ -1470,18 +1520,19 @@ alloc_render_context (GkbdKeyboardDrawing * drawing)
 static void
 free_render_context (GkbdKeyboardDrawing * drawing)
 {
-	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
-	g_object_unref (G_OBJECT (context->layout));
-	pango_font_description_free (context->font_desc);
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	GkbdKeyboardDrawingRenderContext *context = priv->renderContext;
+	g_clear_object (&context->layout);
+	g_clear_pointer (&context->font_desc, pango_font_description_free);
 
-	g_free (drawing->renderContext);
-	drawing->renderContext = NULL;
+	g_clear_pointer (&priv->renderContext, g_free);
 }
 
 static gboolean
 draw (GtkWidget * widget, cairo_t * cr, GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return FALSE;
 
 	draw_keyboard (drawing, cr);
@@ -1494,23 +1545,24 @@ context_setup_scaling (GkbdKeyboardDrawingRenderContext * context,
 		       gdouble width, gdouble height,
 		       gdouble dpi_x, gdouble dpi_y)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return FALSE;
 
-	if (drawing->xkb->geom->width_mm <= 0
-	    || drawing->xkb->geom->height_mm <= 0) {
+	if (priv->xkb->geom->width_mm <= 0
+	    || priv->xkb->geom->height_mm <= 0) {
 		g_critical
 		    ("keyboard geometry reports width or height as zero!");
 		return FALSE;
 	}
 
-	if (width * drawing->xkb->geom->height_mm <
-	    height * drawing->xkb->geom->width_mm) {
+	if (width * priv->xkb->geom->height_mm <
+	    height * priv->xkb->geom->width_mm) {
 		context->scale_numerator = width;
-		context->scale_denominator = drawing->xkb->geom->width_mm;
+		context->scale_denominator = priv->xkb->geom->width_mm;
 	} else {
 		context->scale_numerator = height;
-		context->scale_denominator = drawing->xkb->geom->height_mm;
+		context->scale_denominator = priv->xkb->geom->height_mm;
 	}
 
 	pango_font_description_set_size (context->font_desc,
@@ -1530,7 +1582,8 @@ static void
 size_allocate (GtkWidget * widget,
 	       GtkAllocation * allocation, GkbdKeyboardDrawing * drawing)
 {
-	GkbdKeyboardDrawingRenderContext *context = drawing->renderContext;
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	GkbdKeyboardDrawingRenderContext *context = priv->renderContext;
 
 	context_setup_scaling (context, drawing,
 			       allocation->width, allocation->height,
@@ -1541,14 +1594,15 @@ static gint
 key_event (GtkWidget * widget,
 	   GdkEventKey * event, GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GkbdKeyboardDrawingKey *key;
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return FALSE;
 
-	key = drawing->keys + event->hardware_keycode;
+	key = priv->keys + event->hardware_keycode;
 
-	if (event->hardware_keycode > drawing->xkb->max_key_code ||
-	    event->hardware_keycode < drawing->xkb->min_key_code ||
+	if (event->hardware_keycode > priv->xkb->max_key_code ||
+	    event->hardware_keycode < priv->xkb->min_key_code ||
 	    key->xkbkey == NULL) {
 		g_signal_emit (drawing,
 			       gkbd_keyboard_drawing_signals[BAD_KEYCODE],
@@ -1571,7 +1625,8 @@ static gint
 button_press_event (GtkWidget * widget,
 		    GdkEventButton * event, GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return FALSE;
 
 	gtk_widget_grab_focus (widget);
@@ -1581,20 +1636,21 @@ button_press_event (GtkWidget * widget,
 static gboolean
 unpress_keys (GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	gint i;
 
-	drawing->timeout = 0;
+	priv->timeout = 0;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return FALSE;
 
-	for (i = drawing->xkb->min_key_code;
-	     i <= drawing->xkb->max_key_code; i++)
-		if (drawing->keys[i].pressed) {
-			drawing->keys[i].pressed = FALSE;
-			draw_key (drawing->renderContext, drawing,
-				  drawing->keys + i);
-			invalidate_key_region (drawing, drawing->keys + i);
+	for (i = priv->xkb->min_key_code;
+	     i <= priv->xkb->max_key_code; i++)
+		if (priv->keys[i].pressed) {
+			priv->keys[i].pressed = FALSE;
+			draw_key (priv->renderContext, drawing,
+				  priv->keys + i);
+			invalidate_key_region (drawing, priv->keys + i);
 		}
 
 	return FALSE;
@@ -1604,11 +1660,12 @@ static gint
 focus_event (GtkWidget * widget,
 	     GdkEventFocus * event, GkbdKeyboardDrawing * drawing)
 {
-	if (event->in && drawing->timeout > 0) {
-		g_source_remove (drawing->timeout);
-		drawing->timeout = 0;
-	} else if (!drawing->timeout)
-		drawing->timeout =
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (event->in && priv->timeout > 0) {
+		g_source_remove (priv->timeout);
+		priv->timeout = 0;
+	} else if (!priv->timeout)
+		priv->timeout =
 		    g_timeout_add (120, (GSourceFunc) unpress_keys,
 				   drawing);
 
@@ -1632,7 +1689,8 @@ init_indicator_doodad (GkbdKeyboardDrawing * drawing,
 		       XkbDoodadRec * xkbdoodad,
 		       GkbdKeyboardDrawingDoodad * doodad)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return;
 
 	if (xkbdoodad->any.type == XkbIndicatorDoodad) {
@@ -1640,12 +1698,12 @@ init_indicator_doodad (GkbdKeyboardDrawing * drawing,
 		Atom iname = 0;
 		Atom sname = xkbdoodad->indicator.name;
 		unsigned long phys_indicators =
-		    drawing->xkb->indicators->phys_indicators;
-		Atom *pind = drawing->xkb->names->indicators;
+		    priv->xkb->indicators->phys_indicators;
+		Atom *pind = priv->xkb->names->indicators;
 
 #ifdef KBDRAW_DEBUG
 		printf ("Looking for %d[%s]\n",
-			(int) sname, XGetAtomName (drawing->display,
+			(int) sname, XGetAtomName (priv->display,
 						   sname));
 #endif
 
@@ -1661,15 +1719,15 @@ init_indicator_doodad (GkbdKeyboardDrawing * drawing,
 		if (iname == 0)
 			g_warning ("Could not find indicator %d [%s]\n",
 				   (int) sname,
-				   XGetAtomName (drawing->display, sname));
+				   XGetAtomName (priv->display, sname));
 		else {
 #ifdef KBDRAW_DEBUG
 			printf ("Found in xkbdesc as %d\n", index);
 #endif
-			drawing->physical_indicators[index] = doodad;
+			priv->physical_indicators[index] = doodad;
 			/* Trying to obtain the real state, but if fail - just assume OFF */
 			if (!XkbGetNamedIndicator
-			    (drawing->display, sname, NULL, &doodad->on,
+			    (priv->display, sname, NULL, &doodad->on,
 			     NULL, NULL))
 				doodad->on = 0;
 		}
@@ -1679,14 +1737,15 @@ init_indicator_doodad (GkbdKeyboardDrawing * drawing,
 static void
 init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	gint i, j, k;
 	gint x, y;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
-	for (i = 0; i < drawing->xkb->geom->num_doodads; i++) {
-		XkbDoodadRec *xkbdoodad = drawing->xkb->geom->doodads + i;
+	for (i = 0; i < priv->xkb->geom->num_doodads; i++) {
+		XkbDoodadRec *xkbdoodad = priv->xkb->geom->doodads + i;
 		GkbdKeyboardDrawingDoodad *doodad =
 		    g_new (GkbdKeyboardDrawingDoodad, 1);
 
@@ -1699,12 +1758,12 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 
 		init_indicator_doodad (drawing, xkbdoodad, doodad);
 
-		drawing->keyboard_items =
-		    g_list_append (drawing->keyboard_items, doodad);
+		priv->keyboard_items =
+		    g_list_append (priv->keyboard_items, doodad);
 	}
 
-	for (i = 0; i < drawing->xkb->geom->num_sections; i++) {
-		XkbSectionRec *section = drawing->xkb->geom->sections + i;
+	for (i = 0; i < priv->xkb->geom->num_sections; i++) {
+		XkbSectionRec *section = priv->xkb->geom->sections + i;
 		guint priority;
 
 #ifdef KBDRAW_DEBUG
@@ -1728,7 +1787,7 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				XkbKeyRec *xkbkey = row->keys + k;
 				GkbdKeyboardDrawingKey *key;
 				XkbShapeRec *shape =
-				    drawing->xkb->geom->shapes +
+				    priv->xkb->geom->shapes +
 				    xkbkey->shape_ndx;
 				guint keycode = find_keycode (drawing,
 							      xkbkey->name.
@@ -1737,7 +1796,7 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 #ifdef KBDRAW_DEBUG
 				printf
 				    ("    initing key %d, shape: %p(%p + %d), code: %u\n",
-				     k, shape, drawing->xkb->geom->shapes,
+				     k, shape, priv->xkb->geom->shapes,
 				     xkbkey->shape_ndx, keycode);
 #endif
 				if (row->vertical)
@@ -1745,10 +1804,10 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				else
 					x += xkbkey->gap;
 
-				if (keycode >= drawing->xkb->min_key_code
+				if (keycode >= priv->xkb->min_key_code
 				    && keycode <=
-				    drawing->xkb->max_key_code) {
-					key = drawing->keys + keycode;
+				    priv->xkb->max_key_code) {
+					key = priv->keys + keycode;
 					if (key->type ==
 					    GKBD_KEYBOARD_DRAWING_ITEM_TYPE_INVALID)
 					{
@@ -1768,8 +1827,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 					g_warning
 					    ("key %4.4s: keycode = %u; not in range %d..%d\n",
 					     xkbkey->name.name, keycode,
-					     drawing->xkb->min_key_code,
-					     drawing->xkb->max_key_code);
+					     priv->xkb->min_key_code,
+					     priv->xkb->max_key_code);
 
 					key =
 					    g_new0 (GkbdKeyboardDrawingKey,
@@ -1788,8 +1847,8 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 				key->priority = priority;
 				key->keycode = keycode;
 
-				drawing->keyboard_items =
-				    g_list_append (drawing->keyboard_items,
+				priv->keyboard_items =
+				    g_list_append (priv->keyboard_items,
 						   key);
 
 				if (row->vertical)
@@ -1817,13 +1876,13 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 
 			init_indicator_doodad (drawing, xkbdoodad, doodad);
 
-			drawing->keyboard_items =
-			    g_list_append (drawing->keyboard_items,
+			priv->keyboard_items =
+			    g_list_append (priv->keyboard_items,
 					   doodad);
 		}
 	}
 
-	drawing->keyboard_items = g_list_sort (drawing->keyboard_items,
+	priv->keyboard_items = g_list_sort (priv->keyboard_items,
 					       (GCompareFunc)
 					       compare_keyboard_item_priorities);
 }
@@ -1831,23 +1890,24 @@ init_keys_and_doodads (GkbdKeyboardDrawing * drawing)
 static void
 init_colors (GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	gboolean result;
 	gint i;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
-	drawing->colors = g_new (GdkRGBA, drawing->xkb->geom->num_colors);
+	priv->colors = g_new (GdkRGBA, priv->xkb->geom->num_colors);
 
-	for (i = 0; i < drawing->xkb->geom->num_colors; i++) {
+	for (i = 0; i < priv->xkb->geom->num_colors; i++) {
 		result =
-		    parse_xkb_color_spec (drawing->xkb->geom->colors[i].
-					  spec, drawing->colors + i);
+		    parse_xkb_color_spec (priv->xkb->geom->colors[i].
+					  spec, priv->colors + i);
 
 		if (!result)
 			g_warning
 			    ("init_colors: unable to parse color %s\n",
-			     drawing->xkb->geom->colors[i].spec);
+			     priv->xkb->geom->colors[i].spec);
 	}
 }
 
@@ -1855,12 +1915,13 @@ static void
 free_cdik (			/*colors doodads indicators keys */
 		  GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GList *itemp;
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
-	for (itemp = drawing->keyboard_items; itemp; itemp = itemp->next) {
+	for (itemp = priv->keyboard_items; itemp; itemp = itemp->next) {
 		GkbdKeyboardDrawingItem *item = itemp->data;
 
 		switch (item->type) {
@@ -1875,50 +1936,52 @@ free_cdik (			/*colors doodads indicators keys */
 		}
 	}
 
-	g_list_free (drawing->keyboard_items);
-	drawing->keyboard_items = NULL;
+	g_list_free (priv->keyboard_items);
+	priv->keyboard_items = NULL;
 
-	g_free (drawing->keys);
-	g_free (drawing->colors);
+	g_free (priv->keys);
+	g_free (priv->colors);
 }
 
 static void
 alloc_cdik (GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb)
 		return;
 
-	drawing->physical_indicators_size =
-	    drawing->xkb->indicators->phys_indicators + 1;
-	drawing->physical_indicators =
+	priv->physical_indicators_size =
+	    priv->xkb->indicators->phys_indicators + 1;
+	priv->physical_indicators =
 	    g_new0 (GkbdKeyboardDrawingDoodad *,
-		    drawing->physical_indicators_size);
-	drawing->keys =
+		    priv->physical_indicators_size);
+	priv->keys =
 	    g_new0 (GkbdKeyboardDrawingKey,
-		    drawing->xkb->max_key_code + 1);
+		    priv->xkb->max_key_code + 1);
 }
 
 static void
 process_indicators_state_notify (XkbIndicatorNotifyEvent * iev,
 				 GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	/* Good question: should we track indicators when the keyboard is
 	   NOT really taken from the screen */
 	gint i;
 
-	for (i = 0; i <= drawing->xkb->indicators->phys_indicators; i++)
-		if (drawing->physical_indicators[i] != NULL
+	for (i = 0; i <= priv->xkb->indicators->phys_indicators; i++)
+		if (priv->physical_indicators[i] != NULL
 		    && (iev->changed & 1 << i)) {
 			gint state = (iev->state & 1 << i) != FALSE;
 
-			if ((state && !drawing->physical_indicators[i]->on)
+			if ((state && !priv->physical_indicators[i]->on)
 			    || (!state
-				&& drawing->physical_indicators[i]->on)) {
-				drawing->physical_indicators[i]->on =
+				&& priv->physical_indicators[i]->on)) {
+				priv->physical_indicators[i]->on =
 				    state;
 				invalidate_indicator_doodad_region
 				    (drawing,
-				     drawing->physical_indicators[i]);
+				     priv->physical_indicators[i]);
 			}
 		}
 }
@@ -1928,19 +1991,20 @@ xkb_state_notify_event_filter (GdkXEvent * gdkxev,
 			       GdkEvent * event,
 			       GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 #define group_change_mask (XkbGroupStateMask | XkbGroupBaseMask | XkbGroupLatchMask | XkbGroupLockMask)
 #define modifier_change_mask (XkbModifierStateMask | XkbModifierBaseMask | XkbModifierLatchMask | XkbModifierLockMask)
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return GDK_FILTER_CONTINUE;
 
-	if (((XEvent *) gdkxev)->type == drawing->xkb_event_type) {
+	if (((XEvent *) gdkxev)->type == priv->xkb_event_type) {
 		XkbEvent *kev = (XkbEvent *) gdkxev;
 		GtkAllocation allocation;
 		switch (kev->any.xkb_type) {
 		case XkbStateNotify:
 			if (((kev->state.changed & modifier_change_mask) &&
-			     drawing->track_modifiers))
+			     priv->track_modifiers))
 				gkbd_keyboard_drawing_set_mods
 				    (drawing,
 				     kev->state.compat_state);
@@ -1963,12 +2027,12 @@ indicators, drawing);
 			{
 				XkbStateRec state;
 				memset (&state, 0, sizeof (state));
-				XkbGetState (drawing->display,
+				XkbGetState (priv->display,
 					     XkbUseCoreKbd, &state);
-				if (drawing->track_modifiers)
+				if (priv->track_modifiers)
 					gkbd_keyboard_drawing_set_mods
 					    (drawing, state.compat_state);
-				if (drawing->track_config)
+				if (priv->track_config)
 					gkbd_keyboard_drawing_set_keyboard
 					    (drawing, NULL);
 			}
@@ -1982,66 +2046,69 @@ indicators, drawing);
 static void
 destroy (GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	free_render_context (drawing);
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  xkb_state_notify_event_filter, drawing);
-	if (drawing->timeout > 0) {
-		g_source_remove (drawing->timeout);
-		drawing->timeout = 0;
+	if (priv->timeout > 0) {
+		g_source_remove (priv->timeout);
+		priv->timeout = 0;
 	}
 }
 
 static void
 style_changed (GkbdKeyboardDrawing * drawing)
 {
-	pango_layout_context_changed (drawing->renderContext->layout);
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	pango_layout_context_changed (priv->renderContext->layout);
 }
 
 static void
 gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	gint opcode = 0, error = 0, major = 1, minor = 0;
 	gint mask;
 
-	drawing->display =
+	priv->display =
 	    GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 
 	if (!XkbQueryExtension
-	    (drawing->display, &opcode, &drawing->xkb_event_type, &error,
+	    (priv->display, &opcode, &priv->xkb_event_type, &error,
 	     &major, &minor))
 		g_critical
 		    ("XkbQueryExtension failed! Stuff probably won't work.");
 
 	alloc_render_context (drawing);
 
-	drawing->keyboard_items = NULL;
-	drawing->colors = NULL;
+	priv->keyboard_items = NULL;
+	priv->colors = NULL;
 
-	drawing->track_modifiers = 0;
-	drawing->track_config = 0;
+	priv->track_modifiers = 0;
+	priv->track_config = 0;
 
 	gtk_widget_set_has_window (GTK_WIDGET (drawing), FALSE);
 
 	/* XXX: XkbClientMapMask | XkbIndicatorMapMask | XkbNamesMask | XkbGeometryMask */
-	drawing->xkb = XkbGetKeyboard (drawing->display,
+	priv->xkb = XkbGetKeyboard (priv->display,
 				       XkbGBN_GeometryMask |
 				       XkbGBN_KeyNamesMask |
 				       XkbGBN_OtherNamesMask |
 				       XkbGBN_SymbolsMask |
 				       XkbGBN_IndicatorMapMask,
 				       XkbUseCoreKbd);
-	if (drawing->xkb) {
-		XkbGetNames (drawing->display, XkbAllNamesMask, drawing->xkb);
-		XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
+	if (priv->xkb) {
+		XkbGetNames (priv->display, XkbAllNamesMask, priv->xkb);
+		XkbSelectEventDetails (priv->display, XkbUseCoreKbd,
 				       XkbIndicatorStateNotify,
-				       drawing->xkb->indicators->phys_indicators,
-				       drawing->xkb->indicators->phys_indicators);
+				       priv->xkb->indicators->phys_indicators,
+				       priv->xkb->indicators->phys_indicators);
 	}
 
-	drawing->l3mod = XkbKeysymToModifiers (drawing->display,
+	priv->l3mod = XkbKeysymToModifiers (priv->display,
 					       GDK_KEY_ISO_Level3_Shift);
 
-	drawing->xkbOnDisplay = TRUE;
+	priv->xkbOnDisplay = TRUE;
 
 	alloc_cdik (drawing);
 
@@ -2049,14 +2116,14 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 	    (XkbStateNotifyMask | XkbNamesNotifyMask |
 	     XkbControlsNotifyMask | XkbIndicatorMapNotifyMask |
 	     XkbNewKeyboardNotifyMask);
-	XkbSelectEvents (drawing->display, XkbUseCoreKbd, mask, mask);
+	XkbSelectEvents (priv->display, XkbUseCoreKbd, mask, mask);
 
 	mask = XkbGroupStateMask | XkbModifierStateMask;
-	XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
+	XkbSelectEventDetails (priv->display, XkbUseCoreKbd,
 			       XkbStateNotify, mask, mask);
 
 	mask = (XkbGroupNamesMask | XkbIndicatorNamesMask);
-	XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
+	XkbSelectEventDetails (priv->display, XkbUseCoreKbd,
 			       XkbNamesNotify, mask, mask);
 	init_keys_and_doodads (drawing);
 	init_colors (drawing);
@@ -2094,9 +2161,7 @@ gkbd_keyboard_drawing_init (GkbdKeyboardDrawing * drawing)
 GtkWidget *
 gkbd_keyboard_drawing_new (void)
 {
-	return
-	    GTK_WIDGET (g_object_new
-			(gkbd_keyboard_drawing_get_type (), NULL));
+	return GTK_WIDGET (g_object_new (GKBD_TYPE_KEYBOARD_DRAWING, NULL));
 }
 
 static GtkSizeRequestMode
@@ -2123,14 +2188,14 @@ get_preferred_height_for_width (GtkWidget * widget,
 				gint * minimum_height,
 				gint * natural_height)
 {
-	GkbdKeyboardDrawing *drawing = GKBD_KEYBOARD_DRAWING (widget);
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (GKBD_KEYBOARD_DRAWING (widget));
 
-	if (!drawing->xkb)
+	if (!priv->xkb)
 		return;
 
 	*minimum_height = *natural_height =
-	    width * drawing->xkb->geom->height_mm /
-	    drawing->xkb->geom->width_mm;
+	    width * priv->xkb->geom->height_mm /
+	    priv->xkb->geom->width_mm;
 }
 
 static void
@@ -2152,42 +2217,15 @@ gkbd_keyboard_drawing_class_init (GkbdKeyboardDrawingClass * klass)
 			  G_TYPE_UINT);
 }
 
-GType
-gkbd_keyboard_drawing_get_type (void)
-{
-	static GType gkbd_keyboard_drawing_type = 0;
-
-	if (!gkbd_keyboard_drawing_type) {
-		static const GTypeInfo gkbd_keyboard_drawing_info = {
-			sizeof (GkbdKeyboardDrawingClass),
-			NULL,	/* base_init */
-			NULL,	/* base_finalize */
-			(GClassInitFunc) gkbd_keyboard_drawing_class_init,
-			NULL,	/* class_finalize */
-			NULL,	/* class_data */
-			sizeof (GkbdKeyboardDrawing),
-			0,	/* n_preallocs */
-			(GInstanceInitFunc) gkbd_keyboard_drawing_init,
-		};
-
-		gkbd_keyboard_drawing_type =
-		    g_type_register_static (GTK_TYPE_DRAWING_AREA,
-					    "GkbdKeyboardDrawing",
-					    &gkbd_keyboard_drawing_info,
-					    0);
-	}
-
-	return gkbd_keyboard_drawing_type;
-}
-
 void
 gkbd_keyboard_drawing_set_mods (GkbdKeyboardDrawing * drawing, guint mods)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 #ifdef KBDRAW_DEBUG
 	printf ("set_mods: %d\n", mods);
 #endif
-	if (mods != drawing->mods) {
-		drawing->mods = mods;
+	if (mods != priv->mods) {
+		priv->mods = mods;
 		gtk_widget_queue_draw (GTK_WIDGET (drawing));
 	}
 }
@@ -2216,6 +2254,7 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 			      double width, double height,
 			      double dpi_x, double dpi_y)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (kbdrawing);
 	GtkStateFlags state =
 	    gtk_widget_get_state_flags (GTK_WIDGET (kbdrawing));
 	GtkStyleContext *style_context =
@@ -2224,7 +2263,7 @@ gkbd_keyboard_drawing_render (GkbdKeyboardDrawing * kbdrawing,
 		gtk_widget_get_pango_context (GTK_WIDGET (kbdrawing));
 	GkbdKeyboardDrawingRenderContext context = {
 		cr,
-		kbdrawing->renderContext->angle,
+		priv->renderContext->angle,
 		layout,
 		pango_font_description_copy (pango_context_get_font_description (pangoContext)),
 		1, 1
@@ -2252,41 +2291,42 @@ gboolean
 gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing * drawing,
 				    XkbComponentNamesRec * names)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	GtkAllocation allocation;
 
 	free_cdik (drawing);
-	if (drawing->xkb)
-		XkbFreeKeyboard (drawing->xkb, 0, TRUE);	/* free_all = TRUE */
-	drawing->xkb = NULL;
+	if (priv->xkb)
+		XkbFreeKeyboard (priv->xkb, 0, TRUE);	/* free_all = TRUE */
+	priv->xkb = NULL;
 
 	if (names) {
-		drawing->xkb =
-		    XkbGetKeyboardByName (drawing->display, XkbUseCoreKbd,
+		priv->xkb =
+		    XkbGetKeyboardByName (priv->display, XkbUseCoreKbd,
 					  names, 0,
 					  XkbGBN_GeometryMask |
 					  XkbGBN_KeyNamesMask |
 					  XkbGBN_OtherNamesMask |
 					  XkbGBN_ClientSymbolsMask |
 					  XkbGBN_IndicatorMapMask, FALSE);
-		drawing->xkbOnDisplay = FALSE;
+		priv->xkbOnDisplay = FALSE;
 	} else {
-		drawing->xkb = XkbGetKeyboard (drawing->display,
+		priv->xkb = XkbGetKeyboard (priv->display,
 					       XkbGBN_GeometryMask |
 					       XkbGBN_KeyNamesMask |
 					       XkbGBN_OtherNamesMask |
 					       XkbGBN_SymbolsMask |
 					       XkbGBN_IndicatorMapMask,
 					       XkbUseCoreKbd);
-		XkbGetNames (drawing->display, XkbAllNamesMask,
-			     drawing->xkb);
-		drawing->xkbOnDisplay = TRUE;
+		XkbGetNames (priv->display, XkbAllNamesMask,
+			     priv->xkb);
+		priv->xkbOnDisplay = TRUE;
 	}
 
-	if (drawing->xkb) {
-		XkbSelectEventDetails (drawing->display, XkbUseCoreKbd,
+	if (priv->xkb) {
+		XkbSelectEventDetails (priv->display, XkbUseCoreKbd,
 				       XkbIndicatorStateNotify,
-				       drawing->xkb->indicators->phys_indicators,
-				       drawing->xkb->indicators->phys_indicators);
+				       priv->xkb->indicators->phys_indicators,
+				       priv->xkb->indicators->phys_indicators);
 	}
 
 	alloc_cdik (drawing);
@@ -2304,76 +2344,83 @@ gkbd_keyboard_drawing_set_keyboard (GkbdKeyboardDrawing * drawing,
 const gchar *
 gkbd_keyboard_drawing_get_keycodes (GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb || drawing->xkb->names->keycodes <= 0)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb || priv->xkb->names->keycodes <= 0)
 		return NULL;
 	else
-		return XGetAtomName (drawing->display,
-				     drawing->xkb->names->keycodes);
+		return XGetAtomName (priv->display,
+				     priv->xkb->names->keycodes);
 }
 
 const gchar *
 gkbd_keyboard_drawing_get_geometry (GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb || drawing->xkb->names->geometry <= 0)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb || priv->xkb->names->geometry <= 0)
 		return NULL;
 	else
-		return XGetAtomName (drawing->display,
-				     drawing->xkb->names->geometry);
+		return XGetAtomName (priv->display,
+				     priv->xkb->names->geometry);
 }
 
 const gchar *
 gkbd_keyboard_drawing_get_symbols (GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb || drawing->xkb->names->symbols <= 0)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb || priv->xkb->names->symbols <= 0)
 		return NULL;
 	else
-		return XGetAtomName (drawing->display,
-				     drawing->xkb->names->symbols);
+		return XGetAtomName (priv->display,
+				     priv->xkb->names->symbols);
 }
 
 const gchar *
 gkbd_keyboard_drawing_get_types (GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb || drawing->xkb->names->types <= 0)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb || priv->xkb->names->types <= 0)
 		return NULL;
 	else
-		return XGetAtomName (drawing->display,
-				     drawing->xkb->names->types);
+		return XGetAtomName (priv->display,
+				     priv->xkb->names->types);
 }
 
 const gchar *
 gkbd_keyboard_drawing_get_compat (GkbdKeyboardDrawing * drawing)
 {
-	if (!drawing->xkb || drawing->xkb->names->compat <= 0)
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
+	if (!priv->xkb || priv->xkb->names->compat <= 0)
 		return NULL;
 	else
-		return XGetAtomName (drawing->display,
-				     drawing->xkb->names->compat);
+		return XGetAtomName (priv->display,
+				     priv->xkb->names->compat);
 }
 
 void
 gkbd_keyboard_drawing_set_track_modifiers (GkbdKeyboardDrawing * drawing,
 					   gboolean enable)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	if (enable) {
 		XkbStateRec state;
-		drawing->track_modifiers = 1;
+		priv->track_modifiers = 1;
 		memset (&state, 0, sizeof (state));
-		XkbGetState (drawing->display, XkbUseCoreKbd, &state);
+		XkbGetState (priv->display, XkbUseCoreKbd, &state);
 		gkbd_keyboard_drawing_set_mods (drawing,
 						state.compat_state);
 	} else
-		drawing->track_modifiers = 0;
+		priv->track_modifiers = 0;
 }
 
 void
 gkbd_keyboard_drawing_set_track_config (GkbdKeyboardDrawing * drawing,
 					gboolean enable)
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 	if (enable)
-		drawing->track_config = 1;
+		priv->track_config = 1;
 	else
-		drawing->track_config = 0;
+		priv->track_config = 0;
 }
 
 void
@@ -2381,6 +2428,7 @@ gkbd_keyboard_drawing_set_groups_levels (GkbdKeyboardDrawing * drawing,
 					 GkbdKeyboardDrawingGroupLevel *
 					 groupLevels[])
 {
+	GkbdKeyboardDrawingPrivate *priv = gkbd_keyboard_drawing_get_instance_private (drawing);
 #ifdef KBDRAW_DEBUG
 	printf ("set_group_levels [topLeft]: %d %d \n",
 		groupLevels[GKBD_KEYBOARD_DRAWING_POS_TOPLEFT]->group,
@@ -2395,7 +2443,7 @@ gkbd_keyboard_drawing_set_groups_levels (GkbdKeyboardDrawing * drawing,
 		groupLevels[GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT]->group,
 		groupLevels[GKBD_KEYBOARD_DRAWING_POS_BOTTOMRIGHT]->level);
 #endif
-	drawing->groupLevels = groupLevels;
+	priv->groupLevels = groupLevels;
 
 	gtk_widget_queue_draw (GTK_WIDGET (drawing));
 }
