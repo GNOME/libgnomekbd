@@ -83,24 +83,12 @@ libgnomekbd_dep = declare_dependency(
 
 libgnomekbdui_sources = files(
   'gkbd-configuration.c',
-  'gkbd-indicator-config.c',
-  'gkbd-indicator.c',
-  'gkbd-status.c',
   'gkbd-keyboard-drawing.c',
 )
 
 libgnomekbdui_headers = files(
   'gkbd-configuration.h',
-  'gkbd-indicator.h',
-  'gkbd-status.h',
-  'gkbd-indicator-config.h',
   'gkbd-keyboard-drawing.h',
-)
-
-gkbd_indicator_marshal = gnome.genmarshal(
-  'gkbd-indicator-marshal',
-  prefix: 'gkbd_indicator',
-  sources: 'gkbd-indicator-marshal.list',
 )
 
 gkbd_keyboard_drawing_marshal = gnome.genmarshal(
@@ -119,7 +107,6 @@ libgnomekbdui_lib = library(
   'gnomekbdui',
   libgnomekbdui_sources,
   config_h,
-  gkbd_indicator_marshal,
   gkbd_keyboard_drawing_marshal,
   dependencies: libgnomekbdui_deps,
   include_directories: root_include,
@@ -143,7 +130,7 @@ libgnomekbdui_dep = declare_dependency(
   link_with: libgnomekbdui_lib,
   include_directories: root_include,
   dependencies: libgnomekbdui_deps,
-  sources: [config_h, gkbd_indicator_marshal, gkbd_keyboard_drawing_marshal],
+  sources: [config_h, gkbd_keyboard_drawing_marshal],
 )
 
 gkbd_keyboard_display_exe = executable(
@@ -197,7 +184,6 @@ if get_option('introspection')
       libgnomekbdui_sources,
       libgnomekbd_headers,
       libgnomekbdui_headers,
-      gkbd_indicator_marshal,
       gkbd_keyboard_drawing_marshal,
     ],
     dependencies: [ libgnomekbd_deps, m_dep ],

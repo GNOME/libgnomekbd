@@ -27,8 +27,7 @@
 #include <glib-object.h>
 
 #include <libxklavier/xklavier.h>
-
-#include <libgnomekbd/gkbd-indicator-config.h>
+#include <libgnomekbd/gkbd-keyboard-config.h>
 
 #define GKBD_TYPE_CONFIGURATION gkbd_configuration_get_type ()
 G_DECLARE_DERIVABLE_TYPE (GkbdConfiguration, gkbd_configuration, GKBD, CONFIGURATION, GObject)
@@ -48,15 +47,8 @@ gchar **gkbd_configuration_get_group_names (GkbdConfiguration *
 gchar **gkbd_configuration_get_short_group_names (GkbdConfiguration
 							 * configuration);
 
-gchar *gkbd_configuration_get_image_filename (GkbdConfiguration *
-						     configuration,
-						     guint group);
-
 gchar *gkbd_configuration_get_current_tooltip (GkbdConfiguration *
 						      configuration);
-
-gboolean gkbd_configuration_if_flags_shown (GkbdConfiguration *
-						   configuration);
 
 gchar *gkbd_configuration_extract_layout_name (GkbdConfiguration *
 						      configuration,
@@ -80,10 +72,6 @@ void gkbd_configuration_start_listen (GkbdConfiguration *
 
 void gkbd_configuration_stop_listen (GkbdConfiguration *
 					    configuration);
-
-GkbdIndicatorConfig
-    * gkbd_configuration_get_indicator_config (GkbdConfiguration *
-					       configuration);
 
 GkbdKeyboardConfig
     * gkbd_configuration_get_keyboard_config (GkbdConfiguration *
@@ -111,13 +99,6 @@ void gkbd_configuration_remove_object (GkbdConfiguration *
 #define NextObject() \
 		} \
 	}
-
-GSList *gkbd_configuration_load_images (GkbdConfiguration *
-					       configuration);
-
-void gkbd_configuration_free_images (GkbdConfiguration *
-					    configuration,
-					    GSList * images);
 
 gchar *gkbd_configuration_create_label_title (int group,
 						     GHashTable **

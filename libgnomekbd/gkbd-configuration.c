@@ -30,7 +30,7 @@
 #include <glib/gi18n-lib.h>
 
 #include <gkbd-configuration.h>
-
+#include <gkbd-keyboard-config.h>
 #include <gkbd-desktop-config.h>
 
 typedef struct {
@@ -38,7 +38,6 @@ typedef struct {
 	XklConfigRegistry *registry;
 
 	GkbdDesktopConfig cfg;
-	GkbdIndicatorConfig ind_cfg;
 	GkbdKeyboardConfig kbd_cfg;
 
 	gchar **full_group_names;
@@ -76,25 +75,6 @@ gkbd_configuration_cfg_changed (GSettings * settings, gchar * key,
 		   "General configuration changed in GConf - reiniting...\n");
 	gkbd_desktop_config_load (&priv->cfg);
 	gkbd_desktop_config_activate (&priv->cfg);
-
-	g_signal_emit (configuration, signals[SIGNAL_CHANGED], 0);
-}
-
-/* Should be called once for all widgets */
-static void
-gkbd_configuration_ind_cfg_changed (GSettings * settings, gchar * key,
-				    GkbdConfiguration * configuration)
-{
-	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
-	xkl_debug (100,
-		   "Applet configuration changed in GConf - reiniting...\n");
-	gkbd_indicator_config_load (&priv->ind_cfg);
-
-	gkbd_indicator_config_free_image_filenames (&priv->ind_cfg);
-	gkbd_indicator_config_load_image_filenames (&priv->ind_cfg,
-						    &priv->kbd_cfg);
-
-	gkbd_indicator_config_activate (&priv->ind_cfg);
 
 	g_signal_emit (configuration, signals[SIGNAL_CHANGED], 0);
 }
@@ -147,10 +127,6 @@ gkbd_configuration_kbd_cfg_callback (XklEngine * engine,
 		   "XKB configuration changed on X Server - reiniting...\n");
 
 	gkbd_keyboard_config_load_from_x_current (&priv->kbd_cfg, xklrec);
-
-	gkbd_indicator_config_free_image_filenames (&priv->ind_cfg);
-	gkbd_indicator_config_load_image_filenames (&priv->ind_cfg,
-						    &priv->kbd_cfg);
 
 	g_clear_pointer (&priv->full_group_names, g_strfreev);
 	g_clear_pointer (&priv->short_group_names, g_strfreev);
@@ -220,7 +196,6 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 
 	gkbd_desktop_config_init (&priv->cfg, priv->engine);
 	gkbd_keyboard_config_init (&priv->kbd_cfg, priv->engine);
-	gkbd_indicator_config_init (&priv->ind_cfg, priv->engine);
 
 	gkbd_desktop_config_load (&priv->cfg);
 	gkbd_desktop_config_activate (&priv->cfg);
@@ -231,13 +206,6 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 
 	gkbd_keyboard_config_load_from_x_current (&priv->kbd_cfg, xklrec);
 
-	gkbd_indicator_config_load (&priv->ind_cfg);
-
-	gkbd_indicator_config_load_image_filenames (&priv->ind_cfg,
-						    &priv->kbd_cfg);
-
-	gkbd_indicator_config_activate (&priv->ind_cfg);
-
 	gkbd_configuration_load_group_names (configuration, xklrec);
 	g_object_unref (G_OBJECT (xklrec));
 
@@ -245,10 +213,6 @@ gkbd_configuration_init (GkbdConfiguration * configuration)
 					  G_CALLBACK
 					  (gkbd_configuration_cfg_changed),
 					  configuration);
-	gkbd_indicator_config_start_listen (&priv->ind_cfg,
-					    G_CALLBACK
-					    (gkbd_configuration_ind_cfg_changed),
-					    configuration);
 	xkl_engine_start_listen (priv->engine, XKLL_TRACK_KEYBOARD_STATE);
 
 	xkl_debug (100, "The config startup process for %p completed\n",
@@ -268,9 +232,7 @@ gkbd_configuration_finalize (GObject * obj)
 	xkl_engine_stop_listen (priv->engine, XKLL_TRACK_KEYBOARD_STATE);
 
 	gkbd_desktop_config_stop_listen (&priv->cfg);
-	gkbd_indicator_config_stop_listen (&priv->ind_cfg);
 
-	gkbd_indicator_config_term (&priv->ind_cfg);
 	gkbd_keyboard_config_term (&priv->kbd_cfg);
 	gkbd_desktop_config_term (&priv->cfg);
 
@@ -373,19 +335,6 @@ gkbd_configuration_get_group_names (GkbdConfiguration * configuration)
 	return priv->full_group_names;
 }
 
-gchar *
-gkbd_configuration_get_image_filename (GkbdConfiguration * configuration,
-				       guint group)
-{
-	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
-
-	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
-
-	if (!priv->ind_cfg.show_flags)
-		return NULL;
-	return (gchar *) g_slist_nth_data (priv->ind_cfg.image_filenames, group);
-}
-
 /**
  * gkbd_configuration_get_short_group_names:
  *
@@ -418,16 +367,6 @@ gkbd_configuration_get_current_tooltip (GkbdConfiguration * configuration)
 		return NULL;
 
 	return g_strdup (priv->full_group_names[state->group]);
-}
-
-gboolean
-gkbd_configuration_if_flags_shown (GkbdConfiguration * configuration)
-{
-	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
-
-	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), FALSE);
-
-	return priv->ind_cfg.show_flags;
 }
 
 gchar *
@@ -517,21 +456,6 @@ gkbd_configuration_get_current_group (GkbdConfiguration * configuration)
 }
 
 /**
- * gkbd_configuration_get_indicator_config:
- *
- * Returns: (transfer none): indicator config
- */
-GkbdIndicatorConfig *
-gkbd_configuration_get_indicator_config (GkbdConfiguration * configuration)
-{
-	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
-
-	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
-
-	return &priv->ind_cfg;
-}
-
-/**
  * gkbd_configuration_get_keyboard_config:
  *
  * Returns: (transfer none): keyboard config
@@ -583,71 +507,6 @@ gkbd_configuration_remove_object (GkbdConfiguration * configuration,
 
 	priv->widget_instances =
 	    g_slist_remove (priv->widget_instances, obj);
-}
-
-/**
- * gkbd_configuration_load_images:
- *
- * Returns: (transfer full) (element-type GdkPixbuf): list of images
- */
-GSList *
-gkbd_configuration_load_images (GkbdConfiguration * configuration)
-{
-	int i;
-	GSList *image_filename, *images = NULL;
-	GkbdConfigurationPrivate *priv = gkbd_configuration_get_instance_private (configuration);
-
-	g_return_val_if_fail (GKBD_IS_CONFIGURATION (configuration), NULL);
-
-	if (!priv->ind_cfg.show_flags)
-		return NULL;
-
-	image_filename = priv->ind_cfg.image_filenames;
-
-	for (i =
-	     xkl_engine_get_max_num_groups (priv->engine);
-	     --i >= 0; image_filename = image_filename->next) {
-		GdkPixbuf *image = NULL;
-		char *image_file = (char *) image_filename->data;
-
-		if (image_file != NULL) {
-			GError *gerror = NULL;
-			image =
-			    gdk_pixbuf_new_from_file (image_file, &gerror);
-			xkl_debug (150,
-				   "Image %d[%s] loaded -> %p[%dx%d]\n",
-				   i, image_file, image,
-				   gdk_pixbuf_get_width (image),
-				   gdk_pixbuf_get_height (image));
-		}
-		/* We append the image anyway - even if it is NULL! */
-		images = g_slist_append (images, image);
-	}
-	return images;
-}
-
-/**
- * gkbd_configuration_free_images:
- * @images: (element-type GdkPixbuf): list of images
- */
-void
-gkbd_configuration_free_images (GkbdConfiguration * configuration,
-				GSList * images)
-{
-	GdkPixbuf *pi;
-	GSList *img_node;
-
-	g_return_if_fail (GKBD_IS_CONFIGURATION (configuration));
-
-	while ((img_node = images) != NULL) {
-		pi = GDK_PIXBUF (img_node->data);
-		/* It can be NULL - some images may be missing */
-		if (pi != NULL) {
-			g_object_unref (pi);
-		}
-		images = g_slist_remove_link (images, img_node);
-		g_slist_free_1 (img_node);
-	}
 }
 
 gchar *
