@@ -1,234 +1,208 @@
-# translation of ka.po to Georgian
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: ka\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-16 15:30+0200\n"
-"PO-Revision-Date: 2007-09-16 16:10+0200\n"
-"Last-Translator: Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
-"Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-list>\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/"
+"issues\n"
+"POT-Creation-Date: 2022-06-22 07:25+0000\n"
+"PO-Revision-Date: 2022-07-21 17:12+0200\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: \n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:618
+#: libgnomekbd/gkbd-indicator.c:421 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
-msgstr "XKB-ს ინიციალიზაციის შეცდომა"
-
-#: ../libgnomekbd/gkbd-indicator-config.c:163
-#, c-format
-msgid "There was an error loading an image: %s"
-msgstr "შეცდომა პიქტოგრამის ჩატვირთვისას: %s"
+msgstr "XKB-ის ინიცალიზაციის შეცდომა"
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:798
+#: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
-msgstr[0] "განლაგება \"%s\""
+msgid "layout “%s”"
+msgid_plural "layouts “%s”"
+msgstr[0] "განლაგება “%s”"
+msgstr[1] "განლაგება “%s”"
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
-#: ../libgnomekbd/gkbd-keyboard-config.c:815
+#: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
-msgstr[0] "პარამეტრი \"%s\""
+msgid "option “%s”"
+msgid_plural "options “%s”"
+msgstr[0] "პარამეტრი %s"
+msgstr[1] "პარამეტრი %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:823
+#: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "მოდელი \"%s\", %s და %s"
+msgid "model “%s”, %s and %s"
+msgstr "მოდელი “%s”, %s და %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:824
+#: libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
-msgstr "არავითარი განლაგება"
+msgstr "განლაგების გარეშე"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:825
+#: libgnomekbd/gkbd-keyboard-config.c:740
 msgid "no options"
-msgstr "არავითარი პარამეტრები"
+msgstr "პარამეტრების გარეშე"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:1
-msgid "A collection of scripts to run whenever the keyboard state is reloaded. Useful for re-applying xmodmap based adjustments"
-msgstr ""
-"სკრიპტების კოლექცია, რომელიც გამოიყენება კლავიატურის ხელახალი გამართვისას. "
-"გამოიყენება xmodmap-ში ცვლილების შეტანისას"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:2
-msgid "A list of modmap files available in the $HOME directory."
-msgstr "modmap ფაილების სია $HOME დასტაში."
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr "ნაგულისხმევი ჯგუფი, ფანჯრის შექმნისას"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:4
-msgid "Keep and manage separate group per window"
-msgstr "ფანჯრების მიხედვით, სხვადასხვა ჯგუფების მხარდაჭერა დამახსოვრება"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:5
-msgid "Keyboard Update Handlers"
-msgstr "კლავიატურის განახლება"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:6
-msgid "Keyboard layout"
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
+#: libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
 msgstr "კლავიატურის განლაგება"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:7
-msgid "Keyboard model"
-msgstr "კლავიატურის მოდელი"
+#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+msgid "Preview keyboard layouts"
+msgstr "კლავიატურის განლაგებების გადახედვა"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:8
-msgid "Keyboard options"
-msgstr "კლავიატურის პარამეტრები"
+#: libgnomekbd/gkbd-keyboard-drawing.c:2443
+#, c-format
+msgid ""
+"Keyboard layout “%s”\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:9
-msgid "Keyboard settings in gconf will be overridden from the system ASAP (deprecated)"
-msgstr "კლავიატურის gconf პარამეტრების მაგივრად ASAP-ის გამოყენება (მოძველებულია)"
+#: libgnomekbd/gkbd-keyboard-drawing.c:2593
+msgid "Unknown"
+msgstr "უცნობი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:10
+#: libgnomekbd/gkbd-status.c:299
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "შეცდომა გამოსახულების წაკითხვისას: %s"
+
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:8
+msgid "Default group, assigned on window creation"
+msgstr "ფანჯრის შექმნისას მინიჭებული ნაგულისხმები ჯგუფი"
+
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:13
+msgid "Keep and manage separate group per window"
+msgstr "თითოეული ფანჯრისთვის ცალკე ჯგუფის ქონა"
+
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:18
 msgid "Save/restore indicators together with layout groups"
-msgstr "ინდიკატორების ჯგუფთან ერთად შენახვა/აღდგენა"
+msgstr "ინდიკატორებისა და განლაგების ჯგუფების შენახვა/აღდგენა"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:22
+msgid "Show layout names instead of group names"
+msgstr "ჯგუფის მაგიერ განლაგების სახელების ჩვენება"
+
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:23
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"ჯგუფის მაგიერ განლაგების სახელების ჩვენება (მხოლოდ მრავალი "
+"განლაგების მხარდაჭერის მქონე XFree-ის ვერსიებზე)"
+
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:27
+msgid "Load extra configuration items"
+msgstr "დამატებითი კონფიგურაციის ჩანაწერების ჩატვირთვა"
+
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:28
+msgid "Load exotic, rarely used layouts and options"
+msgstr ""
+"ეგზოტიკური, იშვიათად გამოყენებადი განლაგებებისა და პარამეტრების "
+"ჩატვირთვა"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:12
+msgid "The Keyboard Preview, X offset"
+msgstr "კლავიატურის გადახედვა, X წანაცვლება"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:18
+msgid "The Keyboard Preview, Y offset"
+msgstr "კლავიატურის გადახედვა, Y წანაცვლება"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:24
+msgid "The Keyboard Preview, width"
+msgstr "კლავიატურის გადახედვა, სიგანე"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:30
+msgid "The Keyboard Preview, height"
+msgstr "კლავიატურის გადახედვა, სიმაღლე"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:38
 msgid "Secondary groups"
 msgstr "მეორადი ჯგუფები"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:42
 msgid "Show flags in the applet"
-msgstr "დროშის ჩვენება"
+msgstr "აპლეტზე ალმების ჩვენება"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:43
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "განლაგების აღსაღნიშნად ქვეყნის დროშების გამოჩენა"
+msgstr "აპლეტზე მიმდინარე ენის ალმის ჩვენება"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:14
-msgid "Show layout names instead of group names"
-msgstr "ჯგუფის სახელების მაგივრად სახელწოდებების ჩვენება"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:47
+msgid "The font family"
+msgstr "ფონტის ოჯახი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:15
-msgid "Show layout names instead of group names (only for versions of XFree supporting multiple layouts)"
-msgstr "განლაგებების ჯგუფის სახელების მაგივრად სახელწოდებების ჩვენება (მხოლოდ იმ XFree ვერსიებისთვის, რომელთაც მულტი განლაგებების მხარდაჭერა გააჩნიათ)"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:48
+msgid "The font family for the layout indicator"
+msgstr "განლაგების ინდიკატორის ფონტის ოჯახი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:16
-msgid "Suppress the \"X sysconfig changed\" warning message"
-msgstr "გაფრთხილების შეტყობინება \"X სისტემური კონფოგურაცია შეიცვალა\" მოშორება"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:53
+msgid "The font size"
+msgstr "ფონტის ზომა"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:17
-msgid "The Keyboard Preview, X offset"
-msgstr "გადავხედოთ კლავიატურას, X ღერძზე"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:54
+msgid "The font size for the layout indicator"
+msgstr "განლაგების ინდიკატორის ფონტის ზომა"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:18
-msgid "The Keyboard Preview, Y offset"
-msgstr "გადავხედოთ კლავიატურას, Y ღერძზე"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:58
+msgid "The foreground color"
+msgstr "წინა პლანის ფერი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:19
-msgid "The Keyboard Preview, height"
-msgstr "გადავხედოთ კლავიატურას, სიმაღლე"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:59
+msgid "The foreground color for the layout indicator"
+msgstr "განლაგების ინდიკატორის ფონის ფერი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:20
-msgid "The Keyboard Preview, width"
-msgstr "გადავხედოთ კლავიატურას, სიგანე"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:63
+msgid "The background color"
+msgstr "ფონის ფერი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:21
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "კლავიატურის ინდიკატორში აქტიური მოდულების სია"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:64
+msgid "The background color for the layout indicator"
+msgstr "განლაგების ინდიკატორის წინა პლანის ფერი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:22
-msgid "Very soon, keyboard settings in gconf will be overridden (from the system configuration) This key has been deprecated since GNOME 2.12, please unset the model, layouts and options keys to get the default system configuration."
-msgstr ""
-"მალე gconf-ის კლავიატურის პარამეტრები სისტემურზე შეიცვლება. მოცემული გასაღები "
-"მოძველებულად ითვლება GNOME 2.12 ვერსიის დროიდან. სისტემური კონფიგურაციის "
-"გამოსაყენებლად გთხოვთ მოაშოროთ კლავიატურის მოდელი, განლაგებები და კლავიატურის პრამეტრები."
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:6
+msgid "Keyboard model"
+msgstr "კლავიატურის მოდელი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:23
-msgid "keyboard layout"
-msgstr "კლავიატურის განლაგება"
-
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:24
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:7
 msgid "keyboard model"
 msgstr "კლავიატურის მოდელი"
 
-#: ../libgnomekbd/desktop_gnome_peripherals_keyboard_xkb.schemas.in.h:25
-msgid "modmap file list"
-msgstr "modmap ფაილების სია"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:11
+msgid "Keyboard layout"
+msgstr "კლავიატურის განლაგება"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr "მოდულების ჩართვა"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:12
+msgid "keyboard layout"
+msgstr "კლავიატურის განლაგება"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:2
-msgid "Active _plugins:"
-msgstr "აქტიური _მოდულები:"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:17
+msgid "Keyboard options"
+msgstr "კლავიატურის მორგება"
 
-#: ../capplet/gkbd-indicator-plugins.glade.h:3
-msgid "Add Plugin"
-msgstr "მოდულის დამატება"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:4
-msgid "Close the dialog"
-msgstr "დიალოგის დახურვა"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:5
-msgid "Configure the selected plugin"
-msgstr "არჩეული მოდულის გამართვა"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:6
-msgid "Deactivate selected plugin"
-msgstr "არჩეული მოდულის გათიშვა"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:7
-msgid "Decrease the plugin priority"
-msgstr "მოდულის პრიორიტეტის შემცირება"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr "მოდულის პრიორიტეტის გაზრდა"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:9
-msgid "Keyboard Indicator Plugins"
-msgstr "კლავიატურის ინდიკატორის მოდულები"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:10
-msgid "The list of active plugins"
-msgstr "აქტიური მოდულების სია"
-
-#: ../capplet/gkbd-indicator-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr "ხელ_მისაწვდომი მოდული:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:117
-#: ../capplet/gkbd-indicator-plugins-add.c:106
-msgid "No description."
-msgstr "არავითარი აღწერილობა."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:326
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "ვერ მოხერხდა ინიცირება – GConf: %s\n"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "დაყენებული მოდულების ჩართვა/გამორთვა"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "კლავიატურის ინდიკატორის მოდულები"
-
-#: ../test/gkbd-indicator-test.c:59
-#, c-format
-msgid "Keyboard Indicator Test (%s)"
-msgstr "კლავიატურის ინდიკატორის ტესტი (%s)"
-
-#: ../test/gkbd-indicator-test.c:68
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "ინდიკატორი:"
-
