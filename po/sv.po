@@ -1,23 +1,23 @@
 # Swedish translation for libgnomekbd.
-# Copyright © 2007-2021 Free Software Foundation, Inc.
+# Copyright © 2007-2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libgnomekbd package.
 # Daniel Nylander <po@danielnylander.se>, 2007, 2008, 2009, 2010, 2011.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2021.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2016, 2021, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/issues\n"
-"POT-Creation-Date: 2020-09-15 22:32+0000\n"
-"PO-Revision-Date: 2021-03-27 23:04+0100\n"
+"POT-Creation-Date: 2022-06-14 11:18+0000\n"
+"PO-Revision-Date: 2022-06-14 16:05+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
@@ -27,8 +27,8 @@ msgstr "XKB-initieringsfel"
 #. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
+msgid "layout “%s”"
+msgid_plural "layouts “%s”"
 msgstr[0] "layout ”%s”"
 msgstr[1] "layouter ”%s”"
 
@@ -36,14 +36,14 @@ msgstr[1] "layouter ”%s”"
 #. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
+msgid "option “%s”"
+msgid_plural "options “%s”"
 msgstr[0] "alternativ ”%s”"
 msgstr[1] "alternativ ”%s”"
 
 #: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
-msgid "model \"%s\", %s and %s"
+msgid "model “%s”, %s and %s"
 msgstr "modell ”%s”, %s och %s"
 
 #: libgnomekbd/gkbd-keyboard-config.c:739
@@ -66,7 +66,7 @@ msgstr "Förhandsvisa tangentbordslayouter"
 #: libgnomekbd/gkbd-keyboard-drawing.c:2457
 #, c-format
 msgid ""
-"Keyboard layout \"%s\"\n"
+"Keyboard layout “%s”\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
