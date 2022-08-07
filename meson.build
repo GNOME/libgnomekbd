@@ -49,6 +49,7 @@ config_h = configure_file(
 root_include = include_directories('.')
 
 subdir('libgnomekbd')
+subdir('tools')
 
 subdir('po')
 
