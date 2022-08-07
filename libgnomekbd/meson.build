@@ -1,13 +1,7 @@
 pkg_data_dir = get_option('prefix') / get_option('datadir') / 'libgnomekbd'
-ui_dir = pkg_data_dir / 'ui'
 icons_dir = pkg_data_dir / 'icons'
 
 pkg = import('pkgconfig')
-
-install_data(
-  'show-layout.ui',
-  install_dir: ui_dir
-)
 
 install_data(
   'kbdled-caps-lock.svg',
@@ -113,7 +107,6 @@ libgnomekbdui_lib = library(
   include_directories: root_include,
   version: library_version,
   c_args: [
-    '-DUIDIR="@0@"'.format(ui_dir),
     '-DDATADIR="@0@"'.format(pkg_data_dir),
     '-DICONSDIR="@0@"'.format(icons_dir),
   ],

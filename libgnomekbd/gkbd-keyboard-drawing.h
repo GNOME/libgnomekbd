@@ -86,15 +86,5 @@ void gkbd_keyboard_drawing_print (GkbdKeyboardDrawing * drawing,
 				  GtkWindow * parent_window,
 				  const gchar * description);
 
-GtkWidget *gkbd_keyboard_drawing_dialog_new (void);
-
-void gkbd_keyboard_drawing_dialog_set_group (GtkWidget * dialog,
-					     XklConfigRegistry * registry,
-					     gint group);
-
-void gkbd_keyboard_drawing_dialog_set_layout (GtkWidget * dialog,
-					      XklConfigRegistry * registry,
-					      const gchar * layout);
-
 G_END_DECLS
 #endif				/* #ifndef GKBD_KEYBOARD_DRAWING_H */

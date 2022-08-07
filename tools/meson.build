@@ -1,10 +1,17 @@
+ui_dir = pkg_data_dir / 'ui'
+install_data(
+  'show-layout.ui',
+  install_dir: ui_dir
+)
+
 gkbd_keyboard_display_exe = executable(
   'gkbd-keyboard-display',
   'gkbd-keyboard-display.c',
   dependencies: libgnomekbdui_dep,
   include_directories: root_include,
   c_args: [
-    '-DGNOMELOCALEDIR="@0@"'.format(get_option('prefix') / get_option('datadir') / 'locale')
+    '-DGNOMELOCALEDIR="@0@"'.format(get_option('prefix') / get_option('datadir') / 'locale'),
+    '-DUIDIR="@0@"'.format(ui_dir),
   ],
   install: true,
 )
