@@ -6,21 +6,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/"
-"issues\n"
-"POT-Creation-Date: 2019-08-17 13:20+0000\n"
-"PO-Revision-Date: 2020-09-16 00:31+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/issues\n"
+"POT-Creation-Date: 2022-07-21 15:14+0000\n"
+"PO-Revision-Date: 2022-08-13 18:15+0200\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 "
-"&& n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
+#: libgnomekbd/gkbd-indicator.c:421 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "XKB greška pokretanja"
 
@@ -28,25 +27,25 @@ msgstr "XKB greška pokretanja"
 #. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
+msgid "layout “%s”"
+msgid_plural "layouts “%s”"
 msgstr[0] "raspored \"%s\""
 msgstr[1] "rasporeda \"%s\""
-msgstr[2] "raspored \"%s\""
+msgstr[2] "rasporeda \"%s\""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
+msgid "option “%s”"
+msgid_plural "options “%s”"
 msgstr[0] "mogućnost \"%s\""
-msgstr[1] "mogućnost \"%s\""
-msgstr[2] "mogućnost \"%s\""
+msgstr[1] "mogućnosti \"%s\""
+msgstr[2] "mogućnosti \"%s\""
 
 #: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
-msgid "model \"%s\", %s and %s"
+msgid "model “%s”, %s and %s"
 msgstr "model \"%s\", %s i %s"
 
 #: libgnomekbd/gkbd-keyboard-config.c:739
@@ -66,19 +65,18 @@ msgstr "Raspored tipkovnice"
 msgid "Preview keyboard layouts"
 msgstr "Pregled rasporeda tipkovnice"
 
-#: libgnomekbd/gkbd-keyboard-drawing.c:2457
+#: libgnomekbd/gkbd-keyboard-drawing.c:2443
 #, c-format
 msgid ""
-"Keyboard layout \"%s\"\n"
+"Keyboard layout “%s”\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
 "Raspored tipkovnice \"%s\"\n"
-"Autorsko pravo &#169; X.Org Fundacija i XKeyboardConfig "
-"doprinositelji\n"
+"Autorsko pravo &#169; X.Org Fundacija i XKeyboardConfig doprinositelji\n"
 "Za licenciranje pogledajte metapodatke paketa"
 
-#: libgnomekbd/gkbd-keyboard-drawing.c:2607
+#: libgnomekbd/gkbd-keyboard-drawing.c:2593
 msgid "Unknown"
 msgstr "Nepoznat"
 
@@ -111,8 +109,8 @@ msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
-"Prikaži nazive rasporeda umjesto naziva grupa (samo za XFree inačice "
-"koje podržavaju više rasporeda)"
+"Prikaži nazive rasporeda umjesto naziva grupa (samo za XFree inačice koje "
+"podržavaju više rasporeda)"
 
 #: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:27
 msgid "Load extra configuration items"
