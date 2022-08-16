@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 3.26.1, [http://bugzilla.gnome.org/enter_bug.cgi?product=libgnomekbd])
+AC_INIT(libgnomekbd, 3.28.0, [https://gitlab.gnome.org/GNOME/libgnomekbd/-/issues])
 AC_PREREQ(2.62)
 
 VERSION_INFO=8:0:0
@@ -15,7 +15,7 @@ AC_CONFIG_MACRO_DIR(m4)
 dnl ***************************************************************************
 dnl *** Minimum library versions for libgnomekbd                            ***
 dnl ***************************************************************************
-GLIB_REQUIRED=2.18
+GLIB_REQUIRED=2.44
 GDK_REQUIRED=2.91.7
 GTK_REQUIRED=2.90
 LIBXKLAVIER_REQUIRED=5.2

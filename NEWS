@@ -1,3 +1,11 @@
+3.28.0:
+        Translation updates
+        Require GLib 2.44
+        Modernize the codebase
+        Avoid several crashes
+        Fix RTL issues
+        Add meson build system
+
 3.26.1:
         Translation updates
         Fix build with new GLib
