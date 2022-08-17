@@ -61,8 +61,7 @@ libgnomekbd_lib = library(
   config_h,
   dependencies: libgnomekbd_deps,
   include_directories: root_include,
-  version: meson.project_version(),
-  soversion: library_version,
+  version: library_version,
   install: true,
 )
 
@@ -115,8 +114,7 @@ libgnomekbdui_lib = library(
   gkbd_keyboard_drawing_marshal,
   dependencies: libgnomekbdui_deps,
   include_directories: root_include,
-  version: meson.project_version(),
-  soversion: library_version,
+  version: library_version,
   c_args: [
     '-DUIDIR="@0@"'.format(ui_dir),
     '-DDATADIR="@0@"'.format(pkg_data_dir),
