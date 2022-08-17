@@ -170,19 +170,27 @@ install_data(
   install_dir: get_option('prefix') / get_option('datadir') / 'GConf' / 'gsettings'
 )
 
-gnome.generate_gir(
-  libgnomekbd_lib, libgnomekbdui_lib,
-  sources: [
-    libgnomekbd_sources,
-    libgnomekbdui_sources,
-    libgnomekbd_headers,
-    libgnomekbdui_headers,
-    gkbd_indicator_marshal,
-    gkbd_keyboard_drawing_marshal,
-  ],
-  dependencies: [ libgnomekbd_deps, m_dep ],
-  include_directories: root_include,
-  namespace: 'Gkbd',
-  nsversion: '3.0',
-  includes: ['GObject-2.0', 'Gtk-3.0', 'xlib-2.0', 'Xkl-1.0'],
-)
+if get_option('introspection')
+  gir_dir = join_paths(get_option('prefix') / get_option('datadir'), '@0@-@1@'.format('gir', gnomekbd_gir_version))
+  typelib_dir = join_paths(get_option('prefix') / get_option('libdir'), '@0@-@1@'.format('girepository', gnomekbd_gir_version))
+
+  gnome.generate_gir(
+    libgnomekbd_lib, libgnomekbdui_lib,
+    sources: [
+      libgnomekbd_sources,
+      libgnomekbdui_sources,
+      libgnomekbd_headers,
+      libgnomekbdui_headers,
+      gkbd_indicator_marshal,
+      gkbd_keyboard_drawing_marshal,
+    ],
+    dependencies: [ libgnomekbd_deps, m_dep ],
+    include_directories: root_include,
+    namespace: 'Gkbd',
+    nsversion: '3.0',
+    includes: ['GObject-2.0', 'Gtk-3.0', 'xlib-2.0', 'Xkl-1.0'],
+    install: true,
+    install_dir_gir: gir_dir,
+    install_dir_typelib: typelib_dir,
+  )
+endif

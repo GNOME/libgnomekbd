@@ -13,6 +13,8 @@ project('libgnomekbd', 'c',
 library_version = '8.0.0'
 gettext_domain = 'libgnomekbd'
 
+gnomekbd_gir_version = '1.0'
+
 gnome = import('gnome')
 i18n = import('i18n')
 

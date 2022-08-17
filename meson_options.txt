@@ -1,4 +1,4 @@
-option('gir',
+option('introspection',
        type: 'boolean', value: true,
        description: 'Generate gir data (requires gobject-introspection)')
 option('vapi',
