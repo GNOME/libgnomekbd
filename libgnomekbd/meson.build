@@ -2,6 +2,8 @@ pkg_data_dir = get_option('prefix') / get_option('datadir') / 'libgnomekbd'
 ui_dir = pkg_data_dir / 'ui'
 icons_dir = pkg_data_dir / 'icons'
 
+pkg = import('pkgconfig')
+
 install_data(
   'show-layout.ui',
   install_dir: ui_dir
@@ -65,6 +67,13 @@ libgnomekbd_lib = library(
   install: true,
 )
 
+pkg.generate(
+  libgnomekbd_lib,
+  name: 'libgnomekbd',
+  description: 'GNOME keyboard shared library',
+  version: meson.project_version(),
+)
+
 libgnomekbd_dep = declare_dependency(
   link_with: libgnomekbd_lib,
   include_directories: root_include,
@@ -121,6 +130,13 @@ libgnomekbdui_lib = library(
     '-DICONSDIR="@0@"'.format(icons_dir),
   ],
   install: true,
+)
+
+pkg.generate(
+  libgnomekbdui_lib,
+  name: 'libgnomekbdui',
+  description: 'GNOME keyboard shared library',
+  version: meson.project_version(),
 )
 
 libgnomekbdui_dep = declare_dependency(
