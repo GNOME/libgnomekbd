@@ -1,5 +1,5 @@
 project('libgnomekbd', 'c',
-        version: '3.28.0',
+        version: '3.28.1',
         default_options: [
           'buildtype=debugoptimized',
           'warning_level=1',

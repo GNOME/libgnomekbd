@@ -1,7 +1,7 @@
 dnl ***************************************************************************
 dnl *** configure.in for libgnomekbd                                        ***
 dnl ***************************************************************************
-AC_INIT(libgnomekbd, 3.28.0, [https://gitlab.gnome.org/GNOME/libgnomekbd/-/issues])
+AC_INIT(libgnomekbd, 3.28.1, [https://gitlab.gnome.org/GNOME/libgnomekbd/-/issues])
 AC_PREREQ(2.62)
 
 VERSION_INFO=8:0:0

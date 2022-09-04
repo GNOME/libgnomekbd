@@ -1,3 +1,6 @@
+3.28.1:
+        Land several fixes to meson build definitions to align with autotools
+
 3.28.0:
         Translation updates
         Require GLib 2.44
