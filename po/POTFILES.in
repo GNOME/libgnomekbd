@@ -4,7 +4,7 @@ libgnomekbd/gkbd-desktop-config.c
 libgnomekbd/gkbd-indicator.c
 libgnomekbd/gkbd-indicator-config.c
 libgnomekbd/gkbd-keyboard-config.c
-libgnomekbd/gkbd-keyboard-display.desktop.in
+libgnomekbd/gkbd-keyboard-display.desktop.in.in
 libgnomekbd/gkbd-keyboard-drawing.c
 libgnomekbd/gkbd-status.c
 libgnomekbd/gkbd-util.c
