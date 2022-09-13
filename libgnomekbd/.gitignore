@@ -7,7 +7,6 @@
 *.gschema.xml.in
 *.o
 *.desktop
-*.desktop.in
 *marshal.c
 *marshal.h
 Makefile

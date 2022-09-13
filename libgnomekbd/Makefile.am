@@ -108,9 +108,6 @@ desktopdir = $(datadir)/applications
 desktop_in_files = gkbd-keyboard-display.desktop.in
 desktop_DATA = gkbd-keyboard-display.desktop
 
-%.desktop.in : %.desktop.in.in
-	$(AM_V_GEN) sed -e 's|@VERSION[@]|$(VERSION)|g' $< > $@
-
 %.desktop : %.desktop.in
 	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
