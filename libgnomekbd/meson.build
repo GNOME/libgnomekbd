@@ -35,6 +35,7 @@ libgnomekbd_deps = [
   gio_dep,
   gdk_dep,
   gtk_dep,
+  graphene_dep,
   x11_dep,
   libxklavier_dep,
 ]
@@ -42,6 +43,7 @@ libgnomekbd_deps = [
 libgnomekbd_sources = files(
   'gkbd-desktop-config.c',
   'gkbd-keyboard-config.c',
+  'gkbd-geometry-parser.c',
   'gkbd-util.c',
 )
 
