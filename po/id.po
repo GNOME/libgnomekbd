@@ -5,23 +5,23 @@
 # alfaridi <dichi@alfaridi.info>, 2010.
 # Dichi Al Faridi <dichi@alfaridi.info>, 2010.
 # Dirgita <dirgitadevina@yahoo.co.id>, 2011, 2014.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekbd master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libgnomekbd&keywords=I18N+L10N&component=Indicator\n"
-"POT-Creation-Date: 2016-10-11 14:04+0000\n"
-"PO-Revision-Date: 2017-03-20 05:42+0700\n"
-"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/issues\n"
+"POT-Creation-Date: 2022-09-12 11:48+0000\n"
+"PO-Revision-Date: 2022-11-16 11:18+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 3.2.1\n"
 
-#: libgnomekbd/gkbd-indicator.c:422 libgnomekbd/gkbd-status.c:560
+#: libgnomekbd/gkbd-indicator.c:421 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "Kesalahan inisialisasi XKB"
 
@@ -29,22 +29,22 @@ msgstr "Kesalahan inisialisasi XKB"
 #. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
+msgid "layout “%s”"
+msgid_plural "layouts “%s”"
 msgstr[0] "tata letak \"%s\""
 
 #. Translators: The count is related to the number of options. The %s
 #. * format specifier should not be modified, left "as is".
 #: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
+msgid "option “%s”"
+msgid_plural "options “%s”"
 msgstr[0] "opsi \"%s\""
 
 #: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
-msgid "model \"%s\", %s and %s"
-msgstr "model \"%s\",%s dan%s"
+msgid "model “%s”, %s and %s"
+msgstr "model \"%s\",%s dan %s"
 
 #: libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
@@ -54,24 +54,18 @@ msgstr "tidak ada tata letak"
 msgid "no options"
 msgstr "tidak ada opsi"
 
-#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:3
-#: libgnomekbd/show-layout.ui:7
+#: libgnomekbd/gkbd-keyboard-display.desktop.in:3 libgnomekbd/show-layout.ui:7
 msgid "Keyboard Layout"
 msgstr "Tata Letak Papan Tik"
 
-#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:4
+#: libgnomekbd/gkbd-keyboard-display.desktop.in:4
 msgid "Preview keyboard layouts"
 msgstr "Menampilkan tata letak papan ketik"
 
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: libgnomekbd/gkbd-keyboard-display.desktop.in.in:6
-msgid "preferences-desktop-keyboard"
-msgstr "preferences-desktop-keyboard"
-
-#: libgnomekbd/gkbd-keyboard-drawing.c:2457
+#: libgnomekbd/gkbd-keyboard-drawing.c:2443
 #, c-format
 msgid ""
-"Keyboard layout \"%s\"\n"
+"Keyboard layout “%s”\n"
 "Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
 "For licensing see package metadata"
 msgstr ""
@@ -79,7 +73,7 @@ msgstr ""
 "Hak cipta &#169; X.Org Foundation dan kontributor XKeyboardConfig\n"
 "Untuk lisensi lihat metadata paket"
 
-#: libgnomekbd/gkbd-keyboard-drawing.c:2607
+#: libgnomekbd/gkbd-keyboard-drawing.c:2593
 msgid "Unknown"
 msgstr "Tak diketahui"
 
@@ -212,3 +206,6 @@ msgstr "Opsi papan tik"
 #: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indikator:"
+
+#~ msgid "preferences-desktop-keyboard"
+#~ msgstr "preferences-desktop-keyboard"
