@@ -6,108 +6,105 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libgnomekdb\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libgno"
-"mekbd&component=general\n"
-"POT-Creation-Date: 2011-02-25 01:17+0000\n"
-"PO-Revision-Date: 2011-03-16 18:45+0200\n"
-"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libgnomekbd/issues\n"
+"POT-Creation-Date: 2022-09-12 11:48+0000\n"
+"PO-Revision-Date: 2023-10-21 15:44+0300\n"
+"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
+"gmail [dot] com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.6.1\n"
+"20)) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4\n"
 
-#: ../libgnomekbd/gkbd-indicator.c:443 ../libgnomekbd/gkbd-status.c:536
+#: libgnomekbd/gkbd-indicator.c:421 libgnomekbd/gkbd-status.c:560
 msgid "XKB initialization error"
 msgstr "Eroare inițializare XKB"
 
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2451
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: libgnomekbd/gkbd-keyboard-config.c:712
 #, c-format
-msgid ""
-"Keyboard layout \"%s\"\n"
-"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
-"For licensing see package metadata"
-msgstr ""
-"Aranjament tastatură „%s”\n"
-"Drepturi de autor &#169; Fundația X.Org și colaboratorii XKeyboardConfig\n"
-"Pentru licențiere consultați metadatele pachetului"
-
-#: ../libgnomekbd/gkbd-keyboard-drawing.c:2601
-msgid "Unknown"
-msgstr "Necunoscut"
-
-#: ../libgnomekbd/gkbd-keyboard-config.c:701
-#, c-format
-msgid "layout \"%s\""
-msgid_plural "layouts \"%s\""
+msgid "layout “%s”"
+msgid_plural "layouts “%s”"
 msgstr[0] "aranjament „%s”"
 msgstr[1] "aranjamente „%s”"
 msgstr[2] "aranjamente „%s”"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:719
+#. Translators: The count is related to the number of options. The %s
+#. * format specifier should not be modified, left "as is".
+#: libgnomekbd/gkbd-keyboard-config.c:730
 #, c-format
-msgid "option \"%s\""
-msgid_plural "options \"%s\""
+msgid "option “%s”"
+msgid_plural "options “%s”"
 msgstr[0] "opțiune „%s”"
 msgstr[1] "opțiuni „%s”"
 msgstr[2] "opțiuni „%s”"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:727
+#: libgnomekbd/gkbd-keyboard-config.c:738
 #, c-format
-msgid "model \"%s\", %s and %s"
+msgid "model “%s”, %s and %s"
 msgstr "model „%s”, %s și %s"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:728
+#: libgnomekbd/gkbd-keyboard-config.c:739
 msgid "no layout"
 msgstr "fără aranjament"
 
-#: ../libgnomekbd/gkbd-keyboard-config.c:729
+#: libgnomekbd/gkbd-keyboard-config.c:740
 msgid "no options"
 msgstr "fără opțiuni"
 
-#: ../libgnomekbd/gkbd-status.c:290
+#: libgnomekbd/gkbd-keyboard-display.desktop.in:3 libgnomekbd/show-layout.ui:7
+msgid "Keyboard Layout"
+msgstr "Aranjament tastatură"
+
+#: libgnomekbd/gkbd-keyboard-display.desktop.in:4
+msgid "Preview keyboard layouts"
+msgstr "Previzualizați aranjamente de tastatură"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2443
+#, c-format
+msgid ""
+"Keyboard layout “%s”\n"
+"Copyright &#169; X.Org Foundation and XKeyboardConfig contributors\n"
+"For licensing see package metadata"
+msgstr ""
+"Aranjament tastatură „%s”\n"
+"Drepturi de autor &#169; Fundația X.Org și contribuitorii XKeyboardConfig\n"
+"Pentru licențiere consultați datele meta ale pachetului"
+
+#: libgnomekbd/gkbd-keyboard-drawing.c:2593
+msgid "Unknown"
+msgstr "Necunoscut"
+
+#: libgnomekbd/gkbd-status.c:299
 #, c-format
 msgid "There was an error loading an image: %s"
 msgstr "S-a produs o eroare la încărcarea unei imagini: %s"
 
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:1
-#: ../libgnomekbd/show-layout.ui.h:1
-msgid "Keyboard Layout"
-msgstr "Aranjament tastatură"
-
-#: ../libgnomekbd/gkbd-keyboard-display.desktop.in.in.h:2
-#| msgid "keyboard layout"
-msgid "Preview keyboard layouts"
-msgstr "Previzualizați aranjamente de tastatură"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:1
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:8
 msgid "Default group, assigned on window creation"
 msgstr "Grup implicit, atribuit la crearea ferestrei"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:12
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:13
 msgid "Keep and manage separate group per window"
 msgstr "Păstrează și administrează grupuri separate în fiecare fereastră"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:3
-msgid "Load exotic, rarely used layouts and options"
-msgstr "Încarcă aranjamentele și opțiunile exotice ori rar folosite"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:4
-msgid "Load extra configuration items"
-msgstr "Încarcă elemente suplimentare de configurare"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:18
 msgid "Save/restore indicators together with layout groups"
 msgstr "Salvează/restarurează indicatorii împreună cu grupurile de aranjamente"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:6
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:22
 msgid "Show layout names instead of group names"
 msgstr "Arată numele aranjamentelor în locul numelor grupurilor"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:23
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
@@ -115,154 +112,151 @@ msgstr ""
 "Arată numele aranjamentelor în locul numelor grupurilor (doar pentru "
 "versiuni de XFree ce suportă aranjamente multiple)"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:1
-msgid "Secondary groups"
-msgstr "Grupuri secundare"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:27
+msgid "Load extra configuration items"
+msgstr "Încarcă elemente suplimentare de configurare"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:2
-msgid "Show flags in the applet"
-msgstr "Arată steaguri în miniaplicație"
+#: libgnomekbd/org.gnome.libgnomekbd.desktop.gschema.xml.in:28
+msgid "Load exotic, rarely used layouts and options"
+msgstr "Încarcă aranjamentele și opțiunile exotice ori rar folosite"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:3
-msgid "Show flags in the applet to indicate the current layout"
-msgstr "Arată steaguri în miniaplicație pentru a indica aranjamentul curent"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:4
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:12
 msgid "The Keyboard Preview, X offset"
 msgstr "Previzualizarea tastaturii, decalajul X"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:17
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:18
 msgid "The Keyboard Preview, Y offset"
 msgstr "Previzualizarea tastaturii, decalajul Y"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:6
-msgid "The Keyboard Preview, height"
-msgstr "Previzualizarea tastaturii, înălțimea"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:7
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:23
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:24
 msgid "The Keyboard Preview, width"
 msgstr "Previzualizarea tastaturii, lățimea"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:8
-msgid "The background color"
-msgstr "Culoarea de fundal"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:29
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:30
+msgid "The Keyboard Preview, height"
+msgstr "Previzualizarea tastaturii, înălțimea"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:9
-msgid "The background color for the layout indicator"
-msgstr "Culoarea de fundal a indicatorului de aranjament"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:37
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:38
+msgid "Secondary groups"
+msgstr "Grupuri secundare"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:10
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:42
+msgid "Show flags in the applet"
+msgstr "Arată steaguri în miniaplicație"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:43
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "Arată steaguri în miniaplicație pentru a indica aranjamentul curent"
+
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:47
 msgid "The font family"
 msgstr "Familia fontului"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:11
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:48
 msgid "The font family for the layout indicator"
 msgstr "Familia fontului indicatorului de aranjament"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:12
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:53
 msgid "The font size"
 msgstr "Dimensiunea fontului"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:13
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:54
 msgid "The font size for the layout indicator"
 msgstr "Dimensiunea fontului indicatorului de aranjament"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:14
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:58
 msgid "The foreground color"
 msgstr "Culoarea de prim-plan"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:15
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:59
 msgid "The foreground color for the layout indicator"
 msgstr "Culoarea de prim-plan a indicatorului de aranjament"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in.in.h:16
-msgid "The list of enabled Keyboard Indicator plugins"
-msgstr "Lista modulelor indicator tastatură activate"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:63
+msgid "The background color"
+msgstr "Culoarea de fundal"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:1
-msgid "Keyboard layout"
-msgstr "Aranjament tastatură"
+#: libgnomekbd/org.gnome.libgnomekbd.gschema.xml.in:64
+msgid "The background color for the layout indicator"
+msgstr "Culoarea de fundal a indicatorului de aranjament"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:2
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:6
 msgid "Keyboard model"
 msgstr "Model tastatură"
 
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:3
-msgid "Keyboard options"
-msgstr "Opțiuni tastatură"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:4
-msgid "keyboard layout"
-msgstr "aranjament tastatură"
-
-#: ../libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in.in.h:5
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:7
 msgid "keyboard model"
 msgstr "model tastatură"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:1
-msgid "Activate more plugins"
-msgstr "Activează mai multe module"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:11
+msgid "Keyboard layout"
+msgstr "Aranjament tastatură"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:2
-msgid "Active _plugins:"
-msgstr "_Module active:"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:12
+msgid "keyboard layout"
+msgstr "aranjament tastatură"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:3
-msgid "Close the dialog"
-msgstr "Închide dialogul"
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:16
+#: libgnomekbd/org.gnome.libgnomekbd.keyboard.gschema.xml.in:17
+msgid "Keyboard options"
+msgstr "Opțiuni tastatură"
 
-#: ../capplet/gkbd-indicator-plugins.ui.h:4
-msgid "Configure the selected plugin"
-msgstr "Configurează modulul selectat"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:5
-msgid "Deactivate selected plugin"
-msgstr "Dezactivează modulul selectat"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:6
-msgid "Decrease the plugin priority"
-msgstr "Redu prioritatea modulului"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:7
-msgid "Increase the plugin priority"
-msgstr "Mărește prioritatea modulului"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:8
-msgid "Keyboard Indicator Plugins"
-msgstr "Module Indicator tastatură"
-
-#: ../capplet/gkbd-indicator-plugins.ui.h:9
-msgid "The list of active plugins"
-msgstr "Lista modulelor active"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:1
-msgid "Add Plugin"
-msgstr "Adaugă modul"
-
-#: ../capplet/gkbd-indicator-plugins_add.ui.h:2
-msgid "_Available plugins:"
-msgstr "_Module disponibile:"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:125
-#: ../capplet/gkbd-indicator-plugins-add.c:110
-msgid "No description."
-msgstr "Fără descriere."
-
-#: ../capplet/gkbd-indicator-plugins-capplet.c:248
-msgid "Unable to open help file"
-msgstr "Nu s-a putut deschide fișierul de ajutor"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:1
-msgid "Enable/disable installed plugins"
-msgstr "Activează/dezactivează modulele instalate"
-
-#: ../capplet/gkbd-indicator-plugins-capplet.desktop.in.in.h:2
-msgid "Keyboard Indicator plugins"
-msgstr "Module Indicator tastatură"
-
-#: ../test/gkbd-indicator-test.c:65
+#: test/gkbd-indicator-test.c:66
 msgid "Indicator:"
 msgstr "Indicator:"
+
+#~ msgid "The list of enabled Keyboard Indicator plugins"
+#~ msgstr "Lista modulelor indicator tastatură activate"
+
+#~ msgid "Activate more plugins"
+#~ msgstr "Activează mai multe module"
+
+#~ msgid "Active _plugins:"
+#~ msgstr "_Module active:"
+
+#~ msgid "Close the dialog"
+#~ msgstr "Închide dialogul"
+
+#~ msgid "Configure the selected plugin"
+#~ msgstr "Configurează modulul selectat"
+
+#~ msgid "Deactivate selected plugin"
+#~ msgstr "Dezactivează modulul selectat"
+
+#~ msgid "Decrease the plugin priority"
+#~ msgstr "Redu prioritatea modulului"
+
+#~ msgid "Increase the plugin priority"
+#~ msgstr "Mărește prioritatea modulului"
+
+#~ msgid "Keyboard Indicator Plugins"
+#~ msgstr "Module Indicator tastatură"
+
+#~ msgid "The list of active plugins"
+#~ msgstr "Lista modulelor active"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Adaugă modul"
+
+#~ msgid "_Available plugins:"
+#~ msgstr "_Module disponibile:"
+
+#~ msgid "No description."
+#~ msgstr "Fără descriere."
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Nu s-a putut deschide fișierul de ajutor"
+
+#~ msgid "Enable/disable installed plugins"
+#~ msgstr "Activează/dezactivează modulele instalate"
+
+#~ msgid "Keyboard Indicator plugins"
+#~ msgstr "Module Indicator tastatură"
 
 #~ msgid "Keyboard Layout \"%s\""
 #~ msgstr "Aranjament tastatură „%s”"
